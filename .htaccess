@@ -1,5 +1,5 @@
 Options +Indexes
-IndexIgnore favicon.ico
+IndexIgnore favicon.ico *.php robots.txt
 RewriteEngine on
 
 RewriteCond %{HTTP_HOST}        ^docs-next\.angularjs\.org$ [nc]
