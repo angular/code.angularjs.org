@@ -1,0 +1,256 @@
+/* Common Style */
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: blue;
+}
+
+
+/* Main Layout */
+
+#header {
+  height: 3.5em;
+}
+
+#sidebar,
+#main {
+  position: absolute;
+  top: 3.5em;
+  bottom: 0;
+  margin-top: 1px;
+  overflow-x: hidden;
+}
+
+#sidebar {
+  width: 13.8em;
+  padding: 0.8em 0em 1.5em 0.8em;
+}
+
+#main {
+  left: 14.6em;
+  right: 0;
+  padding: 1em;
+  overflow-y: scroll;
+}
+
+#api-list {
+  position: absolute;
+  top: 3em;
+  bottom: 1em;
+  overflow-y: scroll;
+  padding-right: 0.8em;
+}
+
+
+/* App Header */
+
+#header {
+  background-color: #F2C200;
+  border-bottom: 1px solid #957800;
+}
+
+#header h1 {
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 30px;
+  margin: 0;
+  padding: 10px 10px;
+  height: 30px;
+}
+
+#header .angular {
+  font-family: "Courier New", monospace;
+  font-weight: bold;
+}
+
+#header h1 a {
+  color: black;
+  text-decoration: none;
+}
+
+#header h1 a:hover {
+  text-decoration: underline;
+}
+
+
+/* Main main Style */
+
+#main h1 {
+  font-family: monospace;
+  margin-top: 0;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #CCC;
+}
+
+#main h2 {
+  margin-top: 1.8em;
+}
+
+#main h1 + h2 {
+  margin-top: 1.3em;
+}
+
+#main h3 {
+  margin-top: 1.5em;
+}
+
+.main-title {
+  float: right;
+}
+
+
+/* Searchbox & Sidebar Style */
+
+#search-box, #sidebar {
+  border-right: 1px solid #DDD;
+}
+
+#sidebar {
+  background-color: #EEE;
+}
+
+#search-box {
+  width: 16em;
+  margin-bottom: 1em;
+}
+
+#sidebar a {
+  text-decoration: none;
+}
+
+#sidebar a:hover {
+  text-decoration: underline;
+}
+
+#sidebar ul {
+  list-style-type: none;
+  /*TODO(esprehn): Can we just reset globally and not break examples?*/
+  margin: 0;
+  padding: 0 0.8em 0 0;
+  width: 13em;
+}
+
+#sidebar ul li {
+}
+
+#sidebar ul li a {
+  display: block;
+  padding: 2px 2px 2px 4px;
+} 
+
+#sidebar ul li.selected a {
+  background-color: #DDD;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  border: 1px solid #CCC;
+  padding: 1px 1px 1px 3px;
+}
+
+#sidebar ul li.level-0 {
+  margin-left: 0em;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+#sidebar ul li.level-1.level-angular {
+  font-family: monospace;
+  font-weight: normal;
+  font-size: 1em;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+#sidebar ul li.level-1 {
+  margin-left: 1em;
+  margin-top: 5px;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+#sidebar ul li.level-2 {
+  margin-left: 2em;
+  font-family: monospace;
+}
+
+#sidebar ul li.level-3 {
+  margin-left: 3em;
+  font-family: monospace;
+}
+
+
+/* Warning and Info Banners */
+
+.deprecated {
+  border: 2px solid red;
+}
+
+.deprecated legend {
+  font-weight: bold;
+  color: red;
+}
+
+.workInProgress {
+  border: 2px solid orange;
+}
+
+.workInProgress legend {
+  font-weight: bold;
+  color: orange;
+}
+
+
+/* Feedback Link */
+
+#feedback {
+  float: right;
+  width: 10em;
+  text-align: right;
+}
+
+
+/* Live Example Style */
+
+.doc-example-live table td {
+  padding: 0 1.5em;
+}
+
+
+/* Scrollbars */
+
+::-webkit-scrollbar{
+  width:0.8em;
+  margin: 0.2em 0em;
+}
+
+::-webkit-scrollbar:hover{
+  background-color:#eee;
+}
+
+::-webkit-scrollbar-thumb{
+  min-height:0.8em;
+  min-width:0.8em;
+  -webkit-border-radius:0.5em;
+  background-color: #ddd;
+}
+
+::-webkit-scrollbar-thumb:hover{
+  background-color: #bbb;
+}
+
+::-webkit-scrollbar-thumb:active{
+  background-color:#888;
+}
+
+#sidebar::-webkit-scrollbar {
+  background-color:#eee;
+}
+
+#main::-webkit-scrollbar {
+  background-color:#fff;
+}

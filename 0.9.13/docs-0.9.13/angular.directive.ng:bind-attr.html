@@ -1,0 +1,51 @@
+<h1>angular.directive.ng:bind-attr</h1>
+<div class="angular-directive-ng-bind-attr"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<div class="description"><p>The <code>ng:bind-attr</code> attribute specifies that <a href="#!guide.data-binding">databindings</a>  should be
+created between element attributes and given expressions. Unlike <code>ng:bind</code> the <code>ng:bind-attr</code>
+contains a JSON key value pairs representing which attributes need to be mapped to which
+<a href="#!guide.expression">expressions</a>.</p>
+
+<p>You don’t usually write the <code>ng:bind-attr</code> in the HTML since embedding
+<tt ng:non-bindable>{{expression}}</tt> into the attribute directly as the attribute value is
+preferred. The attributes get translated into <code>&lt;span ng:bind-attr="{attr:expression}"/&gt;</code> at
+compile time.</p>
+
+<p>This HTML snippet is preferred way of working with <code>ng:bind-attr</code></p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+  &lt;a href="http://www.google.com/search?q={{query}}"&gt;Google&lt;/a&gt;
+</pre></div><p>The above gets translated to bellow during bootstrap time.</p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+  &lt;a ng:bind-attr='{"href":"http://www.google.com/search?q={{query}}"}'&gt;Google&lt;/a&gt;
+</pre></div></div>
+<h2>Usage</h2>
+<div class="usage"><pre class="brush: js; html-script: true;">&lt;ANY ng:bind-attr="attribute_json"&gt;
+   ...
+&lt;/ANY&gt;</pre>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">attribute_json – {string} – </code>
+<p>a JSON key-value pairs representing
+the attributes to replace. Each key matches the attribute
+which needs to be replaced. Each value is a text template of
+the attribute with embedded
+<tt ng:non-bindable>{{expression}}</tt>s. Any number of
+key-value pairs can be specified.</p></li>
+</ul>
+</div>
+<h2>Example</h2>
+<div class="example"><p>Try it here: enter text in text box and click Google.</p><doc:example>
+  <pre class="doc-source">
+   Google for:
+   &lt;input type="text" name="query" value="AngularJS"/&gt;
+   &lt;a href="http://www.google.com/search?q={{query}}"&gt;Google&lt;/a&gt;
+  </pre>
+  <pre class="doc-scenario">
+    it('should check ng:bind-attr', function(){
+      expect(using('.doc-example-live').element('a').attr('href')).
+        toBe('http://www.google.com/search?q=AngularJS');
+      using('.doc-example-live').input('query').enter('google');
+      expect(using('.doc-example-live').element('a').attr('href')).
+        toBe('http://www.google.com/search?q=google');
+    });
+  </pre>
+</doc:example></div>
+</div>

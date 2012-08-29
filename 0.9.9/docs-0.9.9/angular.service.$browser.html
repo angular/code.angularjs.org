@@ -1,0 +1,117 @@
+<h1>angular.service.$browser</h1>
+<fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<p>Represents the browser.</p><h2>Dependencies</h2>
+<ul class="dependencies"><li>$log</li>
+</ul>
+<h2>Methods</h2>
+<ul class="methods"><li><h3>addCss(url)</h3>
+<p>Adds a stylesheet tag to the head.</p><h4>Parameters</h4>
+<ul class="parameters"><li><code ng:non-bindable="">url – {string} – </code>
+Url to css file</li>
+</ul>
+</li>
+<li><h3>addJs(url, dom_id)</h3>
+<p>Adds a script tag to the head.</p><h4>Parameters</h4>
+<ul class="parameters"><li><code ng:non-bindable="">url – {string} – </code>
+Url to js file</li>
+<li><code ng:non-bindable="">dom_id<i>(optional)</i> – {string} – </code>
+Optional id for the script tag </li>
+</ul>
+</li>
+<li><h3>addPollFn(fn)</h3>
+<p>Adds a function to the list of functions that poller periodically executes</p><h4>Parameters</h4>
+<ul class="parameters"><li><code ng:non-bindable="">fn – {function()} – </code>
+Poll function to add</li>
+</ul>
+</li>
+<li><h3>bind()</h3>
+<p>Register hover function to real browser</p></li>
+<li><h3>cookies(name, value)</h3>
+<p>The cookies method provides a 'private' low level access to browser cookies.
+It is not meant to be used directly, use the $cookie service instead.</p>
+
+<p>The return values vary depending on the arguments that the method was called with as follows:</p>
+
+<ul>
+  <li>cookies() -> hash of all cookies, this is NOT a copy of the internal state, so do not modify it</li>
+  <li>cookies(name, value) -> set name to value, if value is undefined delete the cookie</li>
+  <li>cookies(name) -> the same as (name, undefined) == DELETES (no one calls it right now that way)</li>
+</ul><h4>Parameters</h4>
+<ul class="parameters"><li><code ng:non-bindable="">name<i>(optional)</i> – {string} – </code>
+Cookie name</li>
+<li><code ng:non-bindable="">value<i>(optional)</i> – {string} – </code>
+Cokkie value</li>
+</ul>
+</li>
+<li><h3>defer(fn, delay)</h3>
+<p>Executes a fn asynchroniously via <code>setTimeout(fn, delay)</code>.</p>
+
+<p>Unlike when calling <code>setTimeout</code> directly, in test this function is mocked and instead of using
+<code>setTimeout</code> in tests, the fns are queued in an array, which can be programaticaly flushed via
+<code>$browser.defer.flush()</code>.</p><h4>Parameters</h4>
+<ul class="parameters"><li><code ng:non-bindable="">fn – {function()} – </code>
+A function, who's execution should be defered.</li>
+<li><code ng:non-bindable="">delay<i>(optional=0)</i> – {int} – </code>
+of milliseconds to defer the function execution.</li>
+</ul>
+</li>
+<li><h3>getUrl()</h3>
+<p>Get current browser's url</p></li>
+<li><h3>hover(listener)</h3>
+<p>Set hover listener.</p><h4>Parameters</h4>
+<ul class="parameters"><li><code ng:non-bindable="">listener – {function(Object, boolean)} – </code>
+Function that will be called when hover event
+   occurs.</li>
+</ul>
+</li>
+<li><h3>notifyWhenNoOutstandingRequests(callback)</h3>
+<h4>Parameters</h4>
+<ul class="parameters"><li><code ng:non-bindable="">callback – {function()} – </code>
+Function that will be called when no outstanding request</li>
+</ul>
+</li>
+<li><h3>onHashChange(listener)</h3>
+<p>Detects if browser support onhashchange events and register a listener otherwise registers
+$browser poller. The <code>listener</code> will then get called when the hash changes.</p>
+
+<p>The listener gets called with either HashChangeEvent object or simple object that also contains
+<code>oldURL</code> and <code>newURL</code> properties.</p>
+
+<p>NOTE: this is a api is intended for sole use by $location service. Please use
+<a href="#!angular.service.$location"><code>$location service</code></a> to monitor hash changes in angular apps.</p><h4>Parameters</h4>
+<ul class="parameters"><li><code ng:non-bindable="">listener – {function(event)} – </code>
+Listener function to be called when url hash changes.</li>
+</ul>
+</li>
+<li><h3>poll()</h3>
+</li>
+<li><h3>setUrl(url)</h3>
+<p>Sets browser's url</p><h4>Parameters</h4>
+<ul class="parameters"><li><code ng:non-bindable="">url – {string} – </code>
+New url</li>
+</ul>
+</li>
+<li><h3>startPoller(interval, setTimeout)</h3>
+<p>Configures the poller to run in the specified intervals, using the specified
+setTimeout fn and kicks it off.</p><h4>Parameters</h4>
+<ul class="parameters"><li><code ng:non-bindable="">interval – {number} – </code>
+How often should browser call poll functions (ms)</li>
+<li><code ng:non-bindable="">setTimeout – {function()} – </code>
+Reference to a real or fake <code>setTimeout</code> function.</li>
+</ul>
+</li>
+<li><h3>xhr(method, url, post, callback)</h3>
+<p>Send ajax request</p><h4>Parameters</h4>
+<ul class="parameters"><li><code ng:non-bindable="">method – {string} – </code>
+Requested method (get|post|put|delete|head|json)</li>
+<li><code ng:non-bindable="">url – {string} – </code>
+Requested url</li>
+<li><code ng:non-bindable="">post<i>(optional)</i> – {string} – </code>
+Post data to send </li>
+<li><code ng:non-bindable="">callback – {function(number, string)} – </code>
+Function that will be called on response</li>
+</ul>
+</li>
+</ul>

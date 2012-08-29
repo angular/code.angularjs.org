@@ -1,0 +1,32 @@
+<h1>angular.Array.limitTo</h1>
+<div class="angular-array-limitto"><h2>Description</h2>
+<div class="description"><p>Creates a new array containing only the first, or last <code>limit</code> number of elements of the
+source <code>array</code>.</p>
+
+<p>Note: this function is used to augment the <code>Array</code> type in angular expressions. See
+<a href="#!angular.Array"><code>angular.Array</code></a> for more info.</p></div>
+<h2>Dependencies</h2>
+<ul class="dependencies"></ul>
+<h2>Usage</h2>
+<div class="usage"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">angular.Array.limitTo(array, limit);</pre>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">array – {Array} – </code>
+<p>Source array to be limited.</p></li>
+<li><code ng:non-bindable="">limit – {string|Number} – </code>
+<p>The length of the returned array. If the number is positive, the
+    first <code>limit</code> items from the source array will be copied, if the number is negative, the
+    last <code>limit</code> items will be copied.</p></li>
+</ul>
+<h3>Returns</h3>
+<div class="returns"><code ng:non-bindable="">{Array}</code>
+– <p>A new sub-array of length <code>limit</code>.</p></div>
+</div>
+<h2>Example</h2>
+<div class="example"><doc:example><doc:source>&lt;div ng:init="numbers = [1,2,3,4,5,6,7,8,9]"&gt;
+  Limit [1,2,3,4,5,6,7,8,9] to: &lt;input name="limit" value="3"/&gt;
+  &lt;p&gt;Output: {{ numbers.$limitTo(limit) | json }}&lt;/p&gt;
+&lt;/div&gt;</doc:source>
+</doc:example>
+</div>
+</div>

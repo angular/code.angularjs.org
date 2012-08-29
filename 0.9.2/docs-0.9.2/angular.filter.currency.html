@@ -1,0 +1,29 @@
+<h1><tt>angular.filter.currency</tt></h1>
+<h2>Usage</h2>
+<h3>In HTML Template Binding</h3>
+<tt>
+  <span>{{</span>
+  amount_expression
+  | currency<span> }}</span>
+</tt>
+<h3>In JavaScript</h3>
+<tt ng:non-bindable>
+angular.filter.currency(amount);
+</tt>
+<h3>Parameters</h3>
+<ul>
+    <li><tt>amount(number)</tt>: Input to filter.</li>
+  </ul>
+<h3>Returns</h3>
+<p>{string} Formated number.</p>
+<h3>CSS</h3>
+ng-format-negative
+  When the value is negative, this css class is applied to the binding making it by default red.
+
+<h2>Description</h2>
+<p>  Formats a number as a currency (ie $1,234.56).</p>
+<WIKI:SOURCE style="display:block;">
+     &lt;input type="text" name="amount" value="1234.56"/&gt; &lt;br/&gt;
+     {{amount | currency}}
+
+</WIKI:SOURCE>

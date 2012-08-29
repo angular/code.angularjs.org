@@ -1,0 +1,42 @@
+<h1>angular.widget.@ng:validate</h1>
+<div class="angular-widget-ng-validate"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<div class="description"><p>The <code>ng:validate</code> attribute widget validates the user input. If the input does not pass
+validation, the <code>ng-validation-error</code> CSS class and the <code>ng:error</code> attribute are set on the input
+element. Check out <a href="#!angular.validator"><code>validators</code></a> to find out more.</p></div>
+<h2>Usage</h2>
+<div class="usage"><h3>In HTML Template Binding</h3>
+<div class="in-html-template-binding"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">&lt;INPUT ng:validate="validator"&gt;
+   ...
+&lt;/INPUT&gt;</pre>
+</div>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">validator – {string} – </code>
+<p>The name of a built-in or custom <a href="#!angular.validator"><code>validator</code></a> to
+to be used.</p></li>
+</ul>
+</div>
+<h2>Example</h2>
+<div class="example"><p>This example shows how the input element becomes red when it contains invalid input. Correct
+the input to make the error disappear.</p><doc:example>
+      <doc:source>
+        I don't validate:
+        &lt;input type="text" name="value" value="NotANumber"&gt;&lt;br/&gt;
+
+        I need an integer or nothing:
+        &lt;input type="text" name="value" ng:validate="integer"&gt;&lt;br/&gt;
+      </doc:source>
+      <doc:scenario>
+         it('should check ng:validate', function(){
+           expect(element('.doc-example-live :input:last').attr('className')).
+             toMatch(/ng-validation-error/);
+
+           input('value').enter('123');
+           expect(element('.doc-example-live :input:last').attr('className')).
+             not().toMatch(/ng-validation-error/);
+         });
+      </doc:scenario>
+    </doc:example></div>
+</div>

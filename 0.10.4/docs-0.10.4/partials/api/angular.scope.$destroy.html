@@ -1,0 +1,16 @@
+<h1>angular.scope.$destroy</h1>
+<div class="angular-scope-destroy"><h2>Description</h2>
+<div class="description"><p>Remove the current scope (and all of its children) from the parent scope. Removal implies
+that calls to <a href="api/angular.scope.$digest"><code>$digest()</code></a> will no longer propagate to the current
+scope and its children. Removal also implies that the current scope is eligible for garbage
+collection.</p>
+
+<p>The destructing scope emits an <code>$destroy</code> <a href="api/angular.scope.$emit"><code>event</code></a>.</p>
+
+<p>The <code>$destroy()</code> is usually used by directives such as
+<a href="api/angular.widget.@ng:repeat"><code>ng:repeat</code></a> for managing the unrolling of the loop.</p></div>
+<h2>Usage</h2>
+<div class="usage"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">angular.scope.$destroy();</pre>
+</div>
+</div>
+</div>

@@ -1,0 +1,87 @@
+<h1 id="Developer.Guide..Angular.HTML.Compiler..Extending.the.Angular.Compiler">Developer Guide: Angular HTML Compiler: Extending the Angular Compiler</h1>
+<div class="developer-guide--angular-html-compiler--extending-the-angular-compiler"><p>Let's say that we want to create a new DOM element called <code>&lt;my:greeter/&gt;</code> that displays a greeting.
+We want this HTML source:</p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+   &lt;div ng:init="s='Hello'; n='World'"&gt;
+      &lt;my:greeter salutation="s" name="n"&gt;&lt;/my:greeter&gt;
+  &lt;/div&gt;
+</pre></div><p>to produce this DOM:</p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+&lt;div ng:init="s='Hello'; n='World'"&gt;
+&lt;my:greeter salutation="s" name="n"/&gt;
+  &lt;span class="salutation"&gt;Hello&lt;/span&gt;
+  &lt;span class="name"&gt;World&lt;/span&gt;!
+&lt;/my:greeter&gt;
+&lt;/div&gt;
+</pre></div><p>That is, the new <code>&lt;my:greeter&gt;&lt;/my:greeter&gt;</code> tag's <code>salutation</code> and <code>name</code> attributes should be
+transformed by the compiler such that two <code>&lt;span&gt;</code> tags display the values of the attributes, with
+CSS classes applied to the output.</p>
+
+<p>The following code snippet shows how to write a following widget definition that will be processed
+by the compiler. Note that you have to declare the <a href="guide/dev_guide.bootstrap">namespace</a> <code>my</code> in
+the page:</p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+angular.widget('my:greeter', function(compileElement){
+  var compiler = this;
+  compileElement.css('display', 'block');
+  var salutationExp = compileElement.attr('salutation');
+  var nameExp = compileElement.attr('name');
+  return function(linkElement){
+    var salutationSpan = angular.element('&lt;span class="salutation"&gt;&lt;/span');
+    var nameSpan = angular.element('&lt;span class="name"&gt;&lt;/span&gt;');
+    linkElement.append(salutationSpan);
+    linkElement.append(' ');
+    linkElement.append(nameSpan);
+    linkElement.append('!');
+    this.$watch(salutationExp, function(value){
+      salutationSpan.text(value);
+     });
+    this.$watch(nameExp, function(value){
+    nameSpan.text(value);
+    });
+  };
+});
+</pre></div><p>Note: For more about widgets, see <a href="guide/dev_guide.compiler.widgets">Understanding Angular Widgets</a>
+and the <a href="api/angular.widget"><code>widget API reference page</code></a>.</p>
+
+<h2>Compilation process for <code>&lt;my:greeter&gt;</code></h2>
+
+<p>Here are the steps that the compiler takes in processing the page that contains the widget
+definition above:</p>
+
+<h3>Compile Phase</h3>
+
+<ol>
+<li>Recursively traverse the DOM depth-first.</li>
+<li>Find the angular.widget definition.</li>
+<li>Find and execute the widget's compileElement function, which includes the following steps:
+<ol><li>Add a style element with attribute display: block; to the template DOM so that the browser
+knows to treat the element as block element for rendering. (Note: because this style element was
+added on the template compileElement, this style is automatically applied to any clones of the
+template (i.e. any repeating elements)).</li>
+<li>Extract the salutation and name HTML attributes as angular expressions.</li></ol></li>
+<li>Return the aggregate link function, which includes just one link function in this example.</li>
+</ol>
+
+<h3>Link Phase</h3>
+
+<ol>
+<li>Execute the aggregate link function, which includes the following steps:
+<ol><li>Create a <span> element set to the salutation class</li>
+<li>Create a <span> element set to the name class.</li></ol></li>
+<li>Add the span elements to the linkElement. (Note: be careful not to add them to the
+compileElement, because that's the template.)</li>
+<li>Set up watches on the expressions. When an expression changes, copy the data to the
+corresponding spans.</li>
+</ol>
+
+<h3>Related Topics</h3>
+
+<ul>
+<li><a href="guide/dev_guide.compiler">Angular HTML Compiler</a></li>
+<li><a href="guide/dev_guide.compiler.understanding_compiler">Understanding How the Compiler Works</a></li>
+<li><a href="guide/dev_guide.compiler.testing_dom_element">Testing a New DOM Element</a></li>
+</ul>
+
+<h3>Related API</h3>
+
+<ul>
+<li><a href="api/angular.module.ng.$compile"><code>$compile()</code></a></li>
+</ul></div>

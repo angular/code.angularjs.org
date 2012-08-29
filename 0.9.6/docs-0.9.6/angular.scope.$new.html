@@ -1,0 +1,26 @@
+<h1>angular.scope.$new</h1>
+<fieldset class="workInProgress">
+  <legend>Work In Progress</legend>
+  This page is currently being revised. It might be incomplete or contain inaccuracies.
+  
+</fieldset>
+<h2>Description</h2>
+<p>Creates a new <a href="#!angular.scope"><code>scope</code></a>, that:</p>
+
+<ul>
+<li>is a child of the current scope</li>
+<li>will <a href="#!angular.scope.$become"><code>$become</code></a> of type specified via <code>constructor</code></li>
+</ul>
+<h2>Usage</h2>
+<tt ng:non-bindable>
+angular.scope.$new(constructor);
+</tt>
+<h3>Parameters</h3>
+<ul>
+    <li><tt>constructor</tt> –
+      <tt>&#123;function()&#125;</tt>
+      <tt></tt>
+      – Constructor function of the type the new scope should assume.</li>
+  </ul>
+<h3>Returns</h3>
+<tt>&#123;Object&#125;</tt> The newly created child scope.

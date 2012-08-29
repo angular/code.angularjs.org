@@ -1,0 +1,31 @@
+<h1>angular.compile</h1>
+<fieldset class="workInProgress">
+  <legend>Work In Progress</legend>
+  This page is currently being revised. It might be incomplete or contain inaccuracies.
+  
+</fieldset>
+<h2>Description</h2>
+<p>Compiles a piece of HTML or DOM into a <a href="#!angular.scope"><code>scope</code></a> object.</p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+    var scope1 = angular.compile(window.document);
+    scope1.$init();
+
+    var scope2 = angular.compile('<div ng:click="clicked = true">click me</div>');
+    scope2.$init();
+   </pre></div>
+<h2>Usage</h2>
+<tt ng:non-bindable>
+angular.compile(element, parentScope);
+</tt>
+<h3>Parameters</h3>
+<ul>
+    <li><tt>element</tt> –
+      <tt>&#123;string|DOMElement&#125;</tt>
+      <tt></tt>
+      – Element to compile.</li>
+    <li><tt>parentScope</tt> –
+      <tt>&#123;Object=&#125;</tt>
+      <tt></tt>
+      – Scope to become the parent scope of the newly compiled scope.</li>
+  </ul>
+<h3>Returns</h3>
+<tt>&#123;Object&#125;</tt> Compiled scope object.

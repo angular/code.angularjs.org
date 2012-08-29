@@ -1,0 +1,80 @@
+<h1>Developer Guide: Bootstrap</h1>
+<div class="developer-guide-bootstrap"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Bootstrap</h2>
+
+<p>This section explains how to bootstrap your application to the angular environment using either
+the <code>angular.js</code> or <code>angular.min.js</code> script.</p>
+
+<h3>The bootstrap code</h3>
+
+<p>Note that there are two versions of the bootstrap code that you can use:</p>
+
+<ul>
+<li><code>angular-0.0.0.js</code> - this file is unobfuscated, uncompressed, and thus human-readable.</li>
+<li><code>angular-0.0.0.min.js</code> - this is a compressed and obfuscated version of angular-debug.js.</li>
+</ul>
+
+<p>In this section and throughout the Developer Guide, feel free to use <code>angular.min.js</code> instead of
+<code>angular.js</code> when working through code examples.</p>
+
+<h3>ng:autobind</h3>
+
+<p>The simplest way to get an angular application up and running is by inserting a script tag in your
+HTML file that bootstraps the <code>angular.js</code> code and uses the special <code>ng:autobind</code> attribute,
+like in this snippet of HTML:</p><doc:example>
+ <pre class="doc-source">
+  Hello {{'World'}}!
+ </pre>
+</doc:example><p>The <code>ng:autobind</code> attribute tells angular to compile and manage the whole HTML document. The
+compilation occurs in the page's onLoad handler. Note that you don't need to explicitly add an
+onLoad event; auto bind mode takes care of all the magic for you.</p>
+
+<h3>Manual bind</h3>
+
+<p>Using autobind mode is a handy way to start using angular, but advanced users who want more
+control over the initialization process might prefer to use manual bind mode instead.</p>
+
+<p>The best way to get started with manual bind mode is to look at the magic behind <code>ng:autobind</code>
+by writing out each step of the autobind process explicitly. Note that the following code is
+equivalent to the code in the previous section.</p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+&lt;!DOCTYPE HTML&gt;
+&lt;html xmlns:ng="http://angularjs.org"&gt;
+ &lt;script type="text/javascript" src="http://code.angularjs.org/angular-0.0.0.min.js"&gt;&lt;/script&gt;
+ &lt;script type="text/javascript"&gt;
+  (function(window, previousOnLoad){
+   window.onload = function(){
+   try { (previousOnLoad||angular.noop)(); } catch(e) {}
+   angular.compile(window.document)();
+   };
+  })(window, window.onload);
+ &lt;/script&gt;
+ &lt;body&gt;
+  Hello {{'World'}}!
+ &lt;/body&gt;
+&lt;/html&gt;
+</pre></div><p>This is the sequence that your code should follow if you're writing your own manual binding code:</p>
+
+<ul>
+<li>After the page is loaded, find the root of the HTML template, which is typically the root of
+the document.</li>
+<li>Run the HTML compiler, which converts the templates into an executable, bi-directionally
+bound application.</li>
+</ul>
+
+<h2>XML Namespace</h2>
+
+<p><strong>IMPORTANT:</strong> When using angular you must declare the <code>ng</code> namespace using the <code>xmlns</code> tag.
+  If you don't declare the namespace, Internet Explorer does not render widgets properly.</p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+&lt;html  xmlns:ng="http://angularjs.org"&gt;
+</pre></div><h2>Create your own namespace</h2>
+
+<p>If you want to define your own widgets, you must create your own namespace and use that namespace
+to form the fully qualified widget name. For example, you could map the alias my to your domain
+and create a widget called my:widget. To create your own namespace, simply add another xmlns tag
+to your page, create an alias, and set it to your unique domain:</p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+&lt;html  xmlns:my="http://mydomain.com"&gt;
+</pre></div><h2>Global Object</h2>
+
+<p>The angular script creates a single global variable <code>angular</code> in the global namespace. All APIs are
+bound to fields of this global object.</p></div>

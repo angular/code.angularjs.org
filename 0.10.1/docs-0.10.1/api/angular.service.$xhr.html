@@ -1,0 +1,184 @@
+<h1>angular.service.$xhr</h1>
+<div class="angular-service-xhr"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<div class="description"><p>Generates an XHR request. The $xhr service delegates all requests to
+<a href="#!/api/angular.service.$browser"><code>$browser.xhr()</code></a> and adds error handling and security features.
+While $xhr service provides nicer api than raw XmlHttpRequest, it is still considered a lower
+level api in angular. For a higher level abstraction that utilizes <code>$xhr</code>, please check out the
+<a href="#!/api/angular.service.$resource"><code>$resource</code></a> service.</p>
+
+<h3>Error handling</h3>
+
+<p>If no <code>error callback</code> is specified, XHR response with response code other then <code>2xx</code> will be
+delegated to <a href="#!/api/angular.service.$xhr.error"><code>$xhr.error</code></a>. The <code>$xhr.error</code> can intercept the
+request and process it in application specific way, or resume normal execution by calling the
+request <code>success</code> method.</p>
+
+<h3>HTTP Headers</h3>
+
+<p>The $xhr service will automatically add certain http headers to all requests. These defaults can
+be fully configured by accessing the <code>$xhr.defaults.headers</code> configuration object, which
+currently contains this default configuration:</p>
+
+<ul>
+<li><code>$xhr.defaults.headers.common</code> (headers that are common for all requests):
+<ul><li><code>Accept: application/json, text/plain, *\/*</code></li>
+<li><code>X-Requested-With: XMLHttpRequest</code></li></ul></li>
+<li><code>$xhr.defaults.headers.post</code> (header defaults for HTTP POST requests):
+<ul><li><code>Content-Type: application/x-www-form-urlencoded</code></li></ul></li>
+</ul>
+
+<p>To add or overwrite these defaults, simple add or remove a property from this configuration
+object. To add headers for an HTTP method other than POST, simple create a new object with name
+equal to the lowercased http method name, e.g. <code>$xhr.defaults.headers.get['My-Header']='value'</code>.</p>
+
+<h3>Security Considerations</h3>
+
+<p>When designing web applications your design needs to consider security threats from
+<a href="http://haacked.com/archive/2008/11/20/anatomy-of-a-subtle-json-vulnerability.aspx">JSON Vulnerability</a> and <a href="http://en.wikipedia.org/wiki/Cross-site_request_forgery">XSRF</a>.
+Both server and the client must cooperate in order to eliminate these threats. Angular comes
+pre-configured with strategies that address these issues, but for this to work backend server
+cooperation is required.</p>
+
+<h4>JSON Vulnerability Protection</h4>
+
+<p>A <a href="http://haacked.com/archive/2008/11/20/anatomy-of-a-subtle-json-vulnerability.aspx">JSON Vulnerability</a> allows third party web-site to turn your JSON resource URL into
+<a href="http://en.wikipedia.org/wiki/JSON#JSONP">JSONP</a> request under some conditions. To
+counter this your server can prefix all JSON requests with following string <code>")]}',\n"</code>.
+Angular will automatically strip the prefix before processing it as JSON.</p>
+
+<p>For example if your server needs to return:</p><div ng:non-bindable><pre class="brush: js;">
+['one','two']
+</pre></div><p>which is vulnerable to attack, your server can return:</p><div ng:non-bindable><pre class="brush: js;">
+)]}',
+['one','two']
+</pre></div><p>angular will strip the prefix, before processing the JSON.</p>
+
+<h4>Cross Site Request Forgery (XSRF) Protection</h4>
+
+<p><a href="http://en.wikipedia.org/wiki/Cross-site_request_forgery">XSRF</a> is a technique by which an
+unauthorized site can gain your user's private data. Angular provides following mechanism to
+counter XSRF. When performing XHR requests, the $xhr service reads a token from a cookie
+called <code>XSRF-TOKEN</code> and sets it as the HTTP header <code>X-XSRF-TOKEN</code>. Since only JavaScript that
+runs on your domain could read the cookie, your server can be assured that the XHR came from
+JavaScript running on your domain.</p>
+
+<p>To take advantage of this, your server needs to set a token in a JavaScript readable session
+cookie called <code>XSRF-TOKEN</code> on first HTTP GET request. On subsequent non-GET requests the server
+can verify that the cookie matches <code>X-XSRF-TOKEN</code> HTTP header, and therefore be sure that only
+JavaScript running on your domain could have read the token. The token must be unique for each
+user and must be verifiable by the server (to prevent the JavaScript making up its own tokens).
+We recommend that the token is a digest of your site's authentication cookie with
+<a href="http://en.wikipedia.org/wiki/Rainbow_table">salt for added security</a>.</p></div>
+<h2>Dependencies</h2>
+<ul class="dependencies"><li><code ng:non-bindable=""><a href="#!/api/angular.service.$browser">$browser</a>
+</code>
+<p>$xhr delegates all XHR requests to the <code>$browser.xhr()</code>. A mock version
+of the $browser exists which allows setting expectations on XHR requests
+in your tests</p></li>
+<li><code ng:non-bindable=""><a href="#!/api/angular.service.$xhr.error">$xhr.error</a>
+</code>
+<p>$xhr delegates all non <code>2xx</code> response code to this service.</p></li>
+<li><code ng:non-bindable=""><a href="#!/api/angular.service.$log">$log</a>
+</code>
+<p>$xhr delegates all exceptions to <code>$log.error()</code>.</p></li>
+</ul>
+<h2>Usage</h2>
+<div class="usage"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">$xhr(method, url[, post], success, error);</pre>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">method – {string} – </code>
+<p>HTTP method to use. Valid values are: <code>GET</code>, <code>POST</code>, <code>PUT</code>, <code>DELETE</code>, and
+<code>JSON</code>. <code>JSON</code> is a special case which causes a
+<a href="http://en.wikipedia.org/wiki/JSON#JSONP">JSONP</a> cross domain request using script tag
+insertion.</p></li>
+<li><code ng:non-bindable="">url – {string} – </code>
+<p>Relative or absolute URL specifying the destination of the request.  For
+<code>JSON</code> requests, <code>url</code> should include <code>JSON_CALLBACK</code> string to be replaced with a name of an
+angular generated callback function.</p></li>
+<li><code ng:non-bindable="">post<i>(optional)</i> – {(string|Object)} – </code>
+<p>Request content as either a string or an object to be stringified
+as JSON before sent to the server.</p></li>
+<li><code ng:non-bindable="">success – {function(number, (string|Object))} – </code>
+<p>A function to be called when the response is
+received. The success function will be called with:</p>
+
+<ul>
+<li>{number} code <a href="http://en.wikipedia.org/wiki/List_of_HTTP_status_codes">HTTP status code</a> of
+the response. This will currently always be 200, since all non-200 responses are routed to
+<a href="#!/api/angular.service.$xhr.error"><code>angular.service.$xhr.error</code></a> service (or custom error callback).</li>
+<li>{string|Object} response Response object as string or an Object if the response was in JSON
+format.</li>
+</ul></li>
+<li><code ng:non-bindable="">error – {function(number, (string|Object))} – </code>
+<p>A function to be called if the response code is
+not 2xx.. Accepts the same arguments as success, above.</p></li>
+</ul>
+</div>
+<h2>Example</h2>
+<div class="example"><doc:example>
+<pre class="doc-source" jsfiddle="false">
+  &lt;script&gt;
+    function FetchCntl($xhr) {
+      var self = this;
+
+      this.fetch = function() {
+        self.code = null;
+        self.response = null;
+
+        $xhr(self.method, self.url, function(code, response) {
+          self.code = code;
+          self.response = response;
+        }, function(code, response) {
+          self.code = code;
+          self.response = response || "Request failed";
+        });
+      };
+
+      this.updateModel = function(method, url) {
+        self.method = method;
+        self.url = url;
+      };
+    }
+    FetchCntl.$inject = ['$xhr'];
+  &lt;/script&gt;
+  &lt;div ng:controller="FetchCntl"&gt;
+    &lt;select name="method"&gt;
+      &lt;option&gt;GET&lt;/option&gt;
+      &lt;option&gt;JSON&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;input type="text" name="url" value="index.html" size="80"/&gt;
+    &lt;button ng:click="fetch()"&gt;fetch&lt;/button&gt;&lt;br&gt;
+    &lt;button ng:click="updateModel('GET', 'index.html')"&gt;Sample GET&lt;/button&gt;
+    &lt;button ng:click="updateModel('JSON', 'http://angularjs.org/greet.php?callback=JSON_CALLBACK&amp;name=Super%20Hero')"&gt;Sample JSONP&lt;/button&gt;
+    &lt;button ng:click="updateModel('JSON', 'http://angularjs.org/doesntexist&amp;callback=JSON_CALLBACK')"&gt;Invalid JSONP&lt;/button&gt;
+    &lt;pre&gt;code={{code}}&lt;/pre&gt;
+    &lt;pre&gt;response={{response}}&lt;/pre&gt;
+  &lt;/div&gt;
+</pre>
+<pre class="doc-scenario">
+  it('should make xhr GET request', function() {
+    element(':button:contains("Sample GET")').click();
+    element(':button:contains("fetch")').click();
+    expect(binding('code')).toBe('code=200');
+    expect(binding('response')).toMatch(/angularjs.org/);
+  });
+
+  it('should make JSONP request to the angularjs.org', function() {
+    element(':button:contains("Sample JSONP")').click();
+    element(':button:contains("fetch")').click();
+    expect(binding('code')).toBe('code=200');
+    expect(binding('response')).toMatch(/Super Hero!/);
+  });
+
+  it('should make JSONP request to invalid URL and invoke the error handler',
+      function() {
+    element(':button:contains("Invalid JSONP")').click();
+    element(':button:contains("fetch")').click();
+    expect(binding('code')).toBe('code=');
+    expect(binding('response')).toBe('response=Request failed');
+  });
+</pre>
+</doc:example></div>
+</div>

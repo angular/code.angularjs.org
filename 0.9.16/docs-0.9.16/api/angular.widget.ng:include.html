@@ -1,0 +1,50 @@
+<h1>angular.widget.ng:include</h1>
+<div class="angular-widget-ng-include"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<div class="description"><p>Include external HTML fragment.</p>
+
+<p>Keep in mind that Same Origin Policy applies to included resources
+(e.g. ng:include won't work for file:// access).</p></div>
+<h2>Usage</h2>
+<div class="usage"><h3>In HTML Template Binding</h3>
+<div class="in-html-template-binding"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">&lt;ng:include src="..." [scope="..."] [onload="..."]&gt;&lt;/ng:include&gt;</pre>
+</div>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">src – {string} – </code>
+<p>expression evaluating to URL.</p></li>
+<li><code ng:non-bindable="">scope<i>(optional=new_child_scope)</i> – {Scope} – </code>
+<p>optional expression which evaluates to an
+instance of angular.scope to set the HTML fragment to.</p></li>
+<li><code ng:non-bindable="">onload<i>(optional)</i> – {string} – </code>
+<p>Expression to evaluate when a new partial is loaded.</p></li>
+</ul>
+</div>
+<h2>Example</h2>
+<div class="example"><doc:example>
+<pre class="doc-source">
+ &lt;select name="url"&gt;
+  &lt;option value="api/angular.filter.date.html"&gt;date filter&lt;/option&gt;
+  &lt;option value="api/angular.filter.html.html"&gt;html filter&lt;/option&gt;
+  &lt;option value=""&gt;(blank)&lt;/option&gt;
+ &lt;/select&gt;
+ &lt;tt&gt;url = &lt;a href="{{url}}"&gt;{{url}}&lt;/a&gt;&lt;/tt&gt;
+ &lt;hr/&gt;
+ &lt;ng:include src="url"&gt;&lt;/ng:include&gt;
+</pre>
+<pre class="doc-scenario">
+  it('should load date filter', function(){
+   expect(element('.doc-example-live ng\\:include').text()).toMatch(/angular\.filter\.date/);
+  });
+  it('should change to html filter', function(){
+   select('url').option('api/angular.filter.html.html');
+   expect(element('.doc-example-live ng\\:include').text()).toMatch(/angular\.filter\.html/);
+  });
+  it('should change to blank', function(){
+   select('url').option('');
+   expect(element('.doc-example-live ng\\:include').text()).toEqual('');
+  });
+</pre>
+</doc:example></div>
+</div>

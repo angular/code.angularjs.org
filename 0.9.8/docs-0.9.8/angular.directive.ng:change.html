@@ -1,0 +1,47 @@
+<h1>angular.directive.ng:change</h1>
+<fieldset class="workInProgress">
+  <legend>Work In Progress</legend>
+  This page is currently being revised. It might be incomplete or contain inaccuracies.
+  
+</fieldset>
+<h2>Description</h2>
+<p>The directive executes an expression whenever the input widget changes.</p>
+<h2>Usage</h2>
+<h3>In HTML Template Binding</h3>
+<tt>
+  <pre>
+&lt;INPUT ng:change="expression"&gt;
+  ...
+&lt;/INPUT&gt;
+  </pre>
+</tt>
+<h3>Parameters</h3>
+<ul>
+    <li><tt>expression</tt> –
+      <tt>&#123;expression&#125;</tt>
+      <tt></tt>
+      – to execute.</li>
+  </ul>
+<h2>Example</h2>
+<doc:example>
+  <doc:source>
+&lt;div ng:init="checkboxCount=0; textCount=0"&gt;&lt;/div&gt;
+&lt;input type="text" name="text" ng:change="textCount = 1 + textCount"&gt;
+   changeCount {{textCount}}&lt;br/&gt;
+&lt;input type="checkbox" name="checkbox" ng:change="checkboxCount = 1 + checkboxCount"&gt;
+   changeCount {{checkboxCount}}&lt;br/&gt;
+  </doc:source>
+  <doc:scenario>   it('should check ng:change', function(){
+     expect(binding('textCount')).toBe('0');
+     expect(binding('checkboxCount')).toBe('0');
+     
+     using('.doc-example-live').input('text').enter('abc');
+     expect(binding('textCount')).toBe('1');
+     expect(binding('checkboxCount')).toBe('0');
+     
+     
+     using('.doc-example-live').input('checkbox').check();
+     expect(binding('textCount')).toBe('1');
+     expect(binding('checkboxCount')).toBe('1');
+   });</doc:scenario>
+</doc:example>

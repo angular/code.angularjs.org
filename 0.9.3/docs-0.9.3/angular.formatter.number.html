@@ -1,0 +1,29 @@
+<h1>angular.formatter.number</h1>
+<h2>Description</h2>
+<p>Use number formatter if you wish to convert the user entered string to a number.</p>
+<h2>Usage</h2>
+<h3>In HTML Template Binding</h3>
+<tt>
+  &lt;input type="text" ng:format="number"&gt;
+</tt>
+<h3>In JavaScript</h3>
+<tt ng:non-bindable>
+var userInputString = angular.formatter.number.format(modelValue);<br/>
+var modelValue = angular.formatter.number.parse(userInputString);
+</tt>
+<h3>Returns</h3>
+<p>parse string to number.</p>
+<h3>CSS</h3>
+<h2>Example</h2>
+<doc:example>
+  <doc:source>
+Enter valid number:
+&lt;input type="text" name="value" ng:format="number" value="1234"/&gt;
+&lt;pre&gt;value={{value}}&lt;/pre&gt;
+  </doc:source>
+  <doc:scenario>it('should format numbers', function(){
+  expect(binding('value')).toEqual('value=1234');
+  input('value').enter('5678');
+  expect(binding('value')).toEqual('value=5678');
+});</doc:scenario>
+</doc:example>

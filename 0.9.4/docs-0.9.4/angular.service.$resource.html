@@ -1,0 +1,64 @@
+<h1><tt>angular.service.$resource</tt></h1>
+<fieldset class="workInProgress">
+  <legend>Work In Progress</legend>
+  This page is currently being revised. It might be incomplete or contain inaccuracies.
+  
+</fieldset>
+<h2>Description</h2>
+<p>Is a factory which creates a resource object which lets you interact with 
+<a href="http://en.wikipedia.org/wiki/Representational_State_Transfer" target="_blank">RESTful</a>
+server-side data sources.
+Resource object has action methods which provide high-level behaviors without
+the need to interact with the low level $xhr or XMLHttpRequest(). </p>
+<h2>Dependencies</h2>
+<ul>
+    <li><tt>$xhr</tt></li>
+  </ul>
+<h2>Methods</h2>
+<ul>
+  </ul>
+<h2>Properties</h2>
+<ul>
+  </ul>
+<h2>Example</h2>
+<doc:example>
+  <doc:source>
+   &lt;script&gt;
+     function BuzzController($resource) {
+       this.Activity = $resource(
+         'https://www.googleapis.com/buzz/v1/activities/:userId/:visibility/:activityId/:comments',
+         {alt:'json', callback:'JSON_CALLBACK'},
+         {get:{method:'JSON', params:{visibility:'@self'}}, replies: {method:'JSON', params:{visibility:'@self', comments:'@comments'}}}
+       );
+     }
+     
+     BuzzController.prototype = {
+       fetch: function() {
+         this.activities = this.Activity.get({userId:this.userId});
+       },
+       expandReplies: function(activity) {
+         activity.replies = this.Activity.replies({userId:this.userId, activityId:activity.id});
+       }
+     };
+     BuzzController.$inject = ['$resource'];
+   &lt;/script&gt;
+
+   &lt;div ng:controller="BuzzController"&gt;
+     &lt;input name="userId" value="googlebuzz"/&gt;
+     &lt;button ng:click="fetch()"&gt;fetch&lt;/button&gt;
+     &lt;hr/&gt;
+     &lt;div ng:repeat="item in activities.data.items"&gt;
+       &lt;h1 style="font-size: 15px;"&gt;
+	       &lt;img src="{{item.actor.thumbnailUrl}}" style="max-height:30px;max-width:30px;"/&gt;
+	       &lt;a href="{{item.actor.profileUrl}}"&gt;{{item.actor.name}}&lt;/a&gt;
+	       &lt;a href="#" ng:click="expandReplies(item)" style="float: right;"&gt;Expand replies: {{item.links.replies[0].count}}&lt;/a&gt;
+       &lt;/h1&gt;
+       {{item.object.content | html}}
+       &lt;div ng:repeat="reply in item.replies.data.items" style="margin-left: 20px;"&gt;
+         &lt;img src="{{reply.actor.thumbnailUrl}}" style="max-height:30px;max-width:30px;"/&gt;
+         &lt;a href="{{reply.actor.profileUrl}}"&gt;{{reply.actor.name}}&lt;/a&gt;: {{reply.content | html}}
+       &lt;/div&gt;
+     &lt;/div&gt;
+   &lt;/div&gt;
+  </doc:source>
+  </doc:example>

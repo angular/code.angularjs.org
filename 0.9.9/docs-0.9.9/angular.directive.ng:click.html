@@ -1,0 +1,24 @@
+<h1>angular.directive.ng:click</h1>
+<fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<p>The ng:click allows you to specify custom behavior when 
+element is clicked.</p><h2>Usage</h2>
+<pre class="brush: js; html-script: true;">&lt;ANY ng:click="expression"&gt;
+   ...
+&lt;/ANY&gt;</pre>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">expression – {expression} – </code>
+to eval upon click.</li>
+</ul>
+<h2>Example</h2>
+<doc:example><doc:source>&lt;button ng:click="count = count + 1" ng:init="count=0"&gt;
+  Increment
+&lt;/button&gt;
+count: {{count}}</doc:source>
+<doc:scenario>it('should check ng:click', function(){
+  expect(binding('count')).toBe('0');
+  element('.doc-example-live :button').click();
+  expect(binding('count')).toBe('1');
+});</doc:scenario>
+</doc:example>

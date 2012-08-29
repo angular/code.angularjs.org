@@ -1,0 +1,76 @@
+<h1>Developer Guide: Angular HTML Compiler: Widgets: Creating Custom Widgets</h1>
+<div class="developer-guide-angular-html-compiler-widgets-creating-custom-widgets"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<p>When you create your own widgets, you must set up your own namespace for them.  (See
+dev_guide.bootstrap Initializing Angular} for information about namespaces in angular.)</p>
+
+<p>Let's say we would like to create a new element type in the namespace <code>my</code> that can watch an
+expression and <code>alert()</code> the user with each new value:</p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+// An element widget
+&lt;my:watch exp="name"&gt;&lt;/my:watch&gt;
+</pre></div><p>You can implement <code>my:watch</code> like this:</p><div ng:non-bindable><pre class="brush: js;">
+angular.widget('my:watch', function(compileElement) {
+ var compiler = this;
+ var exp = compileElement.attr('exp');
+ return function(linkElement) {
+   var currentScope = this;
+   currentScope.$watch(exp, function(value){
+     alert(value);
+   });
+ };
+});
+</pre></div><h2>Creating a Custom Attribute Widget</h2>
+
+<p>Let's implement the same widget as in the example in Defining an Element Widget, but this time as
+an attribute that can be added to any existing DOM element:</p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+// An attribute widget (my:watch) in a div tag
+&lt;div my:watch="name"&gt;text&lt;/div&gt;
+</pre></div><p>You can implement <code>my:watch</code> attribute like this:</p><div ng:non-bindable><pre class="brush: js;">
+angular.widget('@my:watch', function(expression, compileElement) {
+  var compiler = this;
+  return function(linkElement) {
+    var currentScope = this;
+    currentScope.$watch(expression, function(value) {
+      alert(value);
+    });
+  };
+});
+</pre></div><h2>Live Example of a Custom Element Widget</h2><doc:example>
+<pre class="doc-source">
+&lt;script&gt;
+angular.widget('my:time', function(compileElement){
+  compileElement.css('display', 'block');
+  return function(linkElement){
+    function update(){
+      linkElement.text('Current time is: ' + new Date());
+      setTimeout(update, 1000);
+    }
+    update();
+  };
+});
+&lt;/script&gt;
+&lt;my:time&gt;&lt;/my:time&gt;
+</pre>
+<pre class="doc-scenario">
+</pre>
+</doc:example><h2>Additional Compiler Methods for Custom Widgets</h2>
+
+<p>The angular compiler exposes methods that you may need to use of when writing your own widgets and
+directives.  For example, the <code>descend()</code> method lets you control whether the compiler ignores or
+processes child elements of the element it is compiling.  For information on this and other
+compiler methods, see the <a href="api/angular.compile"><code>Compiler API doc</code></a>.</p>
+
+<h3>Related Topics</h3>
+
+<ul>
+<li><a href="guide/dev_guide.compiler">Angular HTML Compiler</a></li>
+<li><a href="guide/dev_guide.compiler.directives">Angular Directives</a></li>
+<li><a href="guide/dev_guide.compiler.widgets">Angular Widgets</a></li>
+<li><a href="guide/dev_guide.compiler.directives.creating_directives">Creating Custom Directives</a></li>
+</ul>
+
+<h3>Related API</h3>
+
+<ul>
+<li><a href="api/angular.compile"><code>Compiler API</code></a></li>
+</ul></div>

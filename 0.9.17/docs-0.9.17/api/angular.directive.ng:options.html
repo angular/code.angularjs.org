@@ -1,0 +1,95 @@
+<h1>angular.directive.ng:options</h1>
+<div class="angular-directive-ng-options"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<div class="description"><p>Dynamically generate a list of <code>&lt;option&gt;</code> elements for a <code>&lt;select&gt;</code> element using the array
+obtained by evaluating the <code>ng:options</code> expression.</p>
+
+<p>When an item in the select menu is select, the array element represented by the selected option
+will be bound to the model identified by the <code>name</code> attribute of the parent select element.</p>
+
+<p>Optionally, a single hard-coded <code>&lt;option&gt;</code> element, with the value set to an empty string, can
+be nested into the <code>&lt;select&gt;</code> element. This element will then represent <code>null</code> or "not selected"
+option. See example below for demonstration.</p>
+
+<p>Note: <code>ng:options</code> provides iterator facility for <code>&lt;option&gt;</code> element which must be used instead
+of <a href="#!/api/angular.widget.@ng:repeat"><code>ng:repeat</code></a>. <code>ng:repeat</code> is not suitable for use with
+<code>&lt;option&gt;</code> element because of the following reasons:</p>
+
+<ul>
+<li>value attribute of the option element that we need to bind to requires a string, but the
+source of data for the iteration might be in a form of array containing objects instead of
+strings</li>
+<li><a href="#!/api/angular.widget.@ng:repeat"><code>ng:repeat</code></a> unrolls after the select binds causing
+incorect rendering on most browsers.</li>
+<li>binding to a value not in list confuses most browsers.</li>
+</ul></div>
+<h2>Usage</h2>
+<div class="usage"><pre class="brush: js; html-script: true;">&lt;select ng:options="comprehension"&gt;
+   ...
+&lt;/select&gt;</pre>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">comprehension – {comprehension_expression} – </code>
+<p><em>expresion</em> <code>for</code> <em>item</em> <code>in</code> <em>array</em>.</p>
+
+<ul>
+<li><em>array</em>: an expression which evaluates to an array of objects to bind.</li>
+<li><em>item</em>: local variable which will reffer to the item in the <em>array</em> during the itteration</li>
+<li><em>expression</em>: The result of this expression will is <code>option</code> label. The
+   <code>expression</code> most likely reffers to the <em>item</em> varibale.</li>
+</ul></li>
+</ul>
+</div>
+<h2>Example</h2>
+<div class="example"><doc:example>
+<pre class="doc-source">
+  &lt;script&gt;
+  function MyCntrl(){
+    this.colors = [
+      {name:'black'},
+      {name:'white'},
+      {name:'red'},
+      {name:'blue'},
+      {name:'green'}
+    ];
+    this.color = this.colors[2]; // red
+  }
+  &lt;/script&gt;
+  &lt;div ng:controller="MyCntrl"&gt;
+    &lt;ul&gt;
+      &lt;li ng:repeat="color in colors"&gt;
+        Name: &lt;input name="color.name"/&gt; [&lt;a href ng:click="colors.$remove(color)"&gt;X&lt;/a&gt;]
+      &lt;/li&gt;
+      &lt;li&gt;
+        [&lt;a href ng:click="colors.push({})"&gt;add&lt;/a&gt;]
+      &lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;hr/&gt;
+    Color (null not allowed):
+    &lt;select name="color" ng:options="c.name for c in colors"&gt;&lt;/select&gt;&lt;br/&gt;
+
+    Color (null allowed):
+    &lt;select name="color" ng:options="c.name for c in colors"&gt;
+      &lt;option value=""&gt;-- chose color --&lt;/option&gt;
+    &lt;/select&gt;&lt;br/&gt;
+
+    Select &lt;a href ng:click="color={name:'not in list'}"&gt;bogus&lt;/a&gt;. &lt;br/&gt;
+    &lt;hr/&gt;
+    Currently selected: {{ {selected_color:color}  }}
+    &lt;div style="border:solid 1px black;"
+         ng:style="{'background-color':color.name}"&gt;
+       &amp;nbsp;
+    &lt;/div&gt;
+  &lt;/div&gt;
+</pre>
+<pre class="doc-scenario">
+   it('should check ng:options', function(){
+     expect(binding('color')).toMatch('red');
+     select('color').option('0');
+     expect(binding('color')).toMatch('black');
+     select('color').option('');
+     expect(binding('color')).toMatch('null');
+   });
+</pre>
+</doc:example></div>
+</div>

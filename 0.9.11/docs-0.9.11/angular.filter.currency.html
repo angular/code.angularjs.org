@@ -1,0 +1,39 @@
+<h1>angular.filter.currency</h1>
+<div class="angular-filter-currency"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<div class="description"><p>Formats a number as a currency (ie $1,234.56).</p></div>
+<h2>Usage</h2>
+<div class="usage"><h3>In HTML Template Binding</h3>
+<div class="in-html-template-binding"><code ng:non-bindable="">{{ currency_expression | currency }}</code>
+</div>
+<h3>In JavaScript</h3>
+<div class="in-javascript"><code ng:non-bindable="">angular.filter.currency(amount)</code>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">amount – {number} – </code>
+<p>Input to filter.</p></li>
+</ul>
+<h3>Returns</h3>
+<div class="returns"><code ng:non-bindable="">{string}</code>
+– <p>Formated number.</p></div>
+</div>
+<h2>Example</h2>
+<div class="example"><doc:example>
+<doc:source>
+  &lt;input type="text" name="amount" value="1234.56"/&gt; &lt;br/&gt;
+  {{amount | currency}}
+</doc:source>
+<doc:scenario>
+  it('should init with 1234.56', function(){
+    expect(binding('amount | currency')).toBe('$1,234.56');
+  });
+  it('should update', function(){
+    input('amount').enter('-1234');
+    expect(binding('amount | currency')).toBe('$-1,234.00');
+    expect(element('.doc-example-live .ng-binding').attr('className')).
+      toMatch(/ng-format-negative/);
+  });
+</doc:scenario>
+</doc:example></div>
+</div>

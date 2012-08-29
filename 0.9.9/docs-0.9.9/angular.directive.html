@@ -1,0 +1,46 @@
+<h1>angular.directive</h1>
+<fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<p>A directive is an HTML attribute that you can use in an existing HTML element type or in a
+DOM element type that you create as <a href="#!angular.widget"><code>angular.widget</code></a>, to modify that element's
+properties. You can use any number of directives per element.</p>
+
+<p>For example, you can add the ng:bind directive as an attribute of an HTML span element, as in
+<code>&lt;span ng:bind="1+2"&gt;&lt;/span&gt;</code>. How does this work? The compiler passes the attribute value
+<code>1+2</code> to the ng:bind extension, which in turn tells the <a href="#!angular.scope"><code>angular.scope</code></a> to watch that
+expression and report changes. On any change it sets the span text to the expression value.</p>
+
+<p>Here's how to define <a href="#!angular.directive.ng:bind"><code>ng:bind</code></a>:</p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+  angular.directive('ng:bind', function(expression, compiledElement) {
+    var compiler = this;
+    return function(linkElement) {
+      var currentScope = this;
+      currentScope.$watch(expression, function(value) {
+        linkElement.text(value);
+      });
+    };
+  });
+</pre></div><h3>Directive vs. Attribute Widget</h3>
+
+<p>Both <a href="#!angular.widget">attribute widgets</a> and directives can compile a DOM element
+attribute. So why have two different ways to do the same thing? The answer is that order
+matters, but we have no control over the order in which attributes are read. To solve this
+we apply attribute widget before the directive.</p>
+
+<p>For example, consider this piece of HTML, which uses the directives <code>ng:repeat</code>, <code>ng:init</code>,
+and <code>ng:bind</code>:</p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+  <ul ng:init="people=['mike', 'mary']">
+    <li ng:repeat="person in people" ng:init="a=a+1" ng:bind="person"></li>
+  </ul>
+</pre></div><p>Notice that the order of execution matters here. We need to execute
+<a href="#!angular.directive.ng:repeat"><code>ng:repeat</code></a> before we run the
+<a href="#!angular.directive.ng:init"><code>ng:init</code></a> and <code>ng:bind</code> on the <code>&lt;li/&gt;;</code>. This is because we
+want to run the <code>ng:init="a=a+1</code> and <code>ng:bind="person"</code> once for each person in people. We
+could not have used directive to create this template because attributes are read in an
+unspecified order and there is no way of guaranteeing that the repeater attribute would
+execute first. Using the <code>ng:repeat</code> attribute directive ensures that we can transform the
+DOM element into a template.</p>
+
+<p>Widgets run before directives. Widgets may manipulate the DOM whereas directives are not
+expected to do so, and so they run last.</p>

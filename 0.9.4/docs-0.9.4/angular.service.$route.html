@@ -1,0 +1,66 @@
+<h1><tt>angular.service.$route</tt></h1>
+<fieldset class="workInProgress">
+  <legend>Work In Progress</legend>
+  This page is currently being revised. It might be incomplete or contain inaccuracies.
+  
+</fieldset>
+<h2>Description</h2>
+<p>Watches $location.hashPath and tries to map the hash to an existing route
+definition. It is used for deep-linking URLs to controllers and views (HTML partials).</p>
+
+<p>$route is typically used in conjunction with ng:include widget. </p>
+<h2>Dependencies</h2>
+<ul>
+    <li><tt>$location</tt></li>
+  </ul>
+<h2>Methods</h2>
+<ul>
+    <li><tt>$route#onChange</tt>: <p>Register a handler function that will be called when route changes</p></li>
+    <li><tt>$route#when</tt>: <p>Add new route</p></li>
+  </ul>
+<h2>Properties</h2>
+<ul>
+    <li><tt>current:Object</tt>: Name of the current route</li>
+    <li><tt>routes:Array.&lt;Object&gt;</tt>: List of configured routes</li>
+  </ul>
+<h2>Example</h2>
+<doc:example>
+  <doc:source>
+&lt;p&gt;
+	This example shows how changing the URL hash causes the &lt;tt&gt;$route&lt;/tt&gt;
+	to match a route against the URL, and the &lt;tt&gt;[[ng:include]]&lt;/tt&gt; pulls in the partial.
+	Try changing the URL in the input box to see changes.
+&lt;/p&gt;
+   
+&lt;script&gt;
+	angular.service('myApp', function($route) {
+	  $route.when('/Book/:bookId', {template:'rsrc/book.html', controller:BookCntl});
+	  $route.when('/Book/:bookId/ch/:chapterId', {template:'rsrc/chapter.html', controller:ChapterCntl});
+	  $route.onChange(function() {
+	    $route.current.scope.params = $route.current.params;
+	  });
+	}, {$inject: ['$route']});
+	
+	function BookCntl() {
+	  this.name = "BookCntl";
+	}
+	
+	function ChapterCntl() {
+	  this.name = "ChapterCntl";
+	}
+&lt;/script&gt;
+
+Chose: 
+&lt;a href="#/Book/Moby"&gt;Moby&lt;/a&gt; | 
+&lt;a href="#/Book/Moby/ch/1"&gt;Moby: Ch1&lt;/a&gt; | 
+&lt;a href="#/Book/Gatsby"&gt;Gatsby&lt;/a&gt; | 
+&lt;a href="#/Book/Gatsby/ch/4?key=value"&gt;Gatsby: Ch4&lt;/a&gt;&lt;br/&gt;
+&lt;input type="text" name="$location.hashPath" size="80" /&gt;
+&lt;pre&gt;$location={{$location}}&lt;/pre&gt;
+&lt;pre&gt;$route.current.template={{$route.current.template}}&lt;/pre&gt;
+&lt;pre&gt;$route.current.params={{$route.current.params}}&lt;/pre&gt;
+&lt;pre&gt;$route.current.scope.name={{$route.current.scope.name}}&lt;/pre&gt;
+&lt;hr/&gt;
+&lt;ng:include src="$route.current.template" scope="$route.current.scope"/&gt;
+  </doc:source>
+  </doc:example>

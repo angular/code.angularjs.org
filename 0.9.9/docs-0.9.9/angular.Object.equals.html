@@ -1,0 +1,37 @@
+<h1>angular.Object.equals</h1>
+<fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<p>Determines if two objects or value are equivalent.</p>
+
+<p>To be equivalent, they must pass <code>==</code> comparison or be of the same type and have all their
+properties pass <code>==</code> comparison.</p>
+
+<p>Supports values types, arrays and objects.</p>
+
+<p>For objects <code>function</code> properties and properties that start with <code>$</code> are not considered during
+comparisons.</p>
+
+<p>Note: this function is used to augment the Object type in angular expressions. See
+<a href="#!angular.Object"><code>angular.Object</code></a> for more info.</p><h2>Usage</h2>
+<div ng:non-bindable=""><pre class="brush: js; html-script: true;">angular.Object.equals(o1, o2);</pre>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">o1 – {*} – </code>
+Object or value to compare.</li>
+<li><code ng:non-bindable="">o2 – {*} – </code>
+Object or value to compare.</li>
+</ul>
+<h3>Returns</h3>
+<code ng:non-bindable="">boolean</code>
+– True if arguments are equal.<h2>Example</h2>
+<doc:example><doc:source>Salutation: &lt;input type="text" name="master.salutation" value="Hello" /&gt;&lt;br/&gt;
+Name: &lt;input type="text" name="master.name" value="world"/&gt;&lt;br/&gt;
+&lt;button ng:click="form = master.$copy()"&gt;copy&lt;/button&gt;
+&lt;hr/&gt;
+
+Master is &lt;span ng:hide="master.$equals(form)"&gt;NOT&lt;/span&gt; same as form.
+
+&lt;pre&gt;master={{master}}&lt;/pre&gt;
+&lt;pre&gt;form={{form}}&lt;/pre&gt;</doc:source>
+</doc:example>

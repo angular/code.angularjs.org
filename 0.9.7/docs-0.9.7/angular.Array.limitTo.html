@@ -1,0 +1,31 @@
+<h1>angular.Array.limitTo</h1>
+<fieldset class="workInProgress">
+  <legend>Work In Progress</legend>
+  This page is currently being revised. It might be incomplete or contain inaccuracies.
+  
+</fieldset>
+<h2>Description</h2>
+<p>Creates a new array containing only the first, or last <code>limit</code> number of elements of the
+source <code>array</code>.</p>
+
+<p>Note: this function is used to augment the Array type in angular expressions. See
+<a href="#!angular.Array"><code>angular.Array</code></a> for more info.</p>
+<h2>Usage</h2>
+<tt ng:non-bindable>
+angular.Array.limitTo(array, limit);
+</tt>
+<h3>Parameters</h3>
+<ul>
+    <li><tt>array</tt> –
+      <tt>&#123;Array&#125;</tt>
+      <tt></tt>
+      – Source array to be limited.</li>
+    <li><tt>limit</tt> –
+      <tt>&#123;string|Number&#125;</tt>
+      <tt></tt>
+      – The length of the returned array. If the number is positive, the
+    first <code>limit</code> items from the source array will be copied, if the number is negative, the
+    last <code>limit</code> items will be copied.</li>
+  </ul>
+<h3>Returns</h3>
+<tt>&#123;Array&#125;</tt> New array of length <code>limit</code>.

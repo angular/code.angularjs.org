@@ -1,0 +1,55 @@
+<h1>angular.Object.copy</h1>
+<div class="angular-object-copy"><h2>Description</h2>
+<div class="description"><p>Creates a deep copy of <code>source</code>.</p>
+
+<p>If <code>source</code> is an object or an array, all of its members will be copied into the <code>destination</code>
+object.</p>
+
+<p>If <code>destination</code> is not provided and <code>source</code> is an object or an array, a copy is created &amp;
+returned, otherwise the <code>source</code> is returned.</p>
+
+<p>If <code>destination</code> is provided, all of its properties will be deleted.</p>
+
+<p>Note: this function is used to augment the Object type in angular expressions. See
+<a href="#!angular.Object"><code>angular.Object</code></a> for more info.</p></div>
+<h2>Usage</h2>
+<div class="usage"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">angular.Object.copy(source[, destination]);</pre>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">source – {*} – </code>
+<p>The source to be used to make a copy.
+Can be any type including primitives, <code>null</code> and <code>undefined</code>.</p></li>
+<li><code ng:non-bindable="">destination<i>(optional)</i> – {(Object|Array)} – </code>
+<p>Optional destination into which the source is copied.</p></li>
+</ul>
+<h3>Returns</h3>
+<div class="returns"><code ng:non-bindable="">{*}</code>
+– <p>The copy or updated <code>destination</code> if <code>destination</code> was specified.</p></div>
+</div>
+<h2>Example</h2>
+<div class="example"><doc:example>
+<pre class="doc-source">
+    Salutation: &lt;input type="text" name="master.salutation" value="Hello" /&gt;&lt;br/&gt;
+    Name: &lt;input type="text" name="master.name" value="world"/&gt;&lt;br/&gt;
+    &lt;button ng:click="form = master.$copy()"&gt;copy&lt;/button&gt;
+    &lt;hr/&gt;
+
+    The master object is &lt;span ng:hide="master.$equals(form)"&gt;NOT&lt;/span&gt; equal to the form object.
+
+    &lt;pre&gt;master={{master}}&lt;/pre&gt;
+    &lt;pre&gt;form={{form}}&lt;/pre&gt;
+</pre>
+<pre class="doc-scenario">
+  it('should print that initialy the form object is NOT equal to master', function() {
+    expect(element('.doc-example-live input[name=master.salutation]').val()).toBe('Hello');
+    expect(element('.doc-example-live input[name=master.name]').val()).toBe('world');
+    expect(element('.doc-example-live span').css('display')).toBe('inline');
+  });
+
+  it('should make form and master equal when the copy button is clicked', function() {
+    element('.doc-example-live button').click();
+    expect(element('.doc-example-live span').css('display')).toBe('none');
+  });
+</pre>
+</doc:example></div>
+</div>

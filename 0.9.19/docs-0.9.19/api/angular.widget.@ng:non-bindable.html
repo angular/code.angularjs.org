@@ -1,0 +1,31 @@
+<h1>angular.widget.@ng:non-bindable</h1>
+<div class="angular-widget-ng-non-bindable"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<div class="description"><p>Sometimes it is necessary to write code which looks like bindings but which should be left alone
+by angular. Use <code>ng:non-bindable</code> to make angular ignore a chunk of HTML.</p>
+
+<p>Note: <code>ng:non-bindable</code> looks like a directive, but is actually an attribute widget.</p></div>
+<h2>Usage</h2>
+<div class="usage"><h3>In HTML Template Binding</h3>
+<div class="in-html-template-binding"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">&lt;ANY ng:non-bindable&gt;
+   ...
+&lt;/ANY&gt;</pre>
+</div>
+</div>
+</div>
+<h2>Example</h2>
+<div class="example"><doc:example>
+<pre class="doc-source">
+  &lt;div&gt;Normal: {{1 + 2}}&lt;/div&gt;
+  &lt;div ng:non-bindable&gt;Ignored: {{1 + 2}}&lt;/div&gt;
+</pre>
+<pre class="doc-scenario">
+ it('should check ng:non-bindable', function(){
+   expect(using('.doc-example-live').binding('1 + 2')).toBe('3');
+   expect(using('.doc-example-live').element('div:last').text()).
+     toMatch(/1 \+ 2/);
+ });
+</pre>
+</doc:example></div>
+</div>

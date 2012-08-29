@@ -1,0 +1,39 @@
+<h1>Developer Guide: Scopes: Updating Scope Properties</h1>
+<div class="developer-guide-scopes-updating-scope-properties"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<p>You can update a scope by calling its <a href="#!/api/angular.scope.$eval"><code>$eval()</code></a> method, but usually
+you do not have to do this explicitly. In most cases, angular intercepts all external events (such
+as user interactions, XHRs, and timers) and calls the <code>$eval()</code> method on the scope object for you
+at the right time. The only time you might need to call <code>$eval()</code> explicitly is when you create
+your own custom widget or service.</p>
+
+<p>The reason it is unnecessary to call <code>$eval()</code> from within your controller functions when you use
+built-in angular widgets and services is because a change in the data model triggers a call to the
+<code>$eval()</code> method on the scope object where the data model changed.</p>
+
+<p>When a user inputs data, angularized widgets copy the data to the appropriate scope and then call
+the <code>$eval()</code> method on the root scope to update the view. It works this way because scopes are
+inherited, and a child scope <code>$eval()</code> overrides its parent's <code>$eval()</code> method. Updating the whole
+page requires a call to <code>$eval()</code> on the root scope as <code>$root.$eval()</code>. Similarly, when a request
+to fetch data from a server is made and the response comes back, the data is written into the model
+and then <code>$eval()</code> is called to push updates through to the view and any other dependents.</p>
+
+<p>A widget that creates scopes (such as <a href="#!/api/angular.widget.@ng:repeat"><code>ng:repeat</code></a>) is
+responsible for forwarding <code>$eval()</code> calls from the parent to those child scopes. That way, calling
+<code>$eval()</code> on the root scope will update the whole page. This creates a spreadsheet-like behavior
+for your app; the bound views update immediately as the user enters data.</p>
+
+<h3>Related Documents</h3>
+
+<ul>
+<li><a href="#!/guide/dev_guide.scopes">Angular Scope Objects</a></li>
+<li><a href="#!/guide/dev_guide.scopes.understanding_scopes">Understanding Angular Scope Objects</a></li>
+<li><a href="#!/guide/dev_guide.scopes.working_scopes">Working With Angular Scopes</a></li>
+<li><a href="#!/guide/dev_guide.scopes.controlling_scopes">Applying Controllers to Scopes</a></li>
+</ul>
+
+<h3>Related API</h3>
+
+<ul>
+<li><a href="#!/api/angular.scope"><code>Angular Scope API</code></a></li>
+</ul></div>

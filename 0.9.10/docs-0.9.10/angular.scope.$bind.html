@@ -1,0 +1,22 @@
+<h1>angular.scope.$bind</h1>
+<div class="angular-scope-bind"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<div class="description"><p>Binds a function <code>fn</code> to the current scope. See: <a href="#!angular.bind"><code>angular.bind</code></a>.</p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+         var scope = angular.scope();
+         var fn = scope.$bind(function(){
+           return this;
+         });
+         expect(fn()).toEqual(scope);
+       </pre></div></div>
+<h2>Dependencies</h2>
+<ul class="dependencies"></ul>
+<h2>Usage</h2>
+<div class="usage"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">angular.scope.$bind(fn);</pre>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">fn – {function()} – </code>
+<p>Function to be bound.</p></li>
+</ul>
+</div>
+</div>

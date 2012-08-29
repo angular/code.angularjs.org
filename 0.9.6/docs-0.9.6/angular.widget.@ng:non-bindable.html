@@ -1,0 +1,37 @@
+<h1>angular.widget.@ng:non-bindable</h1>
+<fieldset class="workInProgress">
+  <legend>Work In Progress</legend>
+  This page is currently being revised. It might be incomplete or contain inaccuracies.
+  
+</fieldset>
+<h2>Description</h2>
+<p>Sometimes it is necessary to write code which looks like bindings but which should be left alone
+by angular. Use <code>ng:non-bindable</code> to make angular ignore a chunk of HTML.</p>
+
+<p>NOTE: <code>ng:non-bindable</code> looks like a directive, but is actually an attribute widget.</p>
+<h2>Usage</h2>
+<h3>In HTML Template Binding</h3>
+<tt>
+  <pre>
+&lt;ANY @ng:non-bindable"&gt;
+  ...
+&lt;/ANY&gt;
+  </pre>
+</tt>
+<h3>Parameters</h3>
+<ul>
+  </ul>
+<h2>Example</h2>
+<p>In this example there are two location where a siple binding (<code>{{}}</code>) is present, but the one
+wrapped in <code>ng:non-bindable</code> is left alone.</p>
+<doc:example>
+  <doc:source>
+&lt;div&gt;Normal: {{1 + 2}}&lt;/div&gt;
+&lt;div ng:non-bindable&gt;Ignored: {{1 + 2}}&lt;/div&gt;
+  </doc:source>
+  <doc:scenario>   it('should check ng:non-bindable', function(){
+     expect(using('.doc-example-live').binding('1 + 2')).toBe('3');
+     expect(using('.doc-example-live').element('div:last').text()).
+       toMatch(/1 \+ 2/);
+   });</doc:scenario>
+</doc:example>

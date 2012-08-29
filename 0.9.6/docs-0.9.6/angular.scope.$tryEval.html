@@ -1,0 +1,48 @@
+<h1>angular.scope.$tryEval</h1>
+<fieldset class="workInProgress">
+  <legend>Work In Progress</legend>
+  This page is currently being revised. It might be incomplete or contain inaccuracies.
+  
+</fieldset>
+<h2>Description</h2>
+<p>Evaluates the expression in the context of the current scope just like
+<a href="#!angular.scope.$eval()"><code>angular.scope.$eval()</code></a> with expression parameter, but also wraps it in a try/catch
+block.</p>
+
+<p>If exception is thrown then <code>exceptionHandler</code> is used to handle the exception.</p>
+
+<h2>Example</h2><div ng:non-bindable><pre class="brush: js; html-script: true;">
+         var scope = angular.scope();
+         scope.error = function(){ throw 'myerror'; };
+         scope.$exceptionHandler = function(e) {this.lastException = e; };
+
+         expect(scope.$eval('error()'));
+         expect(scope.lastException).toEqual('myerror');
+         this.lastException = null;
+
+         expect(scope.$eval('error()'),  function(e) {this.lastException = e; });
+         expect(scope.lastException).toEqual('myerror');
+
+         var body = angular.element(window.document.body);
+         expect(scope.$eval('error()'), body);
+         expect(body.attr('ng-exception')).toEqual('"myerror"');
+         expect(body.hasClass('ng-exception')).toEqual(true);
+       </pre></div>
+<h2>Usage</h2>
+<tt ng:non-bindable>
+angular.scope.$tryEval(expression, exceptionHandler);
+</tt>
+<h3>Parameters</h3>
+<ul>
+    <li><tt>expression</tt> –
+      <tt>&#123;string|function()&#125;</tt>
+      <tt></tt>
+      – Angular expression to evaluate.</li>
+    <li><tt>exceptionHandler</tt> –
+      <tt>&#123;function()|DOMElement&#125;</tt>
+      <tt></tt>
+      – Function to be called or DOMElement to be
+    decorated.</li>
+  </ul>
+<h3>Returns</h3>
+<tt>&#123;*&#125;</tt> The result of <code>expression</code> evaluation.

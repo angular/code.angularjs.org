@@ -1,0 +1,17 @@
+<h1>angular.scope.$service</h1>
+<fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<p>Provides access to angular's dependency injector and
+<a href="#!angular.service"><code>registered services</code></a>. In general the use of this api is discouraged,
+except for tests and components that currently don't support dependency injection (widgets,
+filters, etc).</p><h2>Usage</h2>
+<div ng:non-bindable=""><pre class="brush: js; html-script: true;">angular.scope.$service(serviceId);</pre>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">serviceId – {string} – </code>
+String ID of the service to return.</li>
+</ul>
+<h3>Returns</h3>
+<code ng:non-bindable="">*</code>
+– Value, object or function returned by the service factory function if any.

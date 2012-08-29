@@ -1,0 +1,132 @@
+<h1>Getting Started</h1>
+<div class="getting-started"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Hello World!</h2>
+
+<p>A great way for you to get started with <code>angular</code> is to create the tradtional 
+"Hello World!" app:</p>
+
+<ol>
+<li>In your favorite text editor, create an HTML file 
+(for example, <code>helloworld.html</code>). </li>
+<li>From the <strong>Source</strong> box below, copy and paste the code into your HTML file.
+(Double-click on the source to easily select all.)</li>
+<li>Open the file in your web browser.</li>
+</ol><doc:example>
+    <pre class="doc-source">
+        Hello {{'World'}}!
+    </pre>
+</doc:example><p>The resulting web page should look something like the following:</p>
+
+<p><img class="center" src="img/helloworld.png" border="1" /></p>
+
+<p>Now let's take a closer look at that code, and see what is going on behind 
+the scenes.  </p>
+
+<p>The first line of interest defines the <code>ng</code> namespace, which makes 
+<code>angular</code> work across all browsers (especially important for IE):</p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+    &lt;html xmlns:ng="http://angularjs.org"&gt;
+</pre></div><p>The next line downloads the <code>angular</code> script, and instructs <code>angular</code> to process 
+the entire HTML page when it is loaded:</p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+    &lt;script type="text/javascript" src="http://code.angularjs.org/angular-?.?.?.min.js" ng:autobind&gt;&lt;/script&gt;
+</pre></div><p>(For details on what happens when <code>angular</code> processes an HTML page, 
+see <a href="#!guide.bootstrap">Bootstrap</a>.)</p>
+
+<p>Finally, this line in the <code>&lt;body&gt;</code> of the page is the template that describes 
+how to display our greeting in the UI:</p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+    Hello {{'World'}}!
+</pre></div><p>Note the use of the double curly brace markup (<code>{{ }}</code>) to bind the expression to 
+the greeting text. Here the expression is the string literal 'World'.</p>
+
+<p>Next let's look at a more interesting example, that uses <code>angular</code> to 
+bind a dynamic expression to our greeting text.</p>
+
+<h2>Hello <tt>&lt;angular/&gt;</tt> World!</h2>
+
+<p>This example demonstrates <code>angular</code>'s two-way data binding: </p>
+
+<ol>
+<li>Edit the HTML file you created in the "Hello World!" example above.</li>
+<li>Replace the contents of <code>&lt;body&gt;</code> with the code from the <strong>Source</strong> box below.</li>
+<li>Refresh your browswer window.</li>
+</ol><doc:example>
+ <pre class="doc-source">
+  Your name: &lt;input type="text" name="yourname" value="World"/&gt;
+  &lt;hr/&gt;
+  Hello {{yourname}}!
+ </pre>
+</doc:example><p>After the refresh, the page should look something like this:</p>
+
+<p><img class="left" src="img/helloworld_2way.png" border="1" /></p>
+
+<p>These are some of the important points to note from this example:</p>
+
+<ul>
+<li>The text input <a href="#!angular.widget"><code>widget</code></a> called <code>yourname</code> is bound to a model variable called 
+<code>yourname</code>.</li>
+<li>The double curly braces notation binds the variable `yourname` to the 
+greeting text.
+<!--
+* The variable `yourname` is implicitly created in the root scope.
+--></li>
+<li><p>You did not need to explicitly register an event listener or define an event 
+handler for events!</p></li>
+</ul>
+
+<p>Now try typing your name into the input box, and notice the immediate change to 
+the displayed greeting. This demonstrates the concept of <code>angular</code>'s 
+<a href="#!guide.data-binding">bi-directional data binding</a>. Any changes to the input field are immediately 
+reflected in the model (one direction), and any changes to the model are 
+reflected in the greeting text (the other direction).</p>
+
+<h2>Anatomy of an <code>angular</code> App</h2>
+
+<p>This section describes the 3 parts of an <code>angular</code> app, and explains how they 
+map to the Model-View-Controller design pattern:</p>
+
+<h3>Templates</h3>
+
+<p>Templates, which you write in HTML and CSS, serve as the View. You add elements, 
+attributes, and markup to HTML, which serve as instructions to the <code>angular</code> 
+compiler. The <code>angular</code> compiler is fully extensible, meaning that with angular 
+you can build your own declarative language on top of HTML!</p>
+
+<h3>Application Logic and Behavior</h3>
+
+<p>Application Logic and Behavior, which you define in JavaScript, serve as the 
+Controller. With <code>angular</code> (unlike with standard AJAX applications) you don't 
+need to write additional listeners or DOM manipulators, because they are built-in. 
+This feature makes your application logic very easy to write, test, maintain, and 
+understand.</p>
+
+<h3>Scope</h3>
+
+<p>The Model consists of one or more JavaScript objects, arrays, or primitive types.
+These are referenced from the scope.  There are no restrictions on what the Model 
+can be or what structure it should have. The only requirement is that it is 
+referenced by the scope.</p>
+
+<p>The following illustration shows the parts of an <code>angular</code> application and how they 
+work together:</p>
+
+<p><img class="left" src="img/angular_parts.png" border="0" /></p>
+
+<p>In addition, <code>angular</code> comes with a set of Services, which have the following 
+properties:</p>
+
+<ul>
+<li>The services provided are very useful for building web applications.</li>
+<li>You can extend and add application-specific behavior to services.</li>
+<li>Services include Dependency-Injection, XHR, caching, URL routing, 
+and browser abstraction.</li>
+</ul>
+
+<h2>Where To Go Next</h2>
+
+<ul>
+<li><p>For additional hands-on examples of using <code>angular</code>, including more source 
+code that you can copy and paste into your own pages, take a look through 
+the <code>angular</code> <a href="#!Cookbook">Cookbook</a>.</p></li>
+<li><p>For explanations of the <code>angular</code> concepts presented in the examples on this 
+page, see the <a href="#!guide">Developer Guide</a>.</p></li>
+</ul></div>

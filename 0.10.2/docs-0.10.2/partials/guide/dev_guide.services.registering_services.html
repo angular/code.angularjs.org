@@ -1,0 +1,65 @@
+<h1>Developer Guide: Angular Services: Registering Angular Services</h1>
+<div class="developer-guide-angular-services-registering-angular-services"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<p>To register a service, register a factory function that creates the service with angular's
+Injector. The Injector is exposed as <a href="api/angular.scope.$service"><code>scope.$service</code></a>. The
+following pseudo-code shows a simple service registration:</p><div ng:non-bindable><pre class="brush: js;">
+angular.service('service id', function() {
+  var shinyNewServiceInstance;
+  //factory function body that constructs shinyNewServiceInstance
+  return shinyNewServiceInstance;
+});
+</pre></div><p>Note that you are not registering a service instance, but rather a factory function that will
+create this instance when called.</p>
+
+<h2>Instantiating Angular Services</h2>
+
+<p>A service can be instantiated eagerly or lazily. By default angular instantiates services lazily,
+which means that a service will be created only when it is needed for instantiation of a service or
+an application component that depends on it. In other words, angular won't instantiate lazy
+services unless they are requested directly or indirectly by the application.</p>
+
+<p>Eager services on the other hand, are instantiated right after the injector itself is created,
+which happens when the angular <a href="guide/dev_guide.bootstrap">application initializes</a>.</p>
+
+<p>To override the default, you can request that a service is eagerly instantiated as follows:</p><div ng:non-bindable><pre class="brush: js;">
+angular.service('service id', function() {
+  var shinyNewServiceInstance;
+  //factory function body that constructs shinyNewServiceInstance
+  return shinyNewServiceInstance;
+}, {$eager: true});
+</pre></div><p>While it is tempting to declare services as eager, only in few cases it is actually useful. If you
+are unsure whether to make a service eager, it likely doesn't need to be. To be more specific, a
+service should be declared as eager only if it fits one of these scenarios:</p>
+
+<ul>
+<li>Nothing in your application declares this service as its dependency, and this service affects the
+state or configuration of the application (e.g. a service that configures <code>$route</code> or <code>$resource</code>
+services)</li>
+<li>A guarantee is needed that the service will be instantiated at application boot time, usually
+because the service passively observes the application and it is optional for other application
+components to depend on it.  An example of this scenario is a service that monitors and logs
+application memory usage.</li>
+</ul>
+
+<p>Lastly, it is important to realize that all angular services are applicaiton singletons. This means
+that there is only one instance of a given service per injector. Since angular is lethally allergic
+to the global state, it is possible to create multiple injectors, each with its own instance of a
+given service, but that is rarely needed, except in tests where this property is crucially
+important.</p>
+
+<h3>Related Topics</h3>
+
+<ul>
+<li><a href="guide/dev_guide.services.understanding_services">Understanding Angular Services</a></li>
+<li><a href="guide/dev_guide.services.creating_services">Creating Angular Services</a></li>
+<li><a href="guide/dev_guide.services.managing_dependencies">Managing Service Dependencies</a></li>
+<li><a href="guide/dev_guide.services.injecting_controllers">Injecting Services Into Controllers</a></li>
+<li><a href="guide/dev_guide.services.testing_services">Testing Angular Services</a></li>
+</ul>
+
+<h3>Related API</h3>
+
+<ul>
+<li><a href="api/angular.service"><code>Angular Service API</code></a></li>
+</ul></div>

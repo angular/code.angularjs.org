@@ -1,0 +1,37 @@
+<h1>angular.formatter.trim</h1>
+<fieldset class="workInProgress">
+  <legend>Work In Progress</legend>
+  This page is currently being revised. It might be incomplete or contain inaccuracies.
+  
+</fieldset>
+<h2>Description</h2>
+<p>Use trim formatter if you wish to trim extra spaces in user text.</p>
+<h2>Usage</h2>
+<h3>In HTML Template Binding</h3>
+<tt>
+  &lt;input type="text" ng:format="trim"&gt;
+</tt>
+<h3>In JavaScript</h3>
+<tt ng:non-bindable>
+var userInputString = angular.formatter.trim.format(modelValue);<br/>
+var modelValue = angular.formatter.trim.parse(userInputString);
+</tt>
+<h3>Returns</h3>
+<tt>&#123;String&#125;</tt> Trim excess leading and trailing space.
+<h2>Example</h2>
+<doc:example>
+  <doc:source>
+Enter text with leading/trailing spaces:
+&lt;input type="text" name="value" ng:format="trim" value="  book  "/&gt;
+&lt;input type="text" name="value" ng:format="trim"/&gt;
+&lt;pre&gt;value={{value|json}}&lt;/pre&gt;
+  </doc:source>
+  <doc:scenario>it('should format trim', function(){
+  expect(binding('value')).toEqual('value="book"');
+  this.addFutureAction('change to XYZ', function($window, $document, done){
+    $document.elements('.doc-example :input:last').val('  text  ').trigger('change');
+    done();
+  });
+  expect(binding('value')).toEqual('value="text"');
+});</doc:scenario>
+</doc:example>

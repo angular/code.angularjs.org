@@ -1,0 +1,50 @@
+<h1 id="angular.widget.ng.switch">angular.widget.ng:switch</h1>
+<div class="angular-widget-ng-switch"><h2 id="Description">Description</h2>
+<div class="description"><p>Conditionally change the DOM structure.</p></div>
+<h2 id="Usage">Usage</h2>
+<div class="usage"><h3 id="In.HTML.Template.Binding">In HTML Template Binding</h3>
+<div class="in-html-template-binding"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">&lt;ng:switch
+       on="..."&gt;&lt;/ng:switch&gt;</pre>
+</div>
+</div>
+<h3 id="Parameters">Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">on – {*} – </code>
+<p>expression to match against <tt>ng:switch-when</tt>.</p></li>
+</ul>
+</div>
+<h2 id="Example">Example</h2>
+<div class="example"><doc:example>
+<pre class="doc-source">
+  &lt;script&gt;
+    function Ctrl() {
+      this.items = ['settings', 'home', 'other'];
+      this.selection = this.items[0];
+    }
+  &lt;/script&gt;
+  &lt;div ng:controller="Ctrl"&gt;
+    &lt;select ng:model="selection" ng:options="item for item in items"&gt;
+    &lt;/select&gt;
+    &lt;tt&gt;selection={{selection}}&lt;/tt&gt;
+    &lt;hr/&gt;
+    &lt;ng:switch on="selection" &gt;
+      &lt;div ng:switch-when="settings"&gt;Settings Div&lt;/div&gt;
+      &lt;span ng:switch-when="home"&gt;Home Span&lt;/span&gt;
+      &lt;span ng:switch-default&gt;default&lt;/span&gt;
+    &lt;/ng:switch&gt;
+  &lt;/div&gt;
+</pre>
+<pre class="doc-scenario">
+  it('should start in settings', function() {
+   expect(element('.doc-example-live ng\\:switch').text()).toEqual('Settings Div');
+  });
+  it('should change to home', function() {
+   select('selection').option('home');
+   expect(element('.doc-example-live ng\\:switch').text()).toEqual('Home Span');
+  });
+  it('should select deafault', function() {
+   select('selection').option('other');
+   expect(element('.doc-example-live ng\\:switch').text()).toEqual('default');
+  });
+</pre>
+</doc:example></div>
+</div>

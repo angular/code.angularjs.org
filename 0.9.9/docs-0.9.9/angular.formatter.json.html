@@ -1,0 +1,26 @@
+<h1>angular.formatter.json</h1>
+<fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<p>Formats the user input as JSON text.</p><h2>Usage</h2>
+<h3>In HTML Template Binding</h3>
+<div ng:non-bindable=""><pre class="brush: js; html-script: true;">&lt;input type="text" ng:format="json"&gt;</pre>
+</div>
+<h3 0="I" 1="n" 2=" " 3="J" 4="a" 5="v" 6="a" 7="S" 8="c" 9="r" 10="i" 11="p" 12="t"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">var userInputString = angular.formatter.json.format(modelValue);</pre>
+</div>
+<br/><div ng:non-bindable=""><pre class="brush: js; html-script: true;">var modelValue = angular.formatter.json.parse(userInputString);</pre>
+</div>
+</h3>
+<h3>Returns</h3>
+<code ng:non-bindable="">string</code>
+– A JSON string representation of the model.<h2>Example</h2>
+<doc:example><doc:source>&lt;div ng:init="data={name:'misko', project:'angular'}"&gt;
+  &lt;input type="text" size='50' name="data" ng:format="json"/&gt;
+  &lt;pre&gt;data={{data}}&lt;/pre&gt;
+&lt;/div&gt;</doc:source>
+<doc:scenario>it('should format json', function(){
+  expect(binding('data')).toEqual('data={\n  \"name\":\"misko\",\n  \"project\":\"angular\"}');
+  input('data').enter('{}');
+  expect(binding('data')).toEqual('data={\n  }');
+});</doc:scenario>
+</doc:example>

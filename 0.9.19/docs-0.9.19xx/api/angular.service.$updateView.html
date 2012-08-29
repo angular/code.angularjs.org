@@ -1,0 +1,37 @@
+<h1>angular.service.$updateView</h1>
+<div class="angular-service-updateview"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<div class="description"><p>Calling <code>$updateView</code> enqueues the eventual update of the view. (Update the DOM to reflect the
+model). The update is eventual, since there are often multiple updates to the model which may
+be deferred. The default update delayed is 25 ms. This means that the view lags the model by
+that time. (25ms is small enough that it is perceived as instantaneous by the user). The delay
+can be adjusted by setting the delay property of the service.</p><div ng:non-bindable><pre class="brush: js;">angular.service('$updateView').delay = 10</pre></div><p>The delay is there so that multiple updates to the model which occur sufficiently close
+together can be merged into a single update.</p>
+
+<p>You don't usually call '$updateView' directly since angular does it for you in most cases,
+but there are some cases when you need to call it.</p>
+
+<ul>
+<li><code>$updateView()</code> called automatically by angular:
+<ul><li>Your Application Controllers: Your controller code is called by angular and hence
+angular is aware that you may have changed the model.</li>
+<li>Your Services: Your service is usually called by your controller code, hence same rules
+apply.</li></ul></li>
+<li>May need to call <code>$updateView()</code> manually:
+<ul><li>Widgets / Directives: If you listen to any DOM events or events on any third party
+libraries, then angular is not aware that you may have changed state state of the
+model, and hence you need to call '$updateView()' manually.</li>
+<li>'setTimeout'/'XHR':  If you call 'setTimeout' (instead of <a href="#!/api/angular.service.$defer"><code>angular.service.$defer</code></a>)
+or 'XHR' (instead of <a href="#!/api/angular.service.$xhr"><code>angular.service.$xhr</code></a>) then you may be changing the model
+without angular knowledge and you may need to call '$updateView()' directly.</li></ul></li>
+</ul>
+
+<p>Note: if you wish to update the view immediately (without delay), you can do so by calling
+<a href="#!/api/angular.scope.$eval"><code>angular.scope.$eval</code></a> at any time from your code:</p><div ng:non-bindable><pre class="brush: js;">scope.$root.$eval()</pre></div><p>In unit-test mode the update is instantaneous and synchronous to simplify writing tests.</p></div>
+<h2>Dependencies</h2>
+<ul class="dependencies"><li><code ng:non-bindable=""><a href="#!/api/angular.service.$browser">$browser</a>
+</code>
+</li>
+</ul>
+</div>

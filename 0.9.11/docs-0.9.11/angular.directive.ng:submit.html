@@ -1,0 +1,41 @@
+<h1>angular.directive.ng:submit</h1>
+<div class="angular-directive-ng-submit"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<div class="description"><p>Enables binding angular expressions to onsubmit events.</p>
+
+<p>Additionally it prevents the default action (which for form means sending the request to the
+server and reloading the current page).</p></div>
+<h2>Usage</h2>
+<div class="usage"><pre class="brush: js; html-script: true;">&lt;form ng:submit="expression"&gt;
+   ...
+&lt;/form&gt;</pre>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">expression – {expression} – </code>
+<p>to eval.</p></li>
+</ul>
+</div>
+<h2>Example</h2>
+<div class="example"><doc:example>
+<doc:source>
+ &lt;form ng:submit="list.push(text);text='';" ng:init="list=[]"&gt;
+   Enter text and hit enter:
+   &lt;input type="text" name="text" value="hello"/&gt;
+ &lt;/form&gt;
+ &lt;pre&gt;list={{list}}&lt;/pre&gt;
+</doc:source>
+<doc:scenario>
+  it('should check ng:submit', function(){
+    expect(binding('list')).toBe('list=[]');
+    element('.doc-example-live form input').click();
+    this.addFutureAction('submit from', function($window, $document, done) {
+      $window.angular.element(
+        $document.elements('.doc-example-live form')).
+          trigger('submit');
+      done();
+    });
+    expect(binding('list')).toBe('list=["hello"]');
+  });
+</doc:scenario>
+</doc:example></div>
+</div>

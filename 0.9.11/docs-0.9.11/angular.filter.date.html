@@ -1,0 +1,62 @@
+<h1>angular.filter.date</h1>
+<div class="angular-filter-date"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<div class="description"><p>Formats <code>date</code> to a string based on the requested <code>format</code>.</p>
+
+<p><code>format</code> string can be composed of the following elements:</p>
+
+<ul>
+<li><code>'yyyy'</code>: 4 digit representation of year e.g. 2010</li>
+<li><code>'yy'</code>: 2 digit representation of year, padded (00-99)</li>
+<li><code>'MM'</code>: Month in year, padded (01‒12)</li>
+<li><code>'M'</code>: Month in year (1‒12)</li>
+<li><code>'dd'</code>: Day in month, padded (01‒31)</li>
+<li><code>'d'</code>: Day in month (1-31)</li>
+<li><code>'HH'</code>: Hour in day, padded (00‒23)</li>
+<li><code>'H'</code>: Hour in day (0-23)</li>
+<li><code>'hh'</code>: Hour in am/pm, padded (01‒12)</li>
+<li><code>'h'</code>: Hour in am/pm, (1-12)</li>
+<li><code>'mm'</code>: Minute in hour, padded (00‒59)</li>
+<li><code>'m'</code>: Minute in hour (0-59)</li>
+<li><code>'ss'</code>: Second in minute, padded (00‒59)</li>
+<li><code>'s'</code>: Second in minute (0‒59)</li>
+<li><code>'a'</code>: am/pm marker</li>
+<li><code>'Z'</code>: 4 digit (+sign) representation of the timezone offset (-1200‒1200)</li>
+</ul></div>
+<h2>Usage</h2>
+<div class="usage"><h3>In HTML Template Binding</h3>
+<div class="in-html-template-binding"><code ng:non-bindable="">{{ date_expression | date[:format] }}</code>
+</div>
+<h3>In JavaScript</h3>
+<div class="in-javascript"><code ng:non-bindable="">angular.filter.date(date[, format])</code>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">date – {(Date|number|string)} – </code>
+<p>Date to format either as Date object, milliseconds (string or
+number) or ISO 8601 extended datetime string (yyyy-MM-ddTHH:mm:ss.SSSZ).</p></li>
+<li><code ng:non-bindable="">format<i>(optional)</i> – {string} – </code>
+<p>Formatting rules. If not specified, Date#toLocaleDateString is used.</p></li>
+</ul>
+<h3>Returns</h3>
+<div class="returns"><code ng:non-bindable="">{string}</code>
+– <p>Formatted string or the input if input is not recognized as date/millis.</p></div>
+</div>
+<h2>Example</h2>
+<div class="example"><doc:example>
+<doc:source>
+  &lt;span ng:non-bindable&gt;{{1288323623006 | date:'yyyy-MM-dd HH:mm:ss Z'}}&lt;/span&gt;:
+     {{1288323623006 | date:'yyyy-MM-dd HH:mm:ss Z'}}&lt;br/&gt;
+  &lt;span ng:non-bindable&gt;{{1288323623006 | date:'MM/dd/yyyy @ h:mma'}}&lt;/span&gt;:
+     {{'1288323623006' | date:'MM/dd/yyyy @ h:mma'}}&lt;br/&gt;
+</doc:source>
+<doc:scenario>
+  it('should format date', function(){
+    expect(binding("1288323623006 | date:'yyyy-MM-dd HH:mm:ss Z'")).
+       toMatch(/2010\-10\-2\d \d{2}:\d{2}:\d{2} \-?\d{4}/);
+    expect(binding("'1288323623006' | date:'MM/dd/yyyy @ h:mma'")).
+       toMatch(/10\/2\d\/2010 @ \d{1,2}:\d{2}(am|pm)/);
+  });
+</doc:scenario>
+</doc:example></div>
+</div>

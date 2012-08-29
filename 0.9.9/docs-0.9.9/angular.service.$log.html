@@ -1,0 +1,29 @@
+<h1>angular.service.$log</h1>
+<fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<p>Is simple service for logging. Default implementation writes the message
+into the browser's console (if present).</p>
+
+<p>This is useful for debugging.</p><h2>Dependencies</h2>
+<ul class="dependencies"><li>$window</li>
+</ul>
+<h2>Methods</h2>
+<ul class="methods"><li><h3>error()</h3>
+<p>Write an error message</p></li>
+<li><h3>info()</h3>
+<p>Write an information message</p></li>
+<li><h3>log()</h3>
+<p>Write a log message</p></li>
+<li><h3>warn()</h3>
+<p>Write a warning message</p></li>
+</ul>
+<h2>Example</h2>
+<doc:example><doc:source>&lt;p&gt;Reload this page with open console, enter text and hit the log button...&lt;/p&gt;
+Message:
+&lt;input type="text" name="message" value="Hello World!"/&gt;
+&lt;button ng:click="$log.log(message)"&gt;log&lt;/button&gt;
+&lt;button ng:click="$log.warn(message)"&gt;warn&lt;/button&gt;
+&lt;button ng:click="$log.info(message)"&gt;info&lt;/button&gt;
+&lt;button ng:click="$log.error(message)"&gt;error&lt;/button&gt;</doc:source>
+</doc:example>

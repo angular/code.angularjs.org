@@ -1,0 +1,43 @@
+<h1>angular.widget.@ng:format</h1>
+<fieldset class="workInProgress">
+  <legend>Work In Progress</legend>
+  This page is currently being revised. It might be incomplete or contain inaccuracies.
+  
+</fieldset>
+<h2>Description</h2>
+<p>The <code>ng:format</code> attribute widget formats stored data to user-readable text and parses the text
+back to the stored form. You might find this useful for example if you collect user input in a
+text field but need to store the data in the model as a list. Check out
+<a href="#!angular.formatter"><code>formatters</code></a> to learn more.</p>
+<h2>Usage</h2>
+<h3>In HTML Template Binding</h3>
+<tt>
+  <pre>
+&lt;INPUT @ng:format="formatter"&gt;
+  ...
+&lt;/INPUT&gt;
+  </pre>
+</tt>
+<h3>Parameters</h3>
+<ul>
+    <li><tt>formatter</tt> –
+      <tt>&#123;string&#125;</tt>
+      <tt></tt>
+      – The name of the built-in or custom <a href="#!angular.formatter"><code>formatter</code></a>
+    to be used.</li>
+  </ul>
+<h2>Example</h2>
+<p>This example shows how the user input is converted from a string and internally represented as an
+array.</p>
+<doc:example>
+  <doc:source>
+Enter a comma separated list of items: 
+&lt;input type="text" name="list" ng:format="list" value="table, chairs, plate"&gt;
+&lt;pre&gt;list={{list}}&lt;/pre&gt;
+  </doc:source>
+  <doc:scenario>   it('should check ng:format', function(){
+     expect(binding('list')).toBe('list=["table","chairs","plate"]');
+     input('list').enter(',,, a ,,,');
+     expect(binding('list')).toBe('list=["a"]');
+   });</doc:scenario>
+</doc:example>

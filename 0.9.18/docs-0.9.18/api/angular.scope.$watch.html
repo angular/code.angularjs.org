@@ -1,0 +1,46 @@
+<h1>angular.scope.$watch</h1>
+<div class="angular-scope-watch"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<div class="description"><p>Registers <code>listener</code> as a callback to be executed every time the <code>watchExp</code> changes. Be aware
+that the callback gets, by default, called upon registration, this can be prevented via the
+<code>initRun</code> parameter.</p>
+
+<h3>Example</h3><div ng:non-bindable><pre class="brush: js;">
+         var scope = angular.scope();
+         scope.name = 'misko';
+         scope.counter = 0;
+
+         expect(scope.counter).toEqual(0);
+         scope.$watch('name', 'counter = counter + 1');
+         expect(scope.counter).toEqual(1);
+
+         scope.$eval();
+         expect(scope.counter).toEqual(1);
+
+         scope.name = 'adam';
+         scope.$eval();
+         expect(scope.counter).toEqual(2);
+       </pre></div></div>
+<h2>Usage</h2>
+<div class="usage"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">angular.scope.$watch(watchExp, listener[, exceptionHanlder][, initRun]);</pre>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">watchExp – {function()|string} – </code>
+<p>Expression that should be evaluated and checked for
+change during each eval cycle. Can be an angular string expression or a function.</p></li>
+<li><code ng:non-bindable="">listener – {function()|string} – </code>
+<p>Function (or angular string expression) that gets called
+every time the value of the <code>watchExp</code> changes. The function will be called with two
+parameters, <code>newValue</code> and <code>oldValue</code>.</p></li>
+<li><code ng:non-bindable="">exceptionHanlder<i>(optional=angular.service.$exceptionHandler)</i> – {(function()|DOMElement)} – </code>
+<p>Handler
+that gets called when <code>watchExp</code> or <code>listener</code> throws an exception. If a DOMElement is
+specified as handler, the element gets decorated by angular with the information about the
+exception.</p></li>
+<li><code ng:non-bindable="">initRun<i>(optional=true)</i> – {boolean} – </code>
+<p>Flag that prevents the first execution of the listener upon
+registration.</p></li>
+</ul>
+</div>
+</div>

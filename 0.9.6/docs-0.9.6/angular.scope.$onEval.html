@@ -1,0 +1,38 @@
+<h1>angular.scope.$onEval</h1>
+<fieldset class="workInProgress">
+  <legend>Work In Progress</legend>
+  This page is currently being revised. It might be incomplete or contain inaccuracies.
+  
+</fieldset>
+<h2>Description</h2>
+<p>Evaluates the <code>expr</code> expression in the context of the current scope during each
+<a href="#!angular.scope.$eval"><code>eval cycle</code></a>.</p>
+
+<h2>Example</h2><div ng:non-bindable><pre class="brush: js; html-script: true;">
+         var scope = angular.scope();
+         scope.counter = 0;
+         scope.$onEval('counter = counter + 1');
+         expect(scope.counter).toEqual(0);
+         scope.$eval();
+         expect(scope.counter).toEqual(1);
+       </pre></div>
+<h2>Usage</h2>
+<tt ng:non-bindable>
+angular.scope.$onEval(priority, expr, exceptionHandler);
+</tt>
+<h3>Parameters</h3>
+<ul>
+    <li><tt>priority</tt> –
+      <tt>&#123;number&#125;</tt>
+      <tt>[0]</tt>
+      – Execution priority. Lower priority numbers get executed first.</li>
+    <li><tt>expr</tt> –
+      <tt>&#123;string|function()&#125;</tt>
+      <tt></tt>
+      – Angular expression or function to be executed.</li>
+    <li><tt>exceptionHandler</tt> –
+      <tt>&#123;(function()|DOMElement)=&#125;</tt>
+      <tt>[angular.service.$exceptionHandler]</tt>
+      – Handler
+    function to call or DOM element to decorate when an exception occurs.</li>
+  </ul>

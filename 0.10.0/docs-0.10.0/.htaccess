@@ -1,0 +1,11 @@
+## OFFLINE SUPPORT ##
+
+# These rules tell apache to check if there is a cookie called "offline", with value set to the
+# current angular version. If this rule matches the appcache-offline.manifest will be served for
+# requests to appcache.manifest
+#
+# This file must be processed by Rake in order to replace %ANGULAR_VERSION% with the actual version.
+
+RewriteEngine on
+RewriteCond %{HTTP_COOKIE}      ng-offline=0.10.0
+RewriteRule appcache.manifest   appcache-offline.manifest

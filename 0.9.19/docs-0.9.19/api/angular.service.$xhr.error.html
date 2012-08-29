@@ -1,0 +1,46 @@
+<h1>angular.service.$xhr.error</h1>
+<div class="angular-service-xhr-error"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<div class="description"><p>Error handler for <a href="#!/api/angular.service.$xhr"><code>$xhr service</code></a>. An application can replaces this
+service with one specific for the application. The default implementation logs the error to
+<a href="#!/api/angular.service.$log"><code>$log.error</code></a>.</p></div>
+<h2>Dependencies</h2>
+<ul class="dependencies"><li><code ng:non-bindable=""><a href="#!/api/angular.service.$log">$log</a>
+</code>
+</li>
+</ul>
+<h2>Usage</h2>
+<div class="usage"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">error(request, response);</pre>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">request – {Object} – </code>
+<p>Request object.</p>
+
+<p>The object has the following properties</p>
+
+<ul>
+<li><code>method</code> – <code>{string}</code> – The http request method.</li>
+<li><code>url</code> – <code>{string}</code> – The request destination.</li>
+<li><code>data</code> – `{(string|Object)=} – An optional request body.</li>
+<li><code>success</code> – <code>{function()}</code> – The success callback function</li>
+</ul></li>
+<li><code ng:non-bindable="">response – {Object} – </code>
+<p>Response object.</p>
+
+<p>The response object has the following properties:</p>
+
+<ul>
+<li>status – {number} – Http status code.</li>
+<li>body – {string|Object} – Body of the response.</li>
+</ul></li>
+</ul>
+</div>
+<h2>Example</h2>
+<div class="example"><doc:example>
+<pre class="doc-source">
+  fetch a non-existent file and log an error in the console:
+  &lt;button ng:click="$service('$xhr')('GET', '/DOESNT_EXIST')"&gt;fetch&lt;/button&gt;
+</pre>
+</doc:example></div>
+</div>

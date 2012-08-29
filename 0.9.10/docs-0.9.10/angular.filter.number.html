@@ -1,0 +1,34 @@
+<h1>angular.filter.number</h1>
+<div class="angular-filter-number"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<div class="description"><p>Formats a number as text.</p>
+
+<p>If the input is not a number empty string is returned.</p></div>
+<h2>Dependencies</h2>
+<ul class="dependencies"></ul>
+<h2>Usage</h2>
+<div class="usage"><h3>In HTML Template Binding</h3>
+<div class="in-html-template-binding"><code ng:non-bindable="">{{ number_expression | number[:fractionSize] }}</code>
+</div>
+<h3>In JavaScript</h3>
+<div class="in-javascript"><code ng:non-bindable="">angular.filter.number(number[, fractionSize])</code>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">number – {number|string} – </code>
+<p>Number to format.</p></li>
+<li><code ng:non-bindable="">fractionSize<i>(optional=2)</i> – {(number|string)} – </code>
+<p>Number of decimal places to round the number to.</p></li>
+</ul>
+<h3>Returns</h3>
+<div class="returns"><code ng:non-bindable="">{string}</code>
+– <p>Number rounded to decimalPlaces and places a “,” after each third digit.</p></div>
+</div>
+<h2>Example</h2>
+<div class="example"><doc:example><doc:source>Enter number: &lt;input name='val' value='1234.56789' /&gt;&lt;br/&gt;
+Default formatting: {{val | number}}&lt;br/&gt;
+No fractions: {{val | number:0}}&lt;br/&gt;
+Negative number: {{-val | number:4}}</doc:source>
+</doc:example>
+</div>
+</div>

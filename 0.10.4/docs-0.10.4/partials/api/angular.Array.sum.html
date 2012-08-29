@@ -1,0 +1,76 @@
+<h1>angular.Array.sum</h1>
+<div class="angular-array-sum"><h2>Description</h2>
+<div class="description"><p>The <code>sum</code> function calculates the sum of all numbers in an <code>array</code>. If an <code>expression</code> is
+supplied, <code>sum</code> evaluates each element in the <code>array</code> with the expression and then returns
+the sum of the calculated values.</p>
+
+<p>Note: This function is used to augment the <code>Array</code> type in Angular expressions. See
+<a href="api/angular.Array"><code>angular.Array</code></a> for more info about Angular arrays.</p></div>
+<h2>Usage</h2>
+<div class="usage"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">angular.Array.sum(array[, expression]);</pre>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">array – {Array} – </code>
+<p>The source array.</p></li>
+<li><code ng:non-bindable="">expression<i>(optional)</i> – {(string|function())} – </code>
+<p>Angular expression or a function to be evaluated for
+each element in <code>array</code>. The array element becomes the <code>this</code> during the evaluation.</p></li>
+</ul>
+<h3>Returns</h3>
+<div class="returns"><code ng:non-bindable="">{number}</code>
+– <p>Sum of items in the array.</p></div>
+</div>
+<h2>Example</h2>
+<div class="example"><doc:example>
+<pre class="doc-source">
+ &lt;script&gt;
+   function Ctrl() {
+     this.invoice = {
+       items:[ {
+            qty:10,
+            description:'gadget',
+            cost:9.95
+          }
+       ]
+     };
+   }
+ &lt;/script&gt;
+ &lt;table class="invoice" ng:controller="Ctrl"&gt;
+  &lt;tr&gt;&lt;th&gt;Qty&lt;/th&gt;&lt;th&gt;Description&lt;/th&gt;&lt;th&gt;Cost&lt;/th&gt;&lt;th&gt;Total&lt;/th&gt;&lt;th&gt;&lt;/th&gt;&lt;/tr&gt;
+  &lt;tr ng:repeat="item in invoice.items"&gt;
+    &lt;td&gt;&lt;input type="integer" ng:model="item.qty" size="4" required&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;input type="text" ng:model="item.description"&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;input type="number" ng:model="item.cost" required size="6"&gt;&lt;/td&gt;
+    &lt;td&gt;{{item.qty * item.cost | currency}}&lt;/td&gt;
+    &lt;td&gt;[&lt;a href ng:click="invoice.items.$remove(item)"&gt;X&lt;/a&gt;]&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;a href ng:click="invoice.items.$add({qty:1, cost:0})"&gt;add item&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;/td&gt;
+    &lt;td&gt;Total:&lt;/td&gt;
+    &lt;td&gt;{{invoice.items.$sum('qty*cost') | currency}}&lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/table&gt;
+</pre>
+<pre class="doc-scenario">
+  //TODO: these specs are lame because I had to work around issues #164 and #167
+  it('should initialize and calculate the totals', function() {
+    expect(repeater('table.invoice tr', 'item in invoice.items').count()).toBe(3);
+    expect(repeater('table.invoice tr', 'item in invoice.items').row(1)).
+      toEqual(['$99.50']);
+    expect(binding("invoice.items.$sum('qty*cost')")).toBe('$99.50');
+    expect(binding("invoice.items.$sum('qty*cost')")).toBe('$99.50');
+  });
+
+  it('should add an entry and recalculate', function() {
+    element('.doc-example-live a:contains("add item")').click();
+    using('.doc-example-live tr:nth-child(3)').input('item.qty').enter('20');
+    using('.doc-example-live tr:nth-child(3)').input('item.cost').enter('100');
+
+    expect(repeater('table.invoice tr', 'item in invoice.items').row(2)).
+      toEqual(['$2,000.00']);
+    expect(binding("invoice.items.$sum('qty*cost')")).toBe('$2,099.50');
+  });
+</pre>
+</doc:example></div>
+</div>

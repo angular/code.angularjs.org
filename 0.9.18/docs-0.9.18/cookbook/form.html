@@ -1,0 +1,95 @@
+<h1>Cookbook: Form</h1>
+<div class="cookbook-form"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<p>A web application's main purpose is to present and gather data. For this reason angular strives
+to make both of these operations trivial. This example shows off how you can build a simple form to
+allow a user to enter data.</p><doc:example>
+ <pre class="doc-source">
+  &lt;script&gt;
+    function FormController(){
+      this.user = {
+        name: 'John Smith',
+        address:{line1: '123 Main St.', city:'Anytown', state:'AA', zip:'12345'},
+        contacts:[{type:'phone', value:'1(234) 555-1212'}]
+      };
+      this.state = /^\w\w$/;
+      this.zip = /^\d\d\d\d\d$/;
+    }
+  &lt;/script&gt;
+  &lt;div ng:controller="FormController" class="example"&gt;
+
+    &lt;label&gt;Name:&lt;/label&gt;&lt;br/&gt;
+    &lt;input type="text" name="user.name" ng:required/&gt; &lt;br/&gt;&lt;br/&gt;
+
+    &lt;label&gt;Address:&lt;/label&gt;&lt;br/&gt;
+    &lt;input type="text" name="user.address.line1" size="33" ng:required/&gt; &lt;br/&gt;
+    &lt;input type="text" name="user.address.city" size="12" ng:required/&gt;,
+    &lt;input type="text" name="user.address.state" size="2" ng:required ng:validate="regexp:state"/&gt;
+    &lt;input type="text" name="user.address.zip" size="5" ng:required
+ng:validate="regexp:zip"/&gt;&lt;br/&gt;&lt;br/&gt;
+
+    &lt;label&gt;Phone:&lt;/label&gt;
+    [ &lt;a href="" ng:click="user.contacts.$add()"&gt;add&lt;/a&gt; ]
+    &lt;div ng:repeat="contact in user.contacts"&gt;
+      &lt;select name="contact.type"&gt;
+        &lt;option&gt;email&lt;/option&gt;
+        &lt;option&gt;phone&lt;/option&gt;
+        &lt;option&gt;pager&lt;/option&gt;
+        &lt;option&gt;IM&lt;/option&gt;
+      &lt;/select&gt;
+      &lt;input type="text" name="contact.value" ng:required/&gt;
+       [ &lt;a href="" ng:click="user.contacts.$remove(contact)"&gt;X&lt;/a&gt; ]
+    &lt;/div&gt;
+    &lt;hr/&gt;
+    Debug View:
+    &lt;pre&gt;user={{user}}&lt;/pre&gt;
+  &lt;/div&gt;
+
+ </pre>
+ <pre class="doc-scenario">
+  it('should show debug', function(){
+    expect(binding('user')).toMatch(/John Smith/);
+  });
+  it('should add contact', function(){
+    using('.example').element('a:contains(add)').click();
+    using('.example div:last').input('contact.value').enter('you@example.org');
+    expect(binding('user')).toMatch(/\(234\) 555\-1212/);
+    expect(binding('user')).toMatch(/you@example.org/);
+  });
+
+  it('should remove contact', function(){
+    using('.example').element('a:contains(X)').click();
+    expect(binding('user')).not().toMatch(/\(234\) 555\-1212/);
+  });
+
+  it('should validate zip', function(){
+    expect(using('.example').element(':input[name=user.address.zip]').attr('className'))
+      .not().toMatch(/ng-validation-error/);
+    using('.example').input('user.address.zip').enter('abc');
+    expect(using('.example').element(':input[name=user.address.zip]').attr('className'))
+      .toMatch(/ng-validation-error/);
+  });
+
+  it('should validate state', function(){
+    expect(using('.example').element(':input[name=user.address.state]').attr('className'))
+      .not().toMatch(/ng-validation-error/);
+    using('.example').input('user.address.state').enter('XXX');
+    expect(using('.example').element(':input[name=user.address.state]').attr('className'))
+      .toMatch(/ng-validation-error/);
+  });
+ </pre>
+</doc:example><h2>Things to notice</h2>
+
+<ul>
+<li>The user data model is initialized <a href="#!/api/angular.directive.ng:controller"><code>controller</code></a> and is
+available in
+the <a href="#!/api/angular.scope"><code>scope</code></a> with the initial data.</li>
+<li>For debugging purposes we have included a debug view of the model to better understand what
+is going on.</li>
+<li>The <a href="#!/api/angular.widget.HTML"><code>input widgets</code></a> simply refer to the model and are auto bound.</li>
+<li>The inputs <a href="#!/api/angular.validator"><code>validate</code></a>. (Try leaving them blank or entering non digits
+in the zip field)</li>
+<li>In your application you can simply read from or write to the model and the form will be updated.</li>
+<li>By clicking the 'add' link you are adding new items into the <code>user.contacts</code> array which are then
+reflected in the view.</li>
+</ul></div>

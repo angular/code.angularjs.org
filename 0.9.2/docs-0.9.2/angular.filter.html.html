@@ -1,0 +1,67 @@
+<h1><tt>angular.filter.html</tt></h1>
+<h2>Usage</h2>
+<h3>In HTML Template Binding</h3>
+<tt>
+  <span>{{</span>
+  html_expression
+  | html:option<span> }}</span>
+</tt>
+<h3>In JavaScript</h3>
+<tt ng:non-bindable>
+angular.filter.html(html, option);
+</tt>
+<h3>Parameters</h3>
+<ul>
+    <li><tt>html(string)</tt>: Html input.</li>
+    <li><tt>option(string)</tt>: If &#39;unsafe&#39; then do not sanitize the HTML input.</li>
+  </ul>
+<h3>Returns</h3>
+<p>{string} Sanitized or raw html.</p>
+<h3>CSS</h3>
+<h2>Description</h2>
+<p>  Prevents the input from getting escaped by angular. By default the input is sanitized and
+  inserted into the DOM as is.</p>
+
+<p>  The input is sanitized by parsing the html into tokens. All safe tokens (from a whitelist) are
+  then serialized back to properly escaped html string. This means that no unsafe input can make
+  it into the returned string, however since our parser is more strict than a typical browser
+  parser, it's possible that some obscure input, which would be recognized as valid HTML by a
+  browser, won't make it through the sanitizer.</p>
+
+<p>  If you hate your users, you may call the filter with optional 'unsafe' argument, which bypasses
+  the html sanitizer, but makes your application vulnerable to XSS and other attacks. Using this
+  option is strongly discouraged and should be used only if you absolutely trust the input being
+  filtered and you can't get the content through the sanitizer.</p>
+<WIKI:SOURCE style="display:block;">
+     Snippet: &lt;textarea name="snippet" cols="60" rows="3"&gt;
+&amp;lt;p style="color:blue"&amp;gt;an html
+&amp;lt;em onmouseover="this.textContent='PWN3D!'"&amp;gt;click here&amp;lt;/em&amp;gt;
+snippet&amp;lt;/p&amp;gt;&lt;/textarea&gt;
+     &lt;table&gt;
+       &lt;tr&gt;
+         &lt;td&gt;Filter&lt;/td&gt;
+         &lt;td&gt;Source&lt;/td&gt;
+         &lt;td&gt;Rendered&lt;/td&gt;
+       &lt;/tr&gt;
+       &lt;tr id="html-filter"&gt;
+         &lt;td&gt;html filter&lt;/td&gt;
+         &lt;td&gt;
+           &lt;pre&gt;&amp;lt;div ng:bind="snippet | html"&amp;gt;&lt;br/&gt;&amp;lt;/div&amp;gt;&lt;/pre&gt;
+         &lt;/td&gt;
+         &lt;td&gt;
+           &lt;div ng:bind="snippet | html"&gt;&lt;/div&gt;
+         &lt;/td&gt;
+       &lt;/tr&gt;
+       &lt;tr id="escaped-html"&gt;
+         &lt;td&gt;no filter&lt;/td&gt;
+         &lt;td&gt;&lt;pre&gt;&amp;lt;div ng:bind="snippet"&amp;gt;&lt;br/&gt;&amp;lt;/div&amp;gt;&lt;/pre&gt;&lt;/td&gt;
+         &lt;td&gt;&lt;div ng:bind="snippet"&gt;&lt;/div&gt;&lt;/td&gt;
+       &lt;/tr&gt;
+       &lt;tr id="html-unsafe-filter"&gt;
+         &lt;td&gt;unsafe html filter&lt;/td&gt;
+         &lt;td&gt;&lt;pre&gt;&amp;lt;div ng:bind="snippet | html:'unsafe'"&amp;gt;&lt;br/&gt;&amp;lt;/div&amp;gt;&lt;/pre&gt;&lt;/td&gt;
+         &lt;td&gt;&lt;div ng:bind="snippet | html:'unsafe'"&gt;&lt;/div&gt;&lt;/td&gt;
+       &lt;/tr&gt;
+     &lt;/table&gt;
+
+</WIKI:SOURCE>

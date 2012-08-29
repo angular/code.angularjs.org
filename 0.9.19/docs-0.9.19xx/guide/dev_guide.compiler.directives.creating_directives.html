@@ -1,0 +1,35 @@
+<h1>Developer Guide: Angular HTML Compiler: Directives: Creating Custom Angular Directives</h1>
+<div class="developer-guide-angular-html-compiler-directives-creating-custom-angular-directives"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<p>The following code snippet shows how to define a custom directive. You define a new directive by
+extending the <a href="#!/guide/dev_guide.compiler">Angular HTML compiler</a>. The code snippet below is a
+simplified definition of the built-in <a href="#!/api/angular.directive.ng:bind"><code>ng:bind</code></a> directive:</p><div ng:non-bindable><pre class="brush: js;">
+angular.directive('ng:bind', function(expression, compiledElement) {
+    var compiler = this;
+    return function(linkElement) {
+        var currentScope = this;
+        currentScope.$watch(expression, function(value) {
+            linkElement.text(value);
+        });
+    };
+});
+</pre></div><h2>Additional Compiler Methods for Custom Directives</h2>
+
+<p>The angular compiler exposes methods that you may need to use when writing your own widgets and
+directives.  For example, the <code>descend()</code> method lets you control whether the compiler ignores or
+processes child elements of the element it is compiling.  For information on this and other
+compiler methods, see the <a href="#!/api/angular.compile"><code>Compiler API doc</code></a>.</p>
+
+<h3>Related Docs</h3>
+
+<ul>
+<li><a href="#!/guide/dev_guide.compiler.directives">Understanding Angular Directives</a></li>
+<li><a href="#!/guide/dev_guide.compiler.directives_widgets">Comparing Directives and Widgets</a></li>
+<li><a href="#!/guide/dev_guide.compiler">Angular HTML Compiler</a></li>
+</ul>
+
+<h3>Related API</h3>
+
+<ul>
+<li><a href="#!/api/angular.directive"><code>Angular Directive API</code></a>.</li>
+</ul></div>

@@ -1,0 +1,196 @@
+<h1>angular.service.$route</h1>
+<div class="angular-service-route"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<div class="description"><p>Watches <code>$location.url()</code> and tries to map the path to an existing route
+definition. It is used for deep-linking URLs to controllers and views (HTML partials).</p>
+
+<p>The <code>$route</code> service is typically used in conjunction with <a href="api/angular.widget.ng:view"><code>ng:view</code></a>
+widget and the <a href="api/angular.service.$routeParams"><code>$routeParams</code></a> service.</p></div>
+<h2>Dependencies</h2>
+<ul class="dependencies"><li><code ng:non-bindable=""><a href="api/angular.service.$location">$location</a>
+</code>
+</li>
+<li><code ng:non-bindable=""><a href="api/angular.service.$routeParams">$routeParams</a>
+</code>
+</li>
+</ul>
+<h2>Methods</h2>
+<ul class="methods"><li><h3>otherwise(params)</h3>
+<div class="otherwise-params-"><p>Sets route definition that will be used on route change when no other route definition
+is matched.</p><h4>Parameters</h4>
+<ul class="parameters"><li><code ng:non-bindable="">params – {Object} – </code>
+<p>Mapping information to be assigned to <code>$route.current</code>.</p></li>
+</ul>
+</div>
+</li>
+<li><h3>parent(scope)</h3>
+<div class="parent-scope-"><p>Sets a scope to be used as the parent scope for scopes created on route change. If not
+set, defaults to the root scope.</p><h4>Parameters</h4>
+<ul class="parameters"><li><code ng:non-bindable="">scope – {Scope} – </code>
+<p>Scope to be used as parent for newly created
+<code>$route.current.scope</code> scopes.</p></li>
+</ul>
+</div>
+</li>
+<li><h3>reload()</h3>
+<div class="reload-"><p>Causes <code>$route</code> service to reload (and recreate the <code>$route.current</code> scope) upon the next
+eval even if <a href="api/angular.service.$location"><code>$location</code></a> hasn't changed.</p></div>
+</li>
+<li><h3>when(path, route)</h3>
+<div class="when-path-route-"><p>Adds a new route definition to the <code>$route</code> service.</p><h4>Parameters</h4>
+<ul class="parameters"><li><code ng:non-bindable="">path – {string} – </code>
+<p>Route path (matched against <code>$location.hash</code>)</p></li>
+<li><code ng:non-bindable="">route – {Object} – </code>
+<p>Mapping information to be assigned to <code>$route.current</code> on route
+match.</p>
+
+<p>Object properties:</p>
+
+<ul>
+<li><code>controller</code> – <code>{function()=}</code> – Controller fn that should be associated with newly
+created scope.</li>
+<li><code>template</code> – <code>{string=}</code> – path to an html template that should be used by
+<a href="api/angular.widget.ng:view"><code>ng:view</code></a> or
+<a href="api/angular.widget.ng:include"><code>ng:include</code></a> widgets.</li>
+<li><p><code>redirectTo</code> – {(string|function())=} – value to update
+<a href="api/angular.service.$location"><code>$location</code></a> path with and trigger route redirection.</p>
+
+<p>If <code>redirectTo</code> is a function, it will be called with the following parameters:</p>
+
+<ul><li><code>{Object.&lt;string&gt;}</code> - route parameters extracted from the current
+<code>$location.path()</code> by applying the current route template.</li>
+<li><code>{string}</code> - current <code>$location.path()</code></li>
+<li><code>{Object}</code> - current <code>$location.search()</code></li></ul>
+
+<p>The custom <code>redirectTo</code> function is expected to return a string which will be used
+to update <code>$location.path()</code> and <code>$location.search()</code>.</p></li>
+<li><p><code>[reloadOnSearch=true]</code> - {boolean=} - reload route when only $location.search()
+changes.</p>
+
+<p>If the option is set to false and url in the browser changes, then
+$routeUpdate event is emited on the current route scope. You can use this event to
+react to <a href="api/angular.service.$routeParams"><code>angular.service.$routeParams</code></a> changes:</p>
+
+<pre><code>function MyCtrl($route, $routeParams) {
+  this.$on('$routeUpdate', function() {
+    // do stuff with $routeParams
+  });
+}
+</code></pre></li>
+</ul></li>
+</ul>
+<h4>Returns</h4>
+<div class="returns"><code ng:non-bindable="">{Object}</code>
+– <p>route object</p></div>
+</div>
+</li>
+</ul>
+<h2>Properties</h2>
+<ul class="properties"><li><h3>current</h3>
+<div class="current"><p>Reference to the current route definition.</p></div>
+</li>
+<li><h3>routes</h3>
+<div class="routes"><p>Array of all configured routes.</p></div>
+</li>
+</ul>
+<h2>Events</h2>
+<ul class="events"><li><h3>$afterRouteChange</h3>
+<div class="-afterroutechange"><p>Broadcasted after a route change.</p><div class="inline"><h4>Type:</h4>
+<div class="type-">broadcast</div>
+</div>
+<div class="inline"><h4>Target:</h4>
+<div class="target-">root scope</div>
+</div>
+<h4>Parameters</h4>
+<ul class="parameters"><li><code ng:non-bindable="">current – {Route} – </code>
+<p>Current route information.</p></li>
+<li><code ng:non-bindable="">previous – {Route} – </code>
+<p>Previous route information.</p>
+
+<p>The <code>Route</code> object extends the route definition with the following properties.</p>
+
+<ul>
+<li><code>scope</code> - The instance of the route controller.</li>
+<li><code>params</code> - The current <a href="api/angular.service.$routeParams"><code>params</code></a>.</li>
+</ul></li>
+</ul>
+</div>
+</li>
+<li><h3>$beforeRouteChange</h3>
+<div class="-beforeroutechange"><p>Broadcasted before a route change.</p><div class="inline"><h4>Type:</h4>
+<div class="type-">broadcast</div>
+</div>
+<div class="inline"><h4>Target:</h4>
+<div class="target-">root scope</div>
+</div>
+<h4>Parameters</h4>
+<ul class="parameters"><li><code ng:non-bindable="">next – {Route} – </code>
+<p>Future route information.</p></li>
+<li><code ng:non-bindable="">current – {Route} – </code>
+<p>Current route information.</p>
+
+<p>The <code>Route</code> object extends the route definition with the following properties.</p>
+
+<ul>
+<li><code>scope</code> - The instance of the route controller.</li>
+<li><code>params</code> - The current <a href="api/angular.service.$routeParams"><code>params</code></a>.</li>
+</ul></li>
+</ul>
+</div>
+</li>
+<li><h3>$routeUpdate</h3>
+<div class="-routeupdate"><p>The <code>reloadOnSearch</code> property has been set to false, and we are reusing the same
+instance of the Controller.</p><div class="inline"><h4>Type:</h4>
+<div class="type-">emit</div>
+</div>
+<div class="inline"><h4>Target:</h4>
+<div class="target-">the current route scope</div>
+</div>
+</div>
+</li>
+</ul>
+<h2>Example</h2>
+<div class="example"><p>This example shows how changing the URL hash causes the <tt>$route</tt>
+to match a route against the URL, and the <tt>[[ng:include]]</tt> pulls in the partial.</p><doc:example>
+   <pre class="doc-source" jsfiddle="false">
+     &lt;script&gt;
+       function MainCntl($route, $routeParams, $location) {
+         this.$route = $route;
+         this.$location = $location;
+         this.$routeParams = $routeParams;
+
+         $route.when('/Book/:bookId', {template: 'examples/book.html', controller: BookCntl});
+         $route.when('/Book/:bookId/ch/:chapterId', {template: 'examples/chapter.html', controller: ChapterCntl});
+       }
+
+       function BookCntl($routeParams) {
+         this.name = "BookCntl";
+         this.params = $routeParams;
+       }
+
+       function ChapterCntl($routeParams) {
+         this.name = "ChapterCntl";
+         this.params = $routeParams;
+       }
+     &lt;/script&gt;
+
+     &lt;div ng:controller="MainCntl"&gt;
+       Choose:
+       &lt;a href="#/Book/Moby"&gt;Moby&lt;/a&gt; |
+       &lt;a href="#/Book/Moby/ch/1"&gt;Moby: Ch1&lt;/a&gt; |
+       &lt;a href="#/Book/Gatsby"&gt;Gatsby&lt;/a&gt; |
+       &lt;a href="#/Book/Gatsby/ch/4?key=value"&gt;Gatsby: Ch4&lt;/a&gt;&lt;br/&gt;
+       &lt;pre&gt;$location.path() = {{$location.path()}}&lt;/pre&gt;
+       &lt;pre&gt;$route.current.template = {{$route.current.template}}&lt;/pre&gt;
+       &lt;pre&gt;$route.current.params = {{$route.current.params}}&lt;/pre&gt;
+       &lt;pre&gt;$route.current.scope.name = {{$route.current.scope.name}}&lt;/pre&gt;
+       &lt;pre&gt;$routeParams = {{$routeParams}}&lt;/pre&gt;
+       &lt;hr /&gt;
+       &lt;ng:view&gt;&lt;/ng:view&gt;
+     &lt;/div&gt;
+   </pre>
+   <pre class="doc-scenario">
+   </pre>
+ </doc:example></div>
+</div>

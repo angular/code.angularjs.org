@@ -1,0 +1,43 @@
+<h1>Developer Guide: CSS</h1>
+<div class="developer-guide-css"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>CSS</h2>
+
+<p>angular includes built-in CSS classes, which in turn have predefined CSS styles.</p>
+
+<h2>Built-in CSS classes</h2>
+
+<h3><code>ng-exception</code></h3>
+
+<p><strong>Usage:</strong> angular applies this class to a DOM element if that element contains an Expression that
+threw an exception when evaluated.</p>
+
+<p><strong>Styling:</strong> The built-in styling of the ng-exception class displays an error message surrounded
+by a solid red border, for example:</p>
+
+<blockquote>
+  <div class="ng-exception">Error message</div>
+</blockquote>
+
+<p>You can try to evaluate malformed expressions in <a href="#!angualr.expression">expression</a> to see the
+<code>ng-exception</code> class' styling.</p>
+
+<h3><code>ng-validation-error</code></h3>
+
+<p><strong>Usage:</strong> angular applies this class to an input widget element if that element's input does not
+pass validation. Note that you set the validation criteria on the input widget element using the
+Ng:validate or Ng:required directives.</p>
+
+<p><strong>Styling:</strong> The built-in styling of the ng-validation-error class turns the border of the input
+box red and includes a hovering UI element that includes more details of the validation error. You
+can see an example in <a href="#!angular.widget.@ng:validate"><code>ng:validate example</code></a>.</p>
+
+<h3>How to override the styles for built-in classes</h3>
+
+<p>To override the styles for these built-in classes, you can do any of the following:</p>
+
+<p>Download the source code, edit angular.css, and host the source on your own server.
+Create a local css file, overriding any styles that you'd like, and link to it from your HTML file
+as you normally would:</p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+&lt;link href="yourfile.css" rel="stylesheet" type="text/css"&gt;
+</pre></div></div>

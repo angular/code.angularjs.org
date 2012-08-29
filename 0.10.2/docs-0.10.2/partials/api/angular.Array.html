@@ -1,0 +1,32 @@
+<h1>angular.Array</h1>
+<div class="angular-array"><p>A namespace for utility functions for the manipulation of JavaScript Array objects.</p>
+
+<p>These functions are exposed in two ways:</p>
+
+<ul>
+<li><p><strong>Angular expressions:</strong> Functions are bound to the Array objects and augment the Array type
+as array methods. The names of these methods are prefixed with the <code>$</code> character to minimize
+naming collisions. To call a method, invoke myArrayObject.$foo(params).</p>
+
+<p>Because Array type is a subtype of the Object type, all angular.Object functions augment
+the Array type in Angular expressions as well.</p></li>
+<li><p><strong>JavaScript code:</strong> Functions do nor augment the Array type and must be invoked as functions
+of <code>angular.Array</code> as <code>angular.Array.foo(myArrayObject, params)</code>.</p></li>
+</ul>
+
+<p>The following APIs are built in to the Angular Array object:</p>
+
+<ul>
+<li><a href="api/angular.Array.add"><code>angular.Array.add()</code></a> - Optionally adds a new element to an array.</li>
+<li><a href="api/angular.Array.count"><code>angular.Array.count()</code></a> - Determines the number of elements in an
+                                                  array.</li>
+<li><a href="api/angular.Array.filter"><code>angular.Array.filter()</code></a> - Returns the subset of elements specified
+                                                    in the filter as a new array.</li>
+<li><a href="api/angular.Array.indexOf"><code>angular.Array.indexOf()</code></a> - Determines the index of an array
+                                                      value.</li>
+<li><a href="api/angular.Array.limitTo"><code>angular.Array.limitTo()</code></a> - Creates a sub-array of an existing
+                                                      array.</li>
+<li><a href="api/angular.Array.orderBy"><code>angular.Array.orderBy()</code></a> - Orders array elements.</li>
+<li><a href="api/angular.Array.remove"><code>angular.Array.remove()</code></a> - Removes array elements.</li>
+<li><a href="api/angular.Array.sum"><code>angular.Array.sum()</code></a> - Sums the numbers in an array.</li>
+</ul></div>

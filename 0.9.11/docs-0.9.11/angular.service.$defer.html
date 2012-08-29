@@ -1,0 +1,22 @@
+<h1>angular.service.$defer</h1>
+<div class="angular-service-defer"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<div class="description"><p>Delegates to <a href="#!angular.service.$browser.defer"><code>$browser.defer</code></a>, but wraps the <code>fn</code> function
+into a try/catch block and delegates any exceptions to
+<a href="#!angular.services.$exceptionHandler"><code>$exceptionHandler</code></a> service.</p>
+
+<p>In tests you can use <code>$browser.defer.flush()</code> to flush the queue of deferred functions.</p></div>
+<h2>Dependencies</h2>
+<ul class="dependencies"><li>$browser</li>
+<li>$log</li>
+</ul>
+<h2>Usage</h2>
+<div class="usage"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">$defer(fn);</pre>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">fn – {function()} – </code>
+<p>A function, who's execution should be deferred.</p></li>
+</ul>
+</div>
+</div>

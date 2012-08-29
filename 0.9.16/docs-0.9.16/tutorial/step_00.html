@@ -1,0 +1,212 @@
+<h1>Tutorial: 0 - angular-seed</h1>
+<div class="tutorial-0-angular-seed"><ul doc:tutorial-nav="0"></ul>
+
+<p>You are now ready to build the phonecat application. In this step, you will become familiar with
+the most important source code files, learn how to start the development servers bundled with
+angular-seed, and run the application in the browser.</p><doc:tutorial-instructions show="true">
+  <doc:tutorial-instruction id="git-mac" title="Git on Mac/Linux">
+    <ol>
+      <li><p>In angular-phonecat directory, run this command:</p>
+      <pre><code>git checkout -f step-0</code></pre>
+      <p>This resets your workspace to step 0 of the tutorial app.</p>
+      <p>You must repeat this for every future step in the tutorial and change the number to
+      the number of the step you are on. This will cause any changes you made within
+      your working directory to be lost.</p></li>
+
+
+      <li>To see the app running in a browser, do one of the following:
+        <ul>
+          <li><b>For node.js users:</b>
+            <ol>
+              <li>In a <i>separate</i> terminal tab or window, run
+<code>./scripts/web-server.js</code> to start the web server.</li>
+              <li>Open a browser window for the app and navigate to <a
+href="http://localhost:8000/app/index.html">http://localhost:8000/app/index.html</a></li>
+            </ol>
+          </li>
+          <li><b>For other http servers:</b>
+            <ol>
+              <li>Configure the server to serve the files in the <code>angular-phonecat</code>
+directory.</li>
+              <li>Navigate in your browser to
+<code>http://localhost:[port-number]/[context-path]/app/index.html</code>.</li>
+            </ol>
+          </li>
+        </ul>
+      </li>
+    </ol>
+  </doc:tutorial-instruction>
+
+
+
+
+  <doc:tutorial-instruction id="git-win" title="Git on Windows">
+    <ol>
+      <li><p>Open msysGit bash and run this command (in angular-phonecat directory):</p>
+      <pre><code>git checkout -f step-0</code></pre>
+      <p>This resets your workspace to step 0 of the tutorial app.</p>
+      <p>You must repeat this for every future step in the tutorial and change the number to
+      the number of the step you are on. This will cause any changes you made within
+      your working directory to be lost.</p></li>
+      <li>To see the app running in a browser, do one of the following:
+        <ul>
+          <li><b>For node.js users:</b>
+            <ol>
+              <li>In a <i>separate</i> terminal tab or window, run <code>node
+scripts\web-server.js</code> to start the web server.</li>
+              <li>Open a browser window for the app and navigate to <a
+href="http://localhost:8000/app/index.html">http://localhost:8000/app/index.html</a></li>
+            </ol>
+          </li>
+          <li><b>For other http servers:</b>
+            <ol>
+              <li>Configure the server to serve the files in the <code>angular-phonecat</code>
+directory.</li>
+              <li>Navigate in your browser to
+<code>http://localhost:[port-number]/[context-path]/app/index.html</code>.</li>
+            </ol>
+          </li>
+        </ul>
+      </li>
+    </ol>
+  </doc:tutorial-instruction>
+
+
+
+
+  <doc:tutorial-instruction id="ss-mac" title="Snapshots on Mac/Linux">
+    <ol>
+      <li><p>In angular-phonecat directory, run this command:</p>
+      <pre><code>./goto_step.sh 0</code></pre>
+      <p>This resets your workspace to step 0 of the tutorial app.</p>
+      <p>You must repeat this for every future step in the tutorial and change the number to
+      the number of the step you are on. This will cause any changes you made within
+      your working directory to be lost.</p></li>
+      <li>To see the app running in a browser, do one of the following:
+        <ul>
+          <li><b>For node.js users:</b>
+            <ol>
+              <li>In a <i>separate</i> terminal tab or window, run
+<code>./scripts/web-server.js</code> to start the web server.</li>
+              <li>Open a browser window for the app and navigate to <a
+href="http://localhost:8000/app/index.html">http://localhost:8000/app/index.html</a></li>
+            </ol>
+          </li>
+          <li><b>For other http servers:</b>
+            <ol>
+              <li>Configure the server to serve the files in the angular-phonecat
+<code>sandbox</code> directory.</li>
+              <li>Navigate in your browser to
+<code>http://localhost:[port-number]/[context-path]/app/index.html</code>.</li>
+            </ol>
+          </li>
+        </ul>
+      </li>
+    </ol>
+  </doc:tutorial-instruction>
+
+
+
+
+  <doc:tutorial-instruction id="ss-win" title="Snapshots on Windows">
+    <ol>
+      <li><p>Open windows command line and run this command (in angular-phonecat directory):</p>
+      <pre><code>goto_step.bat 0</code></pre>
+      <p>This resets your workspace to step 0 of the tutorial app.</p>
+      <p>You must repeat this for every future step in the tutorial and change the number to
+      the number of the step you are on. This will cause any changes you made within
+      your working directory to be lost.</p></li>
+      <li>To see the app running in a browser, do one of the following:
+        <ul>
+          <li><b>For node.js users:</b>
+            <ol>
+              <li>In a <i>separate</i> terminal tab or window, run <code>node
+scripts\web-server.js</code> to start the web server.</li>
+              <li>Open a browser window for the app and navigate to <a
+href="http://localhost:8000/app/index.html">http://localhost:8000/app/index.html</a></li>
+            </ol>
+          </li>
+          <li><b>For other http servers:</b>
+            <ol>
+              <li>Configure the server to serve the files in the angular-phonecat
+<code>sandbox</code> directory.</li>
+              <li>Navigate in your browser to
+<code>http://localhost:[port-number]/[context-path]/app/index.html</code>.</li>
+            </ol>
+          </li>
+        </ul>
+      </li>
+    </ol>
+  </doc:tutorial-instruction>
+</doc:tutorial-instructions><p>You can now see the page in your browser. It's not very exciting, but that's OK.</p>
+
+<p>The static HTML page that displays "Nothing here yet!" was constructed with the HTML code shown
+below. The code contains some key angular elements that we will need going forward.</p>
+
+<p><strong><code>app/index.html</code>:</strong></p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+&lt;!doctype html&gt;
+&lt;html xmlns:ng="http://angularjs.org/"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;my angular app&lt;/title&gt;
+  &lt;link rel="stylesheet" href="css/app.css"/&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+
+  Nothing here yet!
+
+
+  &lt;script src="lib/angular/angular.js" ng:autobind&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div><h3>What is the code doing?</h3>
+
+<ul>
+<li><p>xmlns declaration</p>
+
+<pre><code>  &lt;html xmlns:ng="http://angularjs.org"&gt;
+</code></pre>
+
+<p>This <code>xmlns</code> declaration for the <code>ng</code> namespace must be specified in all angular applications in
+order to make angular work with XHTML and IE versions older than 9 (regardless of whether you are
+using XHTML or HTML).</p></li>
+<li><p>angular script tag</p>
+
+<pre><code>  &lt;script src="lib/angular/angular.js" ng:autobind&gt;
+</code></pre>
+
+<p>This single line of code is all that is needed to bootstrap an angular application.</p>
+
+<p>The code downloads the <code>angular.js</code> script and registers a callback that will be executed by the
+browser when the containing HTML page is fully downloaded. When the callback is executed, angular
+looks for the <a href="#!/api/angular.directive.ng:autobind"><code>ng:autobind</code></a> attribute. If angular finds
+<code>ng:autobind</code>, it creates a root scope for the application and associates it with the <code>&lt;html&gt;</code>
+element of the template:</p>
+
+<pre><code>  &lt;img src="img/tutorial/tutorial_00_final.png"/&gt;
+</code></pre>
+
+<p>As you will see shortly, everything in angular is evaluated within a scope. We'll learn more
+about this in the next steps.</p></li>
+</ul>
+
+<h3>What are all these files in my working directory?</h3>
+
+<p>Most of the files in your working directory come from the <a href="https://github.com/angular/angular-seed">angular-seed project</a> which is typically used to bootstrap
+new angular projects. The seed project includes the latest angular libraries, test libraries,
+scripts and a simple example app, all pre-configured for developing a typical web app.</p>
+
+<p>For the purposes of this tutorial, we modified the angular-seed with the following changes:</p>
+
+<ul>
+<li>Removed the example app</li>
+<li>Added phone images to <code>app/img/phones</code></li>
+<li>Added phone data files (JSON) to <code>app/phones</code></li>
+</ul>
+
+<h2>Summary</h2>
+
+<p>Now let's go to step 1 and add some content to the web app.</p>
+
+<ul doc:tutorial-nav="0"></ul></div>

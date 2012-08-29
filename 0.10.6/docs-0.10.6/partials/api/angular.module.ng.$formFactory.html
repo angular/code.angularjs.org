@@ -1,0 +1,117 @@
+<h1 id="angular.module.ng.$formFactory">angular.module.ng.$formFactory</h1>
+<div class="angular-module-ng-$formfactory"><h2 id="Description">Description</h2>
+<div class="description"><p>Use <code>$formFactory</code> to create a new instance of a <a href="api/angular.module.ng.$formFactory.Form"><code>Form</code></a>
+controller or to find the nearest form instance for a given DOM element.</p>
+
+<p>The form instance is a collection of widgets, and is responsible for life cycle and validation
+of widget.</p>
+
+<p>Keep in mind that both form and widget instances are <a href="api/angular.module.ng.$rootScope.Scope"><code>scopes</code></a>.</p></div>
+<h2 id="Usage">Usage</h2>
+<div class="usage"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">$formFactory([parentForm]);</pre>
+</div>
+<h3 id="Parameters">Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">parentForm<i>(optional)</i> – {Form=} – </code>
+<p>The form which should be the parent form of the new form controller.
+If none specified default to the <code>rootForm</code>.</p></li>
+</ul>
+<h3 id="Returns">Returns</h3>
+<div class="returns"><code ng:non-bindable="">{Form}</code>
+– <p>A new <a href="api/angular.module.ng.$formFactory.Form"><code>Form</code></a> instance.</p></div>
+</div>
+<div class="member method"><h2 id="Methods">Methods</h2>
+<ul class="methods"><li><h3 id="forElement">forElement(element)</h3>
+<div class="forelement"><p>Static method on <code>$formFactory</code> service.</p>
+
+<p>Retrieve the closest form for a given element or defaults to the <code>root</code> form. Used by the
+<a href="api/angular.widget.form"><code>form</code></a> element.</p><h4 id="Parameters">Parameters</h4>
+<ul class="parameters"><li><code ng:non-bindable="">element – {Element} – </code>
+<p>The element where the search for form should initiate.</p></li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="member property"><h2 id="Properties">Properties</h2>
+<ul class="properties"><li><h3 id="rootForm">rootForm</h3>
+<div class="rootform"><p>Static property on <code>$formFactory</code></p>
+
+<p>Each application (<a href="guide/dev_guide.scopes.internals">root scope</a>) gets a root form which
+is the top-level parent of all forms.</p></div>
+</li>
+</ul>
+</div>
+<h2 id="Example">Example</h2>
+<div class="example"><p>This example shows how one could write a widget which would enable data-binding on
+<code>contenteditable</code> feature of HTML.</p><doc:example>
+      <pre class="doc-source">
+        &lt;script&gt;
+          function EditorCntl() {
+            this.html = '&lt;b&gt;Hello&lt;/b&gt; &lt;i&gt;World&lt;/i&gt;!';
+          }
+
+          HTMLEditorWidget.$inject = ['$element', 'htmlFilter'];
+          function HTMLEditorWidget(element, htmlFilter) {
+            var self = this;
+
+            this.$parseModel = function() {
+              // need to protect for script injection
+              try {
+                this.$viewValue = htmlFilter(this.$modelValue || '').get();
+                if (this.$error.HTML) {
+                  // we were invalid, but now we are OK.
+                  this.$emit('$valid', 'HTML');
+                }
+              } catch (e) {
+                // if HTML not parsable invalidate form.
+                this.$emit('$invalid', 'HTML');
+              }
+            }
+
+            this.$render = function() {
+              element.html(this.$viewValue);
+            }
+
+            element.bind('keyup', function() {
+              self.$apply(function() {
+                self.$emit('$viewChange', element.html());
+              });
+            });
+          }
+
+          angular.directive('ng:contenteditable', function() {
+            return ['$formFactory', '$element', function ($formFactory, element) {
+              var exp = element.attr('ng:contenteditable'),
+                  form = $formFactory.forElement(element),
+                  widget;
+              element.attr('contentEditable', true);
+              widget = form.$createWidget({
+                scope: this,
+                model: exp,
+                controller: HTMLEditorWidget,
+                controllerArgs: {$element: element}});
+              // if the element is destroyed, then we need to notify the form.
+              element.bind('$destroy', function() {
+                widget.$destroy();
+              });
+            }];
+          });
+        &lt;/script&gt;
+        &lt;form name='editorForm' ng:controller="EditorCntl"&gt;
+          &lt;div ng:contenteditable="html"&gt;&lt;/div&gt;
+          &lt;hr/&gt;
+          HTML: &lt;br/&gt;
+          &lt;textarea ng:model="html" cols=80&gt;&lt;/textarea&gt;
+          &lt;hr/&gt;
+          &lt;pre&gt;editorForm = {{editorForm}}&lt;/pre&gt;
+        &lt;/form&gt;
+      </pre>
+      <pre class="doc-scenario">
+        it('should enter invalid HTML', function() {
+          expect(element('form[name=editorForm]').prop('className')).toMatch(/ng-valid/);
+          input('html').enter('&lt;');
+          expect(element('form[name=editorForm]').prop('className')).toMatch(/ng-invalid/);
+        });
+      </pre>
+    </doc:example></div>
+</div>

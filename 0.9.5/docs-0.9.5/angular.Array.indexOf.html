@@ -1,0 +1,45 @@
+<h1>angular.Array.indexOf</h1>
+<fieldset class="workInProgress">
+  <legend>Work In Progress</legend>
+  This page is currently being revised. It might be incomplete or contain inaccuracies.
+  
+</fieldset>
+<h2>Description</h2>
+<p>Determines the index of <code>value</code> in <code>array</code>.</p>
+
+<p>Note: this function is used to augment the Array type in angular expressions. See
+<a href="#!angular.Array"><code>angular.Array</code></a> for more info.</p>
+<h2>Usage</h2>
+<tt ng:non-bindable>
+angular.Array.indexOf(array, value);
+</tt>
+<h3>Parameters</h3>
+<ul>
+    <li><tt>array</tt> –
+      <tt>&#123;Array&#125;</tt>
+      <tt></tt>
+      – Array to search.</li>
+    <li><tt>value</tt> –
+      <tt>&#123;*&#125;</tt>
+      <tt></tt>
+      – Value to search for.</li>
+  </ul>
+<h3>Returns</h3>
+<tt>&#123;number&#125;</tt> The position of the element in <code>array</code>. The position is 0-based. <code>-1</code> is returned if the value can't be found.
+<h2>Example</h2>
+<doc:example>
+  <doc:source>
+&lt;div ng:init="books = ['Moby Dick', 'Great Gatsby', 'Romeo and Juliet']"&gt;&lt;/div&gt;
+&lt;input name='bookName' value='Romeo and Juliet'&gt; &lt;br&gt;
+Index of '{{bookName}}' in the list {{books}} is &lt;em&gt;{{books.$indexOf(bookName)}}&lt;/em&gt;.
+  </doc:source>
+  <doc:scenario>     it('should correctly calculate the initial index', function() {
+       expect(binding('books.$indexOf(bookName)')).toBe('2');
+     });
+     it('should recalculate', function() {
+       input('bookName').enter('foo');
+       expect(binding('books.$indexOf(bookName)')).toBe('-1');
+       input('bookName').enter('Moby Dick');
+       expect(binding('books.$indexOf(bookName)')).toBe('0');
+     });</doc:scenario>
+</doc:example>

@@ -1,0 +1,42 @@
+<h1>angular.scope.$become</h1>
+<fieldset class="workInProgress">
+  <legend>Work In Progress</legend>
+  This page is currently being revised. It might be incomplete or contain inaccuracies.
+  
+</fieldset>
+<fieldset class="deprecated">
+  <legend>Deprecated API</legend>
+  This method will be removed before 1.0
+</fieldset>
+<h2>Description</h2>
+<p>Modifies the scope to act like an instance of the given class by:</p>
+
+<ul>
+<li>copying the class's prototype methods</li>
+<li>applying the class's initialization function to the scope instance (without using the new
+operator)</li>
+</ul>
+
+<p>That makes the scope be a <code>this</code> for the given class's methods — effectively an instance of
+the given class with additional (scope) stuff. A scope can later <code>$become</code> another class.</p>
+
+<p><code>$become</code> gets used to make the current scope act like an instance of a controller class.
+This allows for use of a controller class in two ways.</p>
+
+<ul>
+<li>as an ordinary JavaScript class for standalone testing, instantiated using the new
+operator, with no attached view.</li>
+<li>as a controller for an angular model stored in a scope, "instantiated" by
+<code>scope.$become(ControllerClass)</code>.</li>
+</ul>
+
+<p>Either way, the controller's methods refer to the model  variables like <code>this.name</code>. When
+stored in a scope, the model supports data binding. When bound to a view, {{name}} in the
+HTML template refers to the same variable.</p>
+<h2>Usage</h2>
+<tt ng:non-bindable>
+angular.scope.$become();
+</tt>
+<h3>Parameters</h3>
+<ul>
+  </ul>

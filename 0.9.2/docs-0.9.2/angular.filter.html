@@ -1,0 +1,35 @@
+<h1>Overview</h1>
+
+<p>Filters are a standard way to format your data for display to the user. For example, you
+might have the number 1234.5678 and would like to display it as US currency: $1,234.57.
+Filters allow you to do just that. In addition to transforming the data, filters also modify
+the DOM. This allows the filters to for example apply css styles to the filtered output if
+certain conditions were met.</p>
+
+<h1>Standard Filters</h1>
+
+<p>The Angular framework provides a standard set of filters for common operations, including:
+{@link angular.filter.currency}, {@link angular.filter.json}, {@link angular.filter.number},
+and {@link angular.filter.html}. You can also add your own filters.</p>
+
+<h1>Syntax</h1>
+
+<p>Filters can be part of any {@link angular.scope} evaluation but are typically used with
+{{bindings}}. Filters typically transform the data to a new data type, formating the data in
+the process. Filters can be chained and take optional arguments. Here are few examples:</p>
+
+<ul><li>No filter: {{1234.5678}} =&gt; 1234.5678</li><li>Number filter: {{1234.5678|number}} =&gt; 1,234.57. Notice the “,” and rounding to two
+significant digits.</li><li>Filter with arguments: {{1234.5678|number:5}} =&gt; 1,234.56780. Filters can take optional
+arguments, separated by colons in a binding. To number, the argument “5” requests 5 digits
+to the right of the decimal point.</li></ul>
+
+<h1>Writing your own Filters</h1>
+
+<p>Writing your own filter is very easy: just define a JavaScript function on <code>angular.filter</code>.
+The framework passes in the input value as the first argument to your function. Any filter
+arguments are passed in as additional function arguments.</p>
+
+<p>You can use these variables in the function:</p>
+
+<ul><li><code>this</code> — The current scope.</li><li><code>$element</code> — The DOM element containing the binding. This allows the filter to manipulate
+the DOM in addition to transforming the input.</li></ul>

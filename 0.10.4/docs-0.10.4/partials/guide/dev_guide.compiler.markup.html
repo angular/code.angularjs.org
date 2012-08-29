@@ -1,0 +1,66 @@
+<h1>Developer Guide: Angular HTML Compiler: Understanding Angular Markup</h1>
+<div class="developer-guide-angular-html-compiler-understanding-angular-markup"><p>Markup in angular is a feature that you can use in templates to transform the content of DOM
+elements prior to the compile phase (in which elements are compiled and link functions are
+returned.  See the <a href="guide/dev_guide.compiler">compiler docs</a> for details on how the compiler
+works.)  The ability to make pre-compile changes to DOM elements lets you create shorthand for
+<a href="api/angular.widget"><code>widget</code></a> and <a href="api/angular.directive"><code>directive</code></a> declarations.</p>
+
+<p>Angular provides one built-in markup feature: the double curly-braces used to declare binding
+points (between the model and view) for angular expressions.  You can also create your own custom
+markup.</p>
+
+<h2>Using Double Curly-brace Markup (<code>{{ }}</code>)</h2>
+
+<p>The double curly-brace (<code>{{ }}</code>) markup translates an enclosed expression into an <a href="api/angular.directive.ng:bind"><code>ng:bind</code></a> directive:</p><div ng:non-bindable><pre class="brush: js;">
+{{expression}}
+</pre></div><p>is transformed to:</p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+&lt;span ng:bind="expression"&gt;&lt;/span&gt;
+</pre></div><p>Markup is useful for the simple reason that <code>{{1+2}}</code> is easier to write and understand than <code>&lt;span
+ng:bind="1+2"&gt;&lt;/span&gt;</code>. After markup shorthand is expanded into the DOM elements it represents, the
+expanded elements are then <a href="guide/dev_guide.compiler">compiled</a> normally.</p>
+
+<h2>Creating Custom Markup</h2>
+
+<p>Let's say you want to define markup that transforms <code>---</code> into a horizontal rule (<code>&lt;hr/&gt;</code>):</p><div ng:non-bindable><pre class="brush: js;">
+header
+---
+footer
+</pre></div><p>should translate to:</p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+header
+&lt;hr/&gt;
+footer
+</pre></div><p>Here is how you could extend the angular compiler to create the "---" markup:</p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+angular.markup('---', function(text, textNode, parentElement) {
+    var compiler = this;
+    var index = text.indexOf('---');
+    if (index &gt; -1) {
+        textNode.after(text.substring(index + 3));
+        textNode.after(angular.element('&lt;hr&gt;'));
+        textNode.after(text.substring(0, index));
+        textNode.remove();
+    }
+});
+</pre></div><p>Unlike the way the compiler processes <a href="api/angular.widget"><code>widgets</code></a> and <a href="api/angular.directive"><code>directives</code></a> (matching the name of the handler function to a DOM element or
+attribute name), the compiler calls every markup handler for every text node, giving the handler a
+chance to transform the text. The markup handler needs to find all the matches in the text.</p>
+
+<h3>Attribute Markup</h3>
+
+<p>Attribute markup extends the angular compiler in a very similar way to markup, except that it
+allows you to modify the state of attribute text rather then the content of a node.</p><div ng:non-bindable><pre class="brush: js;">
+angular.attrMarkup('extraClass', function(attrValue, attrName, element){
+ if (attrName == 'additional-class') {
+   element.addClass(attrValue);
+ }
+});
+</pre></div><h3>Related Topics</h3>
+
+<ul>
+<li><a href="guide/dev_guide.compiler">Angular HTML Compiler</a></li>
+</ul>
+
+<h3>Related API</h3>
+
+<ul>
+<li><a href="api/angular.compile"><code>Compiler API Reference</code></a></li>
+</ul></div>

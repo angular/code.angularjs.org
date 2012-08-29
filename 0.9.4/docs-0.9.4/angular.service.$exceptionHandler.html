@@ -1,0 +1,25 @@
+<h1><tt>angular.service.$exceptionHandler</tt></h1>
+<fieldset class="workInProgress">
+  <legend>Work In Progress</legend>
+  This page is currently being revised. It might be incomplete or contain inaccuracies.
+  
+</fieldset>
+<h2>Description</h2>
+<p>Any uncaught exception in <tt>&lt;angular/&gt;</tt> is delegated to this service.
+The default implementation simply delegates to $log.error which logs it into
+the browser console.</p>
+
+<p>When unit testing it is useful to have uncaught exceptions propagate
+to the test so the test will fail rather than silently log the exception
+to the browser console. For this purpose you can override this service with
+a simple rethrow. </p>
+<h2>Dependencies</h2>
+<ul>
+    <li><tt>$log</tt></li>
+  </ul>
+<h2>Methods</h2>
+<ul>
+  </ul>
+<h2>Properties</h2>
+<ul>
+  </ul>

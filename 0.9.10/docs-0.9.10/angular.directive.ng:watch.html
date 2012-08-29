@@ -1,0 +1,26 @@
+<h1>angular.directive.ng:watch</h1>
+<div class="angular-directive-ng-watch"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<div class="description"><p>The <code>ng:watch</code> allows you watch a variable and then execute 
+an evaluation on variable change.</p></div>
+<h2>Dependencies</h2>
+<ul class="dependencies"></ul>
+<h2>Usage</h2>
+<div class="usage"><pre class="brush: js; html-script: true;">&lt;ANY ng:watch="expression"&gt;
+   ...
+&lt;/ANY&gt;</pre>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">expression – {expression} – </code>
+<p>to eval.</p></li>
+</ul>
+</div>
+<h2>Example</h2>
+<div class="example"><p>Notice that the counter is incremented 
+every time you change the text.</p><doc:example><doc:source>&lt;div ng:init="counter=0" ng:watch="name: counter = counter+1"&gt;
+  &lt;input type="text" name="name" value="hello"&gt;&lt;br/&gt;
+  Change counter: {{counter}} Name: {{name}}
+&lt;/div&gt;</doc:source>
+</doc:example>
+</div>
+</div>

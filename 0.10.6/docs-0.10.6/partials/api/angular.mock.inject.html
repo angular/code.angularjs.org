@@ -1,0 +1,54 @@
+<h1 id="angular.mock.inject">angular.mock.inject</h1>
+<div class="angular-mock-inject"><h2 id="Description">Description</h2>
+<div class="description"><p><em>NOTE</em>: This is function is also published on window for easy access.<br>
+<em>NOTE</em>: Only available with <a href="http://pivotal.github.com/jasmine/">jasmine</a>.</p>
+
+<p>The inject function wraps a function into an injectable function. The inject() creates new
+instance of <a href="api/angular.module.AUTO.$injector"><code>$injector</code></a> per test, which is then used for
+resolving references.</p>
+
+<p>See also <a href="api/angular.mock.module"><code>module</code></a></p>
+
+<p>Example of what a typical jasmine tests looks like with the inject method.</p><div ng:non-bindable><pre class="brush: js;">
+
+  angular.module('myTestsModule', [], function($provide) {
+    $provide.value('mode', 'test');
+  });
+
+  describe('MyApp', function() {
+
+    // you can list multiple module function or aliases
+    // which will be used in creating the injector
+    beforeEach(module('myTestModule', function($provide) {
+      // $provide service is configured as needed
+      $provide.value('version', 'v1.0.1');
+    });
+
+    // The inject() is used to get references.
+    it('should provide a version', inject(function(mode, version) {
+      expect(version).toEqual('v1.0.1');
+      expect(mode).toEqual('test');
+    });
+
+    // The inject and module method can also be used inside of the it or beforeEach
+    it('should override a version and test the new version is injected', function(){
+      module(function($provide) {
+        $provide.value('version', 'overridden'); // override version here
+      });
+      inject(function(version) {
+        expect(version).toEqual('overridden');
+      });
+    ));
+
+  });
+
+</pre></div></div>
+<h2 id="Usage">Usage</h2>
+<div class="usage"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">inject(fns);</pre>
+</div>
+<h3 id="Parameters">Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">fns – {...Function} – </code>
+<p>any number of functions which will be injected using the injector.</p></li>
+</ul>
+</div>
+</div>

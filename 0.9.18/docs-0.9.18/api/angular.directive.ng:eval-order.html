@@ -1,0 +1,55 @@
+<h1>angular.directive.ng:eval-order</h1>
+<div class="angular-directive-ng-eval-order"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<div class="description"><p>Normally the view is updated from top to bottom. This usually is
+not a problem, but under some circumstances the values for data
+is not available until after the full view is computed. If such
+values are needed before they are computed the order of
+evaluation can be change using ng:eval-order</p></div>
+<h2>Usage</h2>
+<div class="usage"><pre class="brush: js; html-script: true;">&lt;ANY ng:eval-order="priority"&gt;
+   ...
+&lt;/ANY&gt;</pre>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">priority<i>(optional=0)</i> – {integer|string} – </code>
+<p>priority integer, or FIRST, LAST constant</p></li>
+</ul>
+</div>
+<h2>Example</h2>
+<div class="example"><doc:example>
+<pre class="doc-source">
+ &lt;div&gt;TOTAL: without ng:eval-order {{ items.$sum('total') | currency }}&lt;/div&gt;
+ &lt;div ng:eval-order='LAST'&gt;TOTAL: with ng:eval-order {{ items.$sum('total') | currency }}&lt;/div&gt;
+ &lt;table ng:init="items=[{qty:1, cost:9.99, desc:'gadget'}]"&gt;
+   &lt;tr&gt;
+     &lt;td&gt;QTY&lt;/td&gt;
+     &lt;td&gt;Description&lt;/td&gt;
+     &lt;td&gt;Cost&lt;/td&gt;
+     &lt;td&gt;Total&lt;/td&gt;
+     &lt;td&gt;&lt;/td&gt;
+   &lt;/tr&gt;
+   &lt;tr ng:repeat="item in items"&gt;
+     &lt;td&gt;&lt;input name="item.qty"/&gt;&lt;/td&gt;
+     &lt;td&gt;&lt;input name="item.desc"/&gt;&lt;/td&gt;
+     &lt;td&gt;&lt;input name="item.cost"/&gt;&lt;/td&gt;
+     &lt;td&gt;{{item.total = item.qty * item.cost | currency}}&lt;/td&gt;
+     &lt;td&gt;&lt;a href="" ng:click="items.$remove(item)"&gt;X&lt;/a&gt;&lt;/td&gt;
+   &lt;/tr&gt;
+   &lt;tr&gt;
+     &lt;td colspan="3"&gt;&lt;a href="" ng:click="items.$add()"&gt;add&lt;/a&gt;&lt;/td&gt;
+     &lt;td&gt;{{ items.$sum('total') | currency }}&lt;/td&gt;
+   &lt;/tr&gt;
+ &lt;/table&gt;
+</pre>
+<pre class="doc-scenario">
+  it('should check ng:format', function(){
+    expect(using('.doc-example-live div:first').binding("items.$sum('total')")).toBe('$9.99');
+    expect(using('.doc-example-live div:last').binding("items.$sum('total')")).toBe('$9.99');
+    input('item.qty').enter('2');
+    expect(using('.doc-example-live div:first').binding("items.$sum('total')")).toBe('$9.99');
+    expect(using('.doc-example-live div:last').binding("items.$sum('total')")).toBe('$19.98');
+  });
+</pre>
+</doc:example></div>
+</div>

@@ -1,0 +1,33 @@
+<h1>angular.validator.number</h1>
+<div class="angular-validator-number"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<div class="description"><p>Use number validator to restrict the input to numbers with an
+optional range. (See integer for whole numbers validator).</p></div>
+<h2>Dependencies</h2>
+<ul class="dependencies"></ul>
+<h2>Usage</h2>
+<div class="usage"><h3>In HTML Template Binding</h3>
+<div class="in-html-template-binding"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">&lt;input type="text" ng:validate="number[:min][:max]"/&gt;</pre>
+</div>
+</div>
+<h3>In JavaScript</h3>
+<div class="in-javascript"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">angular.validator.number(value[, min][, max])</pre>
+</div>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">value – {string} – </code>
+<p>value to validate</p></li>
+<li><code ng:non-bindable="">min<i>(optional=MIN_INT)</i> – {int} – </code>
+<p>minimum value.</p></li>
+<li><code ng:non-bindable="">max<i>(optional=MAX_INT)</i> – {int} – </code>
+<p>maximum value.</p></li>
+</ul>
+</div>
+<h2>Example</h2>
+<div class="example"><doc:example><doc:source>Enter number: &lt;input name="n1" ng:validate="number" &gt; &lt;br&gt;
+Enter number greater than 10: &lt;input name="n2" ng:validate="number:10" &gt; &lt;br&gt;
+Enter number between 100 and 200: &lt;input name="n3" ng:validate="number:100:200" &gt; &lt;br&gt;</doc:source>
+</doc:example>
+</div>
+</div>

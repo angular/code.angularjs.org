@@ -1,0 +1,37 @@
+<h1>Developer Guide: Templates: Working With CSS in Angular</h1>
+<div class="developer-guide-templates-working-with-css-in-angular"><p>Angular sets these CSS classes. It is up to your application to provide useful styling.</p>
+
+<h2>CSS classes used by angular</h2>
+
+<ul>
+<li><p><code>ng-invalid</code>, <code>ng-valid</code></p>
+
+<ul><li><strong>Usage:</strong> angular applies this class to an input widget element if that element's input does
+notpass validation. (see <a href="api/angular.widget.input"><code>input</code></a> widget).</li></ul></li>
+<li><p><code>ng-pristine</code>, <code>ng-dirty</code></p>
+
+<ul><li><strong>Usage:</strong> angular <a href="api/angular.widget.input"><code>input</code></a> widget applies <code>ng-pristine</code> class
+to a new input widget element which did not have user interaction. Once the user interacts with
+the input widget the class is changed to <code>ng-dirty</code>.</li></ul></li>
+</ul>
+
+<h2>Marking CSS classes</h2>
+
+<ul>
+<li><p><code>ng-widget</code>, <code>ng-directive</code></p>
+
+<ul><li><strong>Usage:</strong> angular sets these class on elements where <a href="api/angular.widget"><code>widget</code></a> or
+<a href="api/angular.directive"><code>directive</code></a> has bound to.</li></ul></li>
+<li><p>Old browser support</p>
+
+<ul><li>Pre v9, IE browsers could not select <code>ng:include</code> elements in CSS, because of the <code>:</code>
+character. For this reason angular also sets <code>ng-include</code> class on any element which has <code>:</code>
+character in the name by replacing <code>:</code> with <code>-</code>.</li></ul></li>
+</ul>
+
+<h3>Related Topics</h3>
+
+<ul>
+<li><a href="guide/dev_guide.templates">Angular Templates</a></li>
+<li><a href="guide/dev_guide.forms">Angular Forms</a></li>
+</ul></div>

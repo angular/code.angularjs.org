@@ -1,0 +1,23 @@
+<h1>angular.scope.$emit</h1>
+<div class="angular-scope-emit"><h2>Description</h2>
+<div class="description"><p>Dispatches an event <code>name</code> upwards through the scope hierarchy notifying the
+registered <a href="#!/api/angular.scope.$on"><code>angular.scope.$on</code></a> listeners.</p>
+
+<p>The event life cycle starts at the scope on which <code>$emit</code> was called. All
+<a href="#!/api/angular.scope.$on"><code>listeners</code></a> listening for <code>name</code> event on this scope get notified.
+Afterwards, the event traverses upwards toward the root scope and calls all registered
+listeners along the way. The event will stop propagating if one of the listeners cancels it.</p>
+
+<p>Any exception emmited from the <a href="#!/api/angular.scope.$on"><code>listeners</code></a> will be passed
+onto the <a href="#!/api/angular.service.$exceptionHandler"><code>$exceptionHandler</code></a> service.</p></div>
+<h2>Usage</h2>
+<div class="usage"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">angular.scope.$emit(name, args);</pre>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">name – {string} – </code>
+<p>Event name to emit.</p></li>
+<li><code ng:non-bindable="">args – {...*} – </code>
+<p>Optional set of arguments which will be passed onto the event listeners.</p></li>
+</ul>
+</div>
+</div>

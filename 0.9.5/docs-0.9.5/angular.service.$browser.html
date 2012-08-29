@@ -1,0 +1,38 @@
+<h1><tt>angular.service.$browser</tt></h1>
+<fieldset class="workInProgress">
+  <legend>Work In Progress</legend>
+  This page is currently being revised. It might be incomplete or contain inaccuracies.
+  
+</fieldset>
+<h2>Description</h2>
+<p>Represents the browser.</p>
+<h2>Dependencies</h2>
+<ul>
+    <li><tt>$log</tt></li>
+  </ul>
+<h2>Methods</h2>
+<ul>
+    <li><tt>$browser#xhr</tt>: <p>Send ajax request</p></li>
+    <li><tt>$browser#notifyWhenNoOutstandingRequests</tt>: <p>Represents the browser.</p></li>
+    <li><tt>$browser#poll</tt>: <p>Represents the browser.</p></li>
+    <li><tt>$browser#addPollFn</tt>: <p>Adds a function to the list of functions that poller periodically executes</p></li>
+    <li><tt>$browser#startPoller</tt>: <p>Configures the poller to run in the specified intervals, using the specified
+setTimeout fn and kicks it off.</p></li>
+    <li><tt>$browser#setUrl</tt>: <p>Sets browser's url</p></li>
+    <li><tt>$browser#getUrl</tt>: <p>Get current browser's url</p></li>
+    <li><tt>$browser#cookies</tt>: <p>The cookies method provides a 'private' low level access to browser cookies.
+It is not meant to be used directly, use the $cookie service instead.</p>
+<p>The return values vary depending on the arguments that the method was called with as follows:</p>
+<ul>
+  <li>cookies() -> hash of all cookies, this is NOT a copy of the internal state, so do not modify it</li>
+  <li>cookies(name, value) -> set name to value, if value is undefined delete the cookie</li>
+  <li>cookies(name) -> the same as (name, undefined) == DELETES (no one calls it right now that way)</li>
+</ul></li>
+    <li><tt>$browser#hover</tt>: <p>Set hover listener.</p></li>
+    <li><tt>$browser#bind</tt>: <p>Register hover function to real browser</p></li>
+    <li><tt>$browser#addCss</tt>: <p>Adds a stylesheet tag to the head.</p></li>
+    <li><tt>$browser#addJs</tt>: <p>Adds a script tag to the head.</p></li>
+  </ul>
+<h2>Properties</h2>
+<ul>
+  </ul>

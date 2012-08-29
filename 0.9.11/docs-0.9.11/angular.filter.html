@@ -1,0 +1,81 @@
+<h1>angular.filter</h1>
+<div class="angular-filter"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Overview</h2>
+
+<p>Filters are a standard way to format your data for display to the user. For example, you
+might have the number 1234.5678 and would like to display it as US currency: $1,234.57.
+Filters allow you to do just that. In addition to transforming the data, filters also modify
+the DOM. This allows the filters to for example apply css styles to the filtered output if
+certain conditions were met.</p>
+
+<h2>Standard Filters</h2>
+
+<p>The Angular framework provides a standard set of filters for common operations, including:
+<a href="#!angular.filter.currency"><code>currency</code></a>, <a href="#!angular.filter.json"><code>json</code></a>,
+<a href="#!angular.filter.number"><code>number</code></a>, and <a href="#!angular.filter.html"><code>html</code></a>. You can also add
+your own filters.</p>
+
+<h2>Syntax</h2>
+
+<p>Filters can be part of any <a href="#!angular.scope"><code>angular.scope</code></a> evaluation but are typically used with
+{{bindings}}. Filters typically transform the data to a new data type, formating the data in
+the process. Filters can be chained and take optional arguments. Here are few examples:</p>
+
+<ul>
+<li>No filter: {{1234.5678}} => 1234.5678</li>
+<li>Number filter: {{1234.5678|number}} => 1,234.57. Notice the “,” and rounding to two
+significant digits.</li>
+<li>Filter with arguments: {{1234.5678|number:5}} => 1,234.56780. Filters can take optional
+arguments, separated by colons in a binding. To number, the argument “5” requests 5 digits
+to the right of the decimal point.</li>
+</ul>
+
+<h2>Writing your own Filters</h2>
+
+<p>Writing your own filter is very easy: just define a JavaScript function on <code>angular.filter</code>.
+The framework passes in the input value as the first argument to your function. Any filter
+arguments are passed in as additional function arguments.</p>
+
+<p>You can use these variables in the function:</p>
+
+<ul>
+<li><code>this</code> — The current scope.</li>
+<li><code>this.$element</code> — The DOM element containing the binding. This allows the filter to manipulate
+the DOM in addition to transforming the input.</li>
+</ul><h2>Example</h2>
+<div class="example"><p>The following example filter reverses a text string. In addition, it conditionally makes the
+text upper-case (to demonstrate optional arguments) and assigns color (to demonstrate DOM
+modification).</p><doc:example>
+<doc:source>
+  &lt;script type="text/javascript"&gt;
+    angular.filter('reverse', function(input, uppercase, color) {
+      var out = "";
+      for (var i = 0; i &lt; input.length; i++) {
+        out = input.charAt(i) + out;
+      }
+      if (uppercase) {
+        out = out.toUpperCase();
+      }
+      if (color) {
+        this.$element.css('color', color);
+      }
+      return out;
+    });
+  &lt;/script&gt;
+
+  &lt;input name="text" type="text" value="hello" /&gt;&lt;br&gt;
+  No filter: {{text}}&lt;br&gt;
+  Reverse: {{text|reverse}}&lt;br&gt;
+  Reverse + uppercase: {{text|reverse:true}}&lt;br&gt;
+  Reverse + uppercase + blue:  {{text|reverse:true:"blue"}}
+</doc:source>
+<doc:scenario>
+ it('should reverse text', function(){
+   expect(binding('text|reverse')).toEqual('olleh');
+   input('text').enter('ABC');
+   expect(binding('text|reverse')).toEqual('CBA');
+ });
+</doc:scenario>
+</doc:example></div>
+</div>

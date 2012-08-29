@@ -1,0 +1,25 @@
+<h1>angular.scope.$new</h1>
+<div class="angular-scope-new"><h2>Description</h2>
+<div class="description"><p>Creates a new child <a href="#!/api/angular.scope"><code>scope</code></a>. The new scope can optionally behave as a
+controller. The parent scope will propagate the <a href="#!/api/angular.scope.$digest"><code>$digest()</code></a> and
+<a href="#!/api/angular.scope.$digest"><code>$digest()</code></a> events. The scope can be removed from the scope
+hierarchy using <a href="#!/api/angular.scope.$destroy"><code>$destroy()</code></a>.</p>
+
+<p><a href="#!/api/angular.scope.$destroy"><code>$destroy()</code></a> must be called on a scope when it is desired for
+the scope and its child scopes to be permanently detached from the parent and thus stop
+participating in model change detection and listener notification by invoking.</p></div>
+<h2>Usage</h2>
+<div class="usage"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">angular.scope.$new([Class], curryArguments);</pre>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">Class<i>(optional)</i> – {function()} – </code>
+<p>Constructor function which the scope should be applied to the scope.</p></li>
+<li><code ng:non-bindable="">curryArguments – {...*} – </code>
+<p>Any additional arguments which are curried into the constructor.
+See <a href="#!/guide/dev_guide.di">dependency injection</a>.</p></li>
+</ul>
+<h3>Returns</h3>
+<div class="returns"><code ng:non-bindable="">{Object}</code>
+– <p>The newly created child scope.</p></div>
+</div>
+</div>

@@ -1,0 +1,44 @@
+<h1>Developer Guide: Angular HTML Compiler: Comparing Directives and Attribute Widgets</h1>
+<div class="developer-guide-angular-html-compiler-comparing-directives-and-attribute-widgets"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<p>Although directives and <a href="guide/dev_guide.compiler.widgets">attribute widgets</a> appear the same in a
+template (<code>ng:init</code> is a directive, <code>ng:repeat</code> is an attribute widget), there is a difference in
+the order in which they are evaluated.  The user of existing directives or widgets cannot determine
+the order of evaluation. The evaluation order is the responsibility of the developer creating
+custom directives and widgets.</p>
+
+<p>For example, consider this piece of HTML, which uses the <code>ng:repeat</code>, <code>ng:init</code>, and <code>ng:bind</code>
+widget and directives:</p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+&lt;ul ng:init="people=['mike', 'mary']"&gt;
+&lt;li ng:repeat="person in people"
+    ng:init="a=a+1"
+    ng:bind="person"&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</pre></div><p>Notice that the order of execution matters here. Because we want to run the <code>ng:init="a=a+1</code> and
+<code>ng:bind="person"</code> once for each <code>person in people</code>, we need to execute <a href="api/angular.widget.@ng:repeat"><code>ng:repeat</code></a> to make copies of the <code>&lt;li&gt;</code> element before we run the
+<a href="api/angular.directive.ng:init"><code>ng:init</code></a>, and <a href="api/angular.directive.ng:bind"><code>ng:bind</code></a>
+for each of the <code>&lt;li&gt;</code>copies.</p>
+
+<p>If you implemented <code>ng:repeat</code> as a directive, there would be no guarantee that the attributes
+<code>ng:repeat</code>, <code>ng:init</code>, and <code>ng:bind</code> would be evaluated in the order they are declared, because
+the order of element attributes in HTML is not significant to the browser.</p>
+
+<p>So, when creating a custom HTML attribute, you will have to consider whether a directive or a
+widget is more appropriate. When the order of execution doesn't matter, directives are the right
+choice. In a situation where the order matters and one attribute should be processed with a higher
+priority than others, use a widget for the attribute that must be processed first.</p>
+
+<h3>Related Topics</h3>
+
+<ul>
+<li><a href="guide/dev_guide.compiler.directives">Understanding Angular Directives</a></li>
+<li><a href="guide/dev_guide.compiler.widgets">Understanding Angular Widgets</a></li>
+</ul>
+
+<h3>Related API:</h3>
+
+<ul>
+<li><a href="api/angular.directive"><code>Directive API</code></a></li>
+<li><a href="api/angular.widget"><code>Widget API</code></a></li>
+</ul></div>

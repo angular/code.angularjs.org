@@ -1,0 +1,161 @@
+<h1>Developer Guide: Compiler</h1>
+<div class="developer-guide-compiler"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Compiler</h2>
+
+<p>While angular might look like just a cool way to build web applications, the core of angular is
+actually an HTML compiler. The default HTML transformations that this compiler provides are useful
+for building generic apps, but you can also use them to create a domain-specific language for
+building specific types of web applications.</p>
+
+<p>The compiler allows you to add behavior to existing HTML through widgets, directives, and text
+markup.</p>
+
+<p>All of this compilation happens in the web browser, meaning no server is involved.</p>
+
+<h2>The compilation process</h2>
+
+<p>This section describes the steps that angular's HTML compiler goes through. If you use
+<code>ng:autobind</code> in your application, this compilation process happens automatically when the
+application is initialized (e.g. when the user loads the app in a browser). If you're an advanced
+user using manual bind mode, you can decide when and how often the compilation happens.</p>
+
+<p>First, a bit of background of what the compilation step is for. Every type of
+<a href="#!angular.widget"><code>widget</code></a>, <a href="#!angular.markup"><code>markup</code></a>, and
+<a href="#!angular.directive"><code>directive</code></a> in angular is defined with a compile function, and that
+compile function returns an optional link function. Here is the relationship between the two:</p>
+
+<ul>
+<li><strong>compile function</strong> - registers a listener for the widget, markup, or directive's expression.
+This function is called exactly once.</li>
+<li><strong>link function</strong> - sets up the listener. This function can be called multiple times, once per
+cloned DOM element (e.g. repeating element).</li>
+</ul>
+
+<p>Note that angular's built-in widgets, markup, and directives have predefined compile and link
+functions that you don't need to modify. However, if you're writing your own widgets, markup, or
+directives, you write compile and link functions. Refer to the Compiler API for more information.</p>
+
+<p>When the HTML compiler compiles a page, it goes through 3 phases: Compile, Create Root Scope, and
+Link.</p>
+
+<h3>1. Compile Phase</h3>
+
+<ul>
+<li>Recursively traverse the DOM, depth-first.</li>
+<li>Look for a matching compile function of type widget, then markup, then directive.</li>
+<li>If a compile function is found then execute it.</li>
+<li>When the compile function completes, it should return a link function. Aggregate this link
+function with all link functions returned previously by step 1c.</li>
+<li>Repeat steps 1c and 1d for all compile functions found. The result of the compilation step is
+the aggregate link function, which comprises all of the individual link functions.</li>
+</ul>
+
+<h3>2. Create Root Scope</h3>
+
+<ul>
+<li>Inject all of the services into the root scope.</li>
+</ul>
+
+<h3>3. Link Phase</h3>
+
+<ul>
+<li>Execute the aggregate link function with the root scope. The aggregate link function calls all
+the individual link functions that were generated in the compile phase.</li>
+<li>If there are any clones of the DOM caused by repeating elements, call the link function multiple
+times, one for each repeating item.</li>
+</ul>
+
+<p>Note that while the compile function is executed exactly once, the link function can be executed
+multiple times: once for each iteration in a repeater.</p>
+
+<h2>Example</h2>
+
+<p>The compilation process is best understood through example. Let's say that in your namespace my,
+you want to create a new DOM element <my:greeter/>, which should display a greeting.</p>
+
+<p>If we want this HTML source:</p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+&lt;div ng:init="salutation='Hello'; name='World'"&gt;
+  &lt;my:greeter salutation="salutation" name="name"/&gt;
+&lt;/div&gt;
+</pre></div><p>To produce this DOM:</p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+&lt;div ng:init="salutation='Hello'; name='World'"&gt;
+  &lt;my:greeter salutation="salutation" name="name"/&gt;
+    &lt;span class="salutation"&gt;Hello&lt;/span&gt;
+    &lt;span class="name"&gt;World&lt;/span&gt;!
+  &lt;/my:greeter&gt;
+&lt;/div&gt;
+</pre></div><p>Write this widget definition (assuming you've already declared the my namespace in the page):</p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+angular.widget('my:greeter', function(compileElement){
+  var compiler = this;
+  compileElement.css('display', 'block');
+  var salutationExp = compileElement.attr('salutation');
+  var nameExp = compileElement.attr('name');
+  return function(linkElement){
+    var salutationSpan = angular.element('&lt;span class="salutation"&gt;&lt;/span');
+    var nameSpan = angular.element('&lt;span class="name"&gt;&lt;/span&gt;');
+    linkElement.append(salutationSpan);
+    linkElement.append(compiler.text(' '));
+    linkElement.append(nameSpan);
+    linkElement.append(compiler.text('!'));
+    this.$watch(salutationExp, function(value){
+      salutationSpan.text(value);
+    });
+    this.$watch(nameExp, function(value){
+    nameSpan.text(value);
+    });
+  };
+});
+</pre></div><p>Note: For more about widgets, see <a href="#!angular.widget"><code>Widget</code></a>.</p>
+
+<h3>Compilation process for this example</h3>
+
+<p>Here are the steps that the compiler goes through for the page that contains this widget definition:</p>
+
+<h4>Compile Phase</h4>
+
+<ul>
+<li>Recursively traverse the DOM depth-first.</li>
+<li>Find the angular.widget definition.</li>
+<li>Find and execute the widget's compileElement function, which includes the following steps:
+<ul><li>Add a style element with attribute display: block; to the template DOM so that the browser
+knows to treat the element as block element for rendering. (Note: because this style element
+was added on the template compileElement, this style is automatically applied to any clones
+of the template (i.e. any repeating elements)).</li>
+<li>Extract the salutation and name HTML attributes as angular expressions.</li></ul></li>
+<li>Return the aggregate link function, which includes just one link function in this example.</li>
+</ul>
+
+<h4>Link Phase</h4>
+
+<ul>
+<li>Execute the aggregate link function, which includes the following steps:
+<ul><li>Create a <span> element set to the salutation class</li>
+<li>Create a <span> element set to the name class.</li></ul></li>
+<li>Add the span elements to the linkElement. (Note: be careful not to add them to the
+compileElement, because that's the template.)</li>
+<li>Set up watches on the expressions. When an expression changes, copy the data to the
+corresponding spans.</li>
+</ul>
+
+<h3>Compiler API</h3>
+
+<p>If you define your own widgets, markup, or directives, you need to access the compiler API.
+This section describes the methods on the compiler that you can call.</p>
+
+<p>Note: As of 12 August 2010, these methods are subject to change.</p>
+
+<p>Recall that the compile function's this is a reference to the compiler.</p>
+
+<ul>
+<li><code>compile(element)</code> - returns <code>linker</code> - Invoke new instance of compiler to compile a DOM element
+and return a linker function. You can apply the linker function to the original element or a
+clone of the original element. The linker function returns a scope.</li>
+<li><code>comment(commentText)</code> - returns <code>element</code> - Create a comment element.</li>
+<li><code>element(elementName)</code> - returns <code>element</code> - Create an element by name.</li>
+<li><code>text(text)</code> - returns <code>element</code> - Create a text element.</li>
+<li><code>descend([set])</code> - returns <code>descend</code> - State  Get or set the current descend state. If true the
+compiler will descend to children elements.</li>
+<li><code>directives([set])</code> - returns <code>directive</code> - State Get or set the current directives processing
+state. The compiler will process directives only when directives set to true.</li>
+</ul></div>

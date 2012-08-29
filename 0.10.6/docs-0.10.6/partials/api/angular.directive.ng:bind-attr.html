@@ -1,0 +1,67 @@
+<h1 id="angular.directive.ng.bind.attr">angular.directive.ng:bind-attr</h1>
+<div class="angular-directive-ng-bind-attr"><h2 id="Description">Description</h2>
+<div class="description"><p>The <code>ng:bind-attr</code> attribute specifies that a
+<a href="guide/dev_guide.templates.databinding">databinding</a>  should be created between a particular
+element attribute and a given expression. Unlike <code>ng:bind</code>, the <code>ng:bind-attr</code> contains one or
+more JSON key value pairs; each pair specifies an attribute and the
+<a href="guide/dev_guide.expressions">expression</a> to which it will be mapped.</p>
+
+<p>Instead of writing <code>ng:bind-attr</code> statements in your HTML, you can use double-curly markup to
+specify an <tt ng:non-bindable>{{expression}}</tt> for the value of an attribute.
+At compile time, the attribute is translated into an
+<code>&lt;span ng:bind-attr="{attr:expression}"&gt;&lt;/span&gt;</code>.</p>
+
+<p>The following HTML snippet shows how to specify <code>ng:bind-attr</code>:</p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+  &lt;a ng:bind-attr='{"href":"http://www.google.com/search?q={{query}}"}'&gt;Google&lt;/a&gt;
+</pre></div><p>This is cumbersome, so as we mentioned using double-curly markup is a prefered way of creating
+this binding:</p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+  &lt;a href="http://www.google.com/search?q={{query}}"&gt;Google&lt;/a&gt;
+</pre></div><p>During compilation, the template with attribute markup gets translated to the ng:bind-attr form
+mentioned above.</p>
+
+<p><em>Note</em>: You might want to consider using <a href="api/angular.directive.ng:href"><code>ng:href</code></a> instead of
+<code>href</code> if the binding is present in the main application template (<code>index.html</code>) and you want to
+make sure that a user is not capable of clicking on raw/uncompiled link.</p></div>
+<h2 id="Usage">Usage</h2>
+<div class="usage"><pre class="brush: js; html-script: true;">&lt;ANY ng:bind-attr="attribute_json"&gt;
+   ...
+&lt;/ANY&gt;</pre>
+<h3 id="Parameters">Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">attribute_json – {string} – </code>
+<p>one or more JSON key-value pairs representing
+the attributes to replace with expressions. Each key matches an attribute
+which needs to be replaced. Each value is a text template of
+the attribute with the embedded
+<tt ng:non-bindable>{{expression}}</tt>s. Any number of
+key-value pairs can be specified.</p></li>
+</ul>
+</div>
+<h2 id="Example">Example</h2>
+<div class="example"><p>Enter a search string in the Live Preview text box and then click "Google". The search executes instantly.</p><doc:example>
+  <pre class="doc-source">
+    &lt;script&gt;
+      function Ctrl() {
+        this.query = 'AngularJS';
+      }
+    &lt;/script&gt;
+    &lt;div ng:controller="Ctrl"&gt;
+     Google for:
+     &lt;input type="text" ng:model="query"/&gt;
+     &lt;a ng:bind-attr='{"href":"http://www.google.com/search?q={{query}}"}'&gt;
+       Google
+     &lt;/a&gt; (ng:bind-attr) |
+     &lt;a href="http://www.google.com/search?q={{query}}"&gt;Google&lt;/a&gt;
+     (curly binding in attribute val)
+    &lt;/div&gt;
+  </pre>
+  <pre class="doc-scenario">
+    it('should check ng:bind-attr', function() {
+      expect(using('.doc-example-live').element('a').attr('href')).
+        toBe('http://www.google.com/search?q=AngularJS');
+      using('.doc-example-live').input('query').enter('google');
+      expect(using('.doc-example-live').element('a').attr('href')).
+        toBe('http://www.google.com/search?q=google');
+    });
+  </pre>
+</doc:example></div>
+</div>

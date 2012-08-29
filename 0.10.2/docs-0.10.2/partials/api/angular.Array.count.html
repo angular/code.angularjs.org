@@ -1,0 +1,53 @@
+<h1>angular.Array.count</h1>
+<div class="angular-array-count"><h2>Description</h2>
+<div class="description"><p>Determines the number of elements in an array. Provides an option for counting only those
+elements for which a specified <code>condition</code> evaluates to <code>true</code>.</p>
+
+<p>Note: This function is used to augment the <code>Array</code> type in Angular expressions. See
+<a href="api/angular.Array"><code>angular.Array</code></a> for more information about Angular arrays.</p></div>
+<h2>Usage</h2>
+<div class="usage"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">angular.Array.count(array[, condition]);</pre>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">array – {Array} – </code>
+<p>The array containing the elements to be counted.</p></li>
+<li><code ng:non-bindable="">condition<i>(optional)</i> – {(function()|string)} – </code>
+<p>A function to be evaluated or
+an Angular expression to be compiled and evaluated. The element being
+iterated over is exposed to the <code>condition</code> as <code>this</code>.</p></li>
+</ul>
+<h3>Returns</h3>
+<div class="returns"><code ng:non-bindable="">{number}</code>
+– <p>Number of elements in the array. If a <code>condition</code> is specified, returns
+the number of elements whose <code>condition</code> evaluates to <code>true</code>.</p></div>
+</div>
+<h2>Example</h2>
+<div class="example"><doc:example>
+<pre class="doc-source">
+  &lt;pre ng:init="items = [{name:'knife', points:1},
+                         {name:'fork', points:3},
+                         {name:'spoon', points:1}]"&gt;&lt;/pre&gt;
+  &lt;ul&gt;
+    &lt;li ng:repeat="item in items"&gt;
+       {{item.name}}: points=
+       &lt;input type="text" name="item.points"/&gt; &lt;!-- id="item{{$index}} --&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;p&gt;Number of items which have one point: &lt;em&gt;{{ items.$count('points==1') }}&lt;/em&gt;&lt;/p&gt;
+  &lt;p&gt;Number of items which have more than one point:
+  &lt;em&gt;{{items.$count('points&amp;gt;1')}}&lt;/em&gt;&lt;/p&gt;
+</pre>
+<pre class="doc-scenario">
+  it('should calculate counts', function() {
+    expect(binding('items.$count(\'points==1\')')).toEqual('2');
+    expect(binding('items.$count(\'points&gt;1\')')).toEqual('1');
+  });
+
+  it('should recalculate when updated', function() {
+    using('.doc-example-live li:first-child').input('item.points').enter('23');
+    expect(binding('items.$count(\'points==1\')')).toEqual('1');
+    expect(binding('items.$count(\'points&gt;1\')')).toEqual('2');
+  });
+</pre>
+</doc:example></div>
+</div>

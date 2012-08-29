@@ -1,0 +1,49 @@
+<h1>angular.validator.integer</h1>
+<div class="angular-validator-integer"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<div class="description"><p>Use number validator to restrict the input to integers with an
+optional range. (See integer for whole numbers validator).</p></div>
+<h2>Usage</h2>
+<div class="usage"><h3>In HTML Template Binding</h3>
+<div class="in-html-template-binding"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">&lt;input type="text" ng:validate="integer[:min][:max]"/&gt;</pre>
+</div>
+</div>
+<h3>In JavaScript</h3>
+<div class="in-javascript"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">angular.validator.integer(value[, min][, max])</pre>
+</div>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">value – {string} – </code>
+<p>value to validate</p></li>
+<li><code ng:non-bindable="">min<i>(optional=MIN_INT)</i> – {int} – </code>
+<p>minimum value.</p></li>
+<li><code ng:non-bindable="">max<i>(optional=MAX_INT)</i> – {int} – </code>
+<p>maximum value.</p></li>
+</ul>
+</div>
+<h2>Example</h2>
+<div class="example"><doc:example>
+<doc:source>
+  Enter integer: &lt;input name="n1" ng:validate="integer" &gt; &lt;br&gt;
+  Enter integer equal or greater than 10: &lt;input name="n2" ng:validate="integer:10" &gt; &lt;br&gt;
+  Enter integer between 100 and 200 (inclusive): &lt;input name="n3" ng:validate="integer:100:200" &gt; &lt;br&gt;
+</doc:source>
+<doc:scenario>
+  it('should invalidate integer', function(){
+   var n1 = element('.doc-example :input[name=n1]');
+   expect(n1.attr('className')).not().toMatch(/ng-validation-error/);
+   input('n1').enter('1.1');
+   expect(n1.attr('className')).toMatch(/ng-validation-error/);
+   var n2 = element('.doc-example :input[name=n2]');
+   expect(n2.attr('className')).not().toMatch(/ng-validation-error/);
+   input('n2').enter('10.1');
+   expect(n2.attr('className')).toMatch(/ng-validation-error/);
+   var n3 = element('.doc-example :input[name=n3]');
+   expect(n3.attr('className')).not().toMatch(/ng-validation-error/);
+   input('n3').enter('100.1');
+   expect(n3.attr('className')).toMatch(/ng-validation-error/);
+  });
+</doc:scenario>
+</doc:example></div>
+</div>

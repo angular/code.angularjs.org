@@ -1,0 +1,35 @@
+<h1>angular.directive.ng:non-bindable</h1>
+<h2>Description</h2>
+<p>Sometimes it is necessary to write code which looks like 
+bindings but which should be left alone by <tt>&lt;angular/&gt;</tt>. 
+Use <code>ng:non-bindable</code> to ignore a chunk of HTML.</p>
+<h2>Usage</h2>
+<h3>In HTML Template Binding</h3>
+<tt>
+  <pre>
+&lt;ANY ng:non-bindable="ignore"&gt;
+  ...
+&lt;/ANY&gt;
+  </pre>
+</tt>
+<h3>Parameters</h3>
+<ul>
+    <li><tt>ignore:string</tt>: <p>Sometimes it is necessary to write code which looks like 
+bindings but which should be left alone by <tt>&lt;angular/&gt;</tt>. 
+Use <code>ng:non-bindable</code> to ignore a chunk of HTML.</p></li>
+  </ul>
+<h2>Example</h2>
+<p>In this example there are two location where 
+<tt ng:non-bindable></tt> is present, but the one 
+wrapped in <code>ng:non-bindable</code> is left alone</p>
+<doc:example>
+  <doc:source>
+&lt;div&gt;Normal: {{1 + 2}}&lt;/div&gt;
+&lt;div ng:non-bindable&gt;Ignored: {{1 + 2}}&lt;/div&gt;
+  </doc:source>
+  <doc:scenario>   it('should check ng:non-bindable', function(){
+     expect(using('.doc-example-live').binding('1 + 2')).toBe('3');
+     expect(using('.doc-example-live').element('div:last').text()).
+       toMatch(/1 \+ 2/);
+   });</doc:scenario>
+</doc:example>

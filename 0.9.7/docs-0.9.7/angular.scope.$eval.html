@@ -1,0 +1,39 @@
+<h1>angular.scope.$eval</h1>
+<fieldset class="workInProgress">
+  <legend>Work In Progress</legend>
+  This page is currently being revised. It might be incomplete or contain inaccuracies.
+  
+</fieldset>
+<h2>Description</h2>
+<p>Without the <code>exp</code> parameter triggers an eval cycle, for this scope and it's child scopes.</p>
+
+<p>With the <code>exp</code> parameter, compiles the expression to a function and calls it with <code>this</code> set
+to the current scope and returns the result.</p>
+
+<h2>Example</h2><div ng:non-bindable><pre class="brush: js; html-script: true;">
+         var scope = angular.scope();
+         scope.a = 1;
+         scope.b = 2;
+
+         expect(scope.$eval('a+b')).toEqual(3);
+         expect(scope.$eval(function(){ return this.a + this.b; })).toEqual(3);
+
+         scope.$onEval('sum = a+b');
+         expect(scope.sum).toEqual(undefined);
+         scope.$eval();
+         expect(scope.sum).toEqual(3);
+       </pre></div>
+<h2>Usage</h2>
+<tt ng:non-bindable>
+angular.scope.$eval(exp);
+</tt>
+<h3>Parameters</h3>
+<ul>
+    <li><tt>exp</tt> –
+      <tt>&#123;(string|function())=&#125;</tt>
+      <tt></tt>
+      – An angular expression to be compiled to a function or a js
+    function.</li>
+  </ul>
+<h3>Returns</h3>
+<tt>&#123;*&#125;</tt> The result of calling compiled <code>exp</code> with <code>this</code> set to the current scope.

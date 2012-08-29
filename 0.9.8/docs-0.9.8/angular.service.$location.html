@@ -1,0 +1,44 @@
+<h1><tt>angular.service.$location</tt></h1>
+<fieldset class="workInProgress">
+  <legend>Work In Progress</legend>
+  This page is currently being revised. It might be incomplete or contain inaccuracies.
+  
+</fieldset>
+<h2>Description</h2>
+<p>Parses the browser location url and makes it available to your application.
+Any changes to the url are reflected into $location service and changes to
+$location are reflected to url.
+Notice that using browser's forward/back buttons changes the $location.</p>
+<h2>Dependencies</h2>
+<ul>
+    <li><tt>$browser</tt></li>
+  </ul>
+<h2>Methods</h2>
+<ul>
+    <li><tt>$location#update</tt>: <p>Update location object
+Does not immediately update the browser
+Browser is updated at the end of $eval()</p></li>
+    <li><tt>$location#updateHash</tt>: <p>Update location hash part</p></li>
+    <li><tt>$location#toString</tt>: <p>Returns string representation - href</p></li>
+  </ul>
+<h2>Properties</h2>
+<ul>
+    <li><tt>href:string</tt></li>
+    <li><tt>protocol:string</tt></li>
+    <li><tt>host:string</tt></li>
+    <li><tt>port:number</tt></li>
+    <li><tt>path:string</tt></li>
+    <li><tt>search:Object.&lt;string|boolean&gt;</tt></li>
+    <li><tt>hash:string</tt></li>
+    <li><tt>hashPath:string</tt></li>
+    <li><tt>hashSearch:Object.&lt;string|boolean&gt;</tt></li>
+  </ul>
+<h2>Example</h2>
+<doc:example>
+  <doc:source>
+   &lt;a href="#"&gt;clear hash&lt;/a&gt; | 
+   &lt;a href="#myPath?name=misko"&gt;test hash&lt;/a&gt;&lt;br/&gt;
+   &lt;input type='text' name="$location.hash"/&gt;
+   &lt;pre&gt;$location = {{$location}}&lt;/pre&gt;
+  </doc:source>
+  </doc:example>

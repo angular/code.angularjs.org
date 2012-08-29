@@ -1,0 +1,43 @@
+<h1 id="Developer.Guide..Initializing.Angular..Automatic.Initialization">Developer Guide: Initializing Angular: Automatic Initialization</h1>
+<div class="developer-guide--initializing-angular--automatic-initialization"><p>Angular initializes automatically when you load the angular script into your page that contains an element
+with <code>ng-app</code> directive:</p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+&lt;!doctype html&gt;
+&lt;html ng-app&gt;
+  &lt;head&gt;
+    &lt;script src="angular.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    I can add: {{ 1+2 }}.
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre></div><p>From a high-level view, this is what happens during angular's automatic initialization process:</p>
+
+<ol>
+<li><p>The browser loads the page, and then runs the angular script. Angular waits for the
+<code>DOMContentLoaded</code> (or 'Load') event to attempt to bootstrap.</p></li>
+<li><p>Angular looks for the <code>ng-app</code> directive. If found it then proceeds to compile the DOM element and its children.
+Optionally the <code>ng-app</code> may specify a <a href="api/angular.module"><code>module</code></a> to load before the compilation. For details on
+how the compiler works, see <a href="guide/dev_guide.compiler">Angular HTML Compiler</a>.</p></li>
+</ol>
+
+<h3>Initialization Options</h3>
+
+<p>The reason why <code>ng-app</code> exists is because angular should not assume that the entire HTML
+document should be processed just because the <code>angular.js</code> script is included. In order to compile
+only a part of the document set the <code>ng-app</code> on the root element of this portion.</p>
+
+<h3>Global Angular Object</h3>
+
+<p>The angular script creates a single global variable <code>angular</code> in the global namespace. All angular
+APIs are bound to fields of this global object.</p>
+
+<h3>Related Topics</h3>
+
+<ul>
+<li><a href="guide/dev_guide.bootstrap">Initializing Angular</a></li>
+<li><a href="guide/dev_guide.bootstrap.manual_bootstrap">Manual Initialization</a></li>
+</ul>
+
+<h3>Related API</h3>
+
+<p><a href="api/angular.module.ng.$compile"><code>Compiler API</code></a></p></div>

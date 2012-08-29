@@ -1,0 +1,36 @@
+<h1>angular.directive.ng:disabled</h1>
+<div class="angular-directive-ng-disabled"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<div class="description"><p>The following markup will make the button enabled on Chrome/Firefox but not on IE8 and older IEs:</p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+&lt;div ng:init="scope = { isDisabled: false }"&gt;
+ &lt;button disabled="{{scope.isDisabled}}"&gt;Disabled&lt;/button&gt;
+&lt;/div&gt;
+</pre></div><p>The HTML specs do not require browsers to preserve the special attributes such as disabled.
+(The presence of them means true and absence means false)
+This prevents the angular compiler from correctly retrieving the binding expression.
+To solve this problem, we introduce ng:disabled.</p></div>
+<h2>Usage</h2>
+<div class="usage"><pre class="brush: js; html-script: true;">&lt;ANY ng:disabled="template"&gt;
+   ...
+&lt;/ANY&gt;</pre>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">template – {template} – </code>
+<p>any string which can contain '{{}}' markup.</p></li>
+</ul>
+</div>
+<h2>Example</h2>
+<div class="example"><doc:example>
+<pre class="doc-source">
+  Click me to toggle: &lt;input type="checkbox" name="checked"&gt;&lt;br/&gt;
+  &lt;button name="button" ng:disabled="{{checked}}"&gt;Button&lt;/button&gt;
+</pre>
+<pre class="doc-scenario">
+  it('should toggle button', function() {
+    expect(element('.doc-example-live :button').attr('disabled')).toBeFalsy();
+    input('checked').check();
+    expect(element('.doc-example-live :button').attr('disabled')).toBeTruthy();
+  });
+</pre>
+</doc:example></div>
+</div>

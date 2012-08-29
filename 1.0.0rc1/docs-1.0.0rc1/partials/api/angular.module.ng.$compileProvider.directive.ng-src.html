@@ -1,0 +1,24 @@
+<h1 id="angular.module.ng.$compileProvider.directive.ng.src">angular.module.ng.$compileProvider.directive.ng-src</h1>
+<div class="angular-module-ng-$compileprovider-directive-ng-src"><h2 id="Description">Description</h2>
+<div class="description"><p>Using <tt>&lt;angular/&gt;</tt> markup like <code>{{hash}}</code> in a <code>src</code> attribute doesn't
+work right: The browser will fetch from the URL with the literal
+text <code>{{hash}}</code> until <tt>&lt;angular/&gt;</tt> replaces the expression inside
+<code>{{hash}}</code>. The <code>ng-src</code> attribute solves this problem by placing
+ the <code>src</code> attribute in the <code>ng-</code> namespace.</p>
+
+<p>The buggy way to write it:</p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+&lt;img src="http://www.gravatar.com/avatar/{{hash}}"/&gt;
+</pre></div><p>The correct way to write it:</p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+&lt;img ng-src="http://www.gravatar.com/avatar/{{hash}}"/&gt;
+</pre></div></div>
+<h2 id="Usage">Usage</h2>
+<div class="usage">as attribute<div ng:non-bindable=""><pre class="brush: js; html-script: true;">&lt;IMG ng-src="{template}"&gt;
+   ...
+&lt;/IMG&gt;</pre>
+</div>
+<h3 id="Parameters">Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">ng-src – {template} – </code>
+<p>any string which can contain <code>{{}}</code> markup.</p></li>
+</ul>
+</div>
+</div>

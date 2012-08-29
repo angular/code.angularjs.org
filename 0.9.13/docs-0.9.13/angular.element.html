@@ -1,0 +1,61 @@
+<h1>angular.element</h1>
+<div class="angular-element"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<div class="description"><p>Wraps a raw DOM element or HTML string as <a href="http://jquery.com">jQuery</a> element.
+<code>angular.element</code> is either an alias for <a href="http://api.jquery.com/jQuery/">jQuery</a> function if
+jQuery is loaded or a function that wraps the element or string in angular's jQuery lite
+implementation.</p>
+
+<p>Real jQuery always takes precedence (as long as it was loaded before <code>DOMContentEvent</code>)</p>
+
+<p>Angular's jQuery lite implementation is a tiny API-compatible subset of jQuery which allows
+angular to manipulate DOM. The jQuery lite implements only a subset of jQuery api, with the
+focus on the most commonly needed functionality and minimal footprint. For this reason only a
+limited number of jQuery methods, arguments and invocation styles are supported.</p>
+
+<p>NOTE: All element references in angular are always wrapped with jQuery (lite) and are never
+raw DOM references.</p>
+
+<h4>Angular's jQuery lite implements these functions:</h4>
+
+<ul>
+<li><a href="http://api.jquery.com/addClass/">addClass()</a></li>
+<li><a href="http://api.jquery.com/after/">after()</a></li>
+<li><a href="http://api.jquery.com/append/">append()</a></li>
+<li><a href="http://api.jquery.com/attr/">attr()</a></li>
+<li><a href="http://api.jquery.com/bind/">bind()</a></li>
+<li><a href="http://api.jquery.com/children/">children()</a></li>
+<li><a href="http://api.jquery.com/clone/">clone()</a></li>
+<li><a href="http://api.jquery.com/css/">css()</a></li>
+<li><a href="http://api.jquery.com/data/">data()</a></li>
+<li><a href="http://api.jquery.com/hasClass/">hasClass()</a></li>
+<li><a href="http://api.jquery.com/parent/">parent()</a></li>
+<li><a href="http://api.jquery.com/remove/">remove()</a></li>
+<li><a href="http://api.jquery.com/removeAttr/">removeAttr()</a></li>
+<li><a href="http://api.jquery.com/removeClass/">removeClass()</a></li>
+<li><a href="http://api.jquery.com/removeData/">removeData()</a></li>
+<li><a href="http://api.jquery.com/replaceWith/">replaceWith()</a></li>
+<li><a href="http://api.jquery.com/text/">text()</a></li>
+<li><a href="http://api.jquery.com/trigger/">trigger()</a></li>
+</ul>
+
+<h4>Additionally these methods extend the jQuery and  are available in both jQuery and jQuery lite</h4>
+
+<p>version:</p>
+
+<ul>
+<li><code>scope()</code> - retrieves the current angular scope of the element.</li>
+</ul></div>
+<h2>Usage</h2>
+<div class="usage"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">angular.element(element);</pre>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">element – {string|DOMElement} – </code>
+<p>HTML string or DOMElement to be wrapped into jQuery.</p></li>
+</ul>
+<h3>Returns</h3>
+<div class="returns"><code ng:non-bindable="">{Object}</code>
+– <p>jQuery object.</p></div>
+</div>
+</div>

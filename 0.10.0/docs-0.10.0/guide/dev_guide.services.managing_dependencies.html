@@ -1,0 +1,83 @@
+<h1>Developer Guide: Angular Services: Managing Service Dependencies</h1>
+<div class="developer-guide-angular-services-managing-service-dependencies"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<p>Angular allows services to declare other services as dependencies needed for construction of their
+instances.</p>
+
+<p>To declare dependencies, you specify them in the factory function signature and via the <code>$inject</code>
+property, as an array of string identifiers. Optionally the <code>$inject</code> property declaration can be
+dropped (see "Inferring <code>$inject</code>" but note that that is currently an experimental feature).</p>
+
+<p>Here is an example of two services that depend on each other, as well as on other services that are
+provided by angular's web framework:</p><div ng:non-bindable><pre class="brush: js;">
+/**
+* batchLog service allows for messages to be queued in memory and flushed
+* to the console.log every 50 seconds.
+*
+* @param {*} message Message to be logged.
+*/
+angular.service('batchLog', function($defer, $log) {
+  var messageQueue = [];
+
+  function log() {
+    if (messageQueue.length) {
+      $log('batchLog messages: ', messageQueue);
+      messageQueue = [];
+    }
+    $defer(log, 50000);
+  }
+
+  // start periodic checking
+  log();
+
+  return function(message) {
+    messageQueue.push(message);
+  }
+}, {$inject: ['$defer', '$log']});
+// note how we declared dependency on built-in $defer and $log services above
+
+/**
+* routeTemplateMonitor monitors each $route change and logs the current
+* template via the batchLog service.
+*/
+angular.service('routeTemplateMonitor', function($route, batchLog) {
+  this.$on('$afterRouteChange', function() {
+    batchLog($route.current ? $route.current.template : null);
+  });
+}, {$inject: ['$route', 'batchLog'], $eager: true});
+</pre></div><p>Things to notice in this example:</p>
+
+<ul>
+<li>The <code>batchLog</code> service depends on the built-in <a href="#!/api/angular.service.$defer"><code>$defer</code></a> and
+<a href="#!/api/angular.service.$log"><code>$log</code></a> services, and allows messages to be logged into the
+<code>console.log</code> in batches.</li>
+<li>The <code>routeTemplateMonitor</code> service depends on the built-in <a href="#!/api/angular.service.$route"><code>$route</code></a> service as well as our custom <code>batchLog</code> service.</li>
+<li>The <code>routeTemplateMonitor</code> service is declared to be eager, so that it is started as soon as the
+application starts.</li>
+<li>To underline the need for the eager instantiation of the <code>routeTemplateMonitor</code> service, nothing
+else in the application depends on this service, and in this particular case the factory function
+of this service doesn't return anything at all.</li>
+<li>Both of our services use the factory function signature as well as the <code>$inject</code> property to
+declare their dependencies. It is important that the order of the string identifiers in the array
+associated with the <code>$inject</code> property is the same as the order of argument names in the signature
+of the factory function. Unless the dependencies are inferred from the function signature, it is
+this array with IDs and their order that the injector uses to determine which services and in which
+order to inject.</li>
+</ul>
+
+<h3>Related Topics</h3>
+
+<ul>
+<li><a href="#!/guide/dev_guide.services.understanding_services">Understanding Angular Services</a></li>
+<li><a href="#!/guide/dev_guide.services.creating_services">Creating Angular Services</a></li>
+<li><a href="#!/guide/dev_guide.services.registering_services">Registering Services</a></li>
+<li><a href="#!/guide/dev_guide.services.injecting_controllers">Injecting Services Into Controllers</a></li>
+<li><a href="#!/guide/dev_guide.services.testing_services">Testing Angular Services</a></li>
+</ul>
+
+<h3>Related API</h3>
+
+<ul>
+<li><a href="#!/api/angular.service"><code>Angular Service API</code></a></li>
+<li><a href="#!/api/angular.injector"><code>Angular Injector API</code></a></li>
+</ul></div>

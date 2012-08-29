@@ -1,0 +1,33 @@
+<h1>angular.directive.ng:bind</h1>
+<div class="angular-directive-ng-bind"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<div class="description"><p>The <code>ng:bind</code> attribute asks angular to replace the text content of this
+HTML element with the value of the given expression, and to keep the text
+content up to date when the expression's value changes. Usually you would
+just write <code>{{ expression }}</code> and let angular compile it into
+<code>&lt;span ng:bind="expression"&gt;&lt;/span&gt;</code> at bootstrap time.</p></div>
+<h2>Usage</h2>
+<div class="usage"><pre class="brush: js; html-script: true;">&lt;ANY ng:bind="expression"&gt;
+   ...
+&lt;/ANY&gt;</pre>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">expression – {expression} – </code>
+<p><a href="#!/guide/dev_guide.expressions">Expression</a> to eval.</p></li>
+</ul>
+</div>
+<h2>Example</h2>
+<div class="example"><p>You can try it right here: enter text in the text box and watch the greeting change.</p><doc:example>
+  <pre class="doc-source">
+    Enter name: &lt;input type="text" name="name" value="Whirled"&gt; &lt;br&gt;
+    Hello &lt;span ng:bind="name" /&gt;!
+  </pre>
+  <pre class="doc-scenario">
+    it('should check ng:bind', function(){
+      expect(using('.doc-example-live').binding('name')).toBe('Whirled');
+      using('.doc-example-live').input('name').enter('world');
+      expect(using('.doc-example-live').binding('name')).toBe('world');
+    });
+  </pre>
+</doc:example></div>
+</div>

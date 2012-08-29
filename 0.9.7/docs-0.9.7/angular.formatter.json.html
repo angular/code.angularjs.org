@@ -1,0 +1,34 @@
+<h1>angular.formatter.json</h1>
+<fieldset class="workInProgress">
+  <legend>Work In Progress</legend>
+  This page is currently being revised. It might be incomplete or contain inaccuracies.
+  
+</fieldset>
+<h2>Description</h2>
+<p>Formats the user input as JSON text.</p>
+<h2>Usage</h2>
+<h3>In HTML Template Binding</h3>
+<tt>
+  &lt;input type="text" ng:format="json"&gt;
+</tt>
+<h3>In JavaScript</h3>
+<tt ng:non-bindable>
+var userInputString = angular.formatter.json.format(modelValue);<br/>
+var modelValue = angular.formatter.json.parse(userInputString);
+</tt>
+<h3>Returns</h3>
+<tt>&#123;string&#125;</tt> A JSON string representation of the model.
+<h2>Example</h2>
+<doc:example>
+  <doc:source>
+&lt;div ng:init="data={name:'misko', project:'angular'}"&gt;
+  &lt;input type="text" size='50' name="data" ng:format="json"/&gt;
+  &lt;pre&gt;data={{data}}&lt;/pre&gt;
+&lt;/div&gt;
+  </doc:source>
+  <doc:scenario>it('should format json', function(){
+  expect(binding('data')).toEqual('data={\n  \"name\":\"misko\",\n  \"project\":\"angular\"}');
+  input('data').enter('{}');
+  expect(binding('data')).toEqual('data={\n  }');
+});</doc:scenario>
+</doc:example>

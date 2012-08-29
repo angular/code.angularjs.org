@@ -1,0 +1,45 @@
+<h1>angular.widget.textarea</h1>
+<div class="angular-widget-textarea"><h2>Description</h2>
+<div class="description"><p>HTML textarea element widget with angular data-binding. The data-binding and validation
+properties of this element are exactly the same as those of the
+<a href="api/angular.widget.input"><code>input element</code></a>.</p></div>
+<h2>Usage</h2>
+<div class="usage"><h3>In HTML Template Binding</h3>
+<div class="in-html-template-binding"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">&lt;textarea
+       type="..."
+       ng:model="..."
+       [name="..."]
+       [required]
+       [ng:minlength="..."]
+       [ng:maxlength="..."]
+       [ng:pattern="..."]
+       [ng:change="..."]&gt;&lt;/textarea&gt;</pre>
+</div>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">type – {string} – </code>
+<p>Widget types as defined by <a href="api/angular.inputType"><code>angular.inputType</code></a>. If the
+type is in the format of <code>@ScopeType</code> then <code>ScopeType</code> is loaded from the
+current scope, allowing quick definition of type.</p></li>
+<li><code ng:non-bindable="">ng:model – {string} – </code>
+<p>Assignable angular expression to data-bind to.</p></li>
+<li><code ng:non-bindable="">name<i>(optional)</i> – {string} – </code>
+<p>Property name of the form under which the widgets is published.</p></li>
+<li><code ng:non-bindable="">required<i>(optional)</i> – {string} – </code>
+<p>Sets <code>REQUIRED</code> validation error key if the value is not entered.</p></li>
+<li><code ng:non-bindable="">ng:minlength<i>(optional)</i> – {number} – </code>
+<p>Sets <code>MINLENGTH</code> validation error key if the value is shorter than
+minlength.</p></li>
+<li><code ng:non-bindable="">ng:maxlength<i>(optional)</i> – {number} – </code>
+<p>Sets <code>MAXLENGTH</code> validation error key if the value is longer than
+maxlength.</p></li>
+<li><code ng:non-bindable="">ng:pattern<i>(optional)</i> – {string} – </code>
+<p>Sets <code>PATTERN</code> validation error key if the value does not match the
+RegExp pattern expression. Expected value is <code>/regexp/</code> for inline patterns or <code>regexp</code> for
+patterns defined as scope expressions.</p></li>
+<li><code ng:non-bindable="">ng:change<i>(optional)</i> – {string} – </code>
+<p>Angular expression to be executed when input changes due to user
+interaction with the input element.</p></li>
+</ul>
+</div>
+</div>

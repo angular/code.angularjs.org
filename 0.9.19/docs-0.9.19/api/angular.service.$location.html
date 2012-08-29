@@ -1,0 +1,109 @@
+<h1>angular.service.$location</h1>
+<div class="angular-service-location"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<div class="description"><p>Parses the browser location url and makes it available to your application.
+Any changes to the url are reflected into <code>$location</code> service and changes to
+<code>$location</code> are reflected in the browser location url.</p>
+
+<p>Notice that using browser's forward/back buttons changes the $location.</p></div>
+<h2>Dependencies</h2>
+<ul class="dependencies"><li><code ng:non-bindable=""><a href="#!/api/angular.service.$browser">$browser</a>
+</code>
+</li>
+</ul>
+<h2>Methods</h2>
+<ul class="methods"><li><h3>update(href)</h3>
+<div class="update-href-"><p>Updates the location object.</p>
+
+<p>Does not immediately update the browser. Instead the browser is updated at the end of $eval()
+cycle.</p><div ng:non-bindable><pre class="brush: js;">
+       $location.update('http://www.angularjs.org/path#hash?search=x');
+       $location.update({host: 'www.google.com', protocol: 'https'});
+       $location.update({hashPath: '/path', hashSearch: {a: 'b', x: true}});
+     </pre></div><h4>Parameters</h4>
+<ul class="parameters"><li><code ng:non-bindable="">href – {string|Object} – </code>
+<p>Full href as a string or object with properties</p></li>
+</ul>
+</div>
+</li>
+<li><h3>updateHash(path, search)</h3>
+<div class="updatehash-path-search-"><p>Updates the hash fragment part of the url.</p><h4>Parameters</h4>
+<ul class="parameters"><li><code ng:non-bindable="">path – {string|Object} – </code>
+<p>A hashPath or hashSearch object</p></li>
+<li><code ng:non-bindable="">search<i>(optional)</i> – {Object} – </code>
+<p>A hashSearch object</p></li>
+</ul>
+</div>
+</li>
+</ul>
+<h2>Properties</h2>
+<ul class="properties"><li><h3>href</h3>
+<div class="href"><p>The full URL of the current location.</p></div>
+</li>
+<li><h3>protocol</h3>
+<div class="protocol"><p>The protocol part of the URL (e.g. http or https).</p></div>
+</li>
+<li><h3>host</h3>
+<div class="host"><p>The host name, ip address or FQDN of the current location.</p></div>
+</li>
+<li><h3>port</h3>
+<div class="port"><p>The port number of the current location (e.g. 80, 443, 8080).</p></div>
+</li>
+<li><h3>path</h3>
+<div class="path"><p>The path of the current location (e.g. /myapp/inbox).</p></div>
+</li>
+<li><h3>search</h3>
+<div class="search"><p>Map of query parameters (e.g. {user:"foo", page:23}).</p></div>
+</li>
+<li><h3>hash</h3>
+<div class="hash"><p>The fragment part of the URL of the current location (e.g. #foo).</p></div>
+</li>
+<li><h3>hashPath</h3>
+<div class="hashpath"><p>Similar to <code>path</code>, but located in the <code>hash</code> fragment
+(e.g. ../foo#/some/path  => /some/path).</p></div>
+</li>
+<li><h3>hashSearch</h3>
+<div class="hashsearch"><p>Similar to <code>search</code> but located in <code>hash</code>
+fragment (e.g. .../foo#/some/path?hashQuery=param  =>  {hashQuery: "param"}).</p></div>
+</li>
+</ul>
+<h2>Example</h2>
+<div class="example"><doc:example>
+ <pre class="doc-source">
+   &lt;div ng:init="$location = $service('$location')"&gt;
+     &lt;a id="ex-test" href="#myPath?name=misko"&gt;test hash&lt;/a&gt;|
+     &lt;a id="ex-reset" href="#!/api/angular.service.$location"&gt;reset hash&lt;/a&gt;&lt;br/&gt;
+     &lt;input type='text' name="$location.hash" size="30"&gt;
+     &lt;pre&gt;$location = {{$location}}&lt;/pre&gt;
+   &lt;/div&gt;
+ </pre>
+ <pre class="doc-scenario">
+   it('should initialize the input field', function() {
+     expect(using('.doc-example-live').input('$location.hash').val()).
+       toBe('!/api/angular.service.$location');
+   });
+
+
+   it('should bind $location.hash to the input field', function() {
+     using('.doc-example-live').input('$location.hash').enter('foo');
+     expect(browser().location().hash()).toBe('foo');
+   });
+
+
+   it('should set the hash to a test string with test link is presed', function() {
+     using('.doc-example-live').element('#ex-test').click();
+     expect(using('.doc-example-live').input('$location.hash').val()).
+       toBe('myPath?name=misko');
+   });
+
+   it('should reset $location when reset link is pressed', function() {
+     using('.doc-example-live').input('$location.hash').enter('foo');
+     using('.doc-example-live').element('#ex-reset').click();
+     expect(using('.doc-example-live').input('$location.hash').val()).
+       toBe('!/api/angular.service.$location');
+   });
+
+ </pre>
+</doc:example></div>
+</div>

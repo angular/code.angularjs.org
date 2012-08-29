@@ -1,0 +1,29 @@
+<h1>Developer Guide: Contributing</h1>
+<div class="developer-guide-contributing"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Open Source</h2>
+
+<p>Angular is an open source project licensed under the
+<a href="http://github.com/angular/angular.js/blob/master/LICENSE">MIT license</a>. We welcome any
+contributions from the community, but in order to make the contribution process manageable, we ask
+you to follow the following guidelines:</p>
+
+<h2>Source Code</h2>
+
+<ul>
+<li>Discuss any major changes on our <a href="http://groups.google.com/group/angular">mailing list</a>.
+For small changes and bugfixes, just go ahead and craft your patch and submit it.</li>
+<li>Use coding style described
+<a href="http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml">here</a>.</li>
+<li>To submit any changes, we ask you to use <a href="http://github.com">http://github.com</a>
+<ul><li>Create a github <a href="https://github.com/signup/free">account</a></li>
+<li>Clone the <a href="http://github.com/angular/angular.js">main angular repository</a></li>
+<li>Create a new branch off of the master (<code>git branch my-fix-branch</code>)</li>
+<li>Switch to the branch (<code>git checkout my-fix-branch</code>), make your changes and commit (<code>git commit -a</code>)</li>
+<li>For any new features or regressions we require a test(s) to be submitted with the change</li>
+<li>Run js lint (<code>rake lint</code>) and fix any warnings or errors</li>
+<li>Push your branch to github (<code>git push origin my-fix-branch</code>)</li>
+<li>Send a pull request via github into <code>angular:master</code></li>
+<li>Once the patch is reviewed and merged, you can delete your branch (<code>git push origin :my-fix-branch; git checkout master; git branch -D my-fix-branch</code>)</li>
+<li>TADA!</li></ul></li>
+</ul></div>

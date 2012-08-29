@@ -1,0 +1,37 @@
+<h1>angular.validator.regexp</h1>
+<fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<p>Use regexp validator to restrict the input to any Regular Expression.</p><h2>Usage</h2>
+<h3>In HTML Template Binding</h3>
+<div ng:non-bindable=""><pre class="brush: js; html-script: true;">&lt;input type="text" ng:validate="regexp:expression[:msg]"/&gt;</pre>
+</div>
+<h3>In JavaScript</h3>
+<div ng:non-bindable=""><pre class="brush: js; html-script: true;">angular.validator.regexp(value, expression[, msg])</pre>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">value – {string} – </code>
+value to validate</li>
+<li><code ng:non-bindable="">expression – {string|regexp} – </code>
+regular expression.</li>
+<li><code ng:non-bindable="">msg<i>(optional)</i> – {string} – </code>
+error message to display.</li>
+</ul>
+<h2>Example</h2>
+<doc:example><doc:source>&lt;script&gt; function Cntl(){
+  this.ssnRegExp = /^\d\d\d-\d\d-\d\d\d\d$/; 
+}
+&lt;/script&gt;
+Enter valid SSN:
+&lt;div ng:controller="Cntl"&gt;
+&lt;input name="ssn" value="123-45-6789" ng:validate="regexp:ssnRegExp" &gt;
+&lt;/div&gt;</doc:source>
+<doc:scenario>it('should invalidate non ssn', function(){
+  var textBox = element('.doc-example :input');
+  expect(textBox.attr('className')).not().toMatch(/ng-validation-error/);
+  expect(textBox.val()).toEqual('123-45-6789');
+  
+  input('ssn').enter('123-45-67890');
+  expect(textBox.attr('className')).toMatch(/ng-validation-error/);
+});</doc:scenario>
+</doc:example>

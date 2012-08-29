@@ -1,0 +1,78 @@
+<h1>angular.service.$xhr</h1>
+<div class="angular-service-xhr"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<div class="description"><p>Generates an XHR request. The $xhr service adds error handling then delegates all requests to
+<a href="#!angular.service.$browser"><code>$browser.xhr()</code></a>.</p></div>
+<h2>Dependencies</h2>
+<ul class="dependencies"><li>$browser</li>
+<li>$xhr.error</li>
+<li>$log</li>
+</ul>
+<h2>Usage</h2>
+<div class="usage"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">$xhr(method, url[, post], callback);</pre>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">method – {string} – </code>
+<p>HTTP method to use. Valid values are: <code>GET</code>, <code>POST</code>, <code>PUT</code>, <code>DELETE</code>, and
+<code>JSON</code>. <code>JSON</code> is a special case which causes a
+<a href="http://en.wikipedia.org/wiki/JSON#JSONP">JSONP</a> cross domain request using script tag
+insertion.</p></li>
+<li><code ng:non-bindable="">url – {string} – </code>
+<p>Relative or absolute URL specifying the destination of the request.  For
+<code>JSON</code> requests, <code>url</code> should include <code>JSON_CALLBACK</code> string to be replaced with a name of an
+angular generated callback function.</p></li>
+<li><code ng:non-bindable="">post<i>(optional)</i> – {(string|Object)} – </code>
+<p>Request content as either a string or an object to be stringified
+as JSON before sent to the server.</p></li>
+<li><code ng:non-bindable="">callback – {function(number, (string|Object))} – </code>
+<p>A function to be called when the response is
+received. The callback will be called with:</p>
+
+<ul>
+<li>{number} code <a href="http://en.wikipedia.org/wiki/List_of_HTTP_status_codes">HTTP status code</a> of
+the response. This will currently always be 200, since all non-200 responses are routed to
+<a href="#!angular.service.$xhr.error"><code>angular.service.$xhr.error</code></a> service.</li>
+<li>{string|Object} response Response object as string or an Object if the response was in JSON
+format.</li>
+</ul></li>
+</ul>
+</div>
+<h2>Example</h2>
+<div class="example"><doc:example>
+<doc:source>
+  &lt;script&gt;
+    function FetchCntl($xhr) {
+      var self = this;
+
+      this.fetch = function() {
+        self.clear();
+        $xhr(self.method, self.url, function(code, response) {
+          self.code = code;
+          self.response = response;
+        });
+      };
+
+      this.clear = function() {
+        self.code = null;
+        self.response = null;
+      };
+    }
+    FetchCntl.$inject = ['$xhr'];
+  &lt;/script&gt;
+  &lt;div ng:controller="FetchCntl"&gt;
+    &lt;select name="method"&gt;
+      &lt;option&gt;GET&lt;/option&gt;
+      &lt;option&gt;JSON&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;input type="text" name="url" value="index.html" size="80"/&gt;&lt;br/&gt;
+    &lt;button ng:click="fetch()"&gt;fetch&lt;/button&gt;
+    &lt;button ng:click="clear()"&gt;clear&lt;/button&gt;
+    &lt;a href="" ng:click="method='GET'; url='index.html'"&gt;sample&lt;/a&gt;
+    &lt;a href="" ng:click="method='JSON'; url='https://www.googleapis.com/buzz/v1/activities/googlebuzz/@self?alt=json&amp;callback=JSON_CALLBACK'"&gt;buzz&lt;/a&gt;
+    &lt;pre&gt;code={{code}}&lt;/pre&gt;
+    &lt;pre&gt;response={{response}}&lt;/pre&gt;
+  &lt;/div&gt;
+</doc:source>
+</doc:example></div>
+</div>

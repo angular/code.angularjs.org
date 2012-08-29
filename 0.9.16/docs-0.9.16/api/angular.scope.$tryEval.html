@@ -1,0 +1,42 @@
+<h1>angular.scope.$tryEval</h1>
+<div class="angular-scope-tryeval"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<div class="description"><p>Evaluates the expression in the context of the current scope just like
+<a href="#!/api/angular.scope.$eval"><code>angular.scope.$eval</code></a> with expression parameter, but also wraps it in a try/catch
+block.</p>
+
+<p>If an exception is thrown then <code>exceptionHandler</code> is used to handle the exception.</p>
+
+<h3>Example</h3><div ng:non-bindable><pre class="brush: js;">
+         var scope = angular.scope();
+         scope.error = function(){ throw 'myerror'; };
+         scope.$exceptionHandler = function(e) {this.lastException = e; };
+
+         expect(scope.$eval('error()'));
+         expect(scope.lastException).toEqual('myerror');
+         this.lastException = null;
+
+         expect(scope.$eval('error()'),  function(e) {this.lastException = e; });
+         expect(scope.lastException).toEqual('myerror');
+
+         var body = angular.element(window.document.body);
+         expect(scope.$eval('error()'), body);
+         expect(body.attr('ng-exception')).toEqual('"myerror"');
+         expect(body.hasClass('ng-exception')).toEqual(true);
+       </pre></div></div>
+<h2>Usage</h2>
+<div class="usage"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">angular.scope.$tryEval(expression[, exceptionHandler]);</pre>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">expression – {string|function()} – </code>
+<p>Angular expression to evaluate.</p></li>
+<li><code ng:non-bindable="">exceptionHandler<i>(optional)</i> – {(function()|DOMElement)} – </code>
+<p>Function to be called or DOMElement to be
+decorated.</p></li>
+</ul>
+<h3>Returns</h3>
+<div class="returns"><code ng:non-bindable="">{*}</code>
+– <p>The result of <code>expression</code> evaluation.</p></div>
+</div>
+</div>

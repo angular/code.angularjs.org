@@ -1,0 +1,19 @@
+<h1>angular.Object</h1>
+<div class="angular-object"><p>A namespace for utility functions used to work with JavaScript objects. These functions are
+exposed in two ways:</p>
+
+<ul>
+<li><p><strong>Angular expressions:</strong> Functions are bound to all objects and augment the Object type.
+The names of these methods are prefixed with the '$' character in order to minimize naming
+collisions. To call a method, invoke the function without the first argument, for example,
+<code>myObject.$foo(param2)</code>.</p></li>
+<li><p><strong>JavaScript code:</strong> Functions don't augment the Object type and must be invoked as functions
+of <code>angular.Object</code> as <code>angular.Object.foo(myObject, param2)</code>.</p>
+
+<ul><li><a href="#!/api/angular.Object.copy"><code>angular.Object.copy()</code></a> - Creates a deep copy of the source
+parameter.</li>
+<li><a href="#!/api/angular.Object.equals"><code>angular.Object.equals()</code></a> - Determines if two objects or values
+are equivalent.</li>
+<li><a href="#!/api/angular.Object.size"><code>angular.Object.size()</code></a> - Determines the number of elements in
+strings, arrays, and objects.</li></ul></li>
+</ul></div>

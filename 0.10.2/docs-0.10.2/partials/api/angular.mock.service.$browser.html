@@ -1,0 +1,23 @@
+<h1>angular.mock.service.$browser</h1>
+<div class="angular-mock-service-browser"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<div class="description"><p>This service is a mock implementation of <a href="api/angular.service.$browser"><code>angular.service.$browser</code></a>. It provides fake
+implementation for commonly used browser apis that are hard to test, e.g. setTimeout, xhr,
+cookies.</p>
+
+<p>This implementation is automatically available and replaces regular <code>$browser</code> service in tests
+when <code>angular-mocks.js</code> is loaded.</p>
+
+<p>The api of this service is the same as the real <a href="api/angular.service.$browser"><code>$browser</code></a>, except
+that there are several helper methods available which can be used in tests.</p>
+
+<p>The following apis can be used in tests:</p>
+
+<ul>
+<li><a href="api/angular.mock.service.$browser.xhr"><code>$browser.xhr</code></a> — enables testing of code that uses
+the <a href="api/angular.service.$xhr"><code>$xhr service</code></a> to make XmlHttpRequests.</li>
+<li>$browser.defer — enables testing of code that uses
+<a href="api/angular.service.$defer"><code>$defer service</code></a> for executing functions via the <code>setTimeout</code> api.</li>
+</ul></div>
+</div>

@@ -1,0 +1,36 @@
+<h1>angular.widget.@ng:required</h1>
+<fieldset class="workInProgress">
+  <legend>Work In Progress</legend>
+  This page is currently being revised. It might be incomplete or contain inaccuracies.
+  
+</fieldset>
+<h2>Description</h2>
+<p>The <code>ng:required</code> attribute widget validates that the user input is present. It is a special case
+of the <a href="#!angular.widget.@ng:validate"><code>ng:validate</code></a> attribute widget.</p>
+<h2>Usage</h2>
+<h3>In HTML Template Binding</h3>
+<tt>
+  <pre>
+&lt;INPUT @ng:required"&gt;
+  ...
+&lt;/INPUT&gt;
+  </pre>
+</tt>
+<h3>Parameters</h3>
+<ul>
+  </ul>
+<h3>CSS</h3>
+ng-validation-error
+<h2>Example</h2>
+<p>This example shows how the input element becomes red when it contains invalid input. Correct
+the input to make the error disappear.</p>
+<doc:example>
+  <doc:source>
+I cannot be blank: &lt;input type="text" name="value" ng:required&gt;&lt;br/&gt;
+  </doc:source>
+  <doc:scenario>   it('should check ng:required', function(){
+     expect(element('.doc-example-live :input').attr('className')).toMatch(/ng-validation-error/);
+     input('value').enter('123');
+     expect(element('.doc-example-live :input').attr('className')).not().toMatch(/ng-validation-error/);
+   });</doc:scenario>
+</doc:example>

@@ -1,0 +1,50 @@
+<h1>Developer Guide: Scopes: Working With Angular Scopes</h1>
+<div class="developer-guide-scopes-working-with-angular-scopes"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<p>When you use <a href="#!/api/angular.directive.ng:autobind"><code>ng:autobind</code></a> to bootstrap your application,
+angular creates the root scope automatically for you. If you need more control over the
+bootstrapping process, or if you need to create a root scope for a test, you can do so using the
+<a href="#!/api/angular.scope"><code>angular.scope()</code></a> API.</p>
+
+<p>Here is a simple code snippet that demonstrates how to create a scope object, assign model
+properties to it, and register listeners to watch for changes to the model properties:</p><div ng:non-bindable><pre class="brush: js;">
+var scope = angular.scope();
+scope.salutation = 'Hello';
+scope.name = 'World';
+
+// Verify that greeting is undefined
+expect(scope.greeting).toEqual(undefined);
+
+// Set up the watcher...
+scope.$watch('name', function(){
+// when 'name' changes, set 'greeting'...
+this.greeting = this.salutation + ' ' + this.name + '!';
+}
+);
+
+// verify that 'greeting' was set...
+expect(scope.greeting).toEqual('Hello World!');
+
+// 'name' changed!
+scope.name = 'Misko';
+
+// scope.$eval() will propagate the change to listeners
+expect(scope.greeting).toEqual('Hello World!');
+
+scope.$eval();
+// verify that '$eval' propagated the change
+expect(scope.greeting).toEqual('Hello Misko!');
+</pre></div><h3>Related Topics</h3>
+
+<ul>
+<li><a href="#!/guide/dev_guide.scopes">Angular Scope Objects</a></li>
+<li><a href="#!/guide/dev_guide.scopes.understanding_scopes">Understanding Scopes</a></li>
+<li><a href="#!/guide/dev_guide.scopes.controlling_scopes">Applying Controllers to Scopes</a></li>
+<li><a href="#!/guide/dev_guide.scopes.updating_scopes">Updating Scopes</a></li>
+</ul>
+
+<h3>Related API</h3>
+
+<ul>
+<li><a href="#!/api/angular.scope"><code>Angular Scope API</code></a></li>
+</ul></div>

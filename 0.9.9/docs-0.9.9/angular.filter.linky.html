@@ -1,0 +1,69 @@
+<h1>angular.filter.linky</h1>
+<fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<p>Finds links in text input and turns them into html links. Supports http/https/ftp/mailto and
+plane email address links.</p><h2>Usage</h2>
+<h3>In HTML Template Binding</h3>
+<code ng:non-bindable="">{{ linky_expression | linky }}</code>
+<h3 0="I" 1="n" 2=" " 3="J" 4="a" 5="v" 6="a" 7="S" 8="c" 9="r" 10="i" 11="p" 12="t"><code ng:non-bindable="">angular.filter.linky(text)</code>
+</h3>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">text – {string} – </code>
+Input text.</li>
+</ul>
+<h3>Returns</h3>
+<code ng:non-bindable="">string</code>
+– Html-linkified text.<h2>Example</h2>
+<doc:example><doc:source>     Snippet: &lt;textarea name="snippet" cols="60" rows="3"&gt;
+Pretty text with some links:
+http://angularjs.org/,
+mailto:us@somewhere.org,
+another@somewhere.org,
+and one more: ftp://127.0.0.1/.&lt;/textarea&gt;
+     &lt;table&gt;
+       &lt;tr&gt;
+         &lt;td&gt;Filter&lt;/td&gt;
+         &lt;td&gt;Source&lt;/td&gt;
+         &lt;td&gt;Rendered&lt;/td&gt;
+       &lt;/tr&gt;
+       &lt;tr id="linky-filter"&gt;
+         &lt;td&gt;linky filter&lt;/td&gt;
+         &lt;td&gt;
+           &lt;pre&gt;&amp;lt;div ng:bind="snippet | linky"&amp;gt;&lt;br/&gt;&amp;lt;/div&amp;gt;&lt;/pre&gt;
+         &lt;/td&gt;
+         &lt;td&gt;
+           &lt;div ng:bind="snippet | linky"&gt;&lt;/div&gt;
+         &lt;/td&gt;
+       &lt;/tr&gt;
+       &lt;tr id="escaped-html"&gt;
+         &lt;td&gt;no filter&lt;/td&gt;
+         &lt;td&gt;&lt;pre&gt;&amp;lt;div ng:bind="snippet"&amp;gt;&lt;br/&gt;&amp;lt;/div&amp;gt;&lt;/pre&gt;&lt;/td&gt;
+         &lt;td&gt;&lt;div ng:bind="snippet"&gt;&lt;/div&gt;&lt;/td&gt;
+       &lt;/tr&gt;
+     &lt;/table&gt;</doc:source>
+<doc:scenario>it('should linkify the snippet with urls', function(){
+  expect(using('#linky-filter').binding('snippet | linky')).
+    toBe('Pretty text with some links:\n' +
+         '&lt;a href="http://angularjs.org/"&gt;http://angularjs.org/&lt;/a&gt;,\n' +
+         '&lt;a href="mailto:us@somewhere.org"&gt;us@somewhere.org&lt;/a&gt;,\n' +
+         '&lt;a href="mailto:another@somewhere.org"&gt;another@somewhere.org&lt;/a&gt;,\n' +
+         'and one more: &lt;a href="ftp://127.0.0.1/"&gt;ftp://127.0.0.1/&lt;/a&gt;.');
+});
+
+it ('should not linkify snippet without the linky filter', function() {
+  expect(using('#escaped-html').binding('snippet')).
+    toBe("Pretty text with some links:\n" +
+         "http://angularjs.org/,\n" +
+         "mailto:us@somewhere.org,\n" +
+         "another@somewhere.org,\n" +
+         "and one more: ftp://127.0.0.1/.");
+});
+
+it('should update', function(){
+  input('snippet').enter('new http://link.');
+  expect(using('#linky-filter').binding('snippet | linky')).
+    toBe('new &lt;a href="http://link"&gt;http://link&lt;/a&gt;.');
+  expect(using('#escaped-html').binding('snippet')).toBe('new http://link.');
+});</doc:scenario>
+</doc:example>

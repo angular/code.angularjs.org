@@ -1,0 +1,50 @@
+<h1>angular.scope.$apply</h1>
+<div class="angular-scope-apply"><h2>Description</h2>
+<div class="description"><p><code>$apply()</code> is used to execute an expression in angular from outside of the angular framework.
+(For example from browser DOM events, setTimeout, XHR or third party libraries).
+Because we are calling into the angular framework we need to perform proper scope life-cycle
+of <a href="api/angular.service.$exceptionHandler"><code>exception handling</code></a>,
+<a href="api/angular.scope.$digest"><code>executing watches</code></a>.</p>
+
+<h4>Life cycle</h4>
+
+<h3>Pseudo-Code of <code>$apply()</code></h3>
+
+<pre><code>  function $apply(expr) {
+    try {
+      return $eval(expr);
+    } catch (e) {
+      $exceptionHandler(e);
+    } finally {
+      $root.$digest();
+    }
+  }
+</code></pre>
+
+<p>Scope's <code>$apply()</code> method transitions through the following stages:</p>
+
+<ol>
+<li>The <a href="guide/dev_guide.expressions">expression</a> is executed using the
+<a href="api/angular.scope.$eval"><code>$eval()</code></a> method.</li>
+<li>Any exceptions from the execution of the expression are forwarded to the
+<a href="api/angular.service.$exceptionHandler"><code>$exceptionHandler</code></a> service.</li>
+<li>The <a href="api/angular.scope.$watch"><code>watch</code></a> listeners are fired immediately after the expression
+was executed using the <a href="api/angular.scope.$digest"><code>$digest()</code></a> method.</li>
+</ol></div>
+<h2>Usage</h2>
+<div class="usage"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">angular.scope.$apply([exp]);</pre>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">exp<i>(optional)</i> – {(string|function())} – </code>
+<p>An angular expression to be executed.</p>
+
+<ul>
+<li><code>string</code>: execute using the rules as defined in <a href="guide/dev_guide.expressions">expression</a>.</li>
+<li><code>function(scope)</code>: execute the function with current <code>scope</code> parameter.</li>
+</ul></li>
+</ul>
+<h3>Returns</h3>
+<div class="returns"><code ng:non-bindable="">{*}</code>
+– <p>The result of evaluating the expression.</p></div>
+</div>
+</div>

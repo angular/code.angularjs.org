@@ -1,0 +1,54 @@
+<h1>angular.filter.number</h1>
+<fieldset class="workInProgress">
+  <legend>Work In Progress</legend>
+  This page is currently being revised. It might be incomplete or contain inaccuracies.
+  
+</fieldset>
+<h2>Description</h2>
+<p>Formats a number as text.</p>
+
+<p>If the input is not a number empty string is returned.</p>
+<h2>Usage</h2>
+<h3>In HTML Template Binding</h3>
+<tt>
+  <span>{{</span>
+  number_expression
+  | number<i>[:fractionSize=2]</i><span> }}</span>
+</tt>
+<h3>In JavaScript</h3>
+<tt ng:non-bindable>
+angular.filter.number(number, fractionSize);
+</tt>
+<h3>Parameters</h3>
+<ul>
+    <li><tt>number</tt> –
+      <tt>&#123;number|string&#125;</tt>
+      <tt></tt>
+      – Number to format.</li>
+    <li><tt>fractionSize</tt> –
+      <tt>&#123;(number|string)=&#125;</tt>
+      <tt>[2]</tt>
+      – Number of decimal places to round the number to.</li>
+  </ul>
+<h3>Returns</h3>
+<tt>&#123;string&#125;</tt> Number rounded to decimalPlaces and places a “,” after each third digit.
+<h2>Example</h2>
+<doc:example>
+  <doc:source>
+Enter number: &lt;input name='val' value='1234.56789' /&gt;&lt;br/&gt;
+Default formatting: {{val | number}}&lt;br/&gt;
+No fractions: {{val | number:0}}&lt;br/&gt;
+Negative number: {{-val | number:4}}
+  </doc:source>
+  <doc:scenario>     it('should format numbers', function(){
+       expect(binding('val | number')).toBe('1,234.57');
+       expect(binding('val | number:0')).toBe('1,235');
+       expect(binding('-val | number:4')).toBe('-1,234.5679');
+     });
+     it('should update', function(){
+       input('val').enter('3374.333');
+       expect(binding('val | number')).toBe('3,374.33');
+       expect(binding('val | number:0')).toBe('3,374');
+       expect(binding('-val | number:4')).toBe('-3,374.3330');
+     });</doc:scenario>
+</doc:example>

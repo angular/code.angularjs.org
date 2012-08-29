@@ -1,0 +1,38 @@
+<h1>angular.directive.ng:bind-template</h1>
+<h2>Description</h2>
+<p>The <code>ng:bind-template</code> attribute specifies that the element 
+text should be replaced with the template in ng:bind-template. 
+Unlike ng:bind the ng:bind-template can contain multiple <code>{{</code> <code>}}</code> 
+expressions. (This is required since some HTML elements 
+can not have SPAN elements such as TITLE, or OPTION to name a few.</p>
+<h2>Usage</h2>
+<h3>In HTML Template Binding</h3>
+<tt>
+  <pre>
+&lt;ANY ng:bind-template="template"&gt;
+  ...
+&lt;/ANY&gt;
+  </pre>
+</tt>
+<h3>Parameters</h3>
+<ul>
+    <li><tt>template:string</tt>: of form
+  <tt>{{</tt> <tt>expression</tt> <tt>}}</tt> to eval.</li>
+  </ul>
+<h2>Example</h2>
+<p>Try it here: enter text in text box and watch the greeting change.</p>
+<doc:example>
+  <doc:source>
+Salutation: &lt;input type="text" name="salutation" value="Hello"&gt;&lt;br/&gt;
+Name: &lt;input type="text" name="name" value="World"&gt;&lt;br/&gt;
+&lt;pre ng:bind-template="{{salutation}} {{name}}!"&gt;&lt;/pre&gt;
+  </doc:source>
+  <doc:scenario>   it('should check ng:bind', function(){
+     expect(using('.doc-example-live').binding(' angular.directive.ng:bind-template')).
+       toBe('Hello World!');
+     using('.doc-example-live').input('salutation').enter('Greetings');
+     using('.doc-example-live').input('name').enter('user');
+     expect(using('.doc-example-live').binding(' angular.directive.ng:bind-template')).
+       toBe('Greetings user!');
+   });</doc:scenario>
+</doc:example>

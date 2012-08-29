@@ -1,0 +1,57 @@
+<h1>angular.scope</h1>
+<div class="angular-scope"><h2>Description</h2>
+<div class="description"><p>A root scope can be created by calling <a href="api/angular.scope"><code>angular.scope()</code></a>. Child scopes
+are created using the <a href="api/angular.scope.$new"><code>$new()</code></a> method.
+(Most scopes are created automatically when compiled HTML template is executed.)</p>
+
+<p>Here is a simple scope snippet to show how you can interact with the scope.</p><div ng:non-bindable><pre class="brush: js;">
+       var scope = angular.scope();
+       scope.salutation = 'Hello';
+       scope.name = 'World';
+
+       expect(scope.greeting).toEqual(undefined);
+
+       scope.$watch('name', function() {
+         this.greeting = this.salutation + ' ' + this.name + '!';
+       }); // initialize the watch
+
+       expect(scope.greeting).toEqual(undefined);
+       scope.name = 'Misko';
+       // still old value, since watches have not been called yet
+       expect(scope.greeting).toEqual(undefined);
+
+       scope.$digest(); // fire all  the watches
+       expect(scope.greeting).toEqual('Hello Misko!');
+</pre></div><h3>Inheritance</h3>
+
+<p>A scope can inherit from a parent scope, as in this example:</p><div ng:non-bindable><pre class="brush: js;">
+     var parent = angular.scope();
+     var child = parent.$new();
+
+     parent.salutation = "Hello";
+     child.name = "World";
+     expect(child.salutation).toEqual('Hello');
+
+     child.salutation = "Welcome";
+     expect(child.salutation).toEqual('Welcome');
+     expect(parent.salutation).toEqual('Hello');
+</pre></div><h3>Dependency Injection</h3>
+
+<p>See <a href="guide/dev_guide.di">dependency injection</a>.</p></div>
+<h2>Usage</h2>
+<div class="usage"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">angular.scope([providers][, instanceCache]);</pre>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">providers<i>(optional)</i> – {Object.&lt;string, function()&gt;} – </code>
+<p>Map of service factory which need to be provided
+for the current scope. Defaults to <a href="api/angular.service"><code>angular.service</code></a>.</p></li>
+<li><code ng:non-bindable="">instanceCache<i>(optional)</i> – {Object.&lt;string, *&gt;} – </code>
+<p>Provides pre-instantiated services which should
+append/override services provided by <code>providers</code>. This is handy when unit-testing and having
+the need to override a default service.</p></li>
+</ul>
+<h3>Returns</h3>
+<div class="returns"><code ng:non-bindable="">{Object}</code>
+– <p>Newly created scope.</p></div>
+</div>
+</div>

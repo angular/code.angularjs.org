@@ -1,0 +1,144 @@
+<h1 id="angular.module.ng.$formFactory.Form">angular.module.ng.$formFactory.Form</h1>
+<div class="angular-module-ng-$formfactory-form"><h2 id="Description">Description</h2>
+<div class="description"><p>The <code>Form</code> is a controller which keeps track of the validity of the widgets contained within it.</p></div>
+<div class="member method"><h2 id="Methods">Methods</h2>
+<ul class="methods"><li><h3 id="$createWidget">$createWidget(params)</h3>
+<div class="$createwidget"><p>Use form's <code>$createWidget</code> instance method to create new widgets. The widgets can be created
+using an alias which makes the accessible from the form and available for data-binding,
+useful for displaying validation error messages.</p>
+
+<p>The creation of a widget sets up:</p>
+
+<ul>
+<li><p><code>$watch</code> of <code>expression</code> on <code>model</code> scope. This code path syncs the model to the view.
+ The <code>$watch</code> listener will:</p>
+
+<ul><li>assign the new model value of <code>expression</code> to <code>widget.$modelValue</code>.</li>
+<li>call <code>widget.$parseModel</code> method if present. The <code>$parseModel</code> is responsible for copying
+the <code>widget.$modelValue</code> to <code>widget.$viewValue</code> and optionally converting the data.
+(For example to convert a number into string)</li>
+<li>emits <code>$validate</code> event on widget giving a widget a chance to emit <code>$valid</code> / <code>$invalid</code>
+event.</li>
+<li>call <code>widget.$render()</code> method on widget. The <code>$render</code> method is responsible for
+reading the <code>widget.$viewValue</code> and updating the DOM.</li></ul></li>
+<li><p>Listen on <code>$viewChange</code> event from the <code>widget</code>. This code path syncs the view to the model.
+The <code>$viewChange</code> listener will:</p>
+
+<ul><li>assign the value to <code>widget.$viewValue</code>.</li>
+<li>call <code>widget.$parseView</code> method if present. The <code>$parseView</code> is responsible for copying
+the <code>widget.$viewValue</code> to <code>widget.$modelValue</code> and optionally converting the data.
+(For example to convert a string into number)</li>
+<li>emits <code>$validate</code> event on widget giving a widget a chance to emit <code>$valid</code> / <code>$invalid</code>
+event.</li>
+<li>Assign the  <code>widget.$modelValue</code> to the <code>expression</code> on the <code>model</code> scope.</li></ul></li>
+<li><p>Creates these set of properties on the <code>widget</code> which are updated as a response to the
+<code>$valid</code> / <code>$invalid</code> events:</p>
+
+<ul><li><code>$error</code> -  object - validation errors will be published as keys on this object.
+Data-binding to this property is useful for displaying the validation errors.</li>
+<li><code>$valid</code> - boolean - true if there are no validation errors</li>
+<li><code>$invalid</code> - boolean - opposite of <code>$valid</code>.</li></ul></li>
+</ul><h4 id="Parameters">Parameters</h4>
+<ul class="parameters"><li><code ng:non-bindable="">params – {Object} – </code>
+<p>Named parameters:</p>
+
+<ul>
+<li><code>scope</code> - <code>{Scope}</code> -  The scope to which the model for this widget is attached.</li>
+<li><code>model</code> - <code>{string}</code> - The name of the model property on model scope.</li>
+<li><p><code>controller</code> - {WidgetController} - The controller constructor function.
+ The controller constructor should create these instance methods.</p>
+
+<ul><li><code>$parseView()</code>: optional method responsible for copying <code>$viewVale</code> to <code>$modelValue</code>.
+The method may fire <code>$valid</code>/<code>$invalid</code> events.</li>
+<li><code>$parseModel()</code>: optional method responsible for copying <code>$modelVale</code> to <code>$viewValue</code>.
+The method may fire <code>$valid</code>/<code>$invalid</code> events.</li>
+<li><code>$render()</code>: required method which needs to update the DOM of the widget to match the
+<code>$viewValue</code>.</li></ul></li>
+<li><p><code>controllerArgs</code> - <code>{Array}</code> (Optional) -  Any extra arguments will be curried to the
+WidgetController constructor.</p></li>
+<li><code>onChange</code> - <code>{(string|function())}</code> (Optional) - Expression to execute when user changes the
+value.</li>
+<li><code>alias</code> - <code>{string}</code> (Optional) - The name of the form property under which the widget
+instance should be published. The name should be unique for each form.</li>
+</ul></li>
+</ul>
+<h4 id="Returns">Returns</h4>
+<div class="returns"><code ng:non-bindable="">{Widget}</code>
+– <p>Instance of a widget scope.</p></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="member property"><h2 id="Properties">Properties</h2>
+<ul class="properties"><li><h3 id="$error">$error</h3>
+<div class="$error"><p>Property of the form and widget instance.</p>
+
+<p>Summary of all of the errors on the page. If a widget emits <code>$invalid</code> with <code>REQUIRED</code> key,
+then the <code>$error</code> object will have a <code>REQUIRED</code> key with an array of widgets which have
+emitted this key. <code>form.$error.REQUIRED == [ widget ]</code>.</p></div>
+</li>
+<li><h3 id="$invalid">$invalid</h3>
+<div class="$invalid"><p>Property of the form and widget instance.</p>
+
+<p>True if any of the widgets of the form are invalid.</p></div>
+</li>
+<li><h3 id="$valid">$valid</h3>
+<div class="$valid"><p>Property of the form and widget instance.</p>
+
+<p>True if all of the widgets of the form are valid.</p></div>
+</li>
+</ul>
+</div>
+<div class="member event"><h2 id="Events">Events</h2>
+<ul class="events"><li><h3 id="$invalid">$invalid</h3>
+<div class="$invalid"><p>Upon receiving the <code>$invalid</code> event from the widget update the <code>$error</code>, <code>$valid</code> and <code>$invalid</code>
+properties of both the widget as well as the from.</p><div class="inline"><h4 id="Listen.on.">Listen on:</h4>
+<div class="listen-on-">form</div>
+</div>
+<h4 id="Parameters">Parameters</h4>
+<ul class="parameters"><li><code ng:non-bindable="">validationKey – {string} – </code>
+<p>The validation key to be used when updating the <code>$error</code> object.
+The validation key is what will allow the template to bind to a specific validation error
+such as <code>&lt;div ng:show="form.$error.KEY"&gt;error for key&lt;/div&gt;</code>.</p></li>
+</ul>
+</div>
+</li>
+<li><h3 id="$valid">$valid</h3>
+<div class="$valid"><p>Upon receiving the <code>$valid</code> event from the widget update the <code>$error</code>, <code>$valid</code> and <code>$invalid</code>
+properties of both the widget as well as the from.</p><div class="inline"><h4 id="Listen.on.">Listen on:</h4>
+<div class="listen-on-">form</div>
+</div>
+<h4 id="Parameters">Parameters</h4>
+<ul class="parameters"><li><code ng:non-bindable="">validationKey – {string} – </code>
+<p>The validation key to be used when updating the <code>$error</code> object.
+The validation key is what will allow the template to bind to a specific validation error
+such as <code>&lt;div ng:show="form.$error.KEY"&gt;error for key&lt;/div&gt;</code>.</p></li>
+</ul>
+</div>
+</li>
+<li><h3 id="$validate">$validate</h3>
+<div class="$validate"><p>Emit the <code>$validate</code> event on the widget, giving a widget a chance to emit a
+<code>$valid</code> / <code>$invalid</code> event base on its state. The <code>$validate</code> event is triggered when the
+model or the view changes.</p><div class="inline"><h4 id="Type.">Type:</h4>
+<div class="type-">emit</div>
+</div>
+<div class="inline"><h4 id="Target.">Target:</h4>
+<div class="target-">widget</div>
+</div>
+</div>
+</li>
+<li><h3 id="$viewChange">$viewChange</h3>
+<div class="$viewchange"><p>A widget is responsible for emitting this event whenever the view changes do to user interaction.
+The event takes a <code>$viewValue</code> parameter, which is the new value of the view. This
+event triggers a call to <code>$parseView()</code> as well as <code>$validate</code> event on widget.</p><div class="inline"><h4 id="Listen.on.">Listen on:</h4>
+<div class="listen-on-">widget</div>
+</div>
+<h4 id="Parameters">Parameters</h4>
+<ul class="parameters"><li><code ng:non-bindable="">viewValue – {*} – </code>
+<p>The new value for the view which will be assigned to <code>widget.$viewValue</code>.</p></li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>

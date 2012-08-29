@@ -1,0 +1,40 @@
+<h1>angular.Object.equals</h1>
+<div class="angular-object-equals"><h2>Description</h2>
+<div class="description"><p>Determines if two objects or value are equivalent.</p>
+
+<p>To be equivalent, they must pass <code>==</code> comparison or be of the same type and have all their
+properties pass <code>==</code> comparison. During property comparision properties of <code>function</code> type and
+properties with name starting with <code>$</code> are ignored.</p>
+
+<p>Supports values types, arrays and objects.</p>
+
+<p>Note: this function is used to augment the Object type in angular expressions. See
+<a href="#!angular.Object"><code>angular.Object</code></a> for more info.</p></div>
+<h2>Dependencies</h2>
+<ul class="dependencies"></ul>
+<h2>Usage</h2>
+<div class="usage"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">angular.Object.equals(o1, o2);</pre>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">o1 – {*} – </code>
+<p>Object or value to compare.</p></li>
+<li><code ng:non-bindable="">o2 – {*} – </code>
+<p>Object or value to compare.</p></li>
+</ul>
+<h3>Returns</h3>
+<div class="returns"><code ng:non-bindable="">{boolean}</code>
+– <p>True if arguments are equal.</p></div>
+</div>
+<h2>Example</h2>
+<div class="example"><doc:example><doc:source>Salutation: &lt;input type="text" name="greeting.salutation" value="Hello" /&gt;&lt;br/&gt;
+Name: &lt;input type="text" name="greeting.name" value="world"/&gt;&lt;br/&gt;
+&lt;hr/&gt;
+
+The &lt;code&gt;greeting&lt;/code&gt; object is
+&lt;span ng:hide="greeting.$equals({salutation:'Hello', name:'world'})"&gt;NOT&lt;/span&gt; equal to
+&lt;code&gt;{salutation:'Hello', name:'world'}&lt;/code&gt;.
+
+&lt;pre&gt;greeting={{greeting}}&lt;/pre&gt;</doc:source>
+</doc:example>
+</div>
+</div>

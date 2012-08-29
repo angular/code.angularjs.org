@@ -1,0 +1,25 @@
+<h1>angular.validator.url</h1>
+<fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<p>Use phone validator to restrict the input URLs.</p><h2>Usage</h2>
+<h3>In HTML Template Binding</h3>
+<div ng:non-bindable=""><pre class="brush: js; html-script: true;">&lt;input type="text" ng:validate="url"/&gt;</pre>
+</div>
+<h3>In JavaScript</h3>
+<div ng:non-bindable=""><pre class="brush: js; html-script: true;">angular.validator.url(value)</pre>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">value – {string} – </code>
+value to validate</li>
+</ul>
+<h2>Example</h2>
+<doc:example><doc:source>Enter valid phone number:
+&lt;input name="text" value="http://example.com/abc.html" size="40" ng:validate="url" &gt;</doc:source>
+<doc:scenario>it('should invalidate url', function(){
+  var n1 = element('.doc-example :input');
+  expect(n1.attr('className')).not().toMatch(/ng-validation-error/);
+  input('text').enter('abc://server/path');
+  expect(n1.attr('className')).toMatch(/ng-validation-error/);
+});</doc:scenario>
+</doc:example>

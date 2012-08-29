@@ -1,0 +1,71 @@
+<h1>angular.Array.add</h1>
+<div class="angular-array-add"><h2>Description</h2>
+<div class="description"><p>The <code>add</code> function in Angualar is similar to JavaScript's <code>Array#push</code> method in that it
+appends a new element to an array. Angular's function differs from the JavaScript method in
+that specifying a value for the function is optional and the default for the function is an
+empty object.</p>
+
+<p>Note: This function is used to augment the <code>Array</code> type in Angular expressions. See
+<a href="api/angular.Array"><code>angular.Array</code></a> for more information about Angular arrays.</p></div>
+<h2>Usage</h2>
+<div class="usage"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">angular.Array.add(array[, value]);</pre>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">array – {Array} – </code>
+<p>The array to be expanded.</p></li>
+<li><code ng:non-bindable="">value<i>(optional={})</i> – {*} – </code>
+<p>The value to be appended.</p></li>
+</ul>
+<h3>Returns</h3>
+<div class="returns"><code ng:non-bindable="">{Array}</code>
+– <p>The expanded array.</p></div>
+</div>
+<h2>Example</h2>
+<div class="example"><p>This example shows how you can use the <code>$add</code> method to populate an initially empty array
+with objects created from user input.</p><doc:example>
+       <pre class="doc-source">
+         [&lt;a href="" ng:click="people.$add()"&gt;add empty&lt;/a&gt;]
+         [&lt;a href="" ng:click="people.$add({name:'John', sex:'male'})"&gt;add 'John'&lt;/a&gt;]
+         [&lt;a href="" ng:click="people.$add({name:'Mary', sex:'female'})"&gt;add 'Mary'&lt;/a&gt;]
+
+         &lt;ul ng:init="people=[]"&gt;
+           &lt;li ng:repeat="person in people"&gt;
+             &lt;input name="person.name"&gt;
+             &lt;select name="person.sex"&gt;
+               &lt;option value=""&gt;--chose one--&lt;/option&gt;
+               &lt;option&gt;male&lt;/option&gt;
+               &lt;option&gt;female&lt;/option&gt;
+             &lt;/select&gt;
+             [&lt;a href="" ng:click="people.$remove(person)"&gt;X&lt;/a&gt;]
+           &lt;/li&gt;
+         &lt;/ul&gt;
+         &lt;pre&gt;people = {{people}}&lt;/pre&gt;
+       </pre>
+       <pre class="doc-scenario">
+         beforeEach(function() {
+            expect(binding('people')).toBe('people = []');
+         });
+
+         it('should create an empty record when "add empty" is clicked', function() {
+           element('.doc-example-live a:contains("add empty")').click();
+           expect(binding('people')).toBe('people = [{\n  "name":"",\n  "sex":null}]');
+         });
+
+         it('should create a "John" record when "add \'John\'" is clicked', function() {
+           element('.doc-example-live a:contains("add \'John\'")').click();
+           expect(binding('people')).toBe('people = [{\n  "name":"John",\n  "sex":"male"}]');
+         });
+
+         it('should create a "Mary" record when "add \'Mary\'" is clicked', function() {
+           element('.doc-example-live a:contains("add \'Mary\'")').click();
+           expect(binding('people')).toBe('people = [{\n  "name":"Mary",\n  "sex":"female"}]');
+         });
+
+         it('should delete a record when "X" is clicked', function() {
+            element('.doc-example-live a:contains("add empty")').click();
+            element('.doc-example-live li a:contains("X"):first').click();
+            expect(binding('people')).toBe('people = []');
+         });
+       </pre>
+     </doc:example></div>
+</div>

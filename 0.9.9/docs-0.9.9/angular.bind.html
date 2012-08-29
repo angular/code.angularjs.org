@@ -1,0 +1,20 @@
+<h1>angular.bind</h1>
+<fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<p>Returns function which calls function <code>fn</code> bound to <code>self</code> (<code>self</code> becomes the <code>this</code> for <code>fn</code>).
+Optional <code>args</code> can be supplied which are prebound to the function, also known as
+<a href="http://en.wikipedia.org/wiki/Currying">function currying</a>.</p><h2>Usage</h2>
+<div ng:non-bindable=""><pre class="brush: js; html-script: true;">angular.bind(self, fn, args);</pre>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">self – {Object} – </code>
+Context in which <code>fn</code> should be evaluated in.</li>
+<li><code ng:non-bindable="">fn – {function()} – </code>
+Function to be bound.</li>
+<li><code ng:non-bindable="">args – {...*} – </code>
+Optional arguments to be prebound to the <code>fn</code> function call.</li>
+</ul>
+<h3>Returns</h3>
+<code ng:non-bindable="">function()</code>
+– Function that wraps the <code>fn</code> with all the specified bindings.

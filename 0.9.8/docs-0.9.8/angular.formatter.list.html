@@ -1,0 +1,37 @@
+<h1>angular.formatter.list</h1>
+<fieldset class="workInProgress">
+  <legend>Work In Progress</legend>
+  This page is currently being revised. It might be incomplete or contain inaccuracies.
+  
+</fieldset>
+<h2>Description</h2>
+<p>Use list formatter if you wish to convert the user entered string to an array.</p>
+<h2>Usage</h2>
+<h3>In HTML Template Binding</h3>
+<tt>
+  &lt;input type="text" ng:format="list"&gt;
+</tt>
+<h3>In JavaScript</h3>
+<tt ng:non-bindable>
+var userInputString = angular.formatter.list.format(modelValue);<br/>
+var modelValue = angular.formatter.list.parse(userInputString);
+</tt>
+<h3>Returns</h3>
+<tt>&#123;Array&#125;</tt> Array parsed from the entered string.
+<h2>Example</h2>
+<doc:example>
+  <doc:source>
+Enter a list of items:
+&lt;input type="text" name="value" ng:format="list" value=" chair ,, table"/&gt;
+&lt;input type="text" name="value" ng:format="list"/&gt;
+&lt;pre&gt;value={{value}}&lt;/pre&gt;
+  </doc:source>
+  <doc:scenario>it('should format lists', function(){
+  expect(binding('value')).toEqual('value=["chair","table"]');
+  this.addFutureAction('change to XYZ', function($window, $document, done){
+    $document.elements('.doc-example :input:last').val(',,a,b,').trigger('change');
+    done();
+  });
+  expect(binding('value')).toEqual('value=["a","b"]');
+});</doc:scenario>
+</doc:example>

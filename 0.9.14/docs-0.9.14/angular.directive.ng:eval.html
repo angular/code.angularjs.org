@@ -1,0 +1,41 @@
+<h1>angular.directive.ng:eval</h1>
+<div class="angular-directive-ng-eval"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<div class="description"><p>The <code>ng:eval</code> allows you to execute a binding which has side effects
+without displaying the result to the user.</p></div>
+<h2>Usage</h2>
+<div class="usage"><pre class="brush: js; html-script: true;">&lt;ANY ng:eval="expression"&gt;
+   ...
+&lt;/ANY&gt;</pre>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">expression – {expression} – </code>
+<p><a href="#!guide.expression">Expression</a> to eval.</p></li>
+</ul>
+</div>
+<h2>Example</h2>
+<div class="example"><p>Notice that <code>{{</code> <code>obj.multiplied = obj.a * obj.b</code> <code>}}</code> has a side effect of assigning
+a value to <code>obj.multiplied</code> and displaying the result to the user. Sometimes,
+however, it is desirable to execute a side effect without showing the value to
+the user. In such a case <code>ng:eval</code> allows you to execute code without updating
+the display.</p><doc:example>
+     <pre class="doc-source">
+       &lt;input name="obj.a" value="6" &gt;
+&lt;input name="obj.b" value="2"&gt;
+         = {{obj.multiplied = obj.a * obj.b}} &lt;br&gt;
+       &lt;span ng:eval="obj.divide = obj.a / obj.b"&gt;&lt;/span&gt;
+       &lt;span ng:eval="obj.updateCount = 1 + (obj.updateCount||0)"&gt;&lt;/span&gt;
+       &lt;tt&gt;obj.divide = {{obj.divide}}&lt;/tt&gt;&lt;br/&gt;
+       &lt;tt&gt;obj.updateCount = {{obj.updateCount}}&lt;/tt&gt;
+     </pre>
+     <pre class="doc-scenario">
+       it('should check eval', function(){
+         expect(binding('obj.divide')).toBe('3');
+         expect(binding('obj.updateCount')).toBe('2');
+         input('obj.a').enter('12');
+         expect(binding('obj.divide')).toBe('6');
+         expect(binding('obj.updateCount')).toBe('3');
+       });
+     </pre>
+   </doc:example></div>
+</div>

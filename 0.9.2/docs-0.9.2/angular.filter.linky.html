@@ -1,0 +1,52 @@
+<h1><tt>angular.filter.linky</tt></h1>
+<h2>Usage</h2>
+<h3>In HTML Template Binding</h3>
+<tt>
+  <span>{{</span>
+  text_expression
+  | linky<span> }}</span>
+</tt>
+<h3>In JavaScript</h3>
+<tt ng:non-bindable>
+angular.filter.linky(text);
+</tt>
+<h3>Parameters</h3>
+<ul>
+    <li><tt>text(string)</tt>: Input text.</li>
+  </ul>
+<h3>Returns</h3>
+<p>{string} Html-linkified text.</p>
+<h3>CSS</h3>
+<h2>Description</h2>
+<p>  Finds links in text input and turns them into html links. Supports http/https/ftp/mailto and
+  plane email address links.</p>
+<WIKI:SOURCE style="display:block;">
+     Snippet: &lt;textarea name="snippet" cols="60" rows="3"&gt;
+Pretty text with some links:
+http://angularjs.org/,
+mailto:us@somewhere.org,
+another@somewhere.org,
+and one more: ftp://127.0.0.1/.&lt;/textarea&gt;
+     &lt;table&gt;
+       &lt;tr&gt;
+         &lt;td&gt;Filter&lt;/td&gt;
+         &lt;td&gt;Source&lt;/td&gt;
+         &lt;td&gt;Rendered&lt;/td&gt;
+       &lt;/tr&gt;
+       &lt;tr id="linky-filter"&gt;
+         &lt;td&gt;linky filter&lt;/td&gt;
+         &lt;td&gt;
+           &lt;pre&gt;&amp;lt;div ng:bind="snippet | linky"&amp;gt;&lt;br/&gt;&amp;lt;/div&amp;gt;&lt;/pre&gt;
+         &lt;/td&gt;
+         &lt;td&gt;
+           &lt;div ng:bind="snippet | linky"&gt;&lt;/div&gt;
+         &lt;/td&gt;
+       &lt;/tr&gt;
+       &lt;tr id="escaped-html"&gt;
+         &lt;td&gt;no filter&lt;/td&gt;
+         &lt;td&gt;&lt;pre&gt;&amp;lt;div ng:bind="snippet"&amp;gt;&lt;br/&gt;&amp;lt;/div&amp;gt;&lt;/pre&gt;&lt;/td&gt;
+         &lt;td&gt;&lt;div ng:bind="snippet"&gt;&lt;/div&gt;&lt;/td&gt;
+       &lt;/tr&gt;
+     &lt;/table&gt;
+
+</WIKI:SOURCE>

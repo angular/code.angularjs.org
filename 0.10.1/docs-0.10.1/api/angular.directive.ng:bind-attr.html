@@ -1,0 +1,49 @@
+<h1>angular.directive.ng:bind-attr</h1>
+<div class="angular-directive-ng-bind-attr"><h2>Description</h2>
+<div class="description"><p>The <code>ng:bind-attr</code> attribute specifies that a
+<a href="#!/guide/dev_guide.templates.databinding">databinding</a>  should be created between a particular
+element attribute and a given expression. Unlike <code>ng:bind</code>, the <code>ng:bind-attr</code> contains one or
+more JSON key value pairs; each pair specifies an attribute and the
+<a href="#!/guide/dev_guide.expressions">expression</a> to which it will be mapped.</p>
+
+<p>Instead of writing <code>ng:bind-attr</code> statements in your HTML, you can use double-curly markup to
+specify an <tt ng:non-bindable>{{expression}}</tt> for the value of an attribute.
+At compile time, the attribute is translated into an <code>&lt;span ng:bind-attr="{attr:expression}"/&gt;</code></p>
+
+<p>The following HTML snippet shows how to specify <code>ng:bind-attr</code>:</p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+  &lt;a href="http://www.google.com/search?q={{query}}"&gt;Google&lt;/a&gt;
+</pre></div><p>During compilation, the snippet gets translated to the following:</p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+  &lt;a ng:bind-attr='{"href":"http://www.google.com/search?q={{query}}"}'&gt;Google&lt;/a&gt;
+</pre></div></div>
+<h2>Usage</h2>
+<div class="usage"><pre class="brush: js; html-script: true;">&lt;ANY ng:bind-attr="attribute_json"&gt;
+   ...
+&lt;/ANY&gt;</pre>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">attribute_json – {string} – </code>
+<p>one or more JSON key-value pairs representing
+the attributes to replace with expressions. Each key matches an attribute
+which needs to be replaced. Each value is a text template of
+the attribute with the embedded
+<tt ng:non-bindable>{{expression}}</tt>s. Any number of
+key-value pairs can be specified.</p></li>
+</ul>
+</div>
+<h2>Example</h2>
+<div class="example"><p>Enter a search string in the Live Preview text box and then click "Google". The search executes instantly.</p><doc:example>
+  <pre class="doc-source">
+   Google for:
+   &lt;input type="text" name="query" value="AngularJS"/&gt;
+   &lt;a href="http://www.google.com/search?q={{query}}"&gt;Google&lt;/a&gt;
+  </pre>
+  <pre class="doc-scenario">
+    it('should check ng:bind-attr', function(){
+      expect(using('.doc-example-live').element('a').attr('href')).
+        toBe('http://www.google.com/search?q=AngularJS');
+      using('.doc-example-live').input('query').enter('google');
+      expect(using('.doc-example-live').element('a').attr('href')).
+        toBe('http://www.google.com/search?q=google');
+    });
+  </pre>
+</doc:example></div>
+</div>

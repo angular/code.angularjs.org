@@ -1,0 +1,13 @@
+<h1>angular.noop</h1>
+<fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<p>Empty function that performs no operation whatsoever. This function is useful when writing code
+in the functional style.</p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+     function foo(callback) {
+       var result = calculateResult();
+       (callback || angular.noop)(result);
+     }
+   </pre></div><h2>Usage</h2>
+<div ng:non-bindable=""><pre class="brush: js; html-script: true;">angular.noop();</pre>
+</div>

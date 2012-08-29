@@ -1,0 +1,26 @@
+<h1>angular.scope.$on</h1>
+<div class="angular-scope-on"><h2>Description</h2>
+<div class="description"><p>Listen on events of a given type. See <a href="api/angular.scope.$emit"><code>$emit</code></a> for discussion of
+event life cycle.</p></div>
+<h2>Usage</h2>
+<div class="usage"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">angular.scope.$on(name, listener);</pre>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">name – {string} – </code>
+<p>Event name to listen on.</p></li>
+<li><code ng:non-bindable="">listener – {function(event)} – </code>
+<p>Function to call when the event is emitted.</p></li>
+</ul>
+<h3>Returns</h3>
+<div class="returns"><code ng:non-bindable="">{function()}</code>
+– <p>Returns a deregistration function for this listener.</p>
+
+<p>The event listener function format is: <code>function(event)</code>. The <code>event</code> object passed into the
+listener has the following attributes
+  - <code>targetScope</code> - {Scope}: the scope on which the event was <code>$emit</code>-ed or <code>$broadcast</code>-ed.
+  - <code>currentScope</code> - {Scope}: the current scope which is handling the event.
+  - <code>name</code> - {string}: Name of the event.
+  - <code>cancel</code> - {function=}: calling <code>cancel</code> function will cancel further event propagation
+    (available only for events that were <code>$emit</code>-ed).</p></div>
+</div>
+</div>

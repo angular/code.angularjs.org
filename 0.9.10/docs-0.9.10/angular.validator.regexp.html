@@ -1,0 +1,37 @@
+<h1>angular.validator.regexp</h1>
+<div class="angular-validator-regexp"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<div class="description"><p>Use regexp validator to restrict the input to any Regular Expression.</p></div>
+<h2>Dependencies</h2>
+<ul class="dependencies"></ul>
+<h2>Usage</h2>
+<div class="usage"><h3>In HTML Template Binding</h3>
+<div class="in-html-template-binding"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">&lt;input type="text" ng:validate="regexp:expression[:msg]"/&gt;</pre>
+</div>
+</div>
+<h3>In JavaScript</h3>
+<div class="in-javascript"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">angular.validator.regexp(value, expression[, msg])</pre>
+</div>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">value – {string} – </code>
+<p>value to validate</p></li>
+<li><code ng:non-bindable="">expression – {string|regexp} – </code>
+<p>regular expression.</p></li>
+<li><code ng:non-bindable="">msg<i>(optional)</i> – {string} – </code>
+<p>error message to display.</p></li>
+</ul>
+</div>
+<h2>Example</h2>
+<div class="example"><doc:example><doc:source>&lt;script&gt; function Cntl(){
+  this.ssnRegExp = /^\d\d\d-\d\d-\d\d\d\d$/;
+}
+&lt;/script&gt;
+Enter valid SSN:
+&lt;div ng:controller="Cntl"&gt;
+&lt;input name="ssn" value="123-45-6789" ng:validate="regexp:ssnRegExp" &gt;
+&lt;/div&gt;</doc:source>
+</doc:example>
+</div>
+</div>

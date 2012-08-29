@@ -1,0 +1,34 @@
+<h1>Developer Guide: Angular HTML Compiler: Understanding Angular Widgets</h1>
+<div class="developer-guide-angular-html-compiler-understanding-angular-widgets"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<p>Widgets are DOM elements that the browser doesn't already understand. Angular provides some
+built-in widgets (such as <a href="#!/api/angular.widget.@ng:repeat"><code>ng:repeat</code></a>), and you can create your
+own custom widgets.</p>
+
+<p>Widgets are intended to manipulate the DOM tree by adding new elements (unlike <a href="#!/guide/dev_guide.compiler.directives">angular directives</a>, which are intended to modify only element
+properties).</p>
+
+<p>Widgets come in two types:</p>
+
+<ul>
+<li><p>Element Widget â A custom DOM element.  An example of a custom element is shown in <a href="#!/guide/dev_guide.compiler.widgets.creating_widgets">Creating Custom Widgets</a>.</p></li>
+<li><p>Attribute Widget â A custom attribute on an existing DOM element.  An attribute widget is similar
+to an angular directive, with the main difference being that an attribute widget will always be
+processed before any directives that are specified on the same element.  Only one attribute widget
+is allowed per element.  An example of an attribute widget is shown in <a href="#!/guide/dev_guide.compiler.widgets.creating_widgets">Creating Custom Widgets</a>.</p></li>
+</ul>
+
+<h3>Related Topics</h3>
+
+<ul>
+<li><a href="#!/guide/dev_guide.compiler">Angular HTML Compiler</a></li>
+<li><a href="#!/guide/dev_guide.compiler.directives">Angular Directives</a></li>
+<li><a href="#!/guide/dev_guide.compiler.widgets.creating_widgets">Creating Custom Widgets</a></li>
+<li><a href="#!/guide/dev_guide.compiler.directives.creating_directives">Creating Custom Directives</a></li>
+</ul>
+
+<h3>Related API</h3>
+
+<ul>
+<li><a href="#!/api/angular.compile"><code>Compiler API</code></a></li>
+</ul></div>

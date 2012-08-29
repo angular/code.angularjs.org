@@ -1,0 +1,27 @@
+<h1>angular.directive.ng:style</h1>
+<div class="angular-directive-ng-style"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<div class="description"><p>The ng:style allows you to set CSS style on an HTML element conditionally.</p></div>
+<h2>Dependencies</h2>
+<ul class="dependencies"></ul>
+<h2>Usage</h2>
+<div class="usage"><pre class="brush: js; html-script: true;">&lt;ANY ng:style="expression"&gt;
+   ...
+&lt;/ANY&gt;</pre>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">expression – {expression} – </code>
+<p>which evals to an object whes key's are 
+       CSS style names and values are coresponding values for those 
+       CSS keys.</p></li>
+</ul>
+</div>
+<h2>Example</h2>
+<div class="example"><doc:example><doc:source>&lt;input type="button" value="set" ng:click="myStyle={color:'red'}"&gt;
+&lt;input type="button" value="clear" ng:click="myStyle={}"&gt;
+&lt;br/&gt;
+&lt;span ng:style="myStyle"&gt;Sample Text&lt;/span&gt;
+&lt;pre&gt;myStyle={{myStyle}}&lt;/pre&gt;</doc:source>
+</doc:example>
+</div>
+</div>

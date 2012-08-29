@@ -1,0 +1,91 @@
+<h1>Developer Guide: DI: Understanding DI in Angular</h1>
+<div class="developer-guide-di-understanding-di-in-angular"><p>While DI is widely used in statically typed languages such as Java or C++, it has not been widely
+used in JavaScript. Angular brings the benefits of DI into JavaScript apps.</p>
+
+<p>In angular, DI is implemented as a subsystem that manages dependencies between services,
+controllers, widgets, and filters. The most important of these are <a href="api/angular.service"><code>services</code></a>.</p>
+
+<p>Services are objects that handle common tasks in web applications. Angular provides several<a href="api/angular.service"><code>built-in services</code></a>, and you can create your own custom services.</p>
+
+<p>The main job of angular's DI subsystem is to provide services to angular components that depend on
+them. The way the DI subsystem provides services is as follows: all services are registered with
+angular's <a href="api/angular.service"><code>service API</code></a>, and all components that depend on services
+define those dependencies as a property (<code>$inject</code>). With this information, the DI subsystem
+manages the creation of service objects and the provision of those objects to the components that
+need them, at the time they need them. The following illustration steps through the sequence of
+events:</p>
+
+<p><img src="img/guide/di_sequence_final.png"></p>
+
+<p>In the illustration above, the dependency injection sequence proceeds as follows:</p>
+
+<ol>
+<li>Service factory functions are registered with angular's service factory repository.</li>
+<li><code>ng:autobind</code> triggers angular's bootstrap sequence, during which angular compiles the template,
+creates the root scope, and creates the dependency injector.</li>
+<li>The <code>ng:controller</code> directive implicitly creates a new child scope, augmented by the application
+of the <code>PhoneListCtrl</code> controller function.</li>
+<li>The Injector identifies the <code>$xhr</code> service as <code>PhoneListCtrl</code> controller's only dependency.</li>
+<li>The Injector checks if the <code>$xhr</code> service has already been instantiated, and if not uses the
+factory function from the service factory repository to construct it.</li>
+<li>DI provides the instance of $xhr service to the PhoneListCtrl controller constructor</li>
+</ol>
+
+<h3>How Scope Relates to DI</h3>
+
+<p>The <a href="api/angular.injector"><code>injector</code></a> is responsible for resolving the service dependencies in
+the application. It gets created and configured with the creation of a root scope. The injector
+caches instances of services, with the services cache bound to the root scope.</p>
+
+<p>Different root scopes have different instances of the injector. While typical angular applications
+will only have one root scope (and hence the services will act like application singletons), in
+tests it is important to not share singletons across test invocations for isolation reasons. We
+achieve the necessary isolation by having each test create its own separate root scope.</p><div ng:non-bindable><pre class="brush: js;">
+// create a root scope
+var rootScope = angular.scope();
+// access the service locator
+var myService = rootScope.$service('myService');
+</pre></div><h3>Inferring dependencies from the signature of the factory function or constructor</h3>
+
+<p><strong>EXPERIMENTAL FEATURE</strong>: This is an experimental feature. See the important note at the end of
+this section for drawbacks.</p>
+
+<p>We resort to <code>$inject</code> and our own annotation because there is no way in JavaScript to get a list
+of arguments. Or is there? It turns out that calling <code>.toString()</code> on a function returns the
+function declaration along with the argument names as shown below:</p><div ng:non-bindable><pre class="brush: js;">
+function myFn(a,b){}
+expect(myFn.toString()).toEqual('function myFn(a,b){}');
+</pre></div><p>This means that angular can infer the function names after all and use that information to generate
+the <code>$inject</code> annotation automatically. Therefore the following two function definitions are
+equivalent:</p><div ng:non-bindable><pre class="brush: js;">
+// given a user defined service
+angular.service('serviceA', ...);
+
+// inject '$window', 'serviceA', curry 'name';
+function fnA($window, serviceA, name){};
+fnA.$inject = ['$window', 'serviceA'];
+
+// inject '$window', 'serviceA', curry 'name';
+function fnB($window, serviceA_, name){};
+// implies: fnB.$inject = ['$window', 'serviceA'];
+</pre></div><p>If angular does not find a <code>$inject</code> annotation on the function, then it calls the <code>.toString()</code>
+method and tries to infer what should be injected by using function argument names as dependency
+identifiers.</p>
+
+<p><strong>IMPORTANT</strong>
+Minifiers/obfuscators change the names of function arguments and will therefore break the <code>$inject</code>
+inference. For this reason, either explicitly declare the <code>$inject</code> or do not use
+minifiers/obfuscators. In the future, we may provide a pre-processor which will scan the source
+code and insert the <code>$inject</code> into the source code so that it can be minified/obfuscated.</p>
+
+<h3>Related Topics</h3>
+
+<ul>
+<li><a href="guide/dev_guide.services">Angular Services</a></li>
+</ul>
+
+<h3>Related API</h3>
+
+<ul>
+<li><a href="api/angular.service"><code>Services API</code></a></li>
+</ul></div>

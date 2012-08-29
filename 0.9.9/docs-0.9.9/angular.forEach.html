@@ -1,0 +1,30 @@
+<h1>angular.forEach</h1>
+<fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<p>Invokes the <code>iterator</code> function once for each item in <code>obj</code> collection. The collection can either
+be an object or an array. The <code>iterator</code> function is invoked with <code>iterator(value, key)</code>, where
+<code>value</code> is the value of an object property or an array element and <code>key</code> is the object property
+key or array element index. Optionally, <code>context</code> can be specified for the iterator function.</p>
+
+<p>Note: this function was previously known as <code>angular.foreach</code>.</p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+     var values = {name: 'misko', gender: 'male'};
+     var log = [];
+     angular.forEach(values, function(value, key){
+       this.push(key + ': ' + value);
+     }, log);
+     expect(log).toEqual(['name: misko', 'gender:male']);
+   </pre></div><h2>Usage</h2>
+<div ng:non-bindable=""><pre class="brush: js; html-script: true;">angular.forEach(obj, iterator, context);</pre>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">obj – {Object|Array} – </code>
+Object to iterate over.</li>
+<li><code ng:non-bindable="">iterator – {function()} – </code>
+Iterator function.</li>
+<li><code ng:non-bindable="">context – {Object} – </code>
+Object to become context (<code>this</code>) for the iterator function.</li>
+</ul>
+<h3>Returns</h3>
+<code ng:non-bindable="">Objet|Array</code>
+– Reference to <code>obj</code>.

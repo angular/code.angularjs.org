@@ -1,0 +1,46 @@
+<!doctype html>
+<html xmlns:ng="http://angularjs.org/"
+      xmlns:doc="http://docs.angularjs.org/"
+      ng:controller="DocsController">
+<head>
+  <title ng:bind-template="&lt;angular/&gt;: {{partialTitle}}">&lt;angular/&gt;</title>
+
+  <meta name="fragment" content="!">
+
+  <link rel="stylesheet" href="doc_widgets.css" type="text/css" />
+  <link rel="stylesheet" href="docs.css" type="text/css"/>
+  <link rel="stylesheet" href="syntaxhighlighter/shCore.css" type="text/css"/>
+  <link rel="stylesheet" href="syntaxhighlighter/shThemeDefault.css" type="text/css"/>
+
+  <script src="jquery.min.js"></script>
+  <script src="syntaxhighlighter/shCore.js"></script>
+  <script src="syntaxhighlighter/shBrushJScript.js"></script>
+  <script src="syntaxhighlighter/shBrushXml.js"></script>
+
+  <script src="../angular-0.9.14.min.js" ng:autobind></script>
+  <script src="docs.js"></script>
+  <script src="doc_widgets.js"></script>
+  <script src="docs-keywords.js"></script>
+</head>
+<body style="display:none;" ng:show="true">
+  <div id="header">
+    <h1>
+      <span class="main-title">{{partialTitle}}</span>
+      <a href="#" tabindex="0"><span class="angular">&lt;angular/&gt;</span> Docs</a>
+    </h1>
+  </div>
+  <div id="sidebar">
+    <input type="text" name="search" id="search-box" placeholder="search the docs"
+           tabindex="1" accesskey="s"/>
+    <ul id="api-list">
+      <li ng:repeat="page in pages.$filter(search)" ng:class="getClass(page)">
+        <a href="{{getUrl(page)}}" ng:click="" tabindex="2">{{page.shortName}}</a>
+      </li>
+    </ul>
+  </div>
+  <div id="main">
+    <a id="feedback" ng:href="{{getFeedbackUrl()}}">Report an Issue or Ask a Question</a>
+    <ng:include src="getCurrentPartial()" onload="afterPartialLoaded()"></ng:include>
+  </div>
+</body>
+</html>

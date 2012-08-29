@@ -1,0 +1,17 @@
+<h1>angular.markup</h1>
+<div class="angular-markup"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<p>Angular markup transforms content of DOM elements or portions of this content into other text or
+DOM elements for further compilation.</p>
+
+<p>Markup extensions do not themselves produce linking functions. Think of markup as a way to
+produce shorthand for a <a href="#!/api/angular.widget"><code>widget</code></a> or a <a href="#!/api/angular.directive"><code>directive</code></a>.</p>
+
+<p>The most prominent example of a markup in angular is the built-in double curly markup
+<code>{{expression}}</code>, which is shorthand for <code>&lt;span ng:bind="expression"&gt;&lt;/span&gt;</code>.</p>
+
+<p>Create custom markup like this:</p><div ng:non-bindable><pre class="brush: js;">
+  angular.markup('newMarkup', function(text, textNode, parentElement){
+    //tranformation code
+  });
+</pre></div><p>For more information about angular markup, see <a href="#!/guide/dev_guide.compiler.markup">Understanding Angular Markup</a> in the angular Developer Guide.</p></div>

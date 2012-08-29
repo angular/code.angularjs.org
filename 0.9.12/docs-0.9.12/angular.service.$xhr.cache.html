@@ -1,0 +1,37 @@
+<h1>angular.service.$xhr.cache</h1>
+<div class="angular-service-xhr-cache"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<div class="description"><p>Acts just like the <a href="#!angular.service.$xhr"><code>$xhr</code></a> service but caches responses for <code>GET</code>
+requests. All cache misses are delegated to the $xhr service.</p></div>
+<h2>Dependencies</h2>
+<ul class="dependencies"><li>$xhr</li>
+</ul>
+<h2>Usage</h2>
+<div class="usage"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">cache(method, url[, post], callback[, verifyCache]);</pre>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">method – {string} – </code>
+<p>HTTP method.</p></li>
+<li><code ng:non-bindable="">url – {string} – </code>
+<p>Destination URL.</p></li>
+<li><code ng:non-bindable="">post<i>(optional)</i> – {(string|Object)} – </code>
+<p>Request body.</p></li>
+<li><code ng:non-bindable="">callback – {function(number, (string|Object))} – </code>
+<p>Response callback.</p></li>
+<li><code ng:non-bindable="">verifyCache<i>(optional=false)</i> – {boolean} – </code>
+<p>If <code>true</code> then a result is immediately returned from cache
+(if present) while a request is sent to the server for a fresh response that will update the
+cached entry. The <code>callback</code> function will be called when the response is received.</p></li>
+</ul>
+</div>
+<h2>Properties</h2>
+<ul class="properties"><li><h3>delegate</h3>
+<div class="delegate"><p>Function to delegate all the cache misses to. Defaults to
+the <a href="#!angular.service.$xhr"><code>$xhr</code></a> service.</p></div>
+</li>
+<li><h3>data</h3>
+<div class="data"><p>The hashmap where all cached entries are stored.</p></div>
+</li>
+</ul>
+</div>

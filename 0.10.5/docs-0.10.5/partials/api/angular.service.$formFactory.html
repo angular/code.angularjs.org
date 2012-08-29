@@ -1,0 +1,250 @@
+<h1>angular.service.$formFactory</h1>
+<div class="angular-service-formfactory"><h2>Description</h2>
+<div class="description"><p>Use <code>$formFactory</code> to create a new instance of a <a href="guide/dev_guide.forms">form</a>
+controller or to find the nearest form instance for a given DOM element.</p>
+
+<p>The form instance is a collection of widgets, and is responsible for life cycle and validation
+of widget.</p>
+
+<p>Keep in mind that both form and widget instances are <a href="api/angular.scope"><code>scopes</code></a>.</p></div>
+<h2>Usage</h2>
+<div class="usage"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">$formFactory([parentForm]);</pre>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">parentForm<i>(optional)</i> – {Form} – </code>
+<p>The form which should be the parent form of the new form controller.
+If none specified default to the <code>rootForm</code>.</p></li>
+</ul>
+<h3>Returns</h3>
+<div class="returns"><code ng:non-bindable="">{Form}</code>
+– <p>A new <a href="#form">form</a> instance.</p></div>
+</div>
+<h2>Methods</h2>
+<ul class="methods"><li><h3>$createWidget(params)</h3>
+<div class="-createwidget-params-"><p>Use form's <code>$createWidget</code> instance method to create new widgets. The widgets can be created
+using an alias which makes the accessible from the form and available for data-binding,
+useful for displaying validation error messages.</p>
+
+<p>The creation of a widget sets up:</p>
+
+<ul>
+<li><p><code>$watch</code> of <code>expression</code> on <code>model</code> scope. This code path syncs the model to the view.
+ The <code>$watch</code> listener will:</p>
+
+<ul><li>assign the new model value of <code>expression</code> to <code>widget.$modelValue</code>.</li>
+<li>call <code>widget.$parseModel</code> method if present. The <code>$parseModel</code> is responsible for copying
+the <code>widget.$modelValue</code> to <code>widget.$viewValue</code> and optionally converting the data.
+(For example to convert a number into string)</li>
+<li>emits <code>$validate</code> event on widget giving a widget a chance to emit <code>$valid</code> / <code>$invalid</code>
+event.</li>
+<li>call <code>widget.$render()</code> method on widget. The <code>$render</code> method is responsible for
+reading the <code>widget.$viewValue</code> and updating the DOM.</li></ul></li>
+<li><p>Listen on <code>$viewChange</code> event from the <code>widget</code>. This code path syncs the view to the model.
+The <code>$viewChange</code> listener will:</p>
+
+<ul><li>assign the value to <code>widget.$viewValue</code>.</li>
+<li>call <code>widget.$parseView</code> method if present. The <code>$parseView</code> is responsible for copying
+the <code>widget.$viewValue</code> to <code>widget.$modelValue</code> and optionally converting the data.
+(For example to convert a string into number)</li>
+<li>emits <code>$validate</code> event on widget giving a widget a chance to emit <code>$valid</code> / <code>$invalid</code>
+event.</li>
+<li>Assign the  <code>widget.$modelValue</code> to the <code>expression</code> on the <code>model</code> scope.</li></ul></li>
+<li><p>Creates these set of properties on the <code>widget</code> which are updated as a response to the
+<code>$valid</code> / <code>$invalid</code> events:</p>
+
+<ul><li><code>$error</code> -  object - validation errors will be published as keys on this object.
+Data-binding to this property is useful for displaying the validation errors.</li>
+<li><code>$valid</code> - boolean - true if there are no validation errors</li>
+<li><code>$invalid</code> - boolean - opposite of <code>$valid</code>.</li></ul></li>
+</ul><h4>Parameters</h4>
+<ul class="parameters"><li><code ng:non-bindable="">params – {Object} – </code>
+<p>Named parameters:</p>
+
+<ul>
+<li><code>scope</code> - <code>{Scope}</code> -  The scope to which the model for this widget is attached.</li>
+<li><code>model</code> - <code>{string}</code> - The name of the model property on model scope.</li>
+<li><p><code>controller</code> - {WidgetController} - The controller constructor function.
+ The controller constructor should create these instance methods.</p>
+
+<ul><li><code>$parseView()</code>: optional method responsible for copying <code>$viewVale</code> to <code>$modelValue</code>.
+The method may fire <code>$valid</code>/<code>$invalid</code> events.</li>
+<li><code>$parseModel()</code>: optional method responsible for copying <code>$modelVale</code> to <code>$viewValue</code>.
+The method may fire <code>$valid</code>/<code>$invalid</code> events.</li>
+<li><code>$render()</code>: required method which needs to update the DOM of the widget to match the
+<code>$viewValue</code>.</li></ul></li>
+<li><p><code>controllerArgs</code> - <code>{Array}</code> (Optional) -  Any extra arguments will be curried to the
+WidgetController constructor.</p></li>
+<li><code>onChange</code> - <code>{(string|function())}</code> (Optional) - Expression to execute when user changes the
+value.</li>
+<li><code>alias</code> - <code>{string}</code> (Optional) - The name of the form property under which the widget
+instance should be published. The name should be unique for each form.</li>
+</ul></li>
+</ul>
+<h4>Returns</h4>
+<div class="returns"><code ng:non-bindable="">{Widget}</code>
+– <p>Instance of a widget scope.</p></div>
+</div>
+</li>
+<li><h3>forElement(element)</h3>
+<div class="forelement-element-"><p>Static method on <code>$formFactory</code> service.</p>
+
+<p>Retrieve the closest form for a given element or defaults to the <code>root</code> form. Used by the
+<a href="api/angular.widget.form"><code>form</code></a> element.</p><h4>Parameters</h4>
+<ul class="parameters"><li><code ng:non-bindable="">element – {Element} – </code>
+<p>The element where the search for form should initiate.</p></li>
+</ul>
+</div>
+</li>
+</ul>
+<h2>Properties</h2>
+<ul class="properties"><li><h3>$error</h3>
+<div class="-error"><p>Property of the form and widget instance.</p>
+
+<p>Summary of all of the errors on the page. If a widget emits <code>$invalid</code> with <code>REQUIRED</code> key,
+then the <code>$error</code> object will have a <code>REQUIRED</code> key with an array of widgets which have
+emitted this key. <code>form.$error.REQUIRED == [ widget ]</code>.</p></div>
+</li>
+<li><h3>$invalid</h3>
+<div class="-invalid"><p>Property of the form and widget instance.</p>
+
+<p>True if any of the widgets of the form are invalid.</p></div>
+</li>
+<li><h3>$valid</h3>
+<div class="-valid"><p>Property of the form and widget instance.</p>
+
+<p>True if all of the widgets of the form are valid.</p></div>
+</li>
+<li><h3>rootForm</h3>
+<div class="rootform"><p>Static property on <code>$formFactory</code></p>
+
+<p>Each application (<a href="guide/dev_guide.scopes.internals">root scope</a>) gets a root form which
+is the top-level parent of all forms.</p></div>
+</li>
+</ul>
+<h2>Events</h2>
+<ul class="events"><li><h3>$invalid</h3>
+<div class="-invalid"><p>Upon receiving the <code>$invalid</code> event from the widget update the <code>$error</code>, <code>$valid</code> and <code>$invalid</code>
+properties of both the widget as well as the from.</p><div class="inline"><h4>Listen on:</h4>
+<div class="listen-on-">form</div>
+</div>
+<h4>Parameters</h4>
+<ul class="parameters"><li><code ng:non-bindable="">validationKey – {String} – </code>
+<p>The validation key to be used when updating the <code>$error</code> object.
+The validation key is what will allow the template to bind to a specific validation error
+such as <code>&lt;div ng:show="form.$error.KEY"&gt;error for key&lt;/div&gt;</code>.</p></li>
+</ul>
+</div>
+</li>
+<li><h3>$valid</h3>
+<div class="-valid"><p>Upon receiving the <code>$valid</code> event from the widget update the <code>$error</code>, <code>$valid</code> and <code>$invalid</code>
+properties of both the widget as well as the from.</p><div class="inline"><h4>Listen on:</h4>
+<div class="listen-on-">form</div>
+</div>
+<h4>Parameters</h4>
+<ul class="parameters"><li><code ng:non-bindable="">validationKey – {String} – </code>
+<p>The validation key to be used when updating the <code>$error</code> object.
+The validation key is what will allow the template to bind to a specific validation error
+such as <code>&lt;div ng:show="form.$error.KEY"&gt;error for key&lt;/div&gt;</code>.</p></li>
+</ul>
+</div>
+</li>
+<li><h3>$validate</h3>
+<div class="-validate"><p>Emit the <code>$validate</code> event on the widget, giving a widget a chance to emit a
+<code>$valid</code> / <code>$invalid</code> event base on its state. The <code>$validate</code> event is triggered when the
+model or the view changes.</p><div class="inline"><h4>Type:</h4>
+<div class="type-">emit</div>
+</div>
+<div class="inline"><h4>Target:</h4>
+<div class="target-">widget</div>
+</div>
+</div>
+</li>
+<li><h3>$viewChange</h3>
+<div class="-viewchange"><p>A widget is responsible for emitting this event whenever the view changes do to user interaction.
+The event takes a <code>$viewValue</code> parameter, which is the new value of the view. This
+event triggers a call to <code>$parseView()</code> as well as <code>$validate</code> event on widget.</p><div class="inline"><h4>Listen on:</h4>
+<div class="listen-on-">widget</div>
+</div>
+<h4>Parameters</h4>
+<ul class="parameters"><li><code ng:non-bindable="">viewValue – {*} – </code>
+<p>The new value for the view which will be assigned to <code>widget.$viewValue</code>.</p></li>
+</ul>
+</div>
+</li>
+</ul>
+<h2>Example</h2>
+<div class="example"><p>This example shows how one could write a widget which would enable data-binding on
+<code>contenteditable</code> feature of HTML.</p><doc:example>
+      <pre class="doc-source">
+        &lt;script&gt;
+          function EditorCntl() {
+            this.html = '&lt;b&gt;Hello&lt;/b&gt; &lt;i&gt;World&lt;/i&gt;!';
+          }
+
+          function HTMLEditorWidget(element) {
+            var self = this;
+            var htmlFilter = angular.filter('html');
+
+            this.$parseModel = function() {
+              // need to protect for script injection
+              try {
+                this.$viewValue = htmlFilter(this.$modelValue || '').get();
+                if (this.$error.HTML) {
+                  // we were invalid, but now we are OK.
+                  this.$emit('$valid', 'HTML');
+                }
+              } catch (e) {
+                // if HTML not parsable invalidate form.
+                this.$emit('$invalid', 'HTML');
+              }
+            }
+
+            this.$render = function() {
+              element.html(this.$viewValue);
+            }
+
+            element.bind('keyup', function() {
+              self.$apply(function() {
+                self.$emit('$viewChange', element.html());
+              });
+            });
+          }
+
+          angular.directive('ng:contenteditable', function() {
+            function linkFn($formFactory, element) {
+              var exp = element.attr('ng:contenteditable'),
+                  form = $formFactory.forElement(element),
+                  widget;
+              element.attr('contentEditable', true);
+              widget = form.$createWidget({
+                scope: this,
+                model: exp,
+                controller: HTMLEditorWidget,
+                controllerArgs: [element]});
+              // if the element is destroyed, then we need to notify the form.
+              element.bind('$destroy', function() {
+                widget.$destroy();
+              });
+            }
+            linkFn.$inject = ['$formFactory'];
+            return linkFn;
+          });
+        &lt;/script&gt;
+        &lt;form name='editorForm' ng:controller="EditorCntl"&gt;
+          &lt;div ng:contenteditable="html"&gt;&lt;/div&gt;
+          &lt;hr/&gt;
+          HTML: &lt;br/&gt;
+          &lt;textarea ng:model="html" cols=80&gt;&lt;/textarea&gt;
+          &lt;hr/&gt;
+          &lt;pre&gt;editorForm = {{editorForm}}&lt;/pre&gt;
+        &lt;/form&gt;
+      </pre>
+      <pre class="doc-scenario">
+        it('should enter invalid HTML', function() {
+          expect(element('form[name=editorForm]').prop('className')).toMatch(/ng-valid/);
+          input('html').enter('&lt;');
+          expect(element('form[name=editorForm]').prop('className')).toMatch(/ng-invalid/);
+        });
+      </pre>
+    </doc:example></div>
+</div>

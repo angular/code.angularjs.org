@@ -1,0 +1,33 @@
+<h1>angular.validator.json</h1>
+<h2>Description</h2>
+<p>Use json validator if you wish to restrict the user input to a valid JSON.</p>
+<h2>Usage</h2>
+<h3>In HTML Template Binding</h3>
+<tt>
+  &lt;input type="text" ng:validate="json"/>
+</tt>
+<h3>In JavaScript</h3>
+<tt ng:non-bindable>
+angular.validator.json(value);
+</tt>
+<h3>Parameters</h3>
+<ul>
+    <li><tt>value:string</tt>: value to validate</li>
+  </ul>
+<h3>CSS</h3>
+ng-validation-error
+<h2>Example</h2>
+<doc:example>
+  <doc:source>
+&lt;textarea name="json" cols="60" rows="5" ng:validate="json"&gt;
+{name:'abc'}
+&lt;/textarea&gt;
+  </doc:source>
+  <doc:scenario>it('should invalidate json', function(){
+  var n1 = element('.doc-example :input');
+  expect(n1.attr('className')).not().toMatch(/ng-validation-error/);
+  input('json').enter('{name}');
+  expect(n1.attr('className')).toMatch(/ng-validation-error/);
+});
+</doc:scenario>
+</doc:example>

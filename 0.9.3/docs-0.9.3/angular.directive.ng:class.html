@@ -1,0 +1,37 @@
+<h1>angular.directive.ng:class</h1>
+<h2>Description</h2>
+<p>The <code>ng:class</code> allows you to set CSS class on HTML element 
+conditionally.</p>
+<h2>Usage</h2>
+<h3>In HTML Template Binding</h3>
+<tt>
+  <pre>
+&lt;ANY ng:class="expression"&gt;
+  ...
+&lt;/ANY&gt;
+  </pre>
+</tt>
+<h3>Parameters</h3>
+<ul>
+    <li><tt>expression:expression</tt>: to eval.</li>
+  </ul>
+<h2>Example</h2>
+<doc:example>
+  <doc:source>
+&lt;input type="button" value="set" ng:click="myVar='ng-input-indicator-wait'"&gt;
+&lt;input type="button" value="clear" ng:click="myVar=''"&gt;
+&lt;br&gt;
+&lt;span ng:class="myVar"&gt;Sample Text &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;
+  </doc:source>
+  <doc:scenario>   it('should check ng:class', function(){
+     expect(element('.doc-example-live span').attr('className')).not().
+       toMatch(/ng-input-indicator-wait/);
+     using('.doc-example-live').element(':button:first').click();
+     expect(element('.doc-example-live span').attr('className')).
+       toMatch(/ng-input-indicator-wait/);
+     using('.doc-example-live').element(':button:last').click();
+     
+     expect(element('.doc-example-live span').attr('className')).not().
+       toMatch(/ng-input-indicator-wait/);
+   });</doc:scenario>
+</doc:example>

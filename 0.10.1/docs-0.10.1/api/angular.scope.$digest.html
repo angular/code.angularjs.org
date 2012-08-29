@@ -1,0 +1,42 @@
+<h1>angular.scope.$digest</h1>
+<div class="angular-scope-digest"><h2>Description</h2>
+<div class="description"><p>Process all of the <a href="#!/api/angular.scope.$watch"><code>watchers</code></a> of the current scope and its children.
+Because a <a href="#!/api/angular.scope.$watch"><code>watcher</code></a>'s listener can change the model, the
+<code>$digest()</code> keeps calling the <a href="#!/api/angular.scope.$watch"><code>watchers</code></a> until no more listeners are
+firing. This means that it is possible to get into an infinite loop. This function will throw
+<code>'Maximum iteration limit exceeded.'</code> if the number of iterations exceeds 100.</p>
+
+<p>Usually you don't call <code>$digest()</code> directly in
+<a href="#!/api/angular.directive.ng:controller"><code>controllers</code></a> or in <a href="#!/api/angular.directive"><code>directives</code></a>.
+Instead a call to <a href="#!/api/angular.scope.$apply"><code>$apply()</code></a> (typically from within a
+<a href="#!/api/angular.directive"><code>directive</code></a>) will force a <code>$digest()</code>.</p>
+
+<p>If you want to be notified whenever <code>$digest()</code> is called,
+you can register a <code>watchExpression</code> function  with <a href="#!/api/angular.scope.$watch"><code>$watch()</code></a>
+with no <code>listener</code>.</p>
+
+<p>You may have a need to call <code>$digest()</code> from within unit-tests, to simulate the scope
+life-cycle.</p>
+
+<h3>Example</h3><div ng:non-bindable><pre class="brush: js;">
+       var scope = angular.scope();
+       scope.name = 'misko';
+       scope.counter = 0;
+
+       expect(scope.counter).toEqual(0);
+       scope.$digest('name', function(scope, newValue, oldValue) { counter = counter + 1; });
+       expect(scope.counter).toEqual(0);
+
+       scope.$digest();
+       // no variable change
+       expect(scope.counter).toEqual(0);
+
+       scope.name = 'adam';
+       scope.$digest();
+       expect(scope.counter).toEqual(1);
+     </pre></div></div>
+<h2>Usage</h2>
+<div class="usage"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">angular.scope.$digest();</pre>
+</div>
+</div>
+</div>

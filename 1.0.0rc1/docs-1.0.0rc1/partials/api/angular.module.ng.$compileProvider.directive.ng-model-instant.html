@@ -1,0 +1,36 @@
+<h1 id="angular.module.ng.$compileProvider.directive.ng.model.instant">angular.module.ng.$compileProvider.directive.ng-model-instant</h1>
+<div class="angular-module-ng-$compileprovider-directive-ng-model-instant"><h2 id="Description">Description</h2>
+<div class="description"><p>By default, Angular udpates the model only on <code>blur</code> event - when the input looses focus.
+If you want to update after every key stroke, use <code>ng-model-instant</code>.</p></div>
+<h2 id="Usage">Usage</h2>
+<div class="usage">as attribute<div ng:non-bindable=""><pre class="brush: js; html-script: true;">&lt;input ng-model-instant&gt;
+   ...
+&lt;/input&gt;</pre>
+</div>
+as class<div ng:non-bindable=""><pre class="brush: js; html-script: true;">&lt;input class="ng-model-instant"&gt;
+   ...
+&lt;/input&gt;</pre>
+</div>
+</div>
+<h2 id="Example">Example</h2>
+<div class="example"><doc:example>
+<pre class="doc-source">
+  First name: &lt;input type="text" ng-model="firstName" /&gt;&lt;br /&gt;
+  Last name: &lt;input type="text" ng-model="lastName" ng-model-instant /&gt;&lt;br /&gt;
+
+  First name ({{firstName}}) is only updated on `blur` event, but the last name ({{lastName}})
+  is updated immediately, because of using `ng-model-instant`.
+</pre>
+<pre class="doc-scenario">
+  it('should update first name on blur', function() {
+    input('firstName').enter('santa', 'blur');
+    expect(binding('firstName')).toEqual('santa');
+  });
+
+  it('should update last name immediately', function() {
+    input('lastName').enter('santa', 'keydown');
+    expect(binding('lastName')).toEqual('santa');
+  });
+</pre>
+</doc:example></div>
+</div>

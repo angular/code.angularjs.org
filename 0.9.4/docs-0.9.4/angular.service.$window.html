@@ -1,0 +1,30 @@
+<h1><tt>angular.service.$window</tt></h1>
+<fieldset class="workInProgress">
+  <legend>Work In Progress</legend>
+  This page is currently being revised. It might be incomplete or contain inaccuracies.
+  
+</fieldset>
+<h2>Description</h2>
+<p>Is reference to the browser's <b>window</b> object. While <b>window</b>
+is globally available in JavaScript, it causes testability problems, because
+it is a global variable. In <b><tt>&lt;angular/&gt;</tt></b> we always refer to it through the
+$window service, so it may be overriden, removed or mocked for testing.</p>
+
+<p>All expressions are evaluated with respect to current scope so they don't
+suffer from window globality.</p>
+<h2>Dependencies</h2>
+<ul>
+  </ul>
+<h2>Methods</h2>
+<ul>
+  </ul>
+<h2>Properties</h2>
+<ul>
+  </ul>
+<h2>Example</h2>
+<doc:example>
+  <doc:source>
+   &lt;input ng:init="greeting='Hello World!'" type="text" name="greeting" /&gt;
+   &lt;button ng:click="$window.alert(greeting)"&gt;ALERT&lt;/button&gt;
+  </doc:source>
+  </doc:example>

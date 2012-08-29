@@ -1,0 +1,41 @@
+<h1>angular.directive.ng:class</h1>
+<div class="angular-directive-ng-class"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<div class="description"><p>The <code>ng:class</code> allows you to set CSS class on HTML element
+conditionally.</p></div>
+<h2>Usage</h2>
+<div class="usage"><pre class="brush: js; html-script: true;">&lt;ANY ng:class="expression"&gt;
+   ...
+&lt;/ANY&gt;</pre>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">expression – {expression} – </code>
+<p><a href="#!guide.expression">Expression</a> to eval.</p></li>
+</ul>
+</div>
+<h2>Example</h2>
+<div class="example"><doc:example>
+<pre class="doc-source">
+ &lt;input type="button" value="set" ng:click="myVar='ng-input-indicator-wait'"&gt;
+ &lt;input type="button" value="clear" ng:click="myVar=''"&gt;
+ &lt;br&gt;
+ &lt;span ng:class="myVar"&gt;Sample Text &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/span&gt;
+</pre>
+<pre class="doc-scenario">
+  it('should check ng:class', function(){
+    expect(element('.doc-example-live span').attr('className')).not().
+      toMatch(/ng-input-indicator-wait/);
+
+    using('.doc-example-live').element(':button:first').click();
+
+    expect(element('.doc-example-live span').attr('className')).
+      toMatch(/ng-input-indicator-wait/);
+
+    using('.doc-example-live').element(':button:last').click();
+
+    expect(element('.doc-example-live span').attr('className')).not().
+      toMatch(/ng-input-indicator-wait/);
+  });
+</pre>
+</doc:example></div>
+</div>

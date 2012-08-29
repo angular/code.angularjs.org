@@ -1,0 +1,11 @@
+<h1>angular.attrMarkup</h1>
+<div class="angular-attrmarkup"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<p>Attribute markup extends the angular compiler in a very similar way as <a href="#!angular.markup"><code>angular.markup</code></a> except
+that it allows you to modify the state of the attribute text rather then the contest of a node.</p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+angular.attrMarkup('extraClass', function(attrValue, attrName, element){
+  if (attrName == 'additional-class') {
+    element.addClass(attrValue);
+  }
+});
+</pre></div></div>

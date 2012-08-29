@@ -1,0 +1,26 @@
+<h1>angular.injector</h1>
+<h2>Description</h2>
+<p>Creates an inject function that can be used for dependency injection.</p>
+<h2>Usage</h2>
+<tt ng:non-bindable>
+angular.injector(providerScope, providers, cache);
+</tt>
+<h3>Parameters</h3>
+<ul>
+    <li><tt>providerScope</tt> –
+      <tt>&#123;Object=&#125;</tt>
+      <tt>[{}]</tt>
+      – provider's <code>this</code></li>
+    <li><tt>providers</tt> –
+      <tt>&#123;Object.&lt;string, function()&gt;=&#125;</tt>
+      <tt>[angular.service]</tt>
+      – Map of provider (factory)
+    function.</li>
+    <li><tt>cache</tt> –
+      <tt>&#123;Object.&lt;string, function()&gt;=&#125;</tt>
+      <tt>[{}]</tt>
+      – Place where instances are saved for reuse. Can
+    also be used to override services speciafied by <code>providers</code> (useful in tests).</li>
+  </ul>
+<h3>Returns</h3>
+<tt>&#123;function()&#125;</tt> Injector function.

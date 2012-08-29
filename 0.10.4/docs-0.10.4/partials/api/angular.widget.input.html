@@ -1,0 +1,119 @@
+<h1>angular.widget.input</h1>
+<div class="angular-widget-input"><h2>Description</h2>
+<div class="description"><p>HTML input element widget with angular data-binding. Input widget follows HTML5 input types
+and polyfills the HTML5 validation behavior for older browsers.</p>
+
+<p>The <a href="api/angular.inputType"><code>custom angular.inputType</code></a>s provide a shorthand for declaring new
+inputs. This is a sharthand for text-box based inputs, and there is no need to go through the
+full <a href="api/angular.service.$formFactory"><code>$formFactory</code></a> widget lifecycle.</p></div>
+<h2>Usage</h2>
+<div class="usage"><h3>In HTML Template Binding</h3>
+<div class="in-html-template-binding"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">&lt;input
+       type="..."
+       ng:model="..."
+       [name="..."]
+       [required]
+       [ng:minlength="..."]
+       [ng:maxlength="..."]
+       [ng:pattern="..."]
+       [ng:change="..."]&gt;&lt;/input&gt;</pre>
+</div>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">type – {string} – </code>
+<p>Widget types as defined by <a href="api/angular.inputType"><code>angular.inputType</code></a>. If the
+type is in the format of <code>@ScopeType</code> then <code>ScopeType</code> is loaded from the
+current scope, allowing quick definition of type.</p></li>
+<li><code ng:non-bindable="">ng:model – {string} – </code>
+<p>Assignable angular expression to data-bind to.</p></li>
+<li><code ng:non-bindable="">name<i>(optional)</i> – {string} – </code>
+<p>Property name of the form under which the widgets is published.</p></li>
+<li><code ng:non-bindable="">required<i>(optional)</i> – {string} – </code>
+<p>Sets <code>REQUIRED</code> validation error key if the value is not entered.</p></li>
+<li><code ng:non-bindable="">ng:minlength<i>(optional)</i> – {number} – </code>
+<p>Sets <code>MINLENGTH</code> validation error key if the value is shorter than
+minlength.</p></li>
+<li><code ng:non-bindable="">ng:maxlength<i>(optional)</i> – {number} – </code>
+<p>Sets <code>MAXLENGTH</code> validation error key if the value is longer than
+maxlength.</p></li>
+<li><code ng:non-bindable="">ng:pattern<i>(optional)</i> – {string} – </code>
+<p>Sets <code>PATTERN</code> validation error key if the value does not match the
+RegExp pattern expression. Expected value is <code>/regexp/</code> for inline patterns or <code>regexp</code> for
+patterns defined as scope expressions.</p></li>
+<li><code ng:non-bindable="">ng:change<i>(optional)</i> – {string} – </code>
+<p>Angular expression to be executed when input changes due to user
+interaction with the input element.</p></li>
+</ul>
+</div>
+<h2>Example</h2>
+<div class="example"><doc:example>
+<pre class="doc-source">
+ &lt;script&gt;
+   function Ctrl() {
+     this.user = {name: 'guest', last: 'visitor'};
+   }
+ &lt;/script&gt;
+ &lt;div ng:controller="Ctrl"&gt;
+   &lt;form name="myForm"&gt;
+     User name: &lt;input type="text" name="userName" ng:model="user.name" required&gt;
+     &lt;span class="error" ng:show="myForm.userName.$error.REQUIRED"&gt;
+       Required!&lt;/span&gt;&lt;br&gt;
+     Last name: &lt;input type="text" name="lastName" ng:model="user.last"
+       ng:minlength="3" ng:maxlength="10"&gt;
+     &lt;span class="error" ng:show="myForm.lastName.$error.MINLENGTH"&gt;
+       Too short!&lt;/span&gt;
+     &lt;span class="error" ng:show="myForm.lastName.$error.MAXLENGTH"&gt;
+       Too long!&lt;/span&gt;&lt;br&gt;
+   &lt;/form&gt;
+   &lt;hr&gt;
+   &lt;tt&gt;user = {{user}}&lt;/tt&gt;&lt;br/&gt;
+   &lt;tt&gt;myForm.userName.$valid = {{myForm.userName.$valid}}&lt;/tt&gt;&lt;br&gt;
+   &lt;tt&gt;myForm.userName.$error = {{myForm.userName.$error}}&lt;/tt&gt;&lt;br&gt;
+   &lt;tt&gt;myForm.lastName.$valid = {{myForm.lastName.$valid}}&lt;/tt&gt;&lt;br&gt;
+   &lt;tt&gt;myForm.userName.$error = {{myForm.lastName.$error}}&lt;/tt&gt;&lt;br&gt;
+   &lt;tt&gt;myForm.$valid = {{myForm.$valid}}&lt;/tt&gt;&lt;br&gt;
+   &lt;tt&gt;myForm.$error.REQUIRED = {{!!myForm.$error.REQUIRED}}&lt;/tt&gt;&lt;br&gt;
+   &lt;tt&gt;myForm.$error.MINLENGTH = {{!!myForm.$error.MINLENGTH}}&lt;/tt&gt;&lt;br&gt;
+   &lt;tt&gt;myForm.$error.MAXLENGTH = {{!!myForm.$error.MAXLENGTH}}&lt;/tt&gt;&lt;br&gt;
+ &lt;/div&gt;
+</pre>
+<pre class="doc-scenario">
+  it('should initialize to model', function() {
+    expect(binding('user')).toEqual('{\n  \"last\":\"visitor",\n  \"name\":\"guest\"}');
+    expect(binding('myForm.userName.$valid')).toEqual('true');
+    expect(binding('myForm.$valid')).toEqual('true');
+  });
+
+  it('should be invalid if empty when required', function() {
+    input('user.name').enter('');
+    expect(binding('user')).toEqual('{\n  \"last\":\"visitor",\n  \"name\":\"\"}');
+    expect(binding('myForm.userName.$valid')).toEqual('false');
+    expect(binding('myForm.$valid')).toEqual('false');
+  });
+
+  it('should be valid if empty when min length is set', function() {
+    input('user.last').enter('');
+    expect(binding('user')).toEqual('{\n  \"last\":\"",\n  \"name\":\"guest\"}');
+    expect(binding('myForm.lastName.$valid')).toEqual('true');
+    expect(binding('myForm.$valid')).toEqual('true');
+  });
+
+  it('should be invalid if less than required min length', function() {
+    input('user.last').enter('xx');
+    expect(binding('user')).toEqual('{\n  \"last\":\"xx",\n  \"name\":\"guest\"}');
+    expect(binding('myForm.lastName.$valid')).toEqual('false');
+    expect(binding('myForm.lastName.$error')).toMatch(/MINLENGTH/);
+    expect(binding('myForm.$valid')).toEqual('false');
+  });
+
+  it('should be valid if longer than max length', function() {
+    input('user.last').enter('some ridiculously long name');
+    expect(binding('user'))
+      .toEqual('{\n  \"last\":\"some ridiculously long name",\n  \"name\":\"guest\"}');
+    expect(binding('myForm.lastName.$valid')).toEqual('false');
+    expect(binding('myForm.lastName.$error')).toMatch(/MAXLENGTH/);
+    expect(binding('myForm.$valid')).toEqual('false');
+  });
+</pre>
+</doc:example></div>
+</div>

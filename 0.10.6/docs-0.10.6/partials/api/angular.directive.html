@@ -1,0 +1,35 @@
+<h1 id="angular.directive">angular.directive</h1>
+<div class="angular-directive"><h2 id="Description">Description</h2>
+<div class="description"><p>Angular directives create custom attributes for DOM elements. A directive can modify the
+behavior of the element in which it is specified. Do not use directives to add elements to the
+DOM; instead, use <a href="api/angular.widget"><code>widgets</code></a> to add DOM elements.</p>
+
+<p>For more information about how Angular directives work, and to learn how to create your own
+directives, see <a href="guide/dev_guide.compiler.directives">Understanding Angular Directives</a> in
+the Angular Developer Guide.</p></div>
+<h2 id="Usage">Usage</h2>
+<div class="usage"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">directive(name, compileFn);</pre>
+</div>
+<h3 id="Parameters">Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">name – {string} – </code>
+<p>Directive identifier (case insensitive).</p></li>
+<li><code ng:non-bindable="">compileFn – {function(string, Element)} – </code>
+<p>Also called "template function" is a function called
+during compilation of the template when the compiler comes across the directive being
+registered. The string value of the element attribute representing the directive and
+jQuery/jqLite wrapped DOM element are passed as arguments to this function.</p>
+
+<p>The <code>compileFn</code> function may return a linking function also called an instance function.
+This function is called during the linking phase when a Scope is being associated with the
+template or template clone (see repeater notes below). The signature of the linking function
+is: <code>function(Element)</code> where Element is jQuery/jqLite wrapped DOM Element that is being
+linked.</p>
+
+<p>The biggest differenciator between the compile and linking functions is how they are being called
+when a directive is present within an <a href="api/angular.widget.@ng:repeat"><code>ng:repeat</code></a>. In this case,
+the compile function gets called once per occurence of the directive in the template. On the
+other hand the linking function gets called once for each repeated clone of the template (times
+number of occurences of the directive in the repeated template).</p></li>
+</ul>
+</div>
+</div>

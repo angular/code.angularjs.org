@@ -1,0 +1,38 @@
+<h1>angular.mock.service.$browser.xhr</h1>
+<div class="angular-mock-service-browser-xhr"><h2>Description</h2>
+<div class="description"><p>Generic method for training browser to expect a request in a test and respond to it.</p>
+
+<p>See also convenience methods for browser training:</p>
+
+<ul>
+<li><a href="#!/api/angular.mock.service.$browser.xhr.expectGET"><code>$browser.xhr.expectGET</code></a></li>
+<li><a href="#!/api/angular.mock.service.$browser.xhr.expectPOST"><code>$browser.xhr.expectPOST</code></a></li>
+<li><a href="#!/api/angular.mock.service.$browser.xhr.expectPUT"><code>$browser.xhr.expectPUT</code></a></li>
+<li><a href="#!/api/angular.mock.service.$browser.xhr.expectDELETE"><code>$browser.xhr.expectDELETE</code></a></li>
+<li><a href="#!/api/angular.mock.service.$browser.xhr.expectJSON"><code>$browser.xhr.expectJSON</code></a></li>
+</ul>
+
+<p>To flush pending requests in tests use
+<a href="#!/api/angular.mock.service.$browser.xhr.flush"><code>$browser.xhr.flush</code></a>.</p></div>
+<h2>Usage</h2>
+<div class="usage"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">$browser.xhr(method, url[, data], callback, headers);</pre>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">method – {string} – </code>
+<p>Expected HTTP method.</p></li>
+<li><code ng:non-bindable="">url – {string} – </code>
+<p>Url path for which a request is expected.</p></li>
+<li><code ng:non-bindable="">data<i>(optional)</i> – {(object|string)} – </code>
+<p>Expected body of the (POST) HTTP request.</p></li>
+<li><code ng:non-bindable="">callback – {function(number, *)} – </code>
+<p>Callback to call when response is flushed.</p></li>
+<li><code ng:non-bindable="">headers – {object} – </code>
+<p>Key-value pairs of expected headers.</p></li>
+</ul>
+<h3>Returns</h3>
+<div class="returns"><code ng:non-bindable="">{object}</code>
+– <p>Response configuration object. You can call its <code>respond()</code> method to
+configure what should the browser mock return when the response is
+<a href="#!/api/angular.mock.service.$browser.xhr.flush"><code>flushed</code></a>.</p></div>
+</div>
+</div>

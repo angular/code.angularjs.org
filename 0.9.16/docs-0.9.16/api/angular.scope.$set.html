@@ -1,0 +1,25 @@
+<h1>angular.scope.$set</h1>
+<div class="angular-scope-set"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<div class="description"><p>Assigns a value to a property of the current scope specified via <code>property_chain</code>. Unlike in
+JavaScript, if there are any <code>undefined</code> intermediary properties, empty objects are created
+and assigned in to them instead of throwing an exception.</p><div ng:non-bindable><pre class="brush: js;">
+         var scope = angular.scope();
+         expect(scope.person).toEqual(undefined);
+         scope.$set('person.name', 'misko');
+         expect(scope.person).toEqual({name:'misko'});
+         expect(scope.person.name).toEqual('misko');
+       </pre></div></div>
+<h2>Usage</h2>
+<div class="usage"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">angular.scope.$set(property_chain, value);</pre>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">property_chain – {string} – </code>
+<p>String representing name of a scope property. Optionally
+properties can be chained with <code>.</code> (dot), e.g. <code>'person.name.first'</code></p></li>
+<li><code ng:non-bindable="">value – {*} – </code>
+<p>Value to assign to the scope property.</p></li>
+</ul>
+</div>
+</div>

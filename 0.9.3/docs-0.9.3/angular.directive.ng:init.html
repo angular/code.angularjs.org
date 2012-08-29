@@ -1,0 +1,29 @@
+<h1>angular.directive.ng:init</h1>
+<h2>Description</h2>
+<p><code>ng:init</code> attribute allows the for initialization tasks to be executed 
+ before the template enters execution mode during bootstrap.</p>
+<h2>Usage</h2>
+<h3>In HTML Template Binding</h3>
+<tt>
+  <pre>
+&lt;ANY ng:init="expression"&gt;
+  ...
+&lt;/ANY&gt;
+  </pre>
+</tt>
+<h3>Parameters</h3>
+<ul>
+    <li><tt>expression:expression</tt>: to eval.</li>
+  </ul>
+<h2>Example</h2>
+<doc:example>
+  <doc:source>
+&lt;div ng:init="greeting='Hello'; person='World'"&gt;
+  {{greeting}} {{person}}!
+&lt;/div&gt;
+  </doc:source>
+  <doc:scenario>   it('should check greeting', function(){
+     expect(binding('greeting')).toBe('Hello');
+     expect(binding('person')).toBe('World');
+   });</doc:scenario>
+</doc:example>

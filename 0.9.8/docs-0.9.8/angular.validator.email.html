@@ -1,0 +1,40 @@
+<h1>angular.validator.email</h1>
+<fieldset class="workInProgress">
+  <legend>Work In Progress</legend>
+  This page is currently being revised. It might be incomplete or contain inaccuracies.
+  
+</fieldset>
+<h2>Description</h2>
+<p>Use email validator if you wist to restrict the user input to a valid email.</p>
+<h2>Usage</h2>
+<h3>In HTML Template Binding</h3>
+<tt>
+  &lt;input type="text" ng:validate="email"/>
+</tt>
+<h3>In JavaScript</h3>
+<tt ng:non-bindable>
+angular.validator.email(value);
+</tt>
+<h3>Parameters</h3>
+<ul>
+    <li><tt>value</tt> –
+      <tt>&#123;string&#125;</tt>
+      <tt></tt>
+      – value to validate</li>
+  </ul>
+<h3>CSS</h3>
+ng-validation-error
+<h2>Example</h2>
+<doc:example>
+  <doc:source>
+Enter valid email:
+&lt;input name="text" ng:validate="email" value="me@example.com"&gt;
+  </doc:source>
+  <doc:scenario>it('should invalidate email', function(){
+  var n1 = element('.doc-example :input');
+  expect(n1.attr('className')).not().toMatch(/ng-validation-error/);
+  input('text').enter('a@b.c');
+  expect(n1.attr('className')).toMatch(/ng-validation-error/);
+});
+</doc:scenario>
+</doc:example>

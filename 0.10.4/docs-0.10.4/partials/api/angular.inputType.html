@@ -1,0 +1,88 @@
+<h1>angular.inputType</h1>
+<div class="angular-inputtype"><p>Angular <a href="guide/dev_guide.forms">forms</a> allow you to build complex widgets. However for
+simple widget which are based on HTML input text element a simpler way of providing the validation
+and parsing is also provided. <code>angular.inputType</code> is a short hand for creating a widget which
+already has the DOM listeners and <code>$render</code> method supplied. The only thing which needs to
+be provided by the developer are the optional <code>$validate</code> listener and
+<code>$parseModel</code> or <code>$parseModel</code> methods.</p>
+
+<p>All <code>inputType</code> widgets support:</p>
+
+<ul>
+<li><p>CSS classes:</p>
+
+<ul><li><strong><code>ng-valid</code></strong>: when widget is valid.</li>
+<li><strong><code>ng-invalid</code></strong>: when widget is invalid.</li>
+<li><strong><code>ng-pristine</code></strong>: when widget has not been modified by user action.</li>
+<li><strong><code>ng-dirty</code></strong>: when has been modified do to user action.</li></ul></li>
+<li><p>Widget properties:</p>
+
+<ul><li><strong><code>$valid</code></strong>: When widget is valid.</li>
+<li><strong><code>$invalid</code></strong>: When widget is invalid.</li>
+<li><strong><code>$pristine</code></strong>: When widget has not been modified by user interaction.</li>
+<li><strong><code>$dirty</code></strong>: When user has been modified do to user interaction.</li>
+<li><strong><code>$required</code></strong>: When the <code>&lt;input&gt;</code> element has <code>required</code> attribute. This means that the
+widget will have <code>REQUIRED</code> validation error if empty.</li>
+<li><strong><code>$disabled</code></strong>: When the <code>&lt;input&gt;</code> element has <code>disabled</code> attribute.</li>
+<li><strong><code>$readonly</code></strong>: When the <code>&lt;input&gt;</code> element has <code>readonly</code> attribute.</li></ul></li>
+<li><p>Widget Attribute Validators:</p>
+
+<ul><li><strong><code>required</code></strong>: Sets <code>REQUIRED</code> validation error key if the input is empty</li>
+<li><strong><code>ng:pattern</code></strong> Sets <code>PATTERN</code> validation error key if the value does not match the
+RegExp pattern expression. Expected value is <code>/regexp/</code> for inline patterns or <code>regexp</code> for
+patterns defined as scope expressions.</li></ul></li>
+</ul>
+
+<h2>Example</h2><doc:example>
+<pre class="doc-source">
+   &lt;script&gt;
+     angular.inputType('json', function() {
+       this.$parseView = function() {
+         try {
+           this.$modelValue = angular.fromJson(this.$viewValue);
+           if (this.$error.JSON) {
+             this.$emit('$valid', 'JSON');
+           }
+         } catch (e) {
+             this.$emit('$invalid', 'JSON');
+         }
+       }
+
+       this.$parseModel = function() {
+         this.$viewValue = angular.toJson(this.$modelValue);
+       }
+     });
+
+     function Ctrl() {
+       this.data = {
+         framework:'angular',
+         codenames:'supper-powers'
+       }
+       this.required = false;
+       this.disabled = false;
+       this.readonly = false;
+     }
+   &lt;/script&gt;
+   &lt;div ng:controller="Ctrl"&gt;
+     &lt;form name="myForm"&gt;
+       &lt;input type="json" ng:model="data" size="80"
+              ng:required="{{required}}" ng:disabled="{{disabled}}"
+              ng:readonly="{{readonly}}"/&gt;&lt;br/&gt;
+       Required: &lt;input type="checkbox" ng:model="required"&gt; &lt;br/&gt;
+       Disabled: &lt;input type="checkbox" ng:model="disabled"&gt; &lt;br/&gt;
+       Readonly: &lt;input type="checkbox" ng:model="readonly"&gt; &lt;br/&gt;
+      &lt;pre&gt;data={{data}}&lt;/pre&gt;
+       &lt;pre&gt;myForm={{myForm}}&lt;/pre&gt;
+     &lt;/form&gt;
+   &lt;/div&gt;
+</pre>
+<pre class="doc-scenario">
+  it('should invalidate on wrong input', function() {
+    expect(element('form[name=myForm]').prop('className')).toMatch('ng-valid');
+    input('data').enter('{}');
+    expect(binding('data')).toEqual('data={\n  }');
+    input('data').enter('{');
+    expect(element('form[name=myForm]').prop('className')).toMatch('ng-invalid');
+  });
+</pre>
+</doc:example></div>

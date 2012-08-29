@@ -1,0 +1,56 @@
+<h1>angular.formatter.index</h1>
+<div class="angular-formatter-index"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<div class="description"><p>Index formatter is meant to be used with <code>select</code> input widget. It is useful when one needs
+to select from a set of objects. To create pull-down one can iterate over the array of object
+to build the UI. However  the value of the pull-down must be a string. This means that when on
+object is selected form the pull-down, the pull-down value is a string which needs to be
+converted back to an object. This conversion from string to on object is not possible, at best
+the converted object is a copy of the original object. To solve this issue we create a pull-down
+where the value strings are an index of the object in the array. When pull-down is selected the
+index can be used to look up the original user object.</p></div>
+<h2>Dependencies</h2>
+<ul class="dependencies"></ul>
+<h2>Usage</h2>
+<div class="usage"><h3>In HTML Template Binding</h3>
+<div class="in-html-template-binding"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">&lt;select name="bindExpression" ng:format="index:array"&gt;</pre>
+</div>
+</div>
+<h3>In JavaScript</h3>
+<div class="in-javascript"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">var userInputString = angular.formatter.index.format(modelValue, array);
+var modelValue = angular.formatter.index.parse(userInputString, array);</pre>
+</div>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">array – {array} – </code>
+<p>to be used for selecting an object.</p></li>
+</ul>
+<h3>Returns</h3>
+<div class="returns"><code ng:non-bindable="">{object}</code>
+– <p>object which is located at the selected position.</p></div>
+</div>
+<h2>Example</h2>
+<div class="example"><doc:example><doc:source>&lt;script&gt;
+function DemoCntl(){
+  this.users = [
+    {name:'guest', password:'guest'},
+    {name:'user', password:'123'},
+    {name:'admin', password:'abc'}
+  ];
+}
+&lt;/script&gt;
+&lt;div ng:controller="DemoCntl"&gt;
+  User:
+  &lt;select name="currentUser" ng:format="index:users"&gt;
+    &lt;option ng:repeat="user in users" value="{{$index}}"&gt;{{user.name}}&lt;/option&gt;
+  &lt;/select&gt;
+  &lt;select name="currentUser" ng:format="index:users"&gt;
+    &lt;option ng:repeat="user in users" value="{{$index}}"&gt;{{user.name}}&lt;/option&gt;
+  &lt;/select&gt;
+  user={{currentUser.name}}&lt;br/&gt;
+  password={{currentUser.password}}&lt;br/&gt;
+&lt;/div&gt;</doc:source>
+</doc:example>
+</div>
+</div>

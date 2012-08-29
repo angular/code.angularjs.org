@@ -1,0 +1,45 @@
+<h1>angular.Array.limitTo</h1>
+<div class="angular-array-limitto"><h2>Description</h2>
+<div class="description"><p>Creates a new array containing only a specified number of elements in an array. The elements
+are taken from either the beginning or the end of the source array, as specified by the
+value and sign (positive or negative) of <code>limit</code>.</p>
+
+<p>Note: This function is used to augment the <code>Array</code> type in Angular expressions. See
+<a href="#!/api/angular.Array"><code>angular.Array</code></a> for more information about Angular arrays.</p></div>
+<h2>Usage</h2>
+<div class="usage"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">angular.Array.limitTo(array, limit);</pre>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">array – {Array} – </code>
+<p>Source array to be limited.</p></li>
+<li><code ng:non-bindable="">limit – {string|Number} – </code>
+<p>The length of the returned array. If the <code>limit</code> number is
+positive, <code>limit</code> number of items from the beginning of the source array are copied.
+If the number is negative, <code>limit</code> number  of items from the end of the source array are
+copied.</p></li>
+</ul>
+<h3>Returns</h3>
+<div class="returns"><code ng:non-bindable="">{Array}</code>
+– <p>A new sub-array of length <code>limit</code>.</p></div>
+</div>
+<h2>Example</h2>
+<div class="example"><doc:example>
+<pre class="doc-source">
+  &lt;div ng:init="numbers = [1,2,3,4,5,6,7,8,9]"&gt;
+    Limit [1,2,3,4,5,6,7,8,9] to: &lt;input name="limit" value="3"/&gt;
+    &lt;p&gt;Output: {{ numbers.$limitTo(limit) | json }}&lt;/p&gt;
+  &lt;/div&gt;
+</pre>
+<pre class="doc-scenario">
+  it('should limit the numer array to first three items', function() {
+    expect(element('.doc-example-live input[name=limit]').val()).toBe('3');
+    expect(binding('numbers.$limitTo(limit) | json')).toEqual('[1,2,3]');
+  });
+
+  it('should update the output when -3 is entered', function() {
+    input('limit').enter(-3);
+    expect(binding('numbers.$limitTo(limit) | json')).toEqual('[7,8,9]');
+  });
+</pre>
+</doc:example></div>
+</div>

@@ -1,0 +1,30 @@
+<h1>angular.formatter.boolean</h1>
+<h2>Description</h2>
+<p>Use boolean formatter if you wish to store the data as boolean.</p>
+<h2>Usage</h2>
+<h3>In HTML Template Binding</h3>
+<tt>
+  &lt;input type="text" ng:format="boolean"&gt;
+</tt>
+<h3>In JavaScript</h3>
+<tt ng:non-bindable>
+var userInputString = angular.formatter.boolean.format(modelValue);<br/>
+var modelValue = angular.formatter.boolean.parse(userInputString);
+</tt>
+<h3>Returns</h3>
+<p>Convert to <code>true</code> unless user enters (blank), <code>f</code>, <code>false</code>, <code>0</code>, <code>no</code>, <code>[]</code>.</p>
+<h3>CSS</h3>
+<h2>Example</h2>
+<doc:example>
+  <doc:source>
+Enter truthy text:
+&lt;input type="text" name="value" ng:format="boolean" value="no"/&gt;
+&lt;input type="checkbox" name="value"/&gt;
+&lt;pre&gt;value={{value}}&lt;/pre&gt;
+  </doc:source>
+  <doc:scenario>it('should format boolean', function(){
+  expect(binding('value')).toEqual('value=false');
+  input('value').enter('truthy');
+  expect(binding('value')).toEqual('value=true');
+});</doc:scenario>
+</doc:example>

@@ -1,0 +1,47 @@
+<h1>angular.validator.regexp</h1>
+<fieldset class="workInProgress">
+  <legend>Work In Progress</legend>
+  This page is currently being revised. It might be incomplete or contain inaccuracies.
+  
+</fieldset>
+<h2>Description</h2>
+<p>Use regexp validator to restrict the input to any Regular Expression.</p>
+<h2>Usage</h2>
+<h3>In HTML Template Binding</h3>
+<tt>
+  &lt;input type="text" ng:validate="regexp:expression"/>
+</tt>
+<h3>In JavaScript</h3>
+<tt ng:non-bindable>
+angular.validator.regexp(value, expression);
+</tt>
+<h3>Parameters</h3>
+<ul>
+    <li><tt>value</tt> –
+      <tt>&#123;string&#125;</tt>
+      <tt></tt>
+      – value to validate</li>
+    <li><tt>expression</tt> –
+      <tt>&#123;regexp&#125;</tt>
+      <tt></tt>
+      – regular expression.</li>
+  </ul>
+<h3>CSS</h3>
+ng-validation-error
+<h2>Example</h2>
+<doc:example>
+  <doc:source>
+&lt;script&gt; var ssn = /^\d\d\d-\d\d-\d\d\d\d$/; &lt;/script&gt;
+Enter valid SSN:
+&lt;input name="ssn" value="123-45-6789" ng:validate="regexp:$window.ssn" &gt;
+  </doc:source>
+  <doc:scenario>it('should invalidate non ssn', function(){
+  var textBox = element('.doc-example :input');
+  expect(textBox.attr('className')).not().toMatch(/ng-validation-error/);
+  expect(textBox.val()).toEqual('123-45-6789');
+  
+  input('ssn').enter('123-45-67890');
+  expect(textBox.attr('className')).toMatch(/ng-validation-error/);
+});
+</doc:scenario>
+</doc:example>

@@ -1,0 +1,48 @@
+<h1>angular.injector</h1>
+<div class="angular-injector"><h2>Description</h2>
+<div class="description"><p>Creates an injector function that can be used for retrieving services as well as for
+dependency injection (see <a href="guide/dev_guide.di">dependency injection</a>).</p>
+
+<p>Angular creates an injector automatically for the root scope and it is available as the
+<a href="api/angular.scope.$service"><code>$service</code></a> property. Creating an injector doesn't automatically
+create all of the <code>$eager</code> <a href="api/angular.service"><code>services</code></a>. You have to call <code>injector.eager()</code>
+to initialize them.</p></div>
+<h2>Usage</h2>
+<div class="usage"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">angular.injector([factoryScope][, factories][, instanceCache]);</pre>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">factoryScope<i>(optional={})</i> – {Object} – </code>
+<p>The <code>this</code> for the service factory function.</p></li>
+<li><code ng:non-bindable="">factories<i>(optional=angular.service)</i> – {Object.&lt;string, function()&gt;} – </code>
+<p>Map of the service factory
+functions.</p></li>
+<li><code ng:non-bindable="">instanceCache<i>(optional={})</i> – {Object.&lt;string, function()&gt;} – </code>
+<p>Place where instances of services are
+saved for reuse. Can also be used to override services specified by <code>serviceFactory</code>
+(useful in tests).</p></li>
+</ul>
+<h3>Returns</h3>
+<div class="returns"><code ng:non-bindable="">{function()}</code>
+– <p>Injector function:</p>
+
+<ul>
+<li><code>injector(serviceName)</code>:
+<ul><li><code>serviceName</code> - <code>{string=}</code> - Name of the service to retrieve.</li></ul></li>
+</ul>
+
+<p>The injector function also has these properties:</p>
+
+<ul>
+<li>An <code>invoke</code> property which can be used to invoke methods with dependency-injected arguments.
+<code>injector.invoke(self, fn, curryArgs)</code>
+<ul><li><code>self</code> -  The "<code>this</code>" to be used when invoking the function.</li>
+<li><code>fn</code> - The function to be invoked. The function may have the <code>$inject</code> property that
+lists the set of arguments which should be auto-injected.
+(see <a href="guide/dev_guide.di">dependency injection</a>).</li>
+<li><code>curryArgs(array)</code> - Optional array of arguments to pass to the function
+invocation after the injection arguments (also known as curry arguments or currying).</li></ul></li>
+<li>An <code>eager</code> property which is used to initialize the eager services.
+<code>injector.eager()</code></li>
+</ul></div>
+</div>
+</div>

@@ -1,0 +1,57 @@
+<h1>angular.inputType.checkbox</h1>
+<div class="angular-inputtype-checkbox"><h2>Description</h2>
+<div class="description"><p>HTML checkbox.</p></div>
+<h2>Usage</h2>
+<div class="usage"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">&lt;input type="checkbox"
+       ng:model="..."
+       [name="..."]
+       [ng:true-value="..."]
+       [ng:false-value="..."]
+       [ng:change="..."]&gt;</pre>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">ng:model – {string} – </code>
+<p>Assignable angular expression to data-bind to.</p></li>
+<li><code ng:non-bindable="">name<i>(optional)</i> – {string} – </code>
+<p>Property name of the form under which the widgets is published.</p></li>
+<li><code ng:non-bindable="">ng:true-value<i>(optional)</i> – {string} – </code>
+<p>The value to which the expression should be set when selected.</p></li>
+<li><code ng:non-bindable="">ng:false-value<i>(optional)</i> – {string} – </code>
+<p>The value to which the expression should be set when not selected.</p></li>
+<li><code ng:non-bindable="">ng:change<i>(optional)</i> – {string} – </code>
+<p>Angular expression to be executed when input changes due to user
+interaction with the input element.</p></li>
+</ul>
+</div>
+<h2>Example</h2>
+<div class="example"><doc:example>
+<pre class="doc-source">
+ &lt;script&gt;
+   function Ctrl() {
+     this.value1 = true;
+     this.value2 = 'YES'
+   }
+ &lt;/script&gt;
+ &lt;div ng:controller="Ctrl"&gt;
+   &lt;form name="myForm"&gt;
+     Value1: &lt;input type="checkbox" ng:model="value1"&gt; &lt;br/&gt;
+     Value2: &lt;input type="checkbox" ng:model="value2"
+                    ng:true-value="YES" ng:false-value="NO"&gt; &lt;br/&gt;
+   &lt;/form&gt;
+   &lt;tt&gt;value1 = {{value1}}&lt;/tt&gt;&lt;br/&gt;
+   &lt;tt&gt;value2 = {{value2}}&lt;/tt&gt;&lt;br/&gt;
+ &lt;/div&gt;
+</pre>
+<pre class="doc-scenario">
+  it('should change state', function() {
+    expect(binding('value1')).toEqual('true');
+    expect(binding('value2')).toEqual('YES');
+
+    input('value1').check();
+    input('value2').check();
+    expect(binding('value1')).toEqual('false');
+    expect(binding('value2')).toEqual('NO');
+  });
+</pre>
+</doc:example></div>
+</div>

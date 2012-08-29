@@ -1,0 +1,132 @@
+<h1>angular.directive.ng:autobind</h1>
+<div class="angular-directive-ng-autobind"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<div class="description"><p>This doc explains how to bootstrap your application with angular. You can either use
+<code>ng:autobind</code> script tag attribute or perform a manual bootstrap.</p>
+
+<h3>Auto-bootstrap with <code>ng:autobind</code></h3>
+
+<p>The simplest way to get an angular application up and running is by adding a script tag in
+your HTML file that contains <code>ng:autobind</code> attribute. This will:</p>
+
+<ul>
+<li>Load the angular script</li>
+<li>Tell angular to compile the entire document (or just its portion if the attribute has a value)</li>
+</ul>
+
+<p>For example:</p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+    &lt;!doctype html&gt;
+    &lt;html xmlns:ng="http://angularjs.org"&gt;
+     &lt;head&gt;
+      &lt;script type="text/javascript" src="http://code.angularjs.org/angular-0.9.3.min.js"
+              ng:autobind&gt;&lt;/script&gt;
+     &lt;/head&gt;
+     &lt;body&gt;
+       Hello {{'world'}}!
+     &lt;/body&gt;
+    &lt;/html&gt;
+</pre></div><p>The <code>ng:autobind</code> attribute without any value tells angular to compile and manage the whole HTML
+document. The compilation occurs as soon as the document is ready for DOM manipulation. Note that
+you don't need to explicitly add an <code>onLoad</code> event handler; auto bind mode takes care of all the
+work for you.</p>
+
+<p>In order to compile only a part of the document with a root element, specify the id of the root
+element as the value of the <code>ng:autobind</code> attribute, e.g. <code>ng:autobind="angularContent"</code>.</p>
+
+<h4>Auto-bootstrap with <code>#autobind</code></h4>
+
+<p>In some rare cases you can't define the <code>ng:</code> prefix before the script tag's attribute  (e.g. in
+some CMS systems). In these situations it is possible to auto-bootstrap angular by appending
+<code>#autobind</code> to the script <code>src</code> URL, like in this snippet:</p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+    &lt;!doctype html&gt;
+    &lt;html&gt;
+     &lt;head&gt;
+      &lt;script type="text/javascript"
+              src="http://code.angularjs.org/angular-0.9.3.min.js#autobind"&gt;&lt;/script&gt;
+     &lt;/head&gt;
+     &lt;body&gt;
+       &lt;div xmlns:ng="http://angularjs.org"&gt;
+         Hello {{'world'}}!
+       &lt;/div&gt;
+     &lt;/body&gt;
+    &lt;/html&gt;
+</pre></div><p>In this snippet it is the <code>#autobind</code> URL fragment that tells angular to auto-bootstrap.</p>
+
+<p>Similarly to <code>ng:autobind</code>, you can specify an element id that should be exclusively targeted for
+compilation as the value of the <code>#autobind</code>, e.g. <code>#autobind=angularContent</code>.</p>
+
+<h4>Filename Restrictions for Auto-bootstrap</h4>
+
+<p>In order for us to find the auto-bootstrap script attribute or URL fragment, the value of the
+<code>script</code> <code>src</code> attribute that loads the angular script must match one of these naming
+conventions:</p>
+
+<ul>
+<li><code>angular.js</code></li>
+<li><code>angular-min.js</code></li>
+<li><code>angular-x.x.x.js</code></li>
+<li><code>angular-x.x.x.min.js</code></li>
+<li><code>angular-x.x.x-xxxxxxxx.js</code> (dev snapshot)</li>
+<li><code>angular-x.x.x-xxxxxxxx.min.js</code> (dev snapshot)</li>
+<li><code>angular-bootstrap.js</code> (used for development of angular)</li>
+</ul>
+
+<p>Optionally, any of the filename formats above can be prepended with a relative or absolute URL
+that ends with <code>/</code>.</p>
+
+<h3>Manual Bootstrap</h3>
+
+<p>Using auto-bootstrap is a handy way to start using angular, but advanced users who want more
+control over the initialization process might prefer to use the manual bootstrap method instead.</p>
+
+<p>The best way to get started with manual bootstraping is to look at the magic behind <code>ng:autobind</code>,
+by writing out each step of the autobind process explicitly. Note that the following code is
+equivalent to the code in the previous section.</p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+    &lt;!doctype html&gt;
+    &lt;html xmlns:ng="http://angularjs.org"&gt;
+     &lt;head&gt;
+      &lt;script type="text/javascript" src="http://code.angularjs.org/angular-0.9.3.min.js"
+              ng:autobind&gt;&lt;/script&gt;
+      &lt;script type="text/javascript"&gt;
+       (angular.element(document).ready(function() {
+         angular.compile(document)();
+       })(document);
+      &lt;/script&gt;
+     &lt;/head&gt;
+     &lt;body&gt;
+       Hello {{'World'}}!
+     &lt;/body&gt;
+    &lt;/html&gt;
+</pre></div><p>This is the sequence that your code should follow if you're bootstrapping angular on your own:</p>
+
+<ol>
+<li>After the page is loaded, find the root of the HTML template, which is typically the root of
+the document.</li>
+<li>Run the HTML compiler, which converts the templates into an executable, bi-directionally bound
+application.</li>
+</ol>
+
+<h4>XML Namespace</h4>
+
+<p><em>IMPORTANT:</em> When using angular, you must declare the ng namespace using the xmlns tag. If you
+don't declare the namespace, Internet Explorer older than 9 does not render widgets properly. The
+namespace must be declared even if you use HTML instead of XHTML.</p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+&lt;html xmlns:ng="http://angularjs.org"&gt;
+</pre></div><h5>Create your own namespace</h5>
+
+<p>If you want to define your own widgets, you must create your own namespace and use that namespace
+to form the fully qualified widget name. For example, you could map the alias <code>my</code> to your domain
+and create a widget called my:widget. To create your own namespace, simply add another xmlsn tag
+to your page, create an alias, and set it to your unique domain:</p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+&lt;html xmlns:ng="http://angularjs.org" xmlns:my="http://mydomain.com"&gt;
+</pre></div><h5>Global Object</h5>
+
+<p>The angular script creates a single global variable <code>angular</code> in the global namespace. All
+APIs are bound to fields of this global object.</p></div>
+<h2>Usage</h2>
+<div class="usage"><pre class="brush: js; html-script: true;">&lt;script ng:autobind&gt;
+   ...
+&lt;/script&gt;</pre>
+</div>
+</div>

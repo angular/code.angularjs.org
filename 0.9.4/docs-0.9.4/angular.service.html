@@ -1,0 +1,46 @@
+<h1>angular.service</h1>
+<fieldset class="workInProgress">
+  <legend>Work In Progress</legend>
+  This page is currently being revised. It might be incomplete or contain inaccuracies.
+  
+</fieldset>
+<h2>Overview</h2>
+
+<p>Services are substituable objects, which are wired together using dependency injection.
+Each service could have dependencies (other services), which are passed in constructor.
+Because JS is dynamicaly typed language, dependency injection can not use static types
+to satisfy these dependencies, so each service must explicitely define its dependencies.
+This is done by $inject property.</p>
+
+<p>For now, life time of all services is the same as the life time of page.</p>
+
+<h2>Standard services</h2>
+
+<p>The Angular framework provides a standard set of services for common operations.
+You can write your own services and rewrite these standard services as well.
+Like other core angular variables, standard services always start with $.</p>
+
+<ul>
+<li><code>angular.service.$window</code></li>
+<li><code>angular.service.$document</code></li>
+<li><code>angular.service.$location</code></li>
+<li><code>angular.service.$log</code></li>
+<li><code>angular.service.$exceptionHandler</code></li>
+<li><code>angular.service.$hover</code></li>
+<li><code>angular.service.$invalidWidgets</code></li>
+<li><code>angular.service.$route</code></li>
+<li><code>angular.service.$xhr</code></li>
+<li><code>angular.service.$xhr.error</code></li>
+<li><code>angular.service.$xhr.bulk</code></li>
+<li><code>angular.service.$xhr.cache</code></li>
+<li><code>angular.service.$resource</code></li>
+<li><code>angular.service.$cookies</code></li>
+<li><code>angular.service.$cookieStore</code></li>
+</ul>
+
+<h2>Writing your own services</h2><div ng:non-bindable><pre class="brush: js; html-script: true;">
+angular.service('notify', function(location) {
+  this.one = function() {
+  }
+}, {$inject: ['$location']});
+</pre></div><h2>Using services in controller</h2>

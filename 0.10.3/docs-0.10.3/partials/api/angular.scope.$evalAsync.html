@@ -1,0 +1,28 @@
+<h1>angular.scope.$evalAsync</h1>
+<div class="angular-scope-evalasync"><h2>Description</h2>
+<div class="description"><p>Executes the expression on the current scope at a later point in time.</p>
+
+<p>The <code>$evalAsync</code> makes no guarantees as to when the <code>expression</code> will be executed, only that:</p>
+
+<ul>
+<li>it will execute in the current script execution context (before any DOM rendering).</li>
+<li>at least one <a href="api/angular.scope.$digest"><code>$digest cycle</code></a> will be performed after
+<code>expression</code> execution.</li>
+</ul>
+
+<p>Any exceptions from the execution of the expression are forwarded to the
+<a href="api/angular.service.$exceptionHandler"><code>$exceptionHandler</code></a> service.</p></div>
+<h2>Usage</h2>
+<div class="usage"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">angular.scope.$evalAsync([expression]);</pre>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">expression<i>(optional)</i> – {(string|function())} – </code>
+<p>An angular expression to be executed.</p>
+
+<ul>
+<li><code>string</code>: execute using the rules as defined in  <a href="guide/dev_guide.expressions">expression</a>.</li>
+<li><code>function(scope)</code>: execute the function with the current <code>scope</code> parameter.</li>
+</ul></li>
+</ul>
+</div>
+</div>

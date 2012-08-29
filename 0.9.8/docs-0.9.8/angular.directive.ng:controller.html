@@ -1,0 +1,81 @@
+<h1>angular.directive.ng:controller</h1>
+<fieldset class="workInProgress">
+  <legend>Work In Progress</legend>
+  This page is currently being revised. It might be incomplete or contain inaccuracies.
+  
+</fieldset>
+<h2>Description</h2>
+<p>To support the Model-View-Controller design pattern, it is possible 
+to assign behavior to a scope through <code>ng:controller</code>. The scope is 
+the MVC model. The HTML (with data bindings) is the MVC view. 
+The <code>ng:controller</code> directive specifies the MVC controller class</p>
+<h2>Usage</h2>
+<h3>In HTML Template Binding</h3>
+<tt>
+  <pre>
+&lt;ANY ng:controller="expression"&gt;
+  ...
+&lt;/ANY&gt;
+  </pre>
+</tt>
+<h3>Parameters</h3>
+<ul>
+    <li><tt>expression</tt> –
+      <tt>&#123;expression&#125;</tt>
+      <tt></tt>
+      – to eval.</li>
+  </ul>
+<h2>Example</h2>
+<doc:example>
+  <doc:source>
+&lt;script type="text/javascript"&gt;
+  function SettingsController() {
+    this.name = "John Smith";
+    this.contacts = [
+      {type:'phone', value:'408 555 1212'},
+      {type:'email', value:'john.smith@example.org'} ];
+  }
+  SettingsController.prototype = {
+   greet: function(){
+     alert(this.name);
+   },
+   addContact: function(){
+     this.contacts.push({type:'email', value:'yourname@example.org'});
+   },
+   removeContact: function(contactToRemove) {
+     angular.Array.remove(this.contacts, contactToRemove);
+   },
+   clearContact: function(contact) {
+     contact.type = 'phone';
+     contact.value = '';
+   }
+  };
+&lt;/script&gt;
+&lt;div ng:controller="SettingsController"&gt;
+  Name: &lt;input type="text" name="name"/&gt; 
+  [ &lt;a href="" ng:click="greet()"&gt;greet&lt;/a&gt; ]&lt;br/&gt;
+  Contact:
+  &lt;ul&gt;
+    &lt;li ng:repeat="contact in contacts"&gt;
+      &lt;select name="contact.type"&gt;
+         &lt;option&gt;phone&lt;/option&gt;
+         &lt;option&gt;email&lt;/option&gt;
+      &lt;/select&gt;
+      &lt;input type="text" name="contact.value"/&gt;
+      [ &lt;a href="" ng:click="clearContact(contact)"&gt;clear&lt;/a&gt; 
+      | &lt;a href="" ng:click="removeContact(contact)"&gt;X&lt;/a&gt; ]
+    &lt;/li&gt;
+    &lt;li&gt;[ &lt;a href="" ng:click="addContact()"&gt;add&lt;/a&gt; ]&lt;/li&gt;
+ &lt;/ul&gt;
+&lt;/div&gt;
+  </doc:source>
+  <doc:scenario>   it('should check controller', function(){
+     expect(element('.doc-example-live div>:input').val()).toBe('John Smith');
+     expect(element('.doc-example-live li[ng\\:repeat-index="0"] input').val()).toBe('408 555 1212');
+     expect(element('.doc-example-live li[ng\\:repeat-index="1"] input').val()).toBe('john.smith@example.org');
+     element('.doc-example-live li:first a:contains("clear")').click();
+     expect(element('.doc-example-live li:first input').val()).toBe('');
+     element('.doc-example-live li:last a:contains("add")').click();
+     expect(element('.doc-example-live li[ng\\:repeat-index="2"] input').val()).toBe('yourname@example.org');
+   });</doc:scenario>
+</doc:example>

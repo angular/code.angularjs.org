@@ -1,0 +1,47 @@
+<h1>Developer Guide: Angular HTML Compiler: Understanding Angular Directives</h1>
+<div class="developer-guide-angular-html-compiler-understanding-angular-directives"><p>An angular directive is a custom HTML attribute that angular knows how to process.  You add them to
+a template element like any other attribute.  Angular directives all have a <code>ng:</code> prefix.  In the
+following example, the angular directive (<code>ng:controller</code>) is  a div tag:</p>
+
+<pre><code>    &lt;div ng:controller&gt;
+</code></pre>
+
+<p>You use angular directives to modify DOM element properties. The element you modify can be an
+existing HTML element type or a custom DOM element type that you created. You can use any number of
+directives per element.</p>
+
+<p>You add angular directives to a standard HTML tag as in the following example, in which we have
+added the <a href="api/angular.directive.ng:click"><code>ng:click</code></a> directive to a button tag:</p>
+
+<pre><code>    &lt;button ng:model="button1" ng:click="foo()"&gt;Click This&lt;/button&gt;
+</code></pre>
+
+<p>In the example above, <code>name</code> is the standard HTML attribute, and <code>ng:click</code> is the angular
+directive. The <code>ng:click</code> directive lets you implement custom behavior in an associated controller
+function.</p>
+
+<p>In the next example, we add the <a href="api/angular.directive.ng:bind"><code>ng:bind</code></a> directive to a
+<code>&lt;span&gt;</code> tag:</p>
+
+<pre><code>    &lt;span ng:bind="1+2"&gt;&lt;/span&gt;
+</code></pre>
+
+<p>The <code>ng:bind</code> directive tells angular to set up <a href="guide/dev_guide.templates.databinding">data binding</a> between the data model and the view for the specified expression.  When the angular <a href="guide/dev_guide.compiler">compiler</a> encounters an <code>ng:bind</code> directive in a template, it passes the
+attribute value to the <code>ng:bind</code> function, which in turn sets up the data binding. On any change to
+the expression in the model, the view is updated to display the span text with the changed
+expression value.</p>
+
+<h3>Related Topics</h3>
+
+<ul>
+<li><a href="guide/dev_guide.compiler">Angular HTML Compiler</a></li>
+<li><a href="guide/dev_guide.compiler.directives.creating_directives">Creating Angular Directives</a></li>
+<li><a href="guide/dev_guide.compiler.directives_widgets">Comparing Directives and Widgets</a></li>
+</ul>
+
+<h3>Related API:</h3>
+
+<ul>
+<li><a href="api/angular.directive"><code>Directive API</code></a></li>
+<li><a href="api/angular.widget"><code>Widget API</code></a></li>
+</ul></div>

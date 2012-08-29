@@ -1,0 +1,87 @@
+<h1>angular.validator.asynchronous</h1>
+<fieldset class="workInProgress">
+  <legend>Work In Progress</legend>
+  This page is currently being revised. It might be incomplete or contain inaccuracies.
+  
+</fieldset>
+<h2>Description</h2>
+<p>Use asynchronous validator if the validation can not be computed 
+immediately, but is provided through a callback. The widget 
+automatically shows a spinning indicator while the validity of 
+the widget is computed. This validator caches the result.</p>
+<h2>Usage</h2>
+<h3>In HTML Template Binding</h3>
+<tt>
+  &lt;input type="text" ng:validate="asynchronous:validate<i>[:update]</i>"/>
+</tt>
+<h3>In JavaScript</h3>
+<tt ng:non-bindable>
+angular.validator.asynchronous(value, validate<i>[, update]</i>);
+</tt>
+<h3>Parameters</h3>
+<ul>
+    <li><tt>value</tt> –
+      <tt>&#123;string&#125;</tt>
+      <tt></tt>
+      – value to validate</li>
+    <li><tt>validate</tt> –
+      <tt>&#123;function(inputToValidate,validationDone)&#125;</tt>
+      <tt></tt>
+      – function to call to validate the state
+        of the input.</li>
+    <li><tt>update</tt> –
+      <tt>&#123;function(data)=&#125;</tt>
+      <tt>[noop]</tt>
+      – function to call when state of the 
+   validator changes</li>
+  </ul>
+<p>The <code>validate</code> function (specified by you) is called as 
+<code>validate(inputToValidate, validationDone)</code>:</p>
+
+<ul>
+<li><code>inputToValidate</code>: value of the input box.</li>
+<li><code>validationDone</code>: <code>function(error, data){...}</code>
+<ul><li><code>error</code>: error text to display if validation fails</li>
+<li><code>data</code>: data object to pass to update function</li></ul></li>
+</ul>
+
+<p>The <code>update</code> function is optionally specified by you and is
+called by <tt>&lt;angular/&gt;</tt> on input change. Since the 
+asynchronous validator caches the results, the update 
+function can be called without a call to <code>validate</code> 
+function. The function is called as <code>update(data)</code>:</p>
+
+<ul>
+<li><code>data</code>: data object as passed from validate function</li>
+</ul>
+<h3>CSS</h3>
+ng-input-indicator-wait, ng-validation-error
+<h2>Example</h2>
+<doc:example>
+  <doc:source>
+&lt;script&gt;
+  function myValidator(inputToValidate, validationDone) {
+   setTimeout(function(){
+     validationDone(inputToValidate.length % 2);
+   }, 500);
+ }
+&lt;/script&gt;
+ This input is validated asynchronously:
+ &lt;input name="text" ng:validate="asynchronous:$window.myValidator"&gt;
+  </doc:source>
+  <doc:scenario>it('should change color in delayed way', function(){
+  var textBox = element('.doc-example :input');
+  expect(textBox.attr('className')).not().toMatch(/ng-input-indicator-wait/);
+  expect(textBox.attr('className')).not().toMatch(/ng-validation-error/);
+  
+  input('text').enter('X');
+  expect(textBox.attr('className')).toMatch(/ng-input-indicator-wait/);
+  
+  pause(.6);
+  
+  expect(textBox.attr('className')).not().toMatch(/ng-input-indicator-wait/);
+  expect(textBox.attr('className')).toMatch(/ng-validation-error/);
+  
+});
+</doc:scenario>
+</doc:example>

@@ -1,0 +1,97 @@
+<h1>Developer Guide: Initializing Angular: Automatic Initiialization</h1>
+<div class="developer-guide-initializing-angular-automatic-initiialization"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<p>Angular initializes automatically when you load the angular script into your page, specifying
+angular's <code>ng:autobind</code> attribute with no arguments:</p>
+
+<pre><code>    &lt;script src="angular.js" ng:autobind&gt;
+</code></pre>
+
+<p>From a high-level view, this is what happens during angular's automatic initialization process:</p>
+
+<ol>
+<li><p>The browser loads the page, and then runs the angular script.</p>
+
+<p>The <code>ng:autobind</code> attribute tells angular to compile and manage the whole HTML document. The
+compilation phase is initiated in the page's <code>onLoad()</code> handler. Angular doesn't begin processing
+the page until after the page load is complete.</p></li>
+<li><p>Angular finds the root of the HTML document and creates the global variable <code>angular</code> in the
+global namespace. Everything that angular subsequently creates is bound to fields in this global
+object.</p></li>
+<li><p>Angular walks the DOM looking for angular widgets, directives, and markup (such as <code>ng:init</code> or
+<code>ng:repeat</code>). As angular encounters these, it creates child scopes as necessary and attaches them
+to the DOM, registers listeners on those scopes, associates any controller functions with their
+data and their part of the view, and ultimately constructs a runnable application. The resulting
+app features two-way data-binding and a nice separation between data, presentation, and business
+logic.</p></li>
+<li><p>For the duration of the application session (while the page is loaded), angular monitors the
+state of the application, and updates the view and the data model whenever the state of either one
+changes.</p></li>
+</ol>
+
+<p>For details on how the compiler works, see <a href="guide/dev_guide.compiler">Angular HTML Compiler</a>.</p>
+
+<h3>Initialization Options</h3>
+
+<p>The reason why <code>ng:autobind</code> exists is because angular should not assume that the entire HTML
+document should be processed just because the <code>angular.js</code> script is included. In order to compile
+only a part of the document, specify the ID of the element you want to use for angular's root
+element as the value of the <code>ng:autobind</code> attribute:</p>
+
+<pre><code>    ng:autobind="angularContent"
+</code></pre>
+
+<h3>Auto-bootstrap with <code>#autobind</code></h3>
+
+<p>In some rare cases you can't define the <code>ng:</code> prefix before the script tag's attribute  (for
+example,  in some CMS systems). In those situations it is possible to auto-bootstrap angular by
+appending <code>#autobind</code> to the <code>&lt;script src=...&gt;</code> URL, like in this snippet:</p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+  &lt;!doctype html&gt;
+  &lt;html&gt;
+   &lt;head&gt;
+    &lt;script type="text/javascript"
+            src="http://code.angularjs.org/angular.js#autobind"&gt;&lt;/script&gt;
+   &lt;/head&gt;
+   &lt;body&gt;
+     &lt;div xmlns:ng="http://angularjs.org"&gt;
+       Hello {{'world'}}!
+     &lt;/div&gt;
+   &lt;/body&gt;
+  &lt;/html&gt;
+</pre></div><p>As with <code>ng:autobind</code>, you can specify an element id that should be exclusively targeted for
+compilation as the value of the <code>#autobind</code>, for example: <code>#autobind=angularContent</code>.</p>
+
+<h3>Filename Restrictions for Auto-bootstrap</h3>
+
+<p>In order for us to find the auto-bootstrap from a script attribute or URL fragment, the value of
+the <code>script</code> <code>src</code> attribute that loads the angular script must match one of these naming
+conventions:</p>
+
+<ul>
+<li><code>angular.js</code></li>
+<li><code>angular-min.js</code></li>
+<li><code>angular-x.x.x.js</code></li>
+<li><code>angular-x.x.x.min.js</code></li>
+<li><code>angular-x.x.x-xxxxxxxx.js</code> (dev snapshot)</li>
+<li><code>angular-x.x.x-xxxxxxxx.min.js</code> (dev snapshot)</li>
+<li><code>angular-bootstrap.js</code> (used for development of angular)</li>
+</ul>
+
+<p>Optionally, any of the filename formats above can be prepended with a relative or absolute URL that
+ends with <code>/</code>.</p>
+
+<h3>Global Angular Object</h3>
+
+<p>The angular script creates a single global variable <code>angular</code> in the global namespace. All angular
+APIs are bound to fields of this global object.</p>
+
+<h3>Related Topics</h3>
+
+<ul>
+<li><a href="guide/dev_guide.bootstrap">Initializing Angular</a></li>
+<li><a href="guide/dev_guide.bootstrap.manual_bootstrap">Manual Initialization</a></li>
+</ul>
+
+<h3>Related API</h3>
+
+<p><a href="api/angular.compile"><code>Compiler API</code></a></p></div>

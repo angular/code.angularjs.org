@@ -1,0 +1,43 @@
+<h1>angular.widget.ng:include</h1>
+<h2>Description</h2>
+<p>Include external HTML fragment.</p>
+
+<p>Keep in mind that Same Origin Policy applies to included resources 
+(e.g. ng:include won't work for file:// access).</p>
+<h2>Usage</h2>
+<h3>In HTML Template Binding</h3>
+<tt>
+  <pre>
+&lt;ng:include src="..." <i>[</i>scope="..."<i>]</i>&gt;&lt;/ng:include&gt;
+  </pre>
+</tt>
+<h3>Parameters</h3>
+<ul>
+    <li><tt>src:string</tt>: expression evaluating to URL.</li>
+    <li><tt>scope:Scope=new_child_scope</tt>: expression evaluating to angular.scope</li>
+  </ul>
+<h3>CSS</h3>
+<h2>Example</h2>
+<doc:example>
+  <doc:source>
+&lt;select name="url"&gt;
+ &lt;option value="angular.filter.date.html"&gt;date filter&lt;/option&gt;
+ &lt;option value="angular.filter.html.html"&gt;html filter&lt;/option&gt;
+ &lt;option value=""&gt;(blank)&lt;/option&gt;
+&lt;/select&gt;
+&lt;tt&gt;url = &lt;a href="{{url}}"&gt;{{url}}&lt;/a&gt;&lt;/tt&gt;
+&lt;hr/&gt;
+&lt;ng:include src="url"&gt;&lt;/ng:include&gt;
+  </doc:source>
+  <doc:scenario>it('should load date filter', function(){
+  expect(element('.doc-example ng\\:include').text()).toMatch(/angular\.filter\.date/);
+});
+it('should change to hmtl filter', function(){
+  select('url').option('angular.filter.html.html');
+  expect(element('.doc-example ng\\:include').text()).toMatch(/angular\.filter\.html/);
+});
+it('should change to blank', function(){
+  select('url').option('(blank)');
+  expect(element('.doc-example ng\\:include').text()).toEqual('');
+});</doc:scenario>
+</doc:example>

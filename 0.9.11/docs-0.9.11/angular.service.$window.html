@@ -1,0 +1,21 @@
+<h1>angular.service.$window</h1>
+<div class="angular-service-window"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<div class="description"><p>Is reference to the browser's <code>window</code> object. While <code>window</code>
+is globally available in JavaScript, it causes testability problems, because
+it is a global variable. In angular we always refer to it through the
+<code>$window</code> service, so it may be overriden, removed or mocked for testing.</p>
+
+<p>All expressions are evaluated with respect to current scope so they don't
+suffer from window globality.</p></div>
+<h2>Example</h2>
+<div class="example"><doc:example>
+<doc:source>
+  &lt;input ng:init="$window = $service('$window'); greeting='Hello World!'" type="text" name="greeting" /&gt;
+  &lt;button ng:click="$window.alert(greeting)"&gt;ALERT&lt;/button&gt;
+</doc:source>
+<doc:scenario>
+</doc:scenario>
+</doc:example></div>
+</div>

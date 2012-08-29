@@ -1,0 +1,17 @@
+<h1>angular.Array</h1>
+<fieldset class="workInProgress">
+  <legend>Work In Progress</legend>
+  This page is currently being revised. It might be incomplete or contain inaccuracies.
+  
+</fieldset>
+<p>Utility functions for manipulation with JavaScript Array objects.</p>
+
+<p>These functions are exposed in two ways:</p>
+
+<ul>
+<li><p><strong>in angular expressions</strong>: the functions are bound to the Array objects and augment the Array
+type as array methods. The names of these methods are prefixed with <code>$</code> character to minimize
+naming collisions. To call a method, invoke <code>myArrayObject.$foo(params)</code>.</p></li>
+<li><p><strong>in JavaScript code</strong>: the functions don't augment the Array type and must be invoked as
+functions of <code>angular.Array</code> as <code>angular.Array.foo(myArrayObject, params)</code>.</p></li>
+</ul>

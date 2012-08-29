@@ -1,0 +1,34 @@
+<h1>angular.directive.ng:show</h1>
+<div class="angular-directive-ng-show"><h2>Description</h2>
+<div class="description"><p>The <code>ng:show</code> and <code>ng:hide</code> directives show or hide a portion of the DOM tree (HTML)
+conditionally.</p></div>
+<h2>Usage</h2>
+<div class="usage"><pre class="brush: js; html-script: true;">&lt;ANY ng:show="expression"&gt;
+   ...
+&lt;/ANY&gt;</pre>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">expression – {expression} – </code>
+<p>If the <a href="guide/dev_guide.expressions">expression</a> is truthy
+then the element is shown or hidden respectively.</p></li>
+</ul>
+</div>
+<h2>Example</h2>
+<div class="example"><doc:example>
+<pre class="doc-source">
+   Click me: &lt;input type="checkbox" ng:model="checked"&gt;&lt;br/&gt;
+   Show: &lt;span ng:show="checked"&gt;I show up when your checkbox is checked.&lt;/span&gt; &lt;br/&gt;
+   Hide: &lt;span ng:hide="checked"&gt;I hide when your checkbox is checked.&lt;/span&gt;
+</pre>
+<pre class="doc-scenario">
+  it('should check ng:show / ng:hide', function() {
+    expect(element('.doc-example-live span:first:hidden').count()).toEqual(1);
+    expect(element('.doc-example-live span:last:visible').count()).toEqual(1);
+
+    input('checked').check();
+
+    expect(element('.doc-example-live span:first:visible').count()).toEqual(1);
+    expect(element('.doc-example-live span:last:hidden').count()).toEqual(1);
+  });
+</pre>
+</doc:example></div>
+</div>

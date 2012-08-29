@@ -1,0 +1,57 @@
+<h1>angular.Array.remove</h1>
+<fieldset class="workInProgress">
+  <legend>Work In Progress</legend>
+  This page is currently being revised. It might be incomplete or contain inaccuracies.
+  
+</fieldset>
+<h2>Description</h2>
+<p>Modifies <code>array</code> by removing an element from it. The element will be looked up using the
+<a href="#!angular.Array.indexOf"><code>indexOf</code></a> function on the <code>array</code> and only the first instance of
+the element will be removed.</p>
+
+<p>Note: this function is used to augment the Array type in angular expressions. See
+<a href="#!angular.Array"><code>angular.Array</code></a> for more info.</p>
+<h2>Usage</h2>
+<tt ng:non-bindable>
+angular.Array.remove(array, value);
+</tt>
+<h3>Parameters</h3>
+<ul>
+    <li><tt>array</tt> –
+      <tt>&#123;Array&#125;</tt>
+      <tt></tt>
+      – Array from which an element should be removed.</li>
+    <li><tt>value</tt> –
+      <tt>&#123;*&#125;</tt>
+      <tt></tt>
+      – Element to be removed.</li>
+  </ul>
+<h3>Returns</h3>
+<tt>&#123;*&#125;</tt> The removed element.
+<h2>Example</h2>
+<doc:example>
+  <doc:source>
+&lt;ul ng:init="tasks=['Learn Angular', 'Read Documentation',
+                    'Check out demos', 'Build cool applications']"&gt;
+  &lt;li ng:repeat="task in tasks"&gt;
+    {{task}} [&lt;a href="" ng:click="tasks.$remove(task)"&gt;X&lt;/a&gt;]
+  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr/&gt;
+tasks = {{tasks}}
+  </doc:source>
+  <doc:scenario>     it('should initialize the task list with for tasks', function() {
+       expect(repeater('.doc-example ul li', 'task in tasks').count()).toBe(4);
+       expect(repeater('.doc-example ul li', 'task in tasks').column('task')).
+         toEqual(['Learn Angular', 'Read Documentation', 'Check out demos',
+                  'Build cool applications']);
+     });
+     it('should initialize the task list with for tasks', function() {
+       element('.doc-example ul li a:contains("X"):first').click();
+       expect(repeater('.doc-example ul li', 'task in tasks').count()).toBe(3);
+       element('.doc-example ul li a:contains("X"):last').click();
+       expect(repeater('.doc-example ul li', 'task in tasks').count()).toBe(2);
+       expect(repeater('.doc-example ul li', 'task in tasks').column('task')).
+         toEqual(['Read Documentation', 'Check out demos']);
+     });</doc:scenario>
+</doc:example>

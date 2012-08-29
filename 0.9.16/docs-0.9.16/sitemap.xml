@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+ <url><loc>http://docs.angularjs.org/#!/api/angular.mock</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.mock.service.$browser</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.mock.service.$exceptionHandler</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.mock.service.$log</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.lowercase</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.uppercase</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.forEach</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.extend</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.noop</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.identity</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.isUndefined</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.isDefined</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.isObject</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.isString</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.isNumber</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.isDate</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.isArray</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.isFunction</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.Object.size</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.Object.copy</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.Object.equals</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.bind</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.directive.ng:autobind</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.service.$browser</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.Object</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.Array</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.Array.indexOf</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.Array.sum</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.Array.remove</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.Array.filter</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.Array.add</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.Array.count</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.Array.orderBy</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.Array.limitTo</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.compile</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.directive.ng:eval-order</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.filter</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.filter.currency</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.filter.number</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.filter.date</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.filter.json</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.filter.lowercase</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.filter.uppercase</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.filter.html</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.filter.linky</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.directive</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.directive.ng:init</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.directive.ng:controller</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.directive.ng:eval</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.directive.ng:bind</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.directive.ng:bind-template</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.directive.ng:bind-attr</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.directive.ng:click</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.directive.ng:submit</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.directive.ng:class</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.directive.ng:class-odd</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.directive.ng:class-even</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.directive.ng:show</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.directive.ng:hide</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.directive.ng:style</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.formatter</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.formatter.json</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.formatter.boolean</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.formatter.number</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.formatter.list</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.formatter.trim</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.formatter.index</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.injector</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.element</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.toJson</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.fromJson</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.markup</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.attrMarkup</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.directive.ng:href</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.directive.ng:src</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.scope</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.scope.$bind</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.scope.$get</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.scope.$set</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.scope.$eval</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.scope.$tryEval</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.scope.$watch</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.scope.$onEval</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.scope.$become</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.scope.$new</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.scope.$service</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.validator</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.validator.regexp</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.validator.number</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.validator.integer</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.validator.date</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.validator.email</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.validator.phone</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.validator.url</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.validator.json</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.validator.asynchronous</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.widget</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.widget.HTML</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.widget.@ng:validate</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.widget.@ng:required</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.widget.@ng:format</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.directive.ng:change</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.widget.ng:include</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.widget.ng:switch</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.widget.@ng:repeat</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.widget.@ng:non-bindable</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.widget.ng:view</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.service.$cookies</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.service.$cookieStore</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.service.$defer</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.service.$document</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.service.$exceptionHandler</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.service.$hover</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.service.$invalidWidgets</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.service.$location</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.service.$log</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.service.$resource</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.service.$route</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.service.$updateView</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.service.$window</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.service.$xhr.bulk</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.service.$xhr.cache</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.service.$xhr.error</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.service.$xhr</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/angular.service</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/api/API Reference</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/cookbook/Cookbook: Advanced Form</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/cookbook/Cookbook: Resources - Buzz</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/cookbook/Cookbook: Deep Linking</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/cookbook/Cookbook: Form</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/cookbook/Cookbook: Hello World</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/cookbook/Cookbook</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/cookbook/Cookbook: MVC</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: Initializing Angular: Automatic Initiialization</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: Initializing Angular: Manual Initialization</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: Initializing Angular</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: Angular HTML Compiler: Directives: Creating Custom Angular Directives</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: Angular HTML Compiler: Understanding Angular Directives</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: Angular HTML Compiler: Comparing Directives and Attribute Widgets</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: Angular HTML Compiler: Extending the Angular Compiler</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: Angular HTML Compiler: Understanding Angular Markup</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: Angular HTML Compiler</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: Angular HTML Compiler: Testing a New DOM Element</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: Angular HTML Compiler: Understanding How the Compiler Works</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: Angular HTML Compiler: Widgets: Creating Custom Widgets</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: Angular HTML Compiler: Understanding Angular Widgets</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: About Dependency Injection (DI)</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: DI: Understanding DI in Angular</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: DI: Using DI in Controllers</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: Understanding Angular Expressions</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: Introduction</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: About MVC in Angular</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: About MVC in Angular: Understanding the Controller Component</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: About MVC in Angular: Understanding the Model Component</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: About MVC in Angular: Understanding the View Component</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: Overview</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: Scopes: Applying Controllers to Scopes</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: Angular Scopes</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: Scopes: Understanding Scopes</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: Scopes: Updating Scope Properties</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: Scopes: Working With Angular Scopes</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: Angular Services: Creating Angular Services</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: Angular Services: Injecting Services Into Controllers</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: Angular Services: Managing Service Dependencies</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: Angular Services: Registering Angular Services</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: Angular Services: Testing Angular Services</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: Angular Services</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: Angular Services: Understanding Angular Services</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: Templates: Working With CSS in Angular</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: Templates: Data Binding in Angular</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: Templates: Understanding Angular Filters</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: Templates: Filters: Creating Angular Filters</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: Templates: Filters: Using Angular Filters</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: Templates: Angular Formatters: Creating Angular Formatters</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: Templates: Angular Formatters: Using Angular Formatters</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: Templates: Angular Formatters</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: Understanding Angular Templates</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: Validators: Creating Angular Validators</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: Templates: Understanding Angular Validators</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/guide/Developer Guide: Unit Testing</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/misc/Contributing</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/misc/Downloading</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/misc/Getting Started</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/misc/FAQ</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/tutorial/Tutorial</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/tutorial/Tutorial: 1 - Static Template</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/tutorial/Tutorial: 0 - angular-seed</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/tutorial/Tutorial: 3 - Filtering Repeaters</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/tutorial/Tutorial: 2 - Angular Template</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/tutorial/Tutorial: 4 - Two-way Data Binding</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/tutorial/Tutorial: 5 - XHRs &amp; Dependency Injection</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/tutorial/Tutorial: 6 - Templating Links &amp; Images</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/tutorial/Tutorial: 8 - More Templating</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/tutorial/Tutorial: 7 - Routing &amp; Multiple Views</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/tutorial/Tutorial: 9 - Filters</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/tutorial/Tutorial: 10 - Event Handlers</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/tutorial/Tutorial: 11 - REST and Custom Services</loc><changefreq>weekly</changefreq></url>
+ <url><loc>http://docs.angularjs.org/#!/tutorial/Tutorial: The End</loc><changefreq>weekly</changefreq></url>
+</urlset>

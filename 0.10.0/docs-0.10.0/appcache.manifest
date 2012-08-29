@@ -1,0 +1,20 @@
+CACHE MANIFEST
+# 2011-09-02T18:32:45.806Z
+
+# cache all of these
+CACHE:
+syntaxhighlighter/syntaxhighlighter-combined.js
+../angular-0.10.0.min.js
+docs-combined.js
+docs-keywords.js
+docs-combined.css
+syntaxhighlighter/syntaxhighlighter-combined.css
+img/texture_1.png
+img/yellow_bkgnd.jpg
+
+FALLBACK:
+/ offline.html
+
+# allow access to google analytics and twitter when we are online
+NETWORK:
+*

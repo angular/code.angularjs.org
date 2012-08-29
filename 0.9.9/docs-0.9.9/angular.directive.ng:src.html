@@ -1,0 +1,22 @@
+<h1>angular.directive.ng:src</h1>
+<fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<p>Using <tt>&lt;angular/&gt;</tt> markup like <code>{{hash}}</code> in a <code>src</code> attribute doesn't 
+work right: The browser will fetch from the URL with the literal 
+text <code>{{hash}}</code> until <tt>&lt;angular/&gt;</tt> replaces the expression inside
+<code>{{hash}}</code>. The <code>ng:src</code> attribute solves this problem by placing
+ the <code>src</code> attribute in the <code>ng:</code> namespace.</p>
+
+<p>The buggy way to write it:</p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+<img src="http://www.gravatar.com/avatar/{{hash}}"/>
+</pre></div><p>The correct way to write it:</p><div ng:non-bindable><pre class="brush: js; html-script: true;">
+<img ng:src="http://www.gravatar.com/avatar/{{hash}}"/>
+</pre></div><h2>Usage</h2>
+<pre class="brush: js; html-script: true;">&lt;ANY ng:src="template"&gt;
+   ...
+&lt;/ANY&gt;</pre>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">template – {template} – </code>
+any string which can contain <code>{{}}</code> markup.</li>
+</ul>

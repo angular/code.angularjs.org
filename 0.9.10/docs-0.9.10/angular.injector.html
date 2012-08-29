@@ -1,0 +1,23 @@
+<h1>angular.injector</h1>
+<div class="angular-injector"><h2>Description</h2>
+<div class="description"><p>Creates an inject function that can be used for dependency injection.</p></div>
+<h2>Dependencies</h2>
+<ul class="dependencies"></ul>
+<h2>Usage</h2>
+<div class="usage"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">angular.injector([providerScope][, providers][, cache]);</pre>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">providerScope<i>(optional={})</i> – {Object} – </code>
+<p>provider's <code>this</code></p></li>
+<li><code ng:non-bindable="">providers<i>(optional=angular.service)</i> – {Object.&lt;string, function()&gt;} – </code>
+<p>Map of provider (factory)
+    function.</p></li>
+<li><code ng:non-bindable="">cache<i>(optional={})</i> – {Object.&lt;string, function()&gt;} – </code>
+<p>Place where instances are saved for reuse. Can
+    also be used to override services speciafied by <code>providers</code> (useful in tests).</p></li>
+</ul>
+<h3>Returns</h3>
+<div class="returns"><code ng:non-bindable="">{function()}</code>
+– <p>Injector function.</p></div>
+</div>
+</div>

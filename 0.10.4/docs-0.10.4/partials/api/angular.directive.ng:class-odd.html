@@ -1,0 +1,40 @@
+<h1>angular.directive.ng:class-odd</h1>
+<div class="angular-directive-ng-class-odd"><h2>Description</h2>
+<div class="description"><p>The <code>ng:class-odd</code> and <code>ng:class-even</code> works exactly as
+<a href="api/angular.directive.ng:class"><code>ng:class</code></a>, except it works in conjunction with <code>ng:repeat</code> and
+takes affect only on odd (even) rows.</p>
+
+<p>This directive can be applied only within a scope of an
+<a href="api/angular.widget.@ng:repeat"><code>ng:repeat</code></a>.</p></div>
+<h2>Usage</h2>
+<div class="usage"><pre class="brush: js; html-script: true;">&lt;ANY ng:class-odd="expression"&gt;
+   ...
+&lt;/ANY&gt;</pre>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">expression – {expression} – </code>
+<p><a href="guide/dev_guide.expressions">Expression</a> to eval. The result
+of the evaluation can be a string representing space delimited class names or an array.</p></li>
+</ul>
+</div>
+<h2>Example</h2>
+<div class="example"><doc:example>
+<pre class="doc-source">
+   &lt;ol ng:init="names=['John', 'Mary', 'Cate', 'Suz']"&gt;
+     &lt;li ng:repeat="name in names"&gt;
+      &lt;span ng:class-odd="'ng-format-negative'"
+            ng:class-even="'ng-input-indicator-wait'"&gt;
+        {{name}} &amp;nbsp; &amp;nbsp; &amp;nbsp;
+      &lt;/span&gt;
+     &lt;/li&gt;
+   &lt;/ol&gt;
+</pre>
+<pre class="doc-scenario">
+  it('should check ng:class-odd and ng:class-even', function() {
+    expect(element('.doc-example-live li:first span').prop('className')).
+      toMatch(/ng-format-negative/);
+    expect(element('.doc-example-live li:last span').prop('className')).
+      toMatch(/ng-input-indicator-wait/);
+  });
+</pre>
+</doc:example></div>
+</div>

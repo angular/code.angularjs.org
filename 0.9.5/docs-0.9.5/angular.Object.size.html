@@ -1,0 +1,32 @@
+<h1>angular.Object.size</h1>
+<fieldset class="workInProgress">
+  <legend>Work In Progress</legend>
+  This page is currently being revised. It might be incomplete or contain inaccuracies.
+  
+</fieldset>
+<h2>Description</h2>
+<p>Determines the number of elements in an array or number of properties of an object.</p>
+
+<p>Note: this function is used to augment the Object type in angular expressions. See
+<a href="#!angular.Object"><code>angular.Object</code></a> for more info.</p>
+<h2>Usage</h2>
+<tt ng:non-bindable>
+angular.Object.size(obj);
+</tt>
+<h3>Parameters</h3>
+<ul>
+    <li><tt>obj</tt> –
+      <tt>&#123;Object|Array&#125;</tt>
+      <tt></tt>
+      – Object or array to inspect.</li>
+  </ul>
+<h3>Returns</h3>
+<tt>&#123;number&#125;</tt> The size of <code>obj</code> or <code>0</code> if <code>obj</code> is not an object or array.
+<h2>Example</h2>
+<doc:example>
+  <doc:source>
+Number of items in array: {{ [1,2].$size() }}&lt;br/&gt;
+Number of items in object: {{ {a:1, b:2, c:3}.$size() }}&lt;br/&gt;
+  </doc:source>
+  <doc:scenario></doc:scenario>
+</doc:example>

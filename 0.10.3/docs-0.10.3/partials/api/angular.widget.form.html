@@ -1,0 +1,53 @@
+<h1>angular.widget.form</h1>
+<div class="angular-widget-form"><h2>Description</h2>
+<div class="description"><p>Angular widget that creates a form scope using the
+<a href="api/angular.service.$formFactory"><code>$formFactory</code></a> API. The resulting form scope instance is
+attached to the DOM element using the jQuery <code>.data()</code> method under the <code>$form</code> key.
+See <a href="guide/dev_guide.forms">forms</a> on detailed discussion of forms and widgets.</p>
+
+<h3>Alias: <code>ng:form</code></h3>
+
+<p>In angular forms can be nested. This means that the outer form is valid when all of the child
+forms are valid as well. However browsers do not allow nesting of <code>&lt;form&gt;</code> elements, for this
+reason angular provides <code>&lt;ng:form&gt;</code> alias which behaves identical to <code>&lt;form&gt;</code> but allows
+element nesting.</p></div>
+<h2>Usage</h2>
+<div class="usage"><h3>In HTML Template Binding</h3>
+<div class="in-html-template-binding"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">&lt;form&gt;&lt;/form&gt;</pre>
+</div>
+</div>
+</div>
+<h2>Example</h2>
+<div class="example"><doc:example>
+<pre class="doc-source">
+ &lt;script&gt;
+   function Ctrl() {
+     this.text = 'guest';
+   }
+ &lt;/script&gt;
+ &lt;div ng:controller="Ctrl"&gt;
+   &lt;form name="myForm"&gt;
+     text: &lt;input type="text" name="input" ng:model="text" required&gt;
+     &lt;span class="error" ng:show="myForm.text.$error.REQUIRED"&gt;Required!&lt;/span&gt;
+   &lt;/form&gt;
+   &lt;tt&gt;text = {{text}}&lt;/tt&gt;&lt;br/&gt;
+   &lt;tt&gt;myForm.input.$valid = {{myForm.input.$valid}}&lt;/tt&gt;&lt;br/&gt;
+   &lt;tt&gt;myForm.input.$error = {{myForm.input.$error}}&lt;/tt&gt;&lt;br/&gt;
+   &lt;tt&gt;myForm.$valid = {{myForm.$valid}}&lt;/tt&gt;&lt;br/&gt;
+   &lt;tt&gt;myForm.$error.REQUIRED = {{!!myForm.$error.REQUIRED}}&lt;/tt&gt;&lt;br/&gt;
+ &lt;/div&gt;
+</pre>
+<pre class="doc-scenario">
+  it('should initialize to model', function() {
+   expect(binding('text')).toEqual('guest');
+   expect(binding('myForm.input.$valid')).toEqual('true');
+  });
+
+  it('should be invalid if empty', function() {
+   input('text').enter('');
+   expect(binding('text')).toEqual('');
+   expect(binding('myForm.input.$valid')).toEqual('false');
+  });
+</pre>
+</doc:example></div>
+</div>

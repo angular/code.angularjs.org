@@ -1,0 +1,38 @@
+<h1>angular.scope.$eval</h1>
+<div class="angular-scope-eval"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<div class="description"><p>Without the <code>exp</code> parameter triggers an eval cycle for this scope and its child scopes.</p>
+
+<p>With the <code>exp</code> parameter, compiles the expression to a function and calls it with <code>this</code> set
+to the current scope and returns the result. In other words, evaluates <code>exp</code> as angular
+expression in the context of the current scope.</p>
+
+<h3>Example</h3><div ng:non-bindable><pre class="brush: js; html-script: true;">
+         var scope = angular.scope();
+         scope.a = 1;
+         scope.b = 2;
+
+         expect(scope.$eval('a+b')).toEqual(3);
+         expect(scope.$eval(function(){ return this.a + this.b; })).toEqual(3);
+
+         scope.$onEval('sum = a+b');
+         expect(scope.sum).toEqual(undefined);
+         scope.$eval();
+         expect(scope.sum).toEqual(3);
+       </pre></div></div>
+<h2>Dependencies</h2>
+<ul class="dependencies"></ul>
+<h2>Usage</h2>
+<div class="usage"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">angular.scope.$eval([exp]);</pre>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">exp<i>(optional)</i> – {(string|function())} – </code>
+<p>An angular expression to be compiled to a function or a js
+    function.</p></li>
+</ul>
+<h3>Returns</h3>
+<div class="returns"><code ng:non-bindable="">{*}</code>
+– <p>The result of calling compiled <code>exp</code> with <code>this</code> set to the current scope.</p></div>
+</div>
+</div>

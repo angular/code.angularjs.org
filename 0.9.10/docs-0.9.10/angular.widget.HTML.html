@@ -1,0 +1,99 @@
+<h1>angular.widget.HTML</h1>
+<div class="angular-widget-html"><fieldset class="workInProgress"><legend>Work in Progress</legend>
+This page is currently being revised. It might be incomplete or contain inaccuracies.</fieldset>
+<h2>Description</h2>
+<div class="description"><p>The most common widgets you will use will be in the from of the
+standard HTML set. These widgets are bound using the name attribute
+to an expression. In addition they can have <code>ng:validate</code>, <code>ng:required</code>,
+<code>ng:format</code>, <code>ng:change</code> attribute to further control their behavior.</p></div>
+<h2>Dependencies</h2>
+<ul class="dependencies"></ul>
+<h2>Usage</h2>
+<div class="usage"><h3>In HTML Template Binding</h3>
+<div class="in-html-template-binding"><div ng:non-bindable=""><pre class="brush: js; html-script: true;">&lt;HTML&gt;&lt;/HTML&gt;</pre>
+</div>
+</div>
+<h3>Parameters</h3>
+<ul class="parameters"></ul>
+</div>
+<h2>Example</h2>
+<div class="example"><doc:example><doc:source>&lt;table style="font-size:.9em;"&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Name&lt;/th&gt;
+    &lt;th&gt;Format&lt;/th&gt;
+    &lt;th&gt;HTML&lt;/th&gt;
+    &lt;th&gt;UI&lt;/th&gt;
+    &lt;th ng:non-bindable&gt;{{input#}}&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;th&gt;text&lt;/th&gt;
+    &lt;td&gt;String&lt;/td&gt;
+    &lt;td&gt;&lt;tt&gt;&amp;lt;input type="text" name="input1"&amp;gt;&lt;/tt&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;input type="text" name="input1" size="4"&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;tt&gt;{{input1|json}}&lt;/tt&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;th&gt;textarea&lt;/th&gt;
+    &lt;td&gt;String&lt;/td&gt;
+    &lt;td&gt;&lt;tt&gt;&amp;lt;textarea name="input2"&amp;gt;&amp;lt;/textarea&amp;gt;&lt;/tt&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;textarea name="input2" cols='6'&gt;&lt;/textarea&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;tt&gt;{{input2|json}}&lt;/tt&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;th&gt;radio&lt;/th&gt;
+    &lt;td&gt;String&lt;/td&gt;
+    &lt;td&gt;&lt;tt&gt;
+      &amp;lt;input type="radio" name="input3" value="A"&amp;gt;&lt;br&gt;
+      &amp;lt;input type="radio" name="input3" value="B"&amp;gt;
+    &lt;/tt&gt;&lt;/td&gt;
+    &lt;td&gt;
+      &lt;input type="radio" name="input3" value="A"&gt;
+      &lt;input type="radio" name="input3" value="B"&gt;
+    &lt;/td&gt;
+    &lt;td&gt;&lt;tt&gt;{{input3|json}}&lt;/tt&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;th&gt;checkbox&lt;/th&gt;
+    &lt;td&gt;Boolean&lt;/td&gt;
+    &lt;td&gt;&lt;tt&gt;&amp;lt;input type="checkbox" name="input4" value="checked"&amp;gt;&lt;/tt&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;input type="checkbox" name="input4" value="checked"&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;tt&gt;{{input4|json}}&lt;/tt&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;th&gt;pulldown&lt;/th&gt;
+    &lt;td&gt;String&lt;/td&gt;
+    &lt;td&gt;&lt;tt&gt;
+      &amp;lt;select name="input5"&amp;gt;&lt;br&gt;
+      &amp;nbsp;&amp;nbsp;&amp;lt;option value="c"&amp;gt;C&amp;lt;/option&amp;gt;&lt;br&gt;
+      &amp;nbsp;&amp;nbsp;&amp;lt;option value="d"&amp;gt;D&amp;lt;/option&amp;gt;&lt;br&gt;
+      &amp;lt;/select&amp;gt;&lt;br&gt;
+    &lt;/tt&gt;&lt;/td&gt;
+    &lt;td&gt;
+      &lt;select name="input5"&gt;
+        &lt;option value="c"&gt;C&lt;/option&gt;
+        &lt;option value="d"&gt;D&lt;/option&gt;
+      &lt;/select&gt;
+    &lt;/td&gt;
+    &lt;td&gt;&lt;tt&gt;{{input5|json}}&lt;/tt&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;th&gt;multiselect&lt;/th&gt;
+    &lt;td&gt;Array&lt;/td&gt;
+    &lt;td&gt;&lt;tt&gt;
+      &amp;lt;select name="input6" multiple size="4"&amp;gt;&lt;br&gt;
+      &amp;nbsp;&amp;nbsp;&amp;lt;option value="e"&amp;gt;E&amp;lt;/option&amp;gt;&lt;br&gt;
+      &amp;nbsp;&amp;nbsp;&amp;lt;option value="f"&amp;gt;F&amp;lt;/option&amp;gt;&lt;br&gt;
+      &amp;lt;/select&amp;gt;&lt;br&gt;
+    &lt;/tt&gt;&lt;/td&gt;
+    &lt;td&gt;
+      &lt;select name="input6" multiple size="4"&gt;
+        &lt;option value="e"&gt;E&lt;/option&gt;
+        &lt;option value="f"&gt;F&lt;/option&gt;
+      &lt;/select&gt;
+    &lt;/td&gt;
+    &lt;td&gt;&lt;tt&gt;{{input6|json}}&lt;/tt&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</doc:source>
+</doc:example>
+</div>
+</div>
