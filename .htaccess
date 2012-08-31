@@ -2,6 +2,7 @@ Options +Indexes
 IndexIgnore favicon.ico *.php robots.txt .git .gitignore
 RewriteEngine on
 
+
 RewriteCond %{HTTP_HOST}        ^docs-next\.angularjs\.org$ [nc]
 RewriteRule ^(.*)$ http://docs.angularjs.org/$1 [r=301,nc]
 
@@ -10,33 +11,31 @@ RewriteCond %{HTTP_HOST}        ^angularjs\.com$ [nc]
 RewriteRule ^(.*)$ http://angularjs.org/$1 [r=301,nc]
 
 
-
 # Enable Crawling of AJAX apps.
 # See: http://code.google.com/web/ajaxcrawling/docs/getting-started.html
 RewriteCond %{QUERY_STRING} ^_escaped_fragment_=\/(.*)$
 RewriteRule ^(.*)$                                  /$1/%1.html?
 
-# Map versiond angular files to root folder.
+
+# Legacy: map /angular-X.Y.Z.js to /X.Y.Z/angular-X.Y.Z.js
 RewriteRule ^angular([\-\w]+)(\d+\.\d+\.[\d\w\-]+)(.*)$   /$2/angular$1$2$3
-# Map 1.2.3/docs to 1.2.3/docs-1.2.3/ so that we don't need the version in the URL twice
-RewriteRule ^(\d+\.\d+\.[\d\w]+)/docs/(.*)$             /$1/docs-$1/$2
+
 
 # If the user has forgot the trailing slash than add it through redirect
 RewriteRule ^latest$                                /latest/            [R]
 RewriteRule ^latest/docs$                           /latest/docs/       [R]
 
+
 # To change the latest version just change this line.
 # IMPORTANT: the order of lines matters, do not move to top!
-#RewriteRule ^latest/(.*?)((?:\.min)?\.js)$           /1.0.1/$1-1.0.1$2
 RewriteRule ^latest/(.*)$                           /1.0.2/$1
+
 
 # If the request comes on http://docs.angularjs.org then point it to latest/docs
 RewriteCond %{HTTP_HOST}        ^docs\.angularjs\.org$
-RewriteCond %{REQUEST_URI}      !^/\d+\.\d+\.\d+
-RewriteCond %{REQUEST_URI}      !^/latest
-RewriteCond %{REQUEST_URI}      !^/angular-
-RewriteCond %{REQUEST_URI}      !^/favicon.ico
 RewriteRule ^(.*)$              /latest/docs/$1
+
+
 
 ## NEXT ##
 
