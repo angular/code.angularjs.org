@@ -28,7 +28,7 @@ RewriteRule ^latest/docs$                           /latest/docs/       [R]
 # To change the latest version just change this line.
 # IMPORTANT: the order of lines matters, do not move to top!
 #RewriteRule ^latest/(.*?)((?:\.min)?\.js)$           /1.0.1/$1-1.0.1$2
-RewriteRule ^latest/(.*)$                           /1.0.1/$1
+RewriteRule ^latest/(.*)$                           /1.0.2/$1
 
 # If the request comes on http://docs.angularjs.org then point it to latest/docs
 RewriteCond %{HTTP_HOST}        ^docs\.angularjs\.org$
