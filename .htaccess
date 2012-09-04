@@ -37,38 +37,6 @@ RewriteRule ^(.*)$              /snapshot/docs/$1
 
 
 
-## NEXT ##
-
-# RewriteRule ^0\.10\.\d+/docs-0\.10\.\d+/appcache\.manifest$       /next/docs/appcache.manifest [L]
-# RewriteRule ^0.10.[0-9]+/docs-0.10.[0-9]+/appcache.manifest$       /next/docs/appcache.manifest [L]
-# RewriteRule ^(foo)$   /X/$1 [R]
-
-# If the user has forgot the trailing slash than add it through redirect
-RewriteRule ^next$                                /next/            [R]
-RewriteRule ^next/docs$                           /next/docs/       [R]
-
-# To change the latest version just change this line.
-# IMPORTANT: the order of lines matters, do not move to top!
-RewriteRule ^next/(.*)$                           /1.0.0rc6/$1
-
-
-# If the request comes on http://docs-next.angularjs.org and asks for a versioned appcache manifest
-# point it to the lastest manifest next/docs
-# RewriteCond %{HTTP_HOST}        ^docs-next\.angularjs\.org$
-# RewriteCond %{REQUEST_URI}      ^0\.10\.\d+/docs-0\.10\.\d+/appcache\.manifest$
-# RewriteRule ^(.*)$              /next/docs/appcache.manifest
-
-
-
-# If the request comes on http://docs-next.angularjs.org then point it to next/docs
-#RewriteCond %{HTTP_HOST}        ^docs-next\.angularjs\.org$
-#RewriteCond %{REQUEST_URI}      !^/\d+\.\d+\.\d+
-#RewriteCond %{REQUEST_URI}      !^/next
-#RewriteCond %{REQUEST_URI}      !^/angular-
-#RewriteCond %{REQUEST_URI}      !^/favicon.ico
-#RewriteRule ^(.*)$              /next/docs/$1
-
-
 ## PERFORMANCE ##
 
 ExpiresActive On
