@@ -42,7 +42,7 @@ RewriteRule ^(.*)$              /snapshot/docs/$1
 ExpiresActive On
 
 # cache js files for one year
-<FilesMatch "^angular-(ie-compat-)?[\d\.]+(\.min)?\.js">
+<FilesMatch "^angular.*\.js$">
 ExpiresDefault "access plus 1 year"
 </FilesMatch>
 
