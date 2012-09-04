@@ -31,9 +31,9 @@ RewriteRule ^latest/docs$                           /latest/docs/       [R]
 RewriteRule ^latest/(.*)$                           /1.0.2/$1
 
 
-# If the request comes on http://docs.angularjs.org then point it to latest/docs
+# If the request comes on http://docs.angularjs.org then point it to snapshot/docs
 RewriteCond %{HTTP_HOST}        ^docs\.angularjs\.org$
-RewriteRule ^(.*)$              /latest/docs/$1
+RewriteRule ^(.*)$              /snapshot/docs/$1
 
 
 
