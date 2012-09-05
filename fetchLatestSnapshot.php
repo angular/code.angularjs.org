@@ -6,13 +6,13 @@
   <pre><?php echo `date`; ?></pre>
   <pre><?
     $ver = $_GET['ver'];
-    $ciBase = 'http://ci.angularjs.org/job/angular.js-angular-v1.0.x/ws/build/pkg/';
+    $ciBase = 'http://ci.angularjs.org/job/angular.js-angular-v1.0.x/ws/build/';
     if ($ver) {
-      echo shell_exec('wget '.$ciBase.$ver.'/'.'angular-'.$ver.'.tgz -O angular-snapshot.tgz');
-      echo shell_exec('tar -xf angular-snapshot.tgz');
+      echo shell_exec('wget '.$ciBase.'angular-'.$ver.'.zip -O angular-snapshot.zip');
+      echo shell_exec('unzip angular-snapshot.zip');
       echo shell_exec('mv snapshot snapshot.old');
       echo shell_exec('mv angular-' . $ver . ' snapshot');
-      echo shell_exec('rm -rf angular-snapshot.tgz');
+      echo shell_exec('rm -rf angular-snapshot.zip');
       echo shell_exec('rm -rf snapshot.old');
 
       echo 'docs.angularjs.org now serving: '.$ver;
