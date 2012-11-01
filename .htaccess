@@ -13,8 +13,8 @@ RewriteRule ^(.*)$ http://angularjs.org/$1 [r=301,nc]
 
 # Enable Crawling of AJAX apps.
 # See: http://code.google.com/web/ajaxcrawling/docs/getting-started.html
-RewriteCond %{QUERY_STRING} ^_escaped_fragment_=\/(.*)$
-RewriteRule ^(.*)$                                  /$1/%1.html?
+RewriteCond %{QUERY_STRING}     ^_escaped_fragment_=
+RewriteRule ^(.*)$              /partials/$1.html
 
 
 # Legacy: map /angular-X.Y.Z.js to /X.Y.Z/angular-X.Y.Z.js
