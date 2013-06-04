@@ -4,7 +4,7 @@
   </head>
 <body>
   <pre><?php echo `date`; ?></pre>
-  <pre><?
+  <pre><?php
     $ver = $_GET['ver'];
     $ciBase = 'http://ci.angularjs.org/job/angular.js-angular-v1.0.x/ws/build/';
     $url = $ciBase.'angular-'.$ver.'.zip';
