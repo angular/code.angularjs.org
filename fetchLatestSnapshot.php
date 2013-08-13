@@ -6,7 +6,7 @@
   <pre><?php echo `date`; ?></pre>
   <pre><?php
     $ver = $_GET['ver'];
-    $ciBase = 'http://ci.angularjs.org/job/angular.js-angular-v1.0.x/ws/build/';
+    $ciBase = 'http://ci.angularjs.org/job/angular.js-angular-master/ws/build/';
     $url = $ciBase.'angular-'.$ver.'.zip';
     if ( !$ver or !preg_match("/^[\.\-\d\w]+$/", $ver) ) {
       echo 'ERROR: No version specified';
