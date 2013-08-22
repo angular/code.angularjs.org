@@ -1,0 +1,66 @@
+<h1><code ng:non-bindable="">$cacheFactory</code>
+<span class="hint">(service in module <code ng:non-bindable="">ng</code>
+)</span>
+</h1>
+<div><a href="http://github.com/angular/angular.js/edit/master/src/ng/cacheFactory.js" class="improve-docs btn btn-primary">Improve this doc</a><h2 id="Description">Description</h2>
+<div class="description"><div class="ng-cachefactory-page"><p>Factory that constructs cache objects and gives access to them.</p>
+
+<pre class="prettyprint linenums">
+
+ var cache = $cacheFactory('cacheId');
+ expect($cacheFactory.get('cacheId')).toBe(cache);
+ expect($cacheFactory.get('noSuchCacheId')).not.toBeDefined();
+
+ cache.put("key", "value");
+ cache.put("another key", "another value");
+
+ expect(cache.info()).toEqual({id: 'cacheId', size: 2}); // Since we've specified no options on creation
+
+</pre></div></div>
+<h2 id="Usage">Usage</h2>
+<div class="usage"><pre class="prettyprint linenums">$cacheFactory(cacheId[, options]);</pre>
+<h3 id="Parameters">Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">cacheId – {string} – </code>
+<div class="ng-cachefactory-page"><p>Name or id of the newly created cache.</p></div></li>
+<li><code ng:non-bindable="">options<i>(optional)</i> – {object=} – </code>
+<div class="ng-cachefactory-page"><p>Options object that specifies the cache behavior. Properties:</p>
+
+<ul>
+<li><code>{number=}</code> <code>capacity</code> — turns the cache into LRU cache.</li>
+</ul></div></li>
+</ul>
+<h3 id="Returns">Returns</h3>
+<div class="returns"><code ng:non-bindable="">{object}</code>
+– <div class="ng-cachefactory-page"><p>Newly created cache object with the following set of methods:</p>
+
+<ul>
+<li><code>{object}</code> <code>info()</code> — Returns id, size, and options of cache.</li>
+<li><code>{void}</code> <code>put({string} key, {*} value)</code> — Puts a new key-value pair into the cache.</li>
+<li><code>{{*}}</code> <code>get({string} key)</code> — Returns cached value for <code>key</code> or undefined for cache miss.</li>
+<li><code>{void}</code> <code>remove({string} key)</code> — Removes a key-value pair from the cache.</li>
+<li><code>{void}</code> <code>removeAll()</code> — Removes all cached values.</li>
+<li><code>{void}</code> <code>destroy()</code> — Removes references to this cache from $cacheFactory.</li>
+</ul></div></div>
+</div>
+<div class="member method"><h2 id="Methods">Methods</h2>
+<ul class="methods"><li><h3 id="get">get(cacheId)</h3>
+<div class="get"><div class="ng-cachefactory-get-page"><p>Get access to a cache object by the <code>cacheId</code> used when it was created.</p></div><h4 id="Parameters">Parameters</h4>
+<ul class="parameters"><li><code ng:non-bindable="">cacheId – {string} – </code>
+<div class="ng-cachefactory-get-page"><p>Name or id of a cache to access.</p></div></li>
+</ul>
+<h4 id="Returns">Returns</h4>
+<div class="returns"><code ng:non-bindable="">{object}</code>
+– <div class="ng-cachefactory-get-page"><p>Cache object identified by the cacheId or undefined if no such cache.</p></div></div>
+</div>
+</li>
+<li><h3 id="info">info()</h3>
+<div class="info"><div class="ng-cachefactory-info-page"><p>Get information about all the of the caches that have been created</p></div><h4 id="Returns">Returns</h4>
+<div class="returns"><code ng:non-bindable="">{Object}</code>
+– <div class="ng-cachefactory-info-page"><ul>
+<li>key-value map of <code>cacheId</code> to the result of calling <code>cache#info</code></li>
+</ul></div></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
