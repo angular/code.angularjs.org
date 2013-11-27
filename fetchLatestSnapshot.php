@@ -6,14 +6,14 @@
   <pre><?php echo `date`; ?></pre>
   <pre><?php
     $ver = $_GET['ver'];
-    <?php
+
      /*
         The url below is the workspace folder for the master build,
         which gets regenerated on every build and which
         always contains only one version with a unique name.
         So this can't be used to rollback to a previous version.
      */
-    ?>
+
     $ciBase = 'http://ci.angularjs.org/job/angular.js-angular-master/ws/build/';
     $url = $ciBase.'angular-'.$ver.'.zip';
     if ( !$ver or !preg_match("/^[\.\-\d\w]+$/", $ver) ) {
