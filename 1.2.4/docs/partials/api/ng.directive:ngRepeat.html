@@ -136,10 +136,10 @@ to items in conjunction with a tracking expression.</p>
 <div class="example"><div class="ng-directive-page ng-directive-ngrepeat-page"><p>This example initializes the scope to a list of names and
 then uses <code>ngRepeat</code> to display every person:
   <h4 id="example_source">Source</h4>
-<div source-edit="" source-edit-deps="angular.js angular-animate.js" source-edit-html="index.html-98" source-edit-css="animations.css" source-edit-js="" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-99"></div>
+<div source-edit="" source-edit-deps="angular.js angular-animate.js" source-edit-html="index.html-92" source-edit-css="animations.css" source-edit-js="" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-93"></div>
 <div class="tabbable"><div class="tab-pane" title="index.html">
-<pre class="prettyprint linenums" ng-set-text="index.html-98" ng-html-wrap=" angular.js angular-animate.js"></pre>
-<script type="text/ng-template" id="index.html-98">
+<pre class="prettyprint linenums" ng-set-text="index.html-92" ng-html-wrap=" angular.js angular-animate.js"></pre>
+<script type="text/ng-template" id="index.html-92">
       <div ng-init="friends = [
         {name:'John', age:25, gender:'boy'},
         {name:'Jessie', age:30, gender:'girl'},
@@ -202,8 +202,8 @@ then uses <code>ngRepeat</code> to display every person:
     </style>
 </div>
 <div class="tab-pane" title="End to end test">
-<pre class="prettyprint linenums" ng-set-text="scenario.js-99"></pre>
-<script type="text/ng-template" id="scenario.js-99">
+<pre class="prettyprint linenums" ng-set-text="scenario.js-93"></pre>
+<script type="text/ng-template" id="scenario.js-93">
        it('should render initial data set', function() {
          var r = using('.doc-example-live').repeater('ul li');
          expect(r.count()).toBe(10);
@@ -226,6 +226,6 @@ then uses <code>ngRepeat</code> to display every person:
       </script>
 </div>
 </div><div class="pull-right"> <button class="btn btn-primary" ng-click="animationsOff=true" ng-hide="animationsOff">Animations on</button> <button class="btn btn-primary disabled" ng-click="animationsOff=false" ng-show="animationsOff">Animations off</button></div><h4 id="example_demo">Demo</h4>
-<div class="well doc-example-live animate-container" ng-class="{'animations-off':animationsOff == true}" ng-embed-app="" ng-set-html="index.html-98" ng-eval-javascript=""></div>
+<div class="well doc-example-live animate-container" ng-class="{'animations-off':animationsOff == true}" ng-embed-app="" ng-set-html="index.html-92" ng-eval-javascript=""></div>
 </div></div>
 </div>

@@ -35,10 +35,10 @@ interaction with the input element.</p>
 </div></td></tr></tbody></table></div>
 <h2 id="example">Example</h2>
 <div class="example"><div class="ng-directive-page ng-directive-input-email-page"><h4 id="example_source">Source</h4>
-<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-37" source-edit-css="" source-edit-js="script.js-36" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-38"></div>
+<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-25" source-edit-css="" source-edit-js="script.js-24" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-26"></div>
 <div class="tabbable"><div class="tab-pane" title="index.html">
-<pre class="prettyprint linenums" ng-set-text="index.html-37" ng-html-wrap=" angular.js script.js"></pre>
-<script type="text/ng-template" id="index.html-37">
+<pre class="prettyprint linenums" ng-set-text="index.html-25" ng-html-wrap=" angular.js script.js"></pre>
+<script type="text/ng-template" id="index.html-25">
  
    <form name="myForm" ng-controller="Ctrl">
      Email: <input type="email" name="input" ng-model="text" required>
@@ -56,16 +56,16 @@ interaction with the input element.</p>
 </script>
 </div>
 <div class="tab-pane" title="script.js">
-<pre class="prettyprint linenums" ng-set-text="script.js-36"></pre>
-<script type="text/ng-template" id="script.js-36">
+<pre class="prettyprint linenums" ng-set-text="script.js-24"></pre>
+<script type="text/ng-template" id="script.js-24">
    function Ctrl($scope) {
      $scope.text = 'me@example.com';
    }
  </script>
 </div>
 <div class="tab-pane" title="End to end test">
-<pre class="prettyprint linenums" ng-set-text="scenario.js-38"></pre>
-<script type="text/ng-template" id="scenario.js-38">
+<pre class="prettyprint linenums" ng-set-text="scenario.js-26"></pre>
+<script type="text/ng-template" id="scenario.js-26">
   it('should initialize to model', function() {
     expect(binding('text')).toEqual('me@example.com');
     expect(binding('myForm.input.$valid')).toEqual('true');
@@ -84,6 +84,6 @@ interaction with the input element.</p>
 </script>
 </div>
 </div><h4 id="example_demo">Demo</h4>
-<div class="well doc-example-live animate-container" ng-embed-app="" ng-set-html="index.html-37" ng-eval-javascript="script.js-36"></div>
+<div class="well doc-example-live animate-container" ng-embed-app="" ng-set-html="index.html-25" ng-eval-javascript="script.js-24"></div>
 </div></div>
 </div>

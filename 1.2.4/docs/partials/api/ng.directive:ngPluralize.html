@@ -85,10 +85,10 @@ as attribute<pre class="prettyprint linenums">&lt;ANY ng-pluralize
 </div></td></tr></tbody></table></div>
 <h2 id="example">Example</h2>
 <div class="example"><div class="ng-directive-page ng-directive-ngpluralize-page"><h4 id="example_source">Source</h4>
-<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-96" source-edit-css="" source-edit-js="script.js-95" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-97"></div>
+<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-90" source-edit-css="" source-edit-js="script.js-89" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-91"></div>
 <div class="tabbable"><div class="tab-pane" title="index.html">
-<pre class="prettyprint linenums" ng-set-text="index.html-96" ng-html-wrap=" angular.js script.js"></pre>
-<script type="text/ng-template" id="index.html-96">
+<pre class="prettyprint linenums" ng-set-text="index.html-90" ng-html-wrap=" angular.js script.js"></pre>
+<script type="text/ng-template" id="index.html-90">
   
   <div ng-controller="Ctrl">
     Person 1:<input type="text" ng-model="person1" value="Igor" /><br/>
@@ -116,8 +116,8 @@ as attribute<pre class="prettyprint linenums">&lt;ANY ng-pluralize
 </script>
 </div>
 <div class="tab-pane" title="script.js">
-<pre class="prettyprint linenums" ng-set-text="script.js-95"></pre>
-<script type="text/ng-template" id="script.js-95">
+<pre class="prettyprint linenums" ng-set-text="script.js-89"></pre>
+<script type="text/ng-template" id="script.js-89">
     function Ctrl($scope) {
       $scope.person1 = 'Igor';
       $scope.person2 = 'Misko';
@@ -126,8 +126,8 @@ as attribute<pre class="prettyprint linenums">&lt;ANY ng-pluralize
   </script>
 </div>
 <div class="tab-pane" title="End to end test">
-<pre class="prettyprint linenums" ng-set-text="scenario.js-97"></pre>
-<script type="text/ng-template" id="scenario.js-97">
+<pre class="prettyprint linenums" ng-set-text="scenario.js-91"></pre>
+<script type="text/ng-template" id="scenario.js-91">
   it('should show correct pluralized string', function() {
     expect(element('.doc-example-live ng-pluralize:first').text()).
                                        toBe('1 person is viewing.');
@@ -172,6 +172,6 @@ as attribute<pre class="prettyprint linenums">&lt;ANY ng-pluralize
 </script>
 </div>
 </div><h4 id="example_demo">Demo</h4>
-<div class="well doc-example-live animate-container" ng-embed-app="" ng-set-html="index.html-96" ng-eval-javascript="script.js-95"></div>
+<div class="well doc-example-live animate-container" ng-embed-app="" ng-set-html="index.html-90" ng-eval-javascript="script.js-89"></div>
 </div></div>
 </div>

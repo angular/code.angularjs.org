@@ -27,10 +27,10 @@ as class<pre class="prettyprint linenums">&lt;ANY class="ng-bind: {expression};"
 <h2 id="example">Example</h2>
 <div class="example"><div class="ng-directive-page ng-directive-ngbind-page"><p>Enter a name in the Live Preview text box; the greeting below the text box changes instantly.
 <h4 id="example_source">Source</h4>
-<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-19" source-edit-css="" source-edit-js="script.js-18" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-20"></div>
+<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-50" source-edit-css="" source-edit-js="script.js-49" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-51"></div>
 <div class="tabbable"><div class="tab-pane" title="index.html">
-<pre class="prettyprint linenums" ng-set-text="index.html-19" ng-html-wrap=" angular.js script.js"></pre>
-<script type="text/ng-template" id="index.html-19">
+<pre class="prettyprint linenums" ng-set-text="index.html-50" ng-html-wrap=" angular.js script.js"></pre>
+<script type="text/ng-template" id="index.html-50">
     
     <div ng-controller="Ctrl">
       Enter name: <input type="text" ng-model="name"><br>
@@ -39,16 +39,16 @@ as class<pre class="prettyprint linenums">&lt;ANY class="ng-bind: {expression};"
   </script>
 </div>
 <div class="tab-pane" title="script.js">
-<pre class="prettyprint linenums" ng-set-text="script.js-18"></pre>
-<script type="text/ng-template" id="script.js-18">
+<pre class="prettyprint linenums" ng-set-text="script.js-49"></pre>
+<script type="text/ng-template" id="script.js-49">
       function Ctrl($scope) {
         $scope.name = 'Whirled';
       }
     </script>
 </div>
 <div class="tab-pane" title="End to end test">
-<pre class="prettyprint linenums" ng-set-text="scenario.js-20"></pre>
-<script type="text/ng-template" id="scenario.js-20">
+<pre class="prettyprint linenums" ng-set-text="scenario.js-51"></pre>
+<script type="text/ng-template" id="scenario.js-51">
     it('should check ng-bind', function() {
       expect(using('.doc-example-live').binding('name')).toBe('Whirled');
       using('.doc-example-live').input('name').enter('world');
@@ -57,6 +57,6 @@ as class<pre class="prettyprint linenums">&lt;ANY class="ng-bind: {expression};"
   </script>
 </div>
 </div><h4 id="example_demo">Demo</h4>
-<div class="well doc-example-live animate-container" ng-embed-app="" ng-set-html="index.html-19" ng-eval-javascript="script.js-18"></div>
+<div class="well doc-example-live animate-container" ng-embed-app="" ng-set-html="index.html-50" ng-eval-javascript="script.js-49"></div>
 </div></div>
 </div>

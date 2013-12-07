@@ -16,10 +16,10 @@ collaborate together to achieve the desired result.</p>
 <p>Note that <code>contenteditable</code> is an HTML5 attribute, which tells the browser to let the element
 contents be edited in place by the user.  This will not work on older browsers.</p>
 <h4 id="description_source">Source</h4>
-<div source-edit="customControl" source-edit-deps="angular.js script.js" source-edit-html="index.html-50" source-edit-css="style.css-48" source-edit-js="script.js-49" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-51"></div>
+<div source-edit="customControl" source-edit-deps="angular.js script.js" source-edit-html="index.html-38" source-edit-css="style.css-36" source-edit-js="script.js-37" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-39"></div>
 <div class="tabbable"><div class="tab-pane" title="index.html">
-<pre class="prettyprint linenums" ng-set-text="index.html-50" ng-html-wrap="customControl angular.js script.js"></pre>
-<script type="text/ng-template" id="index.html-50">
+<pre class="prettyprint linenums" ng-set-text="index.html-38" ng-html-wrap="customControl angular.js script.js"></pre>
+<script type="text/ng-template" id="index.html-38">
       <form name="myForm">
        <div contenteditable
             name="myWidget" ng-model="userContent"
@@ -32,8 +32,8 @@ contents be edited in place by the user.  This will not work on older browsers.<
     </script>
 </div>
 <div class="tab-pane" title="style.css">
-<pre class="prettyprint linenums" ng-set-text="style.css-48"></pre>
-<style type="text/css" id="style.css-48">
+<pre class="prettyprint linenums" ng-set-text="style.css-36"></pre>
+<style type="text/css" id="style.css-36">
       [contenteditable] {
         border: 1px solid black;
         background-color: white;
@@ -47,8 +47,8 @@ contents be edited in place by the user.  This will not work on older browsers.<
     </style>
 </div>
 <div class="tab-pane" title="script.js">
-<pre class="prettyprint linenums" ng-set-text="script.js-49"></pre>
-<script type="text/ng-template" id="script.js-49">
+<pre class="prettyprint linenums" ng-set-text="script.js-37"></pre>
+<script type="text/ng-template" id="script.js-37">
       angular.module('customControl', []).
         directive('contenteditable', function() {
           return {
@@ -84,8 +84,8 @@ contents be edited in place by the user.  This will not work on older browsers.<
     </script>
 </div>
 <div class="tab-pane" title="End to end test">
-<pre class="prettyprint linenums" ng-set-text="scenario.js-51"></pre>
-<script type="text/ng-template" id="scenario.js-51">
+<pre class="prettyprint linenums" ng-set-text="scenario.js-39"></pre>
+<script type="text/ng-template" id="scenario.js-39">
       it('should data-bind and become invalid', function() {
         var contentEditable = element('[contenteditable]');
 
@@ -97,7 +97,7 @@ contents be edited in place by the user.  This will not work on older browsers.<
     </script>
 </div>
 </div><h4 id="description_demo">Demo</h4>
-<div class="well doc-example-live animate-container" ng-embed-app="customControl" ng-set-html="index.html-50" ng-eval-javascript="script.js-49"></div>
+<div class="well doc-example-live animate-container" ng-embed-app="customControl" ng-set-html="index.html-38" ng-eval-javascript="script.js-37"></div>
 </div></div>
 <div class="member method"><h2 id="methods">Methods</h2>
 <ul class="methods"><li><h3 id="methods_$render">$render()</h3>

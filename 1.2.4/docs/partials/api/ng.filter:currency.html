@@ -20,10 +20,10 @@ symbol for current locale is used.</p>
 </div></td></tr></table></div>
 <h2 id="example">Example</h2>
 <div class="example"><div class="ng-filter-page ng-filter-currency-page"><h4 id="example_source">Source</h4>
-<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-124" source-edit-css="" source-edit-js="script.js-123" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-125"></div>
+<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-115" source-edit-css="" source-edit-js="script.js-114" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-116"></div>
 <div class="tabbable"><div class="tab-pane" title="index.html">
-<pre class="prettyprint linenums" ng-set-text="index.html-124" ng-html-wrap=" angular.js script.js"></pre>
-<script type="text/ng-template" id="index.html-124">
+<pre class="prettyprint linenums" ng-set-text="index.html-115" ng-html-wrap=" angular.js script.js"></pre>
+<script type="text/ng-template" id="index.html-115">
   
   <div ng-controller="Ctrl">
     <input type="number" ng-model="amount"> <br>
@@ -33,16 +33,16 @@ symbol for current locale is used.</p>
 </script>
 </div>
 <div class="tab-pane" title="script.js">
-<pre class="prettyprint linenums" ng-set-text="script.js-123"></pre>
-<script type="text/ng-template" id="script.js-123">
+<pre class="prettyprint linenums" ng-set-text="script.js-114"></pre>
+<script type="text/ng-template" id="script.js-114">
     function Ctrl($scope) {
       $scope.amount = 1234.56;
     }
   </script>
 </div>
 <div class="tab-pane" title="End to end test">
-<pre class="prettyprint linenums" ng-set-text="scenario.js-125"></pre>
-<script type="text/ng-template" id="scenario.js-125">
+<pre class="prettyprint linenums" ng-set-text="scenario.js-116"></pre>
+<script type="text/ng-template" id="scenario.js-116">
   it('should init with 1234.56', function() {
     expect(binding('amount | currency')).toBe('$1,234.56');
     expect(binding('amount | currency:"USD$"')).toBe('USD$1,234.56');
@@ -55,6 +55,6 @@ symbol for current locale is used.</p>
 </script>
 </div>
 </div><h4 id="example_demo">Demo</h4>
-<div class="well doc-example-live animate-container" ng-embed-app="" ng-set-html="index.html-124" ng-eval-javascript="script.js-123"></div>
+<div class="well doc-example-live animate-container" ng-embed-app="" ng-set-html="index.html-115" ng-eval-javascript="script.js-114"></div>
 </div></div>
 </div>

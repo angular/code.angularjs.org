@@ -22,10 +22,10 @@ formatting pattern. In the case of the default locale, it will be 3.</p>
 </div></td></tr></table></div>
 <h2 id="example">Example</h2>
 <div class="example"><div class="ng-filter-page ng-filter-number-page"><h4 id="example_source">Source</h4>
-<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-127" source-edit-css="" source-edit-js="script.js-126" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-128"></div>
+<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-118" source-edit-css="" source-edit-js="script.js-117" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-119"></div>
 <div class="tabbable"><div class="tab-pane" title="index.html">
-<pre class="prettyprint linenums" ng-set-text="index.html-127" ng-html-wrap=" angular.js script.js"></pre>
-<script type="text/ng-template" id="index.html-127">
+<pre class="prettyprint linenums" ng-set-text="index.html-118" ng-html-wrap=" angular.js script.js"></pre>
+<script type="text/ng-template" id="index.html-118">
   
   <div ng-controller="Ctrl">
     Enter number: <input ng-model='val'><br>
@@ -36,16 +36,16 @@ formatting pattern. In the case of the default locale, it will be 3.</p>
 </script>
 </div>
 <div class="tab-pane" title="script.js">
-<pre class="prettyprint linenums" ng-set-text="script.js-126"></pre>
-<script type="text/ng-template" id="script.js-126">
+<pre class="prettyprint linenums" ng-set-text="script.js-117"></pre>
+<script type="text/ng-template" id="script.js-117">
     function Ctrl($scope) {
       $scope.val = 1234.56789;
     }
   </script>
 </div>
 <div class="tab-pane" title="End to end test">
-<pre class="prettyprint linenums" ng-set-text="scenario.js-128"></pre>
-<script type="text/ng-template" id="scenario.js-128">
+<pre class="prettyprint linenums" ng-set-text="scenario.js-119"></pre>
+<script type="text/ng-template" id="scenario.js-119">
   it('should format numbers', function() {
     expect(binding('val | number')).toBe('1,234.568');
     expect(binding('val | number:0')).toBe('1,235');
@@ -61,6 +61,6 @@ formatting pattern. In the case of the default locale, it will be 3.</p>
 </script>
 </div>
 </div><h4 id="example_demo">Demo</h4>
-<div class="well doc-example-live animate-container" ng-embed-app="" ng-set-html="index.html-127" ng-eval-javascript="script.js-126"></div>
+<div class="well doc-example-live animate-container" ng-embed-app="" ng-set-html="index.html-118" ng-eval-javascript="script.js-117"></div>
 </div></div>
 </div>

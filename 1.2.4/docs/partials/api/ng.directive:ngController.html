@@ -41,10 +41,10 @@ notice that any changes to the data are automatically reflected in the View with
 for a manual update. The example is shown in two different declaration styles you may use
 according to preference.
    <h4 id="example_source">Source</h4>
-<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-76" source-edit-css="" source-edit-js="script.js-75" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-77"></div>
+<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-73" source-edit-css="" source-edit-js="script.js-72" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-74"></div>
 <div class="tabbable"><div class="tab-pane" title="index.html">
-<pre class="prettyprint linenums" ng-set-text="index.html-76" ng-html-wrap=" angular.js script.js"></pre>
-<script type="text/ng-template" id="index.html-76">
+<pre class="prettyprint linenums" ng-set-text="index.html-73" ng-html-wrap=" angular.js script.js"></pre>
+<script type="text/ng-template" id="index.html-73">
       
       <div id="ctrl-as-exmpl" ng-controller="SettingsController1 as settings">
         Name: <input type="text" ng-model="settings.name"/>
@@ -66,8 +66,8 @@ according to preference.
      </script>
 </div>
 <div class="tab-pane" title="script.js">
-<pre class="prettyprint linenums" ng-set-text="script.js-75"></pre>
-<script type="text/ng-template" id="script.js-75">
+<pre class="prettyprint linenums" ng-set-text="script.js-72"></pre>
+<script type="text/ng-template" id="script.js-72">
         function SettingsController1() {
           this.name = "John Smith";
           this.contacts = [
@@ -95,8 +95,8 @@ according to preference.
       </script>
 </div>
 <div class="tab-pane" title="End to end test">
-<pre class="prettyprint linenums" ng-set-text="scenario.js-77"></pre>
-<script type="text/ng-template" id="scenario.js-77">
+<pre class="prettyprint linenums" ng-set-text="scenario.js-74"></pre>
+<script type="text/ng-template" id="scenario.js-74">
        it('should check controller as', function() {
          expect(element('#ctrl-as-exmpl>:input').val()).toBe('John Smith');
          expect(element('#ctrl-as-exmpl li:nth-child(1) input').val())
@@ -114,12 +114,12 @@ according to preference.
      </script>
 </div>
 </div><h4 id="example_demo">Demo</h4>
-<div class="well doc-example-live animate-container" ng-embed-app="" ng-set-html="index.html-76" ng-eval-javascript="script.js-75"></div>
+<div class="well doc-example-live animate-container" ng-embed-app="" ng-set-html="index.html-73" ng-eval-javascript="script.js-72"></div>
     <h4 id="example_source">Source</h4>
-<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-79" source-edit-css="" source-edit-js="script.js-78" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-80"></div>
+<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-76" source-edit-css="" source-edit-js="script.js-75" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-77"></div>
 <div class="tabbable"><div class="tab-pane" title="index.html">
-<pre class="prettyprint linenums" ng-set-text="index.html-79" ng-html-wrap=" angular.js script.js"></pre>
-<script type="text/ng-template" id="index.html-79">
+<pre class="prettyprint linenums" ng-set-text="index.html-76" ng-html-wrap=" angular.js script.js"></pre>
+<script type="text/ng-template" id="index.html-76">
       
       <div id="ctrl-exmpl" ng-controller="SettingsController2">
         Name: <input type="text" ng-model="name"/>
@@ -141,8 +141,8 @@ according to preference.
      </script>
 </div>
 <div class="tab-pane" title="script.js">
-<pre class="prettyprint linenums" ng-set-text="script.js-78"></pre>
-<script type="text/ng-template" id="script.js-78">
+<pre class="prettyprint linenums" ng-set-text="script.js-75"></pre>
+<script type="text/ng-template" id="script.js-75">
         function SettingsController2($scope) {
           $scope.name = "John Smith";
           $scope.contacts = [
@@ -170,8 +170,8 @@ according to preference.
       </script>
 </div>
 <div class="tab-pane" title="End to end test">
-<pre class="prettyprint linenums" ng-set-text="scenario.js-80"></pre>
-<script type="text/ng-template" id="scenario.js-80">
+<pre class="prettyprint linenums" ng-set-text="scenario.js-77"></pre>
+<script type="text/ng-template" id="scenario.js-77">
        it('should check controller', function() {
          expect(element('#ctrl-exmpl>:input').val()).toBe('John Smith');
          expect(element('#ctrl-exmpl li:nth-child(1) input').val())
@@ -189,6 +189,6 @@ according to preference.
      </script>
 </div>
 </div><h4 id="example_demo">Demo</h4>
-<div class="well doc-example-live animate-container" ng-embed-app="" ng-set-html="index.html-79" ng-eval-javascript="script.js-78"></div>
+<div class="well doc-example-live animate-container" ng-embed-app="" ng-set-html="index.html-76" ng-eval-javascript="script.js-75"></div>
 </div></div>
 </div>

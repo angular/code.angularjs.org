@@ -53,10 +53,10 @@ insensitive way.</p>
 </div></td></tr></tbody></table></div>
 <h2 id="example">Example</h2>
 <div class="example"><div class="ng-filter-page ng-filter-filter-page"><h4 id="example_source">Source</h4>
-<div source-edit="" source-edit-deps="angular.js" source-edit-html="index.html-118" source-edit-css="" source-edit-js="" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-119"></div>
+<div source-edit="" source-edit-deps="angular.js" source-edit-html="index.html-112" source-edit-css="" source-edit-js="" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-113"></div>
 <div class="tabbable"><div class="tab-pane" title="index.html">
-<pre class="prettyprint linenums" ng-set-text="index.html-118" ng-html-wrap=" angular.js"></pre>
-<script type="text/ng-template" id="index.html-118">
+<pre class="prettyprint linenums" ng-set-text="index.html-112" ng-html-wrap=" angular.js"></pre>
+<script type="text/ng-template" id="index.html-112">
   <div ng-init="friends = [{name:'John', phone:'555-1276'},
                            {name:'Mary', phone:'800-BIG-MARY'},
                            {name:'Mike', phone:'555-4321'},
@@ -87,8 +87,8 @@ insensitive way.</p>
 </script>
 </div>
 <div class="tab-pane" title="End to end test">
-<pre class="prettyprint linenums" ng-set-text="scenario.js-119"></pre>
-<script type="text/ng-template" id="scenario.js-119">
+<pre class="prettyprint linenums" ng-set-text="scenario.js-113"></pre>
+<script type="text/ng-template" id="scenario.js-113">
   it('should search across all fields when filtering with a string', function() {
     input('searchText').enter('m');
     expect(repeater('#searchTextResults tr', 'friend in friends').column('friend.name')).
@@ -113,6 +113,6 @@ insensitive way.</p>
 </script>
 </div>
 </div><h4 id="example_demo">Demo</h4>
-<div class="well doc-example-live animate-container" ng-embed-app="" ng-set-html="index.html-118" ng-eval-javascript=""></div>
+<div class="well doc-example-live animate-container" ng-embed-app="" ng-set-html="index.html-112" ng-eval-javascript=""></div>
 </div></div>
 </div>

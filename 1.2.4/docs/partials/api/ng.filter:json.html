@@ -20,22 +20,22 @@ the binding is automatically converted to JSON.</p>
 </div></td></tr></table></div>
 <h2 id="example">Example</h2>
 <div class="example"><div class="ng-filter-page ng-filter-json-page"><h4 id="example_source">Source</h4>
-<div source-edit="" source-edit-deps="angular.js" source-edit-html="index.html-131" source-edit-css="" source-edit-js="" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-132"></div>
+<div source-edit="" source-edit-deps="angular.js" source-edit-html="index.html-122" source-edit-css="" source-edit-js="" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-123"></div>
 <div class="tabbable"><div class="tab-pane" title="index.html">
-<pre class="prettyprint linenums" ng-set-text="index.html-131" ng-html-wrap=" angular.js"></pre>
-<script type="text/ng-template" id="index.html-131">
+<pre class="prettyprint linenums" ng-set-text="index.html-122" ng-html-wrap=" angular.js"></pre>
+<script type="text/ng-template" id="index.html-122">
   <pre>{{ {'name':'value'} | json }}</pre>
 </script>
 </div>
 <div class="tab-pane" title="End to end test">
-<pre class="prettyprint linenums" ng-set-text="scenario.js-132"></pre>
-<script type="text/ng-template" id="scenario.js-132">
+<pre class="prettyprint linenums" ng-set-text="scenario.js-123"></pre>
+<script type="text/ng-template" id="scenario.js-123">
   it('should jsonify filtered objects', function() {
     expect(binding("{'name':'value'}")).toMatch(/\{\n  "name": ?"value"\n}/);
   });
 </script>
 </div>
 </div><h4 id="example_demo">Demo</h4>
-<div class="well doc-example-live animate-container" ng-embed-app="" ng-set-html="index.html-131" ng-eval-javascript=""></div>
+<div class="well doc-example-live animate-container" ng-embed-app="" ng-set-html="index.html-122" ng-eval-javascript=""></div>
 </div></div>
 </div>

@@ -71,10 +71,10 @@ the element when the ngRequired expression evaluates to true. Use <code>ngRequir
 </div></td></tr></tbody></table></div>
 <h2 id="example">Example</h2>
 <div class="example"><div class="ng-directive-page ng-directive-select-page"><h4 id="example_source">Source</h4>
-<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-116" source-edit-css="" source-edit-js="script.js-115" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-117"></div>
+<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-110" source-edit-css="" source-edit-js="script.js-109" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-111"></div>
 <div class="tabbable"><div class="tab-pane" title="index.html">
-<pre class="prettyprint linenums" ng-set-text="index.html-116" ng-html-wrap=" angular.js script.js"></pre>
-<script type="text/ng-template" id="index.html-116">
+<pre class="prettyprint linenums" ng-set-text="index.html-110" ng-html-wrap=" angular.js script.js"></pre>
+<script type="text/ng-template" id="index.html-110">
   
   <div ng-controller="MyCntrl">
     <ul>
@@ -112,8 +112,8 @@ the element when the ngRequired expression evaluates to true. Use <code>ngRequir
 </script>
 </div>
 <div class="tab-pane" title="script.js">
-<pre class="prettyprint linenums" ng-set-text="script.js-115"></pre>
-<script type="text/ng-template" id="script.js-115">
+<pre class="prettyprint linenums" ng-set-text="script.js-109"></pre>
+<script type="text/ng-template" id="script.js-109">
   function MyCntrl($scope) {
     $scope.colors = [
       {name:'black', shade:'dark'},
@@ -127,8 +127,8 @@ the element when the ngRequired expression evaluates to true. Use <code>ngRequir
   </script>
 </div>
 <div class="tab-pane" title="End to end test">
-<pre class="prettyprint linenums" ng-set-text="scenario.js-117"></pre>
-<script type="text/ng-template" id="scenario.js-117">
+<pre class="prettyprint linenums" ng-set-text="scenario.js-111"></pre>
+<script type="text/ng-template" id="scenario.js-111">
    it('should check ng-options', function() {
      expect(binding('{selected_color:color}')).toMatch('red');
      select('color').option('0');
@@ -139,6 +139,6 @@ the element when the ngRequired expression evaluates to true. Use <code>ngRequir
 </script>
 </div>
 </div><h4 id="example_demo">Demo</h4>
-<div class="well doc-example-live animate-container" ng-embed-app="" ng-set-html="index.html-116" ng-eval-javascript="script.js-115"></div>
+<div class="well doc-example-live animate-container" ng-embed-app="" ng-set-html="index.html-110" ng-eval-javascript="script.js-109"></div>
 </div></div>
 </div>

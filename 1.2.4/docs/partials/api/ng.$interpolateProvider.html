@@ -23,10 +23,10 @@
 </div>
 <h2 id="example">Example</h2>
 <div class="example"><div class="ng-interpolateprovider-page"><h4 id="example_source">Source</h4>
-<div source-edit="customInterpolationApp" source-edit-deps="angular.js script.js" source-edit-html="index.html-140" source-edit-css="" source-edit-js="script.js-139" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-141"></div>
+<div source-edit="customInterpolationApp" source-edit-deps="angular.js script.js" source-edit-html="index.html-142" source-edit-css="" source-edit-js="script.js-141" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-143"></div>
 <div class="tabbable"><div class="tab-pane" title="index.html">
-<pre class="prettyprint linenums" ng-set-text="index.html-140" ng-html-wrap="customInterpolationApp angular.js script.js"></pre>
-<script type="text/ng-template" id="index.html-140">
+<pre class="prettyprint linenums" ng-set-text="index.html-142" ng-html-wrap="customInterpolationApp angular.js script.js"></pre>
+<script type="text/ng-template" id="index.html-142">
 
 <div ng-app="App" ng-controller="DemoController as demo">
     //demo.label//
@@ -34,8 +34,8 @@
 </script>
 </div>
 <div class="tab-pane" title="script.js">
-<pre class="prettyprint linenums" ng-set-text="script.js-139"></pre>
-<script type="text/ng-template" id="script.js-139">
+<pre class="prettyprint linenums" ng-set-text="script.js-141"></pre>
+<script type="text/ng-template" id="script.js-141">
   var customInterpolationApp = angular.module('customInterpolationApp', []);
 
   customInterpolationApp.config(function($interpolateProvider) {
@@ -50,14 +50,14 @@
 </script>
 </div>
 <div class="tab-pane" title="End to end test">
-<pre class="prettyprint linenums" ng-set-text="scenario.js-141"></pre>
-<script type="text/ng-template" id="scenario.js-141">
+<pre class="prettyprint linenums" ng-set-text="scenario.js-143"></pre>
+<script type="text/ng-template" id="scenario.js-143">
  it('should interpolate binding with custom symbols', function() {
   expect(binding('demo.label')).toBe('This binding is brought you by // interpolation symbols.');
  });
 </script>
 </div>
 </div><h4 id="example_demo">Demo</h4>
-<div class="well doc-example-live animate-container" ng-embed-app="customInterpolationApp" ng-set-html="index.html-140" ng-eval-javascript="script.js-139"></div>
+<div class="well doc-example-live animate-container" ng-embed-app="customInterpolationApp" ng-set-html="index.html-142" ng-eval-javascript="script.js-141"></div>
 </div></div>
 </div>

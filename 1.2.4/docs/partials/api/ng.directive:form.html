@@ -60,10 +60,10 @@ related scope, under this name.</p>
 </div></td></tr></tbody></table></div>
 <h2 id="example">Example</h2>
 <div class="example"><div class="ng-directive-page ng-directive-form-page"><h4 id="example_source">Source</h4>
-<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-16" source-edit-css="" source-edit-js="script.js-15" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-17"></div>
+<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-136" source-edit-css="" source-edit-js="script.js-135" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-137"></div>
 <div class="tabbable"><div class="tab-pane" title="index.html">
-<pre class="prettyprint linenums" ng-set-text="index.html-16" ng-html-wrap=" angular.js script.js"></pre>
-<script type="text/ng-template" id="index.html-16">
+<pre class="prettyprint linenums" ng-set-text="index.html-136" ng-html-wrap=" angular.js script.js"></pre>
+<script type="text/ng-template" id="index.html-136">
  
  <form name="myForm" ng-controller="Ctrl">
    userType: <input name="input" ng-model="userType" required>
@@ -77,16 +77,16 @@ related scope, under this name.</p>
 </script>
 </div>
 <div class="tab-pane" title="script.js">
-<pre class="prettyprint linenums" ng-set-text="script.js-15"></pre>
-<script type="text/ng-template" id="script.js-15">
+<pre class="prettyprint linenums" ng-set-text="script.js-135"></pre>
+<script type="text/ng-template" id="script.js-135">
    function Ctrl($scope) {
      $scope.userType = 'guest';
    }
  </script>
 </div>
 <div class="tab-pane" title="End to end test">
-<pre class="prettyprint linenums" ng-set-text="scenario.js-17"></pre>
-<script type="text/ng-template" id="scenario.js-17">
+<pre class="prettyprint linenums" ng-set-text="scenario.js-137"></pre>
+<script type="text/ng-template" id="scenario.js-137">
   it('should initialize to model', function() {
    expect(binding('userType')).toEqual('guest');
    expect(binding('myForm.input.$valid')).toEqual('true');
@@ -100,6 +100,6 @@ related scope, under this name.</p>
 </script>
 </div>
 </div><h4 id="example_demo">Demo</h4>
-<div class="well doc-example-live animate-container" ng-embed-app="" ng-set-html="index.html-16" ng-eval-javascript="script.js-15"></div>
+<div class="well doc-example-live animate-container" ng-embed-app="" ng-set-html="index.html-136" ng-eval-javascript="script.js-135"></div>
 </div></div>
 </div>

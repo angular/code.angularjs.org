@@ -17,10 +17,10 @@ as class<pre class="prettyprint linenums">&lt;ANY class="ng-transclude"&gt;
 </div>
 <h2 id="example">Example</h2>
 <div class="example"><div class="ng-directive-page ng-directive-ngtransclude-page"><h4 id="example_source">Source</h4>
-<div source-edit="transclude" source-edit-deps="angular.js script.js" source-edit-html="index.html-111" source-edit-css="" source-edit-js="script.js-110" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-112"></div>
+<div source-edit="transclude" source-edit-deps="angular.js script.js" source-edit-html="index.html-105" source-edit-css="" source-edit-js="script.js-104" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-106"></div>
 <div class="tabbable"><div class="tab-pane" title="index.html">
-<pre class="prettyprint linenums" ng-set-text="index.html-111" ng-html-wrap="transclude angular.js script.js"></pre>
-<script type="text/ng-template" id="index.html-111">
+<pre class="prettyprint linenums" ng-set-text="index.html-105" ng-html-wrap="transclude angular.js script.js"></pre>
+<script type="text/ng-template" id="index.html-105">
   
   <div ng-controller="Ctrl">
     <input ng-model="title"><br>
@@ -30,8 +30,8 @@ as class<pre class="prettyprint linenums">&lt;ANY class="ng-transclude"&gt;
 </script>
 </div>
 <div class="tab-pane" title="script.js">
-<pre class="prettyprint linenums" ng-set-text="script.js-110"></pre>
-<script type="text/ng-template" id="script.js-110">
+<pre class="prettyprint linenums" ng-set-text="script.js-104"></pre>
+<script type="text/ng-template" id="script.js-104">
     function Ctrl($scope) {
       $scope.title = 'Lorem Ipsum';
       $scope.text = 'Neque porro quisquam est qui dolorem ipsum quia dolor...';
@@ -52,8 +52,8 @@ as class<pre class="prettyprint linenums">&lt;ANY class="ng-transclude"&gt;
   </script>
 </div>
 <div class="tab-pane" title="End to end test">
-<pre class="prettyprint linenums" ng-set-text="scenario.js-112"></pre>
-<script type="text/ng-template" id="scenario.js-112">
+<pre class="prettyprint linenums" ng-set-text="scenario.js-106"></pre>
+<script type="text/ng-template" id="scenario.js-106">
    it('should have transcluded', function() {
      input('title').enter('TITLE');
      input('text').enter('TEXT');
@@ -63,6 +63,6 @@ as class<pre class="prettyprint linenums">&lt;ANY class="ng-transclude"&gt;
 </script>
 </div>
 </div><h4 id="example_demo">Demo</h4>
-<div class="well doc-example-live animate-container" ng-embed-app="transclude" ng-set-html="index.html-111" ng-eval-javascript="script.js-110"></div>
+<div class="well doc-example-live animate-container" ng-embed-app="transclude" ng-set-html="index.html-105" ng-eval-javascript="script.js-104"></div>
 </div></div>
 </div>

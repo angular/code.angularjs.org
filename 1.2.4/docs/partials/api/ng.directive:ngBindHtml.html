@@ -22,18 +22,18 @@ will have an exception (instead of an exploit.)</p>
 <h2 id="example">Example</h2>
 <div class="example"><div class="ng-directive-page ng-directive-ngbindhtml-page"><p>Try it here: enter text in text box and watch the greeting change.</p>
 <h4 id="example_source">Source</h4>
-<div source-edit="ngBindHtmlExample" source-edit-deps="angular.js angular-sanitize.js script.js" source-edit-html="index.html-24" source-edit-css="" source-edit-js="script.js-25" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-26"></div>
+<div source-edit="ngBindHtmlExample" source-edit-deps="angular.js angular-sanitize.js script.js" source-edit-html="index.html-55" source-edit-css="" source-edit-js="script.js-56" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-57"></div>
 <div class="tabbable"><div class="tab-pane" title="index.html">
-<pre class="prettyprint linenums" ng-set-text="index.html-24" ng-html-wrap="ngBindHtmlExample angular.js angular-sanitize.js script.js"></pre>
-<script type="text/ng-template" id="index.html-24">
+<pre class="prettyprint linenums" ng-set-text="index.html-55" ng-html-wrap="ngBindHtmlExample angular.js angular-sanitize.js script.js"></pre>
+<script type="text/ng-template" id="index.html-55">
     <div ng-controller="ngBindHtmlCtrl">
      <p ng-bind-html="myHTML"></p>
     </div>
   </script>
 </div>
 <div class="tab-pane" title="script.js">
-<pre class="prettyprint linenums" ng-set-text="script.js-25"></pre>
-<script type="text/ng-template" id="script.js-25">
+<pre class="prettyprint linenums" ng-set-text="script.js-56"></pre>
+<script type="text/ng-template" id="script.js-56">
     angular.module('ngBindHtmlExample', ['ngSanitize'])
 
     .controller('ngBindHtmlCtrl', ['$scope', function ngBindHtmlCtrl($scope) {
@@ -43,8 +43,8 @@ will have an exception (instead of an exploit.)</p>
   </script>
 </div>
 <div class="tab-pane" title="End to end test">
-<pre class="prettyprint linenums" ng-set-text="scenario.js-26"></pre>
-<script type="text/ng-template" id="scenario.js-26">
+<pre class="prettyprint linenums" ng-set-text="scenario.js-57"></pre>
+<script type="text/ng-template" id="scenario.js-57">
     it('should check ng-bind-html', function() {
       expect(using('.doc-example-live').binding('myHTML')).
         toBe(
@@ -54,6 +54,6 @@ will have an exception (instead of an exploit.)</p>
   </script>
 </div>
 </div><h4 id="example_demo">Demo</h4>
-<div class="well doc-example-live animate-container" ng-embed-app="ngBindHtmlExample" ng-set-html="index.html-24" ng-eval-javascript="script.js-25"></div>
+<div class="well doc-example-live animate-container" ng-embed-app="ngBindHtmlExample" ng-set-html="index.html-55" ng-eval-javascript="script.js-56"></div>
 </div></div>
 </div>

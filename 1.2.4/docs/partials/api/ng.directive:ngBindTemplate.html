@@ -21,10 +21,10 @@ expressions. This directive is needed since some HTML elements
 <h2 id="example">Example</h2>
 <div class="example"><div class="ng-directive-page ng-directive-ngbindtemplate-page"><p>Try it here: enter text in text box and watch the greeting change.
 <h4 id="example_source">Source</h4>
-<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-22" source-edit-css="" source-edit-js="script.js-21" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-23"></div>
+<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-53" source-edit-css="" source-edit-js="script.js-52" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-54"></div>
 <div class="tabbable"><div class="tab-pane" title="index.html">
-<pre class="prettyprint linenums" ng-set-text="index.html-22" ng-html-wrap=" angular.js script.js"></pre>
-<script type="text/ng-template" id="index.html-22">
+<pre class="prettyprint linenums" ng-set-text="index.html-53" ng-html-wrap=" angular.js script.js"></pre>
+<script type="text/ng-template" id="index.html-53">
     
     <div ng-controller="Ctrl">
      Salutation: <input type="text" ng-model="salutation"><br>
@@ -34,8 +34,8 @@ expressions. This directive is needed since some HTML elements
   </script>
 </div>
 <div class="tab-pane" title="script.js">
-<pre class="prettyprint linenums" ng-set-text="script.js-21"></pre>
-<script type="text/ng-template" id="script.js-21">
+<pre class="prettyprint linenums" ng-set-text="script.js-52"></pre>
+<script type="text/ng-template" id="script.js-52">
       function Ctrl($scope) {
         $scope.salutation = 'Hello';
         $scope.name = 'World';
@@ -43,8 +43,8 @@ expressions. This directive is needed since some HTML elements
     </script>
 </div>
 <div class="tab-pane" title="End to end test">
-<pre class="prettyprint linenums" ng-set-text="scenario.js-23"></pre>
-<script type="text/ng-template" id="scenario.js-23">
+<pre class="prettyprint linenums" ng-set-text="scenario.js-54"></pre>
+<script type="text/ng-template" id="scenario.js-54">
     it('should check ng-bind', function() {
       expect(using('.doc-example-live').binding('salutation')).
         toBe('Hello');
@@ -60,6 +60,6 @@ expressions. This directive is needed since some HTML elements
   </script>
 </div>
 </div><h4 id="example_demo">Demo</h4>
-<div class="well doc-example-live animate-container" ng-embed-app="" ng-set-html="index.html-22" ng-eval-javascript="script.js-21"></div>
+<div class="well doc-example-live animate-container" ng-embed-app="" ng-set-html="index.html-53" ng-eval-javascript="script.js-52"></div>
 </div></div>
 </div>

@@ -20,10 +20,10 @@ had less than <code>limit</code> elements.</p>
 </div></td></tr></table></div>
 <h2 id="example">Example</h2>
 <div class="example"><div class="ng-filter-page ng-filter-limitto-page"><h4 id="example_source">Source</h4>
-<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-121" source-edit-css="" source-edit-js="script.js-120" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-122"></div>
+<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-125" source-edit-css="" source-edit-js="script.js-124" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-126"></div>
 <div class="tabbable"><div class="tab-pane" title="index.html">
-<pre class="prettyprint linenums" ng-set-text="index.html-121" ng-html-wrap=" angular.js script.js"></pre>
-<script type="text/ng-template" id="index.html-121">
+<pre class="prettyprint linenums" ng-set-text="index.html-125" ng-html-wrap=" angular.js script.js"></pre>
+<script type="text/ng-template" id="index.html-125">
   
   <div ng-controller="Ctrl">
     Limit {{numbers}} to: <input type="integer" ng-model="numLimit">
@@ -34,8 +34,8 @@ had less than <code>limit</code> elements.</p>
 </script>
 </div>
 <div class="tab-pane" title="script.js">
-<pre class="prettyprint linenums" ng-set-text="script.js-120"></pre>
-<script type="text/ng-template" id="script.js-120">
+<pre class="prettyprint linenums" ng-set-text="script.js-124"></pre>
+<script type="text/ng-template" id="script.js-124">
     function Ctrl($scope) {
       $scope.numbers = [1,2,3,4,5,6,7,8,9];
       $scope.letters = "abcdefghi";
@@ -45,8 +45,8 @@ had less than <code>limit</code> elements.</p>
   </script>
 </div>
 <div class="tab-pane" title="End to end test">
-<pre class="prettyprint linenums" ng-set-text="scenario.js-122"></pre>
-<script type="text/ng-template" id="scenario.js-122">
+<pre class="prettyprint linenums" ng-set-text="scenario.js-126"></pre>
+<script type="text/ng-template" id="scenario.js-126">
   it('should limit the number array to first three items', function() {
     expect(element('.doc-example-live input[ng-model=numLimit]').val()).toBe('3');
     expect(element('.doc-example-live input[ng-model=letterLimit]').val()).toBe('3');
@@ -70,6 +70,6 @@ had less than <code>limit</code> elements.</p>
 </script>
 </div>
 </div><h4 id="example_demo">Demo</h4>
-<div class="well doc-example-live animate-container" ng-embed-app="" ng-set-html="index.html-121" ng-eval-javascript="script.js-120"></div>
+<div class="well doc-example-live animate-container" ng-embed-app="" ng-set-html="index.html-125" ng-eval-javascript="script.js-124"></div>
 </div></div>
 </div>

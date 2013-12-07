@@ -34,10 +34,10 @@ attribute is displayed.</p>
 </div></td></tr></tbody></table></div>
 <h2 id="example">Example</h2>
 <div class="example"><div class="ng-directive-page ng-directive-ngswitch-page"><h4 id="example_source">Source</h4>
-<div source-edit="" source-edit-deps="angular.js angular-animate.js script.js" source-edit-html="index.html-107" source-edit-css="animations.css" source-edit-js="script.js-108" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-109"></div>
+<div source-edit="" source-edit-deps="angular.js angular-animate.js script.js" source-edit-html="index.html-101" source-edit-css="animations.css" source-edit-js="script.js-102" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-103"></div>
 <div class="tabbable"><div class="tab-pane" title="index.html">
-<pre class="prettyprint linenums" ng-set-text="index.html-107" ng-html-wrap=" angular.js angular-animate.js script.js"></pre>
-<script type="text/ng-template" id="index.html-107">
+<pre class="prettyprint linenums" ng-set-text="index.html-101" ng-html-wrap=" angular.js angular-animate.js script.js"></pre>
+<script type="text/ng-template" id="index.html-101">
   <div ng-controller="Ctrl">
     <select ng-model="selection" ng-options="item for item in items">
     </select>
@@ -89,8 +89,8 @@ attribute is displayed.</p>
 </style>
 </div>
 <div class="tab-pane" title="script.js">
-<pre class="prettyprint linenums" ng-set-text="script.js-108"></pre>
-<script type="text/ng-template" id="script.js-108">
+<pre class="prettyprint linenums" ng-set-text="script.js-102"></pre>
+<script type="text/ng-template" id="script.js-102">
   function Ctrl($scope) {
     $scope.items = ['settings', 'home', 'other'];
     $scope.selection = $scope.items[0];
@@ -98,8 +98,8 @@ attribute is displayed.</p>
 </script>
 </div>
 <div class="tab-pane" title="End to end test">
-<pre class="prettyprint linenums" ng-set-text="scenario.js-109"></pre>
-<script type="text/ng-template" id="scenario.js-109">
+<pre class="prettyprint linenums" ng-set-text="scenario.js-103"></pre>
+<script type="text/ng-template" id="scenario.js-103">
   it('should start in settings', function() {
     expect(element('.doc-example-live [ng-switch]').text()).toMatch(/Settings Div/);
   });
@@ -114,6 +114,6 @@ attribute is displayed.</p>
 </script>
 </div>
 </div><div class="pull-right"> <button class="btn btn-primary" ng-click="animationsOff=true" ng-hide="animationsOff">Animations on</button> <button class="btn btn-primary disabled" ng-click="animationsOff=false" ng-show="animationsOff">Animations off</button></div><h4 id="example_demo">Demo</h4>
-<div class="well doc-example-live animate-container" ng-class="{'animations-off':animationsOff == true}" ng-embed-app="" ng-set-html="index.html-107" ng-eval-javascript="script.js-108"></div>
+<div class="well doc-example-live animate-container" ng-class="{'animations-off':animationsOff == true}" ng-embed-app="" ng-set-html="index.html-101" ng-eval-javascript="script.js-102"></div>
 </div></div>
 </div>

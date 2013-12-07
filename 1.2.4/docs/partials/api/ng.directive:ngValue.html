@@ -19,10 +19,10 @@ of the <code>input</code> element</p>
 </div></td></tr></tbody></table></div>
 <h2 id="example">Example</h2>
 <div class="example"><div class="ng-directive-page ng-directive-ngvalue-page"><h4 id="example_source">Source</h4>
-<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-59" source-edit-css="" source-edit-js="script.js-58" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-60"></div>
+<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-47" source-edit-css="" source-edit-js="script.js-46" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-48"></div>
 <div class="tabbable"><div class="tab-pane" title="index.html">
-<pre class="prettyprint linenums" ng-set-text="index.html-59" ng-html-wrap=" angular.js script.js"></pre>
-<script type="text/ng-template" id="index.html-59">
+<pre class="prettyprint linenums" ng-set-text="index.html-47" ng-html-wrap=" angular.js script.js"></pre>
+<script type="text/ng-template" id="index.html-47">
  
   <form ng-controller="Ctrl">
     <h4 id="example_which-is-your-favorite">Which is your favorite?</h4>
@@ -40,8 +40,8 @@ of the <code>input</code> element</p>
 </script>
 </div>
 <div class="tab-pane" title="script.js">
-<pre class="prettyprint linenums" ng-set-text="script.js-58"></pre>
-<script type="text/ng-template" id="script.js-58">
+<pre class="prettyprint linenums" ng-set-text="script.js-46"></pre>
+<script type="text/ng-template" id="script.js-46">
     function Ctrl($scope) {
       $scope.names = ['pizza', 'unicorns', 'robots'];
       $scope.my = { favorite: 'unicorns' };
@@ -49,8 +49,8 @@ of the <code>input</code> element</p>
  </script>
 </div>
 <div class="tab-pane" title="End to end test">
-<pre class="prettyprint linenums" ng-set-text="scenario.js-60"></pre>
-<script type="text/ng-template" id="scenario.js-60">
+<pre class="prettyprint linenums" ng-set-text="scenario.js-48"></pre>
+<script type="text/ng-template" id="scenario.js-48">
   it('should initialize to model', function() {
     expect(binding('my.favorite')).toEqual('unicorns');
   });
@@ -61,6 +61,6 @@ of the <code>input</code> element</p>
 </script>
 </div>
 </div><h4 id="example_demo">Demo</h4>
-<div class="well doc-example-live animate-container" ng-embed-app="" ng-set-html="index.html-59" ng-eval-javascript="script.js-58"></div>
+<div class="well doc-example-live animate-container" ng-embed-app="" ng-set-html="index.html-47" ng-eval-javascript="script.js-46"></div>
 </div></div>
 </div>

@@ -34,10 +34,10 @@ interaction with the input element.</p>
 </div></td></tr></tbody></table></div>
 <h2 id="example">Example</h2>
 <div class="example"><div class="ng-directive-page ng-directive-input-page"><h4 id="example_source">Source</h4>
-<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-46" source-edit-css="" source-edit-js="script.js-45" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-47"></div>
+<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-34" source-edit-css="" source-edit-js="script.js-33" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-35"></div>
 <div class="tabbable"><div class="tab-pane" title="index.html">
-<pre class="prettyprint linenums" ng-set-text="index.html-46" ng-html-wrap=" angular.js script.js"></pre>
-<script type="text/ng-template" id="index.html-46">
+<pre class="prettyprint linenums" ng-set-text="index.html-34" ng-html-wrap=" angular.js script.js"></pre>
+<script type="text/ng-template" id="index.html-34">
  
  <div ng-controller="Ctrl">
    <form name="myForm">
@@ -65,16 +65,16 @@ interaction with the input element.</p>
 </script>
 </div>
 <div class="tab-pane" title="script.js">
-<pre class="prettyprint linenums" ng-set-text="script.js-45"></pre>
-<script type="text/ng-template" id="script.js-45">
+<pre class="prettyprint linenums" ng-set-text="script.js-33"></pre>
+<script type="text/ng-template" id="script.js-33">
    function Ctrl($scope) {
      $scope.user = {name: 'guest', last: 'visitor'};
    }
  </script>
 </div>
 <div class="tab-pane" title="End to end test">
-<pre class="prettyprint linenums" ng-set-text="scenario.js-47"></pre>
-<script type="text/ng-template" id="scenario.js-47">
+<pre class="prettyprint linenums" ng-set-text="scenario.js-35"></pre>
+<script type="text/ng-template" id="scenario.js-35">
   it('should initialize to model', function() {
     expect(binding('user')).toEqual('{"name":"guest","last":"visitor"}');
     expect(binding('myForm.userName.$valid')).toEqual('true');
@@ -114,6 +114,6 @@ interaction with the input element.</p>
 </script>
 </div>
 </div><h4 id="example_demo">Demo</h4>
-<div class="well doc-example-live animate-container" ng-embed-app="" ng-set-html="index.html-46" ng-eval-javascript="script.js-45"></div>
+<div class="well doc-example-live animate-container" ng-embed-app="" ng-set-html="index.html-34" ng-eval-javascript="script.js-33"></div>
 </div></div>
 </div>

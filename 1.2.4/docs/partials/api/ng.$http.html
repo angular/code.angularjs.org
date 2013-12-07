@@ -421,10 +421,10 @@ requests. This is primarily meant to be used for debugging purposes.</p>
 </div>
 <h2 id="example">Example</h2>
 <div class="example"><div class="ng-http-page"><h4 id="example_source">Source</h4>
-<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-136 http-hello.html" source-edit-css="" source-edit-js="script.js-137" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-138"></div>
+<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-130 http-hello.html" source-edit-css="" source-edit-js="script.js-131" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-132"></div>
 <div class="tabbable"><div class="tab-pane" title="index.html">
-<pre class="prettyprint linenums" ng-set-text="index.html-136" ng-html-wrap=" angular.js script.js"></pre>
-<script type="text/ng-template" id="index.html-136">
+<pre class="prettyprint linenums" ng-set-text="index.html-130" ng-html-wrap=" angular.js script.js"></pre>
+<script type="text/ng-template" id="index.html-130">
   <div ng-controller="FetchCtrl">
     <select ng-model="method">
       <option>GET</option>
@@ -454,8 +454,8 @@ requests. This is primarily meant to be used for debugging purposes.</p>
 </script>
 </div>
 <div class="tab-pane" title="script.js">
-<pre class="prettyprint linenums" ng-set-text="script.js-137"></pre>
-<script type="text/ng-template" id="script.js-137">
+<pre class="prettyprint linenums" ng-set-text="script.js-131"></pre>
+<script type="text/ng-template" id="script.js-131">
   function FetchCtrl($scope, $http, $templateCache) {
     $scope.method = 'GET';
     $scope.url = 'http-hello.html';
@@ -483,8 +483,8 @@ requests. This is primarily meant to be used for debugging purposes.</p>
 </script>
 </div>
 <div class="tab-pane" title="End to end test">
-<pre class="prettyprint linenums" ng-set-text="scenario.js-138"></pre>
-<script type="text/ng-template" id="scenario.js-138">
+<pre class="prettyprint linenums" ng-set-text="scenario.js-132"></pre>
+<script type="text/ng-template" id="scenario.js-132">
   it('should make an xhr GET request', function() {
     element(':button:contains("Sample GET")').click();
     element(':button:contains("fetch")').click();
@@ -509,6 +509,6 @@ requests. This is primarily meant to be used for debugging purposes.</p>
 </script>
 </div>
 </div><h4 id="example_demo">Demo</h4>
-<div class="well doc-example-live animate-container" ng-embed-app="" ng-set-html="index.html-136" ng-eval-javascript="script.js-137"></div>
+<div class="well doc-example-live animate-container" ng-embed-app="" ng-set-html="index.html-130" ng-eval-javascript="script.js-131"></div>
 </div></div>
 </div>

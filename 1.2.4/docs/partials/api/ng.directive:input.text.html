@@ -36,10 +36,10 @@ interaction with the input element.</p>
 </div> <p><em>(default: true)</em></p></td></tr></tbody></table></div>
 <h2 id="example">Example</h2>
 <div class="example"><div class="ng-directive-page ng-directive-input-text-page"><h4 id="example_source">Source</h4>
-<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-28" source-edit-css="" source-edit-js="script.js-27" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-29"></div>
+<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-16" source-edit-css="" source-edit-js="script.js-15" source-edit-json="" source-edit-unit="" source-edit-scenario="scenario.js-17"></div>
 <div class="tabbable"><div class="tab-pane" title="index.html">
-<pre class="prettyprint linenums" ng-set-text="index.html-28" ng-html-wrap=" angular.js script.js"></pre>
-<script type="text/ng-template" id="index.html-28">
+<pre class="prettyprint linenums" ng-set-text="index.html-16" ng-html-wrap=" angular.js script.js"></pre>
+<script type="text/ng-template" id="index.html-16">
  
  <form name="myForm" ng-controller="Ctrl">
    Single word: <input type="text" name="input" ng-model="text"
@@ -58,8 +58,8 @@ interaction with the input element.</p>
 </script>
 </div>
 <div class="tab-pane" title="script.js">
-<pre class="prettyprint linenums" ng-set-text="script.js-27"></pre>
-<script type="text/ng-template" id="script.js-27">
+<pre class="prettyprint linenums" ng-set-text="script.js-15"></pre>
+<script type="text/ng-template" id="script.js-15">
    function Ctrl($scope) {
      $scope.text = 'guest';
      $scope.word = /^\s*\w*\s*$/;
@@ -67,8 +67,8 @@ interaction with the input element.</p>
  </script>
 </div>
 <div class="tab-pane" title="End to end test">
-<pre class="prettyprint linenums" ng-set-text="scenario.js-29"></pre>
-<script type="text/ng-template" id="scenario.js-29">
+<pre class="prettyprint linenums" ng-set-text="scenario.js-17"></pre>
+<script type="text/ng-template" id="scenario.js-17">
   it('should initialize to model', function() {
     expect(binding('text')).toEqual('guest');
     expect(binding('myForm.input.$valid')).toEqual('true');
@@ -93,6 +93,6 @@ interaction with the input element.</p>
 </script>
 </div>
 </div><h4 id="example_demo">Demo</h4>
-<div class="well doc-example-live animate-container" ng-embed-app="" ng-set-html="index.html-28" ng-eval-javascript="script.js-27"></div>
+<div class="well doc-example-live animate-container" ng-embed-app="" ng-set-html="index.html-16" ng-eval-javascript="script.js-15"></div>
 </div></div>
 </div>
