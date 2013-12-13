@@ -16,6 +16,7 @@
 
     $ciBase = 'http://ci.angularjs.org/job/angular.js-angular-master/ws/build/';
     $url = $ciBase.'angular-'.$ver.'.zip';
+    echo 'Given version: '+$ver;
     if ( !$ver or !preg_match("/^[\.\-\d\w\+]+$/", $ver) ) {
       echo 'ERROR: No version specified';
     } else {
