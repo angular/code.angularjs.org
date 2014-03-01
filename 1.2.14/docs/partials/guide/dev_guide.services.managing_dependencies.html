@@ -1,0 +1,91 @@
+<a href='http://github.com/angular/angular.js/edit/master/docs/content/guide/dev_guide.services.managing_dependencies.ngdoc' class='improve-docs'><i class="icon-edit">&nbsp;</i>Improve this doc</a>
+
+
+<p>Angular allows services to declare other services as dependencies needed for construction of their
+instances.</p>
+<p>To declare dependencies, you specify them in the factory function signature and annotate the
+function with the inject annotations either using by setting the <code>$inject</code> property, as an array of
+string identifiers or using the array notation. Optionally the <code>$inject</code> property declaration can be
+dropped (see &quot;Inferring <code>$inject</code>&quot; but note that that is currently an experimental feature).</p>
+<p>Using the array notation:</p>
+<pre><code class="lang-js">function myModuleCfgFn($provide) {
+  $provide.factory(&#39;myService&#39;, [&#39;dep1&#39;, &#39;dep2&#39;, function(dep1, dep2) {}]);
+}</code></pre>
+<p>Using the $inject property:</p>
+<pre><code class="lang-js">function myModuleCfgFn($provide) {
+  var myServiceFactory = function(dep1, dep2) {};
+  myServiceFactory.$inject = [&#39;dep1&#39;, &#39;dep2&#39;];
+  $provide.factory(&#39;myService&#39;, myServiceFactory);
+}</code></pre>
+<p>Using DI inference (incompatible with minifiers):</p>
+<pre><code class="lang-js">function myModuleCfgFn($provide) {
+  $provide.factory(&#39;myService&#39;, function(dep1, dep2) {});
+}</code></pre>
+<p>Here is an example of two services, one of which depends on the other and both
+of which depend on other services that are provided by the Angular framework:</p>
+<pre><code class="lang-js">/**
+ * batchLog service allows for messages to be queued in memory and flushed
+ * to the console.log every 50 seconds.
+ *
+ * @param {*} message Message to be logged.
+ */
+  function batchLogModule($provide){
+    $provide.factory(&#39;batchLog&#39;, [&#39;$interval&#39;, &#39;$log&#39;, function($interval, $log) {
+      var messageQueue = [];
+
+      function log() {
+        if (messageQueue.length) {
+          $log.log(&#39;batchLog messages: &#39;, messageQueue);
+          messageQueue = [];
+        }
+      }
+
+      // start periodic checking
+      $interval(log, 50000);
+
+      return function(message) {
+        messageQueue.push(message);
+      }
+    }]);
+
+    /**
+     * routeTemplateMonitor monitors each $route change and logs the current
+     * template via the batchLog service.
+     */
+    $provide.factory(&#39;routeTemplateMonitor&#39;,
+                [&#39;$route&#39;, &#39;batchLog&#39;, &#39;$rootScope&#39;,
+         function($route,   batchLog,   $rootScope) {
+      $rootScope.$on(&#39;$routeChangeSuccess&#39;, function() {
+        batchLog($route.current ? $route.current.template : null);
+      });
+    }]);
+  }
+
+  // get the main service to kick off the application
+  angular.injector([batchLogModule]).get(&#39;routeTemplateMonitor&#39;);</code></pre>
+<p>Things to notice in this example:</p>
+<ul>
+<li>The <code>batchLog</code> service depends on the built-in <a href="api/ng/service/$interval">$interval</a> and
+<a href="api/ng/service/$log">$log</a> services, and allows messages to be logged into the
+<code>console.log</code> in batches.</li>
+<li>The <code>routeTemplateMonitor</code> service depends on the built-in <a href="api/ngRoute/service/$route">$route</a> service as well as our custom <code>batchLog</code> service.</li>
+<li>Both of our services use the factory function signature and array notation for inject annotations
+to declare their dependencies. It is important that the order of the string identifiers in the array
+is the same as the order of argument names in the signature of the factory function. Unless the
+dependencies are inferred from the function signature, it is this array with IDs and their order
+that the injector uses to determine which services and in which order to inject.</li>
+</ul>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="guide/dev_guide.services.understanding_services">Understanding Angular Services</a></li>
+<li><a href="guide/dev_guide.services.creating_services">Creating Angular Services</a></li>
+<li><a href="guide/dev_guide.services.injecting_controllers">Injecting Services Into Controllers</a></li>
+<li><a href="guide/dev_guide.services.testing_services">Testing Angular Services</a></li>
+</ul>
+<h2 id="related-api">Related API</h2>
+<ul>
+<li><a href="./ng">Angular Service API</a></li>
+<li><a href="api/ng/function/angular.injector">Angular Injector API</a></li>
+</ul>
+
+

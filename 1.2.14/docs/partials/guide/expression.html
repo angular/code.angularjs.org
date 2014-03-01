@@ -1,0 +1,95 @@
+<a href='http://github.com/angular/angular.js/edit/master/docs/content/guide/expression.ngdoc' class='improve-docs'><i class="icon-edit">&nbsp;</i>Improve this doc</a>
+
+
+<p>Expressions are JavaScript-like code snippets that are usually placed in bindings such as <code>{{
+expression }}</code>. Expressions are processed by the <a href="api/ng/service/$parse">$parse</a>
+service. Expressions are often post processed using <a href="guide/filter">filters</a> to create a more user-friendly format.</p>
+<p>For example, these are all valid expressions in angular:</p>
+<ul>
+<li><code>1+2</code></li>
+<li><code>user.name</code></li>
+</ul>
+<h2 id="angular-expressions-vs-js-expressions">Angular Expressions vs. JS Expressions</h2>
+<p>It might be tempting to think of Angular view expressions as JavaScript expressions, but that is
+not entirely correct, since Angular does not use a JavaScript <code>eval()</code> to evaluate expressions.
+You can think of Angular expressions as JavaScript expressions with following differences:</p>
+<ul>
+<li><p><strong>Attribute Evaluation:</strong> evaluation of all properties are against the scope doing the
+evaluation, unlike in JavaScript where the expressions are evaluated against the global
+<code>window</code>.</p>
+</li>
+<li><p><strong>Forgiving:</strong> expression evaluation is forgiving to <code>undefined</code> and <code>null</code>, unlike in JavaScript,
+where trying to evaluate undefined properties can generate <code>ReferenceError</code> or <code>TypeError</code>.</p>
+</li>
+<li><p><strong>No Control Flow Statements:</strong> you cannot do any of the following in angular expression:
+conditionals, loops, or throw.</p>
+</li>
+</ul>
+<p>If, on the other hand, you do want to run arbitrary JavaScript code, you should make it a
+controller method and call the method. If you want to <code>eval()</code> an angular expression from
+JavaScript, use the <a href="api/ng/type/$rootScope.Scope#$eval"><code>$eval()</code></a> method.</p>
+<h2 id="example">Example</h2>
+<div class="runnable-example" id="example-example96" outputFolder="examples/example-example96">
+  <div class="runnable-example-file" name="index.html" language="html" type="html">
+<pre><code class="lang-html">  1+2={{1+2}}</code></pre>
+  </div>
+  <div class="runnable-example-file" name="protractor.js" type="protractor" language="js">
+<pre><code class="lang-js">  it(&#39;should calculate expression in binding&#39;, function() {&#10;    expect(element(by.binding(&#39;1+2&#39;)).getText()).toEqual(&#39;1+2=3&#39;);&#10;  });</code></pre>
+  </div>
+<iframe class="runnable-example-frame" src="examples/example-example96/index.html" name="example-example96"></iframe>
+</div>
+
+
+
+<p>You can try evaluating different expressions here:</p>
+<div class="runnable-example" id="example-example97" outputFolder="examples/example-example97">
+  <div class="runnable-example-file" name="index.html" language="html" type="html">
+<pre><code class="lang-html">  &lt;div ng-controller=&quot;Cntl2&quot; class=&quot;expressions&quot;&gt;&#10;    Expression:&#10;    &lt;input type=&#39;text&#39; ng-model=&quot;expr&quot; size=&quot;80&quot;/&gt;&#10;    &lt;button ng-click=&quot;addExp(expr)&quot;&gt;Evaluate&lt;/button&gt;&#10;    &lt;ul&gt;&#10;     &lt;li ng-repeat=&quot;expr in exprs track by $index&quot;&gt;&#10;       [ &lt;a href=&quot;&quot; ng-click=&quot;removeExp($index)&quot;&gt;X&lt;/a&gt; ]&#10;       &lt;tt&gt;{{expr}}&lt;/tt&gt; =&gt; &lt;span ng-bind=&quot;$parent.$eval(expr)&quot;&gt;&lt;/span&gt;&#10;      &lt;/li&gt;&#10;    &lt;/ul&gt;&#10;  &lt;/div&gt;</code></pre>
+  </div>
+  <div class="runnable-example-file" name="script.js" language="js" type="js">
+<pre><code class="lang-js">  function Cntl2($scope) {&#10;    var exprs = $scope.exprs = [];&#10;    $scope.expr = &#39;3<em>10|currency&#39;;&#10;    $scope.addExp = function(expr) {&#10;      exprs.push(expr);&#10;    };&#10;&#10;    $scope.removeExp = function(index) {&#10;      exprs.splice(index, 1);&#10;    };&#10;  }</code></pre>
+  </div>
+  <div class="runnable-example-file" name="protractor.js" type="protractor" language="js">
+<pre><code class="lang-js">  it(&#39;should allow user expression testing&#39;, function() {&#10;    element(by.css(&#39;.expressions button&#39;)).click();&#10;    var lis = element(by.css(&#39;.expressions ul&#39;)).element.all(by.repeater(&#39;expr in exprs&#39;));&#10;    expect(lis.count()).toBe(1);&#10;    expect(lis.get(0).getText()).toEqual(&#39;[ X ] 3</em>10|currency =&gt; $30.00&#39;);&#10;  });</code></pre>
+  </div>
+<iframe class="runnable-example-frame" src="examples/example-example97/index.html" name="example-example97"></iframe>
+</div>
+
+
+
+
+<h1 id="property-evaluation">Property Evaluation</h1>
+<p>Evaluation of all properties takes place against a scope. Unlike JavaScript, where names default
+to global window properties, Angular expressions have to use <a href="api/ng/service/$window"><code>$window</code></a> to refer to the global <code>window</code> object. For example, if you want to call <code>alert()</code>, which is
+defined on <code>window</code>, in an expression you must use <code>$window.alert()</code>. This is done intentionally to
+prevent accidental access to the global state (a common source of subtle bugs).</p>
+<div class="runnable-example" id="example-example98" outputFolder="examples/example-example98">
+  <div class="runnable-example-file" name="index.html" language="html" type="html">
+<pre><code class="lang-html">  &lt;div class=&quot;example2&quot; ng-controller=&quot;Cntl1&quot;&gt;&#10;    Name: &lt;input ng-model=&quot;name&quot; type=&quot;text&quot;/&gt;&#10;    &lt;button ng-click=&quot;greet()&quot;&gt;Greet&lt;/button&gt;&#10;  &lt;/div&gt;</code></pre>
+  </div>
+  <div class="runnable-example-file" name="script.js" language="js" type="js">
+<pre><code class="lang-js">  function Cntl1($window, $scope){&#10;    $scope.name = &#39;World&#39;;&#10;&#10;    $scope.greet = function() {&#10;      $window.alert(&#39;Hello &#39; + $scope.name);&#10;    };&#10;  }</code></pre>
+  </div>
+  <div class="runnable-example-file" name="protractor.js" type="protractor" language="js">
+<pre><code class="lang-js">  it(&#39;should calculate expression in binding&#39;, function() {&#10;    if (browser.params.browser == &#39;safari&#39;) {&#10;      // Safari can&#39;t handle dialogs.&#10;      return;&#10;    }&#10;    element(by.css(&#39;[ng-click=&quot;greet()&quot;]&#39;)).click();&#10;&#10;    var alertDialog = browser.switchTo().alert();&#10;&#10;    expect(alertDialog.getText()).toEqual(&#39;Hello World&#39;);&#10;&#10;    alertDialog.accept();&#10;  });</code></pre>
+  </div>
+<iframe class="runnable-example-frame" src="examples/example-example98/index.html" name="example-example98"></iframe>
+</div>
+
+
+
+<h2 id="forgiving">Forgiving</h2>
+<p>Expression evaluation is forgiving to undefined and null. In JavaScript, evaluating <code>a.b.c</code> throws
+an exception if <code>a</code> is not an object. While this makes sense for a general purpose language, the
+expression evaluations are primarily used for data binding, which often look like this:</p>
+<pre><code>    {{a.b.c}}</code></pre>
+<p>It makes more sense to show nothing than to throw an exception if <code>a</code> is undefined (perhaps we are
+waiting for the server response, and it will become defined soon). If expression evaluation wasn&#39;t
+forgiving we&#39;d have to write bindings that clutter the code, for example: <code>{{((a||{}).b||{}).c}}</code></p>
+<p>Similarly, invoking a function <code>a.b.c()</code> on undefined or null simply returns undefined.</p>
+<h2 id="no-control-flow-statements">No Control Flow Statements</h2>
+<p>You cannot write a control flow statement in an expression. The reason behind this is core to the
+Angular philosophy that application logic should be in controllers, not in the view. If you need a
+conditional, loop, or to throw from a view expression, delegate to a JavaScript method instead.</p>
+
+

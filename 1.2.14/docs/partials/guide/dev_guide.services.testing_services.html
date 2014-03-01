@@ -1,0 +1,58 @@
+<a href='http://github.com/angular/angular.js/edit/master/docs/content/guide/dev_guide.services.testing_services.ngdoc' class='improve-docs'><i class="icon-edit">&nbsp;</i>Improve this doc</a>
+
+
+<p>The following is a unit test for the &#39;notify&#39; service in the &#39;Dependencies&#39; example in <a href="guide/dev_guide.services.creating_services">Creating Angular Services</a>. The unit test example uses Jasmine
+spy (mock) instead of a real browser alert.</p>
+<pre><code class="lang-js">var mock, notify;
+
+beforeEach(function() {
+  mock = {alert: jasmine.createSpy()};
+
+  module(function($provide) {
+    $provide.value(&#39;$window&#39;, mock);
+  });
+
+  inject(function($injector) {
+    notify = $injector.get(&#39;notify&#39;);
+  });
+});
+
+it(&#39;should not alert first two notifications&#39;, function() {
+  notify(&#39;one&#39;);
+  notify(&#39;two&#39;);
+
+  expect(mock.alert).not.toHaveBeenCalled();
+});
+
+it(&#39;should alert all after third notification&#39;, function() {
+  notify(&#39;one&#39;);
+  notify(&#39;two&#39;);
+  notify(&#39;three&#39;);
+
+  expect(mock.alert).toHaveBeenCalledWith(&quot;one\ntwo\nthree&quot;);
+});
+
+it(&#39;should clear messages after alert&#39;, function() {
+  notify(&#39;one&#39;);
+  notify(&#39;two&#39;);
+  notify(&#39;third&#39;);
+  notify(&#39;more&#39;);
+  notify(&#39;two&#39;);
+  notify(&#39;third&#39;);
+
+  expect(mock.alert.callCount).toEqual(2);
+  expect(mock.alert.mostRecentCall.args).toEqual([&quot;more\ntwo\nthird&quot;]);
+});</code></pre>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="guide/dev_guide.services.understanding_services">Understanding Angular Services</a></li>
+<li><a href="guide/dev_guide.services.creating_services">Creating Angular Services</a></li>
+<li><a href="guide/dev_guide.services.managing_dependencies">Managing Service Dependencies</a></li>
+<li><a href="guide/dev_guide.services.injecting_controllers">Injecting Services Into Controllers</a></li>
+</ul>
+<h2 id="related-api">Related API</h2>
+<ul>
+<li><a href="./ng">Angular Service API</a></li>
+</ul>
+
+

@@ -1,0 +1,79 @@
+<a href='http://github.com/angular/angular.js/edit/master/docs/content/guide/dev_guide.services.creating_services.ngdoc' class='improve-docs'><i class="icon-edit">&nbsp;</i>Improve this doc</a>
+
+
+<p>While Angular offers several useful services, for any nontrivial application you&#39;ll find it useful
+to write your own custom services. To do this you begin by registering a service factory function
+with a module either via the <a href="api/ng/function/angular.module">Module#factory api</a> or directly
+via the <a href="api/auto/object/$provide">$provide</a> api inside of module config function.</p>
+<p>All Angular services participate in <a href="guide/di">dependency injection (DI)</a> by registering
+themselves with Angular&#39;s DI system (injector) under a <code>name</code> (id) as well as by declaring
+dependencies which need to be provided for the factory function of the registered service. The
+ability to swap dependencies for mocks/stubs/dummies in tests allows for services to be highly
+testable.</p>
+<h1 id="registering-services">Registering Services</h1>
+<p>To register a service, you must have a module that this service will be part of. Afterwards, you
+can register the service with the module either via the <a href="api/ng/type/angular.Module">Module api</a> or
+by using the <a href="api/auto/object/$provide">$provide</a> service in the module configuration
+function. The following pseudo-code shows both approaches:</p>
+<p>Using the angular.Module api:</p>
+<pre><code class="lang-js">var myModule = angular.module(&#39;myModule&#39;, []);
+myModule.factory(&#39;serviceId&#39;, function() {
+  var shinyNewServiceInstance;
+  //factory function body that constructs shinyNewServiceInstance
+  return shinyNewServiceInstance;
+});</code></pre>
+<p>Using the $provide service:</p>
+<pre><code class="lang-js">angular.module(&#39;myModule&#39;, [], function($provide) {
+  $provide.factory(&#39;serviceId&#39;, function() {
+    var shinyNewServiceInstance;
+    //factory function body that constructs shinyNewServiceInstance
+    return shinyNewServiceInstance;
+  });
+});</code></pre>
+<p>Note that you are not registering a service instance, but rather a factory function that will
+create this instance when called.</p>
+<h1 id="dependencies">Dependencies</h1>
+<p>Services can not only be depended upon, but can also have their own dependencies. These can be specified
+as arguments of the factory function. <a href="guide/di">Read more</a> about dependency injection (DI)
+in Angular and the use of array notation and the $inject property to make DI annotation
+minification-proof.</p>
+<p>Following is an example of a very simple service. This service depends on the <code>$window</code> service
+(which is passed as a parameter to the factory function) and is just a function. The service simply
+stores all notifications; after the third one, the service displays all of the notifications by
+window alert.</p>
+<pre><code class="lang-js">angular.module(&#39;myModule&#39;, [], function($provide) {
+  $provide.factory(&#39;notify&#39;, [&#39;$window&#39;, function(win) {
+    var msgs = [];
+    return function(msg) {
+      msgs.push(msg);
+      if (msgs.length == 3) {
+        win.alert(msgs.join(&quot;\n&quot;));
+        msgs = [];
+      }
+    };
+  }]);
+});</code></pre>
+<h1 id="instantiating-angular-services">Instantiating Angular Services</h1>
+<p>All services in Angular are instantiated lazily. This means that a service will be created
+only when it is needed for instantiation of a service or an application component that depends on it.
+In other words, Angular won&#39;t instantiate services unless they are requested directly or
+indirectly by the application.</p>
+<h1 id="services-as-singletons">Services as singletons</h1>
+<p>Lastly, it is important to realize that all Angular services are application singletons. This means
+that there is only one instance of a given service per injector. Since Angular is lethally allergic
+to global state, it is possible to create multiple injectors, each with its own instance of a
+given service, but that is rarely needed, except in tests where this property is crucially
+important.</p>
+<h2 id="related-topics">Related Topics</h2>
+<ul>
+<li><a href="guide/dev_guide.services.understanding_services">Understanding Angular Services</a></li>
+<li><a href="guide/dev_guide.services.managing_dependencies">Managing Service Dependencies</a></li>
+<li><a href="guide/dev_guide.services.injecting_controllers">Injecting Services Into Controllers</a></li>
+<li><a href="guide/dev_guide.services.testing_services">Testing Angular Services</a></li>
+</ul>
+<h2 id="related-api">Related API</h2>
+<ul>
+<li><a href="api/ng">Angular Service API</a></li>
+</ul>
+
+
