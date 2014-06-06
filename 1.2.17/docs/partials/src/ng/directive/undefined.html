@@ -1,0 +1,76 @@
+
+
+<div>
+  <a ng-click="openPlunkr('examples/example-example26')" class="btn pull-right">
+    <i class="glyphicon glyphicon-edit">&nbsp;</i>
+    Edit in Plunker</a>
+  <div class="runnable-example"
+      path="examples/example-example26">
+
+   
+    <div class="runnable-example-file" 
+      name="index.html"
+      language="html"
+      type="html">
+      <pre><code>&lt;button ng-mouseenter=&quot;count = count + 1&quot; ng-init=&quot;count=0&quot;&gt;&#10;  Increment (when mouse enters)&#10;&lt;/button&gt;&#10;count: {{count}}</code></pre>
+    </div>
+  
+
+    <iframe class="runnable-example-frame" src="examples/example-example26/index.html" name="example-example26"></iframe>
+  </div>
+</div>
+
+nerList&quot; ng-init=&quot;innerIndex = $index&quot;&gt;&#10;     &lt;span class=&quot;example-init&quot;&gt;list[ {{outerIndex}} ][ {{innerIndex}} ] = {{value}};&lt;/span&gt;&#10;  &lt;/div&gt;&#10;&lt;/div&gt;&#10;&lt;/div&gt;</code></pre>
+    </div>
+  
+    <div class="runnable-example-file" 
+      name="protractor.js"
+      type="protractor"
+      language="js">
+      <pre><code>it(&#39;should alias index positions&#39;, function() {&#10;  var elements = element.all(by.css(&#39;.example-init&#39;));&#10;  expect(elements.get(0).getText()).toBe(&#39;list[ 0 ][ 0 ] = a;&#39;);&#10;  expect(elements.get(1).getText()).toBe(&#39;list[ 0 ][ 1 ] = b;&#39;);&#10;  expect(elements.get(2).getText()).toBe(&#39;list[ 1 ][ 0 ] = c;&#39;);&#10;  expect(elements.get(3).getText()).toBe(&#39;list[ 1 ][ 1 ] = d;&#39;);&#10;});</code></pre>
+    </div>
+  
+
+    <iframe class="runnable-example-frame" src="examples/example-example38/index.html" name="example-example38"></iframe>
+  </div>
+</div>
+
+span&gt;&lt;br/&gt;&#10;&#10;  Color grouped by shade:&#10;  &lt;select ng-model=&quot;myColor&quot; ng-options=&quot;color.name group by color.shade for color in colors&quot;&gt;&#10;  &lt;/select&gt;&lt;br/&gt;&#10;&#10;&#10;  Select &lt;a href ng-click=&quot;myColor = { name:&#39;not in list&#39;, shade: &#39;other&#39; }&quot;&gt;bogus&lt;/a&gt;.&lt;br&gt;&#10;  &lt;hr/&gt;&#10;  Currently selected: {{ {selected_color:myColor}  }}&#10;  &lt;div style=&quot;border:solid 1px black; height:20px&quot;&#10;       ng-style=&quot;{&#39;background-color&#39;:myColor.name}&quot;&gt;&#10;  &lt;/div&gt;&#10;&lt;/div&gt;</code></pre>
+    </div>
+  
+    <div class="runnable-example-file" 
+      name="protractor.js"
+      type="protractor"
+      language="js">
+      <pre><code>it(&#39;should check ng-options&#39;, function() {&#10;  expect(element(by.binding(&#39;{selected_color:myColor}&#39;)).getText()).toMatch(&#39;red&#39;);&#10;  element.all(by.select(&#39;myColor&#39;)).first().click();&#10;  element.all(by.css(&#39;select[ng-model=&quot;myColor&quot;] option&#39;)).first().click();&#10;  expect(element(by.binding(&#39;{selected_color:myColor}&#39;)).getText()).toMatch(&#39;black&#39;);&#10;  element(by.css(&#39;.nullable select[ng-model=&quot;myColor&quot;]&#39;)).click();&#10;  element.all(by.css(&#39;.nullable select[ng-model=&quot;myColor&quot;] option&#39;)).first().click();&#10;  expect(element(by.binding(&#39;{selected_color:myColor}&#39;)).getText()).toMatch(&#39;null&#39;);&#10;});</code></pre>
+    </div>
+  
+
+    <iframe class="runnable-example-frame" src="examples/example-example48/index.html" name="example-example48"></iframe>
+  </div>
+</div>
+
+  element(by.model(&#39;q&#39;)).sendKeys(&#39;ma&#39;);&#10;&#10;   expect(friends.count()).toBe(2);&#10;   expect(friends.get(0).getText()).toEqual(&#39;[1] Mary who is 28 years old.&#39;);&#10;   expect(friends.last().getText()).toEqual(&#39;[2] Samantha who is 60 years old.&#39;);&#10; });</code></pre>
+    </div>
+  
+
+    <iframe class="runnable-example-frame" src="examples/example-example41/index.html" name="example-example41"></iframe>
+  </div>
+</div>
+
+0;  var person1 = element(by.model(&#39;person1&#39;));&#10;  var person2 = element(by.model(&#39;person2&#39;));&#10;  personCount.clear();&#10;  personCount.sendKeys(&#39;4&#39;);&#10;  person1.clear();&#10;  person1.sendKeys(&#39;Di&#39;);&#10;  person2.clear();&#10;  person2.sendKeys(&#39;Vojta&#39;);&#10;  expect(withOffset.getText()).toEqual(&#39;Di, Vojta and 2 other people are viewing.&#39;);&#10;});</code></pre>
+    </div>
+  
+
+    <iframe class="runnable-example-frame" src="examples/example-example40/index.html" name="example-example40"></iframe>
+  </div>
+</div>
+
+id if longer than max length&#39;, function() {&#10;  userLastInput.clear();&#10;  userLastInput.sendKeys(&#39;some ridiculously long name&#39;);&#10;&#10;  expect(user.getText()).toContain(&#39;{&quot;name&quot;:&quot;guest&quot;}&#39;);&#10;  expect(lastNameValid.getText()).toContain(&#39;false&#39;);&#10;  expect(lastNameError.getText()).toContain(&#39;maxlength&#39;);&#10;  expect(formValid.getText()).toContain(&#39;false&#39;);&#10;});</code></pre>
+    </div>
+  
+
+    <iframe class="runnable-example-frame" src="examples/example-input-directive/index.html" name="example-input-directive"></iframe>
+  </div>
+</div>
+
