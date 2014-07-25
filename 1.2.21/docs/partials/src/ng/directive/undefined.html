@@ -1,0 +1,89 @@
+
+
+<div>
+  <a ng-click="openPlunkr('examples/example-example29')" class="btn pull-right">
+    <i class="glyphicon glyphicon-edit">&nbsp;</i>
+    Edit in Plunker</a>
+  <div class="runnable-example"
+      path="examples/example-example29">
+
+   
+    <div class="runnable-example-file" 
+      name="index.html"
+      language="html"
+      type="html">
+      <pre><code>&lt;input ng-keydown=&quot;count = count + 1&quot; ng-init=&quot;count=0&quot;&gt;&#10;key down count: {{count}}</code></pre>
+    </div>
+  
+
+    <iframe class="runnable-example-frame" src="examples/example-example29/index.html" name="example-example29"></iframe>
+  </div>
+</div>
+
+
+ction={{selection}}&lt;/tt&gt;&#10;  &lt;hr/&gt;&#10;  &lt;div class=&quot;animate-switch-container&quot;&#10;    ng-switch on=&quot;selection&quot;&gt;&#10;      &lt;div class=&quot;animate-switch&quot; ng-switch-when=&quot;settings&quot;&gt;Settings Div&lt;/div&gt;&#10;      &lt;div class=&quot;animate-switch&quot; ng-switch-when=&quot;home&quot;&gt;Home Span&lt;/div&gt;&#10;      &lt;div class=&quot;animate-switch&quot; ng-switch-default&gt;default&lt;/div&gt;&#10;  &lt;/div&gt;&#10;&lt;/div&gt;</code></pre>
+    </div>
+  
+    <div class="runnable-example-file" 
+      name="script.js"
+      language="js"
+      type="js">
+      <pre><code>angular.module(&#39;switchExample&#39;, [&#39;ngAnimate&#39;])&#10;  .controller(&#39;ExampleController&#39;, [&#39;$scope&#39;, function($scope) {&#10;    $scope.items = [&#39;settings&#39;, &#39;home&#39;, &#39;other&#39;];&#10;    $scope.selection = $scope.items[0];&#10;  }]);</code></pre>
+    </div>
+  
+    <div class="runnable-example-file" 
+      name="animations.css"
+      language="css"
+      type="css">
+      <pre><code>.animate-switch-container {&#10;  position:relative;&#10;  background:white;&#10;  border:1px solid black;&#10;  height:40px;&#10;  overflow:hidden;&#10;}&#10;&#10;.animate-switch {&#10;  padding:10px;&#10;}&#10;&#10;.animate-switch.ng-animate {&#10;  -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;&#10;  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;&#10;&#10;  position:absolute;&#10;  top:0;&#10;  left:0;&#10;  right:0;&#10;  bottom:0;&#10;}&#10;&#10;.animate-switch.ng-leave.ng-leave-active,&#10;.animate-switch.ng-enter {&#10;  top:-50px;&#10;}&#10;.animate-switch.ng-leave,&#10;.animate-switch.ng-enter.ng-enter-active {&#10;  top:0;&#10;}</code></pre>
+    </div>
+  
+    <div class="runnable-example-file" 
+      name="protractor.js"
+      type="protractor"
+      language="js">
+      <pre><code>var switchElem = element(by.css(&#39;[ng-switch]&#39;));&#10;var select = element(by.model(&#39;selection&#39;));&#10;&#10;it(&#39;should start in settings&#39;, function() {&#10;  expect(switchElem.getText()).toMatch(/Settings Div/);&#10;});&#10;it(&#39;should change to home&#39;, function() {&#10;  select.all(by.css(&#39;option&#39;)).get(1).click();&#10;  expect(switchElem.getText()).toMatch(/Home Span/);&#10;});&#10;it(&#39;should select default&#39;, function() {&#10;  select.all(by.css(&#39;option&#39;)).get(2).click();&#10;  expect(switchElem.getText()).toMatch(/default/);&#10;});</code></pre>
+    </div>
+  
+
+    <iframe class="runnable-example-frame" src="examples/example-example45/index.html" name="example-example45"></iframe>
+  </div>
+</div>
+
+
+atch(&#39;null&#39;);&#10;});</code></pre>
+    </div>
+  
+
+    <iframe class="runnable-example-frame" src="examples/example-example48/index.html" name="example-example48"></iframe>
+  </div>
+</div>
+
+
+y who is 28 years old.&#39;);&#10;   expect(friends.last().getText()).toEqual(&#39;[2] Samantha who is 60 years old.&#39;);&#10; });</code></pre>
+    </div>
+  
+
+    <iframe class="runnable-example-frame" src="examples/example-example41/index.html" name="example-example41"></iframe>
+  </div>
+</div>
+
+
+es&#39;, function() {&#10;  var withOffset = element.all(by.css(&#39;ng-pluralize&#39;)).get(1);&#10;  var personCount = element(by.model(&#39;personCount&#39;));&#10;  var person1 = element(by.model(&#39;person1&#39;));&#10;  var person2 = element(by.model(&#39;person2&#39;));&#10;  personCount.clear();&#10;  personCount.sendKeys(&#39;4&#39;);&#10;  person1.clear();&#10;  person1.sendKeys(&#39;Di&#39;);&#10;  person2.clear();&#10;  person2.sendKeys(&#39;Vojta&#39;);&#10;  expect(withOffset.getText()).toEqual(&#39;Di, Vojta and 2 other people are viewing.&#39;);&#10;});</code></pre>
+    </div>
+  
+
+    <iframe class="runnable-example-frame" src="examples/example-example40/index.html" name="example-example40"></iframe>
+  </div>
+</div>
+
+
+ger than max length&#39;, function() {&#10;  userLastInput.clear();&#10;  userLastInput.sendKeys(&#39;some ridiculously long name&#39;);&#10;&#10;  expect(user.getText()).toContain(&#39;{&quot;name&quot;:&quot;guest&quot;}&#39;);&#10;  expect(lastNameValid.getText()).toContain(&#39;false&#39;);&#10;  expect(lastNameError.getText()).toContain(&#39;maxlength&#39;);&#10;  expect(formValid.getText()).toContain(&#39;false&#39;);&#10;});</code></pre>
+    </div>
+  
+
+    <iframe class="runnable-example-frame" src="examples/example-input-directive/index.html" name="example-input-directive"></iframe>
+  </div>
+</div>
+
+

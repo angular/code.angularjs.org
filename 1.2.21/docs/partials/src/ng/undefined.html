@@ -1,0 +1,87 @@
+
+
+<div>
+  <a ng-click="openPlunkr('examples/example-example2')" class="btn pull-right">
+    <i class="glyphicon glyphicon-edit">&nbsp;</i>
+    Edit in Plunker</a>
+  <div class="runnable-example"
+      path="examples/example-example2">
+
+   
+    <div class="runnable-example-file" 
+      name="index.html"
+      language="html"
+      type="html">
+      <pre><code>&lt;div id=&quot;scrollArea&quot; ng-controller=&quot;ScrollCtrl&quot;&gt;&#10;  &lt;a ng-click=&quot;gotoBottom()&quot;&gt;Go to bottom&lt;/a&gt;&#10;  &lt;a id=&quot;bottom&quot;&gt;&lt;/a&gt; You&#39;re at the bottom!&#10;&lt;/div&gt;</code></pre>
+    </div>
+  
+    <div class="runnable-example-file" 
+      name="script.js"
+      language="js"
+      type="js">
+      <pre><code>function ScrollCtrl($scope, $location, $anchorScroll) {&#10;  $scope.gotoBottom = function (){&#10;    // set the location.hash to the id of&#10;    // the element you wish to scroll to.&#10;    $location.hash(&#39;bottom&#39;);&#10;&#10;    // call $anchorScroll()&#10;    $anchorScroll();&#10;  };&#10;}</code></pre>
+    </div>
+  
+    <div class="runnable-example-file" 
+      name="style.css"
+      language="css"
+      type="css">
+      <pre><code>#scrollArea {&#10;  height: 350px;&#10;  overflow: auto;&#10;}&#10;&#10;#bottom {&#10;  display: block;&#10;  margin-top: 2000px;&#10;}</code></pre>
+    </div>
+  
+
+    <iframe class="runnable-example-frame" src="examples/example-example2/index.html" name="example-example2"></iframe>
+  </div>
+</div>
+
+
+  controller(&#39;CacheController&#39;, [&#39;$scope&#39;, &#39;$cacheFactory&#39;, function($scope, $cacheFactory) {&#10;    $scope.keys = [];&#10;    $scope.cache = $cacheFactory(&#39;cacheId&#39;);&#10;    $scope.put = function(key, value) {&#10;      $scope.cache.put(key, value);&#10;      $scope.keys.push(key);&#10;    };&#10;  }]);</code></pre>
+    </div>
+  
+    <div class="runnable-example-file" 
+      name="style.css"
+      language="css"
+      type="css">
+      <pre><code>p {&#10;  margin: 10px 0 3px;&#10;}</code></pre>
+    </div>
+  
+
+    <iframe class="runnable-example-frame" src="examples/example-example3/index.html" name="example-example3"></iframe>
+  </div>
+</div>
+
+
+Alice&quot;,&#10;  &quot;htmlComment&quot;:&#10;      &quot;&lt;span onmouseover=&#39;this.textContent=\&quot;PWN3D!\&quot;&#39;&gt;Is &lt;i&gt;anyone&lt;/i&gt; reading this?&lt;/span&gt;&quot;&#10;},&#10;{ &quot;name&quot;: &quot;Bob&quot;,&#10;  &quot;htmlComment&quot;: &quot;&lt;i&gt;Yes!&lt;/i&gt;  Am I the only other one?&quot;&#10;}&#10;]</code></pre>
+    </div>
+  
+    <div class="runnable-example-file" 
+      name="protractor.js"
+      type="protractor"
+      language="js">
+      <pre><code>describe(&#39;SCE doc demo&#39;, function() {&#10;it(&#39;should sanitize untrusted values&#39;, function() {&#10;  expect(element.all(by.css(&#39;.htmlComment&#39;)).first().getInnerHtml())&#10;      .toBe(&#39;&lt;span&gt;Is &lt;i&gt;anyone&lt;/i&gt; reading this?&lt;/span&gt;&#39;);&#10;});&#10;&#10;it(&#39;should NOT sanitize explicitly trusted values&#39;, function() {&#10;  expect(element(by.id(&#39;explicitlyTrustedHtml&#39;)).getInnerHtml()).toBe(&#10;      &#39;&lt;span onmouseover=&quot;this.textContent=&amp;quot;Explicitly trusted HTML bypasses &#39; +&#10;      &#39;sanitization.&amp;quot;&quot;&gt;Hover over this text.&lt;/span&gt;&#39;);&#10;});&#10;});</code></pre>
+    </div>
+  
+
+    <iframe class="runnable-example-frame" src="examples/example-example62/index.html" name="example-example62"></iframe>
+  </div>
+</div>
+
+
+button&gt;&#10;  &lt;button type=&quot;button&quot; data-ng-click=&quot;resetFight()&quot;&gt;resetFight&lt;/button&gt;&#10;&lt;/div&gt;&#10;&lt;/div&gt;</code></pre>
+    </div>
+  
+
+    <iframe class="runnable-example-frame" src="examples/example-example60/index.html" name="example-example60"></iframe>
+  </div>
+</div>
+
+
+,&#10;    function() {&#10;  invalidJsonpBtn.click();&#10;  fetchBtn.click();&#10;  expect(status.getText()).toMatch(&#39;0&#39;);&#10;  expect(data.getText()).toMatch(&#39;Request failed&#39;);&#10;});</code></pre>
+    </div>
+  
+
+    <iframe class="runnable-example-frame" src="examples/example-example58/index.html" name="example-example58"></iframe>
+  </div>
+</div>
+
+
