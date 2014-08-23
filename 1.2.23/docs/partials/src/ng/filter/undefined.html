@@ -1,0 +1,49 @@
+
+
+<div>
+  <a ng-click="openPlunkr('examples/example-example57')" class="btn pull-right">
+    <i class="glyphicon glyphicon-edit">&nbsp;</i>
+    Edit in Plunker</a>
+  <div class="runnable-example"
+      path="examples/example-example57"
+      module="orderByExample">
+
+   
+    <div class="runnable-example-file" 
+      name="index.html"
+      language="html"
+      type="html">
+      <pre><code>&lt;div ng-controller=&quot;ExampleController&quot;&gt;&#10;  &lt;table class=&quot;friend&quot;&gt;&#10;    &lt;tr&gt;&#10;      &lt;th&gt;&lt;a href=&quot;&quot; ng-click=&quot;reverse=false;order(&#39;name&#39;, false)&quot;&gt;Name&lt;/a&gt;&#10;        (&lt;a href=&quot;&quot; ng-click=&quot;order(&#39;-name&#39;,false)&quot;&gt;^&lt;/a&gt;)&lt;/th&gt;&#10;      &lt;th&gt;&lt;a href=&quot;&quot; ng-click=&quot;reverse=!reverse;order(&#39;phone&#39;, reverse)&quot;&gt;Phone Number&lt;/a&gt;&lt;/th&gt;&#10;      &lt;th&gt;&lt;a href=&quot;&quot; ng-click=&quot;reverse=!reverse;order(&#39;age&#39;,reverse)&quot;&gt;Age&lt;/a&gt;&lt;/th&gt;&#10;    &lt;/tr&gt;&#10;    &lt;tr ng-repeat=&quot;friend in friends&quot;&gt;&#10;      &lt;td&gt;{{friend.name}}&lt;/td&gt;&#10;      &lt;td&gt;{{friend.phone}}&lt;/td&gt;&#10;      &lt;td&gt;{{friend.age}}&lt;/td&gt;&#10;    &lt;/tr&gt;&#10;  &lt;/table&gt;&#10;&lt;/div&gt;</code></pre>
+    </div>
+  
+    <div class="runnable-example-file" 
+      name="script.js"
+      language="js"
+      type="js">
+      <pre><code>angular.module(&#39;orderByExample&#39;, [])&#10;  .controller(&#39;ExampleController&#39;, [&#39;$scope&#39;, &#39;$filter&#39;, function($scope, $filter) {&#10;    var orderBy = $filter(&#39;orderBy&#39;);&#10;    $scope.friends = [&#10;      { name: &#39;John&#39;,    phone: &#39;555-1212&#39;,    age: 10 },&#10;      { name: &#39;Mary&#39;,    phone: &#39;555-9876&#39;,    age: 19 },&#10;      { name: &#39;Mike&#39;,    phone: &#39;555-4321&#39;,    age: 21 },&#10;      { name: &#39;Adam&#39;,    phone: &#39;555-5678&#39;,    age: 35 },&#10;      { name: &#39;Julie&#39;,   phone: &#39;555-8765&#39;,    age: 29 }&#10;    ];&#10;    $scope.order = function(predicate, reverse) {&#10;      $scope.friends = orderBy($scope.friends, predicate, reverse);&#10;    };&#10;    $scope.order(&#39;-age&#39;,false);&#10;  }]);</code></pre>
+    </div>
+  
+
+    <iframe class="runnable-example-frame" src="examples/example-example57/index.html" name="example-example57"></iframe>
+  </div>
+</div>
+
+
+d not exceed the maximum size of input array&#39;, function() {&#10;  numLimitInput.clear();&#10;  numLimitInput.sendKeys(&#39;100&#39;);&#10;  letterLimitInput.clear();&#10;  letterLimitInput.sendKeys(&#39;100&#39;);&#10;  expect(limitedNumbers.getText()).toEqual(&#39;Output numbers: [1,2,3,4,5,6,7,8,9]&#39;);&#10;  expect(limitedLetters.getText()).toEqual(&#39;Output letters: abcdefghi&#39;);&#10;});</code></pre>
+    </div>
+  
+
+    <iframe class="runnable-example-frame" src="examples/example-example55/index.html" name="example-example55"></iframe>
+  </div>
+</div>
+
+
+clear();&#10;  searchAny.sendKeys(&#39;i&#39;);&#10;  expectFriendNames([&#39;Mary&#39;, &#39;Mike&#39;, &#39;Julie&#39;, &#39;Juliette&#39;], &#39;friendObj&#39;);&#10;});&#10;it(&#39;should use a equal comparison when comparator is true&#39;, function() {&#10;  var searchName = element(by.model(&#39;search.name&#39;));&#10;  var strict = element(by.model(&#39;strict&#39;));&#10;  searchName.clear();&#10;  searchName.sendKeys(&#39;Julie&#39;);&#10;  strict.click();&#10;  expectFriendNames([&#39;Julie&#39;], &#39;friendObj&#39;);&#10;});</code></pre>
+    </div>
+  
+
+    <iframe class="runnable-example-frame" src="examples/example-example50/index.html" name="example-example50"></iframe>
+  </div>
+</div>
+
+
