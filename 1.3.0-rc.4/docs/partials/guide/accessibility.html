@@ -1,0 +1,27 @@
+<a href='https://github.com/angular/angular.js/edit/v1.3.x/docs/content/guide/accessibility.ngdoc?message=docs(guide%2FAccessibility)%3A%20describe%20your%20change...' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+
+
+<h1 id="accessibility-with-ngaria">Accessibility with ngAria</h1>
+<p>You can use the <code>ngAria</code> module to have certain ARIA attributes automatically applied when you
+use certain directives.</p>
+<pre><code class="lang-js">angular.module(&#39;myApp&#39;, [&#39;ngAria&#39;])...
+</code></pre>
+<p>Elements using <code>ng-model</code> with <code>required</code> or <code>ngRequired</code> directives will automatically have
+<code>aria-required</code> attributes with the proper corresponding values.</p>
+<pre><code class="lang-html">&lt;material-input ng-model=&quot;val&quot; required&gt;
+</code></pre>
+<p>Becomes:</p>
+<pre><code class="lang-html">&lt;material-input ng-model=&quot;val&quot; required aria-required=&quot;true&quot;&gt;
+</code></pre>
+<p>ngAria is just a starting point. You&#39;ll have to manually choose how to implement some
+accessibility features.</p>
+<p>For instance, you may want to add <code>ng-keypress</code> bindings alongside <code>ng-click</code> to make keyboard
+navigation easier.</p>
+<h2 id="additional-resources">Additional Resources</h2>
+<p>Accessibility best practices that apply to web apps in general also apply to Angular.</p>
+<ul>
+<li><a href="http://webaim.org/">WebAim</a></li>
+<li><a href="http://www.w3.org/TR/2014/WD-aria-in-html-20140626/">Using WAI-ARIA in HTML</a></li>
+</ul>
+
+
