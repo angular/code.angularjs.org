@@ -1,0 +1,29 @@
+<a href='https://github.com/angular/angular.js/edit/v1.3.x/docs/content/guide/production.ngdoc?message=docs(guide%2FRunning in Production)%3A%20describe%20your%20change...' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+
+
+<h1 id="running-an-angularjs-app-in-production">Running an AngularJS App in Production</h1>
+<p>There are a few things you might consider when running your AngularJS application in production.</p>
+<h2 id="disabling-debug-data">Disabling Debug Data</h2>
+<p>By default AngularJS attaches information about scopes to DOM nodes, and adds CSS classes
+to data-bound elements. The information that is not included is:</p>
+<p>As a result of <code>ngBind</code>, <code>ngBindHtml</code> or <code>{{...}}</code> interpolations, binding data and CSS class
+<code>ng-class</code> is attached to the corresponding element.</p>
+<p>Where the compiler has created a new scope, the scope and either <code>ng-scope</code> or <code>ng-isolated-scope</code>
+CSS class are attached to the corresponding element. These scope references can then be accessed via
+<code>element.scope()</code> and <code>element.isolateScope()</code>.</p>
+<p>Tools like <a href="https://github.com/angular/protractor">Protractor</a> and
+<a href="https://github.com/angular/angularjs-batarang">Batarang</a> need this information to run,
+but you can disable this in production for a significant performance boost with:</p>
+<pre><code class="lang-js">myApp.config([&#39;$compileProvider&#39;, function ($compileProvider) {
+$compileProvider.debugInfoEnabled(false);
+}]);
+</code></pre>
+<p>If you wish to debug an application with this information then you should open up a debug
+console in the browser then call this method directly in this console:</p>
+<pre><code class="lang-js">angular.reloadWithDebugInfo();
+</code></pre>
+<p>The page should reload and the debug information should now be available.</p>
+<p>For more see the docs pages on <a href="api/ng/provider/$compileProvider#debugInfoEnabled"><code>$compileProvider</code></a>
+and <a href="api/ng/function/angular.reloadWithDebugInfo"><code>angular.reloadWithDebugInfo</code></a>.</p>
+
+
