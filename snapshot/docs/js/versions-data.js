@@ -1,35 +1,50 @@
 // Meta data used by the AngularJS docs app
 angular.module('versionsData', [])
   .value('NG_VERSION', {
-  "raw": "v1.4.0-beta.4",
+  "raw": "v1.4.0-beta.5",
   "major": 1,
   "minor": 4,
   "patch": 0,
   "prerelease": [
-    "local"
+    "build",
+    "3859"
   ],
-  "build": "sha.3bc429a",
-  "version": "1.4.0-local",
+  "build": "sha.bfd7b22",
+  "version": "1.4.0-build.3859",
   "codeName": "snapshot",
   "isSnapshot": true,
-  "full": "1.4.0-local+sha.3bc429a",
+  "full": "1.4.0-build.3859+sha.bfd7b22",
   "branch": "master"
 })
   .value('NG_VERSIONS', [
   {
-    "raw": "v1.4.0-beta.4",
+    "raw": "v1.4.0-beta.5",
     "major": 1,
     "minor": 4,
     "patch": 0,
     "prerelease": [
-      "local"
+      "build",
+      "3859"
     ],
-    "build": "sha.3bc429a",
-    "version": "1.4.0-local",
+    "build": "sha.bfd7b22",
+    "version": "1.4.0-build.3859",
     "codeName": "snapshot",
     "isSnapshot": true,
-    "full": "1.4.0-local+sha.3bc429a",
+    "full": "1.4.0-build.3859+sha.bfd7b22",
     "branch": "master"
+  },
+  {
+    "raw": "v1.4.0-beta.5",
+    "major": 1,
+    "minor": 4,
+    "patch": 0,
+    "prerelease": [
+      "beta",
+      5
+    ],
+    "build": [],
+    "version": "1.4.0-beta.5",
+    "docsUrl": "http://code.angularjs.org/1.4.0-beta.5/docs"
   },
   {
     "raw": "v1.4.0-beta.4",
@@ -95,6 +110,16 @@ angular.module('versionsData', [])
     "build": [],
     "version": "1.4.0-beta.0",
     "docsUrl": "http://code.angularjs.org/1.4.0-beta.0/docs"
+  },
+  {
+    "raw": "v1.3.14",
+    "major": 1,
+    "minor": 3,
+    "patch": 14,
+    "prerelease": [],
+    "build": [],
+    "version": "1.3.14",
+    "docsUrl": "http://code.angularjs.org/1.3.14/docs"
   },
   {
     "raw": "v1.3.13",
