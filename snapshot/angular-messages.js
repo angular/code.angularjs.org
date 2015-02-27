@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.4.0-build.3859+sha.bfd7b22
+ * @license AngularJS v1.4.0-build.3861+sha.2c4ffd6
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -505,27 +505,21 @@ angular.module('ngMessages', [])
 
      return {
        restrict: 'AE',
-       require: '^^ngMessages',
-       compile: function(element, attrs) {
-         var comment = jqLite($document[0].createComment(' ngMessagesInclude: '));
-         element.after(comment);
+       require: '^^ngMessages', // we only require this for validation sake
+       link: function($scope, element, attrs) {
+         var src = attrs.ngMessagesInclude || attrs.src;
+         $templateRequest(src).then(function(html) {
+           $compile(html)($scope, function(contents) {
+             element.after(contents);
 
-         return function($scope, $element, attrs, ngMessagesCtrl) {
-           // we're removing this since we only need access to the newly
-           // created comment node as an anchor.
-           element.remove();
+             // the anchor is placed for debugging purposes
+             var anchor = jqLite($document[0].createComment(' ngMessagesInclude: ' + src + ' '));
+             element.after(anchor);
 
-           $templateRequest(attrs.ngMessagesInclude || attrs.src).then(function(html) {
-             var elements = jqLite('<div></div>').html(html).contents();
-             var cursor = comment;
-             forEach(elements, function(elm) {
-               elm = jqLite(elm);
-               cursor.after(elm);
-               cursor = elm;
-             });
-             $compile(elements)($scope);
+             // we don't want to pollute the DOM anymore by keeping an empty directive element
+             element.remove();
            });
-         };
+         });
        }
      };
    }])
