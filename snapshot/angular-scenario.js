@@ -9190,7 +9190,7 @@ return jQuery;
 }));
 
 /**
- * @license AngularJS v1.4.0-build.3861+sha.2c4ffd6
+ * @license AngularJS v1.4.0-build.3864+sha.7cfa79e
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -9249,7 +9249,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.4.0-build.3861+sha.2c4ffd6/' +
+    message += '\nhttp://errors.angularjs.org/1.4.0-build.3864+sha.7cfa79e/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -10121,10 +10121,11 @@ function equals(o1, o2) {
       } else if (isDate(o1)) {
         if (!isDate(o2)) return false;
         return equals(o1.getTime(), o2.getTime());
-      } else if (isRegExp(o1) && isRegExp(o2)) {
-        return o1.toString() == o2.toString();
+      } else if (isRegExp(o1)) {
+        return isRegExp(o2) ? o1.toString() == o2.toString() : false;
       } else {
-        if (isScope(o1) || isScope(o2) || isWindow(o1) || isWindow(o2) || isArray(o2)) return false;
+        if (isScope(o1) || isScope(o2) || isWindow(o1) || isWindow(o2) ||
+          isArray(o2) || isDate(o2) || isRegExp(o2)) return false;
         keySet = {};
         for (key in o1) {
           if (key.charAt(0) === '$' || isFunction(o1[key])) continue;
@@ -11387,7 +11388,7 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.4.0-build.3861+sha.2c4ffd6',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.4.0-build.3864+sha.7cfa79e',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 4,
   dot: 0,
@@ -19554,7 +19555,7 @@ function $InterpolateProvider() {
           // all of these properties are undocumented for now
           exp: text, //just for compatibility with regular watchers created via $watch
           expressions: expressions,
-          $$watchDelegate: function(scope, listener, objectEquality) {
+          $$watchDelegate: function(scope, listener) {
             var lastValue;
             return scope.$watchGroup(parseFns, function interpolateFnWatcher(values, oldValues) {
               var currValue = compute(values);
@@ -19562,7 +19563,7 @@ function $InterpolateProvider() {
                 listener.call(this, currValue, values !== oldValues ? lastValue : currValue, scope);
               }
               lastValue = currValue;
-            }, objectEquality);
+            });
           }
         });
       }
