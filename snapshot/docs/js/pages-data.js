@@ -1441,20 +1441,25 @@ angular.module('pagesData', [])
     "area": "api",
     "path": "api/ngAria/service/$aria"
   },
+  "api/ngCookies/service/$cookieStore": {
+    "name": "$cookieStore",
+    "area": "api",
+    "path": "api/ngCookies/service/$cookieStore"
+  },
   "api/ngCookies": {
     "name": "ngCookies",
     "area": "api",
     "path": "api/ngCookies"
   },
+  "api/ngCookies/provider/$cookiesProvider": {
+    "name": "$cookiesProvider",
+    "area": "api",
+    "path": "api/ngCookies/provider/$cookiesProvider"
+  },
   "api/ngCookies/service/$cookies": {
     "name": "$cookies",
     "area": "api",
     "path": "api/ngCookies/service/$cookies"
-  },
-  "api/ngCookies/service/$cookieStore": {
-    "name": "$cookieStore",
-    "area": "api",
-    "path": "api/ngCookies/service/$cookieStore"
   },
   "api/ngMessages": {
     "name": "ngMessages",
@@ -2356,6 +2361,11 @@ angular.module('pagesData', [])
     "name": "service components in ngCookies",
     "area": "api",
     "path": "api/ngCookies/service"
+  },
+  "api/ngCookies/provider": {
+    "name": "provider components in ngCookies",
+    "area": "api",
+    "path": "api/ngCookies/provider"
   },
   "api/ngMessages/directive": {
     "name": "directive components in ngMessages",

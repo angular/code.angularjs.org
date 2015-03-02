@@ -1728,22 +1728,28 @@
     "members": ""
   },
   {
+    "path": "api/ngCookies/service/$cookieStore",
+    "titleWords": "$cookieStore",
+    "keywords": "$cookies $cookiestore alert alert-error angular api are automatically backed be by class controller cookie cookies cookiestoreexample deprecated deserialized examplecontroller factory favoritecookie from function get html installed instead is js key-value module myfavorite ngcookies oatmeal objects or partials please provides put remove removing requires retrieved serialized service session storage that the this to tojson use var",
+    "members": "get put remove"
+  },
+  {
     "path": "api/ngCookies",
     "titleWords": "ngCookies cookies",
-    "keywords": "$cookies $cookiestore and angular-cookies api browser convenient cookies doc-module-components factory for html js module ngcookies partials provides reading see the usage wrapper writing",
+    "keywords": "$cookies $cookiestore and angular-cookies api browser convenient cookies doc-module-components for html js module ngcookies partials provider provides reading see the usage wrapper writing",
     "members": ""
+  },
+  {
+    "path": "api/ngCookies/provider/$cookiesProvider",
+    "titleWords": "$cookiesProvider",
+    "keywords": "$cookies $cookiesprovider api behavior change default html module ngcookies of partials provider service the to use",
+    "members": "defaults"
   },
   {
     "path": "api/ngCookies/service/$cookies",
     "titleWords": "$cookies",
-    "keywords": "$cookies $eval access adding and angular api are at be browser by can controller cookie cookies cookiesexample created current end examplecontroller exposed factory favoritecookie function html installed is js module myfavorite new ngcookies oatmeal object of only or partials properties provides read removing requires retrieving service setting simple strings the this to var",
-    "members": ""
-  },
-  {
-    "path": "api/ngCookies/service/$cookieStore",
-    "titleWords": "$cookieStore",
-    "keywords": "$cookies $cookiestore angular api are automatically backed be by controller cookie cookies cookiestoreexample deserialized examplecontroller factory favoritecookie from function get html installed is js key-value module myfavorite ngcookies oatmeal objects or partials provides put remove removing requires retrieved serialized service session storage that the this to tojson var",
-    "members": "get put remove"
+    "keywords": "$cookies $get access angular api as be below breaking browser change controller cookie cookies cookiesexample current described examplecontroller exposes favoritecookie function get html installed js longer methods module must myfavorite ngcookies no now oatmeal partials properties provides put read represent requires retrieving service setting that the to use values var you",
+    "members": "get getall getobject put putobject remove"
   },
   {
     "path": "api/ngMessages",
@@ -2163,6 +2169,12 @@
     "path": "api/ngCookies/service",
     "titleWords": "service components in ngCookies cookies",
     "keywords": "api componentgroup components html in module ngcookies partials service",
+    "members": ""
+  },
+  {
+    "path": "api/ngCookies/provider",
+    "titleWords": "provider components in ngCookies cookies",
+    "keywords": "api componentgroup components html in module ngcookies partials provider",
     "members": ""
   },
   {

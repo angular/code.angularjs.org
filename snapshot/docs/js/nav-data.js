@@ -897,6 +897,16 @@ angular.module('navData', [])
             "name": "$cookies",
             "href": "api/ngCookies/service/$cookies",
             "type": "service"
+          },
+          {
+            "name": "provider",
+            "type": "section",
+            "href": "api/ngCookies/provider"
+          },
+          {
+            "name": "$cookiesProvider",
+            "href": "api/ngCookies/provider/$cookiesProvider",
+            "type": "provider"
           }
         ]
       },

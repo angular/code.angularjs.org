@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.4.0-build.3869+sha.3b8163b
+ * @license AngularJS v1.4.0-build.3870+sha.9b35dfb
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -66,8 +66,6 @@ angular.mock.$Browser = function() {
 
   self.$$checkUrlChange = angular.noop;
 
-  self.cookieHash = {};
-  self.lastCookieHash = {};
   self.deferredFns = [];
   self.deferredNextId = 0;
 
@@ -147,11 +145,6 @@ angular.mock.$Browser.prototype = {
     });
   },
 
-  addPollFn: function(pollFn) {
-    this.pollFns.push(pollFn);
-    return pollFn;
-  },
-
   url: function(url, replace, state) {
     if (angular.isUndefined(state)) {
       state = null;
@@ -168,25 +161,6 @@ angular.mock.$Browser.prototype = {
 
   state: function() {
     return this.$$state;
-  },
-
-  cookies:  function(name, value) {
-    if (name) {
-      if (angular.isUndefined(value)) {
-        delete this.cookieHash[name];
-      } else {
-        if (angular.isString(value) &&       //strings only
-            value.length <= 4096) {          //strict cookie storage limits
-          this.cookieHash[name] = value;
-        }
-      }
-    } else {
-      if (!angular.equals(this.cookieHash, this.lastCookieHash)) {
-        this.lastCookieHash = angular.copy(this.cookieHash);
-        this.cookieHash = angular.copy(this.cookieHash);
-      }
-      return this.cookieHash;
-    }
   },
 
   notifyWhenNoOutstandingRequests: function(fn) {
@@ -2176,7 +2150,6 @@ if (window.jasmine || window.mocha) {
 
     if (injector) {
       injector.get('$rootElement').off();
-      injector.get('$browser').pollFns.length = 0;
     }
 
     // clean up jquery's fragment cache
