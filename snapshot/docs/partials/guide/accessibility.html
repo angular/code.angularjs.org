@@ -141,11 +141,13 @@ shown or hidden by removing or adding the <code>.ng-hide</code> CSS class onto t
 If <code>ng-click</code> or <code>ng-dblclick</code> is encountered, ngAria will add <code>tabindex=&quot;0&quot;</code> if it isn&#39;t there
 already.
 
-For <code>ng-click</code>, keypress will also be bound to <code>div</code> and <code>li</code> elements. You can turn this
-functionality on or off with the <code>bindKeypress</code> configuration option.
+To fix widespread accessibility problems with <code>ng-click</code> on div elements, ngAria will dynamically
+bind keypress by default as long as the element isn&#39;t an anchor, button, input or textarea.
+You can turn this functionality on or off with the <code>bindKeypress</code> configuration option. ngAria
+will also add the <code>button</code> role to communicate to users of assistive technologies.
 
-For <code>ng-dblclick</code>, you must manually add <code>ng-keypress</code> to non-interactive elements such as <code>div</code>
-or <code>taco-button</code> to enable keyboard access.
+For <code>ng-dblclick</code>, you must still manually add <code>ng-keypress</code> and role to non-interactive elements such
+as <code>div</code> or <code>taco-button</code> to enable keyboard access.
 
 <h3>Example</h3>
 <code>html
