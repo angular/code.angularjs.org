@@ -308,7 +308,7 @@ a directive&#39;s template instead of relying on automatic template compilation 
 <code>templateUrl</code> declaration or manual compilation inside the compile function.
 </div>
 
-<div class="alert alert-error">
+<div class="alert alert-danger">
 <strong>Note:</strong> The <code>transclude</code> function that is passed to the compile function is deprecated, as it
   e.g. does not know about the right outer scope. Please use the transclude function that is passed
   to the link function instead.
@@ -579,7 +579,7 @@ to illustrate how <code>$compile</code> works.
       </td>
       <td>
         <p>function available to directives - DEPRECATED.</p>
-<div class="alert alert-error">
+<div class="alert alert-danger">
 <strong>Note:</strong> Passing a <code>transclude</code> function to the $compile function is deprecated, as it
   e.g. will not use the right outer scope. Please pass the transclude function as a
   <code>parentBoundTranscludeFn</code> to the link function instead.
