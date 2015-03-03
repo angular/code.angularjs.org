@@ -116,6 +116,11 @@ angular.module('navData', [])
             "type": "function"
           },
           {
+            "name": "angular.merge",
+            "href": "api/ng/function/angular.merge",
+            "type": "function"
+          },
+          {
             "name": "angular.module",
             "href": "api/ng/function/angular.module",
             "type": "function"

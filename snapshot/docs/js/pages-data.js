@@ -661,6 +661,11 @@ angular.module('pagesData', [])
     "area": "api",
     "path": "api/ng/function/angular.extend"
   },
+  "api/ng/function/angular.merge": {
+    "name": "angular.merge",
+    "area": "api",
+    "path": "api/ng/function/angular.merge"
+  },
   "api/ng/function/angular.noop": {
     "name": "angular.noop",
     "area": "api",
