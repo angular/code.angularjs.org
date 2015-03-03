@@ -99,8 +99,10 @@ not validate correctly instead of the default behavior of setting the model to u
 <li><code>getterSetter</code>: boolean value which determines whether or not to treat functions bound to
    <code>ngModel</code> as getters/setters.</li>
 <li><code>timezone</code>: Defines the timezone to be used to read/write the <code>Date</code> instance in the model for
-<code>&lt;input type=&quot;date&quot;&gt;</code>, <code>&lt;input type=&quot;time&quot;&gt;</code>, ... . Right now, the only supported value is <code>&#39;UTC&#39;</code>,
-otherwise the default timezone of the browser will be used.</li>
+<code>&lt;input type=&quot;date&quot;&gt;</code>, <code>&lt;input type=&quot;time&quot;&gt;</code>, ... . It understands UTC/GMT and the
+continental US time zone abbreviations, but for general use, use a time zone offset, for
+example, <code>&#39;+0430&#39;</code> (4 hours, 30 minutes east of the Greenwich meridian)
+If not specified, the timezone of the browser will be used.</li>
 </ul>
 
         
