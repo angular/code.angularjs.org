@@ -137,6 +137,8 @@ This is essentially strict comparison of expected and actual.</p>
 </li>
 <li><p><code>false|undefined</code>: A short hand for a function which will look for a substring match in case
 insensitive way.</p>
+<p>Primitive values are converted to strings. Objects are not compared against primitives,
+unless they have a custom <code>toString</code> method (e.g. <code>Date</code> objects).</p>
 </li>
 </ul>
 
