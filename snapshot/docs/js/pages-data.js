@@ -1486,6 +1486,11 @@ angular.module('pagesData', [])
     "area": "api",
     "path": "api/ngMessages/directive/ngMessage"
   },
+  "api/ngMessages/directive/ngMessageExp": {
+    "name": "ngMessageExp",
+    "area": "api",
+    "path": "api/ngMessages/directive/ngMessageExp"
+  },
   "api/ngMock/object/angular.mock": {
     "name": "angular.mock",
     "area": "api",

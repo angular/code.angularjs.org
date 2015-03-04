@@ -1778,7 +1778,13 @@
   {
     "path": "api/ngMessages/directive/ngMessage",
     "titleWords": "ngMessage message",
-    "keywords": "about ae an and any api are attribute based be by click corresponding determines directive directives dom element expression expressionvalue for here hide html is it key learn listens map message messages module more must ng-message ng-message-exp ng-messages ngmessage ngmessageexp ngmessages of on operate or parent partials particular provided purpose show since situated state string stringvalue stringvalue1 stringvalue2 that the to using value visible when when-exp which with",
+    "keywords": "about ae and any api are attribute based be by click corresponding determines directive directives dom element expression for here hide html is it key learn listens map message messages module more must ng-message ng-messages ngmessage ngmessages of on operate or parent partials particular provided purpose show since situated state string stringvalue stringvalue1 stringvalue2 that the to using value visible when which with",
+    "members": ""
+  },
+  {
+    "path": "api/ngMessages/directive/ngMessageExp",
+    "titleWords": "ngMessageExp messageexp",
+    "keywords": "about ae an and any api are attribute based be by click corresponding determines directive directives dom element expression expressionvalue for here hide html is it key learn listens map message messages module more must ng-message-exp ng-messages ngmessage ngmessageexp ngmessages of on operate or parent partials particular provided purpose show since situated state that the to using value visible when-exp which with",
     "members": ""
   },
   {

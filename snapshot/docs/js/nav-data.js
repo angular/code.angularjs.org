@@ -931,6 +931,11 @@ angular.module('navData', [])
             "type": "directive"
           },
           {
+            "name": "ngMessageExp",
+            "href": "api/ngMessages/directive/ngMessageExp",
+            "type": "directive"
+          },
+          {
             "name": "ngMessages",
             "href": "api/ngMessages/directive/ngMessages",
             "type": "directive"
