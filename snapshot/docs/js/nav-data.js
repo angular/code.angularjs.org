@@ -978,6 +978,11 @@ angular.module('navData', [])
             "href": "api/ngMock/service"
           },
           {
+            "name": "$controller",
+            "href": "api/ngMock/service/$controller",
+            "type": "service"
+          },
+          {
             "name": "$exceptionHandler",
             "href": "api/ngMock/service/$exceptionHandler",
             "type": "service"

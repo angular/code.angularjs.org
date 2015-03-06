@@ -1842,6 +1842,12 @@
     "members": "flush verifynopendingtasks"
   },
   {
+    "path": "api/ngMock/service/$controller",
+    "titleWords": "$controller",
+    "keywords": "$compile $controller $controllerdecorator $controllerprovider $log add additional allowglobals and api as be before bindings bindtocontroller bound called can certain check clark considered controller controllers correctly ctrl current decorator definition describe directive directives evaluating example expect feature following for function given global html if in info inject injected injection instance into invoking is it js kent kinds locals log logs module must mydirective mydirectivecontroller mymod name ng ngmock no object of on otherwise param parameter partials properties property published recommended registered retrieve returns scope service should simplify simulate specified steps string syntax test testing tests that the then this to toequal use used useful using var via when where which window with work write",
+    "members": ""
+  },
+  {
     "path": "api/ngMock",
     "titleWords": "ngMock mock",
     "keywords": "addition also and angular angular-mocks api be can code config controlled core doc-module-components extends html in inject inspected into js manner mock module ng ngmock partials provides services such support synchronous test tests that the they to unit various within",

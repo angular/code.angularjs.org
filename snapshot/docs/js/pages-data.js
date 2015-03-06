@@ -1536,6 +1536,11 @@ angular.module('pagesData', [])
     "area": "api",
     "path": "api/ngMock/service/$timeout"
   },
+  "api/ngMock/service/$controller": {
+    "name": "$controller",
+    "area": "api",
+    "path": "api/ngMock/service/$controller"
+  },
   "api/ngMock": {
     "name": "ngMock",
     "area": "api",
