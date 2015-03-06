@@ -9190,7 +9190,7 @@ return jQuery;
 }));
 
 /**
- * @license AngularJS v1.4.0-build.3882+sha.7705edc
+ * @license AngularJS v1.4.0-build.3883+sha.44e9d2c
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -9249,7 +9249,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.4.0-build.3882+sha.7705edc/' +
+    message += '\nhttp://errors.angularjs.org/1.4.0-build.3883+sha.44e9d2c/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -9785,7 +9785,7 @@ function isString(value) {return typeof value === 'string';}
  * This includes the "special" numbers `NaN`, `+Infinity` and `-Infinity`.
  *
  * If you wish to exclude these then you can use the native
- * [`isFinite'](`https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/isFinite)
+ * [`isFinite'](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/isFinite)
  * method.
  *
  * @param {*} value Reference to check.
@@ -11458,7 +11458,7 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.4.0-build.3882+sha.7705edc',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.4.0-build.3883+sha.44e9d2c',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 4,
   dot: 0,
