@@ -2136,11 +2136,11 @@ angular.module('pagesData', [])
   "examples/example-example104": {
     "path": "examples/example-example104"
   },
-  "http-hello.html": {
-    "path": "http-hello.html"
-  },
   "examples/example-example105": {
     "path": "examples/example-example105"
+  },
+  "http-hello.html": {
+    "path": "http-hello.html"
   },
   "examples/example-example106": {
     "path": "examples/example-example106"
@@ -2154,14 +2154,17 @@ angular.module('pagesData', [])
   "examples/example-example109": {
     "path": "examples/example-example109"
   },
-  "test_data.json": {
-    "path": "test_data.json"
-  },
   "examples/example-example110": {
     "path": "examples/example-example110"
   },
+  "test_data.json": {
+    "path": "test_data.json"
+  },
   "examples/example-example111": {
     "path": "examples/example-example111"
+  },
+  "examples/example-example112": {
+    "path": "examples/example-example112"
   },
   "examples/example-ngMessages-directive": {
     "path": "examples/example-ngMessages-directive"
@@ -2178,9 +2181,6 @@ angular.module('pagesData', [])
   "examples/example-$route-service": {
     "path": "examples/example-$route-service"
   },
-  "examples/example-example112": {
-    "path": "examples/example-example112"
-  },
   "examples/example-example113": {
     "path": "examples/example-example113"
   },
@@ -2192,6 +2192,9 @@ angular.module('pagesData', [])
   },
   "examples/example-example116": {
     "path": "examples/example-example116"
+  },
+  "examples/example-example117": {
+    "path": "examples/example-example117"
   },
   "error/$animate": {
     "name": "$animate",
