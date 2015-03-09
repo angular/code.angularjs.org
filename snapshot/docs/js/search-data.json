@@ -1688,7 +1688,7 @@
   {
     "path": "api/ng/service/$timeout",
     "titleWords": "$timeout",
-    "keywords": "$apply $exceptionhandler $rootscope $timeout after and angular any api be block call calling can cancel checking deferred delay delayed delegates dirty exceptions executed execution false flush fn for function functions has html if in into invoke is milliseconds model module ng ngmock of only otherwise partials passed promise provided queue reached request resolved return scope service set settimeout should skips some specified synchronously tests that the then this timeout to try use value want when which whose will window with within without wrapped wrapper you",
+    "keywords": "$apply $exceptionhandler $rootscope $timeout additional after and angular any api be block call calling can cancel checking deferred delay delayed delegates dirty exceptions executed execution false flush fn for function functions has html if in into invoke is milliseconds model module ng ngmock of only otherwise parameters partials pass passed promise provided queue reached request resolved return scope service set settimeout should skips some specified synchronously tests that the then this timeout to try use value want when which whose will window with within without wrapped wrapper you",
     "members": "cancel"
   },
   {

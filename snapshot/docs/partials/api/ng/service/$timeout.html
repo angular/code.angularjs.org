@@ -45,7 +45,7 @@ then you can call <code>$timeout</code> without the <code>fn</code> function.</p
 
   <h2 id="usage">Usage</h2>
     
-      <p><code>$timeout([fn], [delay], [invokeApply]);</code></p>
+      <p><code>$timeout([fn], [delay], [invokeApply], [Pass]);</code></p>
 
 
     
@@ -110,6 +110,22 @@ then you can call <code>$timeout</code> without the <code>fn</code> function.</p
   will invoke <code>fn</code> within the <a href="api/ng/type/$rootScope.Scope#$apply">$apply</a> block.</p>
 
         <p><em>(default: true)</em></p>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        Pass
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        <a href="" class="label type-hint type-hint-object">*</a>
+      </td>
+      <td>
+        <p>additional parameters to the executed function.</p>
+
+        
       </td>
     </tr>
     
