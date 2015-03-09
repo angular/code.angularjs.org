@@ -51,7 +51,7 @@ appropriate moment.  See the example below for more details on how and when to d
 
   <h2 id="usage">Usage</h2>
     
-      <p><code>$interval(fn, delay, [count], [invokeApply]);</code></p>
+      <p><code>$interval(fn, delay, [count], [invokeApply], [Pass]);</code></p>
 
 
     
@@ -133,6 +133,22 @@ appropriate moment.  See the example below for more details on how and when to d
   will invoke <code>fn</code> within the <a href="api/ng/type/$rootScope.Scope#$apply">$apply</a> block.</p>
 
         <p><em>(default: true)</em></p>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        Pass
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        <a href="" class="label type-hint type-hint-object">*</a>
+      </td>
+      <td>
+        <p>additional parameters to the executed function.</p>
+
+        
       </td>
     </tr>
     
