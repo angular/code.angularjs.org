@@ -788,7 +788,7 @@
   {
     "path": "api/ng/function/angular.extend",
     "titleWords": "angular.extend",
-    "keywords": "an angular api are as by can copy copying deep defaults destination do does dst empty enumerable extend extends false for from function html if in is keep last merge merged mind module multiple ng not object object1 object2 objects original own parameter partials passing preserve properties recursive recursively reference set so source specify src support target that the this to true use var want you",
+    "keywords": "an angular api as by can copy copying destination do does dst empty enumerable extend extends for from function html if in keep merge mind module multiple ng not object object1 object2 objects original own partials passing preserve properties recursive reference so source specify src support target that the this to use var want you",
     "members": ""
   },
   {
