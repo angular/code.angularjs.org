@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.4.0-build.3898+sha.c01b1f4
+ * @license AngularJS v1.4.0-build.3899+sha.891b364
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -536,6 +536,9 @@ angular.module('ngMessages', [])
     * must be situated since it determines which messages are visible based on the state
     * of the provided key/value map that `ngMessages` listens on.
     *
+    * More information about using `ngMessage` can be found in the
+    * {@link module:ngMessages `ngMessages` module documentation}.
+    *
     * @usage
     * ```html
     * <!-- using attribute directives -->
@@ -550,8 +553,6 @@ angular.module('ngMessages', [])
     *   <ng-message when="stringValue1, stringValue2, ...">...</ng-message>
     * </ng-messages>
     * ```
-    *
-    * {@link module:ngMessages Click here} to learn more about `ngMessages` and `ngMessage`.
     *
     * @param {expression} ngMessage|when a string value corresponding to the message key.
     */

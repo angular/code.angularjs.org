@@ -197,9 +197,9 @@ corresponding expression whenever the button is clicked.</p>
 at which we register the controller. We will talk about modules in the next section.</p>
 <p>The following graphic shows how everything works together after we introduced the controller:</p>
 <p><img style="padding-left: 3em; padding-bottom: 1em;" src="img/guide/concepts-databinding2.png"></p>
-<h2 id="view-independent-business-logic-services">View independent business logic: Services</h2>
+<h2 id="view-independent-business-logic-services">View-independent business logic: Services</h2>
 <p>Right now, the <code>InvoiceController</code> contains all logic of our example. When the application grows it
-is a good practice to move view independent logic from the controller into a 
+is a good practice to move view-independent logic from the controller into a
 <a name="service"><a href="guide/services">service</a></a>, so it can be reused by other parts
 of the application as well. Later on, we could also change that service to load the exchange rates
 from the web, e.g. by calling the Yahoo Finance API, without changing the controller.</p>
