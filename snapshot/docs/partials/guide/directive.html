@@ -38,6 +38,7 @@ determines when to use a given directive.</p>
 <p>The following also <strong>matches</strong> <code>ngModel</code>:</p>
 <pre><code class="lang-html">&lt;input data-ng:model=&quot;foo&quot;&gt;
 </code></pre>
+<h3 id="normalization">Normalization</h3>
 <p>Angular <strong>normalizes</strong> an element&#39;s tag and attribute name to determine which elements match which
 directives. We typically refer to directives by their case-sensitive
 <a href="http://en.wikipedia.org/wiki/CamelCase">camelCase</a> <strong>normalized</strong> name (e.g. <code>ngModel</code>).
@@ -97,6 +98,7 @@ If you want to use an HTML validating tool, you can instead use the <code>data</
 The other forms shown above are accepted for legacy reasons but we advise you to avoid them.
 </div>
 
+<h3 id="directive-types">Directive types</h3>
 <p><code>$compile</code> can match directives based on element names, attributes, class names, as well as comments.</p>
 <p>All of the Angular-provided directives match attribute name, tag name, comments, or class name.
 The following demonstrates the various ways a directive (<code>myDir</code> in this case) can be referenced

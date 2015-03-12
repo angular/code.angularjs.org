@@ -33,7 +33,7 @@ can load templates directly into the cache in a <code>script</code> tag, or by c
 <p><strong>Note:</strong> the <code>script</code> tag containing the template does not need to be included in the <code>head</code> of
 the document, but it must be a descendent of the <a href="api/ng/service/$rootElement">$rootElement</a> (IE,
 element with ng-app attribute), otherwise the template will be ignored.</p>
-<p>Adding via the $templateCache service:</p>
+<p>Adding via the <code>$templateCache</code> service:</p>
 <pre><code class="lang-js">var myApp = angular.module(&#39;myApp&#39;, []);
 myApp.run(function($templateCache) {
   $templateCache.put(&#39;templateId.html&#39;, &#39;This is the content of the template&#39;);
