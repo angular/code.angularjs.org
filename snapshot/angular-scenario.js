@@ -9190,7 +9190,7 @@ return jQuery;
 }));
 
 /**
- * @license AngularJS v1.4.0-build.3902+sha.3086fcd
+ * @license AngularJS v1.4.0-build.3903+sha.2f4be3e
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -9249,7 +9249,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.4.0-build.3902+sha.3086fcd/' +
+    message += '\nhttp://errors.angularjs.org/1.4.0-build.3903+sha.2f4be3e/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -11415,6 +11415,7 @@ function toDebugString(obj) {
   $FilterProvider,
   $InterpolateProvider,
   $IntervalProvider,
+  $$HashMapProvider,
   $HttpProvider,
   $HttpBackendProvider,
   $LocationProvider,
@@ -11454,7 +11455,7 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.4.0-build.3902+sha.3086fcd',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.4.0-build.3903+sha.2f4be3e',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 4,
   dot: 0,
@@ -11591,6 +11592,7 @@ function publishExternalAPI(angular) {
         $$rAF: $$RAFProvider,
         $$asyncCallback: $$AsyncCallbackProvider,
         $$jqLite: $$jqLiteProvider,
+        $$HashMap: $$HashMapProvider,
         $$cookieReader: $$CookieReaderProvider
       });
     }
@@ -12699,6 +12701,12 @@ HashMap.prototype = {
     return value;
   }
 };
+
+var $$HashMapProvider = [function() {
+  this.$get = [function() {
+    return HashMap;
+  }];
+}];
 
 /**
  * @ngdoc function
