@@ -9190,7 +9190,7 @@ return jQuery;
 }));
 
 /**
- * @license AngularJS v1.4.0-build.3905+sha.4c613a2
+ * @license AngularJS v1.4.0-build.3907+sha.3613a60
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -9249,7 +9249,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.4.0-build.3905+sha.4c613a2/' +
+    message += '\nhttp://errors.angularjs.org/1.4.0-build.3907+sha.3613a60/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -11455,7 +11455,7 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.4.0-build.3905+sha.4c613a2',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.4.0-build.3907+sha.3613a60',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 4,
   dot: 0,
@@ -34854,7 +34854,6 @@ var ngPluralizeDirective = ['$locale', '$interpolate', '$log', function($locale,
       IS_WHEN = /^when(Minus)?(.+)$/;
 
   return {
-    restrict: 'EA',
     link: function(scope, element, attr) {
       var numberExp = attr.count,
           whenExp = attr.$attr.when && element.attr(attr.$attr.when), // we have {{}} in attrs

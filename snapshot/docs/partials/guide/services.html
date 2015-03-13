@@ -72,7 +72,7 @@ injected into any component (controller, service, filter or directive) that spec
 on the service.</p>
 <h3 id="registering-services">Registering Services</h3>
 <p>Services are registered to modules via the <a href="api/ng/type/angular.Module">Module API</a>.
-Typically you use the <a href="api/ng/function/angular.module">Module#factory</a> API to register a service:</p>
+Typically you use the <a href="api/ng/type/angular.Module#factory">Module factory</a> API to register a service:</p>
 <pre><code class="lang-js">var myModule = angular.module(&#39;myModule&#39;, []);
 myModule.factory(&#39;serviceId&#39;, function() {
   var shinyNewServiceInstance;
