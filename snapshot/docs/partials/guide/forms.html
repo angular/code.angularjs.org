@@ -1,6 +1,7 @@
 <a href='https://github.com/angular/angular.js/edit/master/docs/content/guide/forms.ngdoc?message=docs(guide%2FForms)%3A%20describe%20your%20change...' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
+<h1 id="forms">Forms</h1>
 <p>Controls (<code>input</code>, <code>select</code>, <code>textarea</code>) are ways for a user to enter data.
 A Form is a collection of controls for the purpose of grouping related controls together.</p>
 <p>Form and controls provide validation services, so that the user can be notified of invalid input
@@ -9,7 +10,7 @@ because the user gets instant feedback on how to correct the error. Keep in mind
 client-side validation plays an important role in providing good user experience, it can easily
 be circumvented and thus can not be trusted. Server-side validation is still necessary for a
 secure application.</p>
-<h1 id="simple-form">Simple form</h1>
+<h2 id="simple-form">Simple form</h2>
 <p>The key directive in understanding two-way data-binding is <a href="api/ng/directive/ngModel">ngModel</a>.
 The <code>ngModel</code> directive provides the two-way data-binding by synchronizing the model to the view,
 as well as view to the model. In addition it provides an <a href="api/ng/type/ngModel.NgModelController">API</a>
@@ -43,7 +44,7 @@ for other directives to augment its behavior.</p>
 <p>Note that <code>novalidate</code> is used to disable browser&#39;s native form validation.</p>
 <p>The value of <code>ngModel</code> won&#39;t be set unless it passes validation for the input field.
 For example: inputs of type <code>email</code> must have a value in the form of <code>user@domain</code>.</p>
-<h1 id="using-css-classes">Using CSS classes</h1>
+<h2 id="using-css-classes">Using CSS classes</h2>
 <p>To allow styling of form as well as controls, <code>ngModel</code>  adds these CSS classes:</p>
 <ul>
 <li><code>ng-valid</code>: the model is valid</li>
@@ -87,7 +88,7 @@ and failing to satisfy its validity.</p>
 
 
 </p>
-<h1 id="binding-to-form-and-control-state">Binding to form and control state</h1>
+<h2 id="binding-to-form-and-control-state">Binding to form and control state</h2>
 <p>A form is an instance of <a href="api/ng/type/form.FormController">FormController</a>.
 The form instance can optionally be published into the scope using the <code>name</code> attribute.</p>
 <p>Similarly, an input control that has the <a href="api/ng/directive/ngModel">ngModel</a> directive holds an
@@ -135,7 +136,7 @@ didn&#39;t interact with a control</li>
 
 
 </p>
-<h1 id="custom-model-update-triggers">Custom model update triggers</h1>
+<h2 id="custom-model-update-triggers">Custom model update triggers</h2>
 <p>By default, any change to the content will trigger a model update and form validation. You can
 override this behavior using the <a href="api/ng/directive/ngModelOptions">ngModelOptions</a> directive to
 bind only to specified list of events. I.e. <code>ng-model-options=&quot;{ updateOn: &#39;blur&#39; }&quot;</code> will update
@@ -180,7 +181,7 @@ will update the model only when the control loses focus (blur event).</p>
 
 
 </p>
-<h1 id="non-immediate-debounced-model-updates">Non-immediate (debounced) model updates</h1>
+<h2 id="non-immediate-debounced-model-updates">Non-immediate (debounced) model updates</h2>
 <p>You can delay the model update/validation by using the <code>debounce</code> key with the
 <a href="api/ng/directive/ngModelOptions">ngModelOptions</a> directive. This delay will also apply to
 parsers, validators and model flags like <code>$dirty</code> or <code>$pristine</code>.</p>
@@ -228,7 +229,7 @@ after last change.</p>
 
 
 </p>
-<h1 id="custom-validation">Custom Validation</h1>
+<h2 id="custom-validation">Custom Validation</h2>
 <p>Angular provides basic implementation for most common HTML5 <a href="api/ng/directive/input">input</a>
 types: (<a href="api/ng/input/input[text]">text</a>, <a href="api/ng/input/input[number]">number</a>, <a href="api/ng/input/input[url]">url</a>,
 <a href="api/ng/input/input[email]">email</a>, <a href="api/ng/input/input[date]">date</a>, <a href="api/ng/input/input[radio]">radio</a>, <a href="api/ng/input/input[checkbox]">checkbox</a>),
@@ -293,7 +294,7 @@ We mock the server request with a <code>$q</code> deferred.</p>
 
 
 </p>
-<h1 id="modifying-built-in-validators">Modifying built-in validators</h1>
+<h2 id="modifying-built-in-validators">Modifying built-in validators</h2>
 <p>Since Angular itself uses <code>$validators</code>, you can easily replace or remove built-in validators,
 should you find it necessary. The following example shows you how to overwrite the email validator
 in <code>input[email]</code> from a custom directive so that it requires a specific top-level domain,
@@ -332,7 +333,7 @@ Note that you can alternatively use <code>ng-pattern</code> to further restrict 
 
 
 </p>
-<h1 id="implementing-custom-form-controls-using-ngmodel-">Implementing custom form controls (using <code>ngModel</code>)</h1>
+<h2 id="implementing-custom-form-controls-using-ngmodel-">Implementing custom form controls (using <code>ngModel</code>)</h2>
 <p>Angular implements all of the basic HTML form controls (<a href="api/ng/directive/input">input</a>,
 <a href="api/ng/directive/select">select</a>, <a href="api/ng/directive/textarea">textarea</a>),
 which should be sufficient for most cases. However, if you need more flexibility,
