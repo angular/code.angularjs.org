@@ -9190,7 +9190,7 @@ return jQuery;
 }));
 
 /**
- * @license AngularJS v1.4.0-build.3900+sha.1846572
+ * @license AngularJS v1.4.0-build.3901+sha.6a03ca2
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -9249,7 +9249,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.4.0-build.3900+sha.1846572/' +
+    message += '\nhttp://errors.angularjs.org/1.4.0-build.3901+sha.6a03ca2/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -11454,7 +11454,7 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.4.0-build.3900+sha.1846572',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.4.0-build.3901+sha.6a03ca2',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 4,
   dot: 0,
@@ -34348,6 +34348,11 @@ var ngOptionsDirective = ['$compile', '$parse', function($compile, $parse) {
           selectValueMap: selectValueMap,
           getOptionFromViewValue: function(value) {
             return selectValueMap[getTrackByValue(value, getLocals(value))];
+          },
+          getViewValueFromOption: function(option) {
+            // If the viewValue could be an object that may be mutated by the application,
+            // we need to make a copy and not return the reference to the value on the option.
+            return trackBy ? angular.copy(option.viewValue) : option.viewValue;
           }
         };
       }
@@ -34441,7 +34446,7 @@ var ngOptionsDirective = ['$compile', '$parse', function($compile, $parse) {
         if (selectedOption && !selectedOption.disabled) {
           removeEmptyOption();
           removeUnknownOption();
-          return selectedOption.viewValue;
+          return options.getViewValueFromOption(selectedOption);
         }
         return null;
       };
@@ -34475,7 +34480,7 @@ var ngOptionsDirective = ['$compile', '$parse', function($compile, $parse) {
 
           forEach(selectedValues, function(value) {
             var option = options.selectValueMap[value];
-            if (!option.disabled) selections.push(option.viewValue);
+            if (!option.disabled) selections.push(options.getViewValueFromOption(option));
           });
 
           return selections;
@@ -34505,6 +34510,10 @@ var ngOptionsDirective = ['$compile', '$parse', function($compile, $parse) {
 
       // We will re-render the option elements if the option values or labels change
       scope.$watchCollection(ngOptions.getWatchables, updateOptions);
+
+      // We also need to watch to see if the internals of the model changes, since
+      // ngModel only watches for object identity change
+      scope.$watch(attr.ngModel, function() { ngModelCtrl.$render(); }, true);
 
       // ------------------------------------------------------------------ //
 
