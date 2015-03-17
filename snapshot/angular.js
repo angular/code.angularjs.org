@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.4.0-build.3909+sha.d8492f4
+ * @license AngularJS v1.4.0-build.3910+sha.8028315
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -57,7 +57,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.4.0-build.3909+sha.d8492f4/' +
+    message += '\nhttp://errors.angularjs.org/1.4.0-build.3910+sha.8028315/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -2263,7 +2263,7 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.4.0-build.3909+sha.d8492f4',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.4.0-build.3910+sha.8028315',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 4,
   dot: 0,
@@ -7746,13 +7746,15 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
           for (i in elementControllers) {
             controller = elementControllers[i];
             var controllerResult = controller();
-            if (controllerResult !== controller.instance &&
-                controller === controllerForBindings) {
-              // Remove and re-install bindToController bindings
-              thisLinkFn.$$destroyBindings();
-              thisLinkFn.$$destroyBindings =
-                  initializeDirectiveBindings(scope, attrs, controllerResult,
-                                              bindings, scopeDirective);
+            if (controllerResult !== controller.instance) {
+              controller.instance = controllerResult;
+              $element.data('$' + directive.name + 'Controller', controllerResult);
+              if (controller === controllerForBindings) {
+                // Remove and re-install bindToController bindings
+                thisLinkFn.$$destroyBindings();
+                thisLinkFn.$$destroyBindings =
+                  initializeDirectiveBindings(scope, attrs, controllerResult, bindings, scopeDirective);
+              }
             }
           }
         }
