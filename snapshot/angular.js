@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.4.0-build.3910+sha.8028315
+ * @license AngularJS v1.4.0-build.3911+sha.e57138d
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -57,7 +57,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.4.0-build.3910+sha.8028315/' +
+    message += '\nhttp://errors.angularjs.org/1.4.0-build.3911+sha.e57138d/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -2006,6 +2006,18 @@ function setupModuleLoader(window) {
            */
           constant: invokeLater('$provide', 'constant', 'unshift'),
 
+           /**
+           * @ngdoc method
+           * @name angular.Module#decorator
+           * @module ng
+           * @param {string} The name of the service to decorate.
+           * @param {Function} This function will be invoked when the service needs to be
+           *                                    instantiated and should return the decorated service instance.
+           * @description
+           * See {@link auto.$provide#decorator $provide.decorator()}.
+           */
+          decorator: invokeLater('$provide', 'decorator'),
+
           /**
            * @ngdoc method
            * @name angular.Module#animation
@@ -2263,7 +2275,7 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.4.0-build.3910+sha.8028315',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.4.0-build.3911+sha.e57138d',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 4,
   dot: 0,
@@ -25800,8 +25812,8 @@ var ngPluralizeDirective = ['$locale', '$interpolate', '$log', function($locale,
  * <div ng-repeat="(key, value) in myObj"> ... </div>
  * ```
  *
- * You need to be aware that the JavaScript specification does not define what order
- * it will return the keys for an object. (To mitigate this in Angular 1.3 the `ngRepeat` directive
+ * You need to be aware that the JavaScript specification does not define the order of keys
+ * returned for an object. (To mitigate this in Angular 1.3 the `ngRepeat` directive
  * used to sort the keys alphabetically.)
  *
  * Version 1.4 removed the alphabetic sorting. We now rely on the order returned by the browser

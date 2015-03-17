@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.4.0-build.3910+sha.8028315
+ * @license AngularJS v1.4.0-build.3911+sha.e57138d
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -58,7 +58,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.4.0-build.3910+sha.8028315/' +
+    message += '\nhttp://errors.angularjs.org/1.4.0-build.3911+sha.e57138d/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -262,6 +262,18 @@ function setupModuleLoader(window) {
            * See {@link auto.$provide#constant $provide.constant()}.
            */
           constant: invokeLater('$provide', 'constant', 'unshift'),
+
+           /**
+           * @ngdoc method
+           * @name angular.Module#decorator
+           * @module ng
+           * @param {string} The name of the service to decorate.
+           * @param {Function} This function will be invoked when the service needs to be
+           *                                    instantiated and should return the decorated service instance.
+           * @description
+           * See {@link auto.$provide#decorator $provide.decorator()}.
+           */
+          decorator: invokeLater('$provide', 'decorator'),
 
           /**
            * @ngdoc method

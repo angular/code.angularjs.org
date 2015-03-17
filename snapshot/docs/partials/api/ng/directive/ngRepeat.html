@@ -72,8 +72,8 @@ This may be useful when, for instance, nesting ngRepeats.</p>
 syntax:</p>
 <pre><code class="lang-js">&lt;div ng-repeat=&quot;(key, value) in myObj&quot;&gt; ... &lt;/div&gt;
 </code></pre>
-<p>You need to be aware that the JavaScript specification does not define what order
-it will return the keys for an object. (To mitigate this in Angular 1.3 the <code>ngRepeat</code> directive
+<p>You need to be aware that the JavaScript specification does not define the order of keys
+returned for an object. (To mitigate this in Angular 1.3 the <code>ngRepeat</code> directive
 used to sort the keys alphabetically.)</p>
 <p>Version 1.4 removed the alphabetic sorting. We now rely on the order returned by the browser
 when running <code>for key in myObj</code>. It seems that browsers generally follow the strategy of providing
