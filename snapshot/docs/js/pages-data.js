@@ -131,15 +131,85 @@ angular.module('pagesData', [])
     "area": "error",
     "path": "error/$injector/unpr"
   },
+  "error/$interpolate/badexpr": {
+    "name": "badexpr",
+    "area": "error",
+    "path": "error/$interpolate/badexpr"
+  },
+  "error/$interpolate/dupvalue": {
+    "name": "dupvalue",
+    "area": "error",
+    "path": "error/$interpolate/dupvalue"
+  },
   "error/$interpolate/interr": {
     "name": "interr",
     "area": "error",
     "path": "error/$interpolate/interr"
   },
+  "error/$interpolate/logicbug": {
+    "name": "logicbug",
+    "area": "error",
+    "path": "error/$interpolate/logicbug"
+  },
+  "error/$interpolate/nochgmustache": {
+    "name": "nochgmustache",
+    "area": "error",
+    "path": "error/$interpolate/nochgmustache"
+  },
   "error/$interpolate/noconcat": {
     "name": "noconcat",
     "area": "error",
     "path": "error/$interpolate/noconcat"
+  },
+  "error/$interpolate/reqarg": {
+    "name": "reqarg",
+    "area": "error",
+    "path": "error/$interpolate/reqarg"
+  },
+  "error/$interpolate/reqcomma": {
+    "name": "reqcomma",
+    "area": "error",
+    "path": "error/$interpolate/reqcomma"
+  },
+  "error/$interpolate/reqendbrace": {
+    "name": "reqendbrace",
+    "area": "error",
+    "path": "error/$interpolate/reqendbrace"
+  },
+  "error/$interpolate/reqendinterp": {
+    "name": "reqendinterp",
+    "area": "error",
+    "path": "error/$interpolate/reqendinterp"
+  },
+  "error/$interpolate/reqopenbrace": {
+    "name": "reqopenbrace",
+    "area": "error",
+    "path": "error/$interpolate/reqopenbrace"
+  },
+  "error/$interpolate/reqother": {
+    "name": "reqother",
+    "area": "error",
+    "path": "error/$interpolate/reqother"
+  },
+  "error/$interpolate/unknarg": {
+    "name": "unknarg",
+    "area": "error",
+    "path": "error/$interpolate/unknarg"
+  },
+  "error/$interpolate/unsafe": {
+    "name": "unsafe",
+    "area": "error",
+    "path": "error/$interpolate/unsafe"
+  },
+  "error/$interpolate/untermstr": {
+    "name": "untermstr",
+    "area": "error",
+    "path": "error/$interpolate/untermstr"
+  },
+  "error/$interpolate/wantstring": {
+    "name": "wantstring",
+    "area": "error",
+    "path": "error/$interpolate/wantstring"
   },
   "error/$location/ipthprfx": {
     "name": "ipthprfx",
@@ -1470,6 +1540,11 @@ angular.module('pagesData', [])
     "name": "$cookies",
     "area": "api",
     "path": "api/ngCookies/service/$cookies"
+  },
+  "api/$$messageFormat": {
+    "name": "$$messageFormat",
+    "area": "api",
+    "path": "api/$$messageFormat"
   },
   "api/ngMessages": {
     "name": "ngMessages",

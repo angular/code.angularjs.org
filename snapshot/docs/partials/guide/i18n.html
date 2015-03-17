@@ -89,5 +89,92 @@ as expected even when their contents vary greatly in content size.</p>
 application will show different time information depending on the time zone settings of the
 computer that the application is running on. Neither JavaScript nor Angular currently supports
 displaying the date with a timezone specified by the developer.</p>
+<p><a name="MessageFormat"></a></p>
+<h2 id="messageformat-extensions">MessageFormat extensions</h2>
+<p>AngularJS interpolations via <code>$interpolate</code> and in templates
+support an extended syntax based on a subset of the ICU
+MessageFormat that covers plurals and gender selections.</p>
+<p>Please refer to our <a href="https://docs.google.com/a/google.com/document/d/1pbtW2yvtmFBikfRrJd8VAsabiFkKezmYZ_PbgdjQOVU/edit">design doc</a>
+for a lot more details.  You may find it helpful to play with our <a href="http://plnkr.co/edit/QBVRQ70dvKZDWmHW9RyR?p=preview">Plnkr Example</a>.</p>
+<p>You can read more about the ICU MessageFormat syntax at
+<a href="http://userguide.icu-project.org/formatparse/messages#TOC-MessageFormat">Formatting Messages | ICU User Guide</a>.</p>
+<p>This extended syntax is provided by way of the
+<code>ngMessageFormat</code> module that your application can depend
+upon (shipped separately as <code>angular-messageFormat.min.js</code> and
+<code>angular-messageFormat.js</code>.)  A current limitation of the
+<code>ngMessageFormat</code> module, is that it does not support
+redefining the <code>$interpolate</code> start and end symbols. Only the
+default <code>{{</code> and <code>}}</code> are allowed.</p>
+<p>This syntax extension, while based on MessageFormat, has
+been designed to be backwards compatible with existing
+AngularJS interpolation expressions.  The key rule is simply
+this: <strong>All interpolations are done inside double curlies.</strong>
+The top level comma operator after an expression inside the
+double curlies causes MessageFormat extensions to be
+recognized.  Such a top level comma is otherwise illegal in
+an Angular expression and is used by MessageFormat to
+specify the function (such as plural/select) and it&#39;s
+related syntax.</p>
+<p>To understand the extension, take a look at the ICU
+MessageFormat syntax as specified by the ICU documentation.
+Anywhere in that MessageFormat that you have regular message
+text and you want to substitute an expression, just put it
+in double curlies instead of single curlies that
+MessageFormat dictates.  This has a huge advantage.  <strong>You
+are no longer limited to simple identifiers for
+substitutions</strong>.  Because you are using double curlies, you
+can stick in any arbitrary interpolation syntax there,
+including nesting more MessageFormat expressions!  Some
+examples will make this clear.  In the following example, I
+will only be showing you the AngularJS syntax.</p>
+<h3 id="simple-plural-example">Simple plural example</h3>
+<pre><code>{{numMessages, plural,
+      =0 { You have no new messages }
+      =1 { You have one new message }
+   other { You have # new messages }
+}}
+</code></pre>
+<p>While I won&#39;t be teaching you MessageFormat here, you will
+note that the <code>#</code> symbol works as expected.  You could have
+also written it as:</p>
+<pre><code>{{numMessages, plural,
+      =0 { You have no new messages }
+      =1 { You have one new message }
+   other { You have {{numMessages}} new messages }
+}}
+</code></pre>
+<p>where you explicitly typed in <code>numMessages</code> for &quot;other&quot;
+instead of using <code>#</code>.  They are nearly the same except if
+you&#39;re using &quot;offset&quot;.  Refer to the ICU MessageFormat
+documentation to learn about offset.</p>
+<p>Please note that <strong>other</strong> is a <strong>required</strong> category (for
+both the plural syntax and the select syntax that is shown
+later.)</p>
+<h3 id="simple-select-for-gender-example">Simple select (for gender) example</h3>
+<pre><code>{{friendGender, select,
+       male { Invite him }
+     female { Invite her }
+      other { Invite them }
+}}
+</code></pre>
+<h3 id="more-complex-example-that-combines-some-of-these">More complex example that combines some of these</h3>
+<p>This is taken from the <a href="http://plnkr.co/edit/QBVRQ70dvKZDWmHW9RyR?p=preview">plunker example</a> linked to earlier.</p>
+<pre><code>{{recipients.length, plural, offset:1
+    =0 {You ({{sender.name}}) gave no gifts}
+    =1 { {{ recipients[0].gender, select,
+              male {You ({{sender.name}}) gave him ({{recipients[0].name}}) a gift.}
+              female {You ({{sender.name}}) gave her ({{recipients[0].name}}) a gift.}
+              other {You ({{sender.name}}) gave them ({{recipients[0].name}}) a gift.}
+          }}
+       }
+    one { {{ recipients[0].gender, select,
+              male {You ({{sender.name}}) gave him ({{recipients[0].name}}) and one other person a gift.}
+              female {You ({{sender.name}}) gave her ({{recipients[0].name}}) and one other person a gift.}
+              other {You ({{sender.name}}) gave them ({{recipients[0].name}}) and one other person a gift.}
+          }}
+       }
+    other {You ({{sender.name}}) gave {{recipients.length}} people gifts. }
+}}
+</code></pre>
 
 

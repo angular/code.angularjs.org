@@ -916,6 +916,12 @@ angular.module('navData', [])
         ]
       },
       {
+        "name": "ngMessageFormat",
+        "href": "api/$$messageFormat",
+        "type": "group",
+        "navItems": []
+      },
+      {
         "name": "ngMessages",
         "href": "api/ngMessages",
         "type": "group",
@@ -1356,13 +1362,83 @@ angular.module('navData', [])
             "type": "section"
           },
           {
+            "name": "badexpr",
+            "href": "error/$interpolate/badexpr",
+            "type": "error"
+          },
+          {
+            "name": "dupvalue",
+            "href": "error/$interpolate/dupvalue",
+            "type": "error"
+          },
+          {
             "name": "interr",
             "href": "error/$interpolate/interr",
             "type": "error"
           },
           {
+            "name": "logicbug",
+            "href": "error/$interpolate/logicbug",
+            "type": "error"
+          },
+          {
+            "name": "nochgmustache",
+            "href": "error/$interpolate/nochgmustache",
+            "type": "error"
+          },
+          {
             "name": "noconcat",
             "href": "error/$interpolate/noconcat",
+            "type": "error"
+          },
+          {
+            "name": "reqarg",
+            "href": "error/$interpolate/reqarg",
+            "type": "error"
+          },
+          {
+            "name": "reqcomma",
+            "href": "error/$interpolate/reqcomma",
+            "type": "error"
+          },
+          {
+            "name": "reqendbrace",
+            "href": "error/$interpolate/reqendbrace",
+            "type": "error"
+          },
+          {
+            "name": "reqendinterp",
+            "href": "error/$interpolate/reqendinterp",
+            "type": "error"
+          },
+          {
+            "name": "reqopenbrace",
+            "href": "error/$interpolate/reqopenbrace",
+            "type": "error"
+          },
+          {
+            "name": "reqother",
+            "href": "error/$interpolate/reqother",
+            "type": "error"
+          },
+          {
+            "name": "unknarg",
+            "href": "error/$interpolate/unknarg",
+            "type": "error"
+          },
+          {
+            "name": "unsafe",
+            "href": "error/$interpolate/unsafe",
+            "type": "error"
+          },
+          {
+            "name": "untermstr",
+            "href": "error/$interpolate/untermstr",
+            "type": "error"
+          },
+          {
+            "name": "wantstring",
+            "href": "error/$interpolate/wantstring",
             "type": "error"
           },
           {
