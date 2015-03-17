@@ -18,6 +18,12 @@
     "members": ""
   },
   {
+    "path": "error/$compile/baddir",
+    "titleWords": "baddir",
+    "keywords": "$compile baddir be character directive directives error first html invalid is letter lowercase must name not occurs of partials start the this valid when with",
+    "members": ""
+  },
+  {
     "path": "error/$compile/ctreq",
     "titleWords": "ctreq",
     "keywords": "$compile an ancestor and as be but by can compiler comprehensive-directive-api controller ctreq current definition directive directive-definition-object dom element ensure error example expected form found from function html if in is its make missing my-directive myapp mydirective myform name ng ng-model ngmodel no not occurs of on option optionally or partials path prefix present process requested require required requires resolve return some specified specifies specify sure that the then there this to tries typo use used was when with you",

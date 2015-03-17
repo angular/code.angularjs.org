@@ -16,6 +16,11 @@ angular.module('pagesData', [])
     "area": "error",
     "path": "error/$cacheFactory/iid"
   },
+  "error/$compile/baddir": {
+    "name": "baddir",
+    "area": "error",
+    "path": "error/$compile/baddir"
+  },
   "error/$compile/ctreq": {
     "name": "ctreq",
     "area": "error",

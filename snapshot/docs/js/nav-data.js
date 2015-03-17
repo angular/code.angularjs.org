@@ -1221,6 +1221,11 @@ angular.module('navData', [])
             "type": "section"
           },
           {
+            "name": "baddir",
+            "href": "error/$compile/baddir",
+            "type": "error"
+          },
+          {
             "name": "ctreq",
             "href": "error/$compile/ctreq",
             "type": "error"
