@@ -24,5 +24,9 @@
 <input ng-model="style1" placeholder="Type: bold, strike or red"><br>
 <input ng-model="style2" placeholder="Type: bold, strike or red"><br>
 <input ng-model="style3" placeholder="Type: bold, strike or red"><br>
+<hr>
+<p ng-class="[style4, {orange: warning}]">Using Array and Map Syntax</p>
+<input ng-model="style4" placeholder="Type: bold, strike"><br>
+<input type="checkbox" ng-model="warning"> warning (apply "orange" class)
 </body>
 </html>

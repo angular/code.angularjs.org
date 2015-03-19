@@ -27,10 +27,17 @@ it('should let you toggle string example', function() {
 });
 
 it('array example should have 3 classes', function() {
-  expect(ps.last().getAttribute('class')).toBe('');
+  expect(ps.get(2).getAttribute('class')).toBe('');
   element(by.model('style1')).sendKeys('bold');
   element(by.model('style2')).sendKeys('strike');
   element(by.model('style3')).sendKeys('red');
-  expect(ps.last().getAttribute('class')).toBe('bold strike red');
+  expect(ps.get(2).getAttribute('class')).toBe('bold strike red');
+});
+
+it('array with map example should have 2 classes', function() {
+  expect(ps.last().getAttribute('class')).toBe('');
+  element(by.model('style4')).sendKeys('bold');
+  element(by.model('warning')).click();
+  expect(ps.last().getAttribute('class')).toBe('bold orange');
 });
 });

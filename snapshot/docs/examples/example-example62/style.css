@@ -1,9 +1,12 @@
 .strike {
-  text-decoration: line-through;
+    text-decoration: line-through;
 }
 .bold {
     font-weight: bold;
 }
 .red {
     color: red;
+}
+.orange {
+    color: orange;
 }
