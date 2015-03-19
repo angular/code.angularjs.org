@@ -12,15 +12,14 @@
 
   
 </head>
-<body ng-app="form-example2">
-  <div contentEditable="true" ng-model="content" title="Click to edit">Some</div>
-<pre>model = {{content}}</pre>
-
-<style type="text/css">
-  div[contentEditable] {
-    cursor: pointer;
-    background-color: #D0D0D0;
-  }
-</style>
+<body ng-app="form-example-modify-validators">
+  <form name="form" class="css-form" novalidate>
+  <div>
+    Overwritten Email:
+    <input type="email" ng-model="myEmail" overwrite-email name="overwrittenEmail" />
+    <span ng-show="form.overwrittenEmail.$error.email">This email format is invalid!</span><br>
+    Model: {{myEmail}}
+    </div>
+</form>
 </body>
 </html>

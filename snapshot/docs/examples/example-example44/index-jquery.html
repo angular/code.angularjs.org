@@ -12,12 +12,22 @@
 
   
 </head>
-<body ng-app="myServiceModule">
-  <div id="simple" ng-controller="MyController">
-  <p>Let's try this simple notify service, injected into the controller...</p>
-  <input ng-init="message='test'" ng-model="message" >
-  <button ng-click="callNotify(message);">NOTIFY</button>
-  <p>(you have to click 3 times to see an alert)</p>
+<body ng-app="eventExample">
+  <div ng-controller="EventController">
+  Root scope <tt>MyEvent</tt> count: {{count}}
+  <ul>
+    <li ng-repeat="i in [1]" ng-controller="EventController">
+      <button ng-click="$emit('MyEvent')">$emit('MyEvent')</button>
+      <button ng-click="$broadcast('MyEvent')">$broadcast('MyEvent')</button>
+      <br>
+      Middle scope <tt>MyEvent</tt> count: {{count}}
+      <ul>
+        <li ng-repeat="item in [1, 2]" ng-controller="EventController">
+          Leaf scope <tt>MyEvent</tt> count: {{count}}
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 </body>
 </html>

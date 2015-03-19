@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Example - example-example8</title>
-  <link href="app.css" rel="stylesheet" type="text/css">
   
 
   <script src="../../../angular.min.js"></script>
@@ -12,19 +11,12 @@
 
   
 </head>
-<body ng-app="scopeInheritance">
-  <div class="spicy">
-  <div ng-controller="MainController">
-    <p>Good {{timeOfDay}}, {{name}}!</p>
-
-    <div ng-controller="ChildController">
-      <p>Good {{timeOfDay}}, {{name}}!</p>
-
-      <div ng-controller="GrandChildController">
-        <p>Good {{timeOfDay}}, {{name}}!</p>
-      </div>
-    </div>
-  </div>
+<body ng-app="spicyApp2">
+  <div ng-controller="SpicyController">
+ <input ng-model="customSpice">
+ <button ng-click="spicy('chili')">Chili</button>
+ <button ng-click="spicy(customSpice)">Custom spice</button>
+ <p>The food is {{spice}} spicy!</p>
 </div>
 </body>
 </html>

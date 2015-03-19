@@ -3,50 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <title>Example - example-example51</title>
+  <link href="style.css" rel="stylesheet" type="text/css">
   
 
   <script src="../../../angular.min.js"></script>
+  <script src="script.js"></script>
   
 
   
 </head>
-<body ng-app="compileExample">
-  <script>
-  angular.module('compileExample', [], function($compileProvider) {
-    // configure new 'compile' directive by passing a directive
-    // factory function. The factory function injects the '$compile'
-    $compileProvider.directive('compile', function($compile) {
-      // directive factory creates a link function
-      return function(scope, element, attrs) {
-        scope.$watch(
-          function(scope) {
-             // watch the 'compile' expression for changes
-            return scope.$eval(attrs.compile);
-          },
-          function(value) {
-            // when the 'compile' expression changes
-            // assign it into the current DOM
-            element.html(value);
+<body ng-app="cacheExampleApp">
+  <div ng-controller="CacheController">
+  <input ng-model="newCacheKey" placeholder="Key">
+  <input ng-model="newCacheValue" placeholder="Value">
+  <button ng-click="put(newCacheKey, newCacheValue)">Cache</button>
 
-            // compile the new DOM and link it to the current
-            // scope.
-            // NOTE: we only compile .childNodes so that
-            // we don't get into infinite loop compiling ourselves
-            $compile(element.contents())(scope);
-          }
-        );
-      };
-    });
-  })
-  .controller('GreeterController', ['$scope', function($scope) {
-    $scope.name = 'Angular';
-    $scope.html = 'Hello {{name}}';
-  }]);
-</script>
-<div ng-controller="GreeterController">
-  <input ng-model="name"> <br>
-  <textarea ng-model="html"></textarea> <br>
-  <div compile="html"></div>
+  <p ng-if="keys.length">Cached Values</p>
+  <div ng-repeat="key in keys">
+    <span ng-bind="key"></span>
+    <span>: </span>
+    <b ng-bind="cache.get(key)"></b>
+  </div>
+
+  <p>Cache Info</p>
+  <div ng-repeat="(key, value) in cache.info()">
+    <span ng-bind="key"></span>
+    <span>: </span>
+    <b ng-bind="value"></b>
+  </div>
 </div>
 </body>
 </html>

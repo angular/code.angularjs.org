@@ -11,11 +11,15 @@
 
   
 </head>
-<body >
-  <div ng-app="myApp">
-  <div>
-    {{ 'World' | greet }}
-  </div>
-</div>
+<body ng-app="form-example2">
+  <div contentEditable="true" ng-model="content" title="Click to edit">Some</div>
+<pre>model = {{content}}</pre>
+
+<style type="text/css">
+  div[contentEditable] {
+    cursor: pointer;
+    background-color: #D0D0D0;
+  }
+</style>
 </body>
 </html>

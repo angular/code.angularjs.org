@@ -1,23 +1,15 @@
 (function(angular) {
   'use strict';
-angular.module('anchorScrollOffsetExample', [])
-  .run(['$anchorScroll', function($anchorScroll) {
-    $anchorScroll.yOffset = 50;   // always scroll by 50 extra pixels
-  }])
-  .controller('headerCtrl', ['$anchorScroll', '$location', '$scope',
-    function ($anchorScroll, $location, $scope) {
-      $scope.gotoAnchor = function(x) {
-        var newHash = 'anchor' + x;
-        if ($location.hash() !== newHash) {
-          // set the $location.hash to `newHash` and
-          // $anchorScroll will automatically scroll to it
-          $location.hash('anchor' + x);
-        } else {
-          // call $anchorScroll() explicitly,
-          // since $location.hash hasn't changed
-          $anchorScroll();
-        }
+angular.module('anchorScrollExample', [])
+  .controller('ScrollController', ['$scope', '$location', '$anchorScroll',
+    function ($scope, $location, $anchorScroll) {
+      $scope.gotoBottom = function() {
+        // set the location.hash to the id of
+        // the element you wish to scroll to.
+        $location.hash('bottom');
+
+        // call $anchorScroll()
+        $anchorScroll();
       };
-    }
-  ]);
+    }]);
 })(window.angular);

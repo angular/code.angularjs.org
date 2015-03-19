@@ -12,9 +12,11 @@
   
 </head>
 <body ng-app="">
-  <button ng-dblclick="count = count + 1" ng-init="count=0">
-  Increment (on double click)
+  <button ng-click="count = count + 1" ng-init="count=0">
+  Increment
 </button>
-count: {{count}}
+<span>
+  count: {{count}}
+</span>
 </body>
 </html>

@@ -3,22 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <title>Example - example-example9-debug</title>
+  <link href="app.css" rel="stylesheet" type="text/css">
   
 
   <script src="../../../angular.js"></script>
-  <script src="script.js"></script>
+  <script src="app.js"></script>
   
 
   
 </head>
-<body ng-app="docsBindExample">
-  <div ng-controller="Controller">
-  Hello <input ng-model='name'> <hr/>
-  <span ng-bind="name"></span> <br/>
-  <span ng:bind="name"></span> <br/>
-  <span ng_bind="name"></span> <br/>
-  <span data-ng-bind="name"></span> <br/>
-  <span x-ng-bind="name"></span> <br/>
+<body ng-app="scopeInheritance">
+  <div class="spicy">
+  <div ng-controller="MainController">
+    <p>Good {{timeOfDay}}, {{name}}!</p>
+
+    <div ng-controller="ChildController">
+      <p>Good {{timeOfDay}}, {{name}}!</p>
+
+      <div ng-controller="GrandChildController">
+        <p>Good {{timeOfDay}}, {{name}}!</p>
+      </div>
+    </div>
+  </div>
 </div>
 </body>
 </html>

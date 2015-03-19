@@ -6,15 +6,22 @@
   
 
   <script src="../../../angular.js"></script>
-  <script src="../../../angular-sanitize.js"></script>
-  <script src="script.js"></script>
   
 
   
 </head>
-<body ng-app="bindHtmlExample">
-  <div ng-controller="ExampleController">
- <p ng-bind-html="myHTML"></p>
+<body ng-app="bindExample">
+  <script>
+  angular.module('bindExample', [])
+    .controller('ExampleController', ['$scope', function($scope) {
+      $scope.salutation = 'Hello';
+      $scope.name = 'World';
+    }]);
+</script>
+<div ng-controller="ExampleController">
+ Salutation: <input type="text" ng-model="salutation"><br>
+ Name: <input type="text" ng-model="name"><br>
+ <pre ng-bind-template="{{salutation}} {{name}}!"></pre>
 </div>
 </body>
 </html>

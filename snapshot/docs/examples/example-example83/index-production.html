@@ -8,21 +8,15 @@
 
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.6/angular.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.6/angular-animate.js"></script>
-  <script src="script.js"></script>
   
 
   
 </head>
-<body ng-app="includeExample">
-  <div ng-controller="ExampleController">
-  <select ng-model="template" ng-options="t.name for t in templates">
-   <option value="">(blank)</option>
-  </select>
-  url of the template: <code>{{template.url}}</code>
-  <hr/>
-  <div class="slide-animate-container">
-    <div class="slide-animate" ng-include="template.url"></div>
-  </div>
-</div>
+<body ng-app="ngAnimate">
+  Click me: <input type="checkbox" ng-model="checked" ng-init="checked=true" /><br/>
+Show when checked:
+<span ng-if="checked" class="animate-if">
+  This is removed when the checkbox is unchecked.
+</span>
 </body>
 </html>

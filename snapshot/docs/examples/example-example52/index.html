@@ -10,13 +10,43 @@
 
   
 </head>
-<body ng-app="">
-  <input ng-model="value" /><br />
-<a id="link-1" href ng-click="value = 1">link 1</a> (link, don't reload)<br />
-<a id="link-2" href="" ng-click="value = 2">link 2</a> (link, don't reload)<br />
-<a id="link-3" ng-href="/{{'123'}}">link 3</a> (link, reload!)<br />
-<a id="link-4" href="" name="xx" ng-click="value = 4">anchor</a> (link, don't reload)<br />
-<a id="link-5" name="xxx" ng-click="value = 5">anchor</a> (no link)<br />
-<a id="link-6" ng-href="{{value}}">link</a> (link, change location)
+<body ng-app="compileExample">
+  <script>
+  angular.module('compileExample', [], function($compileProvider) {
+    // configure new 'compile' directive by passing a directive
+    // factory function. The factory function injects the '$compile'
+    $compileProvider.directive('compile', function($compile) {
+      // directive factory creates a link function
+      return function(scope, element, attrs) {
+        scope.$watch(
+          function(scope) {
+             // watch the 'compile' expression for changes
+            return scope.$eval(attrs.compile);
+          },
+          function(value) {
+            // when the 'compile' expression changes
+            // assign it into the current DOM
+            element.html(value);
+
+            // compile the new DOM and link it to the current
+            // scope.
+            // NOTE: we only compile .childNodes so that
+            // we don't get into infinite loop compiling ourselves
+            $compile(element.contents())(scope);
+          }
+        );
+      };
+    });
+  })
+  .controller('GreeterController', ['$scope', function($scope) {
+    $scope.name = 'Angular';
+    $scope.html = 'Hello {{name}}';
+  }]);
+</script>
+<div ng-controller="GreeterController">
+  <input ng-model="name"> <br>
+  <textarea ng-model="html"></textarea> <br>
+  <div compile="html"></div>
+</div>
 </body>
 </html>

@@ -1712,6 +1712,11 @@ angular.module('navData', [])
             "type": "error"
           },
           {
+            "name": "numfmt",
+            "href": "error/ngModel/numfmt",
+            "type": "error"
+          },
+          {
             "name": "ngOptions",
             "href": "error/ngOptions",
             "type": "section"

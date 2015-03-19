@@ -1,3 +1,3 @@
 it('should add Hello to the name', function() {
-  expect(element(by.binding("greeting")).getText()).toEqual('Bonjour World!');
+  expect(element(by.binding("'World' | greet")).getText()).toEqual('Hello, World!');
 });

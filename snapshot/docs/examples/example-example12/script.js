@@ -9,9 +9,7 @@ angular.module('docsTemplateUrlDirective', [])
   }])
   .directive('myCustomer', function() {
     return {
-      templateUrl: function(elem, attr){
-        return 'customer-'+attr.type+'.html';
-      }
+      templateUrl: 'my-customer.html'
     };
   });
 })(window.angular);

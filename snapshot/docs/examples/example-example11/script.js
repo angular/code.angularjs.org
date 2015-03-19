@@ -1,6 +1,6 @@
 (function(angular) {
   'use strict';
-angular.module('docsTemplateUrlDirective', [])
+angular.module('docsSimpleDirective', [])
   .controller('Controller', ['$scope', function($scope) {
     $scope.customer = {
       name: 'Naomi',
@@ -9,7 +9,7 @@ angular.module('docsTemplateUrlDirective', [])
   }])
   .directive('myCustomer', function() {
     return {
-      templateUrl: 'my-customer.html'
+      template: 'Name: {{customer.name}} Address: {{customer.address}}'
     };
   });
 })(window.angular);

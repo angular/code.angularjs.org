@@ -12,25 +12,14 @@
 
   
 </head>
-<body ng-app="cacheExampleApp">
-  <div ng-controller="CacheController">
-  <input ng-model="newCacheKey" placeholder="Key">
-  <input ng-model="newCacheValue" placeholder="Value">
-  <button ng-click="put(newCacheKey, newCacheValue)">Cache</button>
-
-  <p ng-if="keys.length">Cached Values</p>
-  <div ng-repeat="key in keys">
-    <span ng-bind="key"></span>
-    <span>: </span>
-    <b ng-bind="cache.get(key)"></b>
-  </div>
-
-  <p>Cache Info</p>
-  <div ng-repeat="(key, value) in cache.info()">
-    <span ng-bind="key"></span>
-    <span>: </span>
-    <b ng-bind="value"></b>
-  </div>
+<body ng-app="anchorScrollOffsetExample">
+  <div class="fixed-header" ng-controller="headerCtrl">
+  <a href="" ng-click="gotoAnchor(x)" ng-repeat="x in [1,2,3,4,5]">
+    Go to anchor {{x}}
+  </a>
+</div>
+<div id="anchor{{x}}" class="anchor" ng-repeat="x in [1,2,3,4,5]">
+  Anchor {{x}} of 5
 </div>
 </body>
 </html>

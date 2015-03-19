@@ -20,21 +20,16 @@
            {name:'Mike', phone:'555-4321', age:21},
            {name:'Adam', phone:'555-5678', age:35},
            {name:'Julie', phone:'555-8765', age:29}];
-      $scope.predicate = '-age';
     }]);
 </script>
 <div ng-controller="ExampleController">
-  <pre>Sorting predicate = {{predicate}}; reverse = {{reverse}}</pre>
-  <hr/>
-  [ <a href="" ng-click="predicate=''">unsorted</a> ]
   <table class="friend">
     <tr>
-      <th><a href="" ng-click="predicate = 'name'; reverse=false">Name</a>
-          (<a href="" ng-click="predicate = '-name'; reverse=false">^</a>)</th>
-      <th><a href="" ng-click="predicate = 'phone'; reverse=!reverse">Phone Number</a></th>
-      <th><a href="" ng-click="predicate = 'age'; reverse=!reverse">Age</a></th>
+      <th>Name</th>
+      <th>Phone Number</th>
+      <th>Age</th>
     </tr>
-    <tr ng-repeat="friend in friends | orderBy:predicate:reverse">
+    <tr ng-repeat="friend in friends | orderBy:'-age'">
       <td>{{friend.name}}</td>
       <td>{{friend.phone}}</td>
       <td>{{friend.age}}</td>

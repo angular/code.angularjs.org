@@ -1,43 +1,39 @@
 (function(angular) {
   'use strict';
-angular.module('docsTabsExample', [])
-  .directive('myTabs', function() {
-    return {
-      restrict: 'E',
-      transclude: true,
-      scope: {},
-      controller: function($scope) {
-        var panes = $scope.panes = [];
+angular.module('dragModule', [])
+  .directive('myDraggable', ['$document', function($document) {
+    return function(scope, element, attr) {
+      var startX = 0, startY = 0, x = 0, y = 0;
 
-        $scope.select = function(pane) {
-          angular.forEach(panes, function(pane) {
-            pane.selected = false;
-          });
-          pane.selected = true;
-        };
+      element.css({
+       position: 'relative',
+       border: '1px solid red',
+       backgroundColor: 'lightgrey',
+       cursor: 'pointer'
+      });
 
-        this.addPane = function(pane) {
-          if (panes.length === 0) {
-            $scope.select(pane);
-          }
-          panes.push(pane);
-        };
-      },
-      templateUrl: 'my-tabs.html'
+      element.on('mousedown', function(event) {
+        // Prevent default dragging of selected content
+        event.preventDefault();
+        startX = event.pageX - x;
+        startY = event.pageY - y;
+        $document.on('mousemove', mousemove);
+        $document.on('mouseup', mouseup);
+      });
+
+      function mousemove(event) {
+        y = event.pageY - startY;
+        x = event.pageX - startX;
+        element.css({
+          top: y + 'px',
+          left:  x + 'px'
+        });
+      }
+
+      function mouseup() {
+        $document.off('mousemove', mousemove);
+        $document.off('mouseup', mouseup);
+      }
     };
-  })
-  .directive('myPane', function() {
-    return {
-      require: '^myTabs',
-      restrict: 'E',
-      transclude: true,
-      scope: {
-        title: '@'
-      },
-      link: function(scope, element, attrs, tabsCtrl) {
-        tabsCtrl.addPane(scope);
-      },
-      templateUrl: 'my-pane.html'
-    };
-  });
+  }]);
 })(window.angular);

@@ -22,8 +22,11 @@
 <div class="api-profile-description">
   <p>Text input with number validation and transformation. Sets the <code>number</code> validation
 error if not a valid number.</p>
-<p>The model must always be a number, otherwise Angular will throw an error.</p>
-
+<div class="alert alert-warning">
+The model must always be of type <code>number</code> otherwise Angular will throw an error.
+Be aware that a string containing a number is not enough. See the <a href="error/ngModel/numfmt"><code>numfmt</code></a>
+error docs for more information and an example of how to convert your model if necessary.
+</div>
 </div>
 
 

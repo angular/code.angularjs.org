@@ -5,12 +5,23 @@ describe("", function() {
     browser.get("build/docs/examples/example-example59/index.html");
   });
   
-it('should check ng-bind', function() {
-  var nameInput = element(by.model('name'));
+it('should initialize to model', function() {
+  var userType = element(by.binding('userType'));
+  var valid = element(by.binding('myForm.input.$valid'));
 
-  expect(element(by.binding('name')).getText()).toBe('Whirled');
-  nameInput.clear();
-  nameInput.sendKeys('world');
-  expect(element(by.binding('name')).getText()).toBe('world');
+  expect(userType.getText()).toContain('guest');
+  expect(valid.getText()).toContain('true');
+});
+
+it('should be invalid if empty', function() {
+  var userType = element(by.binding('userType'));
+  var valid = element(by.binding('myForm.input.$valid'));
+  var userInput = element(by.model('userType'));
+
+  userInput.clear();
+  userInput.sendKeys('');
+
+  expect(userType.getText()).toEqual('userType =');
+  expect(valid.getText()).toContain('false');
 });
 });

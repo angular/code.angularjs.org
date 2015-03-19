@@ -11,7 +11,7 @@
   
 </head>
 <body ng-app="">
-  Check me to make text readonly: <input type="checkbox" ng-model="checked"><br/>
-<input type="text" ng-readonly="checked" value="I'm Angular"/>
+  Check me to check both: <input type="checkbox" ng-model="master"><br/>
+<input id="checkSlave" type="checkbox" ng-checked="master">
 </body>
 </html>

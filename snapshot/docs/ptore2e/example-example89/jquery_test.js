@@ -5,24 +5,49 @@ describe("", function() {
     browser.get("build/docs/examples/example-example89/index-jquery.html");
   });
   
-var friends = element.all(by.repeater('friend in friends'));
+it('should show correct pluralized string', function() {
+  var withoutOffset = element.all(by.css('ng-pluralize')).get(0);
+  var withOffset = element.all(by.css('ng-pluralize')).get(1);
+  var countInput = element(by.model('personCount'));
 
-it('should render initial data set', function() {
-  expect(friends.count()).toBe(10);
-  expect(friends.get(0).getText()).toEqual('[1] John who is 25 years old.');
-  expect(friends.get(1).getText()).toEqual('[2] Jessie who is 30 years old.');
-  expect(friends.last().getText()).toEqual('[10] Samantha who is 60 years old.');
-  expect(element(by.binding('friends.length')).getText())
-      .toMatch("I have 10 friends. They are:");
+  expect(withoutOffset.getText()).toEqual('1 person is viewing.');
+  expect(withOffset.getText()).toEqual('Igor is viewing.');
+
+  countInput.clear();
+  countInput.sendKeys('0');
+
+  expect(withoutOffset.getText()).toEqual('Nobody is viewing.');
+  expect(withOffset.getText()).toEqual('Nobody is viewing.');
+
+  countInput.clear();
+  countInput.sendKeys('2');
+
+  expect(withoutOffset.getText()).toEqual('2 people are viewing.');
+  expect(withOffset.getText()).toEqual('Igor and Misko are viewing.');
+
+  countInput.clear();
+  countInput.sendKeys('3');
+
+  expect(withoutOffset.getText()).toEqual('3 people are viewing.');
+  expect(withOffset.getText()).toEqual('Igor, Misko and one other person are viewing.');
+
+  countInput.clear();
+  countInput.sendKeys('4');
+
+  expect(withoutOffset.getText()).toEqual('4 people are viewing.');
+  expect(withOffset.getText()).toEqual('Igor, Misko and 2 other people are viewing.');
 });
-
- it('should update repeater when filter predicate changes', function() {
-   expect(friends.count()).toBe(10);
-
-   element(by.model('q')).sendKeys('ma');
-
-   expect(friends.count()).toBe(2);
-   expect(friends.get(0).getText()).toEqual('[1] Mary who is 28 years old.');
-   expect(friends.last().getText()).toEqual('[2] Samantha who is 60 years old.');
- });
+it('should show data-bound names', function() {
+  var withOffset = element.all(by.css('ng-pluralize')).get(1);
+  var personCount = element(by.model('personCount'));
+  var person1 = element(by.model('person1'));
+  var person2 = element(by.model('person2'));
+  personCount.clear();
+  personCount.sendKeys('4');
+  person1.clear();
+  person1.sendKeys('Di');
+  person2.clear();
+  person2.sendKeys('Vojta');
+  expect(withOffset.getText()).toEqual('Di, Vojta and 2 other people are viewing.');
+});
 });

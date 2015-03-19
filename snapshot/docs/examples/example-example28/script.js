@@ -1,15 +1,15 @@
 (function(angular) {
   'use strict';
-angular.module('FilterInControllerModule', []).
-  controller('FilterController', ['filterFilter', function(filterFilter) {
-    this.array = [
-      {name: 'Tobias'},
-      {name: 'Jeff'},
-      {name: 'Brian'},
-      {name: 'Igor'},
-      {name: 'James'},
-      {name: 'Brad'}
-    ];
-    this.filteredArray = filterFilter(this.array, 'a');
+angular.module('oneTimeBidingExampleApp', []).
+  controller('EventController', ['$scope', function($scope) {
+    var counter = 0;
+    var names = ['Igor', 'Misko', 'Chirayu', 'Lucas'];
+    /*
+     * expose the event object to the scope
+     */
+    $scope.clickMe = function(clickEvent) {
+      $scope.name = names[counter % names.length];
+      counter++;
+    };
   }]);
 })(window.angular);

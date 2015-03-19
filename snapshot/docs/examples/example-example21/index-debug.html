@@ -11,7 +11,12 @@
 
   
 </head>
-<body ng-app="dragModule">
-  <span my-draggable>Drag ME</span>
+<body ng-app="docsIsoFnBindExample">
+  <div ng-controller="Controller">
+  {{message}}
+  <my-dialog ng-hide="dialogIsHidden" on-close="hideDialog(message)">
+    Check out the contents, {{name}}!
+  </my-dialog>
+</div>
 </body>
 </html>
