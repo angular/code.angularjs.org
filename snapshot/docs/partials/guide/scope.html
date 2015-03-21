@@ -230,7 +230,7 @@ of the <code>$watch</code> expressions and compares them with the previous value
 asynchronously. This means that assignment such as <code>$scope.username=&quot;angular&quot;</code> will not
 immediately cause a <code>$watch</code> to be notified, instead the <code>$watch</code> notification is delayed until
 the <code>$digest</code> phase. This delay is desirable, since it coalesces multiple model updates into one
-<code>$watch</code> notification as well as it guarantees that during the <code>$watch</code> notification no other
+<code>$watch</code> notification as well as guarantees that during the <code>$watch</code> notification no other
 <code>$watch</code>es are running. If a <code>$watch</code> changes the value of the model, it will force additional
 <code>$digest</code> cycle.</p>
 <ol>
