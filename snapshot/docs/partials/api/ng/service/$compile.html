@@ -58,6 +58,7 @@ myModule.directive(&#39;directiveName&#39;, function factory(injectables) {
     scope: false,
     controller: function($scope, $element, $attrs, $transclude, otherInjectables) { ... },
     controllerAs: &#39;stringIdentifier&#39;,
+    bindToController: false,
     require: &#39;siblingDirectiveName&#39;, // or // [&#39;^parentDirectiveName&#39;, &#39;?optionalDirectiveName&#39;, &#39;?^optionalParent&#39;],
     compile: function compile(tElement, tAttrs, transclude) {
       return {
@@ -343,9 +344,16 @@ already been linked.</p>
 <li><p><code>iAttrs</code> - instance attributes - Normalized list of attributes declared on this element shared
 between all directive linking functions.</p>
 </li>
-<li><p><code>controller</code> - a controller instance - A controller instance if at least one directive on the
-element defines a controller. The controller is shared among all the directives, which allows
-the directives to use the controllers as a communication channel.</p>
+<li><p><code>controller</code> - the directive&#39;s required controller instance(s) - Instances are shared
+among all directives, which allows the directives to use the controllers as a communication
+channel. The exact value depends on the directive&#39;s <code>require</code> property:</p>
+<ul>
+<li><code>string</code>: the controller instance</li>
+<li><code>array</code>: array of controller instances</li>
+<li>no controller(s) required: <code>undefined</code></li>
+</ul>
+<p>If a required controller cannot be found, and it is optional, the instance is <code>null</code>,
+otherwise the <a href="error/$compile/ctreq">Missing Required Controller</a> error is thrown.</p>
 </li>
 <li><p><code>transcludeFn</code> - A transclude linking function pre-bound to the correct transclusion scope.
 This is the same as the <code>$transclude</code>
