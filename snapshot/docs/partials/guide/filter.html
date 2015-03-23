@@ -76,8 +76,10 @@ function.</p>
 means that it should be stateless and idempotent. Angular relies on these properties and executes
 the filter only when the inputs to the function change.</p>
 <div class="alert alert-warning">
-<strong>Note:</strong> filter names must be valid angular expression identifiers, such as <code>uppercase</code> or <code>orderBy</code>.
-Names with special characters, such as hyphens and dots, are not allowed.
+<strong>Note:</strong> Filter names must be valid angular <a href="guide/expression"><code>Expressions</code></a> identifiers, such as <code>uppercase</code> or <code>orderBy</code>.
+Names with special characters, such as hyphens and dots, are not allowed.  If you wish to namespace
+your filters, then you can use capitalization (<code>myappSubsectionFilterx</code>) or underscores
+(<code>myapp_subsection_filterx</code>).
 </div>
 
 <p>The following sample filter reverses a text string. In addition, it conditionally makes the

@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.4.0-build.3925+sha.afd0807
+ * @license AngularJS v1.4.0-build.3927+sha.67af519
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -58,7 +58,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.4.0-build.3925+sha.afd0807/' +
+    message += '\nhttp://errors.angularjs.org/1.4.0-build.3927+sha.67af519/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -313,10 +313,17 @@ function setupModuleLoader(window) {
            * @ngdoc method
            * @name angular.Module#filter
            * @module ng
-           * @param {string} name Filter name.
+           * @param {string} name Filter name - this must be a valid angular expression identifier
            * @param {Function} filterFactory Factory function for creating new instance of filter.
            * @description
            * See {@link ng.$filterProvider#register $filterProvider.register()}.
+           *
+           * <div class="alert alert-warning">
+           * **Note:** Filter names must be valid angular {@link expression} identifiers, such as `uppercase` or `orderBy`.
+           * Names with special characters, such as hyphens and dots, are not allowed. If you wish to namespace
+           * your filters, then you can use capitalization (`myappSubsectionFilterx`) or underscores
+           * (`myapp_subsection_filterx`).
+           * </div>
            */
           filter: invokeLater('$filterProvider', 'register'),
 
