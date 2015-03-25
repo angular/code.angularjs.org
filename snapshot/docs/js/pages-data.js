@@ -1546,10 +1546,15 @@ angular.module('pagesData', [])
     "area": "api",
     "path": "api/ngCookies/service/$cookies"
   },
-  "api/$$messageFormat": {
+  "api/ngMessageFormat/service/$$messageFormat": {
     "name": "$$messageFormat",
     "area": "api",
-    "path": "api/$$messageFormat"
+    "path": "api/ngMessageFormat/service/$$messageFormat"
+  },
+  "api/ngMessageFormat": {
+    "name": "ngMessageFormat",
+    "area": "api",
+    "path": "api/ngMessageFormat"
   },
   "api/ngMessages": {
     "name": "ngMessages",
@@ -2472,6 +2477,11 @@ angular.module('pagesData', [])
     "name": "provider components in ngCookies",
     "area": "api",
     "path": "api/ngCookies/provider"
+  },
+  "api/ngMessageFormat/service": {
+    "name": "service components in ngMessageFormat",
+    "area": "api",
+    "path": "api/ngMessageFormat/service"
   },
   "api/ngMessages/directive": {
     "name": "directive components in ngMessages",

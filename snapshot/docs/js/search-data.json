@@ -1854,9 +1854,15 @@
     "members": "get getall getobject put putobject remove"
   },
   {
-    "path": "api/$$messageFormat",
+    "path": "api/ngMessageFormat/service/$$messageFormat",
     "titleWords": "$$messageFormat",
     "keywords": "angular api com expressions extensions for google html https in information internal interpolation messageformat module more ngmessageformat partials recognize see service to",
+    "members": ""
+  },
+  {
+    "path": "api/ngMessageFormat",
+    "titleWords": "ngMessageFormat messageformat",
+    "keywords": "angular-messageformat api html js module ngmessageformat partials",
     "members": ""
   },
   {
@@ -2295,6 +2301,12 @@
     "path": "api/ngCookies/provider",
     "titleWords": "provider components in ngCookies cookies",
     "keywords": "api componentgroup components html in module ngcookies partials provider",
+    "members": ""
+  },
+  {
+    "path": "api/ngMessageFormat/service",
+    "titleWords": "service components in ngMessageFormat messageformat",
+    "keywords": "api componentgroup components html in module ngmessageformat partials service",
     "members": ""
   },
   {

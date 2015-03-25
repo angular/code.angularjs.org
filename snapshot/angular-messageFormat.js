@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.4.0-build.3931+sha.b2b3360
+ * @license AngularJS v1.4.0-build.3932+sha.4ba43d2
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -861,7 +861,7 @@ MessageFormatParser.prototype.ruleInAngularExpression = function ruleInAngularEx
 /* global stringify: false */
 
 /**
- * @ngdoc module
+ * @ngdoc service
  * @name $$messageFormat
  *
  * @description
@@ -869,34 +869,32 @@ MessageFormatParser.prototype.ruleInAngularExpression = function ruleInAngularEx
  * For more information, see:
  * https://docs.google.com/a/google.com/document/d/1pbtW2yvtmFBikfRrJd8VAsabiFkKezmYZ_PbgdjQOVU/edit
  */
-function $$MessageFormatProvider() {
-  this['$get'] = ['$parse', '$locale', '$sce', '$exceptionHandler', function $get(
+var $$MessageFormatFactory = ['$parse', '$locale', '$sce', '$exceptionHandler', function $$messageFormat(
                    $parse,   $locale,   $sce,   $exceptionHandler) {
 
-    function getStringifier(trustedContext, allOrNothing, text) {
-      return function stringifier(value) {
-        try {
-          value = trustedContext ? $sce['getTrusted'](trustedContext, value) : $sce['valueOf'](value);
-          return allOrNothing && (value === void 0) ? value : stringify(value);
-        } catch (err) {
-          $exceptionHandler($interpolateMinErr['interr'](text, err));
-        }
-      };
-    }
-
-    function interpolate(text, mustHaveExpression, trustedContext, allOrNothing) {
-      var stringifier = getStringifier(trustedContext, allOrNothing, text);
-      var parser = new MessageFormatParser(text, 0, $parse, $locale['pluralCat'], stringifier,
-                                           mustHaveExpression, trustedContext, allOrNothing);
-      parser.run(parser.ruleInterpolate);
-      return parser.parsedFn;
-    }
-
-    return {
-      'interpolate': interpolate
+  function getStringifier(trustedContext, allOrNothing, text) {
+    return function stringifier(value) {
+      try {
+        value = trustedContext ? $sce['getTrusted'](trustedContext, value) : $sce['valueOf'](value);
+        return allOrNothing && (value === void 0) ? value : stringify(value);
+      } catch (err) {
+        $exceptionHandler($interpolateMinErr['interr'](text, err));
+      }
     };
-  }];
-}
+  }
+
+  function interpolate(text, mustHaveExpression, trustedContext, allOrNothing) {
+    var stringifier = getStringifier(trustedContext, allOrNothing, text);
+    var parser = new MessageFormatParser(text, 0, $parse, $locale['pluralCat'], stringifier,
+                                         mustHaveExpression, trustedContext, allOrNothing);
+    parser.run(parser.ruleInterpolate);
+    return parser.parsedFn;
+  }
+
+  return {
+    'interpolate': interpolate
+  };
+}];
 
 var $$interpolateDecorator = ['$$messageFormat', '$delegate', function $$interpolateDecorator($$messageFormat, $interpolate) {
   if ($interpolate['startSymbol']() != "{{" || $interpolate['endSymbol']() != "}}") {
@@ -908,9 +906,14 @@ var $$interpolateDecorator = ['$$messageFormat', '$delegate', function $$interpo
   return interpolate;
 }];
 
-// define ngMessageFormat module and register $$MessageFormat service
+
+/**
+ * @ngdoc module
+ * @name ngMessageFormat
+ * @description
+ */
 var module = angular['module']('ngMessageFormat', ['ng']);
-module['provider']('$$messageFormat', $$MessageFormatProvider);
+module['factory']('$$messageFormat', $$MessageFormatFactory);
 module['config'](['$provide', function($provide) {
   $provide['decorator']('$interpolate', $$interpolateDecorator);
 }]);
