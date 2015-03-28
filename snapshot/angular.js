@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.4.0-build.3934+sha.7e5c447
+ * @license AngularJS v1.4.0-build.3935+sha.ed9ee47
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -57,7 +57,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.4.0-build.3934+sha.7e5c447/' +
+    message += '\nhttp://errors.angularjs.org/1.4.0-build.3935+sha.ed9ee47/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -2282,7 +2282,7 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.4.0-build.3934+sha.7e5c447',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.4.0-build.3935+sha.ed9ee47',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 4,
   dot: 0,
@@ -6589,7 +6589,6 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
     if (!letter || letter !== lowercase(letter)) {
       throw $compileMinErr('baddir', "Directive name '{0}' is invalid. The first character must be a lowercase letter", name);
     }
-    return name;
   }
 
   /**
