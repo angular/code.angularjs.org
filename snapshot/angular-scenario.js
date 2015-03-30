@@ -9190,7 +9190,7 @@ return jQuery;
 }));
 
 /**
- * @license AngularJS v1.4.0-build.3936+sha.73f3515
+ * @license AngularJS v1.4.0-build.3937+sha.171b9f7
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -9249,7 +9249,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.4.0-build.3936+sha.73f3515/' +
+    message += '\nhttp://errors.angularjs.org/1.4.0-build.3937+sha.171b9f7/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -11474,7 +11474,7 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.4.0-build.3936+sha.73f3515',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.4.0-build.3937+sha.171b9f7',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 4,
   dot: 0,
@@ -34176,8 +34176,9 @@ var ngOptionsMinErr = minErr('ngOptions');
  * option. See example below for demonstration.
  *
  * <div class="alert alert-warning">
- * **Note:** `ngModel` compares by reference, not value. This is important when binding to an
- * array of objects. See an example [in this jsfiddle](http://jsfiddle.net/qWzTb/).
+ * **Note:** By default, `ngModel` compares by reference, not value. This is important when binding to an
+ * array of objects. See an example [in this jsfiddle](http://jsfiddle.net/qWzTb/). When using `track by`
+ * in an `ngOptions` expression, however, deep equality checks will be performed.
  * </div>
  *
  * ## `select` **`as`**
@@ -34419,6 +34420,7 @@ var ngOptionsDirective = ['$compile', '$parse', function($compile, $parse) {
     }
 
     return {
+      trackBy: trackBy,
       getWatchables: $parse(valuesFn, function(values) {
         // Create a collection of things that we would like to watch (watchedArray)
         // so that they can all be watched using a single $watchCollection
@@ -34644,8 +34646,9 @@ var ngOptionsDirective = ['$compile', '$parse', function($compile, $parse) {
 
       // We also need to watch to see if the internals of the model changes, since
       // ngModel only watches for object identity change
-      scope.$watch(attr.ngModel, function() { ngModelCtrl.$render(); }, true);
-
+      if (ngOptions.trackBy) {
+        scope.$watch(attr.ngModel, function() { ngModelCtrl.$render(); }, true);
+      }
       // ------------------------------------------------------------------ //
 
 
@@ -34787,10 +34790,13 @@ var ngOptionsDirective = ['$compile', '$parse', function($compile, $parse) {
         // Check to see if the value has changed due to the update to the options
         if (!ngModelCtrl.$isEmpty(previousValue)) {
           var nextValue = selectCtrl.readValue();
-          if (!equals(previousValue, nextValue)) {
+          if (ngOptions.trackBy && !equals(previousValue, nextValue) ||
+                previousValue !== nextValue) {
             ngModelCtrl.$setViewValue(nextValue);
+            ngModelCtrl.$render();
           }
         }
+
       }
 
     }
@@ -36402,8 +36408,9 @@ var SelectController =
  * option. See example below for demonstration.
  *
  * <div class="alert alert-warning">
- * **Note:** `ngModel` compares by reference, not value. This is important when binding to an
- * array of objects. See an example [in this jsfiddle](http://jsfiddle.net/qWzTb/).
+ * **Note:** By default, `ngModel` compares by reference, not value. This is important when binding to an
+ * array of objects. See an example [in this jsfiddle](http://jsfiddle.net/qWzTb/). When using `track by`
+ * in an `ngOptions` expression, however, deep equality checks will be performed.
  * </div>
  *
  */
