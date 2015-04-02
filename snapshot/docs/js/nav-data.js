@@ -681,6 +681,16 @@ angular.module('navData', [])
             "type": "service"
           },
           {
+            "name": "$httpParamSerializer",
+            "href": "api/ng/service/$httpParamSerializer",
+            "type": "service"
+          },
+          {
+            "name": "$httpParamSerializerJQLike",
+            "href": "api/ng/service/$httpParamSerializerJQLike",
+            "type": "service"
+          },
+          {
             "name": "$interpolate",
             "href": "api/ng/service/$interpolate",
             "type": "service"

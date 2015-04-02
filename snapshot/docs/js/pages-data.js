@@ -1371,6 +1371,16 @@ angular.module('pagesData', [])
     "area": "api",
     "path": "api/ng/filter/orderBy"
   },
+  "api/ng/service/$httpParamSerializer": {
+    "name": "$httpParamSerializer",
+    "area": "api",
+    "path": "api/ng/service/$httpParamSerializer"
+  },
+  "api/ng/service/$httpParamSerializerJQLike": {
+    "name": "$httpParamSerializerJQLike",
+    "area": "api",
+    "path": "api/ng/service/$httpParamSerializerJQLike"
+  },
   "api/ng/provider/$httpProvider": {
     "name": "$httpProvider",
     "area": "api",

@@ -1,8 +1,8 @@
-<a href='https://github.com/angular/angular.js/edit/master/src/ng/http.js?message=docs($httpProvider)%3A%20describe%20your%20change...#L123' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/master/src/ng/http.js?message=docs($httpProvider)%3A%20describe%20your%20change...#L182' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 
-<a href='https://github.com/angular/angular.js/tree/master/src/ng/http.js#L123' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/master/src/ng/http.js#L182' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -49,7 +49,7 @@
 the same time via <a href="api/ng/type/$rootScope.Scope#$applyAsync">$rootScope.$applyAsync</a>. This can result in
 significant performance improvement for bigger applications that make many HTTP requests
 concurrently (common during application bootstrap).</p>
-<p>Defaults to false. If no value is specifed, returns the current configured value.</p>
+<p>Defaults to false. If no value is specified, returns the current configured value.</p>
 </div>
 
     
@@ -135,6 +135,11 @@ setting default headers.</p>
 <li><strong><code>defaults.headers.put</code></strong></li>
 <li><strong><code>defaults.headers.patch</code></strong></li>
 </ul>
+</li>
+<li><p><strong><code>defaults.paramSerializer</code></strong> - {string|function(Object<string,string>):string} - A function used to prepare string representation
+of request parameters (specified as an object).
+Is specified as string, it is interpreted as function registered in with the {$injector}.
+Defaults to {$httpParamSerializer}.</p>
 </li>
 </ul>
 </td>
