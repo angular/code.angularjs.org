@@ -9190,7 +9190,7 @@ return jQuery;
 }));
 
 /**
- * @license AngularJS v1.4.0-build.3944+sha.2cdb201
+ * @license AngularJS v1.4.0-build.3945+sha.06a9f0a
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -9249,7 +9249,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.4.0-build.3944+sha.2cdb201/' +
+    message += '\nhttp://errors.angularjs.org/1.4.0-build.3945+sha.06a9f0a/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -11474,7 +11474,7 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.4.0-build.3944+sha.2cdb201',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.4.0-build.3945+sha.06a9f0a',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 4,
   dot: 0,
@@ -37073,6 +37073,8 @@ _jQuery.fn.bindings = function(windowJquery, bindExp) {
           evnt.initAnimationEvent(eventType, null, null, null, eventData.elapsedTime || 0);
         }
       }
+    } else if (/touch/.test(eventType) && supportsTouchEvents()) {
+      evnt = createTouchEvent(element, eventType, x, y);
     } else {
       evnt = document.createEvent('MouseEvents');
       x = x || 0;
@@ -37108,6 +37110,39 @@ _jQuery.fn.bindings = function(windowJquery, bindExp) {
 
     return finalProcessDefault;
   };
+
+  function supportsTouchEvents() {
+    if ('_cached' in supportsTouchEvents) {
+      return supportsTouchEvents._cached;
+    }
+    if (!document.createTouch || !document.createTouchList) {
+      supportsTouchEvents._cached = false;
+      return false;
+    }
+    try {
+      document.createEvent('TouchEvent');
+    } catch (e) {
+      supportsTouchEvents._cached = false;
+      return false;
+    }
+    supportsTouchEvents._cached = true;
+    return true;
+  }
+
+  function createTouchEvent(element, eventType, x, y) {
+    var evnt = document.createEvent('TouchEvent');
+    x = x || 0;
+    y = y || 0;
+
+    var touch = document.createTouch(window, element, Date.now(), x, y, x, y);
+    var touches = document.createTouchList(touch);
+    var targetTouches = document.createTouchList(touch);
+    var changedTouches = document.createTouchList(touch);
+
+    evnt.initTouchEvent(eventType, true, true, window, null, 0, 0, 0, 0, false, false, false, false,
+      touches, targetTouches, changedTouches, 1, 0);
+    return evnt;
+  }
 }());
 
 /**

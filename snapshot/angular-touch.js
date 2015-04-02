@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.4.0-build.3944+sha.2cdb201
+ * @license AngularJS v1.4.0-build.3945+sha.06a9f0a
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -67,11 +67,9 @@ ngTouch.factory('$swipe', [function() {
   };
 
   function getCoordinates(event) {
-    var touches = event.touches && event.touches.length ? event.touches : [event];
-    var e = (event.changedTouches && event.changedTouches[0]) ||
-        (event.originalEvent && event.originalEvent.changedTouches &&
-            event.originalEvent.changedTouches[0]) ||
-        touches[0].originalEvent || touches[0];
+    var originalEvent = event.originalEvent || event;
+    var touches = originalEvent.touches && originalEvent.touches.length ? originalEvent.touches : [originalEvent];
+    var e = (originalEvent.changedTouches && originalEvent.changedTouches[0]) || touches[0];
 
     return {
       x: e.clientX,
@@ -414,8 +412,10 @@ ngTouch.directive('ngClick', ['$parse', '$timeout', '$rootElement',
 
       startTime = Date.now();
 
-      var touches = event.touches && event.touches.length ? event.touches : [event];
-      var e = touches[0].originalEvent || touches[0];
+      // Use jQuery originalEvent
+      var originalEvent = event.originalEvent || event;
+      var touches = originalEvent.touches && originalEvent.touches.length ? originalEvent.touches : [originalEvent];
+      var e = touches[0];
       touchStartX = e.clientX;
       touchStartY = e.clientY;
     });
@@ -431,9 +431,12 @@ ngTouch.directive('ngClick', ['$parse', '$timeout', '$rootElement',
     element.on('touchend', function(event) {
       var diff = Date.now() - startTime;
 
-      var touches = (event.changedTouches && event.changedTouches.length) ? event.changedTouches :
-          ((event.touches && event.touches.length) ? event.touches : [event]);
-      var e = touches[0].originalEvent || touches[0];
+      // Use jQuery originalEvent
+      var originalEvent = event.originalEvent || event;
+      var touches = (originalEvent.changedTouches && originalEvent.changedTouches.length) ?
+          originalEvent.changedTouches :
+          ((originalEvent.touches && originalEvent.touches.length) ? originalEvent.touches : [originalEvent]);
+      var e = touches[0];
       var x = e.clientX;
       var y = e.clientY;
       var dist = Math.sqrt(Math.pow(x - touchStartX, 2) + Math.pow(y - touchStartY, 2));
