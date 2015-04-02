@@ -9190,7 +9190,7 @@ return jQuery;
 }));
 
 /**
- * @license AngularJS v1.4.0-build.3950+sha.79fa7dd
+ * @license AngularJS v1.4.0-build.3951+sha.d8d30ce
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -9249,7 +9249,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.4.0-build.3950+sha.79fa7dd/' +
+    message += '\nhttp://errors.angularjs.org/1.4.0-build.3951+sha.d8d30ce/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -11476,7 +11476,7 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.4.0-build.3950+sha.79fa7dd',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.4.0-build.3951+sha.d8d30ce',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 4,
   dot: 0,
@@ -14506,6 +14506,16 @@ function Browser(window, document, $log, $sniffer) {
 
     urlChangeListeners.push(callback);
     return callback;
+  };
+
+  /**
+   * @private
+   * Remove popstate and hashchange handler from window.
+   *
+   * NOTE: this api is intended for use only by $rootScope.
+   */
+  self.$$applicationDestroyed = function() {
+    jqLite(window).off('hashchange popstate', cacheStateAndFireUrlChange);
   };
 
   /**
@@ -24494,6 +24504,11 @@ function $RootScopeProvider() {
 
         this.$broadcast('$destroy');
         this.$$destroyed = true;
+
+        if (this === $rootScope) {
+          //Remove handlers attached to window when $rootScope is removed
+          $browser.$$applicationDestroyed();
+        }
 
         incrementWatchersCount(this, -this.$$watchersCount);
         for (var eventName in this.$$listenerCount) {
