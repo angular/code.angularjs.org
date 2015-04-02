@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.4.0-build.3948+sha.65bed61
+ * @license AngularJS v1.4.0-build.3949+sha.3621dbc
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -10,7 +10,7 @@ var $resourceMinErr = angular.$$minErr('$resource');
 // Helper functions and regex to lookup a dotted path on an object
 // stopping at undefined/null.  The path must be composed of ASCII
 // identifiers (just like $parse)
-var MEMBER_NAME_REGEX = /^(\.[a-zA-Z_$][0-9a-zA-Z_$]*)+$/;
+var MEMBER_NAME_REGEX = /^(\.[a-zA-Z_$@][0-9a-zA-Z_$@]*)+$/;
 
 function isValidDottedPath(path) {
   return (path != null && path !== '' && path !== 'hasOwnProperty' &&
