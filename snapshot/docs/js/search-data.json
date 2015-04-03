@@ -986,7 +986,7 @@
   {
     "path": "api/ng/function/angular.toJson",
     "titleWords": "angular.toJson",
-    "keywords": "an and angular api be characters contain default function html if indentation input integer internally into is json json-formatted json-ified leading many module newlines ng notation obj output partials per pretty properties representing serialized serializes set since spaces string stripped that the this to tojson true uses whitespace will with",
+    "keywords": "an and angular api be characters contain function html if indentation input integer internally into json json-formatted json-ified leading many module newlines ng notation obj output partials per properties representing serialized serializes set since spaces string stripped that the this to tojson true uses whitespace will with",
     "members": ""
   },
   {
