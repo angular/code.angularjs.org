@@ -153,19 +153,7 @@ added and removed on the element). Once <code>$animateCss</code> is called it wi
   start: Function,
 
   // ends (aborts) the animation
-  end: Function,
-
-  // the total number of seconds that the animation will run for
-  duration: Number,
-
-  // the total number of seconds that the animation will delay for before starting
-  delay: Number,
-
-  // whether or not transitions were detected and will therefore be used for the animation
-  transitions: Boolean,
-
-  // whether or not keyframe animations were detected and will therefore be used for the animation
-  keyframes: Boolean
+  end: Function
 }
 </code></pre>
 <p>To actually start the animation we need to run <code>animation.start()</code> which will then return a promise that we can hook into to detect when the animation ends.

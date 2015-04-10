@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.4.0-build.3959+sha.fa0bbde
+ * @license AngularJS v1.4.0-build.3960+sha.a689ce6
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -416,19 +416,7 @@ var $$AnimateChildrenDirective = [function() {
  *   start: Function,
  *
  *   // ends (aborts) the animation
- *   end: Function,
- *
- *   // the total number of seconds that the animation will run for
- *   duration: Number,
- *
- *   // the total number of seconds that the animation will delay for before starting
- *   delay: Number,
- *
- *   // whether or not transitions were detected and will therefore be used for the animation
- *   transitions: Boolean,
- *
- *   // whether or not keyframe animations were detected and will therefore be used for the animation
- *   keyframes: Boolean
+ *   end: Function
  * }
  * ```
  *
