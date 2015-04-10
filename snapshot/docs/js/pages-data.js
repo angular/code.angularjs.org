@@ -1506,15 +1506,15 @@ angular.module('pagesData', [])
     "area": "api",
     "path": "api/ng/service/$window"
   },
+  "api/ngAnimate/service/$animateCss": {
+    "name": "$animateCss",
+    "area": "api",
+    "path": "api/ngAnimate/service/$animateCss"
+  },
   "api/ngAnimate": {
     "name": "ngAnimate",
     "area": "api",
     "path": "api/ngAnimate"
-  },
-  "api/ngAnimate/provider/$animateProvider": {
-    "name": "$animateProvider",
-    "area": "api",
-    "path": "api/ngAnimate/provider/$animateProvider"
   },
   "api/ngAnimate/service/$animate": {
     "name": "$animate",
@@ -2457,11 +2457,6 @@ angular.module('pagesData', [])
     "name": "service components in auto",
     "area": "api",
     "path": "api/auto/service"
-  },
-  "api/ngAnimate/provider": {
-    "name": "provider components in ngAnimate",
-    "area": "api",
-    "path": "api/ngAnimate/provider"
   },
   "api/ngAnimate/service": {
     "name": "service components in ngAnimate",

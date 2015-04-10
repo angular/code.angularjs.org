@@ -845,16 +845,6 @@ angular.module('navData', [])
         "type": "group",
         "navItems": [
           {
-            "name": "provider",
-            "type": "section",
-            "href": "api/ngAnimate/provider"
-          },
-          {
-            "name": "$animateProvider",
-            "href": "api/ngAnimate/provider/$animateProvider",
-            "type": "provider"
-          },
-          {
             "name": "service",
             "type": "section",
             "href": "api/ngAnimate/service"
@@ -862,6 +852,11 @@ angular.module('navData', [])
           {
             "name": "$animate",
             "href": "api/ngAnimate/service/$animate",
+            "type": "service"
+          },
+          {
+            "name": "$animateCss",
+            "href": "api/ngAnimate/service/$animateCss",
             "type": "service"
           }
         ]

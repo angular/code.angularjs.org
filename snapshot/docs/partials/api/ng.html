@@ -794,8 +794,7 @@ compiled HTML template is executed.)</p>
       <tr>
         <td><a href="api/ng/provider/$animateProvider">$animateProvider</a></td>
         <td><p>Default implementation of $animate that doesn&#39;t perform any animations, instead just
-synchronously performs DOM
-updates and calls done() callbacks.</p>
+synchronously performs DOM updates and resolves the returned runner promise.</p>
 </td>
       </tr>
       
@@ -896,10 +895,10 @@ in the
       
       <tr>
         <td><a href="api/ng/service/$animate">$animate</a></td>
-        <td><p>The $animate service provides rudimentary DOM manipulation functions to
-insert, remove and move elements within the DOM, as well as adding and removing classes.
-This service is the core service used by the ngAnimate $animator service which provides
-high-level animation hooks for CSS and JavaScript.</p>
+        <td><p>The $animate service exposes a series of DOM utility methods that provide support
+for animation hooks. The default behavior is the application of DOM operations, however,
+when an animation is detected (and animations are enabled), $animate will do the heavy lifting
+to ensure that animation runs with the triggered DOM operation.</p>
 </td>
       </tr>
       

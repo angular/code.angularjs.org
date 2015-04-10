@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.4.0-build.3954+sha.9dfa949
+ * @license AngularJS v1.4.0-build.3959+sha.fa0bbde
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -58,7 +58,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.4.0-build.3954+sha.9dfa949/' +
+    message += '\nhttp://errors.angularjs.org/1.4.0-build.3959+sha.fa0bbde/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -288,7 +288,7 @@ function setupModuleLoader(window) {
            *
            *
            * Defines an animation hook that can be later used with
-           * {@link ngAnimate.$animate $animate} service and directives that use this service.
+           * {@link $animate $animate} service and directives that use this service.
            *
            * ```js
            * module.animation('.animation-name', function($inject1, $inject2) {
