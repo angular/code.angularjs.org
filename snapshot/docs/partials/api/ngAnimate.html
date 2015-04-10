@@ -392,10 +392,10 @@ $animate.enter(element, parent).then(function() {
 <p>(Note that earlier versions of Angular prior to v1.4 required the promise code to be wrapped using <code>$scope.$apply(...)</code>. This is not the case
 anymore.)</p>
 <p>In addition to the animation promise, we can also make use of animation-related callbacks within our directives and controller code by registering
-an event listener using the <code>$animate</code> service. Let&#39;s say for example that an animation was triggered on our <code>ng-view</code> element and we wanted our
+an event listener using the <code>$animate</code> service. Let&#39;s say for example that an animation was triggered on our view
 routing controller to hook into that:</p>
 <pre><code class="lang-js">ngModule.controller(&#39;HomePageController&#39;, [&#39;$animate&#39;, function($animate) {
-  $animate.on(&#39;enter&#39;, &#39;[ng-view]&#39;, function(element) {
+  $animate.on(&#39;enter&#39;, ngViewElement, function(element) {
     // the animation for this route has completed
   }]);
 }])

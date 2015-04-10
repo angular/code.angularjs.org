@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.4.0-build.3960+sha.a689ce6
+ * @license AngularJS v1.4.0-build.3961+sha.8bf5654
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -3211,12 +3211,12 @@ var $$AnimationProvider = ['$animateProvider', function($animateProvider) {
  * anymore.)
  *
  * In addition to the animation promise, we can also make use of animation-related callbacks within our directives and controller code by registering
- * an event listener using the `$animate` service. Let's say for example that an animation was triggered on our `ng-view` element and we wanted our
+ * an event listener using the `$animate` service. Let's say for example that an animation was triggered on our view
  * routing controller to hook into that:
  *
  * ```js
  * ngModule.controller('HomePageController', ['$animate', function($animate) {
- *   $animate.on('enter', '[ng-view]', function(element) {
+ *   $animate.on('enter', ngViewElement, function(element) {
  *     // the animation for this route has completed
  *   }]);
  * }])
