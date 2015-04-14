@@ -2269,6 +2269,9 @@ angular.module('pagesData', [])
   "examples/example-example113": {
     "path": "examples/example-example113"
   },
+  "examples/example-ngMessageFormat-example": {
+    "path": "examples/example-ngMessageFormat-example"
+  },
   "examples/example-ngMessages-directive": {
     "path": "examples/example-ngMessages-directive"
   },
