@@ -19,8 +19,11 @@ Since the <a href="api/ng/directive/ngModel">ngModel</a> directive exposes an <c
 used with <code>ngMessages</code> to display control error messages in an easier way than with just regular angular
 template directives.</p>
 <pre><code class="lang-html">&lt;form name=&quot;myForm&quot;&gt;
-  &lt;input type=&quot;text&quot; ng-model=&quot;field&quot; name=&quot;myField&quot; required minlength=&quot;5&quot; /&gt;
-  &lt;div ng-messages=&quot;myForm.myField.$error&quot;&gt;
+  &lt;label&gt;
+    Enter text:
+    &lt;input type=&quot;text&quot; ng-model=&quot;field&quot; name=&quot;myField&quot; required minlength=&quot;5&quot; /&gt;
+  &lt;/label&gt;
+  &lt;div ng-messages=&quot;myForm.myField.$error&quot; role=&quot;alert&quot;&gt;
     &lt;div ng-message=&quot;required&quot;&gt;You did not enter a field&lt;/div&gt;
     &lt;div ng-message=&quot;minlength, maxlength&quot;&gt;
       Your email must be between 5 and 100 characters long
@@ -58,7 +61,7 @@ application.</p>
   &lt;div ng-message=&quot;minlength&quot;&gt;This field is too short&lt;/div&gt;
 &lt;/script&gt;
 
-&lt;div ng-messages=&quot;myForm.myField.$error&quot;&gt;
+&lt;div ng-messages=&quot;myForm.myField.$error&quot; role=&quot;alert&quot;&gt;
   &lt;div ng-messages-include=&quot;error-messages&quot;&gt;&lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
@@ -72,16 +75,18 @@ them within the directive container.</p>
 &lt;/script&gt;
 
 &lt;form name=&quot;myForm&quot;&gt;
-  &lt;input type=&quot;email&quot;
-         id=&quot;email&quot;
-         name=&quot;myEmail&quot;
-         ng-model=&quot;email&quot;
-         minlength=&quot;5&quot;
-         required /&gt;
-
+  &lt;label&gt;
+    Email address
+    &lt;input type=&quot;email&quot;
+           id=&quot;email&quot;
+           name=&quot;myEmail&quot;
+           ng-model=&quot;email&quot;
+           minlength=&quot;5&quot;
+           required /&gt;
+  &lt;/label&gt;
   &lt;!-- any ng-message elements that appear BEFORE the ng-messages-include will
        override the messages present in the ng-messages-include template --&gt;
-  &lt;div ng-messages=&quot;myForm.myEmail.$error&quot;&gt;
+  &lt;div ng-messages=&quot;myForm.myEmail.$error&quot; role=&quot;alert&quot;&gt;
     &lt;!-- this required message has overridden the template message --&gt;
     &lt;div ng-message=&quot;required&quot;&gt;You did not enter your email address&lt;/div&gt;
 
@@ -102,13 +107,15 @@ while more generic messages can be used to handle other, more general input erro
 repeaters to list messages is also supported. This means that the code below will be able to
 fully adapt itself and display the appropriate message when any of the expression data changes:</p>
 <pre><code class="lang-html">&lt;form name=&quot;myForm&quot;&gt;
-  &lt;input type=&quot;email&quot;
-         name=&quot;myEmail&quot;
-         ng-model=&quot;email&quot;
-         minlength=&quot;5&quot;
-         required /&gt;
-
-  &lt;div ng-messages=&quot;myForm.myEmail.$error&quot;&gt;
+  &lt;label&gt;
+    Email address
+    &lt;input type=&quot;email&quot;
+           name=&quot;myEmail&quot;
+           ng-model=&quot;email&quot;
+           minlength=&quot;5&quot;
+           required /&gt;
+  &lt;/label&gt;
+  &lt;div ng-messages=&quot;myForm.myEmail.$error&quot; role=&quot;alert&quot;&gt;
     &lt;div ng-message=&quot;required&quot;&gt;You did not enter your email address&lt;/div&gt;
     &lt;div ng-repeat=&quot;errorMessage in errorMessages&quot;&gt;
       &lt;!-- use ng-message-exp for a message whose key is given by an expression --&gt;
@@ -119,25 +126,28 @@ fully adapt itself and display the appropriate message when any of the expressio
 </code></pre>
 <p>The <code>errorMessage.type</code> expression can be a string value or it can be an array so
 that multiple errors can be associated with a single error message:</p>
-<pre><code class="lang-html">&lt;input type=&quot;email&quot;
-       ng-model=&quot;data.email&quot;
-       name=&quot;myEmail&quot;
-       ng-minlength=&quot;5&quot;
-       ng-maxlength=&quot;100&quot;
-       required /&gt;
- &lt;div ng-messages=&quot;myForm.myEmail.$error&quot;&gt;
-   &lt;div ng-message-exp=&quot;&#39;required&#39;&quot;&gt;You did not enter your email address&lt;/div&gt;
-   &lt;div ng-message-exp=&quot;[&#39;minlength&#39;, &#39;maxlength&#39;]&quot;&gt;
-     Your email must be between 5 and 100 characters long
-   &lt;/div&gt;
- &lt;/div&gt;
+<pre><code class="lang-html">&lt;label&gt;
+  Email address
+  &lt;input type=&quot;email&quot;
+         ng-model=&quot;data.email&quot;
+         name=&quot;myEmail&quot;
+         ng-minlength=&quot;5&quot;
+         ng-maxlength=&quot;100&quot;
+         required /&gt;
+&lt;/label&gt;
+&lt;div ng-messages=&quot;myForm.myEmail.$error&quot; role=&quot;alert&quot;&gt;
+  &lt;div ng-message-exp=&quot;&#39;required&#39;&quot;&gt;You did not enter your email address&lt;/div&gt;
+  &lt;div ng-message-exp=&quot;[&#39;minlength&#39;, &#39;maxlength&#39;]&quot;&gt;
+    Your email must be between 5 and 100 characters long
+  &lt;/div&gt;
+&lt;/div&gt;
 </code></pre>
 <p>Feel free to use other structural directives such as ng-if and ng-switch to further control
 what messages are active and when. Be careful, if you place ng-message on the same element
 as these structural directives, Angular may not be able to determine if a message is active
 or not. Therefore it is best to place the ng-message on a child element of the structural
 directive.</p>
-<pre><code class="lang-html">&lt;div ng-messages=&quot;myForm.myEmail.$error&quot;&gt;
+<pre><code class="lang-html">&lt;div ng-messages=&quot;myForm.myEmail.$error&quot; role=&quot;alert&quot;&gt;
   &lt;div ng-if=&quot;showRequiredError&quot;&gt;
     &lt;div ng-message=&quot;required&quot;&gt;Please enter something&lt;/div&gt;
   &lt;/div&gt;
@@ -152,7 +162,7 @@ class will be added to the element. The <code>.ng-inactive</code> CSS class will
 messages present. Therefore, CSS transitions and keyframes as well as JavaScript animations can
 hook into the animations whenever these classes are added/removed.</p>
 <p>Let&#39;s say that our HTML code for our messages container looks like so:</p>
-<pre><code class="lang-html">&lt;div ng-messages=&quot;myMessages&quot; class=&quot;my-messages&quot;&gt;
+<pre><code class="lang-html">&lt;div ng-messages=&quot;myMessages&quot; class=&quot;my-messages&quot; role=&quot;alert&quot;&gt;
   &lt;div ng-message=&quot;alert&quot; class=&quot;some-message&quot;&gt;...&lt;/div&gt;
   &lt;div ng-message=&quot;fail&quot; class=&quot;some-message&quot;&gt;...&lt;/div&gt;
 &lt;/div&gt;

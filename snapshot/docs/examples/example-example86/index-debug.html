@@ -31,10 +31,13 @@
     background: red;
   }
 </style>
-Update input to see transitions when valid/invalid.
-Integer is a valid value.
+<p id="inputDescription">
+ Update input to see transitions when valid/invalid.
+ Integer is a valid value.
+</p>
 <form name="testForm" ng-controller="ExampleController">
-  <input ng-model="val" ng-pattern="/^\d+$/" name="anim" class="my-input" />
+  <input ng-model="val" ng-pattern="/^\d+$/" name="anim" class="my-input"
+         aria-describedby="inputDescription" />
 </form>
 </body>
 </html>

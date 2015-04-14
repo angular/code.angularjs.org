@@ -114,7 +114,7 @@ element attribute, it makes the bindings invisible to the user while the page is
       name="index.html"
       language="html"
       type="html">
-      <pre><code>&lt;script&gt;&#10;  angular.module(&#39;bindExample&#39;, [])&#10;    .controller(&#39;ExampleController&#39;, [&#39;$scope&#39;, function($scope) {&#10;      $scope.name = &#39;Whirled&#39;;&#10;    }]);&#10;&lt;/script&gt;&#10;&lt;div ng-controller=&quot;ExampleController&quot;&gt;&#10;  Enter name: &lt;input type=&quot;text&quot; ng-model=&quot;name&quot;&gt;&lt;br&gt;&#10;  Hello &lt;span ng-bind=&quot;name&quot;&gt;&lt;/span&gt;!&#10;&lt;/div&gt;</code></pre>
+      <pre><code>&lt;script&gt;&#10;  angular.module(&#39;bindExample&#39;, [])&#10;    .controller(&#39;ExampleController&#39;, [&#39;$scope&#39;, function($scope) {&#10;      $scope.name = &#39;Whirled&#39;;&#10;    }]);&#10;&lt;/script&gt;&#10;&lt;div ng-controller=&quot;ExampleController&quot;&gt;&#10;  &lt;label&gt;Enter name: &lt;input type=&quot;text&quot; ng-model=&quot;name&quot;&gt;&lt;/label&gt;&lt;br&gt;&#10;  Hello &lt;span ng-bind=&quot;name&quot;&gt;&lt;/span&gt;!&#10;&lt;/div&gt;</code></pre>
     </div>
   
     <div class="runnable-example-file" 

@@ -319,7 +319,7 @@ input field will be updated with the new model value and any pending operations 
       name="index.html"
       language="html"
       type="html">
-      <pre><code>&lt;div ng-controller=&quot;CancelUpdateController&quot;&gt;&#10;  &lt;p&gt;Try typing something in each input.  See that the model only updates when you&#10;     blur off the input.&#10;   &lt;/p&gt;&#10;   &lt;p&gt;Now see what happens if you start typing then press the Escape key&lt;/p&gt;&#10;&#10;  &lt;form name=&quot;myForm&quot; ng-model-options=&quot;{ updateOn: &#39;blur&#39; }&quot;&gt;&#10;    &lt;p&gt;With $rollbackViewValue()&lt;/p&gt;&#10;    &lt;input name=&quot;myInput1&quot; ng-model=&quot;myValue&quot; ng-keydown=&quot;resetWithCancel($event)&quot;&gt;&lt;br/&gt;&#10;    myValue: &quot;{{ myValue }}&quot;&#10;&#10;    &lt;p&gt;Without $rollbackViewValue()&lt;/p&gt;&#10;    &lt;input name=&quot;myInput2&quot; ng-model=&quot;myValue&quot; ng-keydown=&quot;resetWithoutCancel($event)&quot;&gt;&lt;br/&gt;&#10;    myValue: &quot;{{ myValue }}&quot;&#10;  &lt;/form&gt;&#10;&lt;/div&gt;</code></pre>
+      <pre><code>&lt;div ng-controller=&quot;CancelUpdateController&quot;&gt;&#10;  &lt;p&gt;Try typing something in each input.  See that the model only updates when you&#10;     blur off the input.&#10;   &lt;/p&gt;&#10;   &lt;p&gt;Now see what happens if you start typing then press the Escape key&lt;/p&gt;&#10;&#10;  &lt;form name=&quot;myForm&quot; ng-model-options=&quot;{ updateOn: &#39;blur&#39; }&quot;&gt;&#10;    &lt;p id=&quot;inputDescription1&quot;&gt;With $rollbackViewValue()&lt;/p&gt;&#10;    &lt;input name=&quot;myInput1&quot; aria-describedby=&quot;inputDescription1&quot; ng-model=&quot;myValue&quot;&#10;           ng-keydown=&quot;resetWithCancel($event)&quot;&gt;&lt;br/&gt;&#10;    myValue: &quot;{{ myValue }}&quot;&#10;&#10;    &lt;p id=&quot;inputDescription2&quot;&gt;Without $rollbackViewValue()&lt;/p&gt;&#10;    &lt;input name=&quot;myInput2&quot; aria-describedby=&quot;inputDescription2&quot; ng-model=&quot;myValue&quot;&#10;           ng-keydown=&quot;resetWithoutCancel($event)&quot;&gt;&lt;br/&gt;&#10;    myValue: &quot;{{ myValue }}&quot;&#10;  &lt;/form&gt;&#10;&lt;/div&gt;</code></pre>
     </div>
   
 
@@ -743,7 +743,7 @@ that content using the <code>$sce</code> service.</p>
       name="index.html"
       language="html"
       type="html">
-      <pre><code>&lt;form name=&quot;myForm&quot;&gt;&#10; &lt;div contenteditable&#10;      name=&quot;myWidget&quot; ng-model=&quot;userContent&quot;&#10;      strip-br=&quot;true&quot;&#10;      required&gt;Change me!&lt;/div&gt;&#10;  &lt;span ng-show=&quot;myForm.myWidget.$error.required&quot;&gt;Required!&lt;/span&gt;&#10; &lt;hr&gt;&#10; &lt;textarea ng-model=&quot;userContent&quot;&gt;&lt;/textarea&gt;&#10;&lt;/form&gt;</code></pre>
+      <pre><code>&lt;form name=&quot;myForm&quot;&gt;&#10; &lt;div contenteditable&#10;      name=&quot;myWidget&quot; ng-model=&quot;userContent&quot;&#10;      strip-br=&quot;true&quot;&#10;      required&gt;Change me!&lt;/div&gt;&#10;  &lt;span ng-show=&quot;myForm.myWidget.$error.required&quot;&gt;Required!&lt;/span&gt;&#10; &lt;hr&gt;&#10; &lt;textarea ng-model=&quot;userContent&quot; aria-label=&quot;Dynamic textarea&quot;&gt;&lt;/textarea&gt;&#10;&lt;/form&gt;</code></pre>
     </div>
   
     <div class="runnable-example-file" 

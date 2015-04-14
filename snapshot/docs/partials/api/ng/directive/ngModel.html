@@ -1,8 +1,8 @@
-<a href='https://github.com/angular/angular.js/edit/master/src/ng/directive/ngModel.js?message=docs(ngModel)%3A%20describe%20your%20change...#L840' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/master/src/ng/directive/ngModel.js?message=docs(ngModel)%3A%20describe%20your%20change...#L842' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 
-<a href='https://github.com/angular/angular.js/tree/master/src/ng/directive/ngModel.js#L840' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/master/src/ng/directive/ngModel.js#L842' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -142,7 +142,7 @@ that has been rendered as invalid after it has been validated:</p>
       name="index.html"
       language="html"
       type="html">
-      <pre><code>&lt;script&gt;&#10; angular.module(&#39;inputExample&#39;, [])&#10;   .controller(&#39;ExampleController&#39;, [&#39;$scope&#39;, function($scope) {&#10;     $scope.val = &#39;1&#39;;&#10;   }]);&#10;&lt;/script&gt;&#10;&lt;style&gt;&#10;  .my-input {&#10;    -webkit-transition:all linear 0.5s;&#10;    transition:all linear 0.5s;&#10;    background: transparent;&#10;  }&#10;  .my-input.ng-invalid {&#10;    color:white;&#10;    background: red;&#10;  }&#10;&lt;/style&gt;&#10;Update input to see transitions when valid/invalid.&#10;Integer is a valid value.&#10;&lt;form name=&quot;testForm&quot; ng-controller=&quot;ExampleController&quot;&gt;&#10;  &lt;input ng-model=&quot;val&quot; ng-pattern=&quot;/^\d+$/&quot; name=&quot;anim&quot; class=&quot;my-input&quot; /&gt;&#10;&lt;/form&gt;</code></pre>
+      <pre><code>&lt;script&gt;&#10; angular.module(&#39;inputExample&#39;, [])&#10;   .controller(&#39;ExampleController&#39;, [&#39;$scope&#39;, function($scope) {&#10;     $scope.val = &#39;1&#39;;&#10;   }]);&#10;&lt;/script&gt;&#10;&lt;style&gt;&#10;  .my-input {&#10;    -webkit-transition:all linear 0.5s;&#10;    transition:all linear 0.5s;&#10;    background: transparent;&#10;  }&#10;  .my-input.ng-invalid {&#10;    color:white;&#10;    background: red;&#10;  }&#10;&lt;/style&gt;&#10;&lt;p id=&quot;inputDescription&quot;&gt;&#10; Update input to see transitions when valid/invalid.&#10; Integer is a valid value.&#10;&lt;/p&gt;&#10;&lt;form name=&quot;testForm&quot; ng-controller=&quot;ExampleController&quot;&gt;&#10;  &lt;input ng-model=&quot;val&quot; ng-pattern=&quot;/^\d+$/&quot; name=&quot;anim&quot; class=&quot;my-input&quot;&#10;         aria-describedby=&quot;inputDescription&quot; /&gt;&#10;&lt;/form&gt;</code></pre>
     </div>
   
 
@@ -185,7 +185,7 @@ a <code>&lt;form&gt;</code>, which will enable this behavior for all <code>&lt;i
       name="index.html"
       language="html"
       type="html">
-      <pre><code>&lt;div ng-controller=&quot;ExampleController&quot;&gt;&#10;  &lt;form name=&quot;userForm&quot;&gt;&#10;    Name:&#10;    &lt;input type=&quot;text&quot; name=&quot;userName&quot;&#10;           ng-model=&quot;user.name&quot;&#10;           ng-model-options=&quot;{ getterSetter: true }&quot; /&gt;&#10;  &lt;/form&gt;&#10;  &lt;pre&gt;user.name = &lt;span ng-bind=&quot;user.name()&quot;&gt;&lt;/span&gt;&lt;/pre&gt;&#10;&lt;/div&gt;</code></pre>
+      <pre><code>&lt;div ng-controller=&quot;ExampleController&quot;&gt;&#10;  &lt;form name=&quot;userForm&quot;&gt;&#10;    &lt;label&gt;Name:&#10;      &lt;input type=&quot;text&quot; name=&quot;userName&quot;&#10;             ng-model=&quot;user.name&quot;&#10;             ng-model-options=&quot;{ getterSetter: true }&quot; /&gt;&#10;    &lt;/label&gt;&#10;  &lt;/form&gt;&#10;  &lt;pre&gt;user.name = &lt;span ng-bind=&quot;user.name()&quot;&gt;&lt;/span&gt;&lt;/pre&gt;&#10;&lt;/div&gt;</code></pre>
     </div>
   
     <div class="runnable-example-file" 

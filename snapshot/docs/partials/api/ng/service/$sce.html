@@ -39,7 +39,7 @@ to the top of your HTML document.</p>
 <p>SCE assists in writing code in way that (a) is secure by default and (b) makes auditing for
 security vulnerabilities such as XSS, clickjacking, etc. a lot easier.</p>
 <p>Here&#39;s an example of a binding in a privileged context:</p>
-<pre><code>&lt;input ng-model=&quot;userHtml&quot;&gt;
+<pre><code>&lt;input ng-model=&quot;userHtml&quot; aria-label=&quot;User input&quot;&gt;
 &lt;div ng-bind-html=&quot;userHtml&quot;&gt;&lt;/div&gt;
 </code></pre>
 <p>Notice that <code>ng-bind-html</code> is bound to <code>userHtml</code> controlled by the user.  With SCE

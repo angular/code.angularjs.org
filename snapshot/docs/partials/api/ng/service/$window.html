@@ -66,7 +66,7 @@ expression.</p>
       name="index.html"
       language="html"
       type="html">
-      <pre><code>&lt;script&gt;&#10;  angular.module(&#39;windowExample&#39;, [])&#10;    .controller(&#39;ExampleController&#39;, [&#39;$scope&#39;, &#39;$window&#39;, function($scope, $window) {&#10;      $scope.greeting = &#39;Hello, World!&#39;;&#10;      $scope.doGreeting = function(greeting) {&#10;        $window.alert(greeting);&#10;      };&#10;    }]);&#10;&lt;/script&gt;&#10;&lt;div ng-controller=&quot;ExampleController&quot;&gt;&#10;  &lt;input type=&quot;text&quot; ng-model=&quot;greeting&quot; /&gt;&#10;  &lt;button ng-click=&quot;doGreeting(greeting)&quot;&gt;ALERT&lt;/button&gt;&#10;&lt;/div&gt;</code></pre>
+      <pre><code>&lt;script&gt;&#10;  angular.module(&#39;windowExample&#39;, [])&#10;    .controller(&#39;ExampleController&#39;, [&#39;$scope&#39;, &#39;$window&#39;, function($scope, $window) {&#10;      $scope.greeting = &#39;Hello, World!&#39;;&#10;      $scope.doGreeting = function(greeting) {&#10;        $window.alert(greeting);&#10;      };&#10;    }]);&#10;&lt;/script&gt;&#10;&lt;div ng-controller=&quot;ExampleController&quot;&gt;&#10;  &lt;input type=&quot;text&quot; ng-model=&quot;greeting&quot; aria-label=&quot;greeting&quot; /&gt;&#10;  &lt;button ng-click=&quot;doGreeting(greeting)&quot;&gt;ALERT&lt;/button&gt;&#10;&lt;/div&gt;</code></pre>
     </div>
   
     <div class="runnable-example-file" 

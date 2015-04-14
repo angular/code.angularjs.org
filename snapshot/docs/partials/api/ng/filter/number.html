@@ -122,7 +122,7 @@ formatting pattern. In the case of the default locale, it will be 3.</p>
       name="index.html"
       language="html"
       type="html">
-      <pre><code>&lt;script&gt;&#10;  angular.module(&#39;numberFilterExample&#39;, [])&#10;    .controller(&#39;ExampleController&#39;, [&#39;$scope&#39;, function($scope) {&#10;      $scope.val = 1234.56789;&#10;    }]);&#10;&lt;/script&gt;&#10;&lt;div ng-controller=&quot;ExampleController&quot;&gt;&#10;  Enter number: &lt;input ng-model=&#39;val&#39;&gt;&lt;br&gt;&#10;  Default formatting: &lt;span id=&#39;number-default&#39;&gt;{{val | number}}&lt;/span&gt;&lt;br&gt;&#10;  No fractions: &lt;span&gt;{{val | number:0}}&lt;/span&gt;&lt;br&gt;&#10;  Negative number: &lt;span&gt;{{-val | number:4}}&lt;/span&gt;&#10;&lt;/div&gt;</code></pre>
+      <pre><code>&lt;script&gt;&#10;  angular.module(&#39;numberFilterExample&#39;, [])&#10;    .controller(&#39;ExampleController&#39;, [&#39;$scope&#39;, function($scope) {&#10;      $scope.val = 1234.56789;&#10;    }]);&#10;&lt;/script&gt;&#10;&lt;div ng-controller=&quot;ExampleController&quot;&gt;&#10;  &lt;label&gt;Enter number: &lt;input ng-model=&#39;val&#39;&gt;&lt;/label&gt;&lt;br&gt;&#10;  Default formatting: &lt;span id=&#39;number-default&#39;&gt;{{val | number}}&lt;/span&gt;&lt;br&gt;&#10;  No fractions: &lt;span&gt;{{val | number:0}}&lt;/span&gt;&lt;br&gt;&#10;  Negative number: &lt;span&gt;{{-val | number:4}}&lt;/span&gt;&#10;&lt;/div&gt;</code></pre>
     </div>
   
     <div class="runnable-example-file" 

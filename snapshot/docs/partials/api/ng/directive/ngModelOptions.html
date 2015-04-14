@@ -1,8 +1,8 @@
-<a href='https://github.com/angular/angular.js/edit/master/src/ng/directive/ngModel.js?message=docs(ngModelOptions)%3A%20describe%20your%20change...#L1065' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/master/src/ng/directive/ngModel.js?message=docs(ngModelOptions)%3A%20describe%20your%20change...#L1071' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 
-<a href='https://github.com/angular/angular.js/tree/master/src/ng/directive/ngModel.js#L1065' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/master/src/ng/directive/ngModel.js#L1071' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -137,7 +137,7 @@ If not specified, the timezone of the browser will be used.</li>
       name="index.html"
       language="html"
       type="html">
-      <pre><code>&lt;div ng-controller=&quot;ExampleController&quot;&gt;&#10;  &lt;form name=&quot;userForm&quot;&gt;&#10;    Name:&#10;    &lt;input type=&quot;text&quot; name=&quot;userName&quot;&#10;           ng-model=&quot;user.name&quot;&#10;           ng-model-options=&quot;{ updateOn: &#39;blur&#39; }&quot;&#10;           ng-keyup=&quot;cancel($event)&quot; /&gt;&lt;br /&gt;&#10;&#10;    Other data:&#10;    &lt;input type=&quot;text&quot; ng-model=&quot;user.data&quot; /&gt;&lt;br /&gt;&#10;  &lt;/form&gt;&#10;  &lt;pre&gt;user.name = &lt;span ng-bind=&quot;user.name&quot;&gt;&lt;/span&gt;&lt;/pre&gt;&#10;&lt;/div&gt;</code></pre>
+      <pre><code>&lt;div ng-controller=&quot;ExampleController&quot;&gt;&#10;  &lt;form name=&quot;userForm&quot;&gt;&#10;    &lt;label&gt;Name:&#10;      &lt;input type=&quot;text&quot; name=&quot;userName&quot;&#10;             ng-model=&quot;user.name&quot;&#10;             ng-model-options=&quot;{ updateOn: &#39;blur&#39; }&quot;&#10;             ng-keyup=&quot;cancel($event)&quot; /&gt;&#10;    &lt;/label&gt;&lt;br /&gt;&#10;    &lt;label&gt;Other data:&#10;      &lt;input type=&quot;text&quot; ng-model=&quot;user.data&quot; /&gt;&#10;    &lt;/label&gt;&lt;br /&gt;&#10;  &lt;/form&gt;&#10;  &lt;pre&gt;user.name = &lt;span ng-bind=&quot;user.name&quot;&gt;&lt;/span&gt;&lt;/pre&gt;&#10;&lt;/div&gt;</code></pre>
     </div>
   
     <div class="runnable-example-file" 
@@ -180,7 +180,7 @@ If not specified, the timezone of the browser will be used.</li>
       name="index.html"
       language="html"
       type="html">
-      <pre><code>&lt;div ng-controller=&quot;ExampleController&quot;&gt;&#10;  &lt;form name=&quot;userForm&quot;&gt;&#10;    Name:&#10;    &lt;input type=&quot;text&quot; name=&quot;userName&quot;&#10;           ng-model=&quot;user.name&quot;&#10;           ng-model-options=&quot;{ debounce: 1000 }&quot; /&gt;&#10;    &lt;button ng-click=&quot;userForm.userName.$rollbackViewValue(); user.name=&#39;&#39;&quot;&gt;Clear&lt;/button&gt;&lt;br /&gt;&#10;  &lt;/form&gt;&#10;  &lt;pre&gt;user.name = &lt;span ng-bind=&quot;user.name&quot;&gt;&lt;/span&gt;&lt;/pre&gt;&#10;&lt;/div&gt;</code></pre>
+      <pre><code>&lt;div ng-controller=&quot;ExampleController&quot;&gt;&#10;  &lt;form name=&quot;userForm&quot;&gt;&#10;    &lt;label&gt;Name:&#10;      &lt;input type=&quot;text&quot; name=&quot;userName&quot;&#10;             ng-model=&quot;user.name&quot;&#10;             ng-model-options=&quot;{ debounce: 1000 }&quot; /&gt;&#10;    &lt;/label&gt;&#10;    &lt;button ng-click=&quot;userForm.userName.$rollbackViewValue(); user.name=&#39;&#39;&quot;&gt;Clear&lt;/button&gt;&#10;    &lt;br /&gt;&#10;  &lt;/form&gt;&#10;  &lt;pre&gt;user.name = &lt;span ng-bind=&quot;user.name&quot;&gt;&lt;/span&gt;&lt;/pre&gt;&#10;&lt;/div&gt;</code></pre>
     </div>
   
     <div class="runnable-example-file" 
@@ -215,7 +215,7 @@ If not specified, the timezone of the browser will be used.</li>
       name="index.html"
       language="html"
       type="html">
-      <pre><code>&lt;div ng-controller=&quot;ExampleController&quot;&gt;&#10;  &lt;form name=&quot;userForm&quot;&gt;&#10;    Name:&#10;    &lt;input type=&quot;text&quot; name=&quot;userName&quot;&#10;           ng-model=&quot;user.name&quot;&#10;           ng-model-options=&quot;{ getterSetter: true }&quot; /&gt;&#10;  &lt;/form&gt;&#10;  &lt;pre&gt;user.name = &lt;span ng-bind=&quot;user.name()&quot;&gt;&lt;/span&gt;&lt;/pre&gt;&#10;&lt;/div&gt;</code></pre>
+      <pre><code>&lt;div ng-controller=&quot;ExampleController&quot;&gt;&#10;  &lt;form name=&quot;userForm&quot;&gt;&#10;    &lt;label&gt;Name:&#10;      &lt;input type=&quot;text&quot; name=&quot;userName&quot;&#10;             ng-model=&quot;user.name&quot;&#10;             ng-model-options=&quot;{ getterSetter: true }&quot; /&gt;&#10;    &lt;/label&gt;&#10;  &lt;/form&gt;&#10;  &lt;pre&gt;user.name = &lt;span ng-bind=&quot;user.name()&quot;&gt;&lt;/span&gt;&lt;/pre&gt;&#10;&lt;/div&gt;</code></pre>
     </div>
   
     <div class="runnable-example-file" 
