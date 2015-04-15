@@ -1652,7 +1652,7 @@
   {
     "path": "api/ng/service/$httpParamSerializerJQLike",
     "titleWords": "$httpParamSerializerJQLike",
-    "keywords": "$get $http $httpparamserializerjqlike alternative api com follows html jquery jquerys logic method module ng param params partials serializer service that",
+    "keywords": "$get $http $httpparamserializerjqlike alternative api com follows html jquery logic method module ng param params partials serializer service that",
     "members": ""
   },
   {
