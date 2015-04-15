@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.4.0-build.3969+sha.1a0bcb1
+ * @license AngularJS v1.4.0-build.3970+sha.6dd64ab
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -2007,7 +2007,7 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
 
       var className = [node.className, options.addClass, options.removeClass].join(' ');
       if (!isAnimatableClassName(className)) {
-        runner.end();
+        close();
         return runner;
       }
 
@@ -2248,6 +2248,12 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
       var animateChildren;
 
       while (parent && parent.length) {
+        if (!rootElementDetected) {
+          // angular doesn't want to attempt to animate elements outside of the application
+          // therefore we need to ensure that the rootElement is an ancestor of the current element
+          rootElementDetected = isMatchingElement(parent, $rootElement);
+        }
+
         var parentNode = parent[0];
         if (parentNode.nodeType !== ELEMENT_NODE) {
           // no point in inspecting the #document element
@@ -2271,12 +2277,6 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
 
         // there is no need to continue traversing at this point
         if (parentAnimationDetected && animateChildren === false) break;
-
-        if (!rootElementDetected) {
-          // angular doesn't want to attempt to animate elements outside of the application
-          // therefore we need to ensure that the rootElement is an ancestor of the current element
-          rootElementDetected = isMatchingElement(parent, $rootElement);
-        }
 
         if (!bodyElementDetected) {
           // we also need to ensure that the element is or will be apart of the body element
