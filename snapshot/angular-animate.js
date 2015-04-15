@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.4.0-build.3971+sha.f8f07e8
+ * @license AngularJS v1.4.0-build.3972+sha.3333a5c
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -1287,27 +1287,39 @@ var $$AnimateCssDriverProvider = ['$$animationProvider', function($$animationPro
 
       rootBodyElement.append(clone);
 
-      var animatorOut = prepareOutAnimation();
+      var animatorIn, animatorOut = prepareOutAnimation();
+
+      // the user may not end up using the `out` animation and
+      // only making use of the `in` animation or vice-versa.
+      // In either case we should allow this and not assume the
+      // animation is over unless both animations are not used.
       if (!animatorOut) {
-        return end();
+        animatorIn = prepareInAnimation();
+        if (!animatorIn) {
+          return end();
+        }
       }
+
+      var startingAnimator = animatorOut || animatorIn;
 
       return {
         start: function() {
           var runner;
 
-          var currentAnimation = animatorOut.start();
+          var currentAnimation = startingAnimator.start();
           currentAnimation.done(function() {
             currentAnimation = null;
-            var animatorIn = prepareInAnimation();
-            if (animatorIn) {
-              currentAnimation = animatorIn.start();
-              currentAnimation.done(function() {
-                currentAnimation = null;
-                end();
-                runner.complete();
-              });
-              return currentAnimation;
+            if (!animatorIn) {
+              animatorIn = prepareInAnimation();
+              if (animatorIn) {
+                currentAnimation = animatorIn.start();
+                currentAnimation.done(function() {
+                  currentAnimation = null;
+                  end();
+                  runner.complete();
+                });
+                return currentAnimation;
+              }
             }
             // in the event that there is no `in` animation
             end();
