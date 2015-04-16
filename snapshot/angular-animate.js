@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.4.0-build.3973+sha.89f081e
+ * @license AngularJS v1.4.0-build.3974+sha.e41faaa
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -25,6 +25,13 @@ var NG_ANIMATE_CHILDREN_DATA = '$$ngAnimateChildren';
 
 var isPromiseLike = function(p) {
   return p && p.then ? true : false;
+}
+
+function assertArg(arg, name, reason) {
+  if (!arg) {
+    throw ngMinErr('areq', "Argument '{0}' is {1}", (name || '?'), (reason || "required"));
+  }
+  return arg;
 }
 
 function mergeClasses(a,b) {
@@ -1751,6 +1758,7 @@ var $$AnimateJsDriverProvider = ['$$animationProvider', function($$animationProv
 }];
 
 var NG_ANIMATE_ATTR_NAME = 'data-ng-animate';
+var NG_ANIMATE_PIN_DATA = '$ngAnimatePin';
 var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
   var PRE_DIGEST_STATE = 1;
   var RUNNING_STATE = 2;
@@ -1915,6 +1923,12 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
             return !isMatch;
           });
         }
+      },
+
+      pin: function(element, parentElement) {
+        assertArg(isElement(element), 'element', 'not an element');
+        assertArg(isElement(parentElement), 'parentElement', 'not an element');
+        element.data(NG_ANIMATE_PIN_DATA, parentElement);
       },
 
       push: function(element, event, options, domOperation) {
@@ -2240,6 +2254,11 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
       var parentAnimationDetected = false;
       var animateChildren;
 
+      var parentHost = element.data(NG_ANIMATE_PIN_DATA);
+      if (parentHost) {
+        parent = parentHost;
+      }
+
       while (parent && parent.length) {
         if (!rootElementDetected) {
           // angular doesn't want to attempt to animate elements outside of the application
@@ -2270,6 +2289,18 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
 
         // there is no need to continue traversing at this point
         if (parentAnimationDetected && animateChildren === false) break;
+
+        if (!rootElementDetected) {
+          // angular doesn't want to attempt to animate elements outside of the application
+          // therefore we need to ensure that the rootElement is an ancestor of the current element
+          rootElementDetected = isMatchingElement(parent, $rootElement);
+          if (!rootElementDetected) {
+            parentHost = parent.data(NG_ANIMATE_PIN_DATA);
+            if (parentHost) {
+              parent = parentHost;
+            }
+          }
+        }
 
         if (!bodyElementDetected) {
           // we also need to ensure that the element is or will be apart of the body element
