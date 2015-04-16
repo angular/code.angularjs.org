@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.4.0-build.3977+sha.6832303
+ * @license AngularJS v1.4.0-build.3978+sha.08411cf
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -124,7 +124,7 @@ var jqLite = angular.element;
  *     <div ng-message="email">Your email address is invalid</div>
  *
  *     <!-- and here are the generic error messages -->
- *     <div ng-messages-include="error-messages"></div>
+ *     <div ng-messages-include="my-custom-messages"></div>
  *   </div>
  * </form>
  * ```
