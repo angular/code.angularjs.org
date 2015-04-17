@@ -9190,7 +9190,7 @@ return jQuery;
 }));
 
 /**
- * @license AngularJS v1.4.0-build.3981+sha.042558a
+ * @license AngularJS v1.4.0-build.3982+sha.103a39c
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -9249,7 +9249,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.4.0-build.3981+sha.042558a/' +
+    message += '\nhttp://errors.angularjs.org/1.4.0-build.3982+sha.103a39c/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -11478,7 +11478,7 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.4.0-build.3981+sha.042558a',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.4.0-build.3982+sha.103a39c',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 4,
   dot: 0,
@@ -14029,7 +14029,7 @@ var $$CoreAnimateQueueProvider = function() {
 var $AnimateProvider = ['$provide', function($provide) {
   var provider = this;
 
-  this.$$registeredAnimations = [];
+  this.$$registeredAnimations = Object.create(null);
 
    /**
    * @ngdoc method
