@@ -10,6 +10,217 @@ which drives many of these changes.</li>
 <li>Several new features, especially animations, would not be possible without a few changes.</li>
 <li>Finally, some outstanding bugs were best fixed by changing an existing API.</li>
 </ul>
+<h1 id="migrating-from-1-3-to-1-4">Migrating from 1.3 to 1.4</h1>
+<p>Angular 1.4 fixes the major animation issues and introduces some breaking changes for <code>cookies</code>, <code>ngMessages</code>,
+<code>$compile</code>, <code>ngRepeat</code>, <code>ngOptions</code>and some fixes to core filters: <code>limitTo</code> and <code>filter</code>.</p>
+<p>The reason for the ngAnimate refactor was to fix timing issues and to expose new APIs to allow
+for developers to construct more versatile animations.  We now have access to <code>$animateCss</code>
+and the many timing-oriented bugs were fixed which resulted in more smoother animations.
+If animation is something of interest, then please read over the breaking changes below for animations when
+<code>ngAnimate</code> is used.</p>
+<p>ngMessages has also been upgraded to allow for dynamic message resolution. This handy feature allows for developers
+to render error messages with ngMessages that are listed with a directive such as ngRepeat. A great usecase for this
+involves pulling error message data from a server and then displaying that data via the mechanics of ngMessages. Be
+sure to read the breaking change involved with <code>ngMessagesInclude</code> to upgrade your template code.</p>
+<p>Other changes, such as the ordering of elements with ngRepeat and ngOptions, may also effect the behavior of your
+application. And be sure to also read up on the changes to <code>$cookies</code>. The migration jump from 1.3 to 1.4 should be
+relatively straightforward otherwise.</p>
+<h2 id="animation-nganimate-">Animation (<code>ngAnimate</code>)</h2>
+<p>Animation in 1.4 have been refactored internally and the API has stayed much the same. There are, however,
+some breaking changes that need to be addressed when any Angular animation code is upgraded to work in 1.4.</p>
+<p>Due to <a href="https://github.com/angular/angular.js/commit/c8700f04fb6fb5dc21ac24de8665c0476d6db5ef">c8700f04</a>,
+JavaSript and CSS animations can no longer be run in
+parallel. With earlier versions of ngAnimate, both CSS and JS animations
+would be run together when multiple animations were detected. This
+feature has now been removed, however, the same effect, with even more
+possibilities, can be achieved by injecting <code>$animateCss</code> into a
+JavaScript-defined animation and creating custom CSS-based animations
+from there.</p>
+<p>By using <code>$animateCss</code> inside of a JavaScript animation in Angular 1.4, we can trigger custom CSS-based animations
+directly from our JavaScript code.</p>
+<pre><code class="lang-js">ngModule.animation(&#39;.slide-animation&#39;, [&#39;$animateCss&#39;, function($animateCss) {
+  return {
+    enter: function(element, doneFn) {
+      // this will trigger a `.ng-enter` and `.ng-enter-active` CSS animation
+      var animation = $animateCss(element, {
+        event: &#39;enter&#39;
+        // any other CSS-related properties
+        //   addClass: &#39;some-class&#39;,
+        //   removeClass: &#39;some-other-class&#39;,
+        //   from: {},
+        //   to: {}
+      });
+
+      // make sure to read the ngAnimate docs to understand how this works
+      animation.start().done(doneFn);
+    }
+  }
+}]);
+</code></pre>
+<p><a href="api/ngAnimate/service/$animateCss">Click here to learn how to use $animateCss in your animation code</a></p>
+<p>Due to <a href="https://github.com/angular/angular.js/commit/c8700f04fb6fb5dc21ac24de8665c0476d6db5ef">c8700f04</a>,
+animation-related callbacks are now fired on <code>$animate.on</code> instead of directly being on the element.</p>
+<pre><code class="lang-js">// &lt; 1.4
+element.on(&#39;$animate:before&#39;, function(e, data) {
+  if (data.event === &#39;enter&#39;) { ... }
+});
+element.off(&#39;$animate:before&#39;, fn);
+
+// 1.4+
+$animate.on(element, &#39;enter&#39;, function(data) {
+  //...
+});
+$animate.off(element, &#39;enter&#39;, fn);
+</code></pre>
+<p>Due to <a href="https://github.com/angular/angular.js/commit/c8700f04fb6fb5dc21ac24de8665c0476d6db5ef">c8700f04</a>,
+the function params for <code>$animate.enabled()</code> when an element is used are now flipped. This fix allows
+the function to act as a getter when a single element param is provided.</p>
+<pre><code class="lang-js">// &lt; 1.4
+$animate.enabled(false, element);
+
+// 1.4+
+$animate.enabled(element, false);
+</code></pre>
+<p>Due to <a href="https://github.com/angular/angular.js/commit/c8700f04fb6fb5dc21ac24de8665c0476d6db5ef">c8700f04</a>,
+in addition to disabling the children of the element, <code>$animate.enabled(element, false)</code> will now also
+disable animations on the element itself.</p>
+<p>Due to <a href="https://github.com/angular/angular.js/commit/c8700f04fb6fb5dc21ac24de8665c0476d6db5ef">c8700f04</a>,
+there is no need to call <code>$scope.$apply</code> or <code>$scope.$digest</code> inside of a animation promise callback anymore
+since the promise is resolved within a digest automatically. (Not to worry, any extra digests will not be
+run unless the promise is used.)</p>
+<pre><code class="lang-js">// &lt; 1.4
+$animate.enter(element).then(function() {
+  $scope.$apply(function() {
+    $scope.explode = true;
+  });
+});
+
+// 1.4+
+$animate.enter(element).then(function() {
+  $scope.explode = true;
+});
+</code></pre>
+<p>Due to <a href="https://github.com/angular/angular.js/commit/c8700f04fb6fb5dc21ac24de8665c0476d6db5ef">c8700f04</a>,
+when an enter, leave or move animation is triggered then it will always end any pending or active parent
+class based animations (animations triggered via ngClass) in order to ensure that any CSS styles are resolved in time.</p>
+<h2 id="forms-ngmessages-ngoptions-">Forms (<code>ngMessages</code>, <code>ngOptions</code>)</h2>
+<h3 id="ngmessages">ngMessages</h3>
+<p>The ngMessages module has also been subject to an internal refactor to allow the feature to be more flexible
+and compatible with dynamic message data. The ngMessage directive now supports a new attribute called <code>ng-message-exp</code>
+which will evaluate an expression and will keep track of that expression as it changes in order to re-evaluate
+the listed messages.</p>
+<p>There is only one breaking change. Please consider the following when including remote message templates via <code>ng-messages-include</code>:</p>
+<p>Due to <a href="https://github.com/angular/angular.js/commit/c9a4421fc3c97448527eadef1f42eb2f487ec2e0">c9a4421f</a>,
+the <code>ngMessagesInclude</code> attribute has now been removed and cannot be used in the same element containing
+the <code>ngMessages</code> directive. Instead, <code>ngMessagesInclude</code> is to be used on its own element inline with
+other inline messages situated as children within the <code>ngMessages</code> container directive.</p>
+<pre><code class="lang-html">&lt;!-- AngularJS 1.3.x --&gt;
+&lt;div ng-messages=&quot;model.$error&quot; ng-messages-include=&quot;remote.html&quot;&gt;
+  &lt;div ng-message=&quot;required&quot;&gt;Your message is required&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- AngularJS 1.4.x --&gt;
+&lt;div ng-messages=&quot;model.$error&quot;&gt;
+  &lt;div ng-message=&quot;required&quot;&gt;Your message is required&lt;/div&gt;
+  &lt;div ng-messages-include=&quot;remote.html&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p>Depending on where the <code>ngMessagesInclude</code> directive is placed it will be prioritized inline with the other messages
+before and after it.</p>
+<h3 id="ngoptions">ngOptions</h3>
+<p>Due to <a href="https://github.com/angular/angular.js/commit/7fda214c4f65a6a06b25cf5d5aff013a364e9cef">7fda214c</a>,
+when <code>ngOptions</code> renders the option values within the DOM, the resulting HTML code is different. Normally this
+should not affect your application at all, however, if your code relies on inspecing the value property of <code>&lt;option&gt;</code>
+elements (that <code>ngOptions</code> generates) then be sure to read the details
+<a href="https://github.com/angular/angular.js/commit/7fda214c4f65a6a06b25cf5d5aff013a364e9cef">here</a>.</p>
+<p>Due to <a href="https://github.com/angular/angular.js/commit/7fda214c4f65a6a06b25cf5d5aff013a364e9cef">7fda214c</a>,
+when iterating over an object&#39;s properties using the <code>(key, value) in obj</code> syntax
+the order of the elements used to be sorted alphabetically. This was an artificial
+attempt to create a deterministic ordering since browsers don&#39;t guarantee the order.
+But in practice this is not what people want and so this change iterates over properties
+in the order they are returned by Object.keys(obj), which is almost always the order
+in which the properties were defined.</p>
+<h2 id="templating-ngrepeat-compile-">Templating (<code>ngRepeat</code>, <code>$compile</code>)</h2>
+<h3 id="ngrepeat">ngRepeat</h3>
+<p>Due to <a href="https://github.com/angular/angular.js/commit/c260e7386391877625eda086480de73e8a0ba921">c260e738</a>,
+previously, the order of items when using ngRepeat to iterate over object properties was guaranteed to be consistent
+by sorting the keys into alphabetic order.</p>
+<p>Now, the order of the items is browser dependent based on the order returned
+from iterating over the object using the <code>for key in obj</code> syntax.</p>
+<p>It seems that browsers generally follow the strategy of providing
+keys in the order in which they were defined, although there are exceptions
+when keys are deleted and reinstated. See
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/delete#Cross-browser_issues">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/delete#Cross-browser_issues</a></p>
+<p>The best approach is to convert Objects into Arrays by a filter such as
+<a href="https://github.com/petebacondarwin/angular-toArrayFilter">https://github.com/petebacondarwin/angular-toArrayFilter</a>
+or some other mechanism, and then sort them manually in the order you need.</p>
+<h3 id="-compile">$compile</h3>
+<p>Due to <a href="https://github.com/angular/angular.js/commit/6a38dbfd3c34c8f9efff503d17eb3cbeb666d422">6a38dbfd</a>,
+previously, &#39;&amp;&#39; expressions would always set up a function in the isolate scope. Now, if the binding
+is marked as optional and the attribute is not specified, no function will be added to the isolate scope.</p>
+<h2 id="cookies-ngcookies-">Cookies (<code>ngCookies</code>)</h2>
+<p>Due to <a href="https://github.com/angular/angular.js/commit/38fbe3ee8370fc449b82d80df07b5c2ed2cd5fbe">38fbe3ee</a>,
+<code>$cookies</code> will no longer expose properties that represent the current browser cookie
+values.</p>
+<p>The new API on <code>$cookies</code> includes:</p>
+<ul>
+<li><code>get</code></li>
+<li><code>put</code></li>
+<li><code>getObject</code></li>
+<li><code>putObject</code></li>
+<li><code>getAll</code></li>
+<li><code>remove</code></li>
+</ul>
+<p>The new API no longer polls the browser for changes to the cookies and no longer copy
+cookie values onto the <code>$cookies</code> object.</p>
+<p>The polling is expensive and caused issues with the <code>$cookies</code> properties not
+synchronizing correctly with the actual browser cookie values.</p>
+<p>The reason the polling was originally added was to allow communication between
+different tabs, but there are better ways to do this today (for example <code>localStorage</code>).</p>
+<p>Now you must explictly use the methods above in order to access cookie data. This also means that
+you can no longer watch the any properties on <code>$cookies</code> for changes to detect for any changes
+that occur on the browsers cookies.</p>
+<p>This feature is generally only needed if a 3rd party library was programmatically
+changing the cookies at runtime. If you rely on this then you must either write code that
+can react to the 3rd party library making the changes to cookies or implement your own polling
+mechanism.</p>
+<p><strong>DEPRECATION NOTICE</strong></p>
+<p><code>$cookieStore</code> is now deprecated as all the useful logic
+has been moved to <code>$cookies</code>, to which <code>$cookieStore</code> now simply
+delegates calls.</p>
+<h2 id="server-requests-http-">Server Requests (<code>$http</code>)</h2>
+<p>Due to <a href="https://github.com/angular/angular.js/commit/5da1256fc2812d5b28fb0af0de81256054856369">5da1256</a>,
+<code>transformRequest</code> functions can no longer modify request headers.</p>
+<p>Before this commit <code>transformRequest</code> could modify request headers, ex.:</p>
+<pre><code class="lang-javascript">function requestTransform(data, headers) {
+    headers = angular.extend(headers(), {
+      &#39;X-MY_HEADER&#39;: &#39;abcd&#39;
+    });
+  }
+  return angular.toJson(data);
+}
+</code></pre>
+<p>This behavior was unintended and undocumented, so the change should affect very few applications. If one
+needs to dynamically add / remove headers it should be done in a header function, for example:</p>
+<pre><code class="lang-javascript">$http.get(url, {
+  headers: {
+    &#39;X-MY_HEADER&#39;: function(config) {
+      return &#39;abcd&#39;; //you&#39;ve got access to a request config object to specify header value dynamically
+    }
+  }
+})
+</code></pre>
+<h2 id="filters-filter-limitto-">Filters (<code>filter</code>, <code>limitTo</code>)</h2>
+<h3 id="-filter-filter"><code>filter</code> filter</h3>
+<p>Due to <a href="https://github.com/angular/angular.js/commit/cea8e75144e6910b806b63a6ec2a6d118316fddd">cea8e751</a>,
+the <code>filter</code> filter will throw an error when a non array. Beforehand it would silently ignore the error
+and return an empty array. This is not the behavior anymore.</p>
+<p>If necessary, this can be worked around by converting an object to an array,
+using a filter such as <a href="https://github.com/petebacondarwin/angular-toArrayFilter">https://github.com/petebacondarwin/angular-toArrayFilter</a>.</p>
+<h3 id="-limitto-filter"><code>limitTo</code> filter</h3>
+<p>Due to <a href="https://github.com/angular/angular.js/commit/a3c3bf3332e5685dc319c46faef882cb6ac246e1">a3c3bf33</a>,
+the limitTo filter has changed behavior when the provided limit value is invalid.
+Now, instead of returning empty object/array, it returns unchanged input.</p>
 <h1 id="migrating-from-1-2-to-1-3">Migrating from 1.2 to 1.3</h1>
 <h2 id="controllers">Controllers</h2>
 <p>Due to <a href="https://github.com/angular/angular.js/commit/3f2232b5a181512fac23775b1df4a6ebda67d018">3f2232b5</a>,
