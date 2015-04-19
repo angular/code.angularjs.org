@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.4.0-build.3983+sha.103a39c
+ * @license AngularJS v1.4.0-build.3984+sha.992114f
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -56,8 +56,8 @@ function parseTextLiteral(text) {
     return unwatch;
   };
   PARSE_CACHE_FOR_TEXT_LITERALS[text] = parsedFn;
-  parsedFn.exp = text; // Needed to pretend to be $interpolate for tests copied from interpolateSpec.js
-  parsedFn.expressions = []; // Require this to call $compile.$$addBindingInfo() which allows Protractor to find elements by binding.
+  parsedFn['exp'] = text; // Needed to pretend to be $interpolate for tests copied from interpolateSpec.js
+  parsedFn['expressions'] = []; // Require this to call $compile.$$addBindingInfo() which allows Protractor to find elements by binding.
   return parsedFn;
 }
 
@@ -105,6 +105,8 @@ function MessageSelectorBase(expressionFn, choices) {
   this.parsedFn['$$watchDelegate'] = function $$watchDelegate(scope, listener, objectEquality) {
     return self.watchDelegate(scope, listener, objectEquality);
   };
+  this.parsedFn['exp'] = expressionFn['exp'];
+  this.parsedFn['expressions'] = expressionFn['expressions'];
 }
 
 MessageSelectorBase.prototype.getMessageFn = function getMessageFn(value) {
@@ -294,10 +296,10 @@ InterpolationParts.prototype.toParsedFn = function toParsedFn(mustHaveExpression
     return self.watchDelegate(scope, listener, objectEquality);
   };
 
-  parsedFn.exp = originalText; // Needed to pretend to be $interpolate for tests copied from interpolateSpec.js
-  parsedFn.expressions = new Array(this.expressionFns.length); // Require this to call $compile.$$addBindingInfo() which allows Protractor to find elements by binding.
+  parsedFn['exp'] = originalText; // Needed to pretend to be $interpolate for tests copied from interpolateSpec.js
+  parsedFn['expressions'] = new Array(this.expressionFns.length); // Require this to call $compile.$$addBindingInfo() which allows Protractor to find elements by binding.
   for (var i = 0; i < this.expressionFns.length; i++) {
-    parsedFn.expressions[i] = this.expressionFns[i].exp;
+    parsedFn['expressions'][i] = this.expressionFns[i]['exp'];
   }
 
   return parsedFn;
@@ -743,8 +745,8 @@ MessageFormatParser.prototype.ruleEndMustache = function ruleEndMustache() {
     // such a case we do not want to unnecessarily stringify something if it's not going to be used
     // in a string context.
     this.parsedFn = this.$parse(this.expressionFn, this.stringifier);
-    this.parsedFn.exp = this.expressionFn.exp; // Needed to pretend to be $interpolate for tests copied from interpolateSpec.js
-    this.parsedFn.expressions = this.expressionFn.expressions; // Require this to call $compile.$$addBindingInfo() which allows Protractor to find elements by binding.
+    this.parsedFn['exp'] = this.expressionFn['exp']; // Needed to pretend to be $interpolate for tests copied from interpolateSpec.js
+    this.parsedFn['expressions'] = this.expressionFn['expressions']; // Require this to call $compile.$$addBindingInfo() which allows Protractor to find elements by binding.
   }
   this.rule = null;
 };
@@ -792,7 +794,8 @@ MessageFormatParser.prototype.ruleInAngularExpression = function ruleInAngularEx
       this.index = this.text.length;
       this.expressionFn = this.$parse(this.text.substring(this.expressionStartIndex, this.index));
       // Needed to pretend to be $interpolate for tests copied from interpolateSpec.js
-      this.expressionFn.exp = this.text.substring(this.expressionStartIndex, this.index);
+      this.expressionFn['exp'] = this.text.substring(this.expressionStartIndex, this.index);
+      this.expressionFn['expressions'] = this.expressionFn['expressions'];
       this.rule = null;
       return;
     }
@@ -819,7 +822,8 @@ MessageFormatParser.prototype.ruleInAngularExpression = function ruleInAngularEx
       // todo: does this need to be trimmed?
       this.expressionFn = this.$parse(this.text.substring(this.expressionStartIndex, match.index));
       // Needed to pretend to be $interpolate for tests copied from interpolateSpec.js
-      this.expressionFn.exp = this.text.substring(this.expressionStartIndex, match.index);
+      this.expressionFn['exp'] = this.text.substring(this.expressionStartIndex, match.index);
+      this.expressionFn['expressions'] = this.expressionFn['expressions'];
       this.rule = null;
       this.rule = this.rulePluralOrSelect;
     }
@@ -847,7 +851,8 @@ MessageFormatParser.prototype.ruleInAngularExpression = function ruleInAngularEx
   this.index = match.index;
   this.expressionFn = this.$parse(this.text.substring(this.expressionStartIndex, this.index));
   // Needed to pretend to be $interpolate for tests copied from interpolateSpec.js
-  this.expressionFn.exp = this.text.substring(this.expressionStartIndex, this.index);
+  this.expressionFn['exp'] = this.text.substring(this.expressionStartIndex, this.index);
+  this.expressionFn['expressions'] = this.expressionFn['expressions'];
   this.rule = null;
 };
 
@@ -875,12 +880,12 @@ MessageFormatParser.prototype.ruleInAngularExpression = function ruleInAngularEx
  * <file name="index.html">
  *   <div ng-controller="AppController">
  *     <button ng-click="decreaseRecipients()" id="decreaseRecipients">decreaseRecipients</button><br>
- *     <span id="message">{{recipients.length, plural, offset:1
- *                          =0    {{{sender.name}} gave no gifts (\#=#)}
- *                          =1    {{{sender.name}} gave one gift to {{recipients[0].name}} (\#=#)}
- *                          one   {{{sender.name}} gave {{recipients[0].name}} and one other person a gift (\#=#)}
- *                          other {{{sender.name}} gave {{recipients[0].name}} and # other people a gift (\#=#)}
- *                        }}</span>
+ *     <span>{{recipients.length, plural, offset:1
+ *             =0    {{{sender.name}} gave no gifts (\#=#)}
+ *             =1    {{{sender.name}} gave one gift to {{recipients[0].name}} (\#=#)}
+ *             one   {{{sender.name}} gave {{recipients[0].name}} and one other person a gift (\#=#)}
+ *             other {{{sender.name}} gave {{recipients[0].name}} and # other people a gift (\#=#)}
+ *           }}</span>
  *   </div>
  * </file>
  *
@@ -908,7 +913,7 @@ MessageFormatParser.prototype.ruleInAngularExpression = function ruleInAngularEx
  * <file name="protractor.js" type="protractor">
  *   describe('MessageFormat plural', function() {
  *     it('should pluralize initial values', function() {
- *       var messageElem = element(by.id('message')), decreaseRecipientsBtn = element(by.id('decreaseRecipients'));
+ *       var messageElem = element(by.binding('recipients.length')), decreaseRecipientsBtn = element(by.id('decreaseRecipients'));
  *       expect(messageElem.getText()).toEqual('Harry Potter gave Alice and 2 other people a gift (#=2)');
  *       decreaseRecipientsBtn.click();
  *       expect(messageElem.getText()).toEqual('Harry Potter gave Alice and one other person a gift (#=1)');
