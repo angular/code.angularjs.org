@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.4.0-build.3984+sha.992114f
+ * @license AngularJS v1.4.0-build.3985+sha.249f9b8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -352,7 +352,8 @@ ngAriaModule.directive('ngShow', ['$aria', function($aria) {
 
         if ($aria.config('bindKeypress') && !attr.ngKeypress && !isNodeOneOf(elem, nodeBlackList)) {
           elem.on('keypress', function(event) {
-            if (event.keyCode === 32 || event.keyCode === 13) {
+            var keyCode = event.which || event.keyCode;
+            if (keyCode === 32 || keyCode === 13) {
               scope.$apply(callback);
             }
 
