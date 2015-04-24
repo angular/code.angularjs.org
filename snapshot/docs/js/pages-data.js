@@ -2269,6 +2269,15 @@ angular.module('pagesData', [])
   "examples/example-example113": {
     "path": "examples/example-example113"
   },
+  "home.html": {
+    "path": "home.html"
+  },
+  "profile.html": {
+    "path": "profile.html"
+  },
+  "examples/example-anchoringExample": {
+    "path": "examples/example-anchoringExample"
+  },
   "examples/example-ngMessageFormat-example": {
     "path": "examples/example-ngMessageFormat-example"
   },

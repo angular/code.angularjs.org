@@ -1,0 +1,35 @@
+.record {
+  display:block;
+  font-size:20px;
+}
+.profile {
+  background:black;
+  color:white;
+  font-size:100px;
+}
+.view-container {
+  position:relative;
+}
+.view-container > .view.ng-animate {
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  min-height:500px;
+}
+.view.ng-enter {
+  transition:0.5s linear all;
+  transform:translateX(100%);
+}
+.view.ng-enter.ng-enter-active {
+  transform:translateX(0%);
+}
+.view.ng-leave {
+  transition:0.5s linear all;
+}
+.view.ng-leave.ng-leave-active {
+  transform:translateX(-100%);
+}
+.view-anchor {
+  transition:0.5s linear all;
+}
