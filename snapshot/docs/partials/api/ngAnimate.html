@@ -480,7 +480,7 @@ the cloned element is placed inside of root element which is likely close to the
 <p>So far we&#39;ve explored how to feed in animations into an Angular application, but how do we trigger animations within our own directives in our application?
 By injecting the <code>$animate</code> service into our directive code, we can trigger structural and class-based hooks which can then be consumed by animations. Let&#39;s
 imagine we have a greeting box that shows and hides itself when the data changes</p>
-<pre><code class="lang-html">&lt;greeing-box active=&quot;onOrOff&quot;&gt;Hi there&lt;/greeting-box&gt;
+<pre><code class="lang-html">&lt;greeting-box active=&quot;onOrOff&quot;&gt;Hi there&lt;/greeting-box&gt;
 </code></pre>
 <pre><code class="lang-js">ngModule.directive(&#39;greetingBox&#39;, [&#39;$animate&#39;, function($animate) {
   return function(scope, element, attrs) {

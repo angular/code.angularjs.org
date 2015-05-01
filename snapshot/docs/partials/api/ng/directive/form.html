@@ -114,7 +114,7 @@ that has been rendered as invalid after it has been validated:</p>
     
       <li>as element:
       
-      <pre><code>&lt;form&#10;  [name=&quot;&quot;]&gt;&#10;...&#10;&lt;/form&gt;</code></pre>
+      <pre><code>&lt;form&#10;  [name=&quot;string&quot;]&gt;&#10;...&#10;&lt;/form&gt;</code></pre>
       </li>
     
   </div>
@@ -176,7 +176,7 @@ that has been rendered as invalid after it has been validated:</p>
       name="index.html"
       language="html"
       type="html">
-      <pre><code>&lt;script&gt;&#10;  angular.module(&#39;formExample&#39;, [])&#10;    .controller(&#39;FormController&#39;, [&#39;$scope&#39;, function($scope) {&#10;      $scope.userType = &#39;guest&#39;;&#10;    }]);&#10;&lt;/script&gt;&#10;&lt;style&gt;&#10; .my-form {&#10;   -webkit-transition:all linear 0.5s;&#10;   transition:all linear 0.5s;&#10;   background: transparent;&#10; }&#10; .my-form.ng-invalid {&#10;   background: red;&#10; }&#10;&lt;/style&gt;&#10;&lt;form name=&quot;myForm&quot; ng-controller=&quot;FormController&quot; class=&quot;my-form&quot;&gt;&#10;  userType: &lt;input name=&quot;input&quot; ng-model=&quot;userType&quot; required&gt;&#10;  &lt;span class=&quot;error&quot; ng-show=&quot;myForm.input.$error.required&quot;&gt;Required!&lt;/span&gt;&lt;br&gt;&#10;  &lt;tt&gt;userType = {{userType}}&lt;/tt&gt;&lt;br&gt;&#10;  &lt;tt&gt;myForm.input.$valid = {{myForm.input.$valid}}&lt;/tt&gt;&lt;br&gt;&#10;  &lt;tt&gt;myForm.input.$error = {{myForm.input.$error}}&lt;/tt&gt;&lt;br&gt;&#10;  &lt;tt&gt;myForm.$valid = {{myForm.$valid}}&lt;/tt&gt;&lt;br&gt;&#10;  &lt;tt&gt;myForm.$error.required = {{!!myForm.$error.required}}&lt;/tt&gt;&lt;br&gt;&#10; &lt;/form&gt;</code></pre>
+      <pre><code>&lt;script&gt;&#10;  angular.module(&#39;formExample&#39;, [])&#10;    .controller(&#39;FormController&#39;, [&#39;$scope&#39;, function($scope) {&#10;      $scope.userType = &#39;guest&#39;;&#10;    }]);&#10;&lt;/script&gt;&#10;&lt;style&gt;&#10; .my-form {&#10;   -webkit-transition:all linear 0.5s;&#10;   transition:all linear 0.5s;&#10;   background: transparent;&#10; }&#10; .my-form.ng-invalid {&#10;   background: red;&#10; }&#10;&lt;/style&gt;&#10;&lt;form name=&quot;myForm&quot; ng-controller=&quot;FormController&quot; class=&quot;my-form&quot;&gt;&#10;  userType: &lt;input name=&quot;input&quot; ng-model=&quot;userType&quot; required&gt;&#10;  &lt;span class=&quot;error&quot; ng-show=&quot;myForm.input.$error.required&quot;&gt;Required!&lt;/span&gt;&lt;br&gt;&#10;  &lt;code&gt;userType = {{userType}}&lt;/code&gt;&lt;br&gt;&#10;  &lt;code&gt;myForm.input.$valid = {{myForm.input.$valid}}&lt;/code&gt;&lt;br&gt;&#10;  &lt;code&gt;myForm.input.$error = {{myForm.input.$error}}&lt;/code&gt;&lt;br&gt;&#10;  &lt;code&gt;myForm.$valid = {{myForm.$valid}}&lt;/code&gt;&lt;br&gt;&#10;  &lt;code&gt;myForm.$error.required = {{!!myForm.$error.required}}&lt;/code&gt;&lt;br&gt;&#10; &lt;/form&gt;</code></pre>
     </div>
   
     <div class="runnable-example-file" 

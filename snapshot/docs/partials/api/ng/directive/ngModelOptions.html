@@ -1,8 +1,8 @@
-<a href='https://github.com/angular/angular.js/edit/master/src/ng/directive/ngModel.js?message=docs(ngModelOptions)%3A%20describe%20your%20change...#L1071' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/master/src/ng/directive/ngModel.js?message=docs(ngModelOptions)%3A%20describe%20your%20change...#L1072' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 
-<a href='https://github.com/angular/angular.js/tree/master/src/ng/directive/ngModel.js#L1071' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/master/src/ng/directive/ngModel.js#L1072' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -57,7 +57,7 @@ to have access to the updated model.</p>
   
     <ul>
     <li>as attribute:
-        <pre><code>&lt;ANY&#10;  ng-model-options=&quot;&quot;&gt;&#10;...&#10;&lt;/ANY&gt;</code></pre>
+        <pre><code>&lt;ANY&#10;  ng-model-options=&quot;Object&quot;&gt;&#10;...&#10;&lt;/ANY&gt;</code></pre>
       </li>
     
   </div>
@@ -222,7 +222,7 @@ If not specified, the timezone of the browser will be used.</li>
       name="app.js"
       language="js"
       type="js">
-      <pre><code>angular.module(&#39;getterSetterExample&#39;, [])&#10;.controller(&#39;ExampleController&#39;, [&#39;$scope&#39;, function($scope) {&#10;  var _name = &#39;Brian&#39;;&#10;  $scope.user = {&#10;    name: function(newName) {&#10;      return angular.isDefined(newName) ? (_name = newName) : _name;&#10;    }&#10;  };&#10;}]);</code></pre>
+      <pre><code>angular.module(&#39;getterSetterExample&#39;, [])&#10;.controller(&#39;ExampleController&#39;, [&#39;$scope&#39;, function($scope) {&#10;  var _name = &#39;Brian&#39;;&#10;  $scope.user = {&#10;    name: function(newName) {&#10;      // Note that newName can be undefined for two reasons:&#10;      // 1. Because it is called as a getter and thus called with no arguments&#10;      // 2. Because the property should actually be set to undefined. This happens e.g. if the&#10;      //    input is invalid&#10;      return arguments.length ? (_name = newName) : _name;&#10;    }&#10;  };&#10;}]);</code></pre>
     </div>
   
 

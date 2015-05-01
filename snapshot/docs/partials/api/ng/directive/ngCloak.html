@@ -40,9 +40,6 @@ the compiled element visible.</p>
 <p>For the best result, the <code>angular.js</code> script must be loaded in the head section of the html
 document; alternatively, the css rule above must be included in the external stylesheet of the
 application.</p>
-<p>Legacy browsers, like IE7, do not provide attribute selector support (added in CSS 2.1) so they
-cannot match the <code>[ng\:cloak]</code> selector. To work around this limitation, you must add the css
-class <code>ng-cloak</code> in addition to the <code>ngCloak</code> directive as shown in the example below.</p>
 
 </div>
 
@@ -92,7 +89,7 @@ class <code>ng-cloak</code> in addition to the <code>ngCloak</code> directive as
       name="index.html"
       language="html"
       type="html">
-      <pre><code>&lt;div id=&quot;template1&quot; ng-cloak&gt;{{ &#39;hello&#39; }}&lt;/div&gt;&#10;&lt;div id=&quot;template2&quot; ng-cloak class=&quot;ng-cloak&quot;&gt;{{ &#39;hello IE7&#39; }}&lt;/div&gt;</code></pre>
+      <pre><code>&lt;div id=&quot;template1&quot; ng-cloak&gt;{{ &#39;hello&#39; }}&lt;/div&gt;&#10;&lt;div id=&quot;template2&quot; class=&quot;ng-cloak&quot;&gt;{{ &#39;world&#39; }}&lt;/div&gt;</code></pre>
     </div>
   
     <div class="runnable-example-file" 

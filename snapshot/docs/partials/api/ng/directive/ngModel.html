@@ -192,7 +192,7 @@ a <code>&lt;form&gt;</code>, which will enable this behavior for all <code>&lt;i
       name="app.js"
       language="js"
       type="js">
-      <pre><code>angular.module(&#39;getterSetterExample&#39;, [])&#10;.controller(&#39;ExampleController&#39;, [&#39;$scope&#39;, function($scope) {&#10;  var _name = &#39;Brian&#39;;&#10;  $scope.user = {&#10;    name: function(newName) {&#10;      if (angular.isDefined(newName)) {&#10;        _name = newName;&#10;      }&#10;      return _name;&#10;    }&#10;  };&#10;}]);</code></pre>
+      <pre><code>angular.module(&#39;getterSetterExample&#39;, [])&#10;.controller(&#39;ExampleController&#39;, [&#39;$scope&#39;, function($scope) {&#10;  var _name = &#39;Brian&#39;;&#10;  $scope.user = {&#10;    name: function(newName) {&#10;     // Note that newName can be undefined for two reasons:&#10;     // 1. Because it is called as a getter and thus called with no arguments&#10;     // 2. Because the property should actually be set to undefined. This happens e.g. if the&#10;     //    input is invalid&#10;     return arguments.length ? (_name = newName) : _name;&#10;    }&#10;  };&#10;}]);</code></pre>
     </div>
   
 

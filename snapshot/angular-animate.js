@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.4.0-build.3989+sha.d97b658
+ * @license AngularJS v1.4.0-build.3993+sha.1268b17
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -3372,7 +3372,7 @@ var $$AnimationProvider = ['$animateProvider', function($animateProvider) {
  * imagine we have a greeting box that shows and hides itself when the data changes
  *
  * ```html
- * <greeing-box active="onOrOff">Hi there</greeting-box>
+ * <greeting-box active="onOrOff">Hi there</greeting-box>
  * ```
  *
  * ```js

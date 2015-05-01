@@ -94,7 +94,7 @@ leave - happens just after the ngSwitch contents change and just before the form
         <a href="" class="label type-hint type-hint-object">*</a>
       </td>
       <td>
-        <p>expression to match against <tt>ng-switch-when</tt>.
+        <p>expression to match against <code>ng-switch-when</code>.
 On child elements add:</p>
 <ul>
 <li><code>ngSwitchWhen</code>: the case statement to match against. If match then this
@@ -135,7 +135,7 @@ case match.</li>
       name="index.html"
       language="html"
       type="html">
-      <pre><code>&lt;div ng-controller=&quot;ExampleController&quot;&gt;&#10;  &lt;select ng-model=&quot;selection&quot; ng-options=&quot;item for item in items&quot;&gt;&#10;  &lt;/select&gt;&#10;  &lt;tt&gt;selection={{selection}}&lt;/tt&gt;&#10;  &lt;hr/&gt;&#10;  &lt;div class=&quot;animate-switch-container&quot;&#10;    ng-switch on=&quot;selection&quot;&gt;&#10;      &lt;div class=&quot;animate-switch&quot; ng-switch-when=&quot;settings&quot;&gt;Settings Div&lt;/div&gt;&#10;      &lt;div class=&quot;animate-switch&quot; ng-switch-when=&quot;home&quot;&gt;Home Span&lt;/div&gt;&#10;      &lt;div class=&quot;animate-switch&quot; ng-switch-default&gt;default&lt;/div&gt;&#10;  &lt;/div&gt;&#10;&lt;/div&gt;</code></pre>
+      <pre><code>&lt;div ng-controller=&quot;ExampleController&quot;&gt;&#10;  &lt;select ng-model=&quot;selection&quot; ng-options=&quot;item for item in items&quot;&gt;&#10;  &lt;/select&gt;&#10;  &lt;code&gt;selection={{selection}}&lt;/code&gt;&#10;  &lt;hr/&gt;&#10;  &lt;div class=&quot;animate-switch-container&quot;&#10;    ng-switch on=&quot;selection&quot;&gt;&#10;      &lt;div class=&quot;animate-switch&quot; ng-switch-when=&quot;settings&quot;&gt;Settings Div&lt;/div&gt;&#10;      &lt;div class=&quot;animate-switch&quot; ng-switch-when=&quot;home&quot;&gt;Home Span&lt;/div&gt;&#10;      &lt;div class=&quot;animate-switch&quot; ng-switch-default&gt;default&lt;/div&gt;&#10;  &lt;/div&gt;&#10;&lt;/div&gt;</code></pre>
     </div>
   
     <div class="runnable-example-file" 

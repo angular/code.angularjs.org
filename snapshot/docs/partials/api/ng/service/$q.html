@@ -131,9 +131,11 @@ as soon as the result is available. The callbacks are called with a single argum
 or rejection reason. Additionally, the notify callback may be called zero or more times to
 provide a progress indication, before the promise is resolved or rejected.</p>
 <p>This method <em>returns a new promise</em> which is resolved or rejected via the return value of the
-<code>successCallback</code>, <code>errorCallback</code>. It also notifies via the return value of the
-<code>notifyCallback</code> method. The promise cannot be resolved or rejected from the notifyCallback
-method.</p>
+<code>successCallback</code>, <code>errorCallback</code> (unless that value is a promise, in which case it is resolved
+with the value which is resolved in that promise using
+<a href="http://www.html5rocks.com/en/tutorials/es6/promises/#toc-promises-queues">promise chaining</a>).
+It also notifies via the return value of the <code>notifyCallback</code> method. The promise cannot be
+resolved or rejected from the notifyCallback method.</p>
 </li>
 <li><p><code>catch(errorCallback)</code> – shorthand for <code>promise.then(null, errorCallback)</code></p>
 </li>
