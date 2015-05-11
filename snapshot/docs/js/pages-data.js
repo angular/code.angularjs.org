@@ -2188,8 +2188,8 @@ angular.module('pagesData', [])
   "examples/example-example90": {
     "path": "examples/example-example90"
   },
-  "glyphicons.css": {
-    "path": "glyphicons.css"
+  "font-awesome.css": {
+    "path": "font-awesome.css"
   },
   "examples/example-example91": {
     "path": "examples/example-example91"
