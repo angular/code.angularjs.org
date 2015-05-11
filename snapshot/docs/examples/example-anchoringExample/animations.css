@@ -17,19 +17,19 @@
   width:100%;
   min-height:500px;
 }
-.view.ng-enter {
+.view.ng-enter, .view.ng-leave,
+.record.ng-anchor {
   transition:0.5s linear all;
+}
+.view.ng-enter {
   transform:translateX(100%);
 }
-.view.ng-enter.ng-enter-active {
+.view.ng-enter.ng-enter-active, .view.ng-leave {
   transform:translateX(0%);
-}
-.view.ng-leave {
-  transition:0.5s linear all;
 }
 .view.ng-leave.ng-leave-active {
   transform:translateX(-100%);
 }
-.view-anchor {
-  transition:0.5s linear all;
+.record.ng-anchor-out {
+  background:red;
 }

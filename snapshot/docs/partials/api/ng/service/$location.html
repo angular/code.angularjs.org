@@ -1,8 +1,8 @@
-<a href='https://github.com/angular/angular.js/edit/master/src/ng/location.js?message=docs($location)%3A%20describe%20your%20change...#L656' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/master/src/ng/location.js?message=docs($location)%3A%20describe%20your%20change...#L664' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 
-<a href='https://github.com/angular/angular.js/tree/master/src/ng/location.js#L656' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/master/src/ng/location.js#L664' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -192,9 +192,16 @@ var protocol = $location.protocol();
 </h3>
     <div><p>This method is getter only.</p>
 <p>Return host of current url.</p>
+<p>Note: compared to the non-angular version <code>location.host</code> which returns <code>hostname:port</code>, this returns the <code>hostname</code> portion only.</p>
 <pre><code class="lang-js">// given url http://example.com/#/some/path?foo=bar&amp;baz=xoxo
 var host = $location.host();
 // =&gt; &quot;example.com&quot;
+
+// given url http://user:password@example.com:8080/#/some/path?foo=bar&amp;baz=xoxo
+host = $location.host();
+// =&gt; &quot;example.com&quot;
+host = location.host;
+// =&gt; &quot;example.com:8080&quot;
 </code></pre>
 </div>
 

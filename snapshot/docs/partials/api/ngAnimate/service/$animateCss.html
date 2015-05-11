@@ -47,16 +47,11 @@ the CSS animation.</p>
   return {
     enter: function(element, doneFn) {
       var height = element[0].offsetHeight;
-      var animation = $animateCss(element, {
+      return $animateCss(element, {
         from: { height:&#39;0px&#39; },
         to: { height:height + &#39;px&#39; },
         duration: 1 // one second
       });
-
-      // if no possible animation can be triggered due
-      // to the combination of options then `animation`
-      // will be returned as undefined
-      animation.start().done(doneFn);
     }
   }
 }]);
@@ -73,18 +68,13 @@ to provide a working animation that will run in CSS.</p>
   return {
     enter: function(element, doneFn) {
       var height = element[0].offsetHeight;
-      var animation = $animateCss(element, {
+      return $animateCss(element, {
         addClass: &#39;red large-text pulse-twice&#39;,
         easing: &#39;ease-out&#39;,
         from: { height:&#39;0px&#39; },
         to: { height:height + &#39;px&#39; },
         duration: 1 // one second
       });
-
-      // if no possible animation can be triggered due
-      // to the combination of options then `animation`
-      // will be returned as undefined
-      animation.start().done(doneFn);
     }
   }
 }]);
@@ -116,10 +106,11 @@ the CSS classes below will be transitioned despite them being defined as regular
 <p><code>$animateCss</code> is very versatile and intelligent when it comes to figuring out what configurations to apply to the element to ensure the animation
 works with the options provided. Say for example we were adding a class that contained a keyframe value and we wanted to also animate some inline
 styles using the <code>from</code> and <code>to</code> properties.</p>
-<pre><code class="lang-js">var animation = $animateCss(element, {
+<pre><code class="lang-js">var animator = $animateCss(element, {
   from: { background:&#39;red&#39; },
   to: { background:&#39;blue&#39; }
 });
+animator.start();
 </code></pre>
 <pre><code class="lang-css">.rotating-animation {
   animation:0.5s rotate linear;
@@ -145,9 +136,9 @@ and spread across the transition and keyframe animation.</p>
 <p><code>$animateCss</code> works in two stages: a preparation phase and an animation phase. Therefore when <code>$animateCss</code> is first called it will NOT actually
 start the animation. All that is going on here is that the element is being prepared for the animation (which means that the generated CSS classes are
 added and removed on the element). Once <code>$animateCss</code> is called it will return an object with the following properties:</p>
-<pre><code class="lang-js">var animation = $animateCss(element, { ... });
+<pre><code class="lang-js">var animator = $animateCss(element, { ... });
 </code></pre>
-<p>Now what do the contents of our <code>animation</code> variable look like:</p>
+<p>Now what do the contents of our <code>animator</code> variable look like:</p>
 <pre><code class="lang-js">{
   // starts the animation
   start: Function,
@@ -160,23 +151,13 @@ added and removed on the element). Once <code>$animateCss</code> is called it wi
 If we choose not to run the animation then we MUST run <code>animation.end()</code> to perform a cleanup on the element (since some CSS classes and stlyes may have been
 applied to the element during the preparation phase). Note that all other properties such as duration, delay, transitions and keyframes are just properties
 and that changing them will not reconfigure the parameters of the animation.</p>
-<p>By calling <code>animation.start()</code> we do get back a promise, however, due to the nature of animations we may not want to tap into the default behaviour of
-animations (since they cause a digest to occur which may slow down the animation performance-wise). Therefore instead of calling <code>then</code> to capture when
-the animation ends be sure to call <code>done(callback)</code> (this is the recommended way to use <code>$animateCss</code> within JavaScript-animations).</p>
-<p>The example below should put this into perspective:</p>
-<pre><code class="lang-js">var animation = $animateCss(element, { ... });
-
-// remember that if there is no CSS animation detected on the element
-// then the value returned from $animateCss will be null
-if (animation) {
-  animation.start().done(function() {
-    // yaay the animation is over
-    doneCallback();
-  });
-} else {
-  doneCallback();
-}
-</code></pre>
+<h3 id="runner-done-vs-runner-then-">runner.done() vs runner.then()</h3>
+<p>It is documented that <code>animation.start()</code> will return a promise object and this is true, however, there is also an additional method available on the
+runner called <code>.done(callbackFn)</code>. The done method works the same as <code>.finally(callbackFn)</code>, however, it does <strong>not trigger a digest to occur</strong>.
+Therefore, for performance reasons, it&#39;s always best to use <code>runner.done(callback)</code> instead of <code>runner.then()</code>, <code>runner.catch()</code> or <code>runner.finally()</code>
+unless you really need a digest to kick off afterwards.</p>
+<p>Keep in mind that, to make this easier, ngAnimate has tweaked the JS animations API to recognize when a runner instance is returned from $animateCss
+(so there is no need to call <code>runner.done(doneFn)</code> inside of your JavaScript animation code). Check the <a href="#usage">animation code above</a> to see how this works.</p>
 
 </div>
 
@@ -271,8 +252,8 @@ CSS delay value.</li>
     <h3>Returns</h3>
 <table class="variables-matrix return-arguments">
   <tr>
-    <td><a href="" class="label type-hint type-hint-null">null</a><a href="" class="label type-hint type-hint-object">object</a></td>
-    <td><p>an object with a start method and details about the animation. If no animation is detected then a value of <code>null</code> will be returned.</p>
+    <td><a href="" class="label type-hint type-hint-object">object</a></td>
+    <td><p>an object with start and end methods and details about the animation.</p>
 <ul>
 <li><code>start</code> - The method to start the animation. This will return a <code>Promise</code> when called.</li>
 <li><code>end</code> - This method will cancel the animation and remove all applied CSS classes and styles.</li>

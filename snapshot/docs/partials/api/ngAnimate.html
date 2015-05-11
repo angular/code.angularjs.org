@@ -209,6 +209,28 @@ window.requestAnimationFrame(function() {
 });
 </code></pre>
 <p>Stagger animations are currently only supported within CSS-defined animations.</p>
+<h3 id="the-ng-animate-css-class">The <code>ng-animate</code> CSS class</h3>
+<p>When ngAnimate is animating an element it will apply the <code>ng-animate</code> CSS class to the element for the duration of the animation.
+This is a temporary CSS class and it will be removed once the animation is over (for both JavaScript and CSS-based animations).</p>
+<p>Therefore, animations can be applied to an element using this temporary class directly via CSS.</p>
+<pre><code class="lang-css">.zipper.ng-animate {
+  transition:0.5s linear all;
+}
+.zipper.ng-enter {
+  opacity:0;
+}
+.zipper.ng-enter.ng-enter-active {
+  opacity:1;
+}
+.zipper.ng-leave {
+  opacity:1;
+}
+.zipper.ng-leave.ng-leave-active {
+  opacity:0;
+}
+</code></pre>
+<p>(Note that the <code>ng-animate</code> CSS class is reserved and it cannot be applied on an element directly since ngAnimate will always remove
+the CSS class once an animation has completed.)</p>
 <h2 id="javascript-based-animations">JavaScript-based Animations</h2>
 <p>ngAnimate also allows for animations to be consumed by JavaScript code. The approach is similar to CSS-based animations (where there is a shared
 CSS class that is referenced in our HTML code) but in addition we need to register the JavaScript animation on the module. By making use of the
@@ -295,17 +317,12 @@ our own JS-based animation code:</p>
 <pre><code class="lang-js">myModule.animation(&#39;.slide&#39;, [&#39;$animateCss&#39;, function($animateCss) {
   return {
     enter: function(element, doneFn) {
-      var animation = $animateCss(element, {
-        event: &#39;enter&#39;
-      });
-
-      if (animation) {
-        // this will trigger `.slide.ng-enter` and `.slide.ng-enter-active`.
-        var runner = animation.start();
-        runner.done(doneFn);
-      } else { //no CSS animation was detected
-        doneFn();
-      }
+       // this will trigger `.slide.ng-enter` and `.slide.ng-enter-active`.
+      var runner = $animateCss(element, {
+        event: &#39;enter&#39;,
+        structural: true
+      }).start();
+       runner.done(doneFn);
     }
   }
 }]
@@ -317,18 +334,14 @@ data into <code>$animateCss</code> directly:</p>
 <pre><code class="lang-js">myModule.animation(&#39;.slide&#39;, [&#39;$animateCss&#39;, function($animateCss) {
   return {
     enter: function(element, doneFn) {
-      var animation = $animateCss(element, {
+      var runner = $animateCss(element, {
         event: &#39;enter&#39;,
         addClass: &#39;maroon-setting&#39;,
         from: { height:0 },
         to: { height: 200 }
-      });
+      }).start();
 
-      if (animation) {
-        animation.start().done(doneFn);
-      } else {
-        doneFn();
-      }
+      runner.done(doneFn);
     }
   }
 }]
@@ -348,46 +361,68 @@ since the $animateCss code is adding the class */
 structural areas of an application (like views) by pairing up elements using an attribute
 called <code>ng-animate-ref</code>.</p>
 <p>Let&#39;s say for example we have two views that are managed by <code>ng-view</code> and we want to show
-that there is a relationship between two components situated in different views. By using the
+that there is a relationship between two components situated in within these views. By using the
 <code>ng-animate-ref</code> attribute we can identify that the two components are paired together and we
 can then attach an animation, which is triggered when the view changes.</p>
+<p>Say for example we have the following template code:</p>
 <pre><code class="lang-html">&lt;!-- index.html --&gt;
 &lt;div ng-view class=&quot;view-animation&quot;&gt;
 &lt;/div&gt;
 
 &lt;!-- home.html --&gt;
 &lt;a href=&quot;#/banner-page&quot;&gt;
-  &lt;img src=&quot;./banner.jpg&quot; ng-animate-ref=&quot;banner&quot;&gt;
+  &lt;img src=&quot;./banner.jpg&quot; class=&quot;banner&quot; ng-animate-ref=&quot;banner&quot;&gt;
 &lt;/a&gt;
 
 &lt;!-- banner-page.html --&gt;
-&lt;img src=&quot;./banner.jpg&quot; ng-animate-ref=&quot;banner&quot;&gt;
+&lt;img src=&quot;./banner.jpg&quot; class=&quot;banner&quot; ng-animate-ref=&quot;banner&quot;&gt;
 </code></pre>
 <p>Now, when the view changes (once the link is clicked), ngAnimate will examine the
 HTML contents to see if there is a match reference between any components in the view
-that is leaving and the view that is entering. It will then attempt to trigger a CSS
-animation on the <code>.view-animation-anchor</code> CSS class (notice how <code>.view-animation</code> is
-a shared CSS class on the ng-view element? This means that view-animation will apply to
-both the enter and leave animations).</p>
-<p>The two images match since they share the same ref value. ngAnimate will now apply a
-suffixed version of each of the shared CSS classes with <code>-anchor</code>. Therefore we will
-have a shared class of <code>view-animation-anchor</code> which we can use to setup our transition animation.</p>
-<p>We can now attach a transition onto the <code>.view-animation-anchor</code> CSS class and then
+that is leaving and the view that is entering. It will scan both the view which is being
+removed (leave) and inserted (enter) to see if there are any paired DOM elements that
+contain a matching ref value.</p>
+<p>The two images match since they share the same ref value. ngAnimate will now create a
+transport element (which is a clone of the first image element) and it will then attempt
+to animate to the position of the second image element in the next view. For the animation to
+work a special CSS class called <code>ng-anchor</code> will be added to the transported element.</p>
+<p>We can now attach a transition onto the <code>.banner.ng-anchor</code> CSS class and then
 ngAnimate will handle the entire transition for us as well as the addition and removal of
 any changes of CSS classes between the elements:</p>
-<pre><code class="lang-css">.view-animation-anchor {
+<pre><code class="lang-css">.banner.ng-anchor {
   /* this animation will last for 1 second since there are
          two phases to the animation (an `in` and an `out` phase) */
   transition:0.5s linear all;
 }
 </code></pre>
-<p>There are two stages for an anchor animation: <code>out</code> and <code>in</code>. The <code>out</code> stage happens first and that
-is when the element is animated away from its origin. Once that animation is over then the <code>in</code> stage
-occurs which animates the element to its destination. The reason why there are two animations is to
-give enough time for the enter animation on the new element to be ready.</p>
+<p>We also <strong>must</strong> include animations for the views that are being entered and removed
+(otherwise anchoring wouldn&#39;t be possible since the new view would be inserted right away).</p>
+<pre><code class="lang-css">.view-animation.ng-enter, .view-animation.ng-leave {
+  transition:0.5s linear all;
+  position:fixed;
+  left:0;
+  top:0;
+  width:100%;
+}
+.view-animation.ng-enter {
+  transform:translateX(100%);
+}
+.view-animation.ng-leave,
+.view-animation.ng-enter.ng-enter-active {
+  transform:translateX(0%);
+}
+.view-animation.ng-leave.ng-leave-active {
+  transform:translateX(-100%);
+}
+</code></pre>
+<p>Now we can jump back to the anchor animation. When the animation happens, there are two stages that occur:
+an <code>out</code> and an <code>in</code> stage. The <code>out</code> stage happens first and that is when the element is animated away
+from its origin. Once that animation is over then the <code>in</code> stage occurs which animates the
+element to its destination. The reason why there are two animations is to give enough time
+for the enter animation on the new element to be ready.</p>
 <p>The example above sets up a transition for both the in and out phases, but we can also target the out or
 in phases directly via <code>ng-anchor-out</code> and <code>ng-anchor-in</code>.</p>
-<pre><code class="lang-css">.view-animation-anchor.ng-anchor-out {
+<pre><code class="lang-css">.banner.ng-anchor-out {
   transition: 0.5s linear all;
 
   /* the scale will be applied during the out animation,
@@ -395,7 +430,7 @@ in phases directly via <code>ng-anchor-out</code> and <code>ng-anchor-in</code>.
   transform: scale(1.2);
 }
 
-.view-animation-anchor.ng-anchor-in {
+.banner.ng-anchor-in {
   transition: 1s linear all;
 }
 </code></pre>
@@ -448,7 +483,7 @@ in phases directly via <code>ng-anchor-out</code> and <code>ng-anchor-in</code>.
       name="animations.css"
       language="css"
       type="css">
-      <pre><code>.record {&#10;  display:block;&#10;  font-size:20px;&#10;}&#10;.profile {&#10;  background:black;&#10;  color:white;&#10;  font-size:100px;&#10;}&#10;.view-container {&#10;  position:relative;&#10;}&#10;.view-container &gt; .view.ng-animate {&#10;  position:absolute;&#10;  top:0;&#10;  left:0;&#10;  width:100%;&#10;  min-height:500px;&#10;}&#10;.view.ng-enter {&#10;  transition:0.5s linear all;&#10;  transform:translateX(100%);&#10;}&#10;.view.ng-enter.ng-enter-active {&#10;  transform:translateX(0%);&#10;}&#10;.view.ng-leave {&#10;  transition:0.5s linear all;&#10;}&#10;.view.ng-leave.ng-leave-active {&#10;  transform:translateX(-100%);&#10;}&#10;.view-anchor {&#10;  transition:0.5s linear all;&#10;}</code></pre>
+      <pre><code>.record {&#10;  display:block;&#10;  font-size:20px;&#10;}&#10;.profile {&#10;  background:black;&#10;  color:white;&#10;  font-size:100px;&#10;}&#10;.view-container {&#10;  position:relative;&#10;}&#10;.view-container &gt; .view.ng-animate {&#10;  position:absolute;&#10;  top:0;&#10;  left:0;&#10;  width:100%;&#10;  min-height:500px;&#10;}&#10;.view.ng-enter, .view.ng-leave,&#10;.record.ng-anchor {&#10;  transition:0.5s linear all;&#10;}&#10;.view.ng-enter {&#10;  transform:translateX(100%);&#10;}&#10;.view.ng-enter.ng-enter-active, .view.ng-leave {&#10;  transform:translateX(0%);&#10;}&#10;.view.ng-leave.ng-leave-active {&#10;  transform:translateX(-100%);&#10;}&#10;.record.ng-anchor-out {&#10;  background:red;&#10;}</code></pre>
     </div>
   
 

@@ -204,11 +204,11 @@ configure your service in a provider.</p>
         
       </td>
       <td>
-        <a href="" class="label type-hint type-hint-function">function()</a>
+        <a href="" class="label type-hint type-hint-function">function()</a><a href="" class="label type-hint type-hint-array">Array.&lt;(string|function())&gt;</a>
       </td>
       <td>
-        <p>The $getFn for the instance creation. Internally this is a short hand
-                           for <code>$provide.provider(name, {$get: $getFn})</code>.</p>
+        <p>The injectable $getFn for the instance creation.
+                     Internally this is a short hand for <code>$provide.provider(name, {$get: $getFn})</code>.</p>
 
         
       </td>
@@ -282,10 +282,11 @@ as a type/class.</p>
         
       </td>
       <td>
-        <a href="" class="label type-hint type-hint-function">Function</a>
+        <a href="" class="label type-hint type-hint-function">function()</a><a href="" class="label type-hint type-hint-array">Array.&lt;(string|function())&gt;</a>
       </td>
       <td>
-        <p>A class (constructor function) that will be instantiated.</p>
+        <p>An injectable class (constructor function)
+    that will be instantiated.</p>
 
         
       </td>
@@ -511,7 +512,7 @@ object which replaces or wraps and delegates to the original service.</p>
         
       </td>
       <td>
-        <a href="" class="label type-hint type-hint-function">function()</a>
+        <a href="" class="label type-hint type-hint-function">function()</a><a href="" class="label type-hint type-hint-array">Array.&lt;(string|function())&gt;</a>
       </td>
       <td>
         <p>This function will be invoked when the service needs to be

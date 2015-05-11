@@ -35,9 +35,25 @@
 &lt;!-- ERROR because attribute bind wasn&#39;t provided --&gt;
 &lt;my-directive&gt;
 </code></pre>
-<p>To resolve this error, always use path expressions with scope properties that are two-way data-bound:</p>
+<p>To resolve this error, do one of the following options:</p>
+<ul>
+<li>use path expressions with scope properties that are two-way data-bound like so:</li>
+</ul>
 <pre><code>&lt;my-directive bind=&quot;some.property&quot;&gt;
 &lt;my-directive bind=&quot;some[3][&#39;property&#39;]&quot;&gt;
+</code></pre>
+<ul>
+<li>Make the binding optional</li>
+</ul>
+<pre><code>myModule.directive(&#39;myDirective&#39;, function factory() {
+  return {
+    ...
+    scope: {
+      localValue: &#39;=?bind&#39; // &lt;-- the &#39;?&#39; makes it optional
+    }
+    ...
+  }
+});
 </code></pre>
 
 </div>
