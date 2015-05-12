@@ -159,8 +159,6 @@ removeClass: <code>.ng-hide</code> - happens after the <code>ngShow</code> expre
   <a ng-click="openPlunkr('examples/example-example91', $event)" class="btn pull-right">
     <i class="glyphicon glyphicon-edit">&nbsp;</i>
     Edit in Plunker</a>
-  <md-button class="md-raised" ng-click="openPlunkr('examples/example-example91')">
-    Edit in Plunker</md-button>
 
   <div class="runnable-example"
       path="examples/example-example91"
@@ -173,14 +171,14 @@ removeClass: <code>.ng-hide</code> - happens after the <code>ngShow</code> expre
       name="index.html"
       language="html"
       type="html">
-      <pre><code>Click me: &lt;input type=&quot;checkbox&quot; ng-model=&quot;checked&quot; aria-label=&quot;Toggle ngHide&quot;&gt;&lt;br/&gt;&#10;&lt;div&gt;&#10;  Show:&#10;  &lt;div class=&quot;check-element animate-show&quot; ng-show=&quot;checked&quot;&gt;&#10;    &lt;span class=&quot;fa fa-thumbs-o-up&quot;&gt;&lt;/span&gt; I show up when your checkbox is checked.&#10;  &lt;/div&gt;&#10;&lt;/div&gt;&#10;&lt;div&gt;&#10;  Hide:&#10;  &lt;div class=&quot;check-element animate-show&quot; ng-hide=&quot;checked&quot;&gt;&#10;    &lt;span class=&quot;fa fa-thumbs-o-down&quot;&gt;&lt;/span&gt; I hide when your checkbox is checked.&#10;  &lt;/div&gt;&#10;&lt;/div&gt;</code></pre>
+      <pre><code>Click me: &lt;input type=&quot;checkbox&quot; ng-model=&quot;checked&quot; aria-label=&quot;Toggle ngHide&quot;&gt;&lt;br/&gt;&#10;&lt;div&gt;&#10;  Show:&#10;  &lt;div class=&quot;check-element animate-show&quot; ng-show=&quot;checked&quot;&gt;&#10;    &lt;span class=&quot;glyphicon glyphicon-thumbs-up&quot;&gt;&lt;/span&gt; I show up when your checkbox is checked.&#10;  &lt;/div&gt;&#10;&lt;/div&gt;&#10;&lt;div&gt;&#10;  Hide:&#10;  &lt;div class=&quot;check-element animate-show&quot; ng-hide=&quot;checked&quot;&gt;&#10;    &lt;span class=&quot;glyphicon glyphicon-thumbs-down&quot;&gt;&lt;/span&gt; I hide when your checkbox is checked.&#10;  &lt;/div&gt;&#10;&lt;/div&gt;</code></pre>
     </div>
   
     <div class="runnable-example-file" 
-      name="font-awesome.css"
+      name="glyphicons.css"
       language="css"
       type="css">
-      <pre><code>@import url(../../font-awesome/css/font-awesome.css);</code></pre>
+      <pre><code>@import url(../../components/bootstrap-3.1.1/css/bootstrap.css);</code></pre>
     </div>
   
     <div class="runnable-example-file" 
@@ -194,7 +192,7 @@ removeClass: <code>.ng-hide</code> - happens after the <code>ngShow</code> expre
       name="protractor.js"
       type="protractor"
       language="js">
-      <pre><code>var thumbsUp = element(by.css(&#39;span.fa-thumbs-o-up&#39;));&#10;var thumbsDown = element(by.css(&#39;span.fa-thumbs-o-down&#39;));&#10;&#10;it(&#39;should check ng-show / ng-hide&#39;, function() {&#10;  expect(thumbsUp.isDisplayed()).toBeFalsy();&#10;  expect(thumbsDown.isDisplayed()).toBeTruthy();&#10;&#10;  element(by.model(&#39;checked&#39;)).click();&#10;&#10;  expect(thumbsUp.isDisplayed()).toBeTruthy();&#10;  expect(thumbsDown.isDisplayed()).toBeFalsy();&#10;});</code></pre>
+      <pre><code>var thumbsUp = element(by.css(&#39;span.glyphicon-thumbs-up&#39;));&#10;var thumbsDown = element(by.css(&#39;span.glyphicon-thumbs-down&#39;));&#10;&#10;it(&#39;should check ng-show / ng-hide&#39;, function() {&#10;  expect(thumbsUp.isDisplayed()).toBeFalsy();&#10;  expect(thumbsDown.isDisplayed()).toBeTruthy();&#10;&#10;  element(by.model(&#39;checked&#39;)).click();&#10;&#10;  expect(thumbsUp.isDisplayed()).toBeTruthy();&#10;  expect(thumbsDown.isDisplayed()).toBeFalsy();&#10;});</code></pre>
     </div>
   
 

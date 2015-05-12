@@ -5,8 +5,8 @@ describe("", function() {
     browser.get("build/docs/examples/example-example91/index-jquery.html");
   });
   
-var thumbsUp = element(by.css('span.fa-thumbs-o-up'));
-var thumbsDown = element(by.css('span.fa-thumbs-o-down'));
+var thumbsUp = element(by.css('span.glyphicon-thumbs-up'));
+var thumbsDown = element(by.css('span.glyphicon-thumbs-down'));
 
 it('should check ng-show / ng-hide', function() {
   expect(thumbsUp.isDisplayed()).toBeFalsy();
