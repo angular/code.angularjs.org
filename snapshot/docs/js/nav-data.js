@@ -1223,6 +1223,11 @@ angular.module('navData', [])
             "type": "section"
           },
           {
+            "name": "nocb",
+            "href": "error/$animate/nocb",
+            "type": "error"
+          },
+          {
             "name": "notcsel",
             "href": "error/$animate/notcsel",
             "type": "error"

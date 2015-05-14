@@ -6,6 +6,12 @@
     "members": ""
   },
   {
+    "path": "error/$animate/nocb",
+    "titleWords": "nocb",
+    "keywords": "$animate about accept and angular animate animation api are as attach be callback can change changes code com completes do error for getting handlers html https if information instead js last make methods need ng nocb not of parameter partials pass promise promise-based return run see since the then they this to update use when which you your",
+    "members": ""
+  },
+  {
     "path": "error/$animate/notcsel",
     "titleWords": "notcsel",
     "keywords": "$animate class css error example expecting for got html must my-class-name not notcsel partials selector selectors start starting with",
