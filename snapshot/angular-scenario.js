@@ -9190,7 +9190,7 @@ return jQuery;
 }));
 
 /**
- * @license AngularJS v1.4.0-build.4001+sha.d9bf6e3
+ * @license AngularJS v1.4.0-build.4002+sha.f26fc26
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -9249,7 +9249,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.4.0-build.4001+sha.d9bf6e3/' +
+    message += '\nhttp://errors.angularjs.org/1.4.0-build.4002+sha.f26fc26/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -11524,7 +11524,7 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.4.0-build.4001+sha.d9bf6e3',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.4.0-build.4002+sha.f26fc26',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 4,
   dot: 0,
@@ -14337,6 +14337,8 @@ var $AnimateProvider = ['$provide', function($provide) {
        */
       enter: function(element, parent, after, options) {
         assertNoCallback(options);
+        parent = parent && jqLite(parent);
+        after = after && jqLite(after);
         parent = parent || after.parent();
         domInsert(element, parent, after);
         return $$animateQueue.push(element, 'enter', options);
@@ -14362,6 +14364,8 @@ var $AnimateProvider = ['$provide', function($provide) {
        */
       move: function(element, parent, after, options) {
         assertNoCallback(options);
+        parent = parent && jqLite(parent);
+        after = after && jqLite(after);
         parent = parent || after.parent();
         domInsert(element, parent, after);
         return $$animateQueue.push(element, 'move', options);
