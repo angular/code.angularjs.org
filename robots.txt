@@ -1,2 +1,7 @@
 User-agent: *
+
+Allow: /
+Disallow: /*docs/
+Disallow: /*i18n/
+Disallow: /*.zip$
 Disallow: /
