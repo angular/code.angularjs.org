@@ -2214,6 +2214,9 @@ angular.module('pagesData', [])
   "examples/example-example96": {
     "path": "examples/example-example96"
   },
+  "examples/example-select-with-non-string-options": {
+    "path": "examples/example-select-with-non-string-options"
+  },
   "examples/example-example97": {
     "path": "examples/example-example97"
   },
