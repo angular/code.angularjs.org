@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.4.0-build.4005+sha.1b0d0fd
+ * @license AngularJS v1.4.0-build.4006+sha.718ff84
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -2191,6 +2191,13 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
           if (animationCancelled || (isStructural && animationDetails.event !== event)) {
             options.domOperation();
             runner.end();
+          }
+
+          // in the event that the element animation was not cancelled or a follow-up animation
+          // isn't allowed to animate from here then we need to clear the state of the element
+          // so that any future animations won't read the expired animation data.
+          if (!isValidAnimation) {
+            clearElementAnimationState(element);
           }
 
           return;
