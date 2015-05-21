@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.4.0-build.4006+sha.718ff84
+ * @license AngularJS v1.4.0-build.4007+sha.2327f5a
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -2091,6 +2091,7 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
         structural: isStructural,
         element: element,
         event: event,
+        close: close,
         options: options,
         runner: runner
       };
@@ -2110,8 +2111,17 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
         var cancelAnimationFlag = isAllowed('cancel', element, newAnimation, existingAnimation);
         if (cancelAnimationFlag) {
           if (existingAnimation.state === RUNNING_STATE) {
+            // this will end the animation right away and it is safe
+            // to do so since the animation is already running and the
+            // runner callback code will run in async
             existingAnimation.runner.end();
+          } else if (existingAnimation.structural) {
+            // this means that the animation is queued into a digest, but
+            // hasn't started yet. Therefore it is safe to run the close
+            // method which will call the runner methods in async.
+            existingAnimation.close();
           } else {
+            // this will merge the existing animation options into this new follow-up animation
             mergeAnimationOptions(element, newAnimation.options, existingAnimation.options);
           }
         } else {
