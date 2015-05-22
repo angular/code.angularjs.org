@@ -1,8 +1,8 @@
-<a href='https://github.com/angular/angular.js/edit/master/src/ng/directive/input.js?message=docs(input[email])%3A%20describe%20your%20change...#L788' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/master/src/ng/directive/input.js?message=docs(input[email])%3A%20describe%20your%20change...#L800' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 
-<a href='https://github.com/angular/angular.js/tree/master/src/ng/directive/input.js#L788' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/master/src/ng/directive/input.js#L800' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -190,9 +190,13 @@ use <code>ng-pattern</code> or modify the built-in validators (see the <a href="
       <td>
         <p>Sets <code>pattern</code> validation error key if the ngModel value does not match
    a RegExp found by evaluating the Angular expression given in the attribute value.
-   If the expression evaluates to a RegExp object then this is used directly.
-   If the expression is a string then it will be converted to a RegExp after wrapping it in <code>^</code> and <code>$</code>
-   characters. For instance, <code>&quot;abc&quot;</code> will be converted to <code>new RegExp(&#39;^abc$&#39;)</code>.</p>
+   If the expression evaluates to a RegExp object, then this is used directly.
+   If the expression evaluates to a string, then it will be converted to a RegExp
+   after wrapping it in <code>^</code> and <code>$</code> characters. For instance, <code>&quot;abc&quot;</code> will be converted to
+   <code>new RegExp(&#39;^abc$&#39;)</code>.<br />
+   <strong>Note:</strong> Avoid using the <code>g</code> flag on the RegExp, as it will cause each successive search to
+   start at the index of the last search&#39;s match, thus not taking the whole input value into
+   account.</p>
 
         
       </td>
