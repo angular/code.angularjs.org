@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.4.0-build.4012+sha.462f444
+ * @license AngularJS v1.4.0-build.4013+sha.0fc5851
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -988,7 +988,7 @@ var $AnimateCssProvider = ['$animateProvider', function($animateProvider) {
       // we need to recalculate the delay value since we used a pre-emptive negative
       // delay value and the delay value is required for the final event checking. This
       // property will ensure that this will happen after the RAF phase has passed.
-      if (timings.transitionDuration > 0) {
+      if (options.duration == null && timings.transitionDuration > 0) {
         flags.recalculateTimingStyles = flags.recalculateTimingStyles || isFirst;
       }
 
