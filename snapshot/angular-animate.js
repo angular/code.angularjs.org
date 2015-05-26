@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.4.0-build.4014+sha.72edd4d
+ * @license AngularJS v1.4.0-build.4015+sha.db246eb
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -1910,6 +1910,14 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
     return currentAnimation.state === RUNNING_STATE && newAnimation.structural;
   });
 
+  rules.cancel.push(function(element, newAnimation, currentAnimation) {
+    var nO = newAnimation.options;
+    var cO = currentAnimation.options;
+
+    // if the exact same CSS class is added/removed then it's safe to cancel it
+    return (nO.addClass && nO.addClass === cO.removeClass) || (nO.removeClass && nO.removeClass === cO.addClass);
+  });
+
   this.$get = ['$$rAF', '$rootScope', '$rootElement', '$document', '$$HashMap',
                '$$animation', '$$AnimateRunner', '$templateRequest', '$$jqLite',
        function($$rAF,   $rootScope,   $rootElement,   $document,   $$HashMap,
@@ -2210,6 +2218,7 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
 
       if (!isValidAnimation) {
         close();
+        clearElementAnimationState(element);
         return runner;
       }
 
