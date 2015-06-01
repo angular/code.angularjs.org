@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.4.1-build.4018+sha.80b9018
+ * @license AngularJS v1.4.1-build.4019+sha.e5e871f
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -3020,7 +3020,7 @@ var $$AnimationProvider = ['$animateProvider', function($animateProvider) {
  *   opacity:0;
  * }
  *
- * /&#42; The starting CSS styles for the enter animation &#42;/
+ * /&#42; The finishing CSS styles for the enter animation &#42;/
  * .fade.ng-enter.ng-enter-active {
  *   opacity:1;
  * }
