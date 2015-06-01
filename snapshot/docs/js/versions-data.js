@@ -1,37 +1,47 @@
 // Meta data used by the AngularJS docs app
 angular.module('versionsData', [])
   .value('NG_VERSION', {
-  "raw": "v1.4.0-rc.2",
+  "raw": "v1.4.0",
   "major": 1,
   "minor": 4,
-  "patch": 0,
+  "patch": 1,
   "prerelease": [
     "build",
-    "4016"
+    "4017"
   ],
-  "build": "sha.291d7c4",
-  "version": "1.4.0-build.4016",
+  "build": "sha.3ef5298",
+  "version": "1.4.1-build.4017",
   "codeName": "snapshot",
   "isSnapshot": true,
-  "full": "1.4.0-build.4016+sha.291d7c4",
+  "full": "1.4.1-build.4017+sha.3ef5298",
   "branch": "master"
 })
   .value('NG_VERSIONS', [
   {
-    "raw": "v1.4.0-rc.2",
+    "raw": "v1.4.0",
+    "major": 1,
+    "minor": 4,
+    "patch": 1,
+    "prerelease": [
+      "build",
+      "4017"
+    ],
+    "build": "sha.3ef5298",
+    "version": "1.4.1-build.4017",
+    "codeName": "snapshot",
+    "isSnapshot": true,
+    "full": "1.4.1-build.4017+sha.3ef5298",
+    "branch": "master"
+  },
+  {
+    "raw": "v1.4.0",
     "major": 1,
     "minor": 4,
     "patch": 0,
-    "prerelease": [
-      "build",
-      "4016"
-    ],
-    "build": "sha.291d7c4",
-    "version": "1.4.0-build.4016",
-    "codeName": "snapshot",
-    "isSnapshot": true,
-    "full": "1.4.0-build.4016+sha.291d7c4",
-    "branch": "master"
+    "prerelease": [],
+    "build": [],
+    "version": "1.4.0",
+    "docsUrl": "http://code.angularjs.org/1.4.0/docs"
   },
   {
     "raw": "v1.4.0-rc.2",
