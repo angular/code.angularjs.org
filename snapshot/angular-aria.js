@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.4.1-build.4025+sha.f672047
+ * @license AngularJS v1.4.1-build.4026+sha.3c9096e
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -120,9 +120,8 @@ function $AriaProvider() {
       var ariaCamelName = attr.$normalize(ariaAttr);
       if (config[ariaCamelName] && !attr[ariaCamelName]) {
         scope.$watch(attr[attrName], function(boolVal) {
-          if (negate) {
-            boolVal = !boolVal;
-          }
+          // ensure boolean value
+          boolVal = negate ? !boolVal : !!boolVal;
           elem.attr(ariaAttr, boolVal);
         });
       }
