@@ -36,7 +36,7 @@ the ngMessages directive will render the inner first ngMessage directive (depend
 match the attribute value present on each ngMessage directive). In other words, if your errors
 object contains the following data:</p>
 <pre><code class="lang-javascript">&lt;!-- keep in mind that ngModel automatically sets these error flags --&gt;
-myField.$error = { minlength : true, required : false };
+myField.$error = { minlength : true, required : true };
 </code></pre>
 <p>Then the <code>required</code> message will be displayed first. When required is false then the <code>minlength</code> message
 will be displayed right after (since these messages are ordered this way in the template HTML code).
@@ -237,7 +237,7 @@ and leave animation is triggered for each particular element bound to the <code>
       <tr>
         <td><a href="api/ngMessages/directive/ngMessages">ngMessages</a></td>
         <td><p><code>ngMessages</code> is a directive that is designed to show and hide messages based on the state
-of a key/value object that it listens on. The directive itself compliments error message
+of a key/value object that it listens on. The directive itself complements error message
 reporting with the <code>ngModel</code> $error object (which stores a key/value state of validation errors).</p>
 </td>
       </tr>

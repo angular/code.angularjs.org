@@ -121,6 +121,13 @@ JavaScript objects in the collection have been substituted for new ones:</p>
   {{obj.prop}}
 &lt;/div&gt;
 </code></pre>
+<p><div class="alert alert-warning">
+<strong>Note:</strong> <code>track by</code> must always be the last expression:
+</div></p>
+<pre><code>&lt;div ng-repeat=&quot;model in collection | orderBy: &#39;id&#39; as filtered_result track by model.id&quot;&gt;
+    {{model.name}}
+&lt;/div&gt;
+</code></pre>
 <h1 id="special-repeat-start-and-end-points">Special repeat start and end points</h1>
 <p>To repeat a series of elements instead of just one parent element, ngRepeat (as well as other ng directives) supports extending
 the range of the repeater by defining explicit start and end points by using <strong>ng-repeat-start</strong> and <strong>ng-repeat-end</strong> respectively.
@@ -230,8 +237,8 @@ and <code>expression</code> is the scope expression giving the collection to enu
 which can be used to associate the objects in the collection with the DOM elements. If no tracking expression
 is specified, ng-repeat associates elements by identity. It is an error to have
 more than one tracking expression value resolve to the same key. (This would mean that two distinct objects are
-mapped to the same DOM element, which is not possible.)  If filters are used in the expression, they should be
-applied before the tracking expression.</p>
+mapped to the same DOM element, which is not possible.)</p>
+<p>Note that the tracking expression must come last, after any filters, and the alias expression.</p>
 <p>For example: <code>item in items</code> is equivalent to <code>item in items track by $id(item)</code>. This implies that the DOM elements
 will be associated by item identity in the array.</p>
 <p>For example: <code>item in items track by $id(item)</code>. A built in <code>$id()</code> function can be used to assign a unique

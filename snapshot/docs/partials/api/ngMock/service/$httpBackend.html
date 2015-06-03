@@ -201,7 +201,7 @@ describe(&#39;MyController&#39;, function() {
      $httpBackend.flush();
 
      $httpBackend.expectPOST(&#39;/add-msg.py&#39;, undefined, function(headers) {
-       // check if the header was send, if it wasn&#39;t the expectation won&#39;t
+       // check if the header was sent, if it wasn&#39;t the expectation won&#39;t
        // match the request and the test will fail
        return headers[&#39;Authorization&#39;] == &#39;xxx&#39;;
      }).respond(201, &#39;&#39;);
