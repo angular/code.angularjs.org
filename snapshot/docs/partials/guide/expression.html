@@ -291,9 +291,9 @@ See <a href="http://www.bennadel.com/blog/2760-one-time-data-bindings-for-object
 <p>If the expression will not change once set, it is a candidate for one-time binding.
 Here are three example cases.</p>
 <p>When interpolating text or attributes:</p>
-<pre><code class="lang-html">&lt;div name=&quot;attr: {{::color}}&quot;&gt;text: {{::name}}&lt;/div&gt;
+<pre><code class="lang-html">&lt;div name=&quot;attr: {{::color}}&quot;&gt;text: {{::name | uppercase}}&lt;/div&gt;
 </code></pre>
-<p>When using a directive with bidirectional binding and the parameters will not change:</p>
+<p>When using a directive with bidirectional binding and parameters that will not change:</p>
 <pre><code class="lang-js">someModule.directive(&#39;someDirective&#39;, function() {
   return {
     scope: {
@@ -308,7 +308,7 @@ Here are three example cases.</p>
 </code></pre>
 <p>When using a directive that takes an expression:</p>
 <pre><code class="lang-html">&lt;ul&gt;
-  &lt;li ng-repeat=&quot;item in ::items&quot;&gt;{{item.name}};&lt;/li&gt;
+  &lt;li ng-repeat=&quot;item in ::items | orderBy:&#39;name&#39;&quot;&gt;{{item.name}};&lt;/li&gt;
 &lt;/ul&gt;
 </code></pre>
 

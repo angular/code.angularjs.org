@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.4.1-build.4035+sha.25d731e
+ * @license AngularJS v1.4.1-build.4036+sha.41385f0
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -19,8 +19,8 @@
  *
  * ## Usage
  *
- * For ngAria to do its magic, simply include the module as a dependency. The directives supported
- * by ngAria are:
+ * For ngAria to do its magic, simply include the module `ngAria` as a dependency. The following
+ * directives are supported:
  * `ngModel`, `ngDisabled`, `ngShow`, `ngHide`, `ngClick`, `ngDblClick`, and `ngMessages`.
  *
  * Below is a more detailed breakdown of the attributes handled by ngAria:
