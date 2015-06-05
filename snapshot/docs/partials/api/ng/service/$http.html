@@ -318,6 +318,8 @@ for added security.</p>
 <p>The name of the headers can be specified using the xsrfHeaderName and xsrfCookieName
 properties of either $httpProvider.defaults at config-time, $http.defaults at run-time,
 or the per-request config object.</p>
+<p>In order to prevent collisions in environments where multiple Angular apps share the
+same domain or subdomain, we recommend that each application uses unique cookie name.</p>
 
 </div>
 
