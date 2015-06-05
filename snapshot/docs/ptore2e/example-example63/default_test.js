@@ -10,13 +10,13 @@ var ps = element.all(by.css('p'));
 it('should let you toggle the class', function() {
 
   expect(ps.first().getAttribute('class')).not.toMatch(/bold/);
-  expect(ps.first().getAttribute('class')).not.toMatch(/red/);
+  expect(ps.first().getAttribute('class')).not.toMatch(/has-error/);
 
   element(by.model('important')).click();
   expect(ps.first().getAttribute('class')).toMatch(/bold/);
 
   element(by.model('error')).click();
-  expect(ps.first().getAttribute('class')).toMatch(/red/);
+  expect(ps.first().getAttribute('class')).toMatch(/has-error/);
 });
 
 it('should let you toggle string example', function() {

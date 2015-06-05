@@ -7,6 +7,10 @@
 .red {
     color: red;
 }
+.has-error {
+    color: red;
+    background-color: yellow;
+}
 .orange {
     color: orange;
 }

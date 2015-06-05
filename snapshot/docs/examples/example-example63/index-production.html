@@ -12,7 +12,7 @@
   
 </head>
 <body ng-app="">
-  <p ng-class="{strike: deleted, bold: important, red: error}">Map Syntax Example</p>
+  <p ng-class="{strike: deleted, bold: important, 'has-error': error}">Map Syntax Example</p>
 <label>
    <input type="checkbox" ng-model="deleted">
    deleted (apply "strike" class)
@@ -23,7 +23,7 @@
 </label><br>
 <label>
    <input type="checkbox" ng-model="error">
-   error (apply "red" class)
+   error (apply "has-error" class)
 </label>
 <hr>
 <p ng-class="style">Using String Syntax</p>

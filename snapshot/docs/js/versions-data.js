@@ -7,13 +7,13 @@ angular.module('versionsData', [])
   "patch": 1,
   "prerelease": [
     "build",
-    "4038"
+    "4039"
   ],
-  "build": "sha.e967abc",
-  "version": "1.4.1-build.4038",
+  "build": "sha.288225b",
+  "version": "1.4.1-build.4039",
   "codeName": "snapshot",
   "isSnapshot": true,
-  "full": "1.4.1-build.4038+sha.e967abc",
+  "full": "1.4.1-build.4039+sha.288225b",
   "branch": "master"
 })
   .value('NG_VERSIONS', [
@@ -24,13 +24,13 @@ angular.module('versionsData', [])
     "patch": 1,
     "prerelease": [
       "build",
-      "4038"
+      "4039"
     ],
-    "build": "sha.e967abc",
-    "version": "1.4.1-build.4038",
+    "build": "sha.288225b",
+    "version": "1.4.1-build.4039",
     "codeName": "snapshot",
     "isSnapshot": true,
-    "full": "1.4.1-build.4038+sha.e967abc",
+    "full": "1.4.1-build.4039+sha.288225b",
     "branch": "master"
   },
   {
@@ -172,6 +172,16 @@ angular.module('versionsData', [])
     "build": [],
     "version": "1.4.0-beta.0",
     "docsUrl": "http://code.angularjs.org/1.4.0-beta.0/docs"
+  },
+  {
+    "raw": "v1.3.16",
+    "major": 1,
+    "minor": 3,
+    "patch": 16,
+    "prerelease": [],
+    "build": [],
+    "version": "1.3.16",
+    "docsUrl": "http://code.angularjs.org/1.3.16/docs"
   },
   {
     "raw": "v1.3.15",
