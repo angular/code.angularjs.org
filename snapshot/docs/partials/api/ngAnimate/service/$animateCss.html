@@ -157,7 +157,8 @@ runner called <code>.done(callbackFn)</code>. The done method works the same as 
 Therefore, for performance reasons, it&#39;s always best to use <code>runner.done(callback)</code> instead of <code>runner.then()</code>, <code>runner.catch()</code> or <code>runner.finally()</code>
 unless you really need a digest to kick off afterwards.</p>
 <p>Keep in mind that, to make this easier, ngAnimate has tweaked the JS animations API to recognize when a runner instance is returned from $animateCss
-(so there is no need to call <code>runner.done(doneFn)</code> inside of your JavaScript animation code). Check the <a href="#usage">animation code above</a> to see how this works.</p>
+(so there is no need to call <code>runner.done(doneFn)</code> inside of your JavaScript animation code).
+Check the <a href="api/ngAnimate/service/$animateCss#usage">animation code above</a> to see how this works.</p>
 
 </div>
 

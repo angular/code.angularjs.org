@@ -27,6 +27,15 @@ The model must always be of type <code>number</code> otherwise Angular will thro
 Be aware that a string containing a number is not enough. See the <a href="error/ngModel/numfmt"><code>numfmt</code></a>
 error docs for more information and an example of how to convert your model if necessary.
 </div>
+
+<h2 id="issues-with-html5-constraint-validation">Issues with HTML5 constraint validation</h2>
+<p>In browsers that follow the
+<a href="https://html.spec.whatwg.org/multipage/forms.html#number-state-%28type=number%29">HTML5 specification</a>,
+<code>input[number]</code> does not work as expected with <a href="api/ng/directive/ngModelOptions"><code>ngModelOptions.allowInvalid</code></a>.
+If a non-number is entered in the input, the browser will report the value as an empty string,
+which means the view / model values in <code>ngModel</code> and subsequently the scope value
+will also be an empty string.</p>
+
 </div>
 
 
