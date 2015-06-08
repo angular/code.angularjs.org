@@ -104,7 +104,7 @@ $animate.enter(element).then(function() {
 <p>Due to <a href="https://github.com/angular/angular.js/commit/c8700f04fb6fb5dc21ac24de8665c0476d6db5ef">c8700f04</a>,
 when an enter, leave or move animation is triggered then it will always end any pending or active parent
 class based animations (animations triggered via ngClass) in order to ensure that any CSS styles are resolved in time.</p>
-<h2 id="forms-ngmessages-ngoptions-">Forms (<code>ngMessages</code>, <code>ngOptions</code>)</h2>
+<h2 id="forms-ngmessages-ngoptions-select-">Forms (<code>ngMessages</code>, <code>ngOptions</code>, <code>select</code>)</h2>
 <h3 id="ngmessages">ngMessages</h3>
 <p>The ngMessages module has also been subject to an internal refactor to allow it to be more flexible
 and compatible with dynamic message data. The <code>ngMessage</code> directive now supports a new attribute
@@ -145,6 +145,20 @@ attempt to create a deterministic ordering since browsers don&#39;t guarantee th
 But in practice this is not what people want and so this change iterates over properties
 in the order they are returned by Object.keys(obj), which is almost always the order
 in which the properties were defined.</p>
+<h3 id="select">select</h3>
+<p>Due to <a href="https://github.com/angular/angular.js/commit/7fda214c4f65a6a06b25cf5d5aff013a364e9cef">7fda214c</a>,
+the <code>select</code> directive will now use strict comparison of the <code>ngModel</code> scope value against <code>option</code>
+values to determine which option is selected. This means <code>Number</code> scope values will not be matched
+against numeric option strings.
+In Angular 1.3.x, setting <code>scope.x = 200</code> would select the option with the value 200 in the following <code>select</code>:</p>
+<pre><code>&lt;select ng-model=&quot;x&quot;&gt;
+  &lt;option value=&quot;100&quot;&gt;100&lt;/option&gt;
+  &lt;option value=&quot;200&quot;&gt;200&lt;/option&gt;
+&lt;/select&gt;
+</code></pre>
+<p>In Angular 1.4.x, the &#39;unknown option&#39; will be selected. To remedy this, you can either initialize
+the model as a string - <code>scope.x = &#39;200&#39;</code> - or implement a parser on <code>ngModel</code> that converts
+the option string value to a <code>Number</code>.</p>
 <h2 id="templating-ngrepeat-compile-">Templating (<code>ngRepeat</code>, <code>$compile</code>)</h2>
 <h3 id="ngrepeat">ngRepeat</h3>
 <p>Due to <a href="https://github.com/angular/angular.js/commit/c260e7386391877625eda086480de73e8a0ba921">c260e738</a>,

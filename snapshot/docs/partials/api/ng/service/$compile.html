@@ -348,12 +348,14 @@ between all directive linking functions.</p>
 among all directives, which allows the directives to use the controllers as a communication
 channel. The exact value depends on the directive&#39;s <code>require</code> property:</p>
 <ul>
+<li>no controller(s) required: the directive&#39;s own controller, or <code>undefined</code> if it doesn&#39;t have one</li>
 <li><code>string</code>: the controller instance</li>
 <li><code>array</code>: array of controller instances</li>
-<li>no controller(s) required: <code>undefined</code></li>
 </ul>
 <p>If a required controller cannot be found, and it is optional, the instance is <code>null</code>,
 otherwise the <a href="error/$compile/ctreq">Missing Required Controller</a> error is thrown.</p>
+<p>Note that you can also require the directive&#39;s own controller - it will be made available like
+like any other controller.</p>
 </li>
 <li><p><code>transcludeFn</code> - A transclude linking function pre-bound to the correct transclusion scope.
 This is the same as the <code>$transclude</code>
