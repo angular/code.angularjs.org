@@ -136,8 +136,8 @@ have been fixed. The breaking changes are comparatively minor and should not aff
 <p>Due to <a href="https://github.com/angular/angular.js/commit/7fda214c4f65a6a06b25cf5d5aff013a364e9cef">7fda214c</a>,
 when <code>ngOptions</code> renders the option values within the DOM, the resulting HTML code is different.
 Normally this should not affect your application at all, however, if your code relies on inspecting
-the value property of <code>&lt;option&gt;</code> elements (that <code>ngOptions</code> generates) then be sure to [read the details]
-(<a href="https://github.com/angular/angular.js/commit/7fda214c4f65a6a06b25cf5d5aff013a364e9cef">https://github.com/angular/angular.js/commit/7fda214c4f65a6a06b25cf5d5aff013a364e9cef</a>).</p>
+the value property of <code>&lt;option&gt;</code> elements (that <code>ngOptions</code> generates) then be sure
+to <a href="https://github.com/angular/angular.js/commit/7fda214c4f65a6a06b25cf5d5aff013a364e9cef">read the details</a>.</p>
 <p>Due to <a href="https://github.com/angular/angular.js/commit/7fda214c4f65a6a06b25cf5d5aff013a364e9cef">7fda214c</a>,
 when iterating over an object&#39;s properties using the <code>(key, value) in obj</code> syntax
 the order of the elements used to be sorted alphabetically. This was an artificial
@@ -156,9 +156,17 @@ In Angular 1.3.x, setting <code>scope.x = 200</code> would select the option wit
   &lt;option value=&quot;200&quot;&gt;200&lt;/option&gt;
 &lt;/select&gt;
 </code></pre>
-<p>In Angular 1.4.x, the &#39;unknown option&#39; will be selected. To remedy this, you can either initialize
-the model as a string - <code>scope.x = &#39;200&#39;</code> - or implement a parser on <code>ngModel</code> that converts
-the option string value to a <code>Number</code>.</p>
+<p>In Angular 1.4.x, the &#39;unknown option&#39; will be selected.
+To remedy this, you can simply initialize the model as a string: <code>scope.x = &#39;200&#39;</code>, or if you want to
+keep the model as a <code>Number</code>, you can do the conversion via <code>$formatters</code> and <code>$parsers</code> on <code>ngModel</code>:</p>
+<pre><code class="lang-js">ngModelCtrl.$parsers.push(function(value) {
+  return parseInt(value, 10); // Convert option value to number
+});
+
+ngModelCtrl.$formatters.push(function(value) {
+  return value.toString(); // Convert scope value to string
+});
+</code></pre>
 <h2 id="templating-ngrepeat-compile-">Templating (<code>ngRepeat</code>, <code>$compile</code>)</h2>
 <h3 id="ngrepeat">ngRepeat</h3>
 <p>Due to <a href="https://github.com/angular/angular.js/commit/c260e7386391877625eda086480de73e8a0ba921">c260e738</a>,
