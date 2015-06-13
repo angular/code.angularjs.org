@@ -9190,7 +9190,7 @@ return jQuery;
 }));
 
 /**
- * @license AngularJS v1.4.1-build.4056+sha.8caf180
+ * @license AngularJS v1.4.1-build.4057+sha.71fc3f4
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -9249,7 +9249,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.4.1-build.4056+sha.8caf180/' +
+    message += '\nhttp://errors.angularjs.org/1.4.1-build.4057+sha.71fc3f4/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -11533,7 +11533,7 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.4.1-build.4056+sha.8caf180',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.4.1-build.4057+sha.71fc3f4',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 4,
   dot: 1,
@@ -22454,10 +22454,10 @@ ASTCompiler.prototype = {
               nameId.name = ast.property.name;
             }
           }
-          recursionFn(intoId);
         }, function() {
           self.assign(intoId, 'undefined');
         });
+        recursionFn(intoId);
       }, !!create);
       break;
     case AST.CallExpression:
@@ -22495,8 +22495,10 @@ ASTCompiler.prototype = {
             }
             expression = self.ensureSafeObject(expression);
             self.assign(intoId, expression);
-            recursionFn(intoId);
+          }, function() {
+            self.assign(intoId, 'undefined');
           });
+          recursionFn(intoId);
         });
       }
       break;
