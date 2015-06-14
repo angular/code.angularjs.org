@@ -952,20 +952,16 @@ the browser console.</p>
       
       <tr>
         <td><a href="api/ng/service/$httpParamSerializer">$httpParamSerializer</a></td>
-        <td><p>Default $http params serializer that converts objects to a part of a request URL
+        <td><p>Default <a href="api/ng/service/$http"><code>$http</code></a> params serializer that converts objects to strings
 according to the following rules:</p>
-<ul>
-<li><code>{&#39;foo&#39;: &#39;bar&#39;}</code> results in <code>foo=bar</code></li>
-<li><code>{&#39;foo&#39;: Date.now()}</code> results in <code>foo=2015-04-01T09%3A50%3A49.262Z</code> (<code>toISOString()</code> and encoded representation of a Date object)</li>
-<li><code>{&#39;foo&#39;: [&#39;bar&#39;, &#39;baz&#39;]}</code> results in <code>foo=bar&amp;foo=baz</code> (repeated key for each array element)</li>
-<li><code>{&#39;foo&#39;: {&#39;bar&#39;:&#39;baz&#39;}}</code> results in <code>foo=%7B%22bar%22%3A%22baz%22%7D&quot;</code> (stringified and encoded representation of an object)</li>
-</ul>
 </td>
       </tr>
       
       <tr>
         <td><a href="api/ng/service/$httpParamSerializerJQLike">$httpParamSerializerJQLike</a></td>
-        <td><p>Alternative $http params serializer that follows jQuery&#39;s <a href="http://api.jquery.com/jquery.param/"><code>param()</code></a> method logic.</p>
+        <td><p>Alternative <a href="api/ng/service/$http"><code>$http</code></a> params serializer that follows
+jQuery&#39;s <a href="http://api.jquery.com/jquery.param/"><code>param()</code></a> method logic.
+The serializer will also sort the params alphabetically.</p>
 </td>
       </tr>
       
