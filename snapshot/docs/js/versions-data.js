@@ -7,13 +7,13 @@ angular.module('versionsData', [])
   "patch": 1,
   "prerelease": [
     "build",
-    "4060"
+    "4061"
   ],
-  "build": "sha.ebd0fbb",
-  "version": "1.4.1-build.4060",
+  "build": "sha.46b7cf7",
+  "version": "1.4.1-build.4061",
   "codeName": "snapshot",
   "isSnapshot": true,
-  "full": "1.4.1-build.4060+sha.ebd0fbb",
+  "full": "1.4.1-build.4061+sha.46b7cf7",
   "branch": "master"
 })
   .value('NG_VERSIONS', [
@@ -24,13 +24,13 @@ angular.module('versionsData', [])
     "patch": 1,
     "prerelease": [
       "build",
-      "4060"
+      "4061"
     ],
-    "build": "sha.ebd0fbb",
-    "version": "1.4.1-build.4060",
+    "build": "sha.46b7cf7",
+    "version": "1.4.1-build.4061",
     "codeName": "snapshot",
     "isSnapshot": true,
-    "full": "1.4.1-build.4060+sha.ebd0fbb",
+    "full": "1.4.1-build.4061+sha.46b7cf7",
     "branch": "master"
   },
   {

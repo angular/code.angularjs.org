@@ -103,9 +103,10 @@ not containing &quot;M&quot;.</p>
 <code>{name: {first: &#39;John&#39;, last: &#39;Doe&#39;}}</code> will <strong>not</strong> be matched by <code>{name: &#39;John&#39;}</code>, but
 <strong>will</strong> be matched by <code>{$: &#39;John&#39;}</code>.</p>
 </li>
-<li><p><code>function(value, index)</code>: A predicate function can be used to write arbitrary filters. The
-function is called for each element of <code>array</code>. The final result is an array of those
-elements that the predicate returned true for.</p>
+<li><p><code>function(value, index, array)</code>: A predicate function can be used to write arbitrary filters.
+The function is called for each element of the array, with the element, its index, and
+the entire array itself as arguments.</p>
+<p>The final result is an array of those elements that the predicate returned true for.</p>
 </li>
 </ul>
 
