@@ -6,9 +6,7 @@ angular.module('form-example2', []).directive('contenteditable', function() {
     link: function(scope, elm, attrs, ctrl) {
       // view -> model
       elm.on('blur', function() {
-        scope.$apply(function() {
           ctrl.$setViewValue(elm.html());
-        });
       });
 
       // model -> view

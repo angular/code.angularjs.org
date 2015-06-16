@@ -370,7 +370,7 @@ needs to be updated. This is usually done inside a DOM Event listener.</li>
       name="script.js"
       language="js"
       type="js">
-      <pre><code>angular.module(&#39;form-example2&#39;, []).directive(&#39;contenteditable&#39;, function() {&#10;  return {&#10;    require: &#39;ngModel&#39;,&#10;    link: function(scope, elm, attrs, ctrl) {&#10;      // view -&gt; model&#10;      elm.on(&#39;blur&#39;, function() {&#10;        scope.$apply(function() {&#10;          ctrl.$setViewValue(elm.html());&#10;        });&#10;      });&#10;&#10;      // model -&gt; view&#10;      ctrl.$render = function() {&#10;        elm.html(ctrl.$viewValue);&#10;      };&#10;&#10;      // load init value from DOM&#10;      ctrl.$setViewValue(elm.html());&#10;    }&#10;  };&#10;});</code></pre>
+      <pre><code>angular.module(&#39;form-example2&#39;, []).directive(&#39;contenteditable&#39;, function() {&#10;  return {&#10;    require: &#39;ngModel&#39;,&#10;    link: function(scope, elm, attrs, ctrl) {&#10;      // view -&gt; model&#10;      elm.on(&#39;blur&#39;, function() {&#10;          ctrl.$setViewValue(elm.html());&#10;      });&#10;&#10;      // model -&gt; view&#10;      ctrl.$render = function() {&#10;        elm.html(ctrl.$viewValue);&#10;      };&#10;&#10;      // load init value from DOM&#10;      ctrl.$setViewValue(elm.html());&#10;    }&#10;  };&#10;});</code></pre>
     </div>
   
 
