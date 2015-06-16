@@ -80,7 +80,9 @@
         <a href="" class="label type-hint type-hint-string">string</a>
       </td>
       <td>
-        <p>The value to which the expression should be set when selected.</p>
+        <p>The value to which the <code>ngModel</code> expression should be set when selected.
+   Note that <code>value</code> only supports <code>string</code> values, i.e. the scope model needs to be a string,
+   too. Use <code>ngValue</code> if you need complex models (<code>number</code>, <code>object</code>, ...).</p>
 
         
       </td>
@@ -129,8 +131,9 @@
         <a href="" class="label type-hint type-hint-string">string</a>
       </td>
       <td>
-        <p>Angular expression which sets the value to which the expression should
-   be set when selected.</p>
+        <p>Angular expression to which <code>ngModel</code> will be be set when the radio
+   is selected. Should be used instead of the <code>value</code> attribute if you need
+   a non-string <code>ngModel</code> (<code>boolean</code>, <code>array</code>, ...).</p>
 
         
       </td>

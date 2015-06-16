@@ -1268,7 +1268,7 @@
   {
     "path": "api/ng/input/input[radio]",
     "titleWords": "input[radio]",
-    "keywords": "angular any api assignable be button changes control data-bind due element example-radio-input-directive executed expression form html input interaction is module name ng ngchange ngmodel ngvalue of partials property published radio radioinputtype selected set sets should the to under user value when which with",
+    "keywords": "angular any api array assignable attribute be boolean button changes complex control data-bind due element example-radio-input-directive executed expression form html if input instead interaction is model models module name need needs ng ngchange ngmodel ngvalue non-string note number object of only partials property published radio radioinputtype scope selected set should string supports that the to too under use used user value values when which will with you",
     "members": ""
   },
   {

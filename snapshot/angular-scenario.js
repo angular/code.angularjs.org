@@ -9190,7 +9190,7 @@ return jQuery;
 }));
 
 /**
- * @license AngularJS v1.4.2-build.4064+sha.528d7f9
+ * @license AngularJS v1.4.2-build.4065+sha.720012e
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -9249,7 +9249,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.4.2-build.4064+sha.528d7f9/' +
+    message += '\nhttp://errors.angularjs.org/1.4.2-build.4065+sha.720012e/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -11533,7 +11533,7 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.4.2-build.4064+sha.528d7f9',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.4.2-build.4065+sha.720012e',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 4,
   dot: 2,
@@ -30422,12 +30422,15 @@ var inputType = {
    * HTML radio button.
    *
    * @param {string} ngModel Assignable angular expression to data-bind to.
-   * @param {string} value The value to which the expression should be set when selected.
+   * @param {string} value The value to which the `ngModel` expression should be set when selected.
+   *    Note that `value` only supports `string` values, i.e. the scope model needs to be a string,
+   *    too. Use `ngValue` if you need complex models (`number`, `object`, ...).
    * @param {string=} name Property name of the form under which the control is published.
    * @param {string=} ngChange Angular expression to be executed when input changes due to user
    *    interaction with the input element.
-   * @param {string} ngValue Angular expression which sets the value to which the expression should
-   *    be set when selected.
+   * @param {string} ngValue Angular expression to which `ngModel` will be be set when the radio
+   *    is selected. Should be used instead of the `value` attribute if you need
+   *    a non-string `ngModel` (`boolean`, `array`, ...).
    *
    * @example
       <example name="radio-input-directive" module="radioExample">

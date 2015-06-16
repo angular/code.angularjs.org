@@ -211,8 +211,10 @@ logic, further simplifying the application logic.</p>
 
 describe(&#39;length filter&#39;, function() {
 
+  var $filter;
+
   beforeEach(inject(function(_$filter_){
-    $filter= _$filter_;
+    $filter = _$filter_;
   }));
 
   it(&#39;returns 0 when given null&#39;, function() {
