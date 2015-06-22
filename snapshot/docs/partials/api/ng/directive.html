@@ -72,13 +72,7 @@ text <code>{{hash}}</code> until Angular replaces the expression inside
       
       <tr>
         <td><a href="api/ng/directive/ngChecked">ngChecked</a></td>
-        <td><p>The HTML specification does not require browsers to preserve the values of boolean attributes
-such as checked. (Their presence means true and their absence means false.)
-If we put an Angular interpolation expression into such an attribute then the
-binding information would be lost when the browser removes the attribute.
-The <code>ngChecked</code> directive solves this problem for the <code>checked</code> attribute.
-This complementary directive is not removed by the browser and so provides
-a permanent reliable place to store the binding information.</p>
+        <td><p>Sets the <code>checked</code> attribute on the element, if the expression inside <code>ngChecked</code> is truthy.</p>
 </td>
       </tr>
       

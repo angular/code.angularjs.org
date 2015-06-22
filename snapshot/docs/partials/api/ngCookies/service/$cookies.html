@@ -1,8 +1,8 @@
-<a href='https://github.com/angular/angular.js/edit/master/src/ngCookies/cookies.js?message=docs($cookies)%3A%20describe%20your%20change...#L56' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/master/src/ngCookies/cookies.js?message=docs($cookies)%3A%20describe%20your%20change...#L55' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 
-<a href='https://github.com/angular/angular.js/tree/master/src/ngCookies/cookies.js#L56' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/master/src/ngCookies/cookies.js#L55' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -25,9 +25,12 @@
 
 <div class="api-profile-description">
   <p>Provides read/write access to browser&#39;s cookies.</p>
-<p>BREAKING CHANGE: <code>$cookies</code> no longer exposes properties that represent the
-current browser cookie values. Now you must use the get/put/remove/etc. methods
-as described below.</p>
+<div class="alert alert-info">
+Up until Angular 1.3, <code>$cookies</code> exposed properties that represented the
+current browser cookie values. In version 1.4, this behavior has changed, and
+<code>$cookies</code> now provides a standard api of getters, setters etc.
+</div>
+
 <p>Requires the <a href="api/ngCookies"><code>ngCookies</code></a> module to be installed.</p>
 
 </div>

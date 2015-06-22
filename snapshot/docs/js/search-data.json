@@ -1172,7 +1172,7 @@
   {
     "path": "api/ng/directive/ngChecked",
     "titleWords": "ngChecked checked",
-    "keywords": "absence an and angular api as attribute attributes be binding boolean browser browsers by checked complementary directive does element example-example55 expression false for guide html if information input interpolation into is lost means module ng ngattributealiasdirectives ngchecked not of on partials permanent place presence preserve problem provides put reliable removed removes require set so solves special specification store such the their then this to true truthy values we when will would",
+    "keywords": "absence an and angular api as attribute attributes be behavior binding boolean browser browsers by can checked complementary directive do does element example-example55 expression false for guide html if information input inside interpolation into is lead lost means module need ng ngattributealiasdirectives ngchecked ngmodel not note of on partials permanent place presence preserve problem provides put reliable removed removes require set sets should so solves specification store such that the their then this to together true truthy unexpected used values we when why will with would",
     "members": ""
   },
   {
@@ -1850,13 +1850,13 @@
   {
     "path": "api/ngCookies/service/$cookieStore",
     "titleWords": "$cookieStore",
-    "keywords": "$cookies $cookiestore alert alert-danger angular api are automatically backed be by class controller cookie cookies cookiestoreexample deprecated deserialized examplecontroller factory favoritecookie from function get html installed instead is js key-value module myfavorite ngcookies oatmeal objects or partials please provides put remove removing requires retrieved serialized service session storage that the this to tojson use var",
+    "keywords": "$cookies $cookiestore alert alert-danger angular api are automatically backed be by class controller cookie cookies cookiestoreexample deserialized examplecontroller factory favoritecookie from function get html installed instead is js key-value module myfavorite ngcookies oatmeal objects or partials please provides put remove removing requires retrieved serialized service session storage that the this to tojson use var",
     "members": "get put remove"
   },
   {
     "path": "api/ngCookies",
     "titleWords": "ngCookies cookies",
-    "keywords": "$cookies $cookiestore and angular-cookies api browser convenient cookies doc-module-components for html js module ngcookies partials provider provides reading see the usage wrapper writing",
+    "keywords": "$cookies and angular-cookies api browser convenient cookies doc-module-components for html js module ngcookies partials provider provides reading see the usage wrapper writing",
     "members": ""
   },
   {
@@ -1868,7 +1868,7 @@
   {
     "path": "api/ngCookies/service/$cookies",
     "titleWords": "$cookies",
-    "keywords": "$cookies $get access angular api as be below breaking browser change controller cookie cookies cookiesexample current described examplecontroller exposes favoritecookie function get html installed js longer methods module must myfavorite ngcookies no now oatmeal partials properties provides put read represent requires retrieving service setting that the to use values var you",
+    "keywords": "$cookies $get access alert alert-info and angular api be behavior browser changed class controller cookie cookies cookiesexample current etc examplecontroller exposed favoritecookie function get getters has html in installed js module myfavorite ngcookies now oatmeal of partials properties provides put read represented requires retrieving service setters setting standard that the this to until up values var version",
     "members": "get getall getobject put putobject remove"
   },
   {
