@@ -520,7 +520,7 @@ imagine we have a greeting box that shows and hides itself when the data changes
 <pre><code class="lang-js">ngModule.directive(&#39;greetingBox&#39;, [&#39;$animate&#39;, function($animate) {
   return function(scope, element, attrs) {
     attrs.$observe(&#39;active&#39;, function(value) {
-      value ? $animate.addClass(element, &#39;on&#39;) ? $animate.removeClass(element, &#39;on&#39;);
+      value ? $animate.addClass(element, &#39;on&#39;) : $animate.removeClass(element, &#39;on&#39;);
     });
   });
 }]);
@@ -528,7 +528,7 @@ imagine we have a greeting box that shows and hides itself when the data changes
 <p>Now the <code>on</code> CSS class is added and removed on the greeting box component. Now if we add a CSS class on top of the greeting box element
 in our HTML code then we can trigger a CSS or JS animation to happen.</p>
 <pre><code class="lang-css">/* normally we would create a CSS class to reference on the element */
-[greeting-box].on { transition:0.5s linear all; background:green; color:white; }
+greeting-box.on { transition:0.5s linear all; background:green; color:white; }
 </code></pre>
 <p>The <code>$animate</code> service contains a variety of other methods like <code>enter</code>, <code>leave</code>, <code>animate</code> and <code>setClass</code>. To learn more about what&#39;s
 possible be sure to visit the <a href="api/ng/service/$animate">$animate service API page</a>.</p>
