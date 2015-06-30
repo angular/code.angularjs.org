@@ -68,10 +68,10 @@ element.on(&#39;$animate:before&#39;, function(e, data) {
 element.off(&#39;$animate:before&#39;, fn);
 
 // 1.4+
-$animate.on(element, &#39;enter&#39;, function(data) {
+$animate.on(&#39;enter&#39;, element, function(data) {
   //...
 });
-$animate.off(element, &#39;enter&#39;, fn);
+$animate.off(&#39;enter&#39;, element, fn);
 </code></pre>
 <p>Due to <a href="https://github.com/angular/angular.js/commit/c8700f04fb6fb5dc21ac24de8665c0476d6db5ef">c8700f04</a>,
 the function params for <code>$animate.enabled()</code> when an element is used are now flipped. This fix allows
