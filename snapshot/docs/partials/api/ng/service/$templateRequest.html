@@ -22,10 +22,12 @@
 
 
 <div class="api-profile-description">
-  <p>The <code>$templateRequest</code> service downloads the provided template using <code>$http</code> and, upon success,
-stores the contents inside of <code>$templateCache</code>. If the HTTP request fails or the response data
-of the HTTP request is empty, a <code>$compile</code> error will be thrown (the exception can be thwarted
-by setting the 2nd parameter of the function to true).</p>
+  <p>The <code>$templateRequest</code> service runs security checks then downloads the provided template using
+<code>$http</code> and, upon success, stores the contents inside of <code>$templateCache</code>. If the HTTP request
+fails or the response data of the HTTP request is empty, a <code>$compile</code> error will be thrown (the
+exception can be thwarted by setting the 2nd parameter of the function to true). Note that the
+contents of <code>$templateCache</code> are trusted, so the call to <code>$sce.getTrustedUrl(tpl)</code> is omitted
+when <code>tpl</code> is of type string and <code>$templateCache</code> has the matching entry.</p>
 
 </div>
 
@@ -65,7 +67,7 @@ by setting the 2nd parameter of the function to true).</p>
         
       </td>
       <td>
-        <a href="" class="label type-hint type-hint-string">string</a>
+        <a href="" class="label type-hint type-hint-string">string</a><a href="" class="label type-hint type-hint-trustedresourceurl">TrustedResourceUrl</a>
       </td>
       <td>
         <p>The HTTP request template URL</p>

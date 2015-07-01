@@ -1796,7 +1796,7 @@
   {
     "path": "api/ng/service/$templateRequest",
     "titleWords": "$templateRequest",
-    "keywords": "$compile $http $templatecache $templaterequest $templaterequestprovider amount and api be being by can contents data downloaded downloads empty error exception fails for function given html http if ignore ignorerequesterror inside is module ng not of or parameter partials pending promise provided request requests response service setting stores success template the thrown thwarted to total totalpendingrequests tpl true upon url using when whether will",
+    "keywords": "$compile $http $sce $templatecache $templaterequest $templaterequestprovider amount and api are be being by call can checks contents data downloaded downloads empty entry error exception fails for function gettrustedurl given has html http if ignore ignorerequesterror inside is matching module ng not note of omitted or parameter partials pending promise provided request requests response runs security service setting so stores string success template that the then thrown thwarted to total totalpendingrequests tpl true trusted type upon url using when whether will",
     "members": "totalpendingrequests"
   },
   {
