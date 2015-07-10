@@ -1,10 +1,11 @@
 /**
- * @license AngularJS v1.4.2-build.4092+sha.d518a64
+ * @license AngularJS v1.4.3-build.4093+sha.9ea52d8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
 
 (function() {'use strict';
+    function isFunction(value) {return typeof value === 'function';};
 
 /**
  * @description
@@ -58,7 +59,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.4.2-build.4092+sha.d518a64/' +
+    message += '\nhttp://errors.angularjs.org/1.4.3-build.4093+sha.9ea52d8/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {

@@ -1,39 +1,49 @@
 // Meta data used by the AngularJS docs app
 angular.module('versionsData', [])
   .value('NG_VERSION', {
-  "raw": "v1.4.1",
+  "raw": "v1.4.2",
   "major": 1,
   "minor": 4,
-  "patch": 2,
+  "patch": 3,
   "prerelease": [
     "build",
-    "4092"
+    "4093"
   ],
-  "build": "sha.d518a64",
-  "version": "1.4.2-build.4092",
+  "build": "sha.9ea52d8",
+  "version": "1.4.3-build.4093",
   "codeName": "snapshot",
   "isSnapshot": true,
-  "full": "1.4.2-build.4092+sha.d518a64",
+  "full": "1.4.3-build.4093+sha.9ea52d8",
   "branch": "master",
-  "commitSHA": "d518a64d93b4f63e9c55678f5a094cc439e02ec0"
+  "commitSHA": "9ea52d818bcd2fb3ea8ccc85bf47f9fd5af68843"
 })
   .value('NG_VERSIONS', [
   {
-    "raw": "v1.4.1",
+    "raw": "v1.4.2",
+    "major": 1,
+    "minor": 4,
+    "patch": 3,
+    "prerelease": [
+      "build",
+      "4093"
+    ],
+    "build": "sha.9ea52d8",
+    "version": "1.4.3-build.4093",
+    "codeName": "snapshot",
+    "isSnapshot": true,
+    "full": "1.4.3-build.4093+sha.9ea52d8",
+    "branch": "master",
+    "commitSHA": "9ea52d818bcd2fb3ea8ccc85bf47f9fd5af68843"
+  },
+  {
+    "raw": "v1.4.2",
     "major": 1,
     "minor": 4,
     "patch": 2,
-    "prerelease": [
-      "build",
-      "4092"
-    ],
-    "build": "sha.d518a64",
-    "version": "1.4.2-build.4092",
-    "codeName": "snapshot",
-    "isSnapshot": true,
-    "full": "1.4.2-build.4092+sha.d518a64",
-    "branch": "master",
-    "commitSHA": "d518a64d93b4f63e9c55678f5a094cc439e02ec0"
+    "prerelease": [],
+    "build": [],
+    "version": "1.4.2",
+    "docsUrl": "http://code.angularjs.org/1.4.2/docs"
   },
   {
     "raw": "v1.4.1",
@@ -184,6 +194,16 @@ angular.module('versionsData', [])
     "build": [],
     "version": "1.4.0-beta.0",
     "docsUrl": "http://code.angularjs.org/1.4.0-beta.0/docs"
+  },
+  {
+    "raw": "v1.3.17",
+    "major": 1,
+    "minor": 3,
+    "patch": 17,
+    "prerelease": [],
+    "build": [],
+    "version": "1.3.17",
+    "docsUrl": "http://code.angularjs.org/1.3.17/docs"
   },
   {
     "raw": "v1.3.16",
