@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.4.3-build.4095+sha.f012374
+ * @license AngularJS v1.4.3-build.4096+sha.4cef752
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -59,7 +59,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.4.3-build.4095+sha.f012374/' +
+    message += '\nhttp://errors.angularjs.org/1.4.3-build.4096+sha.4cef752/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {

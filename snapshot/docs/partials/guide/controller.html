@@ -2,12 +2,14 @@
 
 
 <h1 id="understanding-controllers">Understanding Controllers</h1>
-<p>In Angular, a Controller is a JavaScript <strong>constructor function</strong> that is used to augment the
+<p>In Angular, a Controller is defined by a JavaScript <strong>constructor function</strong> that is used to augment the
 <a href="guide/scope">Angular Scope</a>.</p>
 <p>When a Controller is attached to the DOM via the <a href="api/ng/directive/ngController">ng-controller</a>
 directive, Angular will instantiate a new Controller object, using the specified Controller&#39;s
-<strong>constructor function</strong>. A new <strong>child scope</strong> will be available as an injectable parameter to the
-Controller&#39;s constructor function as <code>$scope</code>.</p>
+<strong>constructor function</strong>. A new <strong>child scope</strong> will be created and made available as an injectable
+parameter to the Controller&#39;s constructor function as <code>$scope</code>.</p>
+<p>If the controller has been attached using the <code>controller as</code> syntax then the controller instance will
+be assigned to a property on the new scope.</p>
 <p>Use controllers to:</p>
 <ul>
 <li>Set up the initial state of the <code>$scope</code> object.</li>
