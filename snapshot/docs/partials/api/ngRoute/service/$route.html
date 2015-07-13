@@ -212,8 +212,9 @@ for more details about event object.</p>
   
   <li id="$routeChangeSuccess">
     <h3>$routeChangeSuccess</h3>
-    <div><p>Broadcasted after a route dependencies are resolved.
-<a href="api/ngRoute/directive/ngView">ngView</a> listens for the directive
+    <div><p>Broadcasted after a route change has happened successfully.
+The <code>resolve</code> dependencies are now available in the <code>current.locals</code> property.</p>
+<p><a href="api/ngRoute/directive/ngView">ngView</a> listens for the directive
 to instantiate the controller and render the view.</p>
 </div>
     <div class="inline">

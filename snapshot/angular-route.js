@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.4.3-build.4094+sha.14e0b9c
+ * @license AngularJS v1.4.3-build.4095+sha.f012374
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -412,7 +412,9 @@ function $RouteProvider() {
      * @name $route#$routeChangeSuccess
      * @eventType broadcast on root scope
      * @description
-     * Broadcasted after a route dependencies are resolved.
+     * Broadcasted after a route change has happened successfully.
+     * The `resolve` dependencies are now available in the `current.locals` property.
+     *
      * {@link ngRoute.directive:ngView ngView} listens for the directive
      * to instantiate the controller and render the view.
      *
