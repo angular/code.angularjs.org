@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.4.3-build.4097+sha.7202bfa
+ * @license AngularJS v1.4.3-build.4098+sha.e4aeae0
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -825,6 +825,10 @@ var $AnimateCssProvider = ['$animateProvider', function($animateProvider) {
 
     function init(element, options) {
       var node = getDomNode(element);
+      if (!node || !node.parentNode) {
+        return closeAndReturnNoopAnimator();
+      }
+
       options = prepareAnimationOptions(options);
 
       var temporaryStyles = [];
@@ -1110,6 +1114,10 @@ var $AnimateCssProvider = ['$animateProvider', function($animateProvider) {
 
       function start() {
         if (animationClosed) return;
+        if (!node.parentNode) {
+          close();
+          return;
+        }
 
         var startTime, events = [];
 
@@ -2747,7 +2755,7 @@ var $$AnimationProvider = ['$animateProvider', function($animateProvider) {
                 ? (animationEntry.from.element || animationEntry.to.element)
                 : animationEntry.element;
 
-            if (getRunner(targetElement)) {
+            if (getRunner(targetElement) && getDomNode(targetElement).parentNode) {
               var operation = invokeFirstDriver(animationEntry);
               if (operation) {
                 startAnimationFn = operation.start;
