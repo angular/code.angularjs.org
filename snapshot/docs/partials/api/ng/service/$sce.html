@@ -154,7 +154,7 @@ match themselves.</li>
 characters: &#39;<code>:</code>&#39;, &#39;<code>/</code>&#39;, &#39;<code>.</code>&#39;, &#39;<code>?</code>&#39;, &#39;<code>&amp;</code>&#39; and &#39;;&#39;.  It&#39;s a useful wildcard for use
 in a whitelist.</li>
 <li><code>**</code>: matches zero or more occurrences of <em>any</em> character.  As such, it&#39;s not
-not appropriate to use in for a scheme, domain, etc. as it would match too much.  (e.g.
+appropriate for use in a scheme, domain, etc. as it would match too much.  (e.g.
 <a href="http://**.example.com/">http://**.example.com/</a> would match <a href="http://evil.com/?ignore=.example.com/">http://evil.com/?ignore=.example.com/</a> and that might
 not have been the intention.)  Its usage at the very end of the path is ok.  (e.g.
 <a href="http://foo.example.com/templates/**">http://foo.example.com/templates/**</a>).</li>
@@ -164,11 +164,11 @@ not have been the intention.)  Its usage at the very end of the path is ok.  (e.
 <li><em>Caveat</em>:  While regular expressions are powerful and offer great flexibility,  their syntax
 (and all the inevitable escaping) makes them <em>harder to maintain</em>.  It&#39;s easy to
 accidentally introduce a bug when one updates a complex expression (imho, all regexes should
-have good test coverage.).  For instance, the use of <code>.</code> in the regex is correct only in a
+have good test coverage).  For instance, the use of <code>.</code> in the regex is correct only in a
 small number of cases.  A <code>.</code> character in the regex used when matching the scheme or a
 subdomain could be matched against a <code>:</code> or literal <code>.</code> that was likely not intended.   It
 is highly recommended to use the string patterns and only fall back to regular expressions
-if they as a last resort.</li>
+as a last resort.</li>
 <li>The regular expression must be an instance of RegExp (i.e. not a string.)  It is
 matched against the <strong>entire</strong> <em>normalized / absolute URL</em> of the resource being tested
 (even when the RegExp did not have the <code>^</code> and <code>$</code> codes.)  In addition, any flags
@@ -178,7 +178,7 @@ recommended, e.g. in issue <a href="https://github.com/angular/angular.js/issues
 remember to escape your regular expression (and be aware that you might need more than
 one level of escaping depending on your templating engine and the way you interpolated
 the value.)  Do make use of your platform&#39;s escaping mechanism as it might be good
-enough before coding your own.  e.g. Ruby has
+enough before coding your own.  E.g. Ruby has
 <a href="http://www.ruby-doc.org/core-2.0.0/Regexp.html#method-c-escape">Regexp.escape(str)</a>
 and Python has <a href="http://docs.python.org/library/re.html#re.escape">re.escape</a>.
 Javascript lacks a similar built in function for escaping.  Take a look at Google

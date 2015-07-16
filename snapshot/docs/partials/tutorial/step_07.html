@@ -249,7 +249,7 @@ to various URLs and verify that the correct view was rendered.</p>
    it(&#39;should redirect index.html to index.html#/phones&#39;, function() {
     browser.get(&#39;app/index.html&#39;);
     browser.getLocationAbsUrl().then(function(url) {
-        expect(url.split(&#39;#&#39;)[1]).toBe(&#39;/phones&#39;);
+        expect(url).toEqual(&#39;/phones&#39;);
       });
   });
 
