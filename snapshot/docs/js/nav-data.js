@@ -701,11 +701,6 @@ angular.module('navData', [])
             "type": "service"
           },
           {
-            "name": "$locale",
-            "href": "api/ng/service/$locale",
-            "type": "service"
-          },
-          {
             "name": "$location",
             "href": "api/ng/service/$location",
             "type": "service"
@@ -919,6 +914,12 @@ angular.module('navData', [])
             "type": "provider"
           }
         ]
+      },
+      {
+        "name": "ngLocale",
+        "href": "api/ngLocale",
+        "type": "group",
+        "navItems": []
       },
       {
         "name": "ngMessageFormat",

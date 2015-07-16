@@ -1416,11 +1416,6 @@ angular.module('pagesData', [])
     "area": "api",
     "path": "api/ng/service/$interval"
   },
-  "api/ng/service/$locale": {
-    "name": "$locale",
-    "area": "api",
-    "path": "api/ng/service/$locale"
-  },
   "api/ng/service/$location": {
     "name": "$location",
     "area": "api",
@@ -1560,6 +1555,11 @@ angular.module('pagesData', [])
     "name": "$cookies",
     "area": "api",
     "path": "api/ngCookies/service/$cookies"
+  },
+  "api/ngLocale": {
+    "name": "ngLocale",
+    "area": "api",
+    "path": "api/ngLocale"
   },
   "api/ngMessageFormat/service/$$messageFormat": {
     "name": "$$messageFormat",

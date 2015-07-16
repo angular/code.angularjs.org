@@ -15,7 +15,8 @@ application means providing translations and localized formats for the abstracte
 directive</a>.  Additionally, you can use <a href="guide/i18n#messageformat-extensions">MessageFormat extensions</a> to
 <code>$interpolate</code> for localizable pluralization and gender support in all interpolations via the
 <code>ngMessageFormat</code> module.</p>
-<p>All localizable Angular components depend on locale-specific rule sets managed by the <a href="api/ng/service/$locale"><code>$locale</code> service</a>.</p>
+<p>All localizable Angular components depend on locale-specific rule sets managed by the
+<a href="api/ngLocale"><code>$locale</code> service</a>.</p>
 <p>There a few examples that showcase how to use Angular filters with various locale rule sets in the
 <a href="https://github.com/angular/angular.js/tree/master/i18n/e2e"><code>i18n/e2e</code> directory</a> of the Angular
 source code.</p>
@@ -63,7 +64,7 @@ an extra script needs to be loaded.</p>
 develop your app.</p>
 <h3 id="currency-symbol">Currency symbol</h3>
 <p>Angular&#39;s <a href="api/ng/filter/currency">currency filter</a> allows you to use the default currency symbol
-from the <a href="api/ng/service/$locale">locale service</a>, or you can provide the filter with a custom currency
+from the <a href="api/ngLocale"><code>locale</code> service</a>, or you can provide the filter with a custom currency
 symbol.</p>
 <div class="alert alert-success">
 <strong>Best Practice:</strong> If your app will be used only in one locale, it is fine to rely on the default
