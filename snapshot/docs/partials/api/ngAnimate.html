@@ -336,6 +336,7 @@ data into <code>$animateCss</code> directly:</p>
     enter: function(element, doneFn) {
       var runner = $animateCss(element, {
         event: &#39;enter&#39;,
+        structural: true,
         addClass: &#39;maroon-setting&#39;,
         from: { height:0 },
         to: { height: 200 }
