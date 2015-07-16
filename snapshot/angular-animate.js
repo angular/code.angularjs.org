@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.4.4-build.4106+sha.d494a69
+ * @license AngularJS v1.4.4-build.4107+sha.7db5f36
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -1252,7 +1252,7 @@ var $AnimateCssProvider = ['$animateProvider', function($animateProvider) {
 
           startTime = Date.now();
           element.on(events.join(' '), onAnimationProgress);
-          $timeout(onAnimationExpired, maxDelayTime + CLOSING_TIME_BUFFER * maxDurationTime);
+          $timeout(onAnimationExpired, maxDelayTime + CLOSING_TIME_BUFFER * maxDurationTime, false);
 
           applyAnimationToStyles(element, options);
         }
