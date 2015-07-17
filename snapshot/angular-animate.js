@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.4.4-build.4111+sha.21d6db3
+ * @license AngularJS v1.4.4-build.4112+sha.44ce9c8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -254,6 +254,12 @@ function resolveElementClasses(existing, toAdd, toRemove) {
 
 function getDomNode(element) {
   return (element instanceof angular.element) ? element[0] : element;
+}
+
+function $$BodyProvider() {
+  this.$get = ['$document', function($document) {
+    return jqLite($document[0].body);
+  }];
 }
 
 var $$rAFSchedulerFactory = ['$$rAF', function($$rAF) {
@@ -1301,13 +1307,13 @@ var $$AnimateCssDriverProvider = ['$$animationProvider', function($$animationPro
   var NG_OUT_ANCHOR_CLASS_NAME = 'ng-anchor-out';
   var NG_IN_ANCHOR_CLASS_NAME = 'ng-anchor-in';
 
-  this.$get = ['$animateCss', '$rootScope', '$$AnimateRunner', '$rootElement', '$document', '$sniffer',
-       function($animateCss,   $rootScope,   $$AnimateRunner,   $rootElement,   $document,   $sniffer) {
+  this.$get = ['$animateCss', '$rootScope', '$$AnimateRunner', '$rootElement', '$$body', '$sniffer',
+       function($animateCss,   $rootScope,   $$AnimateRunner,   $rootElement,   $$body,   $sniffer) {
 
     // only browsers that support these properties can render animations
     if (!$sniffer.animations && !$sniffer.transitions) return noop;
 
-    var bodyNode = getDomNode($document).body;
+    var bodyNode = getDomNode($$body);
     var rootNode = getDomNode($rootElement);
 
     var rootBodyElement = jqLite(bodyNode.parentNode === rootNode ? bodyNode : rootNode);
@@ -1931,9 +1937,9 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
     return (nO.addClass && nO.addClass === cO.removeClass) || (nO.removeClass && nO.removeClass === cO.addClass);
   });
 
-  this.$get = ['$$rAF', '$rootScope', '$rootElement', '$document', '$$HashMap',
+  this.$get = ['$$rAF', '$rootScope', '$rootElement', '$document', '$$body', '$$HashMap',
                '$$animation', '$$AnimateRunner', '$templateRequest', '$$jqLite',
-       function($$rAF,   $rootScope,   $rootElement,   $document,   $$HashMap,
+       function($$rAF,   $rootScope,   $rootElement,   $document,   $$body,   $$HashMap,
                 $$animation,   $$AnimateRunner,   $templateRequest,   $$jqLite) {
 
     var activeAnimationsLookup = new $$HashMap();
@@ -1969,8 +1975,6 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
         });
       }
     );
-
-    var bodyElement = jqLite($document[0].body);
 
     var callbackRegistry = {};
 
@@ -2390,8 +2394,8 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
     }
 
     function areAnimationsAllowed(element, parentElement, event) {
-      var bodyElementDetected = false;
-      var rootElementDetected = false;
+      var bodyElementDetected = isMatchingElement(element, $$body) || element[0].nodeName === 'HTML';
+      var rootElementDetected = isMatchingElement(element, $rootElement);
       var parentAnimationDetected = false;
       var animateChildren;
 
@@ -2446,7 +2450,7 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
         if (!bodyElementDetected) {
           // we also need to ensure that the element is or will be apart of the body element
           // otherwise it is pointless to even issue an animation to be rendered
-          bodyElementDetected = isMatchingElement(parentElement, bodyElement);
+          bodyElementDetected = isMatchingElement(parentElement, $$body);
         }
 
         parentElement = parentElement.parent();
@@ -2964,6 +2968,7 @@ var $$AnimationProvider = ['$animateProvider', function($animateProvider) {
 
 /* global angularAnimateModule: true,
 
+   $$BodyProvider,
    $$rAFMutexFactory,
    $$rAFSchedulerFactory,
    $$AnimateChildrenDirective,
@@ -3703,6 +3708,8 @@ var $$AnimationProvider = ['$animateProvider', function($animateProvider) {
  * Click here {@link ng.$animate $animate to learn more about animations with `$animate`}.
  */
 angular.module('ngAnimate', [])
+  .provider('$$body', $$BodyProvider)
+
   .directive('ngAnimateChildren', $$AnimateChildrenDirective)
 
   .factory('$$rAFMutex', $$rAFMutexFactory)
