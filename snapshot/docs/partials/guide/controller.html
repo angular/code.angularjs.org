@@ -82,7 +82,7 @@ and <code>ng</code> event handler directives (e.g. <a href="api/ng/directive/ngC
 needed for a single view.</p>
 <p>The most common way to keep Controllers slim is by encapsulating work that doesn&#39;t belong to
 controllers into services and then using these services in Controllers via dependency injection.
-This is discussed in the <a href="guide/di">Dependency Injection</a> <a href="guide/services">Services</a> sections of this guide.</p>
+This is discussed in the <a href="guide/di">Dependency Injection</a>  and  <a href="guide/services">Services</a> sections of this guide.</p>
 <h1 id="associating-controllers-with-angular-scope-objects">Associating Controllers with Angular Scope Objects</h1>
 <p>You can associate Controllers with scope objects implicitly via the <a href="api/ng/directive/ngController">ngController
 directive</a> or <a href="api/ngRoute/service/$route">$route service</a>.</p>
@@ -138,7 +138,7 @@ scope is augmented (managed) by the <code>SpicyController</code> Controller.</li
 starts with capital letter and ends with &quot;Controller&quot;.</li>
 <li>Assigning a property to <code>$scope</code> creates or updates the model.</li>
 <li>Controller methods can be created through direct assignment to scope (see the <code>chiliSpicy</code> method)</li>
-<li>The Controller methods and properties are available in the template (for the <code>&lt;div&gt;</code> element and
+<li>The Controller methods and properties are available in the template (for both the <code>&lt;div&gt;</code> element and
 its children).</li>
 </ul>
 <h2 id="spicy-arguments-example">Spicy Arguments Example</h2>
@@ -276,7 +276,7 @@ myApp.controller(&#39;MyController&#39;, function($scope) {
   });
 });
 </code></pre>
-<p>If you need to test a nested Controller you need to create the same scope hierarchy
+<p>If you need to test a nested Controller you  must create the same scope hierarchy
 in your test that exists in the DOM:</p>
 <pre><code class="lang-js">describe(&#39;state&#39;, function() {
     var mainScope, childScope, grandChildScope;
