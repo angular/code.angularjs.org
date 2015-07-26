@@ -1749,11 +1749,6 @@ angular.module('navData', [])
             "type": "error"
           },
           {
-            "name": "trkslct",
-            "href": "error/ngOptions/trkslct",
-            "type": "error"
-          },
-          {
             "name": "ngPattern",
             "href": "error/ngPattern",
             "type": "section"

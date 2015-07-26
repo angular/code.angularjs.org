@@ -446,11 +446,6 @@ angular.module('pagesData', [])
     "area": "error",
     "path": "error/ngOptions/iexp"
   },
-  "error/ngOptions/trkslct": {
-    "name": "trkslct",
-    "area": "error",
-    "path": "error/ngOptions/trkslct"
-  },
   "error/ngPattern/noregexp": {
     "name": "noregexp",
     "area": "error",

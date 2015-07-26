@@ -534,12 +534,6 @@
     "members": ""
   },
   {
-    "path": "error/ngOptions/trkslct",
-    "titleWords": "trkslct",
-    "keywords": "$scope alabel already always an and applied apply apps are array as asubitem bad blabel both break bsubitem but by calculate cannot case comprehension contain contains directive docs does error example existing expression expressions following for from fundamentally here how html id in incompatible information instead introduced is item label make model more ng ng-model ng-options ngmodel ngoptions not note occurs of on order partials passed possible preserve purpose refers removed scope see select selected selection store subitem syntax that the these this to track trkslct two using valid value values was when whether whole with without work would",
-    "members": ""
-  },
-  {
     "path": "error/ngPattern/noregexp",
     "titleWords": "noregexp",
     "keywords": "an be but directive docs doesn element error expected expression for format have html in information input is isn more ng ngpattern noregexp occurs on or partials passed regexp regular see syntax that the this to valid was when",
