@@ -9190,7 +9190,7 @@ return jQuery;
 }));
 
 /**
- * @license AngularJS v1.4.4-build.4134+sha.0d6fc2d
+ * @license AngularJS v1.4.4-build.4135+sha.533d9b7
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -9249,7 +9249,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.4.4-build.4134+sha.0d6fc2d/' +
+    message += '\nhttp://errors.angularjs.org/1.4.4-build.4135+sha.533d9b7/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -11566,7 +11566,7 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.4.4-build.4134+sha.0d6fc2d',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.4.4-build.4135+sha.533d9b7',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 4,
   dot: 4,
@@ -17874,24 +17874,19 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
         lastValue,
         parentGet, parentSet, compare;
 
-        if (!hasOwnProperty.call(attrs, attrName)) {
-          // In the case of user defined a binding with the same name as a method in Object.prototype but didn't set
-          // the corresponding attribute. We need to make sure subsequent code won't access to the prototype function
-          attrs[attrName] = undefined;
-        }
-
         switch (mode) {
 
           case '@':
-            if (!attrs[attrName] && !optional) {
-              destination[scopeName] = undefined;
+            if (!optional && !hasOwnProperty.call(attrs, attrName)) {
+              destination[scopeName] = attrs[attrName] = void 0;
             }
-
             attrs.$observe(attrName, function(value) {
-              destination[scopeName] = value;
+              if (isString(value)) {
+                destination[scopeName] = value;
+              }
             });
             attrs.$$observers[attrName].$$scope = scope;
-            if (attrs[attrName]) {
+            if (isString(attrs[attrName])) {
               // If the attribute has been provided then we trigger an interpolation to ensure
               // the value is there for use in the link fn
               destination[scopeName] = $interpolate(attrs[attrName])(scope);
@@ -17899,11 +17894,13 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
             break;
 
           case '=':
-            if (optional && !attrs[attrName]) {
-              return;
+            if (!hasOwnProperty.call(attrs, attrName)) {
+              if (optional) break;
+              attrs[attrName] = void 0;
             }
-            parentGet = $parse(attrs[attrName]);
+            if (optional && !attrs[attrName]) break;
 
+            parentGet = $parse(attrs[attrName]);
             if (parentGet.literal) {
               compare = equals;
             } else {
@@ -17942,7 +17939,8 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
             break;
 
           case '&':
-            parentGet = $parse(attrs[attrName]);
+            // Don't assign Object.prototype method to scope
+            parentGet = attrs.hasOwnProperty(attrName) ? $parse(attrs[attrName]) : noop;
 
             // Don't assign noop to destination if expression is not valid
             if (parentGet === noop && optional) break;
