@@ -9190,7 +9190,7 @@ return jQuery;
 }));
 
 /**
- * @license AngularJS v1.4.4-build.4135+sha.533d9b7
+ * @license AngularJS v1.4.4-build.4136+sha.9398580
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -9249,7 +9249,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.4.4-build.4135+sha.533d9b7/' +
+    message += '\nhttp://errors.angularjs.org/1.4.4-build.4136+sha.9398580/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -11566,7 +11566,7 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.4.4-build.4135+sha.533d9b7',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.4.4-build.4136+sha.9398580',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 4,
   dot: 4,
@@ -15714,7 +15714,7 @@ function $TemplateCacheProvider() {
  *     otherwise the {@link error:$compile:ctreq Missing Required Controller} error is thrown.
  *
  *     Note that you can also require the directive's own controller - it will be made available like
- *     like any other controller.
+ *     any other controller.
  *
  *   * `transcludeFn` - A transclude linking function pre-bound to the correct transclusion scope.
  *     This is the same as the `$transclude`
