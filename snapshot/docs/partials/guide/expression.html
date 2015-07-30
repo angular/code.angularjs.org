@@ -88,7 +88,7 @@ the method from your view. If you want to <code>eval()</code> an Angular express
       name="index.html"
       language="html"
       type="html">
-      <pre><code>&lt;div ng-controller=&quot;ExampleController&quot; class=&quot;expressions&quot;&gt;&#10;  Expression:&#10;  &lt;input type=&#39;text&#39; ng-model=&quot;expr&quot; size=&quot;80&quot;/&gt;&#10;  &lt;button ng-click=&quot;addExp(expr)&quot;&gt;Evaluate&lt;/button&gt;&#10;  &lt;ul&gt;&#10;   &lt;li ng-repeat=&quot;expr in exprs track by $index&quot;&gt;&#10;     [ &lt;a href=&quot;&quot; ng-click=&quot;removeExp($index)&quot;&gt;X&lt;/a&gt; ]&#10;     &lt;tt&gt;{{expr}}&lt;/tt&gt; =&gt; &lt;span ng-bind=&quot;$parent.$eval(expr)&quot;&gt;&lt;/span&gt;&#10;    &lt;/li&gt;&#10;  &lt;/ul&gt;&#10;&lt;/div&gt;</code></pre>
+      <pre><code>&lt;div ng-controller=&quot;ExampleController&quot; class=&quot;expressions&quot;&gt;&#10;  Expression:&#10;  &lt;input type=&#39;text&#39; ng-model=&quot;expr&quot; size=&quot;80&quot;/&gt;&#10;  &lt;button ng-click=&quot;addExp(expr)&quot;&gt;Evaluate&lt;/button&gt;&#10;  &lt;ul&gt;&#10;   &lt;li ng-repeat=&quot;expr in exprs track by $index&quot;&gt;&#10;     [ &lt;a href=&quot;&quot; ng-click=&quot;removeExp($index)&quot;&gt;X&lt;/a&gt; ]&#10;     &lt;code&gt;{{expr}}&lt;/code&gt; =&gt; &lt;span ng-bind=&quot;$parent.$eval(expr)&quot;&gt;&lt;/span&gt;&#10;    &lt;/li&gt;&#10;  &lt;/ul&gt;&#10;&lt;/div&gt;</code></pre>
     </div>
   
     <div class="runnable-example-file" 

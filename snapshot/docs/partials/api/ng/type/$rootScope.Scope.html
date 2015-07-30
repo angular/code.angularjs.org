@@ -236,9 +236,9 @@ This is achieved by rerunning the watchers until no changes are detected. The re
 iteration limit is 10 to prevent an infinite loop deadlock.</li>
 </ul>
 <p>If you want to be notified whenever <a href="api/ng/type/$rootScope.Scope#$digest">$digest</a> is called,
-you can register a <code>watchExpression</code> function with no <code>listener</code>. (Since <code>watchExpression</code>
-can execute multiple times per <a href="api/ng/type/$rootScope.Scope#$digest">$digest</a> cycle when a
-change is detected, be prepared for multiple calls to your listener.)</p>
+you can register a <code>watchExpression</code> function with no <code>listener</code>. (Be prepared for
+multiple calls to your <code>watchExpression</code> because it will execute multiple times in a
+single <a href="api/ng/type/$rootScope.Scope#$digest">$digest</a> cycle if a change is detected.)</p>
 <p>After a watcher is registered with the scope, the <code>listener</code> fn is called asynchronously
 (via <a href="api/ng/type/$rootScope.Scope#$evalAsync">$evalAsync</a>) to initialize the
 watcher. In rare cases, this is undesirable because the listener is called when the result
