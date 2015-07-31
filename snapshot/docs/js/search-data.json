@@ -1694,7 +1694,7 @@
   {
     "path": "api/ng/service/$locale",
     "titleWords": "$locale",
-    "keywords": "$locale $localeprovider angular api as components en-us for formatted html id is languageid-countryid locale localization module ng now of only partials provides public right rules service the various",
+    "keywords": "$locale angular api as components en-us for formatted html id is languageid-countryid locale localization module ng now of only partials provides public right rules service the various",
     "members": ""
   },
   {
