@@ -1333,6 +1333,11 @@ angular.module('navData', [])
             "type": "error"
           },
           {
+            "name": "legacy",
+            "href": "error/$http/legacy",
+            "type": "error"
+          },
+          {
             "name": "$injector",
             "href": "error/$injector",
             "type": "section"

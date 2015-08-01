@@ -96,6 +96,11 @@ angular.module('pagesData', [])
     "area": "error",
     "path": "error/$http/badreq"
   },
+  "error/$http/legacy": {
+    "name": "legacy",
+    "area": "error",
+    "path": "error/$http/legacy"
+  },
   "error/$injector/cdep": {
     "name": "cdep",
     "area": "error",
