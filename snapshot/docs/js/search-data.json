@@ -1766,7 +1766,7 @@
   {
     "path": "api/ng/type/$rootScope.Scope",
     "titleWords": "$rootScope.Scope",
-    "keywords": "$injector $new $rootscope additional and api append are as auto automatically available be by can child compiled created current default defaults details docs1 example executed expect factory for from function handy having hello helper here how html in inherit inheritance instancecache instances interact interacting is js key map method methods module need newly ng ngmock of on override parent partials pre-instantiated provided providers provides retrieved root salutation scope scopes see service services should show simple snippet src tag template tests the this to toequal type unit-testing using var welcome when which with you",
+    "keywords": "$injector $new $rootscope additional also an and api append are as auto automatically available be by can child compiled created current default defaults details example examples executed expect factory for from function guide handy having hello helper html in in-depth inherit inheritance instancecache instances interacting introduction is js key map method methods module need newly ng ngmock of on override parent partials pre-instantiated provided providers provides retrieved root salutation scope scopes see service services should template tests the this to toequal type unit-testing usage using var welcome when which with",
     "members": "$apply $applyasync $broadcast $destroy $digest $emit $eval $evalasync $id $new $on $parent $root $watch $watchcollection $watchgroup"
   },
   {

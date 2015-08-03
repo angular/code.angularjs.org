@@ -23,10 +23,8 @@
   <p>A root scope can be retrieved using the <a href="api/ng/service/$rootScope">$rootScope</a> key from the
 <a href="api/auto/service/$injector">$injector</a>. Child scopes are created using the
 <a href="api/ng/type/$rootScope.Scope#$new">$new()</a> method. (Most scopes are created automatically when
-compiled HTML template is executed.)</p>
-<p>Here is a simple scope snippet to show how you can interact with the scope.</p>
-<pre><code class="lang-html">&lt;file src=&quot;./test/ng/rootScopeSpec.js&quot; tag=&quot;docs1&quot; /&gt;
-</code></pre>
+compiled HTML template is executed.) See also the <a href="guide/scopes">Scopes guide</a> for
+an in-depth introduction and usage examples.</p>
 <h1 id="inheritance">Inheritance</h1>
 <p>A scope can inherit from a parent scope, as in this example:</p>
 <pre><code class="lang-js">var parent = $rootScope;
