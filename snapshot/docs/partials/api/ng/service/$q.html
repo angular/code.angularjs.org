@@ -366,7 +366,7 @@ current promise, you have to &quot;rethrow&quot; the error by returning a reject
   </li>
   
   <li id="when">
-    <h3><p><code>when(value);</code></p>
+    <h3><p><code>when(value, [successCallback], [errorCallback], [progressCallback]);</code></p>
 
 </h3>
     <div><p>Wraps an object that might be a value or a (3rd party) then-able promise into a $q promise.
@@ -403,6 +403,51 @@ the promise comes from a source that can&#39;t be trusted.</p>
       </td>
     </tr>
     
+    <tr>
+      <td>
+        successCallback
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        <a href="" class="label type-hint type-hint-function">Function=</a>
+      </td>
+      <td>
+        
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        errorCallback
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        <a href="" class="label type-hint type-hint-function">Function=</a>
+      </td>
+      <td>
+        
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        progressCallback
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        <a href="" class="label type-hint type-hint-function">Function=</a>
+      </td>
+      <td>
+        
+        
+      </td>
+    </tr>
+    
   </tbody>
 </table>
 
@@ -424,7 +469,7 @@ the promise comes from a source that can&#39;t be trusted.</p>
   </li>
   
   <li id="resolve">
-    <h3><p><code>resolve(value);</code></p>
+    <h3><p><code>resolve(value, [successCallback], [errorCallback], [progressCallback]);</code></p>
 
 </h3>
     <div><p>Alias of <a href="api/ng/service/$q#when">when</a> to maintain naming consistency with ES6.</p>
@@ -455,6 +500,51 @@ the promise comes from a source that can&#39;t be trusted.</p>
       <td>
         <p>Value or a promise</p>
 
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        successCallback
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        <a href="" class="label type-hint type-hint-function">Function=</a>
+      </td>
+      <td>
+        
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        errorCallback
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        <a href="" class="label type-hint type-hint-function">Function=</a>
+      </td>
+      <td>
+        
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        progressCallback
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        <a href="" class="label type-hint type-hint-function">Function=</a>
+      </td>
+      <td>
+        
         
       </td>
     </tr>

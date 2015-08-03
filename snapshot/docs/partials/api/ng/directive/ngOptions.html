@@ -58,7 +58,7 @@ Do not use <code>select</code> <strong><code>as</code></strong> and <strong><cod
 </div>
 
 <p>Consider the following example:</p>
-<pre><code class="lang-html">&lt;select ng-options=&quot;item.subItem as item.label for item in values track by item.id&quot; ng-model=&quot;selected&quot;&gt;
+<pre><code class="lang-html">&lt;select ng-options=&quot;item.subItem as item.label for item in values track by item.id&quot; ng-model=&quot;selected&quot;&gt;&lt;/select&gt;
 </code></pre>
 <pre><code class="lang-js">$scope.values = [{
   id: 1,
