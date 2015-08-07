@@ -9190,7 +9190,7 @@ return jQuery;
 }));
 
 /**
- * @license AngularJS v1.4.4-build.4152+sha.94533e5
+ * @license AngularJS v1.4.4-build.4153+sha.adb2863
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -9249,7 +9249,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.4.4-build.4152+sha.94533e5/' +
+    message += '\nhttp://errors.angularjs.org/1.4.4-build.4153+sha.adb2863/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -11565,7 +11565,7 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.4.4-build.4152+sha.94533e5',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.4.4-build.4153+sha.adb2863',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 4,
   dot: 4,
@@ -29541,6 +29541,7 @@ var formDirectiveFactory = function(isNgForm) {
 
     function getSetter(expression) {
       if (expression === '') {
+        //create an assignable expression, so forms with an empty name can be renamed later
         return $parse('this[""]').assign;
       }
       return $parse(expression).assign || noop;
