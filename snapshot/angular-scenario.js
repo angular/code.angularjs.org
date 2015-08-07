@@ -9190,7 +9190,7 @@ return jQuery;
 }));
 
 /**
- * @license AngularJS v1.4.4-build.4150+sha.39ff333
+ * @license AngularJS v1.4.4-build.4151+sha.929ec6b
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -9249,7 +9249,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.4.4-build.4150+sha.39ff333/' +
+    message += '\nhttp://errors.angularjs.org/1.4.4-build.4151+sha.929ec6b/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -11565,7 +11565,7 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.4.4-build.4150+sha.39ff333',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.4.4-build.4151+sha.929ec6b',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 4,
   dot: 4,
@@ -18671,7 +18671,7 @@ function $HttpProvider() {
     return useApplyAsync;
   };
 
-  var useLegacyPromse = true;
+  var useLegacyPromise = true;
   /**
    * @ngdoc method
    * @name $httpProvider#useLegacyPromiseExtensions
@@ -18689,10 +18689,10 @@ function $HttpProvider() {
    **/
   this.useLegacyPromiseExtensions = function(value) {
     if (isDefined(value)) {
-      useLegacyPromse = !!value;
+      useLegacyPromise = !!value;
       return this;
     }
-    return useLegacyPromse;
+    return useLegacyPromise;
   };
 
   /**
@@ -19314,7 +19314,7 @@ function $HttpProvider() {
         promise = promise.then(thenFn, rejectFn);
       }
 
-      if (useLegacyPromse) {
+      if (useLegacyPromise) {
         promise.success = function(fn) {
           assertArgFn(fn, 'fn');
 
