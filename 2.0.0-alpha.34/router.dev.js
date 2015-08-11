@@ -1,10 +1,4 @@
 "format register";
-System.register("angular2/src/router/route_definition", [], false, function(__require, __exports, __module) {
-  System.get("@@global-helpers").prepareGlobal(__module.id, []);
-  (function() {}).call(System.global);
-  return System.get("@@global-helpers").retrieveGlobal(__module.id, false);
-});
-
 System.register("angular2/src/router/lifecycle_annotations_impl", ["angular2/src/facade/lang"], function($__export) {
   "use strict";
   var __moduleName = "angular2/src/router/lifecycle_annotations_impl";
@@ -613,6 +607,15 @@ System.register("angular2/src/router/pipeline", ["angular2/src/facade/async", "a
       $__export("Pipeline", Pipeline);
       $__export("Pipeline", Pipeline = __decorate([Injectable(), __metadata('design:paramtypes', [])], Pipeline));
     }
+  };
+});
+
+System.register("angular2/src/router/route_definition", [], function($__export) {
+  "use strict";
+  var __moduleName = "angular2/src/router/route_definition";
+  return {
+    setters: [],
+    execute: function() {}
   };
 });
 
