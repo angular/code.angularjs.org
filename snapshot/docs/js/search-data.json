@@ -1064,7 +1064,7 @@
   {
     "path": "api/ng/function/angular.module",
     "titleWords": "angular.module",
-    "keywords": "$injector $locationprovider all an and angular api application appname argument arguments as auto available be being blocks bootstrap can collection config configfn configuration configure controllers core create created creating directive directives existing filters first for function further global hashprefix however html if information initialization injector inside is it js just like likely ll load mechanism module modules more must mycoolapp mymodule name new ng ngapp of one only optional or partials party passed place process providers register registered registering requires retrieve retrieved retrieving same service services should simplify specified that the then this to two unspecified use used using value var when with you your",
+    "keywords": "$injector $locationprovider all an and angular api application appname argument as auto available be being blocks bootstrap can collection config configfn configuration configure controllers core create created creates creating directive directives existing filters for function further global hashprefix however html if information initialization injector inside is it js just like likely ll load mechanism module modules more must mycoolapp mymodule name new ng ngapp of one optional or partials party passing place process providers register registered registering requires retrieve retrieved retrieves retrieving same service services should simplify specified than that the then this to unspecified use used using value var whereas with you your",
     "members": ""
   },
   {
