@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.4.4-build.4167+sha.d33cedd
+ * @license AngularJS v1.4.4-build.4168+sha.92e41ac
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -230,7 +230,15 @@ function mergeAnimationOptions(element, target, newOptions) {
     delete newOptions.preparationClasses;
   }
 
+  // noop is basically when there is no callback; otherwise something has been set
+  var realDomOperation = target.domOperation !== noop ? target.domOperation : null;
+
   extend(target, newOptions);
+
+  // TODO(matsko or sreeramu): proper fix is to maintain all animation callback in array and call at last,but now only leave has the callback so no issue with this.
+  if (realDomOperation) {
+    target.domOperation = realDomOperation;
+  }
 
   if (classes.addClass) {
     target.addClass = classes.addClass;
