@@ -1092,6 +1092,12 @@
     "members": "addclass animate cancel enabled enter leave move off on pin removeclass setclass"
   },
   {
+    "path": "api/ng/service/$animateCss",
+    "titleWords": "$animateCss",
+    "keywords": "$animatecss $coreanimatecssprovider actually animations api by click core default documentation for here html included is module ng nganimate object of only partials perform read service the then this to version when will",
+    "members": ""
+  },
+  {
     "path": "api/ng/service/$cacheFactory",
     "titleWords": "$cacheFactory",
     "keywords": "$cachefactory $cachefactoryprovider access all and another api behavior cache cached cacheid capacity constructs created creation destroy example-example51 expect factory following for from get gives html id info into it js key key-value lru methods miss module name new newly ng no nosuchcacheid not object objects of on options or pair partials properties put puts references remove removeall removes returns service set size specified specifies that the them this to tobe tobedefined toequal turns undefined value values var ve we with",

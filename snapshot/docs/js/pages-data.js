@@ -911,6 +911,11 @@ angular.module('pagesData', [])
     "area": "api",
     "path": "api/ng/service/$animate"
   },
+  "api/ng/service/$animateCss": {
+    "name": "$animateCss",
+    "area": "api",
+    "path": "api/ng/service/$animateCss"
+  },
   "api/ng/service/$cacheFactory": {
     "name": "$cacheFactory",
     "area": "api",

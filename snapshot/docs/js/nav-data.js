@@ -641,6 +641,11 @@ angular.module('navData', [])
             "type": "service"
           },
           {
+            "name": "$animateCss",
+            "href": "api/ng/service/$animateCss",
+            "type": "service"
+          },
+          {
             "name": "$cacheFactory",
             "href": "api/ng/service/$cacheFactory",
             "type": "service"
