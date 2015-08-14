@@ -56,7 +56,7 @@ Using the <code>ngSrc</code> directive prevents the browser from making an http 
       query.sendKeys(&#39;nexus&#39;);
       element.all(by.css(&#39;.phones li a&#39;)).first().click();
       browser.getLocationAbsUrl().then(function(url) {
-        expect(url.split(&#39;#&#39;)[1]).toBe(&#39;/phones/nexus-s&#39;);
+        expect(url).toBe(&#39;/phones/nexus-s&#39;);
       });
     });
 ...
