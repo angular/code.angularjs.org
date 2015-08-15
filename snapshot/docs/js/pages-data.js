@@ -2219,6 +2219,15 @@ angular.module('pagesData', [])
   "examples/example-example96": {
     "path": "examples/example-example96"
   },
+  "examples/example-static-select": {
+    "path": "examples/example-static-select"
+  },
+  "examples/example-ngrepeat-select": {
+    "path": "examples/example-ngrepeat-select"
+  },
+  "examples/example-select-with-default-values": {
+    "path": "examples/example-select-with-default-values"
+  },
   "examples/example-select-with-non-string-options": {
     "path": "examples/example-select-with-non-string-options"
   },
