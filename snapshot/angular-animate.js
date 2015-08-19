@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.4.5-build.4180+sha.d0e50fd
+ * @license AngularJS v1.4.5-build.4181+sha.dc48aad
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -1597,8 +1597,8 @@ var $$AnimateCssDriverProvider = ['$$animationProvider', function($$animationPro
 //  by the time...
 
 var $$AnimateJsProvider = ['$animateProvider', function($animateProvider) {
-  this.$get = ['$injector', '$$AnimateRunner', '$$rAFMutex', '$$jqLite',
-       function($injector,   $$AnimateRunner,   $$rAFMutex,   $$jqLite) {
+  this.$get = ['$injector', '$$AnimateRunner', '$$jqLite',
+       function($injector,   $$AnimateRunner,   $$jqLite) {
 
     var applyAnimationClasses = applyAnimationClassesFactory($$jqLite);
          // $animateJs(element, 'enter');
@@ -2502,19 +2502,34 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
   }];
 }];
 
-var $$rAFMutexFactory = ['$$rAF', function($$rAF) {
+var $$AnimateAsyncRunFactory = ['$$rAF', function($$rAF) {
+  var waitQueue = [];
+
+  function waitForTick(fn) {
+    waitQueue.push(fn);
+    if (waitQueue.length > 1) return;
+    $$rAF(function() {
+      for (var i = 0; i < waitQueue.length; i++) {
+        waitQueue[i]();
+      }
+      waitQueue = [];
+    });
+  }
+
   return function() {
     var passed = false;
-    $$rAF(function() {
+    waitForTick(function() {
       passed = true;
     });
-    return function(fn) {
-      passed ? fn() : $$rAF(fn);
+    return function(callback) {
+      passed ? callback() : waitForTick(callback);
     };
   };
 }];
 
-var $$AnimateRunnerFactory = ['$q', '$$rAFMutex', function($q, $$rAFMutex) {
+var $$AnimateRunnerFactory = ['$q', '$sniffer', '$$animateAsyncRun',
+                      function($q,   $sniffer,   $$animateAsyncRun) {
+
   var INITIAL_STATE = 0;
   var DONE_PENDING_STATE = 1;
   var DONE_COMPLETE_STATE = 2;
@@ -2559,7 +2574,7 @@ var $$AnimateRunnerFactory = ['$q', '$$rAFMutex', function($q, $$rAFMutex) {
     this.setHost(host);
 
     this._doneCallbacks = [];
-    this._runInAnimationFrame = $$rAFMutex();
+    this._runInAnimationFrame = $$animateAsyncRun();
     this._state = 0;
   }
 
@@ -3055,7 +3070,7 @@ var $$AnimationProvider = ['$animateProvider', function($animateProvider) {
 /* global angularAnimateModule: true,
 
    $$BodyProvider,
-   $$rAFMutexFactory,
+   $$AnimateAsyncRunFactory,
    $$AnimateChildrenDirective,
    $$AnimateRunnerFactory,
    $$AnimateQueueProvider,
@@ -3797,9 +3812,8 @@ angular.module('ngAnimate', [])
 
   .directive('ngAnimateChildren', $$AnimateChildrenDirective)
 
-  .factory('$$rAFMutex', $$rAFMutexFactory)
-
   .factory('$$AnimateRunner', $$AnimateRunnerFactory)
+  .factory('$$animateAsyncRun', $$AnimateAsyncRunFactory)
 
   .provider('$$animateQueue', $$AnimateQueueProvider)
   .provider('$$animation', $$AnimationProvider)
