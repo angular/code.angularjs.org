@@ -6,7 +6,7 @@
 </h1>
 
 <p>The <code>ngAnimate</code> module provides support for CSS-based animations (keyframes and transitions) as well as JavaScript-based animations via
-callback hooks. Animations are not enabled by default, however, by including <code>ngAnimate</code> then the animation hooks are enabled for an Angular app.</p>
+callback hooks. Animations are not enabled by default, however, by including <code>ngAnimate</code> the animation hooks are enabled for an Angular app.</p>
 <div doc-module-components="ngAnimate"></div>
 
 <h1 id="usage">Usage</h1>
@@ -178,8 +178,8 @@ the animation. The style property expected within the stagger class can either b
   /* this will have a 100ms delay between each successive leave animation */
   transition-delay: 0.1s;
 
-  /* in case the stagger doesn&#39;t work then the duration value
-   must be set to 0 to avoid an accidental CSS inheritance */
+  /* As of 1.4.4, this must always be set: it signals ngAnimate
+    to not accidentally inherit a delay property from another CSS class */
   transition-duration: 0s;
 }
 .my-animation.ng-enter.ng-enter-active {

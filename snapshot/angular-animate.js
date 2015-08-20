@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.4.5-build.4182+sha.1cc9c9c
+ * @license AngularJS v1.4.5-build.4183+sha.728f7e2
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -3087,7 +3087,7 @@ var $$AnimationProvider = ['$animateProvider', function($animateProvider) {
  * @description
  *
  * The `ngAnimate` module provides support for CSS-based animations (keyframes and transitions) as well as JavaScript-based animations via
- * callback hooks. Animations are not enabled by default, however, by including `ngAnimate` then the animation hooks are enabled for an Angular app.
+ * callback hooks. Animations are not enabled by default, however, by including `ngAnimate` the animation hooks are enabled for an Angular app.
  *
  * <div doc-module-components="ngAnimate"></div>
  *
@@ -3255,8 +3255,8 @@ var $$AnimationProvider = ['$animateProvider', function($animateProvider) {
  *   /&#42; this will have a 100ms delay between each successive leave animation &#42;/
  *   transition-delay: 0.1s;
  *
- *   /&#42; in case the stagger doesn't work then the duration value
- *    must be set to 0 to avoid an accidental CSS inheritance &#42;/
+ *   /&#42; As of 1.4.4, this must always be set: it signals ngAnimate
+ *     to not accidentally inherit a delay property from another CSS class &#42;/
  *   transition-duration: 0s;
  * }
  * .my-animation.ng-enter.ng-enter-active {

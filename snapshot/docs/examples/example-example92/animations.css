@@ -1,5 +1,4 @@
 .animate-hide {
-  -webkit-transition: all linear 0.5s;
   transition: all linear 0.5s;
   line-height: 20px;
   opacity: 1;

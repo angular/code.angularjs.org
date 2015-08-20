@@ -186,7 +186,7 @@ removeClass: <code>.ng-hide</code> - happens after the <code>ngShow</code> expre
       name="animations.css"
       language="css"
       type="css">
-      <pre><code>.animate-show {&#10;  line-height: 20px;&#10;  opacity: 1;&#10;  padding: 10px;&#10;  border: 1px solid black;&#10;  background: white;&#10;}&#10;&#10;.animate-show.ng-hide-add.ng-hide-add-active,&#10;.animate-show.ng-hide-remove.ng-hide-remove-active {&#10;  -webkit-transition: all linear 0.5s;&#10;  transition: all linear 0.5s;&#10;}&#10;&#10;.animate-show.ng-hide {&#10;  line-height: 0;&#10;  opacity: 0;&#10;  padding: 0 10px;&#10;}&#10;&#10;.check-element {&#10;  padding: 10px;&#10;  border: 1px solid black;&#10;  background: white;&#10;}</code></pre>
+      <pre><code>.animate-show {&#10;  line-height: 20px;&#10;  opacity: 1;&#10;  padding: 10px;&#10;  border: 1px solid black;&#10;  background: white;&#10;}&#10;&#10;.animate-show.ng-hide-add, .animate-show.ng-hide-remove {&#10;  transition: all linear 0.5s;&#10;}&#10;&#10;.animate-show.ng-hide {&#10;  line-height: 0;&#10;  opacity: 0;&#10;  padding: 0 10px;&#10;}&#10;&#10;.check-element {&#10;  padding: 10px;&#10;  border: 1px solid black;&#10;  background: white;&#10;}</code></pre>
     </div>
   
     <div class="runnable-example-file" 

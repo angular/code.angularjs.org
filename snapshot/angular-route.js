@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.4.5-build.4182+sha.1cc9c9c
+ * @license AngularJS v1.4.5-build.4183+sha.728f7e2
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -796,7 +796,6 @@ ngRouteModule.directive('ngView', ngViewFillContentFactory);
         }
 
         .view-animate.ng-enter, .view-animate.ng-leave {
-          -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
           transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
 
           display:block;
