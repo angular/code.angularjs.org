@@ -46,7 +46,7 @@ myMod.controller(&#39;MyDirectiveController&#39;, [&#39;log&#39;, function($log)
 
 describe(&#39;myDirectiveController&#39;, function() {
   it(&#39;should write the bound name to the log&#39;, inject(function($controller, $log) {
-    var ctrl = $controller(&#39;MyDirective&#39;, { /* no locals */ }, { name: &#39;Clark Kent&#39; });
+    var ctrl = $controller(&#39;MyDirectiveController&#39;, { /* no locals */ }, { name: &#39;Clark Kent&#39; });
     expect(ctrl.name).toEqual(&#39;Clark Kent&#39;);
     expect($log.info.logs).toEqual([&#39;Clark Kent&#39;]);
   });
