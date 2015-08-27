@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.4.5-build.4190+sha.2f6b6fb
+ * @license AngularJS v1.4.5-build.4191+sha.c3d5e33
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -721,8 +721,8 @@ var $AnimateCssProvider = ['$animateProvider', function($animateProvider) {
   var gcsLookup = createLocalCacheLookup();
   var gcsStaggerLookup = createLocalCacheLookup();
 
-  this.$get = ['$window', '$$jqLite', '$$AnimateRunner', '$timeout', '$$forceReflow', '$sniffer', '$$rAF',
-       function($window,   $$jqLite,   $$AnimateRunner,   $timeout,   $$forceReflow,   $sniffer,   $$rAF) {
+  this.$get = ['$window', '$$jqLite', '$$AnimateRunner', '$timeout', '$$forceReflow', '$sniffer', '$$rAF', '$animate',
+       function($window,   $$jqLite,   $$AnimateRunner,   $timeout,   $$forceReflow,   $sniffer,   $$rAF,   $animate) {
 
     var applyAnimationClasses = applyAnimationClassesFactory($$jqLite);
 
@@ -804,8 +804,6 @@ var $AnimateCssProvider = ['$animateProvider', function($animateProvider) {
       });
     }
 
-    return init;
-
     function computeTimings(node, className, cacheKey) {
       var timings = computeCachedCssStyles(node, className, cacheKey, DETECT_CSS_PROPERTIES);
       var aD = timings.animationDelay;
@@ -820,9 +818,11 @@ var $AnimateCssProvider = ['$animateProvider', function($animateProvider) {
       return timings;
     }
 
-    function init(element, options) {
+    return function init(element, options) {
       var node = getDomNode(element);
-      if (!node || !node.parentNode) {
+      if (!node
+          || !node.parentNode
+          || !$animate.enabled()) {
         return closeAndReturnNoopAnimator();
       }
 
@@ -1323,7 +1323,7 @@ var $AnimateCssProvider = ['$animateProvider', function($animateProvider) {
           }
         }
       }
-    }
+    };
   }];
 }];
 
