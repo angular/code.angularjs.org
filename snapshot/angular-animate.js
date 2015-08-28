@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.4.5-build.4191+sha.c3d5e33
+ * @license AngularJS v1.4.5-build.4192+sha.ea8016c
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -379,6 +379,55 @@ function $$BodyProvider() {
   }];
 }
 
+var $$rAFSchedulerFactory = ['$$rAF', function($$rAF) {
+  var queue, cancelFn;
+
+  function scheduler(tasks) {
+    // we make a copy since RAFScheduler mutates the state
+    // of the passed in array variable and this would be difficult
+    // to track down on the outside code
+    queue = queue.concat(tasks);
+    nextTick();
+  }
+
+  queue = scheduler.queue = [];
+
+  /* waitUntilQuiet does two things:
+   * 1. It will run the FINAL `fn` value only when an uncancelled RAF has passed through
+   * 2. It will delay the next wave of tasks from running until the quiet `fn` has run.
+   *
+   * The motivation here is that animation code can request more time from the scheduler
+   * before the next wave runs. This allows for certain DOM properties such as classes to
+   * be resolved in time for the next animation to run.
+   */
+  scheduler.waitUntilQuiet = function(fn) {
+    if (cancelFn) cancelFn();
+
+    cancelFn = $$rAF(function() {
+      cancelFn = null;
+      fn();
+      nextTick();
+    });
+  };
+
+  return scheduler;
+
+  function nextTick() {
+    if (!queue.length) return;
+
+    var items = queue.shift();
+    for (var i = 0; i < items.length; i++) {
+      items[i]();
+    }
+
+    if (!cancelFn) {
+      $$rAF(function() {
+        if (!cancelFn) nextTick();
+      });
+    }
+  }
+}];
+
 var $$AnimateChildrenDirective = [function() {
   return function(scope, element, attrs) {
     var val = attrs.ngAnimateChildren;
@@ -721,8 +770,10 @@ var $AnimateCssProvider = ['$animateProvider', function($animateProvider) {
   var gcsLookup = createLocalCacheLookup();
   var gcsStaggerLookup = createLocalCacheLookup();
 
-  this.$get = ['$window', '$$jqLite', '$$AnimateRunner', '$timeout', '$$forceReflow', '$sniffer', '$$rAF', '$animate',
-       function($window,   $$jqLite,   $$AnimateRunner,   $timeout,   $$forceReflow,   $sniffer,   $$rAF,   $animate) {
+  this.$get = ['$window', '$$jqLite', '$$AnimateRunner', '$timeout',
+               '$$forceReflow', '$sniffer', '$$rAFScheduler', '$animate',
+       function($window,   $$jqLite,   $$AnimateRunner,   $timeout,
+                $$forceReflow,   $sniffer,   $$rAFScheduler, $animate) {
 
     var applyAnimationClasses = applyAnimationClassesFactory($$jqLite);
 
@@ -782,12 +833,8 @@ var $AnimateCssProvider = ['$animateProvider', function($animateProvider) {
     var cancelLastRAFRequest;
     var rafWaitQueue = [];
     function waitUntilQuiet(callback) {
-      if (cancelLastRAFRequest) {
-        cancelLastRAFRequest(); //cancels the request
-      }
       rafWaitQueue.push(callback);
-      cancelLastRAFRequest = $$rAF(function() {
-        cancelLastRAFRequest = null;
+      $$rAFScheduler.waitUntilQuiet(function() {
         gcsLookup.flush();
         gcsStaggerLookup.flush();
 
@@ -878,7 +925,6 @@ var $AnimateCssProvider = ['$animateProvider', function($animateProvider) {
       // there actually is a detected transition or keyframe animation
       if (options.applyClassesEarly && addRemoveClassName.length) {
         applyAnimationClasses(element, options);
-        addRemoveClassName = '';
       }
 
       var preparationClasses = [structuralClassName, addRemoveClassName].join(' ').trim();
@@ -1349,13 +1395,13 @@ var $$AnimateCssDriverProvider = ['$$animationProvider', function($$animationPro
 
     var applyAnimationClasses = applyAnimationClassesFactory($$jqLite);
 
-    return function initDriverFn(animationDetails, onBeforeClassesAppliedCb) {
+    return function initDriverFn(animationDetails) {
       return animationDetails.from && animationDetails.to
           ? prepareFromToAnchorAnimation(animationDetails.from,
                                          animationDetails.to,
                                          animationDetails.classes,
                                          animationDetails.anchors)
-          : prepareRegularAnimation(animationDetails, onBeforeClassesAppliedCb);
+          : prepareRegularAnimation(animationDetails);
     };
 
     function filterCssClasses(classes) {
@@ -1551,21 +1597,14 @@ var $$AnimateCssDriverProvider = ['$$animationProvider', function($$animationPro
       };
     }
 
-    function prepareRegularAnimation(animationDetails, onBeforeClassesAppliedCb) {
+    function prepareRegularAnimation(animationDetails) {
       var element = animationDetails.element;
       var options = animationDetails.options || {};
 
-      // since the ng-EVENT, class-ADD and class-REMOVE classes are applied inside
-      // of the animateQueue pre and postDigest stages then there is no need to add
-      // then them here as well.
-      options.$$skipPreparationClasses = true;
-
-      // during the pre/post digest stages inside of animateQueue we also performed
-      // the blocking (transition:-9999s) so there is no point in doing that again.
-      options.skipBlocking = true;
-
       if (animationDetails.structural) {
         options.event = animationDetails.event;
+        options.structural = true;
+        options.applyClassesEarly = true;
 
         // we special case the leave animation since we want to ensure that
         // the element is removed as soon as the animation is over. Otherwise
@@ -1574,11 +1613,6 @@ var $$AnimateCssDriverProvider = ['$$animationProvider', function($$animationPro
           options.onDone = options.domOperation;
         }
       }
-
-      // we apply the classes right away since the pre-digest took care of the
-      // preparation classes.
-      onBeforeClassesAppliedCb(element);
-      applyAnimationClasses(element, options);
 
       // We assign the preparationClasses as the actual animation event since
       // the internals of $animateCss will just suffix the event token values
@@ -2299,9 +2333,6 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
         return runner;
       }
 
-      applyGeneratedPreparationClasses(element, isStructural ? event : null, options);
-      blockTransitions(node, SAFE_FAST_FORWARD_DURATION_VALUE);
-
       // the counter keeps track of cancelled animations
       var counter = (existingAnimation.counter || 0) + 1;
       newAnimation.counter = counter;
@@ -2360,10 +2391,7 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
             : animationDetails.event;
 
         markElementAnimationState(element, RUNNING_STATE);
-        var realRunner = $$animation(element, event, animationDetails.options, function(e) {
-          $$forceReflow();
-          blockTransitions(getDomNode(e), false);
-        });
+        var realRunner = $$animation(element, event, animationDetails.options);
 
         realRunner.done(function(status) {
           close(!status);
@@ -2692,8 +2720,8 @@ var $$AnimationProvider = ['$animateProvider', function($animateProvider) {
     return element.data(RUNNER_STORAGE_KEY);
   }
 
-  this.$get = ['$$jqLite', '$rootScope', '$injector', '$$AnimateRunner', '$$HashMap',
-       function($$jqLite,   $rootScope,   $injector,   $$AnimateRunner,   $$HashMap) {
+  this.$get = ['$$jqLite', '$rootScope', '$injector', '$$AnimateRunner', '$$HashMap', '$$rAFScheduler',
+       function($$jqLite,   $rootScope,   $injector,   $$AnimateRunner,   $$HashMap,   $$rAFScheduler) {
 
     var animationQueue = [];
     var applyAnimationClasses = applyAnimationClassesFactory($$jqLite);
@@ -2761,11 +2789,11 @@ var $$AnimationProvider = ['$animateProvider', function($animateProvider) {
           if (remainingLevelEntries <= 0) {
             remainingLevelEntries = nextLevelEntries;
             nextLevelEntries = 0;
-            result = result.concat(row);
+            result.push(row);
             row = [];
           }
           row.push(entry.fn);
-          forEach(entry.children, function(childEntry) {
+          entry.children.forEach(function(childEntry) {
             nextLevelEntries++;
             queue.push(childEntry);
           });
@@ -2773,14 +2801,15 @@ var $$AnimationProvider = ['$animateProvider', function($animateProvider) {
         }
 
         if (row.length) {
-          result = result.concat(row);
+          result.push(row);
         }
+
         return result;
       }
     }
 
     // TODO(matsko): document the signature in a better way
-    return function(element, event, options, onBeforeClassesAppliedCb) {
+    return function(element, event, options) {
       options = prepareAnimationOptions(options);
       var isStructural = ['enter', 'move', 'leave'].indexOf(event) >= 0;
 
@@ -2832,8 +2861,7 @@ var $$AnimationProvider = ['$animateProvider', function($animateProvider) {
           // the element was destroyed early on which removed the runner
           // form its storage. This means we can't animate this element
           // at all and it already has been closed due to destruction.
-          var elm = entry.element;
-          if (getRunner(elm) && getDomNode(elm).parentNode) {
+          if (getRunner(entry.element)) {
             animations.push(entry);
           } else {
             entry.close();
@@ -2864,7 +2892,7 @@ var $$AnimationProvider = ['$animateProvider', function($animateProvider) {
                   : animationEntry.element;
 
               if (getRunner(targetElement)) {
-                var operation = invokeFirstDriver(animationEntry, onBeforeClassesAppliedCb);
+                var operation = invokeFirstDriver(animationEntry);
                 if (operation) {
                   startAnimationFn = operation.start;
                 }
@@ -2884,11 +2912,9 @@ var $$AnimationProvider = ['$animateProvider', function($animateProvider) {
         });
 
         // we need to sort each of the animations in order of parent to child
-        // relationships. This ensures that the parent to child classes are
-        // applied at the right time.
-        forEach(sortAnimations(toBeSortedAnimations), function(triggerAnimation) {
-          triggerAnimation();
-        });
+        // relationships. This ensures that the child classes are applied at the
+        // right time.
+        $$rAFScheduler(sortAnimations(toBeSortedAnimations));
       });
 
       return runner;
@@ -2958,7 +2984,7 @@ var $$AnimationProvider = ['$animateProvider', function($animateProvider) {
           var lookupKey = from.animationID.toString();
           if (!anchorGroups[lookupKey]) {
             var group = anchorGroups[lookupKey] = {
-              // TODO(matsko): double-check this code
+              structural: true,
               beforeStart: function() {
                 fromAnimation.beforeStart();
                 toAnimation.beforeStart();
@@ -3012,7 +3038,7 @@ var $$AnimationProvider = ['$animateProvider', function($animateProvider) {
         return matches.join(' ');
       }
 
-      function invokeFirstDriver(animationDetails, onBeforeClassesAppliedCb) {
+      function invokeFirstDriver(animationDetails) {
         // we loop in reverse order since the more general drivers (like CSS and JS)
         // may attempt more elements, but custom drivers are more particular
         for (var i = drivers.length - 1; i >= 0; i--) {
@@ -3020,7 +3046,7 @@ var $$AnimationProvider = ['$animateProvider', function($animateProvider) {
           if (!$injector.has(driverName)) continue; // TODO(matsko): remove this check
 
           var factory = $injector.get(driverName);
-          var driver = factory(animationDetails, onBeforeClassesAppliedCb);
+          var driver = factory(animationDetails);
           if (driver) {
             return driver;
           }
@@ -3077,6 +3103,7 @@ var $$AnimationProvider = ['$animateProvider', function($animateProvider) {
 
    $$BodyProvider,
    $$AnimateAsyncRunFactory,
+   $$rAFSchedulerFactory,
    $$AnimateChildrenDirective,
    $$AnimateRunnerFactory,
    $$AnimateQueueProvider,
@@ -3817,6 +3844,7 @@ angular.module('ngAnimate', [])
   .provider('$$body', $$BodyProvider)
 
   .directive('ngAnimateChildren', $$AnimateChildrenDirective)
+  .factory('$$rAFScheduler', $$rAFSchedulerFactory)
 
   .factory('$$AnimateRunner', $$AnimateRunnerFactory)
   .factory('$$animateAsyncRun', $$AnimateAsyncRunFactory)
