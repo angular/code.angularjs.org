@@ -13,8 +13,9 @@ If you&#39;re looking for the <strong>directives API</strong>, we recently moved
 how to implement them.</p>
 <h2 id="what-are-directives-">What are Directives?</h2>
 <p>At a high level, directives are markers on a DOM element (such as an attribute, element
-name, comment or CSS class) that tell AngularJS&#39;s <strong>HTML compiler</strong> (<a href="api/ng/service/$compile"><code>$compile</code></a>) to
-attach a specified behavior to that DOM element or even transform the DOM element and its children.</p>
+name, comment or CSS class) that tell AngularJS&#39;s <strong>HTML compiler</strong> (<a href="api/ng/service/$compile"><code>$compile</code></a>)
+to attach a specified behavior to that DOM element (e.g. via event listeners), or even to transform
+the DOM element and its children.</p>
 <p>Angular comes with a set of these directives built-in, like <code>ngBind</code>, <code>ngModel</code>, and <code>ngClass</code>.
 Much like you create controllers and services, you can create your own directives for Angular to use.
 When Angular <a href="guide/bootstrap">bootstraps</a> your application, the
@@ -22,7 +23,7 @@ When Angular <a href="guide/bootstrap">bootstraps</a> your application, the
 <div class="alert alert-info">
 <strong>What does it mean to &quot;compile&quot; an HTML template?</strong>
 
-For AngularJS, &quot;compilation&quot; means attaching event listeners to the HTML to make it interactive.
+For AngularJS, &quot;compilation&quot; means attaching directives to the HTML to make it interactive.
 The reason we use the term &quot;compile&quot; is that the recursive process of attaching directives
 mirrors the process of compiling source code in
 <a href="http://en.wikipedia.org/wiki/Compiled_languages">compiled programming languages</a>.
