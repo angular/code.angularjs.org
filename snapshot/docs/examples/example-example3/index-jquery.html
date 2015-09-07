@@ -12,60 +12,16 @@
 
   
 </head>
-<body ng-app="ngAria_ngDisabledExample">
-   <style>
-   [role=checkbox] {
-     cursor: pointer;
-     display: inline-block;
-   }
-   [role=checkbox] .icon:before {
-     content: '\2610';
-     display: inline-block;
-     font-size: 2em;
-     line-height: 1;
-     vertical-align: middle;
-     speak: none;
-   }
-   [role=checkbox].active .icon:before {
-     content: '\2611';
-   }
- </style>
-<form ng-controller="formsController">
- <div ng-model="someModel" show-attrs>
-   Div with ngModel and aria-invalid disabled
+<body ng-app="ngAria_ngClickExample">
+   <div ng-click="someFunction" show-attrs>
+   &lt;div&gt; with ng-click and bindRoleForClick, tabindex set to false
  </div>
- <div role="checkbox" ng-model="checked" ng-class="{active: checked}"
-   aria-label="Custom Checkbox" ng-click="toggleCheckbox()" some-checkbox show-attrs>
-   <span class="icon" aria-hidden="true"></span>
-   Custom Checkbox for comparison
- </div>
-</form>
 <script>
- angular.module('ngAria_ngDisabledExample', ['ngAria'], function config($ariaProvider) {
+ angular.module('ngAria_ngClickExample', ['ngAria'], function config($ariaProvider) {
    $ariaProvider.config({
-     ariaInvalid: false,
-     tabindex: true
+     bindRoleForClick: false,
+     tabindex: false
    });
- })
- .controller('formsController', function($scope){
-   $scope.checked = false;
-   $scope.toggleCheckbox = function(){
-     $scope.checked = !$scope.checked;
-   }
- })
- .directive('someCheckbox', function(){
-   return {
-     restrict: 'A',
-     link: function($scope, $el, $attrs) {
-       $el.on('keypress', function(event){
-         event.preventDefault();
-         if(event.keyCode === 32 || event.keyCode === 13){
-           $scope.toggleCheckbox();
-           $scope.$apply();
-         }
-       });
-     }
-   }
  })
  .directive('showAttrs', function() {
    return function(scope, el, attrs) {
