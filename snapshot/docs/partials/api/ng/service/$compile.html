@@ -116,16 +116,24 @@ which will execute (any directives at the current priority will still execute
 as the order of execution on same <code>priority</code> is undefined). Note that expressions
 and other directives used in the directive&#39;s template will also be excluded from execution.</p>
 <h4 id="-scope-"><code>scope</code></h4>
-<p><strong>If set to <code>true</code>,</strong> then a new scope will be created for this directive. If multiple directives on the
-same element request a new scope, only one new scope is created. The new scope rule does not
-apply for the root of the template since the root of the template always gets a new scope.</p>
-<p><strong>If set to <code>{}</code> (object hash),</strong> then a new &quot;isolate&quot; scope is created. The &#39;isolate&#39; scope differs from
-normal scope in that it does not prototypically inherit from the parent scope. This is useful
-when creating reusable components, which should not accidentally read or modify data in the
-parent scope.</p>
-<p>The &#39;isolate&#39; scope takes an object hash which defines a set of local scope properties
-derived from the parent scope. These local properties are useful for aliasing values for
-templates. Locals definition is a hash of local scope property to its source:</p>
+<p>The scope property can be <code>true</code>, an object or a falsy value:</p>
+<ul>
+<li><p><strong>falsy:</strong> No scope will be created for the directive. The directive will use its parent&#39;s scope.</p>
+</li>
+<li><p><strong><code>true</code>:</strong> A new scope will be created for the directive&#39;s element. If multiple directives on the
+same element request a new scope, only one new scope is created. The new scope rule does not apply
+for the root of the template since the root of the template always gets a new scope.</p>
+</li>
+<li><p><strong><code>{...}</code> (an object hash):</strong> A new &quot;isolate&quot; scope is created for the directive&#39;s element. The
+&#39;isolate&#39; scope differs from normal scope in that it does not prototypically inherit from its parent
+scope. This is useful when creating reusable components, which should not accidentally read or modify
+data in the parent scope.</p>
+</li>
+</ul>
+<p>The &#39;isolate&#39; scope object hash defines a set of local scope properties derived from attributes on the
+directive&#39;s element. These local properties are useful for aliasing values for templates. The keys in
+the object hash map to the name of the property on the isolate scope; the values define how the property
+is bound to the parent scope, via matching attributes on the directive&#39;s element:</p>
 <ul>
 <li><p><code>@</code> or <code>@attr</code> - bind a local scope property to the value of DOM attribute. The result is
 always a string since DOM attributes are strings. If no <code>attr</code> name is specified  then the
@@ -158,6 +166,20 @@ done by passing a map of local variable names and values into the expression wra
 For example, if the expression is <code>increment(amount)</code> then we can specify the amount value
 by calling the <code>localFn</code> as <code>localFn({amount: 22})</code>.</p>
 </li>
+</ul>
+<p>In general it&#39;s possible to apply more than one directive to one element, but there might be limitations
+depending on the type of scope required by the directives. The following points will help explain these limitations.
+For simplicity only two directives are taken into account, but it is also applicable for several directives:</p>
+<ul>
+<li><strong>no scope</strong> + <strong>no scope</strong> =&gt; Two directives which don&#39;t require their own scope will use their parent&#39;s scope</li>
+<li><strong>child scope</strong> + <strong>no scope</strong> =&gt;  Both directives will share one single child scope</li>
+<li><strong>child scope</strong> + <strong>child scope</strong> =&gt;  Both directives will share one single child scope</li>
+<li><strong>isolated scope</strong> + <strong>no scope</strong> =&gt;  The isolated directive will use it&#39;s own created isolated scope. The other directive will use
+its parent&#39;s scope</li>
+<li><strong>isolated scope</strong> + <strong>child scope</strong> =&gt;  <strong>Won&#39;t work!</strong> Only one scope can be related to one element. Therefore these directives cannot
+be applied to the same element.</li>
+<li><strong>isolated scope</strong> + <strong>isolated scope</strong>  =&gt;  <strong>Won&#39;t work!</strong> Only one scope can be related to one element. Therefore these directives
+cannot be applied to the same element.</li>
 </ul>
 <h4 id="-bindtocontroller-"><code>bindToController</code></h4>
 <p>When an isolate scope is used for a component (see above), and <code>controllerAs</code> is used, <code>bindToController: true</code> will
