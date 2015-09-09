@@ -23,16 +23,18 @@
   <p>The <code>ngInit</code> directive allows you to evaluate an expression in the
 current scope.</p>
 <div class="alert alert-danger">
-The only appropriate use of <code>ngInit</code> is for aliasing special properties of
-<a href="api/ng/directive/ngRepeat"><code>ngRepeat</code></a>, as seen in the demo below. Besides this case, you
-should use <a href="guide/controller">controllers</a> rather than <code>ngInit</code>
-to initialize values on a scope.
+This directive can be abused to add unnecesary amounts of logic into your templates.
+There are only a few appropriate uses of <code>ngInit</code>, such as for aliasing special properties of
+<a href="api/ng/directive/ngRepeat"><code>ngRepeat</code></a>, as seen in the demo below; and for injecting data via
+server side scripting. Besides these few cases, you should use <a href="guide/controller">controllers</a>
+rather than <code>ngInit</code> to initialize values on a scope.
 </div>
+
 <div class="alert alert-warning">
-<strong>Note</strong>: If you have assignment in <code>ngInit</code> along with <a href="api/ng/service/$filter"><code>$filter</code></a>, make
-sure you have parenthesis for correct precedence:
+<strong>Note</strong>: If you have assignment in <code>ngInit</code> along with a <a href="api/ng/service/$filter"><code>filter</code></a>, make
+sure you have parentheses to ensure correct operator precedence:
 <pre class="prettyprint">
-<code>&lt;div ng-init=&quot;test1 = (data | orderBy:&#39;name&#39;)&quot;&gt;&lt;/div&gt;</code>
+<code>&lt;div ng-init=&quot;test1 = ($index | toString)&quot;&gt;&lt;/div&gt;</code>
 </pre>
 </div>
 </div>
