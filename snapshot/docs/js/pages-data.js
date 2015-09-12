@@ -1964,6 +1964,9 @@ angular.module('pagesData', [])
   "examples/example-example39": {
     "path": "examples/example-example39"
   },
+  "examples/example-message-format-example": {
+    "path": "examples/example-message-format-example"
+  },
   "examples/example-example40": {
     "path": "examples/example-example40"
   },

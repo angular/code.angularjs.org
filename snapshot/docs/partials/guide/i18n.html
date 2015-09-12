@@ -103,8 +103,42 @@ A current limitation of the <code>ngMessageFormat</code> module, is that it does
 <p>The syntax extension is based on a subset of the ICU MessageFormat syntax that covers plurals and
 gender selections.  Please refer to the links in the “Further Reading” section at the bottom of this
 section.</p>
-<p>You may find it helpful to play with our <a href="http://plnkr.co/edit/QBVRQ70dvKZDWmHW9RyR?p=preview">Plnkr Example</a>
-as you read the examples below.</p>
+<p>You may find it helpful to play with the following example as you read the explanations below:</p>
+<p>
+
+<div>
+  <a ng-click="openPlunkr('examples/example-message-format-example', $event)" class="btn pull-right">
+    <i class="glyphicon glyphicon-edit">&nbsp;</i>
+    Edit in Plunker</a>
+
+  <div class="runnable-example"
+      path="examples/example-message-format-example"
+      name="message-format-example"
+      module="messageFormatExample"
+      deps="angular-message-format.js">
+
+  
+    <div class="runnable-example-file" 
+      name="index.html"
+      language="html"
+      type="html">
+      <pre><code>&lt;div ng-controller=&quot;ckCtrl&quot;&gt;&#10;  &lt;b&gt;Set number of recipients&lt;/b&gt;&#10;  &lt;button ng-click=&quot;setNumRecipients(0)&quot;&gt;None&lt;/button&gt;&#10;  &lt;button ng-click=&quot;setNumRecipients(1)&quot;&gt;One&lt;/button&gt;&#10;  &lt;button ng-click=&quot;setNumRecipients(2)&quot;&gt;Two&lt;/button&gt;&#10;  &lt;button ng-click=&quot;setNumRecipients(3)&quot;&gt;Three&lt;/button&gt;&#10;&#10;&#10;  &lt;br&gt;&lt;br&gt;&#10;  &lt;b&gt;Sender&#39;s&lt;/b&gt; name: &lt;input ng-model=&quot;sender.name&quot;&gt; &amp;nbsp;&amp;nbsp;&#10;&#10;  &lt;br&gt;&lt;br&gt;&lt;b&gt;Recipients&lt;/b&gt;&lt;br&gt;&#10;  &lt;div ng-repeat=&quot;recipient in recipients&quot;&gt;&#10;    Name: &lt;input ng-model=&quot;recipient.name&quot;&gt; &amp;nbsp;&amp;nbsp;&#10;    Gender: &lt;button ng-click=&quot;setGender(recipient, &#39;male&#39;)&quot;&gt;male&lt;/button&gt;&#10;            &lt;button ng-click=&quot;setGender(recipient, &#39;female&#39;)&quot;&gt;female&lt;/button&gt;&#10;            &lt;button ng-click=&quot;setGender(recipient, &#39;other&#39;)&quot;&gt;other&lt;/button&gt;&#10;  &lt;/div&gt;&#10;&#10;  &lt;br&gt;&lt;br&gt;&lt;b&gt;Message&lt;/b&gt;&lt;br&gt;&#10;  {{recipients.length, plural, offset:1&#10;      =0 {You ({{sender.name}}) gave no gifts}&#10;      =1 { {{ recipients[0].gender, select,&#10;                male {You ({{sender.name}}) gave him ({{recipients[0].name}}) a gift.}&#10;                female {You ({{sender.name}}) gave her ({{recipients[0].name}}) a gift.}&#10;                other {You ({{sender.name}}) gave them ({{recipients[0].name}}) a gift.}&#10;            }}&#10;         }&#10;      one { {{ recipients[0].gender, select,&#10;                male {You ({{sender.name}}) gave him ({{recipients[0].name}}) and one other person a gift.}&#10;                female {You ({{sender.name}}) gave her ({{recipients[0].name}}) and one other person a gift.}&#10;                other {You ({{sender.name}}) gave them ({{recipients[0].name}}) and one other person a gift.}&#10;            }}&#10;         }&#10;         other {You ({{sender.name}}) gave {{recipients.length}} people gifts. }&#10;  }}&#10;&#10;  &lt;br&gt;&lt;br&gt;&lt;b&gt;In an attribute&lt;/b&gt;&lt;br&gt;&#10;  &lt;div attrib=&quot;{{recipients.length, plural, offset:1&#10;                  =0 {You ({{sender.name}}) gave no gifts}&#10;                  =1 { {{ recipients[0].gender, select,&#10;                            male {You ({{sender.name}}) gave him ({{recipients[0].name}}) a gift.}&#10;                            female {You ({{sender.name}}) gave her ({{recipients[0].name}}) a gift.}&#10;                            other {You ({{sender.name}}) gave them ({{recipients[0].name}}) a gift.}&#10;                        }}&#10;                     }&#10;                  one { {{ recipients[0].gender, select,&#10;                            male {You ({{sender.name}}) gave him ({{recipients[0].name}}) and one other person a gift.}&#10;                            female {You ({{sender.name}}) gave her ({{recipients[0].name}}) and one other person a gift.}&#10;                            other {You ({{sender.name}}) gave them ({{recipients[0].name}}) and one other person a gift.}&#10;                        }}&#10;                     }&#10;                     other {You ({{sender.name}}) gave {{recipients.length}} people gifts. }&#10;               }}&quot;&gt;&#10;      This div has an attribute interpolated with messageformat.  Use the DOM inspector to check it out.&#10;  &lt;/div&gt;&#10;&lt;/div&gt;</code></pre>
+    </div>
+  
+    <div class="runnable-example-file" 
+      name="app.js"
+      language="js"
+      type="js">
+      <pre><code>function Person(name, gender) {&#10;  this.name = name;&#10;  this.gender = gender;&#10;}&#10;&#10;angular.module(&#39;messageFormatExample&#39;, [&#39;ngMessageFormat&#39;])&#10;  .controller(&#39;ckCtrl&#39;, function ($scope, $injector, $parse) {&#10;    var people = [ new Person(&quot;Alice&quot;, &quot;female&quot;),&#10;                   new Person(&quot;Bob&quot;, &quot;male&quot;),&#10;                   new Person(&quot;Charlie&quot;, &quot;male&quot;) ];&#10;&#10;    $scope.sender = new Person(&quot;Harry Potter&quot;, &quot;male&quot;);&#10;    $scope.recipients = people.slice();&#10;&#10;    $scope.setNumRecipients = function(n) {&#10;      n = n &gt; people.length ? people.length : n;&#10;      $scope.recipients = people.slice(0, n);&#10;    };&#10;&#10;    $scope.setGender = function(person, gender) {&#10;      person.gender = gender;&#10;    };&#10;  });</code></pre>
+    </div>
+  
+
+    <iframe class="runnable-example-frame" src="examples/example-message-format-example/index.html" name="example-message-format-example"></iframe>
+  </div>
+</div>
+
+
+</p>
 <h3 id="plural-syntax">Plural Syntax</h3>
 <p>The syntax for plural based message selection looks like the following:</p>
 <pre><code class="lang-text">{{NUMERIC_EXPRESSION, plural,
@@ -229,8 +263,8 @@ interpolation syntax.  Since you can use MessageFormat extensions in Angular int
 allows you to nest plural and gender expressions in any order.</p>
 <p>Please note that if these are intended to reach a translator and be translated, it is recommended
 that the messages appear as a whole and not be split up.</p>
-<h3 id="more-complex-example-that-demonstrates-nesting">More complex example that demonstrates nesting</h3>
-<p>This is taken from the <a href="http://plnkr.co/edit/QBVRQ70dvKZDWmHW9RyR?p=preview">plunker example</a> linked to earlier.</p>
+<h3 id="demonstration-of-nesting">Demonstration of nesting</h3>
+<p>This is taken from the above example.</p>
 <pre><code class="lang-text">{{recipients.length, plural, offset:1
     =0 {You ({{sender.name}}) gave no gifts}
     =1 { {{ recipients[0].gender, select,

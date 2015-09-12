@@ -30,7 +30,7 @@ HTML <a href="api/ng/service/$compile">$compile</a> service for data binding. Se
 interpolation markup.</p>
 <pre><code class="lang-js">var $interpolate = ...; // injected
 var exp = $interpolate(&#39;Hello {{name | uppercase}}!&#39;);
-expect(exp({name:&#39;Angular&#39;}).toEqual(&#39;Hello ANGULAR!&#39;);
+expect(exp({name:&#39;Angular&#39;})).toEqual(&#39;Hello ANGULAR!&#39;);
 </code></pre>
 <p><code>$interpolate</code> takes an optional fourth argument, <code>allOrNothing</code>. If <code>allOrNothing</code> is
 <code>true</code>, the interpolation function will return <code>undefined</code> unless all embedded expressions

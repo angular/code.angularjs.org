@@ -238,7 +238,7 @@ it.</li>
       name="script.js"
       language="js"
       type="js">
-      <pre><code>angular.module(&#39;cacheExampleApp&#39;, []).&#10;controller(&#39;CacheController&#39;, [&#39;$scope&#39;, &#39;$cacheFactory&#39;, function($scope, $cacheFactory) {&#10;  $scope.keys = [];&#10;  $scope.cache = $cacheFactory(&#39;cacheId&#39;);&#10;  $scope.put = function(key, value) {&#10;    if ($scope.cache.get(key) === undefined) {&#10;      $scope.keys.push(key);&#10;    }&#10;    $scope.cache.put(key, value === undefined ? null : value);&#10;  };&#10;}]);</code></pre>
+      <pre><code>angular.module(&#39;cacheExampleApp&#39;, []).&#10;controller(&#39;CacheController&#39;, [&#39;$scope&#39;, &#39;$cacheFactory&#39;, function($scope, $cacheFactory) {&#10;  $scope.keys = [];&#10;  $scope.cache = $cacheFactory(&#39;cacheId&#39;);&#10;  $scope.put = function(key, value) {&#10;    if (isUndefined($scope.cache.get(key))) {&#10;      $scope.keys.push(key);&#10;    }&#10;    $scope.cache.put(key, isUndefined(value) ? null : value);&#10;  };&#10;}]);</code></pre>
     </div>
   
     <div class="runnable-example-file" 
