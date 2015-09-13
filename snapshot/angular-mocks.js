@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.4.6-build.4232+sha.b2f8b0b
+ * @license AngularJS v1.4.6-build.4233+sha.159efdd
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -1030,7 +1030,7 @@ angular.mock.dump = function(object) {
       $http.post('/add-msg.py', message, { headers: headers } ).success(function(response) {
         $scope.status = '';
       }).error(function() {
-        $scope.status = 'ERROR!';
+        $scope.status = 'Failed...';
       });
     };
   }

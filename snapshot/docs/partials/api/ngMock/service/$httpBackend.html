@@ -123,7 +123,7 @@ function MyController($scope, $http) {
     $http.post(&#39;/add-msg.py&#39;, message, { headers: headers } ).success(function(response) {
       $scope.status = &#39;&#39;;
     }).error(function() {
-      $scope.status = &#39;ERROR!&#39;;
+      $scope.status = &#39;Failed...&#39;;
     });
   };
 }
