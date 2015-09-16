@@ -9190,7 +9190,7 @@ return jQuery;
 }));
 
 /**
- * @license AngularJS v1.4.6-build.4236+sha.19ecdb5
+ * @license AngularJS v1.4.6-build.4240+sha.927ebd9
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -9249,7 +9249,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.4.6-build.4236+sha.19ecdb5/' +
+    message += '\nhttp://errors.angularjs.org/1.4.6-build.4240+sha.927ebd9/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -11570,7 +11570,7 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.4.6-build.4236+sha.19ecdb5',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.4.6-build.4240+sha.927ebd9',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 4,
   dot: 6,
@@ -11865,10 +11865,10 @@ function camelCase(name) {
     replace(MOZ_HACK_REGEXP, 'Moz$1');
 }
 
-var SINGLE_TAG_REGEXP = /^<(\w+)\s*\/?>(?:<\/\1>|)$/;
+var SINGLE_TAG_REGEXP = /^<([\w-]+)\s*\/?>(?:<\/\1>|)$/;
 var HTML_REGEXP = /<|&#?\w+;/;
-var TAG_NAME_REGEXP = /<([\w:]+)/;
-var XHTML_TAG_REGEXP = /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([\w:]+)[^>]*)\/>/gi;
+var TAG_NAME_REGEXP = /<([\w:-]+)/;
+var XHTML_TAG_REGEXP = /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([\w:-]+)[^>]*)\/>/gi;
 
 var wrapMap = {
   'option': [1, '<select multiple="multiple">', '</select>'],
@@ -37473,7 +37473,7 @@ var SelectController =
  *     </select><br>
  *
  *     <label for="singleSelect"> Single select with "not selected" option and dynamic option values: </label><br>
- *     <select name="singleSelect" ng-model="data.singleSelect">
+ *     <select name="singleSelect" id="singleSelect" ng-model="data.singleSelect">
  *       <option value="">---Please select---</option> <!-- not selected / blank option -->
  *       <option value="{{data.option1}}">Option 1</option> <!-- interpolation -->
  *       <option value="option-2">Option 2</option>
@@ -37514,7 +37514,7 @@ var SelectController =
  * <div ng-controller="ExampleController">
  *   <form name="myForm">
  *     <label for="repeatSelect"> Repeat select: </label>
- *     <select name="repeatSelect" ng-model="data.repeatSelect">
+ *     <select name="repeatSelect" id="repeatSelect" ng-model="data.repeatSelect">
  *       <option ng-repeat="option in data.availableOptions" value="{{option.id}}">{{option.name}}</option>
  *     </select>
  *   </form>
@@ -37526,7 +37526,7 @@ var SelectController =
  *  angular.module('ngrepeatSelect', [])
  *    .controller('ExampleController', ['$scope', function($scope) {
  *      $scope.data = {
- *       singleSelect: null,
+ *       repeatSelect: null,
  *       availableOptions: [
  *         {id: '1', name: 'Option A'},
  *         {id: '2', name: 'Option B'},
