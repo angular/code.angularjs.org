@@ -326,10 +326,15 @@ angular.module('pagesData', [])
     "area": "error",
     "path": "error/$rootScope/inprog"
   },
-  "error/$sanitize/badparse": {
-    "name": "badparse",
+  "error/$sanitize/noinert": {
+    "name": "noinert",
     "area": "error",
-    "path": "error/$sanitize/badparse"
+    "path": "error/$sanitize/noinert"
+  },
+  "error/$sanitize/uinput": {
+    "name": "uinput",
+    "area": "error",
+    "path": "error/$sanitize/uinput"
   },
   "error/$sce/icontext": {
     "name": "icontext",
@@ -1731,6 +1736,11 @@ angular.module('pagesData', [])
     "area": "api",
     "path": "api/ngSanitize/service/$sanitize"
   },
+  "api/ngSanitize/provider/$sanitizeProvider": {
+    "name": "$sanitizeProvider",
+    "area": "api",
+    "path": "api/ngSanitize/provider/$sanitizeProvider"
+  },
   "api/ngTouch/directive/ngClick": {
     "name": "ngClick",
     "area": "api",
@@ -2589,6 +2599,11 @@ angular.module('pagesData', [])
     "name": "service components in ngSanitize",
     "area": "api",
     "path": "api/ngSanitize/service"
+  },
+  "api/ngSanitize/provider": {
+    "name": "provider components in ngSanitize",
+    "area": "api",
+    "path": "api/ngSanitize/provider"
   },
   "api/ngTouch/directive": {
     "name": "directive components in ngTouch",

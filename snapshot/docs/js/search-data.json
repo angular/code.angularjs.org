@@ -390,9 +390,15 @@
     "members": ""
   },
   {
-    "path": "error/$sanitize/badparse",
-    "titleWords": "badparse",
-    "keywords": "$sanitize as badparse be being block browser bug by can code contains despite error file following html if in input is it more obscure occurs of parse parsed parser parsing part partials passed please possible produce recognized results sanitizer sanitizing so some strict string than that the this to typical unable valid was when while would",
+    "path": "error/$sanitize/noinert",
+    "titleWords": "noinert",
+    "keywords": "$sanitize all an and angular api being browser browsers by can create createhtmldocument current determines document dom error for html ie implementation in including indicates inert input into is it necessary noinert not occurs of on parsing partials platform presence present safe sanitize sanitizer so strings supported that the this trees unsupported used usually when without",
+    "members": ""
+  },
+  {
+    "path": "error/$sanitize/uinput",
+    "titleWords": "uinput",
+    "keywords": "$sanitize after an and are attack attackers be because browser browsers bugs but by can cause caused certain check code contains could create dangerous doesn dom due error errors exploit exploited exploiting failed for harmless html in indefinitely input into is looks match mutating mutations mxss occurs once original parse partials payload possible processed sanitization sanitize sanitizer sanitizers serialized sign some strings that the these this to tries turned uinput unstable verification vulnerability when which",
     "members": ""
   },
   {
@@ -2072,8 +2078,14 @@
   {
     "path": "api/ngSanitize/service/$sanitize",
     "titleWords": "$sanitize",
-    "keywords": "$compileprovider $sanitize $sanitizeprovider ahrefsanitizationwhitelist all also and api are as back be browser by can configured contain escaped example-example115 function functions however html imgsrcsanitizationwhitelist input into is it make markup may means module more ng ngsanitize no obscure of our parser parsing partials possible properly recognized returned safe sanitized sanitizer serialized service since some strict string svg than that the then this through to tokens typical unsafe using valid which whitelist won would",
+    "keywords": "$compileprovider $sanitize $sanitizeprovider ahrefsanitizationwhitelist all also an and api are attribute back by can configured contain dangerous enabled escaped example-example115 for function functions html if imgsrcsanitizationwhitelist input into is it make markup may means module ng ngsanitize no of parsing partials potentially properly returned safe sanitization sanitized sanitizes serialized service string stripping svg that the then this to tokens unsafe url using values via whitelist",
     "members": ""
+  },
+  {
+    "path": "api/ngSanitize/provider/$sanitizeProvider",
+    "titleWords": "$sanitizeProvider",
+    "keywords": "$sanitize $sanitizeprovider and api configures creates html instance module ngsanitize partials provider",
+    "members": "enablesvg"
   },
   {
     "path": "api/ngTouch/directive/ngClick",
@@ -2403,6 +2415,12 @@
     "path": "api/ngSanitize/service",
     "titleWords": "service components in ngSanitize sanitize",
     "keywords": "api componentgroup components html in module ngsanitize partials service",
+    "members": ""
+  },
+  {
+    "path": "api/ngSanitize/provider",
+    "titleWords": "provider components in ngSanitize sanitize",
+    "keywords": "api componentgroup components html in module ngsanitize partials provider",
     "members": ""
   },
   {

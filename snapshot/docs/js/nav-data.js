@@ -1171,6 +1171,16 @@ angular.module('navData', [])
             "name": "$sanitize",
             "href": "api/ngSanitize/service/$sanitize",
             "type": "service"
+          },
+          {
+            "name": "provider",
+            "type": "section",
+            "href": "api/ngSanitize/provider"
+          },
+          {
+            "name": "$sanitizeProvider",
+            "href": "api/ngSanitize/provider/$sanitizeProvider",
+            "type": "provider"
           }
         ]
       },
@@ -1608,8 +1618,13 @@ angular.module('navData', [])
             "type": "section"
           },
           {
-            "name": "badparse",
-            "href": "error/$sanitize/badparse",
+            "name": "noinert",
+            "href": "error/$sanitize/noinert",
+            "type": "error"
+          },
+          {
+            "name": "uinput",
+            "href": "error/$sanitize/uinput",
             "type": "error"
           },
           {
