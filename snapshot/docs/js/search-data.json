@@ -1686,9 +1686,15 @@
     "members": "defaults delete get head jsonp patch pendingrequests post put"
   },
   {
+    "path": "api/ng/service/$xhrFactory",
+    "titleWords": "$xhrFactory",
+    "keywords": "$xhrfactory $xhrfactoryprovider angular api create createxhr custom decorate factory function html http method module myapp new ng objects of or own partials post put replace request return service the this to true url used window xmlhttprequest your",
+    "members": ""
+  },
+  {
     "path": "api/ng/service/$httpBackend",
     "titleWords": "$httpBackend",
-    "keywords": "$document $http $httpbackend $httpbackendprovider $resource $window abstractions and api backend be browser by can deals delegates directly during higher-level html http implementation incompatibilities instead is jsonp mock module need never ng ngmock ngresource object or partials responses service should swapped testing that the this to trained use used which with xmlhttprequest you",
+    "keywords": "$document $http $httpbackend $httpbackendprovider $resource $window $xhrfactory abstractions and api backend be browser by can deals delegates directly during higher-level html http implementation incompatibilities instead is jsonp mock module need never ng ngmock ngresource object or partials responses service should swapped testing that the this to trained use used which with xmlhttprequest you",
     "members": ""
   },
   {

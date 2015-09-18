@@ -771,6 +771,11 @@ angular.module('navData', [])
             "type": "service"
           },
           {
+            "name": "$xhrFactory",
+            "href": "api/ng/service/$xhrFactory",
+            "type": "service"
+          },
+          {
             "name": "filter",
             "type": "section",
             "href": "api/ng/filter"

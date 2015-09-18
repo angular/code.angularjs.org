@@ -1406,6 +1406,11 @@ angular.module('pagesData', [])
     "area": "api",
     "path": "api/ng/service/$http"
   },
+  "api/ng/service/$xhrFactory": {
+    "name": "$xhrFactory",
+    "area": "api",
+    "path": "api/ng/service/$xhrFactory"
+  },
   "api/ng/service/$httpBackend": {
     "name": "$httpBackend",
     "area": "api",
