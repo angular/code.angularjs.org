@@ -6,37 +6,23 @@
   
 
   <script src="../../../angular.min.js"></script>
-  <script src="../../../angular-animate.js"></script>
   
 
-  <script type="text/javascript">
-    angular.element(document.getElementsByTagName('head')).append(angular.element('<base href="' + window.location.pathname + '" />'));
-  </script>
+  
 </head>
-<body ng-app="inputExample">
+<body ng-app="initExample">
   <script>
- angular.module('inputExample', [])
-   .controller('ExampleController', ['$scope', function($scope) {
-     $scope.val = '1';
-   }]);
+  angular.module('initExample', [])
+    .controller('ExampleController', ['$scope', function($scope) {
+      $scope.list = [['a', 'b'], ['c', 'd']];
+    }]);
 </script>
-<style>
-  .my-input {
-    transition:all linear 0.5s;
-    background: transparent;
-  }
-  .my-input.ng-invalid {
-    color:white;
-    background: red;
-  }
-</style>
-<p id="inputDescription">
- Update input to see transitions when valid/invalid.
- Integer is a valid value.
-</p>
-<form name="testForm" ng-controller="ExampleController">
-  <input ng-model="val" ng-pattern="/^\d+$/" name="anim" class="my-input"
-         aria-describedby="inputDescription" />
-</form>
+<div ng-controller="ExampleController">
+  <div ng-repeat="innerList in list" ng-init="outerIndex = $index">
+    <div ng-repeat="value in innerList" ng-init="innerIndex = $index">
+       <span class="example-init">list[ {{outerIndex}} ][ {{innerIndex}} ] = {{value}};</span>
+    </div>
+  </div>
+</div>
 </body>
 </html>

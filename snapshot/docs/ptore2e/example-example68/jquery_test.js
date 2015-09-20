@@ -5,9 +5,10 @@ describe("", function() {
     browser.get("build/docs/examples/example-example68/index-jquery.html");
   });
   
-it('should check ng-click', function() {
-  expect(element(by.binding('count')).getText()).toMatch('0');
-  element(by.css('button')).click();
-  expect(element(by.binding('count')).getText()).toMatch('1');
+it('should remove the template directive and css class', function() {
+  expect($('#template1').getAttribute('ng-cloak')).
+    toBeNull();
+  expect($('#template2').getAttribute('ng-cloak')).
+    toBeNull();
 });
 });

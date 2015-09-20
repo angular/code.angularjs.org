@@ -661,6 +661,11 @@ angular.module('navData', [])
             "type": "service"
           },
           {
+            "name": "$date",
+            "href": "api/ng/service/$date",
+            "type": "service"
+          },
+          {
             "name": "$document",
             "href": "api/ng/service/$document",
             "type": "service"

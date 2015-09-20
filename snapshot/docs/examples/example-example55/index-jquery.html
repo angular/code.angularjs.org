@@ -12,7 +12,7 @@
   
 </head>
 <body ng-app="">
-  <label>Check me to check both: <input type="checkbox" ng-model="master"></label><br/>
-<input id="checkSlave" type="checkbox" ng-checked="master" aria-label="Slave input">
+  <label>Click me to toggle: <input type="checkbox" ng-model="checked"></label><br/>
+<button ng-model="button" ng-disabled="checked">Button</button>
 </body>
 </html>

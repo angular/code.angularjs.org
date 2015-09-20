@@ -961,6 +961,11 @@ angular.module('pagesData', [])
     "area": "api",
     "path": "api/ng/service/$controller"
   },
+  "api/ng/service/$date": {
+    "name": "$date",
+    "area": "api",
+    "path": "api/ng/service/$date"
+  },
   "api/ng/directive/a": {
     "name": "a",
     "area": "api",
@@ -2042,6 +2047,9 @@ angular.module('pagesData', [])
   "examples/example-example59": {
     "path": "examples/example-example59"
   },
+  "examples/example-example60": {
+    "path": "examples/example-example60"
+  },
   "examples/example-text-input-directive": {
     "path": "examples/example-text-input-directive"
   },
@@ -2081,20 +2089,17 @@ angular.module('pagesData', [])
   "examples/example-ngValue-directive": {
     "path": "examples/example-ngValue-directive"
   },
-  "examples/example-example60": {
-    "path": "examples/example-example60"
-  },
   "examples/example-example61": {
     "path": "examples/example-example61"
   },
   "examples/example-example62": {
     "path": "examples/example-example62"
   },
-  "examples/example-ngChange-directive": {
-    "path": "examples/example-ngChange-directive"
-  },
   "examples/example-example63": {
     "path": "examples/example-example63"
+  },
+  "examples/example-ngChange-directive": {
+    "path": "examples/example-ngChange-directive"
   },
   "examples/example-example64": {
     "path": "examples/example-example64"
@@ -2108,6 +2113,9 @@ angular.module('pagesData', [])
   "examples/example-example67": {
     "path": "examples/example-example67"
   },
+  "examples/example-example68": {
+    "path": "examples/example-example68"
+  },
   "examples/example-ngControllerAs": {
     "path": "examples/example-ngControllerAs"
   },
@@ -2116,9 +2124,6 @@ angular.module('pagesData', [])
   },
   "examples/example-example.csp": {
     "path": "examples/example-example.csp"
-  },
-  "examples/example-example68": {
-    "path": "examples/example-example68"
   },
   "examples/example-example69": {
     "path": "examples/example-example69"
@@ -2165,17 +2170,20 @@ angular.module('pagesData', [])
   "examples/example-example83": {
     "path": "examples/example-example83"
   },
+  "examples/example-example84": {
+    "path": "examples/example-example84"
+  },
   "template1.html": {
     "path": "template1.html"
   },
   "template2.html": {
     "path": "template2.html"
   },
-  "examples/example-example84": {
-    "path": "examples/example-example84"
-  },
   "examples/example-example85": {
     "path": "examples/example-example85"
+  },
+  "examples/example-example86": {
+    "path": "examples/example-example86"
   },
   "examples/example-ngList-directive": {
     "path": "examples/example-ngList-directive"
@@ -2189,8 +2197,8 @@ angular.module('pagesData', [])
   "examples/example-ng-model-cancel-update": {
     "path": "examples/example-ng-model-cancel-update"
   },
-  "examples/example-example86": {
-    "path": "examples/example-example86"
+  "examples/example-example87": {
+    "path": "examples/example-example87"
   },
   "examples/example-ngModel-getter-setter": {
     "path": "examples/example-ngModel-getter-setter"
@@ -2204,9 +2212,6 @@ angular.module('pagesData', [])
   "examples/example-ngModelOptions-directive-getter-setter": {
     "path": "examples/example-ngModelOptions-directive-getter-setter"
   },
-  "examples/example-example87": {
-    "path": "examples/example-example87"
-  },
   "examples/example-example88": {
     "path": "examples/example-example88"
   },
@@ -2216,11 +2221,11 @@ angular.module('pagesData', [])
   "examples/example-example90": {
     "path": "examples/example-example90"
   },
-  "glyphicons.css": {
-    "path": "glyphicons.css"
-  },
   "examples/example-example91": {
     "path": "examples/example-example91"
+  },
+  "glyphicons.css": {
+    "path": "glyphicons.css"
   },
   "examples/example-example92": {
     "path": "examples/example-example92"
@@ -2237,6 +2242,9 @@ angular.module('pagesData', [])
   "examples/example-example96": {
     "path": "examples/example-example96"
   },
+  "examples/example-example97": {
+    "path": "examples/example-example97"
+  },
   "examples/example-static-select": {
     "path": "examples/example-static-select"
   },
@@ -2249,14 +2257,11 @@ angular.module('pagesData', [])
   "examples/example-select-with-non-string-options": {
     "path": "examples/example-select-with-non-string-options"
   },
-  "examples/example-example97": {
-    "path": "examples/example-example97"
+  "examples/example-example98": {
+    "path": "examples/example-example98"
   },
   "examples/example-$filter": {
     "path": "examples/example-$filter"
-  },
-  "examples/example-example98": {
-    "path": "examples/example-example98"
   },
   "examples/example-example99": {
     "path": "examples/example-example99"
@@ -2282,11 +2287,11 @@ angular.module('pagesData', [])
   "examples/example-example106": {
     "path": "examples/example-example106"
   },
-  "http-hello.html": {
-    "path": "http-hello.html"
-  },
   "examples/example-example107": {
     "path": "examples/example-example107"
+  },
+  "http-hello.html": {
+    "path": "http-hello.html"
   },
   "examples/example-example108": {
     "path": "examples/example-example108"
@@ -2300,14 +2305,17 @@ angular.module('pagesData', [])
   "examples/example-example111": {
     "path": "examples/example-example111"
   },
-  "test_data.json": {
-    "path": "test_data.json"
-  },
   "examples/example-example112": {
     "path": "examples/example-example112"
   },
+  "test_data.json": {
+    "path": "test_data.json"
+  },
   "examples/example-example113": {
     "path": "examples/example-example113"
+  },
+  "examples/example-example114": {
+    "path": "examples/example-example114"
   },
   "home.html": {
     "path": "home.html"
@@ -2336,9 +2344,6 @@ angular.module('pagesData', [])
   "examples/example-$route-service": {
     "path": "examples/example-$route-service"
   },
-  "examples/example-example114": {
-    "path": "examples/example-example114"
-  },
   "examples/example-example115": {
     "path": "examples/example-example115"
   },
@@ -2350,6 +2355,9 @@ angular.module('pagesData', [])
   },
   "examples/example-example118": {
     "path": "examples/example-example118"
+  },
+  "examples/example-example119": {
+    "path": "examples/example-example119"
   },
   "error/$animate": {
     "name": "$animate",
