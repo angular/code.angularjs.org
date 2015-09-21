@@ -1034,13 +1034,13 @@
   {
     "path": "api/ng/function/angular.injector",
     "titleWords": "angular.injector",
-    "keywords": "$compile $digest $div $document $injector $rootscope access added after aliases an and angular angularjs annotation api app append application argument arguments as auto be been block body bootstrapped but by can case compile containing could create creates current currently dependency directive disallows do document element elements end example explicitly extra fairly fn_args following for from function functions get guide has html if implicit in inference inject injecting injection injector into invoke is it jquery js kick label library link list markup mode module modules must myctrl name new ng ng-controller object of off or outside partials party perhaps rare retrieving running scope see services should some sometimes strict that the their then third this to type typical usage use used using var want we well whether which you your",
+    "keywords": "$compile $digest $div $document $injector $rootscope access added after aliases an and angular angularjs annotation api app append application argument arguments arrow_arg as auto be been block body bootstrapped but by can case compile containing could create creates current currently dependency directive disallows do document element elements end example explicitly extra fairly following for from function functions get guide has html if implicit in inference inject injecting injection injector into invoke is it jquery js kick label library link list markup mode module modules must myctrl name new ng ng-controller object of off or outside partials party perhaps rare retrieving running scope see services should some sometimes strict that the their then third this to type typical usage use used using var want we well whether which you your",
     "members": ""
   },
   {
     "path": "api/auto",
     "titleWords": "auto",
-    "keywords": "$injector added api auto automatically each fn_args gets html implicit module partials to which",
+    "keywords": "$injector added api arrow_arg auto automatically each gets html implicit module partials to which",
     "members": ""
   },
   {
