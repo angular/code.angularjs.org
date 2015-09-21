@@ -3,15 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <title>Example - example-example83</title>
+  <link href="animations.css" rel="stylesheet" type="text/css">
   
 
   <script src="../../../angular.min.js"></script>
+  <script src="../../../angular-animate.js"></script>
   
 
   
 </head>
-<body ng-app="">
-  <input ng-paste="paste=true" ng-init="paste=false" placeholder='paste here'>
-pasted: {{paste}}
+<body ng-app="ngAnimate">
+  <label>Click me: <input type="checkbox" ng-model="checked" ng-init="checked=true" /></label><br/>
+Show when checked:
+<span ng-if="checked" class="animate-if">
+  This is removed when the checkbox is unchecked.
+</span>
 </body>
 </html>

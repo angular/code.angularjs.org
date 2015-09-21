@@ -5,14 +5,8 @@ describe("", function() {
     browser.get("build/docs/examples/example-example96/index-jquery.html");
   });
   
-it('should have transcluded', function() {
-  var titleElement = element(by.model('title'));
-  titleElement.clear();
-  titleElement.sendKeys('TITLE');
-  var textElement = element(by.model('text'));
-  textElement.clear();
-  textElement.sendKeys('TEXT');
-  expect(element(by.binding('title')).getText()).toEqual('TITLE');
-  expect(element(by.binding('text')).getText()).toEqual('TEXT');
+it('should load template defined inside script tag', function() {
+  element(by.css('#tpl-link')).click();
+  expect(element(by.css('#tpl-content')).getText()).toMatch(/Content of the template/);
 });
 });

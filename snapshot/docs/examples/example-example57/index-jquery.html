@@ -12,7 +12,10 @@
   
 </head>
 <body ng-app="">
-  <label>Check me to make text readonly: <input type="checkbox" ng-model="checked"></label><br/>
-<input type="text" ng-readonly="checked" value="I'm Angular" aria-label="Readonly field" />
+  <label>Check me to select: <input type="checkbox" ng-model="selected"></label><br/>
+<select aria-label="ngSelected demo">
+  <option>Hello!</option>
+  <option id="greet" ng-selected="selected">Greetings!</option>
+</select>
 </body>
 </html>

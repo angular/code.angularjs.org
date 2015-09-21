@@ -2,6 +2,8 @@
   "name": "example-example107",
   "files": [
     "index-production.html",
-    "script.js"
+    "script.js",
+    "http-hello.html",
+    "protractor.js"
   ]
 }

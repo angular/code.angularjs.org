@@ -12,7 +12,11 @@
   
 </head>
 <body ng-app="">
-  <div id="template1" ng-cloak>{{ 'hello' }}</div>
-<div id="template2" class="ng-cloak">{{ 'world' }}</div>
+  <button ng-click="count = count + 1" ng-init="count=0">
+  Increment
+</button>
+<span>
+  count: {{count}}
+</span>
 </body>
 </html>
