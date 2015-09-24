@@ -482,8 +482,10 @@ to update the DOM, and finally call <code>$validate</code> on it.
     <h3><code>$viewValue</code></h3>
     <table class="variables-matrix return-arguments">
   <tr>
-    <td><a href="" class="label type-hint type-hint-string">string</a></td>
-    <td><p>Actual string value in the view.</p>
+    <td><a href="" class="label type-hint type-hint-object">*</a></td>
+    <td><p>The actual value from the control&#39;s view. For <code>input</code> elements, this is a
+String. See <a href="api/ng/type/ngModel.NgModelController#$setViewValue"><code>ngModel.NgModelController</code></a> for information about when the $viewValue
+is set.</p>
 </td>
   </tr>
 </table>
