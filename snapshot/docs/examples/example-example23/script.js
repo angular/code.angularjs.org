@@ -6,7 +6,7 @@ angular.module('docsTabsExample', [])
       restrict: 'E',
       transclude: true,
       scope: {},
-      controller: function($scope) {
+      controller: ['$scope', function($scope) {
         var panes = $scope.panes = [];
 
         $scope.select = function(pane) {
@@ -22,7 +22,7 @@ angular.module('docsTabsExample', [])
           }
           panes.push(pane);
         };
-      },
+      }],
       templateUrl: 'my-tabs.html'
     };
   })
