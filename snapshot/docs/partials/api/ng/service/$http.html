@@ -34,24 +34,16 @@ object or via <a href="http://en.wikipedia.org/wiki/JSONP">JSONP</a>.</p>
 the $q service. While for simple usage patterns this doesn&#39;t matter much, for advanced usage
 it is important to familiarize yourself with these APIs and the guarantees they provide.</p>
 <h2 id="general-usage">General usage</h2>
-<p>The <code>$http</code> service is a function which takes a single argument — a configuration object —
+<p>The <code>$http</code> service is a function which takes a single argument — a <a href="api/ng/service/$http#usage">configuration object</a> —
 that is used to generate an HTTP request and returns  a <a href="api/ng/service/$q">promise</a>.</p>
-<pre><code class="lang-js">// Simple GET request example :
-$http.get(&#39;/someUrl&#39;).
-  then(function(response) {
+<pre><code class="lang-js">// Simple GET request example:
+$http({
+  method: &#39;GET&#39;,
+  url: &#39;/someUrl&#39;
+}).then(function successCallback(response) {
     // this callback will be called asynchronously
     // when the response is available
-  }, function(response) {
-    // called asynchronously if an error occurs
-    // or server returns response with an error status.
-  });
-</code></pre>
-<pre><code class="lang-js">// Simple POST request example (passing data) :
-$http.post(&#39;/someUrl&#39;, {msg:&#39;hello word!&#39;}).
-  then(function(response) {
-    // this callback will be called asynchronously
-    // when the response is available
-  }, function(response) {
+  }, function errorCallback(response) {
     // called asynchronously if an error occurs
     // or server returns response with an error status.
   });
@@ -69,19 +61,12 @@ functions.</li>
 will result in the success callback being called. Note that if the response is a redirect,
 XMLHttpRequest will transparently follow it, meaning that the error callback will not be
 called for such responses.</p>
-<h2 id="writing-unit-tests-that-use-http">Writing Unit Tests that use $http</h2>
-<p>When unit testing (using <a href="api/ngMock">ngMock</a>), it is necessary to call
-<a href="api/ngMock/service/$httpBackend#flush">$httpBackend.flush()</a> to flush each pending
-request using trained responses.</p>
-<pre><code>$httpBackend.expectGET(...);
-$http.get(...);
-$httpBackend.flush();
-</code></pre>
 <h2 id="shortcut-methods">Shortcut methods</h2>
 <p>Shortcut methods are also available. All shortcut methods require passing in the URL, and
-request data must be passed in for POST/PUT requests.</p>
-<pre><code class="lang-js">$http.get(&#39;/someUrl&#39;).then(successCallback);
-$http.post(&#39;/someUrl&#39;, data).then(successCallback);
+request data must be passed in for POST/PUT requests. An optional config can be passed as the
+last argument.</p>
+<pre><code class="lang-js">$http.get(&#39;/someUrl&#39;, config).then(successCallback, errorCallback);
+$http.post(&#39;/someUrl&#39;, data, config).then(successCallback, errorCallback);
 </code></pre>
 <p>Complete list of shortcut methods:</p>
 <ul>
@@ -93,6 +78,14 @@ $http.post(&#39;/someUrl&#39;, data).then(successCallback);
 <li><a href="api/ng/service/$http#jsonp">$http.jsonp</a></li>
 <li><a href="api/ng/service/$http#patch">$http.patch</a></li>
 </ul>
+<h2 id="writing-unit-tests-that-use-http">Writing Unit Tests that use $http</h2>
+<p>When unit testing (using <a href="api/ngMock">ngMock</a>), it is necessary to call
+<a href="api/ngMock/service/$httpBackend#flush">$httpBackend.flush()</a> to flush each pending
+request using trained responses.</p>
+<pre><code>$httpBackend.expectGET(...);
+$http.get(...);
+$httpBackend.flush();
+</code></pre>
 <h2 id="deprecation-notice">Deprecation Notice</h2>
 <div class="alert alert-danger">
   The <code>$http</code> legacy promise methods <code>success</code> and <code>error</code> have been deprecated.
@@ -222,7 +215,7 @@ adding them to the <code>$httpProvider.interceptors</code> array. The factory is
 injected with dependencies (if specified) and returns the interceptor.</p>
 <p>There are two kinds of interceptors (and two kinds of rejection interceptors):</p>
 <ul>
-<li><code>request</code>: interceptors get called with a http <code>config</code> object. The function is free to
+<li><code>request</code>: interceptors get called with a http <a href="api/ng/service/$http#usage">config</a> object. The function is free to
 modify the <code>config</code> object or create a new one. The function needs to return the <code>config</code>
 object directly, or a promise containing the <code>config</code> or a new <code>config</code> object.</li>
 <li><code>requestError</code>: interceptor gets called when a previous interceptor threw an error or
