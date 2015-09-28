@@ -1700,7 +1700,7 @@
   {
     "path": "api/ng/provider/$interpolateProvider",
     "titleWords": "$interpolateProvider",
-    "keywords": "$interpolateprovider and api configuring defaults example-example108 for html interpolation markup module ng partials provider the to used",
+    "keywords": "$interpolateprovider alert alert-danger an and angular any api bugs cause class configuring cross dangerous defaults different embedding escape example-example108 expressions feature for html in interpolation is jinja language languages markup mix mixing module ng not other partials provider python safely scripting security site so sometimes template templating the this to used user-controlled values will within wrap",
     "members": "endsymbol startsymbol"
   },
   {

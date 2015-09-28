@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.0-build.4291+sha.693021c
+ * @license AngularJS v1.5.0-build.4292+sha.144bcc8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -57,7 +57,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.5.0-build.4291+sha.693021c/' +
+    message += '\nhttp://errors.angularjs.org/1.5.0-build.4292+sha.144bcc8/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -2380,7 +2380,7 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.5.0-build.4291+sha.693021c',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.5.0-build.4292+sha.144bcc8',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 5,
   dot: 0,
@@ -10863,6 +10863,14 @@ $interpolateMinErr.interr = function(text, err) {
  * @description
  *
  * Used for configuring the interpolation markup. Defaults to `{{` and `}}`.
+ *
+ * <div class="alert alert-danger">
+ * This feature is sometimes used to mix different markup languages, e.g. to wrap an Angular
+ * template within a Python Jinja template (or any other template language). Mixing templating
+ * languages is **very dangerous**. The embedding template language will not safely escape Angular
+ * expressions, so any user-controlled values in the template will cause Cross Site Scripting (XSS)
+ * security bugs!
+ * </div>
  *
  * @example
 <example module="customInterpolationApp">
