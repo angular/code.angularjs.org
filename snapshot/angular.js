@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.0-build.4292+sha.144bcc8
+ * @license AngularJS v1.5.0-build.4293+sha.1c2d2e8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -57,7 +57,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.5.0-build.4292+sha.144bcc8/' +
+    message += '\nhttp://errors.angularjs.org/1.5.0-build.4293+sha.1c2d2e8/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -2380,7 +2380,7 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.5.0-build.4292+sha.144bcc8',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.5.0-build.4293+sha.1c2d2e8',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 5,
   dot: 0,
@@ -16876,6 +16876,11 @@ function $SceDelegateProvider() {
      * Takes the result of a {@link ng.$sceDelegate#trustAs `$sceDelegate.trustAs`} call and
      * returns the originally supplied value if the queried context type is a supertype of the
      * created type.  If this condition isn't satisfied, throws an exception.
+     *
+     * <div class="alert alert-danger">
+     * Disabling auto-escaping is extremely dangerous, it usually creates a Cross Site Scripting
+     * (XSS) vulnerability in your application.
+     * </div>
      *
      * @param {string} type The kind of context in which this value is to be used.
      * @param {*} maybeTrusted The result of a prior {@link ng.$sceDelegate#trustAs
