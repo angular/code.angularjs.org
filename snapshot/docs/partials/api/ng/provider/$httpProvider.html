@@ -110,7 +110,7 @@ concurrently (common during application bootstrap).</p>
 </h3>
     <div><p>Configure <code>$http</code> service to return promises without the shorthand methods <code>success</code> and <code>error</code>.
 This should be used to make sure that applications work without these methods.</p>
-<p>Defaults to false. If no value is specified, returns the current configured value.</p>
+<p>Defaults to true. If no value is specified, returns the current configured value.</p>
 </div>
 
     
@@ -136,7 +136,7 @@ This should be used to make sure that applications work without these methods.</
         <a href="" class="label type-hint type-hint-boolean">boolean</a>
       </td>
       <td>
-        <p>If true, <code>$http</code> will return a normal promise without the <code>success</code> and <code>error</code> methods.</p>
+        <p>If true, <code>$http</code> will return a promise with the deprecated legacy <code>success</code> and <code>error</code> methods.</p>
 
         
       </td>
