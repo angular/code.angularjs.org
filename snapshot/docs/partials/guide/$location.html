@@ -306,13 +306,13 @@ legacy browsers and hashbang links in modern browser:</p>
 <li>Older browsers will redirect regular URLs to hashbang URLs.</li>
 </ul>
 <h3 id="example">Example</h3>
-<p>Here you can see two <code>$location</code> instances, both in <strong>Html5 mode</strong>, but on different browsers, so
-that you can see the differences. These <code>$location</code> services are connected to a fake browsers. Each
-input represents the address bar of the browser.</p>
-<p>Note that when you type hashbang url into first browser (or vice versa) it doesn&#39;t rewrite /
+<p>Here you can see two <code>$location</code> instances that show the difference between <strong>Html5 mode</strong> and <strong>Html5 Fallback mode</strong>.
+Note that to simulate different levels of browser support, the <code>$location</code> instances are connected to
+a fakeBrowser service, which you don&#39;t have to set up in actual projects.</p>
+<p>Note that when you type hashbang url into the first browser (or vice versa) it doesn&#39;t rewrite /
 redirect to regular / hashbang url, as this conversion happens only during parsing the initial URL
 = on page reload.</p>
-<p>In these examples we use <code>&lt;base href=&quot;/base/index.html&quot; /&gt;</code></p>
+<p>In these examples we use <code>&lt;base href=&quot;/base/index.html&quot; /&gt;</code>. The inputs represent the address bar of the browser.</p>
 <h4 id="browser-in-html5-mode">Browser in HTML5 mode</h4>
 <p>
 
@@ -338,7 +338,7 @@ redirect to regular / hashbang url, as this conversion happens only during parsi
       name="app.js"
       language="js"
       type="js">
-      <pre><code>angular.module(&#39;html5-mode&#39;, [&#39;fake-browser&#39;, &#39;address-bar&#39;])&#10;&#10;.constant(&#39;initUrl&#39;, &#39;http://www.example.com/base/path?a=b#h&#39;)&#10;.constant(&#39;baseHref&#39;, &#39;/base/index.html&#39;)&#10;.value(&#39;$sniffer&#39;, { history: true })&#10;&#10;.controller(&quot;LocationController&quot;, function($scope, $location) {&#10;  $scope.$location = {};&#10;  angular.forEach(&quot;protocol host port path search hash&quot;.split(&quot; &quot;), function(method){&#10;   $scope.$location[method] = function(){&#10;     var result = $location[method].call($location);&#10;     return angular.isObject(result) ? angular.toJson(result) : result;&#10;   };&#10;  });&#10;})&#10;&#10;.config(function($locationProvider) {&#10;  $locationProvider.html5Mode(true).hashPrefix(&#39;!&#39;);&#10;})&#10;&#10;.run(function($rootElement) {&#10;  $rootElement.on(&#39;click&#39;, function(e) { e.stopPropagation(); });&#10;});</code></pre>
+      <pre><code>angular.module(&#39;html5-mode&#39;, [&#39;fake-browser&#39;, &#39;address-bar&#39;])&#10;&#10;// Configure the fakeBrowser. Do not set these values in actual projects.&#10;.constant(&#39;initUrl&#39;, &#39;http://www.example.com/base/path?a=b#h&#39;)&#10;.constant(&#39;baseHref&#39;, &#39;/base/index.html&#39;)&#10;.value(&#39;$sniffer&#39;, { history: true })&#10;&#10;.controller(&quot;LocationController&quot;, function($scope, $location) {&#10;  $scope.$location = {};&#10;  angular.forEach(&quot;protocol host port path search hash&quot;.split(&quot; &quot;), function(method){&#10;   $scope.$location[method] = function(){&#10;     var result = $location[method].call($location);&#10;     return angular.isObject(result) ? angular.toJson(result) : result;&#10;   };&#10;  });&#10;})&#10;&#10;.config(function($locationProvider) {&#10;  $locationProvider.html5Mode(true).hashPrefix(&#39;!&#39;);&#10;})&#10;&#10;.run(function($rootElement) {&#10;  $rootElement.on(&#39;click&#39;, function(e) { e.stopPropagation(); });&#10;});</code></pre>
     </div>
   
     <div class="runnable-example-file" 
@@ -394,7 +394,7 @@ redirect to regular / hashbang url, as this conversion happens only during parsi
       name="app.js"
       language="js"
       type="js">
-      <pre><code>angular.module(&#39;hashbang-mode&#39;, [&#39;fake-browser&#39;, &#39;address-bar&#39;])&#10;&#10;.constant(&#39;initUrl&#39;, &#39;http://www.example.com/base/index.html#!/path?a=b#h&#39;)&#10;.constant(&#39;baseHref&#39;, &#39;/base/index.html&#39;)&#10;.value(&#39;$sniffer&#39;, { history: false })&#10;&#10;.config(function($locationProvider) {&#10;  $locationProvider.html5Mode(true).hashPrefix(&#39;!&#39;);&#10;})&#10;&#10;.controller(&quot;LocationController&quot;, function($scope, $location) {&#10;  $scope.$location = {};&#10;  angular.forEach(&quot;protocol host port path search hash&quot;.split(&quot; &quot;), function(method){&#10;    $scope.$location[method] = function(){&#10;      var result = $location[method].call($location);&#10;      return angular.isObject(result) ? angular.toJson(result) : result;&#10;    };&#10;  });&#10;})&#10;&#10;.run(function($rootElement) {&#10;  $rootElement.on(&#39;click&#39;, function(e) {&#10;    e.stopPropagation();&#10;  });&#10;});</code></pre>
+      <pre><code>angular.module(&#39;hashbang-mode&#39;, [&#39;fake-browser&#39;, &#39;address-bar&#39;])&#10;&#10;// Configure the fakeBrowser. Do not set these values in actual projects.&#10;.constant(&#39;initUrl&#39;, &#39;http://www.example.com/base/index.html#!/path?a=b#h&#39;)&#10;.constant(&#39;baseHref&#39;, &#39;/base/index.html&#39;)&#10;.value(&#39;$sniffer&#39;, { history: false })&#10;&#10;.config(function($locationProvider) {&#10;  $locationProvider.html5Mode(true).hashPrefix(&#39;!&#39;);&#10;})&#10;&#10;.controller(&quot;LocationController&quot;, function($scope, $location) {&#10;  $scope.$location = {};&#10;  angular.forEach(&quot;protocol host port path search hash&quot;.split(&quot; &quot;), function(method){&#10;    $scope.$location[method] = function(){&#10;      var result = $location[method].call($location);&#10;      return angular.isObject(result) ? angular.toJson(result) : result;&#10;    };&#10;  });&#10;})&#10;&#10;.run(function($rootElement) {&#10;  $rootElement.on(&#39;click&#39;, function(e) {&#10;    e.stopPropagation();&#10;  });&#10;});</code></pre>
     </div>
   
     <div class="runnable-example-file" 
