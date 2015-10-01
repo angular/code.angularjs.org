@@ -7,15 +7,15 @@ angular.module('versionsData', [])
   "patch": 0,
   "prerelease": [
     "build",
-    "4294"
+    "4295"
   ],
-  "build": "sha.6b123a0",
-  "version": "1.5.0-build.4294",
+  "build": "sha.00778aa",
+  "version": "1.5.0-build.4295",
   "codeName": "snapshot",
   "isSnapshot": true,
-  "full": "1.5.0-build.4294+sha.6b123a0",
+  "full": "1.5.0-build.4295+sha.00778aa",
   "branch": "master",
-  "commitSHA": "6b123a0419d6cd2009f148e2f1c6be3b5465373f"
+  "commitSHA": "00778aa239266c46d3f539a0c19b8a26cb2d7869"
 })
   .value('NG_VERSIONS', [
   {
@@ -25,15 +25,15 @@ angular.module('versionsData', [])
     "patch": 0,
     "prerelease": [
       "build",
-      "4294"
+      "4295"
     ],
-    "build": "sha.6b123a0",
-    "version": "1.5.0-build.4294",
+    "build": "sha.00778aa",
+    "version": "1.5.0-build.4295",
     "codeName": "snapshot",
     "isSnapshot": true,
-    "full": "1.5.0-build.4294+sha.6b123a0",
+    "full": "1.5.0-build.4295+sha.00778aa",
     "branch": "master",
-    "commitSHA": "6b123a0419d6cd2009f148e2f1c6be3b5465373f"
+    "commitSHA": "00778aa239266c46d3f539a0c19b8a26cb2d7869"
   },
   {
     "raw": "v1.5.0-beta.1",
@@ -60,6 +60,16 @@ angular.module('versionsData', [])
     "build": [],
     "version": "1.5.0-beta.0",
     "docsUrl": "http://code.angularjs.org/1.5.0-beta.0/docs"
+  },
+  {
+    "raw": "v1.4.7",
+    "major": 1,
+    "minor": 4,
+    "patch": 7,
+    "prerelease": [],
+    "build": [],
+    "version": "1.4.7",
+    "docsUrl": "http://code.angularjs.org/1.4.7/docs"
   },
   {
     "raw": "v1.4.6",
@@ -260,6 +270,16 @@ angular.module('versionsData', [])
     "build": [],
     "version": "1.4.0-beta.0",
     "docsUrl": "http://code.angularjs.org/1.4.0-beta.0/docs"
+  },
+  {
+    "raw": "v1.3.20",
+    "major": 1,
+    "minor": 3,
+    "patch": 20,
+    "prerelease": [],
+    "build": [],
+    "version": "1.3.20",
+    "docsUrl": "http://code.angularjs.org/1.3.20/docs"
   },
   {
     "raw": "v1.3.19",
@@ -785,6 +805,16 @@ angular.module('versionsData', [])
     "build": [],
     "version": "1.3.0-beta.1",
     "docsUrl": "http://code.angularjs.org/1.3.0-beta.1/docs"
+  },
+  {
+    "raw": "v1.2.29",
+    "major": 1,
+    "minor": 2,
+    "patch": 29,
+    "prerelease": [],
+    "build": [],
+    "version": "1.2.29",
+    "docsUrl": "http://code.angularjs.org/1.2.29/docs"
   },
   {
     "raw": "v1.2.28",
