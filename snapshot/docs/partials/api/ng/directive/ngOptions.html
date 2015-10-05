@@ -45,8 +45,8 @@ the options expression. This allows ngOptions to trigger a re-rendering of the o
 object/collection has not changed identity but only a property on the object or an item in the collection
 changes.</p>
 <p>Note that <code>$watchCollection</code> does a shallow comparison of the properties of the object (or the items in the collection
-if the model is an array). This means that changing a property deeper inside the object/collection that the
-first level will not trigger a re-rendering.</p>
+if the model is an array). This means that changing a property deeper than the first level inside the
+object/collection will not trigger a re-rendering.</p>
 <h2 id="-select-as-"><code>select</code> <strong><code>as</code></strong></h2>
 <p>Using <code>select</code> <strong><code>as</code></strong> will bind the result of the <code>select</code> expression to the model, but
 the value of the <code>&lt;select&gt;</code> and <code>&lt;option&gt;</code> html elements will be either the index (for array data sources)
