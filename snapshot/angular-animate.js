@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.0-build.4303+sha.00bf218
+ * @license AngularJS v1.5.0-build.4304+sha.b9ab887
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -3531,13 +3531,12 @@ var $$AnimationProvider = ['$animateProvider', function($animateProvider) {
  * ```js
  * myModule.animation('.slide', ['$animateCss', function($animateCss) {
  *   return {
- *     enter: function(element, doneFn) {
+ *     enter: function(element) {
 *        // this will trigger `.slide.ng-enter` and `.slide.ng-enter-active`.
- *       var runner = $animateCss(element, {
+ *       return $animateCss(element, {
  *         event: 'enter',
  *         structural: true
- *       }).start();
-*        runner.done(doneFn);
+ *       });
  *     }
  *   }
  * }]);
@@ -3552,16 +3551,14 @@ var $$AnimationProvider = ['$animateProvider', function($animateProvider) {
  * ```js
  * myModule.animation('.slide', ['$animateCss', function($animateCss) {
  *   return {
- *     enter: function(element, doneFn) {
- *       var runner = $animateCss(element, {
+ *     enter: function(element) {
+ *       return $animateCss(element, {
  *         event: 'enter',
  *         structural: true,
  *         addClass: 'maroon-setting',
  *         from: { height:0 },
  *         to: { height: 200 }
- *       }).start();
- *
- *       runner.done(doneFn);
+ *       });
  *     }
  *   }
  * }]);

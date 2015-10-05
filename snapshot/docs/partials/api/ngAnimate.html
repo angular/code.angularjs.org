@@ -345,13 +345,12 @@ lack of CSS animations by using the <code>$animateCss</code> service to trigger 
 our own JS-based animation code:</p>
 <pre><code class="lang-js">myModule.animation(&#39;.slide&#39;, [&#39;$animateCss&#39;, function($animateCss) {
   return {
-    enter: function(element, doneFn) {
+    enter: function(element) {
        // this will trigger `.slide.ng-enter` and `.slide.ng-enter-active`.
-      var runner = $animateCss(element, {
+      return $animateCss(element, {
         event: &#39;enter&#39;,
         structural: true
-      }).start();
-       runner.done(doneFn);
+      });
     }
   }
 }]);
@@ -362,16 +361,14 @@ keyframe animation. For example if we wanted to animate the height of an element
 data into <code>$animateCss</code> directly:</p>
 <pre><code class="lang-js">myModule.animation(&#39;.slide&#39;, [&#39;$animateCss&#39;, function($animateCss) {
   return {
-    enter: function(element, doneFn) {
-      var runner = $animateCss(element, {
+    enter: function(element) {
+      return $animateCss(element, {
         event: &#39;enter&#39;,
         structural: true,
         addClass: &#39;maroon-setting&#39;,
         from: { height:0 },
         to: { height: 200 }
-      }).start();
-
-      runner.done(doneFn);
+      });
     }
   }
 }]);
