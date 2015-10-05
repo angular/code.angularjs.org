@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.0-build.4300+sha.f02811f
+ * @license AngularJS v1.5.0-build.4301+sha.51a27c0
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -2289,16 +2289,21 @@ if (window.jasmine || window.mocha) {
       if (currentSpec.$injector) {
         throw new Error('Injector already created, can not register a module!');
       } else {
-        var modules = currentSpec.$modules || (currentSpec.$modules = []);
+        var fn, modules = currentSpec.$modules || (currentSpec.$modules = []);
         angular.forEach(moduleFns, function(module) {
           if (angular.isObject(module) && !angular.isArray(module)) {
-            modules.push(function($provide) {
+            fn = function($provide) {
               angular.forEach(module, function(value, key) {
                 $provide.value(key, value);
               });
-            });
+            };
           } else {
-            modules.push(module);
+            fn = module;
+          }
+          if (currentSpec.$providerInjector) {
+            currentSpec.$providerInjector.invoke(fn);
+          } else {
+            modules.push(fn);
           }
         });
       }
@@ -2412,6 +2417,9 @@ if (window.jasmine || window.mocha) {
     function workFn() {
       var modules = currentSpec.$modules || [];
       var strictDi = !!currentSpec.$injectorStrict;
+      modules.unshift(function($injector) {
+        currentSpec.$providerInjector = $injector;
+      });
       modules.unshift('ngMock');
       modules.unshift('ng');
       var injector = currentSpec.$injector;
