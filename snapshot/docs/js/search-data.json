@@ -1094,7 +1094,7 @@
   {
     "path": "api/ng/service/$animate",
     "titleWords": "$animate",
-    "keywords": "$animate about active all also always an and animation animations api application are as be because behavior by click default detected directives do doesn dom dom-related enabled enabling ensure executing exposes for functional heavy here hooks however html included is isn it learn leave lifting methods module more move ng ng- nganimate ngclass nghide ngmessages ngshow of once only operation operations other page partials perform procedures provide recommended runs series service structural such support that the their then they this to trigger triggered triggers used utility visit when will with within",
+    "keywords": "$animate about active all also always an and animation animations any api application are as be because behavior by click default detected directives do doesn dom dom-related enabled enabling ensure executing exposes for functional heavy here hooks however html included is isn it learn leave lifting methods module more move ng ng- nganimate ngclass nghide ngmessages ngshow of once only operation operations other page partials perform procedures provide recommended runs series service structural such support that the their then they this to trigger triggered triggers used utility visit when will with within",
     "members": "addclass animate cancel enabled enter leave move off on pin removeclass setclass"
   },
   {
