@@ -9190,7 +9190,7 @@ return jQuery;
 }));
 
 /**
- * @license AngularJS v1.5.0-build.4309+sha.fd83d37
+ * @license AngularJS v1.5.0-build.4310+sha.0c8a9a0
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -9249,7 +9249,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.5.0-build.4309+sha.fd83d37/' +
+    message += '\nhttp://errors.angularjs.org/1.5.0-build.4310+sha.0c8a9a0/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -11272,7 +11272,7 @@ function setupModuleLoader(window) {
            * @param {string} name constant name
            * @param {*} object Constant value.
            * @description
-           * Because the constant are fixed, they get applied before other provide methods.
+           * Because the constants are fixed, they get applied before other provide methods.
            * See {@link auto.$provide#constant $provide.constant()}.
            */
           constant: invokeLater('$provide', 'constant', 'unshift'),
@@ -11572,7 +11572,7 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.5.0-build.4309+sha.fd83d37',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.5.0-build.4310+sha.0c8a9a0',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 5,
   dot: 0,
