@@ -37,13 +37,20 @@ directive.</p>
 be nested into the <code>&lt;select&gt;</code> element. This element will then represent the <code>null</code> or &quot;not selected&quot;
 option. See example below for demonstration.</p>
 <h2 id="complex-models-objects-or-collections-">Complex Models (objects or collections)</h2>
-<p><strong>Note:</strong> By default, <code>ngModel</code> watches the model by reference, not value. This is important when
-binding any input directive to a model that is an object or a collection.</p>
-<p>Since this is a common situation for <code>ngOptions</code> the directive additionally watches the model using
-<code>$watchCollection</code> when the select has the <code>multiple</code> attribute or when there is a <code>track by</code> clause in
-the options expression. This allows ngOptions to trigger a re-rendering of the options even if the actual
-object/collection has not changed identity but only a property on the object or an item in the collection
-changes.</p>
+<p>By default, <code>ngModel</code> watches the model by reference, not value. This is important to know when
+binding the select to a model that is an object or a collection.</p>
+<p>One issue occurs if you want to preselect an option. For example, if you set
+the model to an object that is equal to an object in your collection, <code>ngOptions</code> won&#39;t be able to set the selection,
+because the objects are not identical. So by default, you should always reference the item in your collection
+for preselections, e.g.: <code>$scope.selected = $scope.collection[3]</code>.</p>
+<p>Another solution is to use a <code>track by</code> clause, because then <code>ngOptions</code> will track the identity
+of the item not by reference, but by the result of the <code>track by</code> expression. For example, if your
+collection items have an id property, you would <code>track by item.id</code>.</p>
+<p>A different issue with objects or collections is that ngModel won&#39;t detect if an object property or
+a collection item changes. For that reason, <code>ngOptions</code> additionally watches the model using
+<code>$watchCollection</code>, when the expression contains a <code>track by</code> clause or the the select has the <code>multiple</code> attribute.
+This allows ngOptions to trigger a re-rendering of the options even if the actual object/collection
+has not changed identity, but only a property on the object or an item in the collection changes.</p>
 <p>Note that <code>$watchCollection</code> does a shallow comparison of the properties of the object (or the items in the collection
 if the model is an array). This means that changing a property deeper than the first level inside the
 object/collection will not trigger a re-rendering.</p>
