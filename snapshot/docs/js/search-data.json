@@ -2072,7 +2072,7 @@
   {
     "path": "api/ngSanitize/filter/linky",
     "titleWords": "linky",
-    "keywords": "address and api be email example-example114 filter finds frame function html html-linkified http in input installed into links linky linky_expression module named ng-bind-html ngsanitize open or partials plain requires supports target text the them to turns window",
+    "keywords": "$sanitize _blank add address and api as attributes be can contains custom element email example-example114 filter finds for frame function html html-linkified http if in input installed into it link links linky linky_expression map module named ng-bind-html ngsanitize object of one open or overrides parameter partials plain requires returns sanitized supports takes target text the them to turns url value window",
     "members": ""
   },
   {
