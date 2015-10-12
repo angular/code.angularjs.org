@@ -2231,11 +2231,14 @@ angular.module('pagesData', [])
   "examples/example-example94": {
     "path": "examples/example-example94"
   },
+  "examples/example-simpleTranscludeExample": {
+    "path": "examples/example-simpleTranscludeExample"
+  },
+  "examples/example-multiSlotTranscludeExample": {
+    "path": "examples/example-multiSlotTranscludeExample"
+  },
   "examples/example-example95": {
     "path": "examples/example-example95"
-  },
-  "examples/example-example96": {
-    "path": "examples/example-example96"
   },
   "examples/example-static-select": {
     "path": "examples/example-static-select"
@@ -2249,11 +2252,14 @@ angular.module('pagesData', [])
   "examples/example-select-with-non-string-options": {
     "path": "examples/example-select-with-non-string-options"
   },
-  "examples/example-example97": {
-    "path": "examples/example-example97"
+  "examples/example-example96": {
+    "path": "examples/example-example96"
   },
   "examples/example-$filter": {
     "path": "examples/example-$filter"
+  },
+  "examples/example-example97": {
+    "path": "examples/example-example97"
   },
   "examples/example-example98": {
     "path": "examples/example-example98"
@@ -2279,11 +2285,11 @@ angular.module('pagesData', [])
   "examples/example-example105": {
     "path": "examples/example-example105"
   },
-  "examples/example-example106": {
-    "path": "examples/example-example106"
-  },
   "http-hello.html": {
     "path": "http-hello.html"
+  },
+  "examples/example-example106": {
+    "path": "examples/example-example106"
   },
   "examples/example-example107": {
     "path": "examples/example-example107"
@@ -2297,17 +2303,14 @@ angular.module('pagesData', [])
   "examples/example-example110": {
     "path": "examples/example-example110"
   },
-  "examples/example-example111": {
-    "path": "examples/example-example111"
-  },
   "test_data.json": {
     "path": "test_data.json"
   },
+  "examples/example-example111": {
+    "path": "examples/example-example111"
+  },
   "examples/example-example112": {
     "path": "examples/example-example112"
-  },
-  "examples/example-example113": {
-    "path": "examples/example-example113"
   },
   "home.html": {
     "path": "home.html"
@@ -2336,6 +2339,9 @@ angular.module('pagesData', [])
   "examples/example-$route-service": {
     "path": "examples/example-$route-service"
   },
+  "examples/example-example113": {
+    "path": "examples/example-example113"
+  },
   "examples/example-example114": {
     "path": "examples/example-example114"
   },
@@ -2347,9 +2353,6 @@ angular.module('pagesData', [])
   },
   "examples/example-example117": {
     "path": "examples/example-example117"
-  },
-  "examples/example-example118": {
-    "path": "examples/example-example118"
   },
   "error/$animate": {
     "name": "$animate",
