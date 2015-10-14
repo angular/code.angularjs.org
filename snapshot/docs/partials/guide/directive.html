@@ -595,15 +595,24 @@ want to reuse throughout your app.
 <h3 id="creating-a-directive-that-manipulates-the-dom">Creating a Directive that Manipulates the DOM</h3>
 <p>In this example we will build a directive that displays the current time.
 Once a second, it updates the DOM to reflect the current time.</p>
-<p>Directives that want to modify the DOM typically use the <code>link</code> option.
-<code>link</code> takes a function with the following signature, <code>function link(scope, element, attrs) { ... }</code>
-where:</p>
+<p>Directives that want to modify the DOM typically use the <code>link</code> option to register DOM listeners
+as well as update the DOM. It is executed after the template has been cloned and is where
+directive logic will be put.</p>
+<p> <code>link</code> takes a function with the following signature,
+<code>function link(scope, element, attrs, controller, transcludeFn) { ... }</code>, where:</p>
 <ul>
 <li><code>scope</code> is an Angular scope object.</li>
 <li><code>element</code> is the jqLite-wrapped element that this directive matches.</li>
 <li><code>attrs</code> is a hash object with key-value pairs of normalized attribute names and their
 corresponding attribute values.</li>
+<li><code>controller</code> is the directive&#39;s required controller instance(s) or it&#39;s own controller (if any).
+The exact value depends on the directive&#39;s require property.</li>
+<li><code>transcludeFn</code> is a transclude linking function pre-bound to the correct transclusion scope.</li>
 </ul>
+<div class="alert alert-info">
+For more details on the <code>link</code> option refer to the <a href="api/ng/service/$compile#-link-"><code>$compile</code> API</a> page.
+</div>
+
 <p>In our <code>link</code> function, we want to update the displayed time once a second, or whenever a user
 changes the time formatting string that our directive binds to. We will use the <code>$interval</code> service
 to call a handler on a regular basis. This is easier than using <code>$timeout</code> but also works better with
