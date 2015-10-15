@@ -9190,7 +9190,7 @@ return jQuery;
 }));
 
 /**
- * @license AngularJS v1.5.0-build.4323+sha.1caf0b6
+ * @license AngularJS v1.5.0-build.4324+sha.469b14a
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -9249,7 +9249,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.5.0-build.4323+sha.1caf0b6/' +
+    message += '\nhttp://errors.angularjs.org/1.5.0-build.4324+sha.469b14a/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -11572,7 +11572,7 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.5.0-build.4323+sha.1caf0b6',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.5.0-build.4324+sha.469b14a',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 5,
   dot: 0,
@@ -17270,7 +17270,6 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
               // Add the matching elements into their slot
               forEach($compileNode.children(), function(node) {
                 var slotName = slotNames[directiveNormalize(nodeName_(node))];
-                var slot = $template;
                 if (slotName) {
                   filledSlots[slotName] = true;
                   slots[slotName].push(node);
