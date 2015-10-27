@@ -61,13 +61,11 @@ or property name (for object data sources) of the value within the collection. I
 is used, the result of that expression will be set as the value of the <code>option</code> and <code>select</code> elements.</p>
 <h3 id="-select-as-and-track-by-"><code>select</code> <strong><code>as</code></strong> and <strong><code>track by</code></strong></h3>
 <div class="alert alert-warning">
-Do not use <code>select</code> <strong><code>as</code></strong> and <strong><code>track by</code></strong> in the same expression. They are not designed to work together.
+Be careful when using <code>select</code> <strong><code>as</code></strong> and <strong><code>track by</code></strong> in the same expression.
 </div>
 
-<p>Consider the following example:</p>
-<pre><code class="lang-html">&lt;select ng-options=&quot;item.subItem as item.label for item in values track by item.id&quot; ng-model=&quot;selected&quot;&gt;&lt;/select&gt;
-</code></pre>
-<pre><code class="lang-js">$scope.values = [{
+<p>Given this array of items on the $scope:</p>
+<pre><code class="lang-js">$scope.items = [{
   id: 1,
   label: &#39;aLabel&#39;,
   subItem: { name: &#39;aSubItem&#39; }
@@ -76,20 +74,24 @@ Do not use <code>select</code> <strong><code>as</code></strong> and <strong><cod
   label: &#39;bLabel&#39;,
   subItem: { name: &#39;bSubItem&#39; }
 }];
-
-$scope.selected = { name: &#39;aSubItem&#39; };
 </code></pre>
-<p>With the purpose of preserving the selection, the <strong><code>track by</code></strong> expression is always applied to the element
-of the data source (to <code>item</code> in this example). To calculate whether an element is selected, we do the
-following:</p>
-<ol>
-<li>Apply <strong><code>track by</code></strong> to the elements in the array. In the example: <code>[1, 2]</code></li>
-<li>Apply <strong><code>track by</code></strong> to the already selected value in <code>ngModel</code>.
-In the example: this is not possible as <strong><code>track by</code></strong> refers to <code>item.id</code>, but the selected
-value from <code>ngModel</code> is <code>{name: &#39;aSubItem&#39;}</code>, so the <strong><code>track by</code></strong> expression is applied to
-a wrong object, the selected element can&#39;t be found, <code>&lt;select&gt;</code> is always reset to the &quot;not
-selected&quot; option.</li>
-</ol>
+<p>This will work:</p>
+<pre><code class="lang-html">&lt;select ng-options=&quot;item as item.label for item in items track by item.id&quot; ng-model=&quot;selected&quot;&gt;&lt;/select&gt;
+</code></pre>
+<pre><code class="lang-js">$scope.selected = $scope.items[0];
+</code></pre>
+<p>but this will not work:</p>
+<pre><code class="lang-html">&lt;select ng-options=&quot;item.subItem as item.label for item in items track by item.id&quot; ng-model=&quot;selected&quot;&gt;&lt;/select&gt;
+</code></pre>
+<pre><code class="lang-js">$scope.selected = $scope.items[0].subItem;
+</code></pre>
+<p>In both examples, the <strong><code>track by</code></strong> expression is applied successfully to each <code>item</code> in the
+<code>items</code> array. Because the selected option has been set programmatically in the controller, the
+<strong><code>track by</code></strong> expression is also applied to the <code>ngModel</code> value. In the first example, the
+<code>ngModel</code> value is <code>items[0]</code> and the <strong><code>track by</code></strong> expression evaluates to <code>items[0].id</code> with
+no issue. In the second example, the <code>ngModel</code> value is <code>items[0].subItem</code> and the <strong><code>track by</code></strong>
+expression evaluates to <code>items[0].subItem.id</code> (which is undefined). As a result, the model value
+is not matched against any <code>&lt;option&gt;</code> and the <code>&lt;select&gt;</code> appears as having no selected value.</p>
 
 </div>
 
