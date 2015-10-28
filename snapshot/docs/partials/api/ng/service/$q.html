@@ -59,6 +59,7 @@ promise.then(function(greeting) {
 });
 </code></pre>
 <p>Note: progress/notify callbacks are not currently supported via the ES6-style interface.</p>
+<p>Note: unlike ES6 behaviour, an exception thrown in the constructor function will NOT implicitly reject the promise.</p>
 <p>However, the more traditional CommonJS-style usage is still available, and documented below.</p>
 <p><a href="http://wiki.commonjs.org/wiki/Promises">The CommonJS Promise proposal</a> describes a promise as an
 interface for interacting with an object that represents the result of an action that is
