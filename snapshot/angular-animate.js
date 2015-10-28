@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.0-build.4339+sha.53cb88a
+ * @license AngularJS v1.5.0-build.4340+sha.395f3ec
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -7,7 +7,6 @@
 
 /* jshint ignore:start */
 var noop        = angular.noop;
-var copy        = angular.copy;
 var extend      = angular.extend;
 var jqLite      = angular.element;
 var forEach     = angular.forEach;
@@ -883,12 +882,7 @@ var $AnimateCssProvider = ['$animateProvider', function($animateProvider) {
       return timings;
     }
 
-    return function init(element, initialOptions) {
-      // we always make a copy of the options since
-      // there should never be any side effects on
-      // the input data when running `$animateCss`.
-      var options = copy(initialOptions);
-
+    return function init(element, options) {
       var restoreStyles = {};
       var node = getDomNode(element);
       if (!node
@@ -2237,12 +2231,7 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
       }
     };
 
-    function queueAnimation(element, event, initialOptions) {
-      // we always make a copy of the options since
-      // there should never be any side effects on
-      // the input data when running `$animateCss`.
-      var options = copy(initialOptions);
-
+    function queueAnimation(element, event, options) {
       var node, parent;
       element = stripCommentsFromElement(element);
       if (element) {
