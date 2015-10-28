@@ -626,6 +626,11 @@ angular.module('navData', [])
             "type": "provider"
           },
           {
+            "name": "$templateRequestProvider",
+            "href": "api/ng/provider/$templateRequestProvider",
+            "type": "provider"
+          },
+          {
             "name": "service",
             "type": "section",
             "href": "api/ng/service"

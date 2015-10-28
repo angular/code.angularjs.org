@@ -1511,6 +1511,11 @@ angular.module('pagesData', [])
     "area": "api",
     "path": "api/ng/service/$sce"
   },
+  "api/ng/provider/$templateRequestProvider": {
+    "name": "$templateRequestProvider",
+    "area": "api",
+    "path": "api/ng/provider/$templateRequestProvider"
+  },
   "api/ng/service/$templateRequest": {
     "name": "$templateRequest",
     "area": "api",

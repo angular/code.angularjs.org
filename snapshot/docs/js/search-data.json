@@ -1812,9 +1812,15 @@
     "members": "gettrusted gettrustedcss gettrustedhtml gettrustedjs gettrustedresourceurl gettrustedurl isenabled parseas parseascss parseashtml parseasjs parseasresourceurl parseasurl trustas trustashtml trustasjs trustasresourceurl trustasurl"
   },
   {
+    "path": "api/ng/provider/$templateRequestProvider",
+    "titleWords": "$templateRequestProvider",
+    "keywords": "$templaterequestprovider accept api configure header html is module ng partials provider requesting sent server template that the to used when",
+    "members": "httpoptions"
+  },
+  {
     "path": "api/ng/service/$templateRequest",
     "titleWords": "$templateRequest",
-    "keywords": "$compile $http $sce $templatecache $templaterequest $templaterequestprovider amount and api are be being by call can checks contents data downloaded downloads empty entry error exception fails for function gettrustedurl given has html http if ignore ignorerequesterror inside is matching module ng not note of omitted or parameter partials pending promise provided request requests response runs security service setting so stores string success template that the then thrown thwarted to total totalpendingrequests tpl true trusted type upon url using when whether will",
+    "keywords": "$compile $get $http $sce $templatecache $templaterequest $templaterequestprovider accept amount and api are as be being by call can checks configure contents custom data downloaded downloads empty entry error exception fails for function gettrustedurl given has header html http httpoptions if ignore ignorerequesterror inside is matching module ng not note of omitted options or parameter partials pass pending promise provided request requests response runs security service setting so stores string success such template that the then this thrown thwarted to total totalpendingrequests tpl true trusted type upon url using via want when whether will you",
     "members": "totalpendingrequests"
   },
   {
