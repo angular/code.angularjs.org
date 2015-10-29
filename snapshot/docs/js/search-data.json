@@ -1065,7 +1065,7 @@
     "path": "api/ng/type/angular.Module",
     "titleWords": "angular.Module",
     "keywords": "angular api configuring for html interface module modules ng partials setupmoduleloader type",
-    "members": "animation config constant controller decorator directive factory filter name provider requires run service value"
+    "members": "animation component config constant controller decorator directive factory filter name provider requires run service value"
   },
   {
     "path": "api/ng/function/angular.module",
