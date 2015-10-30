@@ -1778,7 +1778,7 @@
   {
     "path": "api/ng/service/$rootScope",
     "titleWords": "$rootScope",
-    "keywords": "$rootscope $rootscopeprovider all also an and api application are between changes descendant developer emission event every facility for guide has html mechanism model module ng of on other partials provide root scope scopes see separation service single subscription the they via view watching",
+    "keywords": "$rootscope $rootscopeprovider all also and api application are between changes descendant developer emission event every facility for guide has html mechanism model module ng of on other partials provide root scope scopes see separation service single subscription the they via view watching",
     "members": ""
   },
   {
@@ -1814,7 +1814,7 @@
   {
     "path": "api/ng/provider/$templateRequestProvider",
     "titleWords": "$templateRequestProvider",
-    "keywords": "$templaterequestprovider accept api configure header html is module ng partials provider requesting sent server template that the to used when",
+    "keywords": "$http $templaterequestprovider accept api be can configure example for header html is it making module ng options partials passed provider request requesting sent server service specifying template that the to used when",
     "members": "httpoptions"
   },
   {

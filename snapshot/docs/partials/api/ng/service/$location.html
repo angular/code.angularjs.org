@@ -414,8 +414,8 @@ one or more arguments returns <code>$location</code> object itself.</p>
 
 </h3>
     <div><p>This method is getter / setter.</p>
-<p>Return hash fragment when called without any parameter.</p>
-<p>Change hash fragment when called with parameter and return <code>$location</code>.</p>
+<p>Returns the hash fragment when called without any parameters.</p>
+<p>Changes the hash fragment when called with a parameter and returns <code>$location</code>.</p>
 <pre><code class="lang-js">// given url http://example.com/#/some/path?foo=bar&amp;baz=xoxo#hashValue
 var hash = $location.hash();
 // =&gt; &quot;hashValue&quot;
@@ -475,8 +475,8 @@ var hash = $location.hash();
     <h3><p><code>replace();</code></p>
 
 </h3>
-    <div><p>If called, all changes to $location during current <code>$digest</code> will be replacing current history
-record, instead of adding new one.</p>
+    <div><p>If called, all changes to $location during the current <code>$digest</code> will replace the current history
+record, instead of adding a new one.</p>
 </div>
 
     
