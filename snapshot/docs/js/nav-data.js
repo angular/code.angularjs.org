@@ -1826,6 +1826,16 @@ angular.module('navData', [])
             "name": "orphan",
             "href": "error/ngTransclude/orphan",
             "type": "error"
+          },
+          {
+            "name": "orderBy",
+            "href": "error/orderBy",
+            "type": "section"
+          },
+          {
+            "name": "notarray",
+            "href": "error/orderBy/notarray",
+            "type": "error"
           }
         ]
       }

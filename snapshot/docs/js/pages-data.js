@@ -486,6 +486,11 @@ angular.module('pagesData', [])
     "area": "error",
     "path": "error/ngTransclude/orphan"
   },
+  "error/orderBy/notarray": {
+    "name": "notarray",
+    "area": "error",
+    "path": "error/orderBy/notarray"
+  },
   "guide/$location": {
     "name": "Using $location",
     "area": "guide",
@@ -2468,6 +2473,11 @@ angular.module('pagesData', [])
     "name": "ngTransclude",
     "area": "error",
     "path": "error/ngTransclude"
+  },
+  "error/orderBy": {
+    "name": "orderBy",
+    "area": "error",
+    "path": "error/orderBy"
   },
   ".": {
     "name": "production",
