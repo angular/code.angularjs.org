@@ -9190,7 +9190,7 @@ return jQuery;
 }));
 
 /**
- * @license AngularJS v1.5.0-build.4361+sha.15bfea8
+ * @license AngularJS v1.5.0-build.4364+sha.8be98e4
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -9249,7 +9249,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.5.0-build.4361+sha.15bfea8/' +
+    message += '\nhttp://errors.angularjs.org/1.5.0-build.4364+sha.8be98e4/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -11700,7 +11700,7 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.5.0-build.4361+sha.15bfea8',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.5.0-build.4364+sha.8be98e4',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 5,
   dot: 0,
@@ -20354,6 +20354,15 @@ function $InterpolateProvider() {
       return value;
     }
 
+    //TODO: this is the same as the constantWatchDelegate in parse.js
+    function constantWatchDelegate(scope, listener, objectEquality, constantInterp) {
+      var unwatch;
+      return unwatch = scope.$watch(function constantInterpolateWatch(scope) {
+        unwatch();
+        return constantInterp(scope);
+      }, listener, objectEquality);
+    }
+
     /**
      * @ngdoc service
      * @name $interpolate
@@ -20449,6 +20458,19 @@ function $InterpolateProvider() {
      * - `context`: evaluation context for all expressions embedded in the interpolated text
      */
     function $interpolate(text, mustHaveExpression, trustedContext, allOrNothing) {
+      // Provide a quick exit and simplified result function for text with no interpolation
+      if (!text.length || text.indexOf(startSymbol) === -1) {
+        var constantInterp;
+        if (!mustHaveExpression) {
+          var unescapedText = unescapeText(text);
+          constantInterp = valueFn(unescapedText);
+          constantInterp.exp = text;
+          constantInterp.expressions = [];
+          constantInterp.$$watchDelegate = constantWatchDelegate;
+        }
+        return constantInterp;
+      }
+
       allOrNothing = !!allOrNothing;
       var startIndex,
           endIndex,
