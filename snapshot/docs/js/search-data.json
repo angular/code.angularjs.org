@@ -2030,7 +2030,7 @@
   {
     "path": "api/ngMock/function/angular.mock.module",
     "titleWords": "angular.mock.module",
-    "keywords": "access aliases also an and angular anonymous any api are as automatically be being by code collects configuration configure created declared easy example fns for function functions html if in information initialization inject injector is it jasmine key literal loaded mocha mock module modules name ng ngmock number object of on only or partials passed published registered registers represented returned running see string tests the they this to usage used value values what when which will window with",
+    "keywords": "$provide access aliases also an and angular anonymous any api are as associate auto automatically be being by code collects configuration configure created declared each easy example fns for function functions html if information initialization inject injector is it jasmine key key-value literal loaded mocha mock module modules name ng ngmock number object of on only or pair partials passed published registered registers represented running see string tests the this to token usage used value via when which will window with",
     "members": ""
   },
   {
