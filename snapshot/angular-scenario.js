@@ -9190,7 +9190,7 @@ return jQuery;
 }));
 
 /**
- * @license AngularJS v1.5.0-build.4359+sha.f4bf744
+ * @license AngularJS v1.5.0-build.4360+sha.9b90c32
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -9249,7 +9249,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.5.0-build.4359+sha.f4bf744/' +
+    message += '\nhttp://errors.angularjs.org/1.5.0-build.4360+sha.9b90c32/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -11700,7 +11700,7 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.5.0-build.4359+sha.f4bf744',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.5.0-build.4360+sha.9b90c32',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 5,
   dot: 0,
@@ -18199,7 +18199,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
         // Copy over user data (that includes Angular's $scope etc.). Don't copy private
         // data here because there's no public interface in jQuery to do that and copying over
         // event listeners (which is the main use of private data) wouldn't work anyway.
-        jqLite(newNode).data(jqLite(firstElementToRemove).data());
+        jqLite.data(newNode, jqLite.data(firstElementToRemove));
 
         // Remove data of the replaced element. We cannot just call .remove()
         // on the element it since that would deallocate scope that is needed
