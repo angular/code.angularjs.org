@@ -82,7 +82,7 @@ used to sort the keys alphabetically.)</p>
 <p>Version 1.4 removed the alphabetic sorting. We now rely on the order returned by the browser
 when running <code>for key in myObj</code>. It seems that browsers generally follow the strategy of providing
 keys in the order in which they were defined, although there are exceptions when keys are deleted
-and reinstated. See <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/delete#Cross-browser_issues">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/delete#Cross-browser_issues</a></p>
+and reinstated. See the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/delete#Cross-browser_notes">MDN page on <code>delete</code> for more info</a>.</p>
 <p>If this is not desired, the recommended workaround is to convert your object into an array
 that is sorted into the order that you prefer before providing it to <code>ngRepeat</code>.  You could
 do this with a filter such as <a href="http://ngmodules.org/modules/angular-toArrayFilter">toArrayFilter</a>
