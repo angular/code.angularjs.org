@@ -88,15 +88,20 @@ that is sorted into the order that you prefer before providing it to <code>ngRep
 do this with a filter such as <a href="http://ngmodules.org/modules/angular-toArrayFilter">toArrayFilter</a>
 or implement a <code>$watch</code> on the object yourself.</p>
 <h1 id="tracking-and-duplicates">Tracking and Duplicates</h1>
-<p>When the contents of the collection change, <code>ngRepeat</code> makes the corresponding changes to the DOM:</p>
+<p><code>ngRepeat</code> uses <a href="api/ng/type/$rootScope.Scope#$watchCollection">$watchCollection</a> to detect changes in
+the collection. When a change happens, ngRepeat then makes the corresponding changes to the DOM:</p>
 <ul>
 <li>When an item is added, a new instance of the template is added to the DOM.</li>
 <li>When an item is removed, its template instance is removed from the DOM.</li>
 <li>When items are reordered, their respective templates are reordered in the DOM.</li>
 </ul>
-<p>By default, <code>ngRepeat</code> does not allow duplicate items in arrays. This is because when
-there are duplicates, it is not possible to maintain a one-to-one mapping between collection
-items and DOM elements.</p>
+<p>To minimize creation of DOM elements, <code>ngRepeat</code> uses a function
+to &quot;keep track&quot; of all items in the collection and their corresponding DOM elements.
+For example, if an item is added to the collection, ngRepeat will know that all other items
+already have DOM elements, and will not re-render them.</p>
+<p>The default tracking function (which tracks items by their identity) does not allow
+duplicate items in arrays. This is because when there are duplicates, it is not possible
+to maintain a one-to-one mapping between collection items and DOM elements.</p>
 <p>If you do need to repeat duplicate items, you can substitute the default tracking behavior
 with your own using the <code>track by</code> expression.</p>
 <p>For example, you may track items by the index of each item in the collection, using the
@@ -105,16 +110,20 @@ special scope property <code>$index</code>:</p>
   {{n}}
 &lt;/div&gt;
 </code></pre>
-<p>You may use arbitrary expressions in <code>track by</code>, including references to custom functions
+<p>You may also use arbitrary expressions in <code>track by</code>, including references to custom functions
 on the scope:</p>
 <pre><code class="lang-html">&lt;div ng-repeat=&quot;n in [42, 42, 43, 43] track by myTrackingFunction(n)&quot;&gt;
   {{n}}
 &lt;/div&gt;
 </code></pre>
-<p>If you are working with objects that have an identifier property, you can track
+<p><div class="alert alert-success">
+If you are working with objects that have an identifier property, you should track
 by the identifier instead of the whole object. Should you reload your data later, <code>ngRepeat</code>
 will not have to rebuild the DOM elements for items it has already rendered, even if the
-JavaScript objects in the collection have been substituted for new ones:</p>
+JavaScript objects in the collection have been substituted for new ones. For large collections,
+this signifincantly improves rendering performance. If you don&#39;t have a unique identifier,
+<code>track by $index</code> can also provide a performance boost.
+</div></p>
 <pre><code class="lang-html">&lt;div ng-repeat=&quot;model in collection track by model.id&quot;&gt;
   {{model.name}}
 &lt;/div&gt;
