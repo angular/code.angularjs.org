@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.0-build.4370+sha.7c792f4
+ * @license AngularJS v1.5.0-build.4371+sha.4971ef1
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -577,6 +577,7 @@ angular.module('ngMessages', [])
     * @ngdoc directive
     * @name ngMessageExp
     * @restrict AE
+    * @priority 1
     * @scope
     *
     * @description
@@ -609,6 +610,7 @@ function ngMessageDirectiveFactory() {
     return {
       restrict: 'AE',
       transclude: 'element',
+      priority: 1, // must run before ngBind, otherwise the text is set on the comment
       terminal: true,
       require: '^^ngMessages',
       link: function(scope, element, attrs, ngMessagesCtrl, $transclude) {
