@@ -30,8 +30,7 @@ angular.module('finance3', [])
 
     return {
       currencies: currencies,
-      convert: convert,
-      refresh: refresh
+      convert: convert
     };
   }]);
 })(window.angular);
