@@ -873,6 +873,16 @@ angular.module('navData', [])
             "name": "$animateCss",
             "href": "api/ngAnimate/service/$animateCss",
             "type": "service"
+          },
+          {
+            "name": "directive",
+            "type": "section",
+            "href": "api/ngAnimate/directive"
+          },
+          {
+            "name": "ngAnimateSwap",
+            "href": "api/ngAnimate/directive/ngAnimateSwap",
+            "type": "directive"
           }
         ]
       },

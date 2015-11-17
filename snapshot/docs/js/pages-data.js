@@ -1551,6 +1551,11 @@ angular.module('pagesData', [])
     "area": "api",
     "path": "api/ngAnimate/service/$animate"
   },
+  "api/ngAnimate/directive/ngAnimateSwap": {
+    "name": "ngAnimateSwap",
+    "area": "api",
+    "path": "api/ngAnimate/directive/ngAnimateSwap"
+  },
   "api/ngAria": {
     "name": "ngAria",
     "area": "api",
@@ -2331,6 +2336,9 @@ angular.module('pagesData', [])
   "examples/example-anchoringExample": {
     "path": "examples/example-anchoringExample"
   },
+  "examples/example-ngAnimateSwap-directive": {
+    "path": "examples/example-ngAnimateSwap-directive"
+  },
   "examples/example-ngMessageFormat-example": {
     "path": "examples/example-ngMessageFormat-example"
   },
@@ -2532,6 +2540,11 @@ angular.module('pagesData', [])
     "name": "service components in ngAnimate",
     "area": "api",
     "path": "api/ngAnimate/service"
+  },
+  "api/ngAnimate/directive": {
+    "name": "directive components in ngAnimate",
+    "area": "api",
+    "path": "api/ngAnimate/directive"
   },
   "api/ngAria/provider": {
     "name": "provider components in ngAria",

@@ -1860,6 +1860,12 @@
     "members": ""
   },
   {
+    "path": "api/ngAnimate/directive/ngAnimateSwap",
+    "titleWords": "ngAnimateSwap animateswap",
+    "keywords": "active allows an and animation animation-oriented any api associated at banner be being changes common component container contains directive element enter entered example-nganimateswap-directive expression for html image in inserted is leave module new nganimate nganimateswap nganimateswapdirective old one partials perform present removed rotating that the then this time to usecase via when whenever which will",
+    "members": ""
+  },
+  {
     "path": "api/ngAria",
     "titleWords": "ngAria aria",
     "keywords": "$ariaprovider about accessible added and angular-aria api application applications are aria-checked aria-disabled aria-hidden aria-invalid aria-live aria-required aria-valuemax aria-valuemin aria-valuenow as assistive attributes becomes below breakdown button by common config convey dependency detailed details developer directive directives disable disabled disabling do doc-module-components each event example find following for guide handled html include individual information input internet is it its js keypress magic method module more ng ng-disabled ngaria ngariamodule ngclick ngdblclick ngdisabled nghide ngmessages ngmodel ngshow of or org out partials possible provides readers reading rich role roles screen see semantic simply state such support supported tabindex technologies that the title to true usage users using w3 with",
@@ -2331,6 +2337,12 @@
     "path": "api/ngAnimate/service",
     "titleWords": "service components in ngAnimate animate",
     "keywords": "api componentgroup components html in module nganimate partials service",
+    "members": ""
+  },
+  {
+    "path": "api/ngAnimate/directive",
+    "titleWords": "directive components in ngAnimate animate",
+    "keywords": "api componentgroup components directive html in module nganimate partials",
     "members": ""
   },
   {
