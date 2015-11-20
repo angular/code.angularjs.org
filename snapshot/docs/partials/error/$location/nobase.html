@@ -2,7 +2,7 @@
 
 
 <h1>Error: $location:nobase
-  <div><span class='hint'>$location in HTML5 mode requires a <base> tag to be present!</span></div>
+  <div><span class='hint'>$location in HTML5 mode requires a `<base>` tag to be present!</span></div>
 </h1>
 
 <div>
@@ -20,7 +20,7 @@
   requireBase: false
 });
 </code></pre>
-<p>Note that removing the requirement for a <base> tag will have adverse side effects when resolving
+<p>Note that removing the requirement for a <code>&lt;base&gt;</code> tag will have adverse side effects when resolving
 relative paths with <code>$location</code> in IE9.</p>
 <p>The base URL is then used to resolve all relative URLs throughout the application regardless of the
 entry point into the app.</p>
