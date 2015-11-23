@@ -1628,7 +1628,7 @@
   {
     "path": "api/ng/filter/number",
     "titleWords": "number",
-    "keywords": "$inject after an and api as be case computed current decimal decimalplaces default digit each empty example-example99 filter format formats formatting fraction fractionsize from function html if in infinite infinity input is it just locale module ng not null number of or partials pattern places provided returned round rounded size string symbol text the then third this to undefined will",
+    "keywords": "$inject after an and api as be case computed current decimal default digit each empty example-example99 filter format formats formatting fraction fractionsize from function html if in infinite infinity input is it just locale module ng not null number of or partials pattern places provided returned round rounded size string symbol text the then third this to undefined will",
     "members": ""
   },
   {
@@ -1832,7 +1832,7 @@
   {
     "path": "api/ng/service/$timeout",
     "titleWords": "$timeout",
-    "keywords": "$apply $exceptionhandler $rootscope $timeout additional after and angular any api be block call calling can cancel checking deferred delay delayed delegates dirty exceptions executed execution false flush fn for function functions has html if in into invoke is milliseconds model module ng ngmock of only otherwise parameters partials pass passed promise provided queue reached request resolved return scope service set settimeout should skips some specified synchronously tests that the then this timeout to try use value want when which whose will window with within without wrapped wrapper you",
+    "keywords": "$apply $exceptionhandler $rootscope $timeout additional after and angular any api be block call calling can cancel checking deferred delay delayed delegates dirty exceptions executed execution false flush fn for function functions has html if in into invoke is milliseconds model module ng ngmock of only otherwise parameters partials pass passed promise provided queue reached request resolved return scope service set settimeout should skips some specified synchronously tests that the then timeout to try use value want when which whose will window with within without wrapped wrapper you",
     "members": "cancel"
   },
   {
@@ -2132,7 +2132,7 @@
   {
     "path": "api/ngTouch/service/$swipe",
     "titleWords": "$swipe",
-    "keywords": "$swipe abstracts an and api be behavior below bind by component convenient details directives documentation element factory for four functions handler hold-and-drag html implementing in installed is make messier method module more ngcarousel ngswipeleft ngswiperight ngtouch object of partials requires see separate service single swipe swipe-related swipes takes that the to usage used watched which with",
+    "keywords": "$swipe abstracts an and api be behavior below bind by convenient details directives documentation element factory for four functions handler hold-and-drag html implementing in installed is make messier method module more ngswipeleft ngswiperight ngtouch object of partials requires see service single swipe swipe-related swipes takes that the to usage used watched which with",
     "members": "bind"
   },
   {
