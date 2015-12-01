@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.0-build.4409+sha.a72c12b
+ * @license AngularJS v1.5.0-build.4410+sha.08c9a5e
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -2047,7 +2047,7 @@ angular.mock.$RootElementProvider = function() {
  *
  * // Controller definition ...
  *
- * myMod.controller('MyDirectiveController', ['log', function($log) {
+ * myMod.controller('MyDirectiveController', ['$log', function($log) {
  *   $log.info(this.name);
  * })];
  *

@@ -37,7 +37,7 @@ myMod.directive(&#39;myDirective&#39;, {
 
 // Controller definition ...
 
-myMod.controller(&#39;MyDirectiveController&#39;, [&#39;log&#39;, function($log) {
+myMod.controller(&#39;MyDirectiveController&#39;, [&#39;$log&#39;, function($log) {
   $log.info(this.name);
 })];
 
