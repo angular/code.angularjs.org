@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.0-build.4408+sha.73e3865
+ * @license AngularJS v1.5.0-build.4409+sha.a72c12b
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -2482,6 +2482,7 @@ if (window.jasmine || window.mocha) {
 
     currentSpec.$injector = null;
     currentSpec.$modules = null;
+    currentSpec.$providerInjector = null;
     currentSpec = null;
 
     if (injector) {
