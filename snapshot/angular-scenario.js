@@ -9190,7 +9190,7 @@ return jQuery;
 }));
 
 /**
- * @license AngularJS v1.5.0-build.4412+sha.6a0686d
+ * @license AngularJS v1.5.0-build.4413+sha.193153c
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -9249,7 +9249,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.5.0-build.4412+sha.6a0686d/' +
+    message += '\nhttp://errors.angularjs.org/1.5.0-build.4413+sha.193153c/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -11700,7 +11700,7 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.5.0-build.4412+sha.6a0686d',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.5.0-build.4413+sha.193153c',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 5,
   dot: 0,
@@ -14902,7 +14902,13 @@ var $$AnimateRunnerFactoryProvider = function() {
  */
 var $CoreAnimateCssProvider = function() {
   this.$get = ['$$rAF', '$q', '$$AnimateRunner', function($$rAF, $q, $$AnimateRunner) {
-    return function(element, options) {
+
+    return function(element, initialOptions) {
+      // we always make a copy of the options since
+      // there should never be any side effects on
+      // the input data when running `$animateCss`.
+      var options = copy(initialOptions);
+
       // there is no point in applying the styles since
       // there is no animation that goes on at all in
       // this version of $animateCss.
