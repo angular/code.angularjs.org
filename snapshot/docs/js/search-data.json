@@ -110,7 +110,7 @@
   {
     "path": "error/$http/badreq",
     "titleWords": "badreq",
-    "keywords": "$http actual additional an api as bad badreq be but call configuration context documentation error etc expects for get html http if information is make meant message methods more must ng not object occurs of on one parameter partials pass passed perhaps provide received request resolve see service shorthand should single string such sure that the this to valid value was when you",
+    "keywords": "$http actual additional an api as bad badreq be but call configuration context documentation error etc expects for get html http if information is make meant message methods more must ng not object occurs of on one parameter partials pass passed perhaps provide received request resolve see service shorthand should single string such sure that the this to url valid value was when you",
     "members": ""
   },
   {
