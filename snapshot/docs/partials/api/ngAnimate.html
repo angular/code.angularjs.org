@@ -260,6 +260,25 @@ This is a temporary CSS class and it will be removed once the animation is over 
 </code></pre>
 <p>(Note that the <code>ng-animate</code> CSS class is reserved and it cannot be applied on an element directly since ngAnimate will always remove
 the CSS class once an animation has completed.)</p>
+<h3 id="the-ng-event-prepare-class">The <code>ng-[event]-prepare</code> class</h3>
+<p>This is a special class that can be used to prevent unwanted flickering / flash of content before
+the actual animation starts. The class is added as soon as an animation is initialized, but removed
+before the actual animation starts (after waiting for a $digest).
+It is also only added for <em>structural</em> animations (<code>enter</code>, <code>move</code>, and <code>leave</code>).</p>
+<p>In practice, flickering can appear when nesting elements with structural animations such as <code>ngIf</code>
+into elements that have class-based animations such as <code>ngClass</code>.</p>
+<pre><code class="lang-html">&lt;div ng-class=&quot;{red: myProp}&quot;&gt;
+  &lt;div ng-class=&quot;{blue: myProp}&quot;&gt;
+    &lt;div class=&quot;message&quot; ng-if=&quot;myProp&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p>It is possible that during the <code>enter</code> animation, the <code>.message</code> div will be briefly visible before it starts animating.
+In that case, you can add styles to the CSS that make sure the element stays hidden before the animation starts:</p>
+<pre><code class="lang-css">.message.ng-enter-prepare {
+  opacity: 0;
+}
+</code></pre>
 <h2 id="javascript-based-animations">JavaScript-based Animations</h2>
 <p>ngAnimate also allows for animations to be consumed by JavaScript code. The approach is similar to CSS-based animations (where there is a shared
 CSS class that is referenced in our HTML code) but in addition we need to register the JavaScript animation on the module. By making use of the
