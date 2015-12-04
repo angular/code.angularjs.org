@@ -5,12 +5,14 @@ angular.module('multiSlotTranscludeExample', [])
     return {
       restrict: 'E',
       transclude: {
-        'paneTitle': '?title',
-        'paneBody': 'body'
+        'title': '?pane-title',
+        'body': 'pane-body',
+        'footer': '?pane-footer'
       },
       template: '<div style="border: 1px solid black;">' +
-                  '<div ng-transclude="title" style="background-color: gray"></div>' +
+                  '<div class="title" ng-transclude="title">Fallback Title</div>' +
                   '<div ng-transclude="body"></div>' +
+                  '<div class="footer" ng-transclude="footer">Fallback Footer</div>' +
                 '</div>'
     };
 })

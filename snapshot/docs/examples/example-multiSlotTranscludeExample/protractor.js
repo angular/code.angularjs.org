@@ -5,6 +5,7 @@ it('should have transcluded the title and the body', function() {
   var textElement = element(by.model('text'));
   textElement.clear();
   textElement.sendKeys('TEXT');
-  expect(element(by.binding('title')).getText()).toEqual('TITLE');
+  expect(element(by.css('.title')).getText()).toEqual('TITLE');
   expect(element(by.binding('text')).getText()).toEqual('TEXT');
+  expect(element(by.css('.footer')).getText()).toEqual('Fallback Footer');
 });
