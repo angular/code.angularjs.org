@@ -531,6 +531,16 @@ to cancel any pending debounced updates and to re-render the input.</li>
 require a <code>Date</code> object as model (<a href="https://github.com/angular/angular.js/commit/46bd6dc88de252886d75426efc2ce8107a5134e9">46bd6dc8</a>,
  <a href="https://github.com/angular/angular.js/issues/5864">#5864</a>)</li>
 </ul>
+<ul>
+<li><p><a href="api/ng/input/input[checkbox]"><code>input[checkbox]</code></a> now supports constant expressions in <code>ngTrueValue</code> and
+<code>ngFalseValue</code>, making it now possible to e.g. use boolean and integer values. Previously, these attributes would
+always be treated as strings, whereas they are now parsed as expressions, and will throw if an expression
+is non-constant. To convert non-constant strings into constant expressions, simply wrap them in an
+extra pair of quotes, like so:</p>
+<p>  <code>&lt;input type=&quot;checkbox&quot; ng-model=&quot;...&quot; ng-true-value=&quot;&#39;truthyValue&#39;&quot;&gt;</code></p>
+<p>See <a href="https://github.com/angular/angular.js/commit/c90cefe16142d973a123e945fc9058e8a874c357">c90cefe1614</a></p>
+</li>
+</ul>
 <h2 id="scopes-and-digests-scope-">Scopes and Digests (<code>$scope</code>)</h2>
 <ul>
 <li>due to <a href="https://github.com/angular/angular.js/commit/8c6a8171f9bdaa5cdabc0cc3f7d3ce10af7b434d">8c6a8171</a>,
