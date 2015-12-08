@@ -172,9 +172,8 @@ GET request, otherwise if a cache instance built with
 caching.</li>
 <li><strong><code>timeout</code></strong> – <code>{number}</code> – timeout in milliseconds.<br />
 <strong>Note:</strong> In contrast to <a href="api/ng/service/$http#usage">$http.config</a>, <a href="api/ng/service/$q">promises</a> are
-<strong>not</strong> supported in $resource, because the same value has to be re-used for multiple
-requests. If you are looking for a way to cancel requests, you should use the <code>cancellable</code>
-option.</li>
+<strong>not</strong> supported in $resource, because the same value would be used for multiple requests.
+If you are looking for a way to cancel requests, you should use the <code>cancellable</code> option.</li>
 <li><strong><code>cancellable</code></strong> – <code>{boolean}</code> – if set to true, the request made by a &quot;non-instance&quot; call
 will be cancelled (if not already completed) by calling <code>$cancelRequest()</code> on the call&#39;s
 return value. Calling <code>$cancelRequest()</code> for a non-cancellable or an already

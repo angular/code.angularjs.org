@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.0-build.4425+sha.3694390
+ * @license AngularJS v1.5.0-build.4426+sha.da5db4b
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -159,9 +159,8 @@ function shallowClearAndCopy(src, dst) {
  *     caching.
  *   - **`timeout`** – `{number}` – timeout in milliseconds.<br />
  *     **Note:** In contrast to {@link ng.$http#usage $http.config}, {@link ng.$q promises} are
- *     **not** supported in $resource, because the same value has to be re-used for multiple
- *     requests. If you are looking for a way to cancel requests, you should use the `cancellable`
- *     option.
+ *     **not** supported in $resource, because the same value would be used for multiple requests.
+ *     If you are looking for a way to cancel requests, you should use the `cancellable` option.
  *   - **`cancellable`** – `{boolean}` – if set to true, the request made by a "non-instance" call
  *     will be cancelled (if not already completed) by calling `$cancelRequest()` on the call's
  *     return value. Calling `$cancelRequest()` for a non-cancellable or an already
