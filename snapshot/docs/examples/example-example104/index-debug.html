@@ -6,23 +6,13 @@
   
 
   <script src="../../../angular.js"></script>
+  <script src="script.js"></script>
   
 
   
 </head>
 <body ng-app="orderByExample">
-  <script>
-  angular.module('orderByExample', [])
-    .controller('ExampleController', ['$scope', function($scope) {
-      $scope.friends =
-          [{name:'John', phone:'555-1212', age:10},
-           {name:'Mary', phone:'555-9876', age:19},
-           {name:'Mike', phone:'555-4321', age:21},
-           {name:'Adam', phone:'555-5678', age:35},
-           {name:'Julie', phone:'555-8765', age:29}];
-    }]);
-</script>
-<div ng-controller="ExampleController">
+  <div ng-controller="ExampleController">
   <table class="friend">
     <tr>
       <th>Name</th>

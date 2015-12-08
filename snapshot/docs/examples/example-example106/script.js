@@ -10,9 +10,11 @@ angular.module('orderByExample', [])
       { name: 'Adam',    phone: '555-5678',    age: 35 },
       { name: 'Julie',   phone: '555-8765',    age: 29 }
     ];
-    $scope.order = function(predicate, reverse) {
-      $scope.friends = orderBy($scope.friends, predicate, reverse);
+    $scope.order = function(predicate) {
+      $scope.predicate = predicate;
+      $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
+      $scope.friends = orderBy($scope.friends, predicate, $scope.reverse);
     };
-    $scope.order('-age',false);
+    $scope.order('age', true);
   }]);
 })(window.angular);

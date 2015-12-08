@@ -376,10 +376,11 @@ be iterated over during the initial forEach call.</li>
 </ul>
 <p>This change also makes our forEach behave more like Array#forEach.</p>
 <ul>
-<li><strong>angular.toJson:</strong> due to <a href="https://github.com/angular/angular.js/commit/c054288c9722875e3595e6e6162193e0fb67a251">c054288c</a>,</li>
+<li><strong>angular.toJson:</strong> due to <a href="https://github.com/angular/angular.js/commit/c054288c9722875e3595e6e6162193e0fb67a251">c054288c</a>,
+<code>toJson()</code> will no longer strip properties starting with a single <code>$</code>. If you relied on
+<code>toJson()</code>&#39;s stripping these types of properties before, you will have to do it manually now.
+It will still strip properties starting with <code>$$</code> though.</li>
 </ul>
-<p>If you expected <code>toJson</code> to strip these types of properties before, you will have to
-manually do this yourself now.</p>
 <h2 id="jqlite-jquery">jqLite / JQuery</h2>
 <ul>
 <li><strong>jqLite:</strong> due to <a href="https://github.com/angular/angular.js/commit/a196c8bca82a28c08896d31f1863cf4ecd11401c">a196c8bc</a>,
@@ -447,6 +448,29 @@ calling <code>attr.$observe</code> no longer returns the observer function, but 
     }
   };
 });
+</code></pre>
+<ul>
+<li>due to <a href="https://github.com/angular/angular.js/commit/531a8de72c439d8ddd064874bf364c00cedabb11">531a8de7</a>,
+<code>$observe</code> no longer registers on undefined attributes. For example, if you were using <code>$observe</code> on
+an absent optional attribute to set a default value, the following would not work anymore:</li>
+</ul>
+<pre><code class="lang-html">&lt;my-dir&gt;&lt;/my-dir&gt;
+</code></pre>
+<pre><code class="lang-js">// Link function for directive myDir
+link: function(scope, element, attr) {
+  attr.$observe(&#39;myAttr&#39;, function(newVal) {
+    scope.myValue = newVal ? newVal : &#39;myDefaultValue&#39;;
+  })
+}
+</code></pre>
+<p>Instead, check if the attribute is set before registering the observer:</p>
+<pre><code class="lang-js">link: function(scope, element, attr) {
+  if (attr.myAttr) {
+    // register the observer
+  } else {
+    // set the default
+  }
+}
 </code></pre>
 <h2 id="forms-inputs-and-ngmodel">Forms, Inputs and ngModel</h2>
 <ul>

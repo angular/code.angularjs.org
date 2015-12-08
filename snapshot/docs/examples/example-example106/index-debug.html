@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Example - example-example106-debug</title>
+  <link href="style.css" rel="stylesheet" type="text/css">
   
 
   <script src="../../../angular.js"></script>
@@ -13,12 +14,21 @@
 </head>
 <body ng-app="orderByExample">
   <div ng-controller="ExampleController">
+  <pre>Sorting predicate = {{predicate}}; reverse = {{reverse}}</pre>
   <table class="friend">
     <tr>
-      <th><a href="" ng-click="reverse=false;order('name', false)">Name</a>
-        (<a href="" ng-click="order('-name',false)">^</a>)</th>
-      <th><a href="" ng-click="reverse=!reverse;order('phone', reverse)">Phone Number</a></th>
-      <th><a href="" ng-click="reverse=!reverse;order('age',reverse)">Age</a></th>
+      <th>
+          <button ng-click="order('name')">Name</button>
+          <span class="sortorder" ng-show="predicate === 'name'" ng-class="{reverse:reverse}"></span>
+      </th>
+      <th>
+          <button ng-click="order('phone')">Phone Number</button>
+          <span class="sortorder" ng-show="predicate === 'phone'" ng-class="{reverse:reverse}"></span>
+      </th>
+      <th>
+          <button ng-click="order('age')">Age</button>
+          <span class="sortorder" ng-show="predicate === 'age'" ng-class="{reverse:reverse}"></span>
+      </th>
     </tr>
     <tr ng-repeat="friend in friends">
       <td>{{friend.name}}</td>
