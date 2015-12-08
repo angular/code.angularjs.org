@@ -420,10 +420,12 @@ property is ignored.</li>
 <li><strong><code>{...}</code> (an object hash):</strong> - map elements of the content onto transclusion &quot;slots&quot; in the template.</li>
 </ul>
 <p><strong>Mult-slot transclusion</strong> is declared by providing an object for the <code>transclude</code> property.</p>
-<p>This object is a map where the keys are the name of the slot to fill and the value is the element selector
-used to match the HTML to the slot. Only element names are supported for matching. If the element selector
-is prefixed with a <code>?</code> then that slot is optional.</p>
-<p>For example, the transclude object <code>{ slotA: &#39;?my-custom-element&#39; }</code> maps <code>&lt;my-custom-element&gt;</code> elements to
+<p>This object is a map where the keys are the name of the slot to fill and the value is an element selector
+used to match the HTML to the slot. The element selector should be in normalized form (e.g. <code>myElement</code>)
+and will match the standard element variants (e.g. <code>my-element</code>, <code>my:element</code>, <code>data-my-element</code>, etc).</p>
+<p>For further information check out the guide on <a href="guide/directive#matching-directives">Matching Directives</a></p>
+<p>If the element selector is prefixed with a <code>?</code> then that slot is optional.</p>
+<p>For example, the transclude object <code>{ slotA: &#39;?myCustomElement&#39; }</code> maps <code>&lt;my-custom-element&gt;</code> elements to
 the <code>slotA</code> slot, which can be accessed via the <code>$transclude</code> function or via the <a href="api/ng/directive/ngTransclude"><code>ngTransclude</code></a> directive.</p>
 <p>Slots that are not marked as optional (<code>?</code>) will trigger a compile time error if there are no matching elements
 in the transclude content. If you wish to know if an optional slot was filled with content, then you can call
