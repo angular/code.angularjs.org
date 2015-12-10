@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.0-build.4436+sha.20604e7
+ * @license AngularJS v1.5.0-build.4437+sha.8f0b482
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -78,6 +78,7 @@ var isPromiseLike = function(p) {
   return p && p.then ? true : false;
 };
 
+var ngMinErr = angular.$$minErr('ng');
 function assertArg(arg, name, reason) {
   if (!arg) {
     throw ngMinErr('areq', "Argument '{0}' is {1}", (name || '?'), (reason || "required"));
@@ -2599,6 +2600,7 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
             parentHost = parentElement.data(NG_ANIMATE_PIN_DATA);
             if (parentHost) {
               parentElement = parentHost;
+              rootElementDetected = true;
             }
           }
         }
