@@ -705,7 +705,8 @@ definitions are very simple and do not require the complexity behind defining di
 Component definitions usually consist only of the template and the controller backing it.
 In order to make the definition easier, components enforce best practices like controllerAs
 and default behaviors like scope isolation, restrict to elements and allow transclusion.</p>
-<p>Here are a few examples of how you would usually define components:</p>
+<p><br />
+Here are a few examples of how you would usually define components:</p>
 <pre><code class="lang-js">var myMod = angular.module(...);
 myMod.component(&#39;myComp&#39;, {
   template: &#39;&lt;div&gt;My name is {{myComp.name}}&lt;/div&gt;&#39;,
@@ -725,7 +726,43 @@ myMod.component(&#39;myComp&#39;, {
   bindings: {name: &#39;@&#39;}
 });
 </code></pre>
-<p>See <a href="api/ng/provider/$compileProvider#directive">$compileProvider.directive()</a>.</p>
+<p><br />
+Components are also useful as route templates (e.g. when using
+<a href="api/ngRoute">ngRoute</a>):</p>
+<pre><code class="lang-js">var myMod = angular.module(&#39;myMod&#39;, [&#39;ngRoute&#39;]);
+
+myMod.component(&#39;home&#39;, {
+  template: &#39;&lt;h1&gt;Home&lt;/h1&gt;&lt;p&gt;Hello, {{ home.user.name }} !&lt;/p&gt;&#39;,
+  controller: function() {
+    this.user = {name: &#39;world&#39;};
+  }
+});
+
+myMod.config(function($routeProvider) {
+  $routeProvider.when(&#39;/&#39;, {
+    template: &#39;&lt;home&gt;&lt;/home&gt;&#39;
+  });
+});
+</code></pre>
+<p><br />
+When using <a href="api/ngRoute/provider/$routeProvider">$routeProvider</a>, you can often avoid some
+boilerplate, by assigning the resolved dependencies directly on the route scope:</p>
+<pre><code class="lang-js">var myMod = angular.module(&#39;myMod&#39;, [&#39;ngRoute&#39;]);
+
+myMod.component(&#39;home&#39;, {
+  template: &#39;&lt;h1&gt;Home&lt;/h1&gt;&lt;p&gt;Hello, {{ home.user.name }} !&lt;/p&gt;&#39;,
+  bindings: {user: &#39;=&#39;}
+});
+
+myMod.config(function($routeProvider) {
+  $routeProvider.when(&#39;/&#39;, {
+    template: &#39;&lt;home user=&quot;$resolve.user&quot;&gt;&lt;/home&gt;&#39;,
+    resolve: {user: function($http) { return $http.get(&#39;...&#39;); }}
+  });
+});
+</code></pre>
+<p><br />
+See also <a href="api/ng/provider/$compileProvider#directive">$compileProvider.directive()</a>.</p>
 </div>
 
     

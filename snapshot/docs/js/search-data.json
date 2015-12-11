@@ -2078,7 +2078,7 @@
   {
     "path": "api/ngRoute/service/$route",
     "titleWords": "$route",
-    "keywords": "$controller $location $route $routeparams $routeprovider $scope $template additionally against all also an and api as be by can causes changing configuration conjunction contain contains controller controllers current deep-linking define definition directive example example- existing for forcereload hash how html in installed instantiation is it its locals map match module ng ngroute ngview object objects of partial partials path properties pulls reference requires resolve resolved route routes scope service shows template the this through to tries typically url urls used values views watches which with you",
+    "keywords": "$controller $location $resolve $route $routeparams $routeprovider $scope $template additionally against all also an and api as assigned be by can causes changing configuration conjunction contain contains controller controllers current deep-linking define defined definition directive example example- existing for forcereload hash how html in info installed instantiation is it its locals map match module more name ng ngroute ngview object objects of override partial partials path properties property pulls reference requires resolve resolveas resolved route routes scope see service shows template the this through to tries typically url urls used using values views watches which will with you",
     "members": "$routechangeerror $routechangestart $routechangesuccess $routeupdate current reload routes updateparams"
   },
   {
