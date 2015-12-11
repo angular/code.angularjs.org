@@ -101,7 +101,7 @@ myModule.directive(&#39;directiveName&#39;, function factory(injectables) {
 <p>When this property is set to true, the HTML compiler will collect DOM nodes between
 nodes with the attributes <code>directive-name-start</code> and <code>directive-name-end</code>, and group them
 together as the directive elements. It is recommended that this feature be used on directives
-which are not strictly behavioural (such as <a href="api/ng/directive/ngClick"><code>ngClick</code></a>), and which
+which are not strictly behavioral (such as <a href="api/ng/directive/ngClick"><code>ngClick</code></a>), and which
 do not manipulate or replace child nodes (such as <a href="api/ng/directive/ngInclude"><code>ngInclude</code></a>).</p>
 <h4 id="-priority-"><code>priority</code></h4>
 <p>When there are multiple directives defined on a single DOM element, sometimes it
@@ -447,7 +447,7 @@ object that contains the compiled DOM, which is linked to the correct transclusi
 two parameters, <code>function(clone, scope) { ... }</code>, where the <code>clone</code> is a fresh compiled copy of your transcluded
 content and the <code>scope</code> is the newly created transclusion scope, to which the clone is bound.</p>
 <div class="alert alert-info">
-<strong>Best Practice</strong>: Always provide a <code>cloneFn</code> (clone attach function) when you call a translude function
+<strong>Best Practice</strong>: Always provide a <code>cloneFn</code> (clone attach function) when you call a transclude function
 since you then get a fresh clone of the original DOM and also have access to the new transclusion scope.
 </div>
 
@@ -473,7 +473,7 @@ then you are also responsible for calling <code>$destroy</code> on the transclus
 </div>
 
 <p>The built-in DOM manipulation directives, such as <a href="api/ng/directive/ngIf"><code>ngIf</code></a>, <a href="api/ng/directive/ngSwitch"><code>ngSwitch</code></a> and <a href="api/ng/directive/ngRepeat"><code>ngRepeat</code></a>
-automatically destroy their transluded clones as necessary so you do not need to worry about this if
+automatically destroy their transcluded clones as necessary so you do not need to worry about this if
 you are simply using <a href="api/ng/directive/ngTransclude"><code>ngTransclude</code></a> to inject the transclusion into your directive.</p>
 <h4 id="transclusion-scopes">Transclusion Scopes</h4>
 <p>When you call a transclude function it returns a DOM fragment that is pre-bound to a <strong>transclusion
