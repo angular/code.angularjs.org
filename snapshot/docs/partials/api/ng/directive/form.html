@@ -27,12 +27,9 @@ this name.</p>
 <h1 id="alias-link-ng-directive-ngform-ngform-">Alias: <a href="api/ng/directive/ngForm"><code>ngForm</code></a></h1>
 <p>In Angular, forms can be nested. This means that the outer form is valid when all of the child
 forms are valid as well. However, browsers do not allow nesting of <code>&lt;form&gt;</code> elements, so
-Angular provides the <a href="api/ng/directive/ngForm"><code>ngForm</code></a> directive which behaves identically to
-<code>&lt;form&gt;</code> but can be nested.  This allows you to have nested forms, which is very useful when
-using Angular validation directives in forms that are dynamically generated using the
-<a href="api/ng/directive/ngRepeat"><code>ngRepeat</code></a> directive. Since you cannot dynamically generate the <code>name</code>
-attribute of input elements using interpolation, you have to wrap each set of repeated inputs in an
-<code>ngForm</code> directive and nest these in an outer <code>form</code> element.</p>
+Angular provides the <a href="api/ng/directive/ngForm"><code>ngForm</code></a> directive, which behaves identically to
+<code>form</code> but can be nested. Nested forms can be useful, for example, if the validity of a sub-group
+of controls needs to be determined.</p>
 <h1 id="css-classes">CSS classes</h1>
 <ul>
 <li><code>ng-valid</code> is set if the form is valid.</li>
