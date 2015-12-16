@@ -626,11 +626,6 @@ angular.module('navData', [])
             "type": "provider"
           },
           {
-            "name": "$templateRequestProvider",
-            "href": "api/ng/provider/$templateRequestProvider",
-            "type": "provider"
-          },
-          {
             "name": "service",
             "type": "section",
             "href": "api/ng/service"
@@ -873,16 +868,6 @@ angular.module('navData', [])
             "name": "$animateCss",
             "href": "api/ngAnimate/service/$animateCss",
             "type": "service"
-          },
-          {
-            "name": "directive",
-            "type": "section",
-            "href": "api/ngAnimate/directive"
-          },
-          {
-            "name": "ngAnimateSwap",
-            "href": "api/ngAnimate/directive/ngAnimateSwap",
-            "type": "directive"
           }
         ]
       },
@@ -1191,16 +1176,6 @@ angular.module('navData', [])
             "name": "$sanitize",
             "href": "api/ngSanitize/service/$sanitize",
             "type": "service"
-          },
-          {
-            "name": "provider",
-            "type": "section",
-            "href": "api/ngSanitize/provider"
-          },
-          {
-            "name": "$sanitizeProvider",
-            "href": "api/ngSanitize/provider/$sanitizeProvider",
-            "type": "provider"
           }
         ]
       },
@@ -1638,13 +1613,8 @@ angular.module('navData', [])
             "type": "section"
           },
           {
-            "name": "noinert",
-            "href": "error/$sanitize/noinert",
-            "type": "error"
-          },
-          {
-            "name": "uinput",
-            "href": "error/$sanitize/uinput",
+            "name": "badparse",
+            "href": "error/$sanitize/badparse",
             "type": "error"
           },
           {
@@ -1835,16 +1805,6 @@ angular.module('navData', [])
           {
             "name": "orphan",
             "href": "error/ngTransclude/orphan",
-            "type": "error"
-          },
-          {
-            "name": "orderBy",
-            "href": "error/orderBy",
-            "type": "section"
-          },
-          {
-            "name": "notarray",
-            "href": "error/orderBy/notarray",
             "type": "error"
           }
         ]

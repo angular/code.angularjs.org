@@ -121,7 +121,7 @@ If you are working with objects that have an identifier property, you should tra
 by the identifier instead of the whole object. Should you reload your data later, <code>ngRepeat</code>
 will not have to rebuild the DOM elements for items it has already rendered, even if the
 JavaScript objects in the collection have been substituted for new ones. For large collections,
-this significantly improves rendering performance. If you don&#39;t have a unique identifier,
+this signifincantly improves rendering performance. If you don&#39;t have a unique identifier,
 <code>track by $index</code> can also provide a performance boost.
 </div></p>
 <pre><code class="lang-html">&lt;div ng-repeat=&quot;model in collection track by model.id&quot;&gt;

@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.0-build.4451+sha.a7a053f
+ * @license AngularJS v1.4.9-build.3+sha.8120ab2
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -570,14 +570,13 @@ angular.module('ngMessages', [])
     *
     * @param {expression} ngMessage|when a string value corresponding to the message key.
     */
-  .directive('ngMessage', ngMessageDirectiveFactory())
+  .directive('ngMessage', ngMessageDirectiveFactory('AE'))
 
 
    /**
     * @ngdoc directive
     * @name ngMessageExp
     * @restrict AE
-    * @priority 1
     * @scope
     *
     * @description
@@ -603,14 +602,13 @@ angular.module('ngMessages', [])
     *
     * @param {expression} ngMessageExp|whenExp an expression value corresponding to the message key.
     */
-  .directive('ngMessageExp', ngMessageDirectiveFactory());
+  .directive('ngMessageExp', ngMessageDirectiveFactory('A'));
 
-function ngMessageDirectiveFactory() {
+function ngMessageDirectiveFactory(restrict) {
   return ['$animate', function($animate) {
     return {
       restrict: 'AE',
       transclude: 'element',
-      priority: 1, // must run before ngBind, otherwise the text is set on the comment
       terminal: true,
       require: '^^ngMessages',
       link: function(scope, element, attrs, ngMessagesCtrl, $transclude) {

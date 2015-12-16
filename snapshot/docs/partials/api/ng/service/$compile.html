@@ -101,7 +101,7 @@ myModule.directive(&#39;directiveName&#39;, function factory(injectables) {
 <p>When this property is set to true, the HTML compiler will collect DOM nodes between
 nodes with the attributes <code>directive-name-start</code> and <code>directive-name-end</code>, and group them
 together as the directive elements. It is recommended that this feature be used on directives
-which are not strictly behavioral (such as <a href="api/ng/directive/ngClick"><code>ngClick</code></a>), and which
+which are not strictly behavioural (such as <a href="api/ng/directive/ngClick"><code>ngClick</code></a>), and which
 do not manipulate or replace child nodes (such as <a href="api/ng/directive/ngInclude"><code>ngInclude</code></a>).</p>
 <h4 id="-priority-"><code>priority</code></h4>
 <p>When there are multiple directives defined on a single DOM element, sometimes it
@@ -196,10 +196,10 @@ each other&#39;s behavior. The controller is injectable (and supports bracket no
 <li><code>$element</code> - Current element</li>
 <li><code>$attrs</code> - Current attributes object for the element</li>
 <li><code>$transclude</code> - A transclude linking function pre-bound to the correct transclusion scope:
-<code>function([scope], cloneLinkingFn, futureParentElement, slotName)</code>:<ul>
-<li><code>scope</code>: (optional) override the scope.</li>
-<li><code>cloneLinkingFn</code>: (optional) argument to create clones of the original transcluded content.</li>
-<li><code>futureParentElement</code> (optional):<ul>
+<code>function([scope], cloneLinkingFn, futureParentElement)</code>.<ul>
+<li><code>scope</code>: optional argument to override the scope.</li>
+<li><code>cloneLinkingFn</code>: optional argument to create clones of the original transcluded content.</li>
+<li><code>futureParentElement</code>:<ul>
 <li>defines the parent to which the <code>cloneLinkingFn</code> will add the cloned elements.</li>
 <li>default: <code>$element.parent()</code> resp. <code>$element</code> for <code>transclude:&#39;element&#39;</code> resp. <code>transclude:true</code>.</li>
 <li>only needed for transcludes that are allowed to contain non html elements (e.g. SVG elements)
@@ -209,10 +209,6 @@ usual containers (e.g. like <code>&lt;svg&gt;</code>).</li>
 <li>See also the <code>directive.templateNamespace</code> property.</li>
 </ul>
 </li>
-<li><code>slotName</code>: (optional) the name of the slot to transclude. If falsy (e.g. <code>null</code>, <code>undefined</code> or <code>&#39;&#39;</code>)
-then the default translusion is provided.
-The <code>$transclude</code> function also has a method on it, <code>$transclude.isSlotFilled(slotName)</code>, which returns
-<code>true</code> if the specified slot contains content (i.e. one or more DOM nodes).</li>
 </ul>
 </li>
 </ul>
@@ -298,6 +294,14 @@ the main one being reusable custom components that are used within SVG contexts
 <p>Extract the contents of the element where the directive appears and make it available to the directive.
 The contents are compiled and provided to the directive as a <strong>transclusion function</strong>. See the
 <a href="api/ng/service/$compile#transclusion">Transclusion</a> section below.</p>
+<p>There are two kinds of transclusion depending upon whether you want to transclude just the contents of the
+directive&#39;s element or the entire element:</p>
+<ul>
+<li><code>true</code> - transclude the content (i.e. the child nodes) of the directive&#39;s element.</li>
+<li><code>&#39;element&#39;</code> - transclude the whole of the directive&#39;s element including any directives on this
+element that defined at a lower priority than this directive. When used, the <code>template</code>
+property is ignored.</li>
+</ul>
 <h4 id="-compile-"><code>compile</code></h4>
 <pre><code class="lang-js">function compile(tElement, tAttrs, transclude) { ... }
 </code></pre>
@@ -410,27 +414,6 @@ content has access to its originating scope.</p>
 DOM fragment that is being compiled. See <a href="guide/unit-testing#testing-transclusion-directives">Testing Transclusion Directives</a>.
 </div>
 
-<p>There are three kinds of transclusion depending upon whether you want to transclude just the contents of the
-directive&#39;s element, the entire element or multiple parts of the element contents:</p>
-<ul>
-<li><code>true</code> - transclude the content (i.e. the child nodes) of the directive&#39;s element.</li>
-<li><code>&#39;element&#39;</code> - transclude the whole of the directive&#39;s element including any directives on this
-element that defined at a lower priority than this directive. When used, the <code>template</code>
-property is ignored.</li>
-<li><strong><code>{...}</code> (an object hash):</strong> - map elements of the content onto transclusion &quot;slots&quot; in the template.</li>
-</ul>
-<p><strong>Mult-slot transclusion</strong> is declared by providing an object for the <code>transclude</code> property.</p>
-<p>This object is a map where the keys are the name of the slot to fill and the value is an element selector
-used to match the HTML to the slot. The element selector should be in normalized form (e.g. <code>myElement</code>)
-and will match the standard element variants (e.g. <code>my-element</code>, <code>my:element</code>, <code>data-my-element</code>, etc).</p>
-<p>For further information check out the guide on <a href="guide/directive#matching-directives">Matching Directives</a></p>
-<p>If the element selector is prefixed with a <code>?</code> then that slot is optional.</p>
-<p>For example, the transclude object <code>{ slotA: &#39;?myCustomElement&#39; }</code> maps <code>&lt;my-custom-element&gt;</code> elements to
-the <code>slotA</code> slot, which can be accessed via the <code>$transclude</code> function or via the <a href="api/ng/directive/ngTransclude"><code>ngTransclude</code></a> directive.</p>
-<p>Slots that are not marked as optional (<code>?</code>) will trigger a compile time error if there are no matching elements
-in the transclude content. If you wish to know if an optional slot was filled with content, then you can call
-<code>$transclude.isSlotFilled(slotName)</code> on the transclude function passed to the directive&#39;s link function and
-injectable into the directive&#39;s controller.</p>
 <h4 id="transclusion-functions">Transclusion Functions</h4>
 <p>When a directive requests transclusion, the compiler extracts its contents and provides a <strong>transclusion
 function</strong> to the directive&#39;s <code>link</code> function and <code>controller</code>. This transclusion function is a special
@@ -447,7 +430,7 @@ object that contains the compiled DOM, which is linked to the correct transclusi
 two parameters, <code>function(clone, scope) { ... }</code>, where the <code>clone</code> is a fresh compiled copy of your transcluded
 content and the <code>scope</code> is the newly created transclusion scope, to which the clone is bound.</p>
 <div class="alert alert-info">
-<strong>Best Practice</strong>: Always provide a <code>cloneFn</code> (clone attach function) when you call a transclude function
+<strong>Best Practice</strong>: Always provide a <code>cloneFn</code> (clone attach function) when you call a translude function
 since you then get a fresh clone of the original DOM and also have access to the new transclusion scope.
 </div>
 
@@ -473,7 +456,7 @@ then you are also responsible for calling <code>$destroy</code> on the transclus
 </div>
 
 <p>The built-in DOM manipulation directives, such as <a href="api/ng/directive/ngIf"><code>ngIf</code></a>, <a href="api/ng/directive/ngSwitch"><code>ngSwitch</code></a> and <a href="api/ng/directive/ngRepeat"><code>ngRepeat</code></a>
-automatically destroy their transcluded clones as necessary so you do not need to worry about this if
+automatically destroy their transluded clones as necessary so you do not need to worry about this if
 you are simply using <a href="api/ng/directive/ngTransclude"><code>ngTransclude</code></a> to inject the transclusion into your directive.</p>
 <h4 id="transclusion-scopes">Transclusion Scopes</h4>
 <p>When you call a transclude function it returns a DOM fragment that is pre-bound to a <strong>transclusion
