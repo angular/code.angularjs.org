@@ -7,30 +7,19 @@
 
   <script src="../../../angular.min.js"></script>
   <script src="../../../angular-sanitize.js"></script>
+  <script src="script.js"></script>
   
 
   
 </head>
 <body ng-app="linkyExample">
-  <script>
-  angular.module('linkyExample', ['ngSanitize'])
-    .controller('ExampleController', ['$scope', function($scope) {
-      $scope.snippet =
-        'Pretty text with some links:\n'+
-        'http://angularjs.org/,\n'+
-        'mailto:us@somewhere.org,\n'+
-        'another@somewhere.org,\n'+
-        'and one more: ftp://127.0.0.1/.';
-      $scope.snippetWithTarget = 'http://angularjs.org/';
-    }]);
-</script>
-<div ng-controller="ExampleController">
+  <div ng-controller="ExampleController">
 Snippet: <textarea ng-model="snippet" cols="60" rows="3"></textarea>
 <table>
   <tr>
-    <td>Filter</td>
-    <td>Source</td>
-    <td>Rendered</td>
+    <th>Filter</th>
+    <th>Source</th>
+    <th>Rendered</th>
   </tr>
   <tr id="linky-filter">
     <td>linky filter</td>
@@ -44,10 +33,19 @@ Snippet: <textarea ng-model="snippet" cols="60" rows="3"></textarea>
   <tr id="linky-target">
    <td>linky target</td>
    <td>
-     <pre>&lt;div ng-bind-html="snippetWithTarget | linky:'_blank'"&gt;<br>&lt;/div&gt;</pre>
+     <pre>&lt;div ng-bind-html="snippetWithSingleURL | linky:'_blank'"&gt;<br>&lt;/div&gt;</pre>
    </td>
    <td>
-     <div ng-bind-html="snippetWithTarget | linky:'_blank'"></div>
+     <div ng-bind-html="snippetWithSingleURL | linky:'_blank'"></div>
+   </td>
+  </tr>
+  <tr id="linky-custom-attributes">
+   <td>linky custom attributes</td>
+   <td>
+     <pre>&lt;div ng-bind-html="snippetWithSingleURL | linky:'_self':{rel: 'nofollow'}"&gt;<br>&lt;/div&gt;</pre>
+   </td>
+   <td>
+     <div ng-bind-html="snippetWithSingleURL | linky:'_self':{rel: 'nofollow'}"></div>
    </td>
   </tr>
   <tr id="escaped-html">

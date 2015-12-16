@@ -279,6 +279,28 @@ making calls to it when needed.</p>
   };
 }]);
 </code></pre>
+<h2 id="preventing-flicker-before-an-animation-starts">Preventing flicker before an animation starts</h2>
+<p>When nesting elements with structural animations such as <code>ngIf</code> into elements that have class-based
+animations such as <code>ngClass</code>, it sometimes happens that before the actual animation starts, there is a brief flicker or flash of content
+where the animated element is briefly visible.</p>
+<p>To prevent this, you can apply styles to the <code>ng-[event]-prepare</code> class, which is added as soon as an animation is initialized,
+but removed before the actual animation starts (after waiting for a $digest). This class is only added for <em>structural</em>
+animations (<code>enter</code>, <code>move</code>, and <code>leave</code>).</p>
+<p>Here&#39;s an example where you might see flickering:</p>
+<pre><code class="lang-html">&lt;div ng-class=&quot;{red: myProp}&quot;&gt;
+  &lt;div ng-class=&quot;{blue: myProp}&quot;&gt;
+    &lt;div class=&quot;message&quot; ng-if=&quot;myProp&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p>It is possible that during the <code>enter</code> event, the <code>.message</code> div will be briefly visible before it starts animating.
+In that case, you can add styles to the CSS that make sure the element stays hidden before the animation starts:</p>
+<pre><code class="lang-css">.message.ng-enter-prepare {
+  opacity: 0;
+}
+
+/* Other animation styles ... */
+</code></pre>
 <h2 id="more-about-animations">More about animations</h2>
 <p>For a full breakdown of each method available on <code>$animate</code>, see the <a href="api/ng/service/$animate">API documentation</a>.</p>
 <p>To see a complete demo, see the <a href="tutorial/step_12">animation step within the AngularJS phonecat tutorial</a>.</p>

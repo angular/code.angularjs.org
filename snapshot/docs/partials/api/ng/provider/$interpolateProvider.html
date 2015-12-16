@@ -25,7 +25,13 @@
 
 <div class="api-profile-description">
   <p>Used for configuring the interpolation markup. Defaults to <code>{{</code> and <code>}}</code>.</p>
-
+<div class="alert alert-danger">
+This feature is sometimes used to mix different markup languages, e.g. to wrap an Angular
+template within a Python Jinja template (or any other template language). Mixing templating
+languages is <strong>very dangerous</strong>. The embedding template language will not safely escape Angular
+expressions, so any user-controlled values in the template will cause Cross Site Scripting (XSS)
+security bugs!
+</div>
 </div>
 
 

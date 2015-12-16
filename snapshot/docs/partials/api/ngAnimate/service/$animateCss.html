@@ -148,7 +148,7 @@ added and removed on the element). Once <code>$animateCss</code> is called it wi
 }
 </code></pre>
 <p>To actually start the animation we need to run <code>animation.start()</code> which will then return a promise that we can hook into to detect when the animation ends.
-If we choose not to run the animation then we MUST run <code>animation.end()</code> to perform a cleanup on the element (since some CSS classes and stlyes may have been
+If we choose not to run the animation then we MUST run <code>animation.end()</code> to perform a cleanup on the element (since some CSS classes and styles may have been
 applied to the element during the preparation phase). Note that all other properties such as duration, delay, transitions and keyframes are just properties
 and that changing them will not reconfigure the parameters of the animation.</p>
 <h3 id="runner-done-vs-runner-then-">runner.done() vs runner.then()</h3>
@@ -238,12 +238,12 @@ of the element will be <code>transition-delay: DETECTED_VALUE</code>). Using <co
 CSS delay value.</li>
 <li><code>stagger</code> - A numeric time value representing the delay between successively animated elements
 (<a href="api/ngAnimate#css-staggering-animations">Click here to learn how CSS-based staggering works in ngAnimate.</a>)</li>
-<li><code>staggerIndex</code> - The numeric index representing the stagger item (e.g. a value of 5 is equal to the sixth item in the stagger; therefore when a</li>
-<li><code>stagger</code> option value of <code>0.1</code> is used then there will be a stagger delay of <code>600ms</code>)</li>
-<li><code>applyClassesEarly</code> - Whether or not the classes being added or removed will be used when detecting the animation. This is set by <code>$animate</code> when enter/leave/move animations are fired to ensure that the CSS classes are resolved in time. (Note that this will prevent any transitions from occuring on the classes being added and removed.)</li>
+<li><code>staggerIndex</code> - The numeric index representing the stagger item (e.g. a value of 5 is equal to the sixth item in the stagger; therefore when a
+<code>stagger</code> option value of <code>0.1</code> is used then there will be a stagger delay of <code>600ms</code>)</li>
+<li><code>applyClassesEarly</code> - Whether or not the classes being added or removed will be used when detecting the animation. This is set by <code>$animate</code> when enter/leave/move animations are fired to ensure that the CSS classes are resolved in time. (Note that this will prevent any transitions from occurring on the classes being added and removed.)</li>
 <li><code>cleanupStyles</code> - Whether or not the provided <code>from</code> and <code>to</code> styles will be removed once
  the animation is closed. This is useful for when the styles are used purely for the sake of
- the animation and do not have a lasting visual effect on the element (e.g. a colapse and open animation).
+ the animation and do not have a lasting visual effect on the element (e.g. a collapse and open animation).
  By default this value is set to <code>false</code>.</li>
 </ul>
 
