@@ -121,8 +121,6 @@ the method from your view. If you want to <code>eval()</code> an Angular express
 This restriction is intentional. It prevents accidental access to the global state – a common source of subtle bugs.</p>
 <p>Instead use services like <code>$window</code> and <code>$location</code> in functions called from expressions. Such services
 provide mockable access to globals.</p>
-<p>It is possible to access the context object using the identifier <code>this</code> and the locals object using the
-identifier <code>$locals</code>.</p>
 <p>
 
 <div>

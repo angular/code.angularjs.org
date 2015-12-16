@@ -52,7 +52,7 @@ a value for the <code>ng-csp</code> attribute. The options are as follows:</p>
 <ul>
 <li><p>no-inline-style: this stops Angular from injecting CSS styles into the DOM</p>
 </li>
-<li><p>no-unsafe-eval: this stops Angular from optimizing $parse with unsafe eval of strings</p>
+<li><p>no-unsafe-eval: this stops Angular from optimising $parse with unsafe eval of strings</p>
 </li>
 </ul>
 <p>You can use these values in the following combinations:</p>
@@ -69,7 +69,7 @@ of Angular.</p>
 inline styles. E.g. <code>&lt;body ng-csp=&quot;no-unsafe-eval&quot;&gt;</code>.</p>
 </li>
 <li><p>Specifying only <code>no-inline-style</code> tells Angular that we must not inject styles, but that we can
-run eval - no automatic check for unsafe eval will occur. E.g. <code>&lt;body ng-csp=&quot;no-inline-style&quot;&gt;</code></p>
+run eval - no automcatic check for unsafe eval will occur. E.g. <code>&lt;body ng-csp=&quot;no-inline-style&quot;&gt;</code></p>
 </li>
 <li><p>Specifying both <code>no-unsafe-eval</code> and <code>no-inline-style</code> tells Angular that we must not inject
 styles nor use eval, which is the same as an empty: ng-csp.

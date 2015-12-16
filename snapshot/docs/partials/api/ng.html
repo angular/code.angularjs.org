@@ -868,12 +868,6 @@ that the URLs used for sourcing Angular templates are safe.  Refer <a href="api/
 </td>
       </tr>
       
-      <tr>
-        <td><a href="api/ng/provider/$templateRequestProvider">$templateRequestProvider</a></td>
-        <td><p>Used to configure the options passed to the <a href="api/ng/service/$http"><code>$http</code></a> service when making a template request.</p>
-</td>
-      </tr>
-      
     </table>
   </div>
   
@@ -1144,7 +1138,7 @@ local datetime format (yyyy-MM-ddTHH:mm:ss), for example: <code>2010-12-28T14:57
       <tr>
         <td><a href="api/ng/input/input[time]">input[time]</a></td>
         <td><p>Input with time validation and transformation. In browsers that do not yet support
-the HTML5 time input, a text element will be used. In that case, the text must be entered in a valid ISO-8601
+the HTML5 date input, a text element will be used. In that case, the text must be entered in a valid ISO-8601
 local time format (HH:mm:ss), for example: <code>14:57:00</code>. Model must be a Date object. This binding will always output a
 Date object to the model of January 1, 1970, or local date <code>new Date(1970, 0, 1, HH, mm, ss)</code>.</p>
 </td>
@@ -1266,8 +1260,7 @@ converted to a string.</p>
         <td><a href="api/ng/filter/orderBy">orderBy</a></td>
         <td><p>Orders a specified <code>array</code> by the <code>expression</code> predicate. It is ordered alphabetically
 for strings and numerically for numbers. Note: if you notice numbers are not being sorted
-as expected, make sure they are actually being saved as numbers and not strings.
-Array-like values (e.g. NodeLists, jQuery objects, TypedArrays, Strings, etc) are also supported.</p>
+as expected, make sure they are actually being saved as numbers and not strings.</p>
 </td>
       </tr>
       

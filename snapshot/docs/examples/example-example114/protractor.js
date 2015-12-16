@@ -24,14 +24,7 @@ it('should update', function() {
 
 it('should work with the target property', function() {
  expect(element(by.id('linky-target')).
-     element(by.binding("snippetWithSingleURL | linky:'_blank'")).getText()).
+     element(by.binding("snippetWithTarget | linky:'_blank'")).getText()).
      toBe('http://angularjs.org/');
  expect(element(by.css('#linky-target a')).getAttribute('target')).toEqual('_blank');
-});
-
-it('should optionally add custom attributes', function() {
- expect(element(by.id('linky-custom-attributes')).
-     element(by.binding("snippetWithSingleURL | linky:'_self':{rel: 'nofollow'}")).getText()).
-     toBe('http://angularjs.org/');
- expect(element(by.css('#linky-custom-attributes a')).getAttribute('rel')).toEqual('nofollow');
 });
