@@ -1,8 +1,8 @@
-<a href='https://github.com/angular/angular.js/edit/master/src/ngMock/angular-mocks.js?message=docs($httpBackend)%3A%20describe%20your%20change...#L1925' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/master/src/ngMock/angular-mocks.js?message=docs($httpBackend)%3A%20describe%20your%20change...#L2135' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 
-<a href='https://github.com/angular/angular.js/tree/master/src/ngMock/angular-mocks.js#L1925' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/master/src/ngMock/angular-mocks.js#L2135' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -75,7 +75,7 @@ myAppDev.run(function($httpBackend) {
 <h2>Methods</h2>
 <ul class="methods">
   <li id="when">
-    <h3><p><code>when(method, url, [data], [headers]);</code></p>
+    <h3><p><code>when(method, url, [data], [headers], [keys]);</code></p>
 
 </h3>
     <div><p>Creates a new backend definition.</p>
@@ -160,6 +160,23 @@ myAppDev.run(function($httpBackend) {
       </td>
     </tr>
     
+    <tr>
+      <td>
+        keys
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        <a href="" class="label type-hint type-hint-array">Array</a>
+      </td>
+      <td>
+        <p>Array of keys to assign to regex matches in request url described on
+  <a href="api/ngMock/service/$httpBackend">$httpBackend mock</a>.</p>
+
+        
+      </td>
+    </tr>
+    
   </tbody>
 </table>
 
@@ -178,7 +195,7 @@ myAppDev.run(function($httpBackend) {
 <ul>
 <li>respond –
 <code>{function([status,] data[, headers, statusText])
-| function(function(method, url, data, headers)}</code>
+| function(function(method, url, data, headers, params)}</code>
 – The respond method takes a set of static data to be returned or a function that can return
 an array containing response status (number), response data (string), response headers
 (Object), and the text for the status (string).</li>
@@ -195,7 +212,7 @@ to the server.)</li>
   </li>
   
   <li id="whenGET">
-    <h3><p><code>whenGET(url, [headers]);</code></p>
+    <h3><p><code>whenGET(url, [headers], [keys]);</code></p>
 
 </h3>
     <div><p>Creates a new backend definition for GET requests. For more info see <code>when()</code>.</p>
@@ -247,6 +264,23 @@ to the server.)</li>
       </td>
     </tr>
     
+    <tr>
+      <td>
+        keys
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        <a href="" class="label type-hint type-hint-array">Array</a>
+      </td>
+      <td>
+        <p>Array of keys to assign to regex matches in request url described on
+  <a href="api/ngMock/service/$httpBackend">$httpBackend mock</a>.</p>
+
+        
+      </td>
+    </tr>
+    
   </tbody>
 </table>
 
@@ -270,7 +304,7 @@ to the server.)</li>
   </li>
   
   <li id="whenHEAD">
-    <h3><p><code>whenHEAD(url, [headers]);</code></p>
+    <h3><p><code>whenHEAD(url, [headers], [keys]);</code></p>
 
 </h3>
     <div><p>Creates a new backend definition for HEAD requests. For more info see <code>when()</code>.</p>
@@ -322,6 +356,23 @@ to the server.)</li>
       </td>
     </tr>
     
+    <tr>
+      <td>
+        keys
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        <a href="" class="label type-hint type-hint-array">Array</a>
+      </td>
+      <td>
+        <p>Array of keys to assign to regex matches in request url described on
+  <a href="api/ngMock/service/$httpBackend">$httpBackend mock</a>.</p>
+
+        
+      </td>
+    </tr>
+    
   </tbody>
 </table>
 
@@ -345,7 +396,7 @@ to the server.)</li>
   </li>
   
   <li id="whenDELETE">
-    <h3><p><code>whenDELETE(url, [headers]);</code></p>
+    <h3><p><code>whenDELETE(url, [headers], [keys]);</code></p>
 
 </h3>
     <div><p>Creates a new backend definition for DELETE requests. For more info see <code>when()</code>.</p>
@@ -397,6 +448,23 @@ to the server.)</li>
       </td>
     </tr>
     
+    <tr>
+      <td>
+        keys
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        <a href="" class="label type-hint type-hint-array">Array</a>
+      </td>
+      <td>
+        <p>Array of keys to assign to regex matches in request url described on
+  <a href="api/ngMock/service/$httpBackend">$httpBackend mock</a>.</p>
+
+        
+      </td>
+    </tr>
+    
   </tbody>
 </table>
 
@@ -420,7 +488,7 @@ to the server.)</li>
   </li>
   
   <li id="whenPOST">
-    <h3><p><code>whenPOST(url, [data], [headers]);</code></p>
+    <h3><p><code>whenPOST(url, [data], [headers], [keys]);</code></p>
 
 </h3>
     <div><p>Creates a new backend definition for POST requests. For more info see <code>when()</code>.</p>
@@ -488,6 +556,23 @@ to the server.)</li>
       </td>
     </tr>
     
+    <tr>
+      <td>
+        keys
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        <a href="" class="label type-hint type-hint-array">Array</a>
+      </td>
+      <td>
+        <p>Array of keys to assign to regex matches in request url described on
+  <a href="api/ngMock/service/$httpBackend">$httpBackend mock</a>.</p>
+
+        
+      </td>
+    </tr>
+    
   </tbody>
 </table>
 
@@ -511,7 +596,7 @@ to the server.)</li>
   </li>
   
   <li id="whenPUT">
-    <h3><p><code>whenPUT(url, [data], [headers]);</code></p>
+    <h3><p><code>whenPUT(url, [data], [headers], [keys]);</code></p>
 
 </h3>
     <div><p>Creates a new backend definition for PUT requests.  For more info see <code>when()</code>.</p>
@@ -579,6 +664,23 @@ to the server.)</li>
       </td>
     </tr>
     
+    <tr>
+      <td>
+        keys
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        <a href="" class="label type-hint type-hint-array">Array</a>
+      </td>
+      <td>
+        <p>Array of keys to assign to regex matches in request url described on
+  <a href="api/ngMock/service/$httpBackend">$httpBackend mock</a>.</p>
+
+        
+      </td>
+    </tr>
+    
   </tbody>
 </table>
 
@@ -602,7 +704,7 @@ to the server.)</li>
   </li>
   
   <li id="whenPATCH">
-    <h3><p><code>whenPATCH(url, [data], [headers]);</code></p>
+    <h3><p><code>whenPATCH(url, [data], [headers], [keys]);</code></p>
 
 </h3>
     <div><p>Creates a new backend definition for PATCH requests.  For more info see <code>when()</code>.</p>
@@ -670,6 +772,23 @@ to the server.)</li>
       </td>
     </tr>
     
+    <tr>
+      <td>
+        keys
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        <a href="" class="label type-hint type-hint-array">Array</a>
+      </td>
+      <td>
+        <p>Array of keys to assign to regex matches in request url described on
+  <a href="api/ngMock/service/$httpBackend">$httpBackend mock</a>.</p>
+
+        
+      </td>
+    </tr>
+    
   </tbody>
 </table>
 
@@ -693,7 +812,7 @@ to the server.)</li>
   </li>
   
   <li id="whenJSONP">
-    <h3><p><code>whenJSONP(url);</code></p>
+    <h3><p><code>whenJSONP(url, [keys]);</code></p>
 
 </h3>
     <div><p>Creates a new backend definition for JSONP requests. For more info see <code>when()</code>.</p>
@@ -724,6 +843,97 @@ to the server.)</li>
       <td>
         <p>HTTP url or function that receives a url
   and returns true if the url matches the current definition.</p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        keys
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        <a href="" class="label type-hint type-hint-array">Array</a>
+      </td>
+      <td>
+        <p>Array of keys to assign to regex matches in request url described on
+  <a href="api/ngMock/service/$httpBackend">$httpBackend mock</a>.</p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+    
+
+    
+    
+    
+    <h4>Returns</h4>
+    <table class="variables-matrix return-arguments">
+  <tr>
+    <td><a href="" class="label type-hint type-hint-requesthandler">requestHandler</a></td>
+    <td><p>Returns an object with <code>respond</code> and <code>passThrough</code> methods that
+  control how a matched request is handled. You can save this object for later use and invoke
+  <code>respond</code> or <code>passThrough</code> again in order to change how a matched request is handled.</p>
+</td>
+  </tr>
+</table>
+    
+
+  </li>
+  
+  <li id="whenRoute">
+    <h3><p><code>whenRoute(method, url);</code></p>
+
+</h3>
+    <div><p>Creates a new backend definition that compares only with the requested route.</p>
+</div>
+
+    
+    <h4>Parameters</h4>
+    
+<table class="variables-matrix input-arguments">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        method
+        
+        
+      </td>
+      <td>
+        <a href="" class="label type-hint type-hint-string">string</a>
+      </td>
+      <td>
+        <p>HTTP method.</p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        url
+        
+        
+      </td>
+      <td>
+        <a href="" class="label type-hint type-hint-string">string</a>
+      </td>
+      <td>
+        <p>HTTP url string that supports colon param matching.</p>
 
         
       </td>

@@ -326,10 +326,15 @@ angular.module('pagesData', [])
     "area": "error",
     "path": "error/$rootScope/inprog"
   },
-  "error/$sanitize/badparse": {
-    "name": "badparse",
+  "error/$sanitize/noinert": {
+    "name": "noinert",
     "area": "error",
-    "path": "error/$sanitize/badparse"
+    "path": "error/$sanitize/noinert"
+  },
+  "error/$sanitize/uinput": {
+    "name": "uinput",
+    "area": "error",
+    "path": "error/$sanitize/uinput"
   },
   "error/$sce/icontext": {
     "name": "icontext",
@@ -480,6 +485,11 @@ angular.module('pagesData', [])
     "name": "orphan",
     "area": "error",
     "path": "error/ngTransclude/orphan"
+  },
+  "error/orderBy/notarray": {
+    "name": "notarray",
+    "area": "error",
+    "path": "error/orderBy/notarray"
   },
   "guide/$location": {
     "name": "Using $location",
@@ -1506,6 +1516,11 @@ angular.module('pagesData', [])
     "area": "api",
     "path": "api/ng/service/$sce"
   },
+  "api/ng/provider/$templateRequestProvider": {
+    "name": "$templateRequestProvider",
+    "area": "api",
+    "path": "api/ng/provider/$templateRequestProvider"
+  },
   "api/ng/service/$templateRequest": {
     "name": "$templateRequest",
     "area": "api",
@@ -1535,6 +1550,11 @@ angular.module('pagesData', [])
     "name": "$animate",
     "area": "api",
     "path": "api/ngAnimate/service/$animate"
+  },
+  "api/ngAnimate/directive/ngAnimateSwap": {
+    "name": "ngAnimateSwap",
+    "area": "api",
+    "path": "api/ngAnimate/directive/ngAnimateSwap"
   },
   "api/ngAria": {
     "name": "ngAria",
@@ -1735,6 +1755,11 @@ angular.module('pagesData', [])
     "name": "$sanitize",
     "area": "api",
     "path": "api/ngSanitize/service/$sanitize"
+  },
+  "api/ngSanitize/provider/$sanitizeProvider": {
+    "name": "$sanitizeProvider",
+    "area": "api",
+    "path": "api/ngSanitize/provider/$sanitizeProvider"
   },
   "api/ngTouch/directive/ngClick": {
     "name": "ngClick",
@@ -2221,8 +2246,14 @@ angular.module('pagesData', [])
   "examples/example-example94": {
     "path": "examples/example-example94"
   },
+  "examples/example-simpleTranscludeExample": {
+    "path": "examples/example-simpleTranscludeExample"
+  },
   "examples/example-example95": {
     "path": "examples/example-example95"
+  },
+  "examples/example-multiSlotTranscludeExample": {
+    "path": "examples/example-multiSlotTranscludeExample"
   },
   "examples/example-example96": {
     "path": "examples/example-example96"
@@ -2307,6 +2338,9 @@ angular.module('pagesData', [])
   },
   "examples/example-anchoringExample": {
     "path": "examples/example-anchoringExample"
+  },
+  "examples/example-ngAnimateSwap-directive": {
+    "path": "examples/example-ngAnimateSwap-directive"
   },
   "examples/example-ngMessageFormat-example": {
     "path": "examples/example-ngMessageFormat-example"
@@ -2451,6 +2485,11 @@ angular.module('pagesData', [])
     "area": "error",
     "path": "error/ngTransclude"
   },
+  "error/orderBy": {
+    "name": "orderBy",
+    "area": "error",
+    "path": "error/orderBy"
+  },
   ".": {
     "name": "production",
     "path": "."
@@ -2504,6 +2543,11 @@ angular.module('pagesData', [])
     "name": "service components in ngAnimate",
     "area": "api",
     "path": "api/ngAnimate/service"
+  },
+  "api/ngAnimate/directive": {
+    "name": "directive components in ngAnimate",
+    "area": "api",
+    "path": "api/ngAnimate/directive"
   },
   "api/ngAria/provider": {
     "name": "provider components in ngAria",
@@ -2594,6 +2638,11 @@ angular.module('pagesData', [])
     "name": "service components in ngSanitize",
     "area": "api",
     "path": "api/ngSanitize/service"
+  },
+  "api/ngSanitize/provider": {
+    "name": "provider components in ngSanitize",
+    "area": "api",
+    "path": "api/ngSanitize/provider"
   },
   "api/ngTouch/directive": {
     "name": "directive components in ngTouch",
