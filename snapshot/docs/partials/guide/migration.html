@@ -376,10 +376,11 @@ be iterated over during the initial forEach call.</li>
 </ul>
 <p>This change also makes our forEach behave more like Array#forEach.</p>
 <ul>
-<li><strong>angular.toJson:</strong> due to <a href="https://github.com/angular/angular.js/commit/c054288c9722875e3595e6e6162193e0fb67a251">c054288c</a>,</li>
+<li><strong>angular.toJson:</strong> due to <a href="https://github.com/angular/angular.js/commit/c054288c9722875e3595e6e6162193e0fb67a251">c054288c</a>,
+<code>toJson()</code> will no longer strip properties starting with a single <code>$</code>. If you relied on
+<code>toJson()</code>&#39;s stripping these types of properties before, you will have to do it manually now.
+It will still strip properties starting with <code>$$</code> though.</li>
 </ul>
-<p>If you expected <code>toJson</code> to strip these types of properties before, you will have to
-manually do this yourself now.</p>
 <h2 id="jqlite-jquery">jqLite / JQuery</h2>
 <ul>
 <li><strong>jqLite:</strong> due to <a href="https://github.com/angular/angular.js/commit/a196c8bca82a28c08896d31f1863cf4ecd11401c">a196c8bc</a>,

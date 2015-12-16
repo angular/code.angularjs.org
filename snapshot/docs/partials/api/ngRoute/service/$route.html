@@ -1,8 +1,8 @@
-<a href='https://github.com/angular/angular.js/edit/master/src/ngRoute/route.js?message=docs($route)%3A%20describe%20your%20change...#L254' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/master/src/ngRoute/route.js?message=docs($route)%3A%20describe%20your%20change...#L266' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 
-<a href='https://github.com/angular/angular.js/tree/master/src/ngRoute/route.js#L254' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/master/src/ngRoute/route.js#L266' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -464,7 +464,7 @@ instance of the Controller.</p>
     <td><p>Reference to the current route definition.
 The route definition contains:</p>
 <ul>
-<li><code>controller</code>: The controller constructor as define in route definition.</li>
+<li><code>controller</code>: The controller constructor as defined in the route definition.</li>
 <li><p><code>locals</code>: A map of locals which is used by <a href="api/ng/service/$controller">$controller</a> service for
 controller instantiation. The <code>locals</code> contain
 the resolved values of the <code>resolve</code> map. Additionally the <code>locals</code> also contain:</p>
@@ -472,6 +472,9 @@ the resolved values of the <code>resolve</code> map. Additionally the <code>loca
 <li><code>$scope</code> - The current route scope.</li>
 <li><code>$template</code> - The current route template HTML.</li>
 </ul>
+<p>The <code>locals</code> will be assigned to the route scope&#39;s <code>$resolve</code> property. You can override
+the property name, using <code>resolveAs</code> in the route definition. See
+<a href="api/ngRoute/provider/$routeProvider">$routeProvider</a> for more info.</p>
 </li>
 </ul>
 </td>

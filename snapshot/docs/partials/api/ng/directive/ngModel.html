@@ -1,8 +1,8 @@
-<a href='https://github.com/angular/angular.js/edit/master/src/ng/directive/ngModel.js?message=docs(ngModel)%3A%20describe%20your%20change...#L878' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/master/src/ng/directive/ngModel.js?message=docs(ngModel)%3A%20describe%20your%20change...#L893' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 
-<a href='https://github.com/angular/angular.js/tree/master/src/ng/directive/ngModel.js#L878' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/master/src/ng/directive/ngModel.js#L893' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -29,7 +29,8 @@ which is created and exposed by this directive.</p>
 require.</li>
 <li>Providing validation behavior (i.e. required, number, email, url).</li>
 <li>Keeping the state of the control (valid/invalid, dirty/pristine, touched/untouched, validation errors).</li>
-<li>Setting related css classes on the element (<code>ng-valid</code>, <code>ng-invalid</code>, <code>ng-dirty</code>, <code>ng-pristine</code>, <code>ng-touched</code>, <code>ng-untouched</code>) including animations.</li>
+<li>Setting related css classes on the element (<code>ng-valid</code>, <code>ng-invalid</code>, <code>ng-dirty</code>, <code>ng-pristine</code>, <code>ng-touched</code>,
+<code>ng-untouched</code>, <code>ng-empty</code>, <code>ng-not-empty</code>) including animations.</li>
 <li>Registering the control with its parent <a href="api/ng/directive/form">form</a>.</li>
 </ul>
 <p>Note: <code>ngModel</code> will try to bind to the property given by evaluating the expression on the
@@ -71,11 +72,14 @@ depending on the validity of the model.</p>
 <li><code>ng-touched</code>: the control has been blurred</li>
 <li><code>ng-untouched</code>: the control hasn&#39;t been blurred</li>
 <li><code>ng-pending</code>: any <code>$asyncValidators</code> are unfulfilled</li>
+<li><code>ng-empty</code>: the view does not contain a value or the value is deemed &quot;empty&quot;, as defined
+ by the <a href="api/ng/type/ngModel.NgModelController#$isEmpty"><code>ngModel.NgModelController</code></a> method</li>
+<li><code>ng-not-empty</code>: the view contains a non-empty value</li>
 </ul>
 <p>Keep in mind that ngAnimate can detect each of these classes when added and removed.</p>
 <h2 id="animation-hooks">Animation Hooks</h2>
 <p>Animations within models are triggered when any of the associated CSS classes are added and removed
-on the input element which is attached to the model. These classes are: <code>.ng-pristine</code>, <code>.ng-dirty</code>,
+on the input element which is attached to the model. These classes include: <code>.ng-pristine</code>, <code>.ng-dirty</code>,
 <code>.ng-invalid</code> and <code>.ng-valid</code> as well as any other validations that are performed on the model itself.
 The animations that are triggered within ngModel are similar to how they work in ngClass and
 animations can be hooked into using CSS transitions, keyframes as well as JS animations.</p>

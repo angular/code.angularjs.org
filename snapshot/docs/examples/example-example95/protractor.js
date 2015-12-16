@@ -1,10 +1,4 @@
-it('should have transcluded', function() {
-  var titleElement = element(by.model('title'));
-  titleElement.clear();
-  titleElement.sendKeys('TITLE');
-  var textElement = element(by.model('text'));
-  textElement.clear();
-  textElement.sendKeys('TEXT');
-  expect(element(by.binding('title')).getText()).toEqual('TITLE');
-  expect(element(by.binding('text')).getText()).toEqual('TEXT');
-});
+it('should have different transclude element content', function() {
+         expect(element(by.id('fallback')).getText()).toBe('Button1');
+         expect(element(by.id('modified')).getText()).toBe('Button2');
+       });
