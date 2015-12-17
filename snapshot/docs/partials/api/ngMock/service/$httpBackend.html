@@ -111,18 +111,18 @@ angular
 function MyController($scope, $http) {
   var authToken;
 
-  $http.get(&#39;/auth.py&#39;).success(function(data, status, headers) {
-    authToken = headers(&#39;A-Token&#39;);
-    $scope.user = data;
+  $http.get(&#39;/auth.py&#39;).then(function(response) {
+    authToken = response.headers(&#39;A-Token&#39;);
+    $scope.user = response.data;
   });
 
   $scope.saveMessage = function(message) {
     var headers = { &#39;Authorization&#39;: authToken };
     $scope.status = &#39;Saving...&#39;;
 
-    $http.post(&#39;/add-msg.py&#39;, message, { headers: headers } ).success(function(response) {
+    $http.post(&#39;/add-msg.py&#39;, message, { headers: headers } ).then(function(response) {
       $scope.status = &#39;&#39;;
-    }).error(function() {
+    }).catch(function() {
       $scope.status = &#39;Failed...&#39;;
     });
   };
