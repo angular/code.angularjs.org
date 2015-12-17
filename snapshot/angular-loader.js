@@ -1,11 +1,39 @@
 /**
- * @license AngularJS v1.5.0-build.4454+sha.4bcb307
+ * @license AngularJS v1.5.0-build.4455+sha.9f5d76e
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
 
 (function() {'use strict';
     function isFunction(value) {return typeof value === 'function';};
+
+/* global: toDebugString: true */
+
+function serializeObject(obj) {
+  var seen = [];
+
+  return JSON.stringify(obj, function(key, val) {
+    val = toJsonReplacer(key, val);
+    if (isObject(val)) {
+
+      if (seen.indexOf(val) >= 0) return '...';
+
+      seen.push(val);
+    }
+    return val;
+  });
+}
+
+function toDebugString(obj) {
+  if (typeof obj === 'function') {
+    return obj.toString().replace(/ \{[\s\S]*$/, '');
+  } else if (isUndefined(obj)) {
+    return 'undefined';
+  } else if (typeof obj !== 'string') {
+    return serializeObject(obj);
+  }
+  return obj;
+}
 
 /**
  * @description
@@ -59,7 +87,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.5.0-build.4454+sha.4bcb307/' +
+    message += '\nhttp://errors.angularjs.org/1.5.0-build.4455+sha.9f5d76e/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
