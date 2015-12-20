@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.0-build.4461+sha.99d601a
+ * @license AngularJS v1.5.0-build.4462+sha.798fb18
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -87,7 +87,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.5.0-build.4461+sha.99d601a/' +
+    message += '\nhttp://errors.angularjs.org/1.5.0-build.4462+sha.798fb18/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -400,7 +400,7 @@ function setupModuleLoader(window) {
            *      returns an html template as a string which should be used as the contents of this component.
            *      Empty string by default.
            *
-           *      If `template` is a function, then it is {@link auto.$injector#invoke injected} with
+           *      If `template` is a function, then it is {@link guide/di injectable}, and receives
            *      the following locals:
            *
            *      - `$element` - Current element
@@ -409,7 +409,7 @@ function setupModuleLoader(window) {
            *    - `templateUrl` – `{string=|function()=}` – path or function that returns a path to an html
            *      template that should be used  as the contents of this component.
            *
-           *      If `templateUrl` is a function, then it is {@link auto.$injector#invoke injected} with
+           *      If `templateUrl` is a function, then it is {@link guide/di injectable}, and receives
            *      the following locals:
            *
            *      - `$element` - Current element

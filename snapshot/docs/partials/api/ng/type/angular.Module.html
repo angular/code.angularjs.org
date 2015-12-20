@@ -816,7 +816,7 @@ If not present, this will default to be the same as the component name.</li>
 <li><p><code>template</code> – <code>{string=|function()=}</code> – html template as a string or a function that
 returns an html template as a string which should be used as the contents of this component.
 Empty string by default.</p>
-<p>If <code>template</code> is a function, then it is <a href="api/auto/service/$injector#invoke">injected</a> with
+<p>If <code>template</code> is a function, then it is <a href="guide/di">injectable</a>, and receives
 the following locals:</p>
 <ul>
 <li><code>$element</code> - Current element</li>
@@ -825,7 +825,7 @@ the following locals:</p>
 </li>
 <li><p><code>templateUrl</code> – <code>{string=|function()=}</code> – path or function that returns a path to an html
 template that should be used  as the contents of this component.</p>
-<p>If <code>templateUrl</code> is a function, then it is <a href="api/auto/service/$injector#invoke">injected</a> with
+<p>If <code>templateUrl</code> is a function, then it is <a href="guide/di">injectable</a>, and receives
 the following locals:</p>
 <ul>
 <li><code>$element</code> - Current element</li>
