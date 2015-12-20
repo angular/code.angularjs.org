@@ -9190,7 +9190,7 @@ return jQuery;
 }));
 
 /**
- * @license AngularJS v1.5.0-build.4460+sha.a6e9174
+ * @license AngularJS v1.5.0-build.4461+sha.99d601a
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -9249,7 +9249,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.5.0-build.4460+sha.a6e9174/' +
+    message += '\nhttp://errors.angularjs.org/1.5.0-build.4461+sha.99d601a/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -11503,7 +11503,7 @@ function setupModuleLoader(window) {
           component: function(name, options) {
             function factory($injector) {
               function makeInjectable(fn) {
-                if (angular.isFunction(fn)) {
+                if (isFunction(fn) || Array.isArray(fn)) {
                   return function(tElement, tAttrs) {
                     return $injector.invoke(fn, this, {$element: tElement, $attrs: tAttrs});
                   };
@@ -11743,7 +11743,7 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.5.0-build.4460+sha.a6e9174',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.5.0-build.4461+sha.99d601a',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 5,
   dot: 0,
