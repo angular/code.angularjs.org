@@ -1,4 +1,4 @@
 (function(angular) {
   'use strict';
-angular.module('ngClickExample', ['ngTouch']);
+angular.module('ngSwipeLeftExample', ['ngTouch']);
 })(window.angular);

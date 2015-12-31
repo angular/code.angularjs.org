@@ -371,6 +371,16 @@ angular.module('navData', [])
             "type": "directive"
           },
           {
+            "name": "ngMaxlength",
+            "href": "api/ng/directive/ngMaxlength",
+            "type": "directive"
+          },
+          {
+            "name": "ngMinlength",
+            "href": "api/ng/directive/ngMinlength",
+            "type": "directive"
+          },
+          {
             "name": "ngModel",
             "href": "api/ng/directive/ngModel",
             "type": "directive"
@@ -431,6 +441,11 @@ angular.module('navData', [])
             "type": "directive"
           },
           {
+            "name": "ngPattern",
+            "href": "api/ng/directive/ngPattern",
+            "type": "directive"
+          },
+          {
             "name": "ngPluralize",
             "href": "api/ng/directive/ngPluralize",
             "type": "directive"
@@ -443,6 +458,11 @@ angular.module('navData', [])
           {
             "name": "ngRepeat",
             "href": "api/ng/directive/ngRepeat",
+            "type": "directive"
+          },
+          {
+            "name": "ngRequired",
+            "href": "api/ng/directive/ngRequired",
             "type": "directive"
           },
           {
@@ -1903,6 +1923,11 @@ angular.module('navData', [])
           {
             "name": "Expressions",
             "href": "guide/expression",
+            "type": "page"
+          },
+          {
+            "name": "Interpolation",
+            "href": "guide/interpolation",
             "type": "page"
           },
           {

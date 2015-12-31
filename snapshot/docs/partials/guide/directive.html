@@ -128,42 +128,6 @@ directives when possible.
 </div>
 
 
-
-<h3 id="text-and-attribute-bindings">Text and attribute bindings</h3>
-<p>During the compilation process the <a href="api/ng/service/$compile">compiler</a> matches text and attributes
-using the <a href="api/ng/service/$interpolate">$interpolate</a> service to see if they contain embedded
-expressions. These expressions are registered as <a href="api/ng/type/$rootScope.Scope#$watch">watches</a>
-and will update as part of normal <a href="api/ng/type/$rootScope.Scope#$digest">digest</a> cycle. An
-example of interpolation is shown below:</p>
-<pre><code class="lang-html">&lt;a ng-href=&quot;img/{{username}}.jpg&quot;&gt;Hello {{username}}!&lt;/a&gt;
-</code></pre>
-<h3 id="-ngattr-attribute-bindings"><code>ngAttr</code> attribute bindings</h3>
-<p>Web browsers are sometimes picky about what values they consider valid for attributes.</p>
-<p>For example, considering this template:</p>
-<pre><code class="lang-html">&lt;svg&gt;
-  &lt;circle cx=&quot;{{cx}}&quot;&gt;&lt;/circle&gt;
-&lt;/svg&gt;
-</code></pre>
-<p>We would expect Angular to be able to bind to this, but when we check the console we see
-something like <code>Error: Invalid value for attribute cx=&quot;{{cx}}&quot;</code>. Because of the SVG DOM API&#39;s
-restrictions, you cannot simply write <code>cx=&quot;{{cx}}&quot;</code>.</p>
-<p>With <code>ng-attr-cx</code> you can work around this problem.</p>
-<p>If an attribute with a binding is prefixed with the <code>ngAttr</code> prefix (denormalized as <code>ng-attr-</code>)
-then during the binding it will be applied to the corresponding unprefixed attribute. This allows
-you to bind to attributes that would otherwise be eagerly processed by browsers
-(e.g. an SVG element&#39;s <code>circle[cx]</code> attributes). When using <code>ngAttr</code>, the <code>allOrNothing</code> flag of
-<a href="api/ng/service/$interpolate">$interpolate</a> is used, so if any expression in the interpolated string
-results in <code>undefined</code>, the attribute is removed and not added to the element.</p>
-<p>For example, we could fix the example above by instead writing:</p>
-<pre><code class="lang-html">&lt;svg&gt;
-  &lt;circle ng-attr-cx=&quot;{{cx}}&quot;&gt;&lt;/circle&gt;
-&lt;/svg&gt;
-</code></pre>
-<p>If one wants to modify a camelcased attribute (SVG elements have valid camelcased attributes), such as <code>viewBox</code> on the <code>svg</code> element, one can use underscores to denote that the attribute to bind to is naturally camelcased.</p>
-<p>For example, to bind to <code>viewBox</code>, we can write:</p>
-<pre><code class="lang-html">&lt;svg ng-attr-view_box=&quot;{{viewBox}}&quot;&gt;
-&lt;/svg&gt;
-</code></pre>
 <h2 id="creating-directives">Creating Directives</h2>
 <p>First let&#39;s talk about the <a href="api/ng/provider/$compileProvider#directive">API for registering directives</a>. Much like
 controllers, directives are registered on modules. To register a directive, you use the

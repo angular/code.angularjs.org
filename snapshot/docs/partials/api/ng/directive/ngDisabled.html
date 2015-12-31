@@ -23,17 +23,7 @@
   <p>This directive sets the <code>disabled</code> attribute on the element if the
 <a href="guide/expression">expression</a> inside <code>ngDisabled</code> evaluates to truthy.</p>
 <p>A special directive is necessary because we cannot use interpolation inside the <code>disabled</code>
-attribute.  The following example would make the button enabled on Chrome/Firefox
-but not on older IEs:</p>
-<pre><code class="lang-html">&lt;!-- See below for an example of ng-disabled being used correctly --&gt;
-&lt;div ng-init=&quot;isDisabled = false&quot;&gt;
- &lt;button disabled=&quot;{{isDisabled}}&quot;&gt;Disabled&lt;/button&gt;
-&lt;/div&gt;
-</code></pre>
-<p>This is because the HTML specification does not require browsers to preserve the values of
-boolean attributes such as <code>disabled</code> (Their presence means true and their absence means false.)
-If we put an Angular interpolation expression into such an attribute then the
-binding information would be lost when the browser removes the attribute.</p>
+attribute. See the <a href="guide/interpolation">interpolation guide</a> for more info.</p>
 
 </div>
 

@@ -168,12 +168,13 @@ security bugs!
   <h2 id="example">Example</h2><p>
 
 <div>
-  <a ng-click="openPlunkr('examples/example-example108', $event)" class="btn pull-right">
+  <a ng-click="openPlunkr('examples/example-custom-interpolation-markup', $event)" class="btn pull-right">
     <i class="glyphicon glyphicon-edit">&nbsp;</i>
     Edit in Plunker</a>
 
   <div class="runnable-example"
-      path="examples/example-example108"
+      path="examples/example-custom-interpolation-markup"
+      name="custom-interpolation-markup"
       module="customInterpolationApp">
 
   
@@ -181,7 +182,7 @@ security bugs!
       name="index.html"
       language="html"
       type="html">
-      <pre><code>&lt;script&gt;&#10;  var customInterpolationApp = angular.module(&#39;customInterpolationApp&#39;, []);&#10;&#10;  customInterpolationApp.config(function($interpolateProvider) {&#10;    $interpolateProvider.startSymbol(&#39;//&#39;);&#10;    $interpolateProvider.endSymbol(&#39;//&#39;);&#10;  });&#10;&#10;&#10;  customInterpolationApp.controller(&#39;DemoController&#39;, function() {&#10;      this.label = &quot;This binding is brought you by // interpolation symbols.&quot;;&#10;  });&#10;&lt;/script&gt;&#10;&lt;div ng-app=&quot;App&quot; ng-controller=&quot;DemoController as demo&quot;&gt;&#10;    //demo.label//&#10;&lt;/div&gt;</code></pre>
+      <pre><code>&lt;script&gt;&#10;  var customInterpolationApp = angular.module(&#39;customInterpolationApp&#39;, []);&#10;&#10;  customInterpolationApp.config(function($interpolateProvider) {&#10;    $interpolateProvider.startSymbol(&#39;//&#39;);&#10;    $interpolateProvider.endSymbol(&#39;//&#39;);&#10;  });&#10;&#10;&#10;  customInterpolationApp.controller(&#39;DemoController&#39;, function() {&#10;      this.label = &quot;This binding is brought you by // interpolation symbols.&quot;;&#10;  });&#10;&lt;/script&gt;&#10;&lt;div ng-controller=&quot;DemoController as demo&quot;&gt;&#10;    //demo.label//&#10;&lt;/div&gt;</code></pre>
     </div>
   
     <div class="runnable-example-file" 
@@ -192,7 +193,7 @@ security bugs!
     </div>
   
 
-    <iframe class="runnable-example-frame" src="examples/example-example108/index.html" name="example-example108"></iframe>
+    <iframe class="runnable-example-frame" src="examples/example-custom-interpolation-markup/index.html" name="example-custom-interpolation-markup"></iframe>
   </div>
 </div>
 

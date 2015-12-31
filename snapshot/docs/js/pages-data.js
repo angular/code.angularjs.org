@@ -581,6 +581,11 @@ angular.module('pagesData', [])
     "area": "guide",
     "path": "guide"
   },
+  "guide/interpolation": {
+    "name": "Interpolation",
+    "area": "guide",
+    "path": "guide/interpolation"
+  },
   "guide/introduction": {
     "name": "Introduction",
     "area": "guide",
@@ -1325,6 +1330,26 @@ angular.module('pagesData', [])
     "name": "select",
     "area": "api",
     "path": "api/ng/directive/select"
+  },
+  "api/ng/directive/ngRequired": {
+    "name": "ngRequired",
+    "area": "api",
+    "path": "api/ng/directive/ngRequired"
+  },
+  "api/ng/directive/ngPattern": {
+    "name": "ngPattern",
+    "area": "api",
+    "path": "api/ng/directive/ngPattern"
+  },
+  "api/ng/directive/ngMaxlength": {
+    "name": "ngMaxlength",
+    "area": "api",
+    "path": "api/ng/directive/ngMaxlength"
+  },
+  "api/ng/directive/ngMinlength": {
+    "name": "ngMinlength",
+    "area": "api",
+    "path": "api/ng/directive/ngMinlength"
   },
   "api/ng/service/$document": {
     "name": "$document",
@@ -2270,6 +2295,18 @@ angular.module('pagesData', [])
   "examples/example-select-with-non-string-options": {
     "path": "examples/example-select-with-non-string-options"
   },
+  "examples/example-ngRequiredDirective": {
+    "path": "examples/example-ngRequiredDirective"
+  },
+  "examples/example-ngPatternDirective": {
+    "path": "examples/example-ngPatternDirective"
+  },
+  "examples/example-ngMaxlengthDirective": {
+    "path": "examples/example-ngMaxlengthDirective"
+  },
+  "examples/example-ngMinlengthDirective": {
+    "path": "examples/example-ngMinlengthDirective"
+  },
   "examples/example-example97": {
     "path": "examples/example-example97"
   },
@@ -2309,6 +2346,9 @@ angular.module('pagesData', [])
   "examples/example-example107": {
     "path": "examples/example-example107"
   },
+  "examples/example-custom-interpolation-markup": {
+    "path": "examples/example-custom-interpolation-markup"
+  },
   "examples/example-example108": {
     "path": "examples/example-example108"
   },
@@ -2318,17 +2358,14 @@ angular.module('pagesData', [])
   "examples/example-example110": {
     "path": "examples/example-example110"
   },
-  "examples/example-example111": {
-    "path": "examples/example-example111"
-  },
   "test_data.json": {
     "path": "test_data.json"
   },
+  "examples/example-example111": {
+    "path": "examples/example-example111"
+  },
   "examples/example-example112": {
     "path": "examples/example-example112"
-  },
-  "examples/example-example113": {
-    "path": "examples/example-example113"
   },
   "home.html": {
     "path": "home.html"
@@ -2360,6 +2397,9 @@ angular.module('pagesData', [])
   "examples/example-$route-service": {
     "path": "examples/example-$route-service"
   },
+  "examples/example-example113": {
+    "path": "examples/example-example113"
+  },
   "examples/example-example114": {
     "path": "examples/example-example114"
   },
@@ -2371,9 +2411,6 @@ angular.module('pagesData', [])
   },
   "examples/example-example117": {
     "path": "examples/example-example117"
-  },
-  "examples/example-example118": {
-    "path": "examples/example-example118"
   },
   "error/$animate": {
     "name": "$animate",

@@ -273,7 +273,7 @@ instance or collection.</p>
 updated with data from server. This makes it easy to use in
 <a href="api/ngRoute/provider/$routeProvider">resolve section of $routeProvider.when()</a> to defer view
 rendering until the resource(s) are loaded.</p>
-<p>On failure, the promise is resolved with the <a href="api/ng/service/$http">http response</a> object, without
+<p>On failure, the promise is rejected with the <a href="api/ng/service/$http">http response</a> object, without
 the <code>resource</code> property.</p>
 <p>If an interceptor object was provided, the promise will instead be resolved with the value
 returned by the interceptor.</p>
