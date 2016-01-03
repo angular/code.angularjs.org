@@ -185,7 +185,7 @@ cannot be applied to the same element.</li>
 <h4 id="-bindtocontroller-"><code>bindToController</code></h4>
 <p>When an isolate scope is used for a component (see above), and <code>controllerAs</code> is used, <code>bindToController: true</code> will
 allow a component to have its properties bound to the controller, rather than to scope. When the controller
-is instantiated, the initial values of the isolate scope bindings are already available.</p>
+is instantiated, the initial values of the isolate scope bindings will be available if the controller is not an ES6 class.</p>
 <h4 id="-controller-"><code>controller</code></h4>
 <p>Controller constructor function. The controller is instantiated before the
 pre-linking phase and can be accessed by other directives (see
