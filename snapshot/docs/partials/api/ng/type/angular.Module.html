@@ -704,7 +704,7 @@ subset of directives which represents actual UI components in your application. 
 definitions are very simple and do not require the complexity behind defining directives.
 Component definitions usually consist only of the template and the controller backing it.
 In order to make the definition easier, components enforce best practices like controllerAs
-and default behaviors like scope isolation, restrict to elements and allow transclusion.</p>
+and default behaviors like scope isolation, restrict to elements.</p>
 <p><br />
 Here are a few examples of how you would usually define components:</p>
 <pre><code class="lang-js">var myMod = angular.module(...);
@@ -835,7 +835,7 @@ the following locals:</p>
 <li><code>bindings</code> – <code>{object=}</code> – Define DOM attribute binding to component properties.
 Component properties are always bound to the component controller and not to the scope.</li>
 <li><code>transclude</code> – <code>{boolean=}</code> – Whether <a href="api/ng/service/$compile#transclusion">transclusion</a> is enabled.
-Enabled by default.</li>
+Disabled by default.</li>
 <li><code>isolate</code> – <code>{boolean=}</code> – Whether the new scope is isolated. Isolated by default.</li>
 <li><code>restrict</code> - <code>{string=}</code> - String of subset of <a href="api/ng/service/$compile#-restrict-">EACM</a> which
 restricts the component to specific directive declaration style. If omitted, this defaults to &#39;E&#39;.</li>

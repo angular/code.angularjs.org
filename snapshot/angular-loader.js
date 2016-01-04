@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.0-build.4467+sha.b0248b7
+ * @license AngularJS v1.5.0-build.4468+sha.6a47c0d
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -87,7 +87,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.5.0-build.4467+sha.b0248b7/' +
+    message += '\nhttp://errors.angularjs.org/1.5.0-build.4468+sha.6a47c0d/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -417,7 +417,7 @@ function setupModuleLoader(window) {
            *    - `bindings` – `{object=}` – Define DOM attribute binding to component properties.
            *      Component properties are always bound to the component controller and not to the scope.
            *    - `transclude` – `{boolean=}` – Whether {@link $compile#transclusion transclusion} is enabled.
-           *      Enabled by default.
+           *      Disabled by default.
            *    - `isolate` – `{boolean=}` – Whether the new scope is isolated. Isolated by default.
            *    - `restrict` - `{string=}` - String of subset of {@link ng.$compile#-restrict- EACM} which
            *      restricts the component to specific directive declaration style. If omitted, this defaults to 'E'.
@@ -430,7 +430,7 @@ function setupModuleLoader(window) {
            * definitions are very simple and do not require the complexity behind defining directives.
            * Component definitions usually consist only of the template and the controller backing it.
            * In order to make the definition easier, components enforce best practices like controllerAs
-           * and default behaviors like scope isolation, restrict to elements and allow transclusion.
+           * and default behaviors like scope isolation, restrict to elements.
            *
            * <br />
            * Here are a few examples of how you would usually define components:
@@ -519,7 +519,7 @@ function setupModuleLoader(window) {
                 controllerAs: identifierForController(options.controller) || options.controllerAs || name,
                 template: makeInjectable(template),
                 templateUrl: makeInjectable(options.templateUrl),
-                transclude: options.transclude === undefined ? true : options.transclude,
+                transclude: options.transclude === undefined ? false : options.transclude,
                 scope: options.isolate === false ? true : {},
                 bindToController: options.bindings || {},
                 restrict: options.restrict || 'E'
