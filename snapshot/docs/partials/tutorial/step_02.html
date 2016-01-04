@@ -109,6 +109,7 @@ are reflected in the model.</p>
 <p>The &quot;Angular way&quot; of separating controller from the view, makes it easy to test code as it is being
 developed. If our controller is available on the global namespace then we could simply instantiate it
 with a mock <code>scope</code> object:</p>
+<p><strong><code>test/e2e/scenarios.js</code>:</strong></p>
 <pre><code class="lang-js">describe(&#39;PhoneListCtrl&#39;, function(){
 
   it(&#39;should create &quot;phones&quot; model with 3 phones&#39;, function() {
