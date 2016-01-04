@@ -81,7 +81,7 @@ handler is trying to enter a new <code>$apply</code> block from within one.</p>
 <p>This is not an ideal design choice on the part of the 3rd party library.</p>
 <p>To resolve this type of issue, either fix the api to be always synchronous or asynchronous or force
 your callback handler to always run asynchronously by using the <code>$timeout</code> service.</p>
-<pre><code>function MyController($scope, thirdPartyComponent) {
+<pre><code>function MyController($scope, $timeout, thirdPartyComponent) {
   thirdPartyComponent.getData(function(someData) {
     $timeout(function() {
       $scope.someData = someData;
