@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.0-build.4474+sha.b2b896f
+ * @license AngularJS v1.5.0-build.4475+sha.e020b89
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -1231,7 +1231,10 @@ var $AnimateCssProvider = ['$animateProvider', function($animateProvider) {
       function onAnimationProgress(event) {
         event.stopPropagation();
         var ev = event.originalEvent || event;
-        var timeStamp = ev.$manualTimeStamp || ev.timeStamp || Date.now();
+
+        // we now always use `Date.now()` due to the recent changes with
+        // event.timeStamp in Firefox, Webkit and Chrome (see #13494 for more info)
+        var timeStamp = ev.$manualTimeStamp || Date.now();
 
         /* Firefox (or possibly just Gecko) likes to not round values up
          * when a ms measurement is used for the animation */
