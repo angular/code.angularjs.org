@@ -183,9 +183,18 @@ be applied to the same element.</li>
 cannot be applied to the same element.</li>
 </ul>
 <h4 id="-bindtocontroller-"><code>bindToController</code></h4>
-<p>When an isolate scope is used for a component (see above), and <code>controllerAs</code> is used, <code>bindToController: true</code> will
+<p>This property is used to bind scope properties directly to the controller. It can be either
+<code>true</code> or an object hash with the same format as the <code>scope</code> property. Additionally, a controller
+alias must be set, either by using <code>controllerAs: &#39;myAlias&#39;</code> or by specifying the alias in the controller
+definition: <code>controller: &#39;myCtrl as myAlias&#39;</code>.</p>
+<p>When an isolate scope is used for a directive (see above), <code>bindToController: true</code> will
 allow a component to have its properties bound to the controller, rather than to scope. When the controller
 is instantiated, the initial values of the isolate scope bindings will be available if the controller is not an ES6 class.</p>
+<p>It is also possible to set <code>bindToController</code> to an object hash with the same format as the <code>scope</code> property.
+This will set up the scope bindings to the controller directly. Note that <code>scope</code> can still be used
+to define which kind of scope is created. By default, no scope is created. Use <code>scope: {}</code> to create an isolate
+scope (useful for component directives).</p>
+<p>If both <code>bindToController</code> and <code>scope</code> are defined and have object hashes, <code>bindToController</code> overrides <code>scope</code>.</p>
 <h4 id="-controller-"><code>controller</code></h4>
 <p>Controller constructor function. The controller is instantiated before the
 pre-linking phase and can be accessed by other directives (see
