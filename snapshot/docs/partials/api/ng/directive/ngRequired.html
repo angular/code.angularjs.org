@@ -21,7 +21,7 @@
 
 <div class="api-profile-description">
   <p>ngRequired adds the required <a href="api/ng/type/ngModel.NgModelController#$validators"><code>validator</code></a> to <a href="api/ng/directive/ngModel"><code>ngModel</code></a>.
-It is most often used for [@link input <code>input</code>} and <a href="api/ng/directive/select"><code>select</code></a> controls, but can also be
+It is most often used for <a href="api/ng/directive/input"><code>input</code></a> and <a href="api/ng/directive/select"><code>select</code></a> controls, but can also be
 applied to custom controls.</p>
 <p>The directive sets the <code>required</code> attribute on the element if the Angular expression inside
 <code>ngRequired</code> evaluates to true. A special directive for setting <code>required</code> is necessary because we
@@ -88,7 +88,7 @@ custom controls, <code>$isEmpty()</code> can be overwritten to account for a $vi
       name="protractor.js"
       type="protractor"
       language="js">
-      <pre><code>var required = element(by.binding(&#39;form.input.$error.required&#39;));&#10;var model = element(by.binding(&#39;model&#39;));&#10;&#10;it(&#39;should set the required error&#39;, function() {&#10;  expect(required.getText()).toContain(&#39;true&#39;);&#10;&#10;  element(by.id(&#39;input&#39;)).sendKeys(&#39;123&#39;);&#10;  expect(required.getText()).not.toContain(&#39;true&#39;);&#10;  expect(model.getText()).toContain(&#39;123&#39;);&#10;});</code></pre>
+      <pre><code>var required = element(by.binding(&#39;form.input.$error.required&#39;));&#10;var model = element(by.binding(&#39;model&#39;));&#10;var input = element(by.id(&#39;input&#39;));&#10;&#10;it(&#39;should set the required error&#39;, function() {&#10;  expect(required.getText()).toContain(&#39;true&#39;);&#10;&#10;  input.sendKeys(&#39;123&#39;);&#10;  expect(required.getText()).not.toContain(&#39;true&#39;);&#10;  expect(model.getText()).toContain(&#39;123&#39;);&#10;});</code></pre>
     </div>
   
 

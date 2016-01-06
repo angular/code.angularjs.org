@@ -1,8 +1,8 @@
-<a href='https://github.com/angular/angular.js/edit/master/src/ng/directive/validators.js?message=docs(ngPattern)%3A%20describe%20your%20change...#L78' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/master/src/ng/directive/validators.js?message=docs(ngPattern)%3A%20describe%20your%20change...#L79' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 
-<a href='https://github.com/angular/angular.js/tree/master/src/ng/directive/validators.js#L78' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/master/src/ng/directive/validators.js#L79' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -21,10 +21,10 @@
 
 <div class="api-profile-description">
   <p>ngPattern adds the pattern <a href="api/ng/type/ngModel.NgModelController#$validators"><code>validator</code></a> to <a href="api/ng/directive/ngModel"><code>ngModel</code></a>.
-It is most often used for text-based [@link input <code>input</code>} controls, but can also be applied to custom text-based controls.</p>
-<p> The validator sets the <code>pattern</code> error key if the <a href="api/ng/type/ngModel.NgModelController#$viewValue"><code>ngModel.$viewValue</code></a>
- does not match a RegExp which is obtained by evaluating the Angular expression given in the
- <code>ngPattern</code> attribute value:</p>
+It is most often used for text-based <a href="api/ng/directive/input"><code>input</code></a> controls, but can also be applied to custom text-based controls.</p>
+<p>The validator sets the <code>pattern</code> error key if the <a href="api/ng/type/ngModel.NgModelController#$viewValue"><code>ngModel.$viewValue</code></a>
+does not match a RegExp which is obtained by evaluating the Angular expression given in the
+<code>ngPattern</code> attribute value:</p>
 <ul>
 <li>If the expression evaluates to a RegExp object, then this is used directly.</li>
 <li>If the expression evaluates to a string, then it will be converted to a RegExp after wrapping it
@@ -39,9 +39,16 @@ account.
 <div class="alert alert-info">
 <strong>Note:</strong> This directive is also added when the plain <code>pattern</code> attribute is used, with two
 differences:
-1. <code>ngPattern</code> does not set the <code>pattern</code> attribute and therefore not HTML5 constraint validation
-is available.
-2. The <code>ngPattern</code> attribute must be an expression, while the <code>pattern</code> value must be interpolated
+<ol>
+  <li>
+    <code>ngPattern</code> does not set the <code>pattern</code> attribute and therefore HTML5 constraint validation is
+    not available.
+  </li>
+  <li>
+    The <code>ngPattern</code> attribute must be an expression, while the <code>pattern</code> value must be
+    interpolated.
+  </li>
+</ol>
 </div>
 </div>
 
