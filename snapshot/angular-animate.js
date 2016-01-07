@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.0-build.4481+sha.f7eab8d
+ * @license AngularJS v1.5.0-build.4482+sha.e5cab95
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -2191,6 +2191,13 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
       return mergeAnimationOptions(element, options, {});
     }
 
+    // IE9-11 has no method "contains" in SVG element and in Node.prototype. Bug #10259.
+    var contains = Node.prototype.contains || function(arg) {
+      // jshint bitwise: false
+      return this === arg || !!(this.compareDocumentPosition(arg) & 16);
+      // jshint bitwise: true
+    };
+
     function findCallbacks(parent, element, event) {
       var targetNode = getDomNode(element);
       var targetParentNode = getDomNode(parent);
@@ -2199,9 +2206,9 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
       var entries = callbackRegistry[event];
       if (entries) {
         forEach(entries, function(entry) {
-          if (entry.node.contains(targetNode)) {
+          if (contains.call(entry.node, targetNode)) {
             matches.push(entry.callback);
-          } else if (event === 'leave' && entry.node.contains(targetParentNode)) {
+          } else if (event === 'leave' && contains.call(entry.node, targetParentNode)) {
             matches.push(entry.callback);
           }
         });
