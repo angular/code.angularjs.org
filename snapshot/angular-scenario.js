@@ -9190,7 +9190,7 @@ return jQuery;
 }));
 
 /**
- * @license AngularJS v1.5.0-build.4482+sha.e5cab95
+ * @license AngularJS v1.5.0-build.4483+sha.e1def1b
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -9249,7 +9249,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.5.0-build.4482+sha.e5cab95/' +
+    message += '\nhttp://errors.angularjs.org/1.5.0-build.4483+sha.e1def1b/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -11718,6 +11718,7 @@ function toDebugString(obj) {
   $AnchorScrollProvider,
   $AnimateProvider,
   $CoreAnimateCssProvider,
+  $$CoreAnimateJsProvider,
   $$CoreAnimateQueueProvider,
   $$AnimateRunnerFactoryProvider,
   $$AnimateAsyncRunFactoryProvider,
@@ -11774,7 +11775,7 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.5.0-build.4482+sha.e5cab95',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.5.0-build.4483+sha.e1def1b',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 5,
   dot: 0,
@@ -11880,6 +11881,7 @@ function publishExternalAPI(angular) {
         $anchorScroll: $AnchorScrollProvider,
         $animate: $AnimateProvider,
         $animateCss: $CoreAnimateCssProvider,
+        $$animateJs: $$CoreAnimateJsProvider,
         $$animateQueue: $$CoreAnimateQueueProvider,
         $$AnimateRunner: $$AnimateRunnerFactoryProvider,
         $$animateAsyncRun: $$AnimateAsyncRunFactoryProvider,
@@ -14291,6 +14293,10 @@ function prepareAnimateOptions(options) {
       ? options
       : {};
 }
+
+var $$CoreAnimateJsProvider = function() {
+  this.$get = function() {};
+};
 
 // this is prefixed with Core since it conflicts with
 // the animateQueueProvider defined in ngAnimate/animateQueue.js

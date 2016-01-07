@@ -1681,6 +1681,11 @@ angular.module('pagesData', [])
     "area": "api",
     "path": "api/ngMock/type/angular.mock.TzDate"
   },
+  "api/ngMock/service/$animate": {
+    "name": "$animate",
+    "area": "api",
+    "path": "api/ngMock/service/$animate"
+  },
   "api/ngMock/function/angular.mock.dump": {
     "name": "angular.mock.dump",
     "area": "api",

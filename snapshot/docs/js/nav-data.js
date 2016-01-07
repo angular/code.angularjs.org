@@ -1045,6 +1045,11 @@ angular.module('navData', [])
             "href": "api/ngMock/service"
           },
           {
+            "name": "$animate",
+            "href": "api/ngMock/service/$animate",
+            "type": "service"
+          },
+          {
             "name": "$controller",
             "href": "api/ngMock/service/$controller",
             "type": "service"
