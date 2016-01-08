@@ -396,6 +396,11 @@ angular.module('pagesData', [])
     "area": "error",
     "path": "error/jqLite/onargs"
   },
+  "error/linky/notstring": {
+    "name": "notstring",
+    "area": "error",
+    "path": "error/linky/notstring"
+  },
   "error/ng/areq": {
     "name": "areq",
     "area": "error",
@@ -2496,6 +2501,11 @@ angular.module('pagesData', [])
     "name": "jqLite",
     "area": "error",
     "path": "error/jqLite"
+  },
+  "error/linky": {
+    "name": "linky",
+    "area": "error",
+    "path": "error/linky"
   },
   "error/ng": {
     "name": "ng",

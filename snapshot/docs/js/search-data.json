@@ -474,6 +474,12 @@
     "members": ""
   },
   {
+    "path": "error/linky/notstring",
+    "titleWords": "notstring",
+    "keywords": "and are as assumes asynchronously available be but can convert error expected html if in initialized is linky manually match methods need ng-bind-html ngsanitize non-empty non-string not notstring null objects occurs on only or partials pass passed received several should string strings supposed that the them therefore this throw to tostring undefined used utilized value values want when whose with won you",
+    "members": ""
+  },
+  {
     "path": "error/ng/areq",
     "titleWords": "areq",
     "keywords": "and angularjs areq argument assertion asserts bad be certain defined error expects fails fix function helper html if is make ng ng:areq often partials present problem sure that the this thrown to truthy using value values will",
@@ -2271,6 +2277,12 @@
     "path": "error/jqLite",
     "titleWords": "jqLite",
     "keywords": "error errornamespace html jqlite partials",
+    "members": ""
+  },
+  {
+    "path": "error/linky",
+    "titleWords": "linky",
+    "keywords": "error errornamespace html linky partials",
     "members": ""
   },
   {

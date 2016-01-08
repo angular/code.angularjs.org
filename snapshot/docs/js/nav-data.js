@@ -1743,6 +1743,16 @@ angular.module('navData', [])
             "type": "error"
           },
           {
+            "name": "linky",
+            "href": "error/linky",
+            "type": "section"
+          },
+          {
+            "name": "notstring",
+            "href": "error/linky/notstring",
+            "type": "error"
+          },
+          {
             "name": "ng",
             "href": "error/ng",
             "type": "section"
