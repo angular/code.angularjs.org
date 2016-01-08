@@ -1149,7 +1149,7 @@
     "path": "api/ng/provider/$compileProvider",
     "titleWords": "$compileProvider",
     "keywords": "$compileprovider $inject api html module ng partials provider",
-    "members": "ahrefsanitizationwhitelist debuginfoenabled directive imgsrcsanitizationwhitelist"
+    "members": "ahrefsanitizationwhitelist component debuginfoenabled directive imgsrcsanitizationwhitelist"
   },
   {
     "path": "api/ng/type/$compile.directive.Attributes",
