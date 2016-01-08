@@ -124,18 +124,18 @@ type of directive, which represents a self-contained UI component in your applic
 <p>Component definitions are very simple and do not require much of the complexity behind defining general
 directives. Component definitions usually consist only of a template and a controller backing it.</p>
 <p>In order to make the definition easier, components enforce best practices like use of <code>controllerAs</code>,
-<code>bindToController</code> and default behaviors like <strong>isolate scope</strong> and restriction to elements.</p>
+<code>bindToController</code>, <strong>isolate scope</strong> and default behaviors like restriction to elements.</p>
 <p>Here are a few examples of how you would usually define components:</p>
 <pre><code class="lang-js">var myMod = angular.module(...);
 myMod.component(&#39;myComp&#39;, {
-  template: &#39;&lt;div&gt;My name is {{myComp.name}}&lt;/div&gt;&#39;,
+  template: &#39;&lt;div&gt;My name is {{$ctrl.name}}&lt;/div&gt;&#39;,
   controller: function() {
     this.name = &#39;shahar&#39;;
   }
 });
 
 myMod.component(&#39;myComp&#39;, {
-  template: &#39;&lt;div&gt;My name is {{myComp.name}}&lt;/div&gt;&#39;,
+  template: &#39;&lt;div&gt;My name is {{$ctrl.name}}&lt;/div&gt;&#39;,
   bindings: {name: &#39;@&#39;}
 });
 
@@ -231,7 +231,7 @@ See also <a href="api/ng/provider/$compileProvider#directive">$compileProvider.d
 associated with newly created scope or the name of a <a href="api/ng/service/$compile#-controller-">registered controller</a> if passed as a string. An empty <code>noop</code> function by default.</li>
 <li><code>controllerAs</code> – <code>{string=}</code> – identifier name for to reference the controller in the component&#39;s scope.
 If present, the controller will be published to scope under the <code>controllerAs</code> name.
-If not present, this will default to be the same as the component name.</li>
+If not present, this will default to be <code>$ctrl</code>.</li>
 <li><p><code>template</code> – <code>{string=|function()=}</code> – html template as a string or a function that
 returns an html template as a string which should be used as the contents of this component.
 Empty string by default.</p>
@@ -257,7 +257,6 @@ See <a href="api/ng/service/$compile#-bindtocontroller-"><code>bindToController<
 </li>
 <li><code>transclude</code> – <code>{boolean=}</code> – whether <a href="api/ng/service/$compile#transclusion">content transclusion</a> is enabled.
 Disabled by default.</li>
-<li><code>isolate</code> – <code>{boolean=}</code> – whether the new scope is isolated. Isolated by default.</li>
 <li><code>restrict</code> - <code>{string=}</code> - a string containing one or more characters from <a href="api/ng/service/$compile#-restrict-">EACM</a>,
 which restricts the component to specific directive declaration style. If omitted, this defaults to &#39;E&#39;.</li>
 <li><code>$canActivate</code> – <code>{function()=}</code> – TBD.</li>
