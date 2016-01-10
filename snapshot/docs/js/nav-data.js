@@ -1050,6 +1050,11 @@ angular.module('navData', [])
             "type": "service"
           },
           {
+            "name": "$componentController",
+            "href": "api/ngMock/service/$componentController",
+            "type": "service"
+          },
+          {
             "name": "$controller",
             "href": "api/ngMock/service/$controller",
             "type": "service"

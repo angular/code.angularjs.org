@@ -9190,7 +9190,7 @@ return jQuery;
 }));
 
 /**
- * @license AngularJS v1.5.0-build.4491+sha.8b63603
+ * @license AngularJS v1.5.0-build.4492+sha.dd14e0c
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -9249,7 +9249,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.5.0-build.4491+sha.8b63603/' +
+    message += '\nhttp://errors.angularjs.org/1.5.0-build.4492+sha.dd14e0c/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -11633,7 +11633,7 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.5.0-build.4491+sha.8b63603',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.5.0-build.4492+sha.dd14e0c',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 5,
   dot: 0,
@@ -16608,6 +16608,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
     return this;
   };
 
+  this.$$componentControllers = createMap();
   /**
    * @ngdoc method
    * @name $compileProvider#component
@@ -16732,6 +16733,10 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
    * See also {@link ng.$compileProvider#directive $compileProvider.directive()}.
    */
   this.component = function registerComponent(name, options) {
+    var controller = options.controller || function() {};
+    var ident = identifierForController(options.controller) || options.controllerAs || '$ctrl';
+    this.$$componentControllers[name] = { controller: controller, ident: ident};
+
     function factory($injector) {
       function makeInjectable(fn) {
         if (isFunction(fn) || isArray(fn)) {
@@ -16745,8 +16750,8 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
 
       var template = (!options.template && !options.templateUrl ? '' : options.template);
       return {
-        controller: options.controller || function() {},
-        controllerAs: identifierForController(options.controller) || options.controllerAs || '$ctrl',
+        controller: controller,
+        controllerAs: ident,
         template: makeInjectable(template),
         templateUrl: makeInjectable(options.templateUrl),
         transclude: options.transclude,

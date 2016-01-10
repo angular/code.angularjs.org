@@ -1711,6 +1711,11 @@ angular.module('pagesData', [])
     "area": "api",
     "path": "api/ngMock/service/$controller"
   },
+  "api/ngMock/service/$componentController": {
+    "name": "$componentController",
+    "area": "api",
+    "path": "api/ngMock/service/$componentController"
+  },
   "api/ngMock": {
     "name": "ngMock",
     "area": "api",

@@ -2052,6 +2052,12 @@
     "members": ""
   },
   {
+    "path": "api/ngMock/service/$componentController",
+    "titleWords": "$componentController",
+    "keywords": "$componentcontroller $componentcontrollerprovider $scope add alert alert-info always and api as attached attaching aware be before bindings bindtocontroller can certain class component componentname controller controllers create definition feature for html ident in injection instance instances instantiate instantiated invoking is kinds locals means module must name ngmock object of override param partials properties property provide requested scope service simplify simulate specified tests that the this to use used want we when whose will you",
+    "members": ""
+  },
+  {
     "path": "api/ngMock",
     "titleWords": "ngMock mock",
     "keywords": "addition also and angular angular-mocks api be can code config controlled core doc-module-components extends html in inject inspected into js manner mock module ng ngmock partials provides services such support synchronous test tests that the they to unit various within",

@@ -1,4 +1,4 @@
-<a href='https://github.com/angular/angular.js/edit/master/src/ngMock/angular-mocks.js?message=docs(ngMock)%3A%20describe%20your%20change...#L2165' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/master/src/ngMock/angular-mocks.js?message=docs(ngMock)%3A%20describe%20your%20change...#L2193' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 <h1>
@@ -134,6 +134,16 @@ that adds a &quot;flush&quot; and &quot;verifyNoPendingTasks&quot; methods.</p>
         <td><p>A decorator for <a href="api/ng/service/$controller"><code>$controller</code></a> with additional <code>bindings</code> parameter, useful when testing
 controllers of directives that use <a href="api/ng/service/$compile#-bindtocontroller-"><code>bindToController</code></a>.</p>
 </td>
+      </tr>
+      
+      <tr>
+        <td><a href="api/ngMock/service/$componentController">$componentController</a></td>
+        <td><p>A service that can be used to create instances of component controllers.</p>
+<div class="alert alert-info">
+Be aware that the controller will be instantiated and attached to the scope as specified in
+the component definition object. That means that you must always provide a <code>$scope</code> object
+in the <code>locals</code> param.
+</div></td>
       </tr>
       
     </table>
