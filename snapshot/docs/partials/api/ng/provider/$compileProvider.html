@@ -119,12 +119,13 @@
     <h3><p><code>component(name, options);</code></p>
 
 </h3>
-    <div><p>Register a <strong>Component definition</strong> with the compiler. This is a shorthand for registering a special
-type of directive, which represents a self-contained UI component in your application.</p>
-<p>Component definitions are very simple and do not require much of the complexity behind defining general
+    <div><p>Register a <strong>component definition</strong> with the compiler. This is a shorthand for registering a special
+type of directive, which represents a self-contained UI component in your application. Such components
+are always isolated (i.e. <code>scope: {}</code>) and are always restricted to elements (i.e. <code>restrict: &#39;E&#39;</code>).</p>
+<p>Component definitions are very simple and do not require as much configuration as defining general
 directives. Component definitions usually consist only of a template and a controller backing it.</p>
 <p>In order to make the definition easier, components enforce best practices like use of <code>controllerAs</code>,
-<code>bindToController</code>, <strong>isolate scope</strong> and default behaviors like restriction to elements.</p>
+<code>bindToController</code>. They always have <strong>isolate scope</strong> and are restricted to elements.</p>
 <p>Here are a few examples of how you would usually define components:</p>
 <pre><code class="lang-js">var myMod = angular.module(...);
 myMod.component(&#39;myComp&#39;, {
@@ -257,10 +258,7 @@ See <a href="api/ng/service/$compile#-bindtocontroller-"><code>bindToController<
 </li>
 <li><code>transclude</code> – <code>{boolean=}</code> – whether <a href="api/ng/service/$compile#transclusion">content transclusion</a> is enabled.
 Disabled by default.</li>
-<li><code>restrict</code> - <code>{string=}</code> - a string containing one or more characters from <a href="api/ng/service/$compile#-restrict-">EACM</a>,
-which restricts the component to specific directive declaration style. If omitted, this defaults to &#39;E&#39;.</li>
-<li><code>$canActivate</code> – <code>{function()=}</code> – TBD.</li>
-<li><code>$routeConfig</code> – <code>{object=}</code> – TBD.</li>
+<li><code>$...</code> – <code>{function()=}</code> – additional annotations to provide to the directive factory function.</li>
 </ul>
 
         

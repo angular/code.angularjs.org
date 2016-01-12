@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.0-build.4493+sha.8ccc054
+ * @license AngularJS v1.5.0-build.4501+sha.5afd545
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -57,7 +57,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.5.0-build.4493+sha.8ccc054/' +
+    message += '\nhttp://errors.angularjs.org/1.5.0-build.4501+sha.5afd545/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -2441,7 +2441,7 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.5.0-build.4493+sha.8ccc054',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.5.0-build.4501+sha.5afd545',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 5,
   dot: 0,
@@ -5673,10 +5673,14 @@ var $CoreAnimateCssProvider = function() {
   this.$get = ['$$rAF', '$q', '$$AnimateRunner', function($$rAF, $q, $$AnimateRunner) {
 
     return function(element, initialOptions) {
-      // we always make a copy of the options since
-      // there should never be any side effects on
-      // the input data when running `$animateCss`.
-      var options = copy(initialOptions);
+      // all of the animation functions should create
+      // a copy of the options data, however, if a
+      // parent service has already created a copy then
+      // we should stick to using that
+      var options = initialOptions || {};
+      if (!options.$$prepared) {
+        options = copy(options);
+      }
 
       // there is no point in applying the styles since
       // there is no animation that goes on at all in
@@ -7416,7 +7420,6 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
     return this;
   };
 
-  this.$$componentControllers = createMap();
   /**
    * @ngdoc method
    * @name $compileProvider#component
@@ -7456,21 +7459,19 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
    *      See {@link ng.$compile#-bindtocontroller- `bindToController`}.
    *    - `transclude` – `{boolean=}` – whether {@link $compile#transclusion content transclusion} is enabled.
    *      Disabled by default.
-   *    - `restrict` - `{string=}` - a string containing one or more characters from {@link ng.$compile#-restrict- EACM},
-   *      which restricts the component to specific directive declaration style. If omitted, this defaults to 'E'.
-   *    - `$canActivate` – `{function()=}` – TBD.
-   *    - `$routeConfig` – `{object=}` – TBD.
+   *    - `$...` – `{function()=}` – additional annotations to provide to the directive factory function.
    *
    * @returns {ng.$compileProvider} the compile provider itself, for chaining of function calls.
    * @description
-   * Register a **Component definition** with the compiler. This is a shorthand for registering a special
-   * type of directive, which represents a self-contained UI component in your application.
+   * Register a **component definition** with the compiler. This is a shorthand for registering a special
+   * type of directive, which represents a self-contained UI component in your application. Such components
+   * are always isolated (i.e. `scope: {}`) and are always restricted to elements (i.e. `restrict: 'E'`).
    *
-   * Component definitions are very simple and do not require much of the complexity behind defining general
+   * Component definitions are very simple and do not require as much configuration as defining general
    * directives. Component definitions usually consist only of a template and a controller backing it.
    *
    * In order to make the definition easier, components enforce best practices like use of `controllerAs`,
-   * `bindToController`, **isolate scope** and default behaviors like restriction to elements.
+   * `bindToController`. They always have **isolate scope** and are restricted to elements.
    *
    * Here are a few examples of how you would usually define components:
    *
@@ -7542,8 +7543,6 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
    */
   this.component = function registerComponent(name, options) {
     var controller = options.controller || function() {};
-    var ident = identifierForController(options.controller) || options.controllerAs || '$ctrl';
-    this.$$componentControllers[name] = { controller: controller, ident: ident};
 
     function factory($injector) {
       function makeInjectable(fn) {
@@ -7559,22 +7558,24 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
       var template = (!options.template && !options.templateUrl ? '' : options.template);
       return {
         controller: controller,
-        controllerAs: ident,
+        controllerAs: identifierForController(options.controller) || options.controllerAs || '$ctrl',
         template: makeInjectable(template),
         templateUrl: makeInjectable(options.templateUrl),
         transclude: options.transclude,
         scope: {},
         bindToController: options.bindings || {},
-        restrict: options.restrict || 'E'
+        restrict: 'E'
       };
     }
 
-    if (options.$canActivate) {
-      factory.$canActivate = options.$canActivate;
-    }
-    if (options.$routeConfig) {
-      factory.$routeConfig = options.$routeConfig;
-    }
+    // Copy any annotation properties (starting with $) over to the factory function
+    // These could be used by libraries such as the new component router
+    forEach(options, function(val, key) {
+      if (key.charAt(0) === '$') {
+        factory[key] = val;
+      }
+    });
+
     factory.$inject = ['$injector'];
 
     return this.directive(name, factory);
@@ -9626,7 +9627,7 @@ function removeComments(jqNodes) {
 var $controllerMinErr = minErr('$controller');
 
 
-var CNTRL_REG = /^(\S+)(\s+as\s+(\w+))?$/;
+var CNTRL_REG = /^(\S+)(\s+as\s+([\w$]+))?$/;
 function identifierForController(controller, ident) {
   if (ident && isString(ident)) return ident;
   if (isString(controller)) {

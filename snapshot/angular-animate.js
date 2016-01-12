@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.0-build.4493+sha.8ccc054
+ * @license AngularJS v1.5.0-build.4501+sha.5afd545
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -886,10 +886,14 @@ var $AnimateCssProvider = ['$animateProvider', function($animateProvider) {
     }
 
     return function init(element, initialOptions) {
-      // we always make a copy of the options since
-      // there should never be any side effects on
-      // the input data when running `$animateCss`.
-      var options = copy(initialOptions);
+      // all of the animation functions should create
+      // a copy of the options data, however, if a
+      // parent service has already created a copy then
+      // we should stick to using that
+      var options = initialOptions || {};
+      if (!options.$$prepared) {
+        options = prepareAnimationOptions(copy(options));
+      }
 
       var restoreStyles = {};
       var node = getDomNode(element);
@@ -898,8 +902,6 @@ var $AnimateCssProvider = ['$animateProvider', function($animateProvider) {
           || !$$animateQueue.enabled()) {
         return closeAndReturnNoopAnimator();
       }
-
-      options = prepareAnimationOptions(options);
 
       var temporaryStyles = [];
       var classes = element.attr('class');
