@@ -7,15 +7,15 @@ angular.module('versionsData', [])
   "patch": 0,
   "prerelease": [
     "build",
-    "4514"
+    "4516"
   ],
-  "build": "sha.b77e14b",
-  "version": "1.5.0-build.4514",
+  "build": "sha.52ea411",
+  "version": "1.5.0-build.4516",
   "codeName": "snapshot",
   "isSnapshot": true,
-  "full": "1.5.0-build.4514+sha.b77e14b",
+  "full": "1.5.0-build.4516+sha.52ea411",
   "branch": "master",
-  "commitSHA": "b77e14beea02599e61c496d04a446cdfd69fb043"
+  "commitSHA": "52ea4110d33b7de2845a698913682a03365aa074"
 })
   .value('NG_VERSIONS', [
   {
@@ -25,15 +25,15 @@ angular.module('versionsData', [])
     "patch": 0,
     "prerelease": [
       "build",
-      "4514"
+      "4516"
     ],
-    "build": "sha.b77e14b",
-    "version": "1.5.0-build.4514",
+    "build": "sha.52ea411",
+    "version": "1.5.0-build.4516",
     "codeName": "snapshot",
     "isSnapshot": true,
-    "full": "1.5.0-build.4514+sha.b77e14b",
+    "full": "1.5.0-build.4516+sha.52ea411",
     "branch": "master",
-    "commitSHA": "b77e14beea02599e61c496d04a446cdfd69fb043"
+    "commitSHA": "52ea4110d33b7de2845a698913682a03365aa074"
   },
   {
     "raw": "v1.5.0-rc.1",
