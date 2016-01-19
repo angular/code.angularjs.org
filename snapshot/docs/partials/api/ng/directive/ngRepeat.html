@@ -211,6 +211,7 @@ as <strong>data-ng-repeat-start</strong>, <strong>x-ng-repeat-start</strong> and
   <p><strong>.enter</strong> - when a new item is added to the list or when an item is revealed after a filter</p>
 <p><strong>.leave</strong> - when an item is removed from the list or when an item is filtered out</p>
 <p><strong>.move</strong> - when an adjacent item is filtered out causing a reorder or when the item contents are reordered</p>
+<p>See the example below for defining CSS animations with ngRepeat.</p>
 
   <a href="api/ngAnimate/service/$animate">Click here</a> to learn more about the steps involved in the animation.
 <section class="api-section">
@@ -288,18 +289,19 @@ the items have been processed through the filter.</p>
 
 
   
-  <h2 id="example">Example</h2><p>This example initializes the scope to a list of names and
-then uses <code>ngRepeat</code> to display every person:
+  <h2 id="example">Example</h2><p>This example uses <code>ngRepeat</code> to display a list of people. A filter is used to restrict the displayed
+results by name. New (entering) and removed (leaving) items are animated.
   
 
 <div>
-  <a ng-click="openPlunkr('examples/example-example91', $event)" class="btn pull-right">
+  <a ng-click="openPlunkr('examples/example-ngRepeat', $event)" class="btn pull-right">
     <i class="glyphicon glyphicon-edit">&nbsp;</i>
     Edit in Plunker</a>
 
   <div class="runnable-example"
-      path="examples/example-example91"
-      module="ngAnimate"
+      path="examples/example-ngRepeat"
+      module="ngRepeat"
+      name="ngRepeat"
       deps="angular-animate.js"
       animations="true">
 
@@ -308,14 +310,21 @@ then uses <code>ngRepeat</code> to display every person:
       name="index.html"
       language="html"
       type="html">
-      <pre><code>&lt;div ng-init=&quot;friends = [&#10;  {name:&#39;John&#39;, age:25, gender:&#39;boy&#39;},&#10;  {name:&#39;Jessie&#39;, age:30, gender:&#39;girl&#39;},&#10;  {name:&#39;Johanna&#39;, age:28, gender:&#39;girl&#39;},&#10;  {name:&#39;Joy&#39;, age:15, gender:&#39;girl&#39;},&#10;  {name:&#39;Mary&#39;, age:28, gender:&#39;girl&#39;},&#10;  {name:&#39;Peter&#39;, age:95, gender:&#39;boy&#39;},&#10;  {name:&#39;Sebastian&#39;, age:50, gender:&#39;boy&#39;},&#10;  {name:&#39;Erika&#39;, age:27, gender:&#39;girl&#39;},&#10;  {name:&#39;Patrick&#39;, age:40, gender:&#39;boy&#39;},&#10;  {name:&#39;Samantha&#39;, age:60, gender:&#39;girl&#39;}&#10;]&quot;&gt;&#10;  I have {{friends.length}} friends. They are:&#10;  &lt;input type=&quot;search&quot; ng-model=&quot;q&quot; placeholder=&quot;filter friends...&quot; aria-label=&quot;filter friends&quot; /&gt;&#10;  &lt;ul class=&quot;example-animate-container&quot;&gt;&#10;    &lt;li class=&quot;animate-repeat&quot; ng-repeat=&quot;friend in friends | filter:q as results&quot;&gt;&#10;      [{{$index + 1}}] {{friend.name}} who is {{friend.age}} years old.&#10;    &lt;/li&gt;&#10;    &lt;li class=&quot;animate-repeat&quot; ng-if=&quot;results.length == 0&quot;&gt;&#10;      &lt;strong&gt;No results found...&lt;/strong&gt;&#10;    &lt;/li&gt;&#10;  &lt;/ul&gt;&#10;&lt;/div&gt;</code></pre>
+      <pre><code>&lt;div ng-controller=&quot;repeatController&quot;&gt;&#10;  I have {{friends.length}} friends. They are:&#10;  &lt;input type=&quot;search&quot; ng-model=&quot;q&quot; placeholder=&quot;filter friends...&quot; aria-label=&quot;filter friends&quot; /&gt;&#10;  &lt;ul class=&quot;example-animate-container&quot;&gt;&#10;    &lt;li class=&quot;animate-repeat&quot; ng-repeat=&quot;friend in friends | filter:q as results&quot;&gt;&#10;      [{{$index + 1}}] {{friend.name}} who is {{friend.age}} years old.&#10;    &lt;/li&gt;&#10;    &lt;li class=&quot;animate-repeat&quot; ng-if=&quot;results.length == 0&quot;&gt;&#10;      &lt;strong&gt;No results found...&lt;/strong&gt;&#10;    &lt;/li&gt;&#10;  &lt;/ul&gt;&#10;&lt;/div&gt;</code></pre>
+    </div>
+  
+    <div class="runnable-example-file" 
+      name="script.js"
+      language="js"
+      type="js">
+      <pre><code>angular.module(&#39;ngRepeat&#39;, [&#39;ngAnimate&#39;]).controller(&#39;repeatController&#39;, function($scope) {&#10;  $scope.friends = [&#10;    {name:&#39;John&#39;, age:25, gender:&#39;boy&#39;},&#10;    {name:&#39;Jessie&#39;, age:30, gender:&#39;girl&#39;},&#10;    {name:&#39;Johanna&#39;, age:28, gender:&#39;girl&#39;},&#10;    {name:&#39;Joy&#39;, age:15, gender:&#39;girl&#39;},&#10;    {name:&#39;Mary&#39;, age:28, gender:&#39;girl&#39;},&#10;    {name:&#39;Peter&#39;, age:95, gender:&#39;boy&#39;},&#10;    {name:&#39;Sebastian&#39;, age:50, gender:&#39;boy&#39;},&#10;    {name:&#39;Erika&#39;, age:27, gender:&#39;girl&#39;},&#10;    {name:&#39;Patrick&#39;, age:40, gender:&#39;boy&#39;},&#10;    {name:&#39;Samantha&#39;, age:60, gender:&#39;girl&#39;}&#10;  ];&#10;});</code></pre>
     </div>
   
     <div class="runnable-example-file" 
       name="animations.css"
       language="css"
       type="css">
-      <pre><code>.example-animate-container {&#10;  background:white;&#10;  border:1px solid black;&#10;  list-style:none;&#10;  margin:0;&#10;  padding:0 10px;&#10;}&#10;&#10;.animate-repeat {&#10;  line-height:40px;&#10;  list-style:none;&#10;  box-sizing:border-box;&#10;}&#10;&#10;.animate-repeat.ng-move,&#10;.animate-repeat.ng-enter,&#10;.animate-repeat.ng-leave {&#10;  transition:all linear 0.5s;&#10;}&#10;&#10;.animate-repeat.ng-leave.ng-leave-active,&#10;.animate-repeat.ng-move,&#10;.animate-repeat.ng-enter {&#10;  opacity:0;&#10;  max-height:0;&#10;}&#10;&#10;.animate-repeat.ng-leave,&#10;.animate-repeat.ng-move.ng-move-active,&#10;.animate-repeat.ng-enter.ng-enter-active {&#10;  opacity:1;&#10;  max-height:40px;&#10;}</code></pre>
+      <pre><code>.example-animate-container {&#10;  background:white;&#10;  border:1px solid black;&#10;  list-style:none;&#10;  margin:0;&#10;  padding:0 10px;&#10;}&#10;&#10;.animate-repeat {&#10;  line-height:30px;&#10;  list-style:none;&#10;  box-sizing:border-box;&#10;}&#10;&#10;.animate-repeat.ng-move,&#10;.animate-repeat.ng-enter,&#10;.animate-repeat.ng-leave {&#10;  transition:all linear 0.5s;&#10;}&#10;&#10;.animate-repeat.ng-leave.ng-leave-active,&#10;.animate-repeat.ng-move,&#10;.animate-repeat.ng-enter {&#10;  opacity:0;&#10;  max-height:0;&#10;}&#10;&#10;.animate-repeat.ng-leave,&#10;.animate-repeat.ng-move.ng-move-active,&#10;.animate-repeat.ng-enter.ng-enter-active {&#10;  opacity:1;&#10;  max-height:30px;&#10;}</code></pre>
     </div>
   
     <div class="runnable-example-file" 
@@ -326,7 +335,7 @@ then uses <code>ngRepeat</code> to display every person:
     </div>
   
 
-    <iframe class="runnable-example-frame" src="examples/example-example91/index.html" name="example-example91"></iframe>
+    <iframe class="runnable-example-frame" src="examples/example-ngRepeat/index.html" name="example-ngRepeat"></iframe>
   </div>
 </div>
 
