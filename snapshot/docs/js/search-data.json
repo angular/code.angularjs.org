@@ -540,6 +540,12 @@
     "members": ""
   },
   {
+    "path": "error/ngModel/nopromise",
+    "titleWords": "nopromise",
+    "keywords": "$asyncvalidators $q always an and api as async asynchronous asyncvalidator attrs backend be but can convert directive don elem else error example expected function got hit html if instead invalid it link mark must myasyncvalidation need ng ngmodel no non-promise nopromise of or partials promise reject request require resolve return send the to using valid validator value viewvalue want you",
+    "members": ""
+  },
+  {
     "path": "error/ngModel/numfmt",
     "titleWords": "numfmt",
     "keywords": "$formatters $parsers actual and angular application as bad be by case caused contain conversion convert developer directive do does else error errors example example-example expected expects format from html if in incorrect input into is it logic model ngmodel not number numbers numfmt of on our partials pipeline provide requires set so something stores string stringtonumber that the then this thrown to type up use user validation we will your",
@@ -891,18 +897,6 @@
     "path": "api/ng",
     "titleWords": "ng",
     "keywords": "an and angular angularjs api application available below breakdown by components contains core default directives doc-module-components each essential filters for function high html is itself js level lists loaded module ng of partials regex_string_regexp services started table testing the this to when within",
-    "members": ""
-  },
-  {
-    "path": "api/ng/function/angular.lowercase",
-    "titleWords": "angular.lowercase",
-    "keywords": "angular api be converted converts function html lowercase lowercased module ng partials specified string the to",
-    "members": ""
-  },
-  {
-    "path": "api/ng/function/angular.uppercase",
-    "titleWords": "angular.uppercase",
-    "keywords": "angular api be converted converts function html module ng partials specified string the to uppercase uppercased",
     "members": ""
   },
   {

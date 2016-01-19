@@ -451,6 +451,11 @@ angular.module('pagesData', [])
     "area": "error",
     "path": "error/ngModel/nonassign"
   },
+  "error/ngModel/nopromise": {
+    "name": "nopromise",
+    "area": "error",
+    "path": "error/ngModel/nopromise"
+  },
   "error/ngModel/numfmt": {
     "name": "numfmt",
     "area": "error",
@@ -745,16 +750,6 @@ angular.module('pagesData', [])
     "name": "ng",
     "area": "api",
     "path": "api/ng"
-  },
-  "api/ng/function/angular.lowercase": {
-    "name": "angular.lowercase",
-    "area": "api",
-    "path": "api/ng/function/angular.lowercase"
-  },
-  "api/ng/function/angular.uppercase": {
-    "name": "angular.uppercase",
-    "area": "api",
-    "path": "api/ng/function/angular.uppercase"
   },
   "api/ng/function/angular.forEach": {
     "name": "angular.forEach",
