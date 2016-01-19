@@ -188,8 +188,17 @@ cannot be applied to the same element.</li>
 alias must be set, either by using <code>controllerAs: &#39;myAlias&#39;</code> or by specifying the alias in the controller
 definition: <code>controller: &#39;myCtrl as myAlias&#39;</code>.</p>
 <p>When an isolate scope is used for a directive (see above), <code>bindToController: true</code> will
-allow a component to have its properties bound to the controller, rather than to scope. When the controller
-is instantiated, the initial values of the isolate scope bindings will be available if the controller is not an ES6 class.</p>
+allow a component to have its properties bound to the controller, rather than to scope.</p>
+<p>After the controller is instantiated, the initial values of the isolate scope bindings will be bound to the controller
+properties. You can access these bindings once they have been initialized by providing a controller method called
+<code>$onInit</code>, which is called after all the controllers on an element have been constructed and had their bindings
+initialized.</p>
+<div class="alert alert-warning">
+<strong>Deprecation warning:</strong> although bindings for non-ES6 class controllers are currently
+bound to <code>this</code> before the controller constructor is called, this use is now deprecated. Please place initialization
+code that relies upon bindings inside a <code>$onInit</code> method on the controller, instead.
+</div>
+
 <p>It is also possible to set <code>bindToController</code> to an object hash with the same format as the <code>scope</code> property.
 This will set up the scope bindings to the controller directly. Note that <code>scope</code> can still be used
 to define which kind of scope is created. By default, no scope is created. Use <code>scope: {}</code> to create an isolate
@@ -225,12 +234,30 @@ The <code>$transclude</code> function also has a method on it, <code>$transclude
 </ul>
 </li>
 </ul>
+<p>The controller can provide the following methods that act as life-cycle hooks:</p>
+<ul>
+<li><code>$onInit</code> - Called on each controller after all the controllers on an element have been constructed and
+had their bindings initialized (and before the pre &amp; post linking functions for the directives on
+this element). This is a good place to put initialization code for your controller.</li>
+</ul>
 <h4 id="-require-"><code>require</code></h4>
 <p>Require another directive and inject its controller as the fourth argument to the linking function. The
-<code>require</code> takes a string name (or array of strings) of the directive(s) to pass in. If an array is used, the
-injected argument will be an array in corresponding order. If no such directive can be
-found, or if the directive does not have a controller, then an error is raised (unless no link function
-is specified, in which case error checking is skipped). The name can be prefixed with:</p>
+<code>require</code> property can be a string, an array or an object:</p>
+<ul>
+<li>a <strong>string</strong> containing the name of the directive to pass to the linking function</li>
+<li>an <strong>array</strong> containing the names of directives to pass to the linking function. The argument passed to the
+linking function will be an array of controllers in the same order as the names in the <code>require</code> property</li>
+<li>an <strong>object</strong> whose property values are the names of the directives to pass to the linking function. The argument
+passed to the linking function will also be an object with matching keys, whose values will hold the corresponding
+controllers.</li>
+</ul>
+<p>If the <code>require</code> property is an object and <code>bindToController</code> is truthy, then the required controllers are
+bound to the controller using the keys of the <code>require</code> property. This binding occurs after all the controllers
+have been constructed but before <code>$onInit</code> is called.
+See the <a href="api/ng/provider/$compileProvider#component"><code>$compileProvider</code></a> helper for an example of how this can be used.</p>
+<p>If no such required directive(s) can be found, or if the directive does not have a controller, then an error is
+raised (unless no link function is specified and the required controllers are not being bound to the directive
+controller, in which case error checking is skipped). The name can be prefixed with:</p>
 <ul>
 <li>(no prefix) - Locate the required controller on the current element. Throw an error if not found.</li>
 <li><code>?</code> - Attempt to locate the required controller or pass <code>null</code> to the <code>link</code> fn if not found.</li>

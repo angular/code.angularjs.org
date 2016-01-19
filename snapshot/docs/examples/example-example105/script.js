@@ -8,11 +8,5 @@ angular.module('orderByExample', [])
          {name:'Mike', phone:'555-4321', age:21},
          {name:'Adam', phone:'555-5678', age:35},
          {name:'Julie', phone:'555-8765', age:29}];
-    $scope.predicate = 'age';
-    $scope.reverse = true;
-    $scope.order = function(predicate) {
-      $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
-      $scope.predicate = predicate;
-    };
   }]);
 })(window.angular);

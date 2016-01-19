@@ -1,8 +1,8 @@
-<a href='https://github.com/angular/angular.js/edit/master/src/ng/compile.js?message=docs($compileProvider)%3A%20describe%20your%20change...#L782' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/master/src/ng/compile.js?message=docs($compileProvider)%3A%20describe%20your%20change...#L809' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 
-<a href='https://github.com/angular/angular.js/tree/master/src/ng/compile.js#L782' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/master/src/ng/compile.js#L809' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -146,6 +146,58 @@ myMod.component(&#39;myComp&#39;, {
   bindings: {name: &#39;@&#39;}
 });
 </code></pre>
+<h3 id="intercomponent-communication">Intercomponent Communication</h3>
+<p>Directives can require the controllers of other directives to enable communication
+between the directives. This can be achieved in a component by providing an
+object mapping for the <code>require</code> property.  Here is the tab pane example built
+from components...</p>
+<p>
+
+<div>
+  <a ng-click="openPlunkr('examples/example-example53', $event)" class="btn pull-right">
+    <i class="glyphicon glyphicon-edit">&nbsp;</i>
+    Edit in Plunker</a>
+
+  <div class="runnable-example"
+      path="examples/example-example53"
+      module="docsTabsExample">
+
+  
+    <div class="runnable-example-file" 
+      name="script.js"
+      language="js"
+      type="js">
+      <pre><code>angular.module(&#39;docsTabsExample&#39;, [])&#10;.component(&#39;myTabs&#39;, {&#10;  transclude: true,&#10;  controller: function() {&#10;    var panes = this.panes = [];&#10;&#10;    this.select = function(pane) {&#10;      angular.forEach(panes, function(pane) {&#10;        pane.selected = false;&#10;      });&#10;      pane.selected = true;&#10;    };&#10;&#10;    this.addPane = function(pane) {&#10;      if (panes.length === 0) {&#10;        this.select(pane);&#10;      }&#10;      panes.push(pane);&#10;    };&#10;  },&#10;  templateUrl: &#39;my-tabs.html&#39;&#10;})&#10;.component(&#39;myPane&#39;, {&#10;  transclude: true,&#10;  require: {tabsCtrl: &#39;^myTabs&#39;},&#10;  bindings: {&#10;    title: &#39;@&#39;&#10;  },&#10;  controller: function() {&#10;    this.$onInit = function() {&#10;      this.tabsCtrl.addPane(this);&#10;      console.log(this);&#10;    };&#10;  },&#10;  templateUrl: &#39;my-pane.html&#39;&#10;});</code></pre>
+    </div>
+  
+    <div class="runnable-example-file" 
+      name="index.html"
+      language="html"
+      type="html">
+      <pre><code>&lt;my-tabs&gt;&#10;  &lt;my-pane title=&quot;Hello&quot;&gt;&#10;    &lt;h4&gt;Hello&lt;/h4&gt;&#10;    &lt;p&gt;Lorem ipsum dolor sit amet&lt;/p&gt;&#10;  &lt;/my-pane&gt;&#10;  &lt;my-pane title=&quot;World&quot;&gt;&#10;    &lt;h4&gt;World&lt;/h4&gt;&#10;    &lt;em&gt;Mauris elementum elementum enim at suscipit.&lt;/em&gt;&#10;    &lt;p&gt;&lt;a href ng-click=&quot;i = i + 1&quot;&gt;counter: {{i || 0}}&lt;/a&gt;&lt;/p&gt;&#10;  &lt;/my-pane&gt;&#10;&lt;/my-tabs&gt;</code></pre>
+    </div>
+  
+    <div class="runnable-example-file" 
+      name="my-tabs.html"
+      language="html"
+      type="html">
+      <pre><code>&lt;div class=&quot;tabbable&quot;&gt;&#10;  &lt;ul class=&quot;nav nav-tabs&quot;&gt;&#10;    &lt;li ng-repeat=&quot;pane in $ctrl.panes&quot; ng-class=&quot;{active:pane.selected}&quot;&gt;&#10;      &lt;a href=&quot;&quot; ng-click=&quot;$ctrl.select(pane)&quot;&gt;{{pane.title}}&lt;/a&gt;&#10;    &lt;/li&gt;&#10;  &lt;/ul&gt;&#10;  &lt;div class=&quot;tab-content&quot; ng-transclude&gt;&lt;/div&gt;&#10;&lt;/div&gt;</code></pre>
+    </div>
+  
+    <div class="runnable-example-file" 
+      name="my-pane.html"
+      language="html"
+      type="html">
+      <pre><code>&lt;div class=&quot;tab-pane&quot; ng-show=&quot;$ctrl.selected&quot; ng-transclude&gt;&lt;/div&gt;</code></pre>
+    </div>
+  
+
+    <iframe class="runnable-example-frame" src="examples/example-example53/index.html" name="example-example53"></iframe>
+  </div>
+</div>
+
+
+</p>
 <p><br />
 Components are also useful as route templates (e.g. when using
 <a href="api/ngRoute">ngRoute</a>):</p>
