@@ -695,8 +695,14 @@ keys may be used to control linking behavior:</p>
 directives; if given, it will be passed through to the link functions of
 directives found in <code>element</code> during compilation.</li>
 <li><code>transcludeControllers</code> - an object hash with keys that map controller names
-to controller instances; if given, it will make the controllers
-available to directives.</li>
+to a hash with the key <code>instance</code>, which maps to the controller instance;
+if given, it will make the controllers available to directives on the compileNode:<pre><code>{
+  parent: {
+    instance: parentControllerInstance
+  }
+}
+</code></pre>
+</li>
 <li><code>futureParentElement</code> - defines the parent to which the <code>cloneAttachFn</code> will add
 the cloned elements; only needed for transcludes that are allowed to contain non html
 elements (e.g. SVG elements). See also the directive.controller property.</li>
