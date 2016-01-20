@@ -32,7 +32,7 @@ URLs point to the <code>app/img/phones/</code> directory.</p>
 <pre><code class="lang-html">...
         &lt;ul class=&quot;phones&quot;&gt;
           &lt;li ng-repeat=&quot;phone in phones | filter:query | orderBy:orderProp&quot; class=&quot;thumbnail&quot;&gt;
-            &lt;a href=&quot;#/phones/{{phone.id}}&quot; class=&quot;thumb&quot;&gt;&lt;img ng-src=&quot;{{phone.imageUrl}}&quot;&gt;&lt;/a&gt;
+            &lt;a href=&quot;#/phones/{{phone.id}}&quot; class=&quot;thumb&quot;&gt;&lt;img ng-src=&quot;{{phone.imageUrl}}&quot; alt=&quot;{{phone.name}}&quot;&gt;&lt;/a&gt;
             &lt;a href=&quot;#/phones/{{phone.id}}&quot;&gt;{{phone.name}}&lt;/a&gt;
             &lt;p&gt;{{phone.snippet}}&lt;/p&gt;
           &lt;/li&gt;

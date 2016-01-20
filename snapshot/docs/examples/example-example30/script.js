@@ -15,7 +15,8 @@ angular.module('myReverseFilterApp', [])
       return out;
     };
   })
-  .controller('MyController', ['$scope', function($scope) {
+  .controller('MyController', ['$scope', 'reverseFilter', function($scope, reverseFilter) {
     $scope.greeting = 'hello';
+    $scope.filteredGreeting = reverseFilter($scope.greeting);
   }]);
 })(window.angular);

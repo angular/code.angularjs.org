@@ -20,10 +20,13 @@ the following syntax:</p>
 <p>E.g. the markup <code>{{ 1234 | number:2 }}</code> formats the number 1234 with 2 decimal points using the
 <a href="api/ng/filter/number"><code>number</code></a> filter. The resulting value is <code>1,234.00</code>.</p>
 <h2 id="using-filters-in-controllers-services-and-directives">Using filters in controllers, services, and directives</h2>
-<p>You can also use filters in controllers, services, and directives. For this, inject a dependency
-with the name <code>&lt;filterName&gt;Filter</code> to your controller/service/directive. E.g. using the dependency
-<code>numberFilter</code> will inject the number filter. The injected argument is a function that takes the
-value to format as first argument and filter parameters starting with the second argument.</p>
+<p>You can also use filters in controllers, services, and directives.</p>
+<div class="alert alert-info">
+For this, inject a dependency with the name <code>&lt;filterName&gt;Filter</code> into your controller/service/directive.
+E.g. a filter called <code>number</code> is injected by using the dependency <code>numberFilter</code>. The injected argument
+is a function that takes the value to format as first argument, and filter parameters starting with the second argument.
+</div>
+
 <p>The example below uses the filter called <a href="api/ng/filter/filter"><code>filter</code></a>.
 This filter reduces arrays into sub arrays based on
 conditions. The filter can be applied in the view template with markup like
@@ -100,14 +103,14 @@ text upper-case.</p>
       name="index.html"
       language="html"
       type="html">
-      <pre><code>&lt;div ng-controller=&quot;MyController&quot;&gt;&#10;  &lt;input ng-model=&quot;greeting&quot; type=&quot;text&quot;&gt;&lt;br&gt;&#10;  No filter: {{greeting}}&lt;br&gt;&#10;  Reverse: {{greeting|reverse}}&lt;br&gt;&#10;  Reverse + uppercase: {{greeting|reverse:true}}&lt;br&gt;&#10;&lt;/div&gt;</code></pre>
+      <pre><code>&lt;div ng-controller=&quot;MyController&quot;&gt;&#10;  &lt;input ng-model=&quot;greeting&quot; type=&quot;text&quot;&gt;&lt;br&gt;&#10;  No filter: {{greeting}}&lt;br&gt;&#10;  Reverse: {{greeting|reverse}}&lt;br&gt;&#10;  Reverse + uppercase: {{greeting|reverse:true}}&lt;br&gt;&#10;  Reverse, filtered in controller: {{filteredGreeting}}&lt;br&gt;&#10;&lt;/div&gt;</code></pre>
     </div>
   
     <div class="runnable-example-file" 
       name="script.js"
       language="js"
       type="js">
-      <pre><code>angular.module(&#39;myReverseFilterApp&#39;, [])&#10;.filter(&#39;reverse&#39;, function() {&#10;  return function(input, uppercase) {&#10;    input = input || &#39;&#39;;&#10;    var out = &quot;&quot;;&#10;    for (var i = 0; i &lt; input.length; i++) {&#10;      out = input.charAt(i) + out;&#10;    }&#10;    // conditional based on optional argument&#10;    if (uppercase) {&#10;      out = out.toUpperCase();&#10;    }&#10;    return out;&#10;  };&#10;})&#10;.controller(&#39;MyController&#39;, [&#39;$scope&#39;, function($scope) {&#10;  $scope.greeting = &#39;hello&#39;;&#10;}]);</code></pre>
+      <pre><code>angular.module(&#39;myReverseFilterApp&#39;, [])&#10;.filter(&#39;reverse&#39;, function() {&#10;  return function(input, uppercase) {&#10;    input = input || &#39;&#39;;&#10;    var out = &quot;&quot;;&#10;    for (var i = 0; i &lt; input.length; i++) {&#10;      out = input.charAt(i) + out;&#10;    }&#10;    // conditional based on optional argument&#10;    if (uppercase) {&#10;      out = out.toUpperCase();&#10;    }&#10;    return out;&#10;  };&#10;})&#10;.controller(&#39;MyController&#39;, [&#39;$scope&#39;, &#39;reverseFilter&#39;, function($scope, reverseFilter) {&#10;  $scope.greeting = &#39;hello&#39;;&#10;  $scope.filteredGreeting = reverseFilter($scope.greeting);&#10;}]);</code></pre>
     </div>
   
 
