@@ -2,7 +2,7 @@
 
 
 <h1 id="interpolation-and-data-binding">Interpolation and data-binding</h1>
-<p>Interpolation markup with embedded @link {guide/expressions expressions} is used by Angular to
+<p>Interpolation markup with embedded <a href="guide/expressions">expressions</a> is used by Angular to
 provide data-binding to text nodes and attribute values.</p>
 <p>An example of interpolation is shown below:</p>
 <pre><code class="lang-html">&lt;a ng-href=&quot;img/{{username}}.jpg&quot;&gt;Hello {{username}}!&lt;/a&gt;
@@ -27,8 +27,8 @@ interpret the attribute as present, meaning that the button would always be disa
 &lt;button disabled=&quot;{{isDisabled}}&quot;&gt;Disabled&lt;/button&gt;
 </code></pre>
 <p>For this reason, Angular provides special <code>ng</code>-prefixed directives for the following boolean attributes:
-<a href="api/ng/directive/ngDisabled"><code>disabled</code></a>, [@link ngRequired <code>required</code>}, [@link ngSelected <code>selected</code>},
-<a href="api/ng/directive/ngChecked"><code>checked</code></a>, <a href="api/ng/directive/ngReadonly"><code>readOnly</code></a> , and [@link ngOpen <code>open</code>}.</p>
+<a href="api/ng/directive/ngDisabled"><code>disabled</code></a>, <a href="api/ng/directive/ngRequired"><code>required</code></a>, <a href="api/ng/directive/ngSelected"><code>selected</code></a>,
+<a href="api/ng/directive/ngChecked"><code>checked</code></a>, <a href="api/ng/directive/ngReadonly"><code>readOnly</code></a> , and <a href="api/ng/directive/ngOpen"><code>open</code></a>.</p>
 <p>These directives take an expression inside the attribute, and set the corresponding boolean attribute
 to true when the expression evaluates to truthy.</p>
 <pre><code class="lang-html">Disabled: &lt;input type=&quot;checkbox&quot; ng-model=&quot;isDisabled&quot; /&gt;
