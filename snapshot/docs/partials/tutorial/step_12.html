@@ -196,7 +196,7 @@ are added to the element:</p>
 <code>ng-</code>. So an <code>enter</code> event will result in a class called <code>ng-enter</code>.</p>
 <p>The active class name is the same as the starting class&#39;s but with an <code>-active</code> suffix.
 This two-class CSS naming convention allows the developer to craft an animation, beginning to end.</p>
-<p>In our example above, elements are expanded from a height of <strong>0</strong> to <strong>120 pixels</strong> when they&#39;re added to the 
+<p>In our example above, elements are expanded from a height of <strong>0</strong> to <strong>120 pixels</strong> when they&#39;re added to the
 list and are collapsed back down to <strong>0 pixels</strong> before being removed from the list.
 There&#39;s also a nice fade-in and fade-out effect that occurs at the same time. All of this is handled
 by the CSS transition declarations at the top of the example code above.</p>
@@ -294,16 +294,16 @@ allows for easy animation control.</p>
 <a href="http://docs.webplatform.org/wiki/css/properties/animations">Web Platform documentation</a>.</p>
 <h2 id="animating-ngclass-with-javascript">Animating <code>ngClass</code> with JavaScript</h2>
 <p>Let&#39;s add another animation to our application. Switching to our <code>phone-detail.html</code> page,
-we see that we have a nice thumbnail swapper. By clicking on the thumbnails listed on the page,
+we see that we have a nice thumbnail swapper. By hovering over the thumbnails listed on the page,
 the profile phone image changes. But how can we change this around to add animations?</p>
-<p>Let&#39;s think about it first. Basically, when you click on a thumbnail image, you&#39;re changing the
+<p>Let&#39;s think about it first. Basically, when you hover over a thumbnail image, you&#39;re changing the
 state of the profile image to reflect the newly selected thumbnail image.
 The best way to specify state changes within HTML is to use classes.
 Much like before, how we used a CSS class to specify an animation, this time the animation will
 occur whenever the CSS class itself changes.</p>
 <p>Whenever a new phone thumbnail is selected, the state changes and the <code>.active</code> CSS class is added
 to the matching profile image and the animation plays.</p>
-<p>Let&#39;s get started and tweak our HTML code on the <code>phone-detail.html</code> page first. Notice that we 
+<p>Let&#39;s get started and tweak our HTML code on the <code>phone-detail.html</code> page first. Notice that we
 have changed the way we display our large image:</p>
 <p><strong><code>app/partials/phone-detail.html</code>.</strong></p>
 <pre><code class="lang-html">&lt;!-- We&#39;re only changing the top of the file --&gt;
