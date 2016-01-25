@@ -42,6 +42,19 @@ and install this dependency.</p>
 preconfigured npm to run bower install for us:</p>
 <pre><code>npm install
 </code></pre>
+<div class="alert alert-warning">
+  <strong>Warning:</strong> If a new version of Angular has been released since you last ran <code>npm install</code>, then you may have a
+  problem with the <code>bower install</code> due to a conflict between the versions of angular.js that need to
+  be installed.  If you get this then simply delete your <code>app/bower_components</code> folder before running
+  <code>npm install</code>.
+</div>
+
+<div class="alert alert-info">
+  <strong>Note:</strong> If you have bower installed globally then you can run <code>bower install</code> but for this project we have
+  preconfigured <code>npm install</code> to run bower for us.
+</div>
+
+
 <h2 id="multiple-views-routing-and-layout-template">Multiple Views, Routing and Layout Template</h2>
 <p>Our app is slowly growing and becoming more complex. Before step 7, the app provided our users with
 a single view (the list of all phones), and all of the template code was located in the

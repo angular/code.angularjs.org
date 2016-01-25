@@ -69,6 +69,8 @@ This might happen if one mistakenly registers a controller as a service, ex.:</p
   // a scope object cannot be injected into a service.
 }]);
 </code></pre>
+<p>If you encounter this error only with minified code, consider using <code>ngStrictDi</code> (see
+<a href="api/ng/directive/ngApp">ngApp</a>) to provoke the error with the non-minified source.</p>
 
 </div>
 
