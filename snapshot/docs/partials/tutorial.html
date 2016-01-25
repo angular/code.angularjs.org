@@ -176,6 +176,14 @@ the browser. You can install these drivers by running:</p>
 <pre><code>npm run update-webdriver
 </code></pre>
 <p><em>(You should only need to do this once.)</em></p>
+<p>You will need to Java present on your dev machine to allow the Selenium standalone to be started.
+Check if you already have java installed by opening a terminal/command line window and typing
+&#39;&#39;&#39;
+java -version
+&#39;&#39;&#39;
+If java is already installed and exists in the PATH then you will be shown the version installed,
+if, however you receive a message that &quot;java is not recognized as an internal command or external
+command&quot; you will need to install <a href="https://www.java.com/en/download/help/download_options.xml">java</a>.</p>
 <p>Since Protractor works by interacting with a running application, we need to start our web server:</p>
 <pre><code>npm start
 </code></pre>
