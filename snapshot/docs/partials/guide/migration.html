@@ -10,6 +10,112 @@ which drives many of these changes.</li>
 <li>Several new features, especially animations, would not be possible without a few changes.</li>
 <li>Finally, some outstanding bugs were best fixed by changing an existing API.</li>
 </ul>
+<h1 id="migrate-from-1-4-to-1-5">Migrate from 1.4 to 1.5</h1>
+<p>Angular 1.5 takes a big step towards preparing developers for a smoother transition to Angular 2 in
+the future. Architecturing your applications using components, making use of lifecycle hooks in
+directive controllers and relying on native ES6 features (such as classes and arrow functions) are
+now all possible with Angular 1.5.</p>
+<p>This release includes numerous bug and security fixes, as well as performance improvements to core
+services, directives, filters and helper functions. Existing applications can start enjoying the
+benefits of such changes in <code>$compile</code>, <code>$parse</code>, <code>$animate</code>, <code>$animateCss</code>, <code>$sanitize</code>, <code>ngOptions</code>,
+<code>currencyFilter</code>, <code>numberFilter</code>, <code>copy()</code> (to name but a few) without any change in code.</p>
+<p>New features have been added to more than a dozen services, directives and filters across 7 modules.
+Among them, a few stand out:</p>
+<ul>
+<li><code>angular.component()</code>: Introducing &quot;components&quot;, a special sort of directive that are easy to
+configure and promote best practices (plus can bring Angular 1 applications closer to Angular 2&#39;s
+style of architecture).</li>
+<li>Multi-slot transclusion: Enabling the design of more powerful and complex UI elements with a much
+simpler configuration and reduced boilerplate.</li>
+<li><code>ngAnimateSwap</code>: A new directive in <code>ngAnimate</code>, making it super easy to create rotating
+banner-like components</li>
+<li>Testing helpers: New helper functions in <code>ngMock</code>, simplifying testing for animations, component
+controllers and routing.</li>
+</ul>
+<p>Also, notable is the improved support for ES6 features, such as classes and arrow functions. These
+features are now more reliably detected and correctly handled within the core.</p>
+<p>All this goodness doesn&#39;t come without a price, though. Below is a list of breaking changes (grouped
+by module) that need to be taken into account while migrating from 1.4. Fortunately, the majority of
+them should have a pretty low impact on most applications.</p>
+<h2 id="core">Core</h2>
+<p>We tried to keep the breaking changes inside the core components to a bare minimum. Still, a few of
+them were unavoidable.</p>
+<h3 id="services-parse-">Services (<code>$parse</code>)</h3>
+<p>Due to <a href="https://github.com/angular/angular.js/commit/0ea535035a3a1a992948490c3533bffb83235052">0ea53503</a>,
+a new special property, <code>$locals</code>, will be available for accessing the locals from an expression.
+This is a breaking change, only if a <code>$locals</code> property does already exist (and needs to be
+referenced) either on the <code>scope</code> or on the <code>locals</code> object. Your expressions should be changed to
+access such existing properties as <code>this.$locals</code> and <code>$locals.$locals</code> respectively.</p>
+<h3 id="directives-ngoptions-">Directives (<code>ngOptions</code>)</h3>
+<p>A fair amount of work has been put into the <code>ngOptions</code> directive, fixing bugs and corner-cases and
+neutralizing browser quirks. A couple of breaking changes were made in the process:</p>
+<p>Due to <a href="https://github.com/angular/angular.js/commit/b71d7c3f3c04e65b02d88b33c22dd90ae3cdfc27">b71d7c3f</a>,
+falsy values (<code>&#39;&#39;</code>, <code>0</code>, <code>false</code> and <code>null</code>) are properly recognized as option group identifiers for
+options passed to <code>ngOptions</code>. Previously, all of these values were ignored and the option was not
+assigned to any group. <code>undefined</code> is still interpreted as &quot;no group&quot;.
+If you have options with falsy group indentifiers that should still not be assigned to any group,
+then you must filter the values before passing them to <code>ngOptions</code>, converting falsy values to
+<code>undefined</code>.</p>
+<p>Due to <a href="https://github.com/angular/angular.js/commit/ded2518756d4409fdfda0d4af243f2125bea01b5">ded25187</a>,
+<code>ngOptions</code> now explicitly requires <code>ngModel</code> on the same element, thus an error will be thrown if
+<code>ngModel</code> is not found. Previously, <code>ngOptions</code> would silently fail, which could lead to
+hard-to-debug errors.
+This is not expected to have any significant impact on applications, since <code>ngOptions</code> didn&#39;t work
+without <code>ngModel</code> before either. The main difference is that now it will fail with a more
+informative error message.</p>
+<h3 id="filters-orderby-">Filters (<code>orderBy</code>)</h3>
+<p>Due to <a href="https://github.com/angular/angular.js/commit/2a85a634f86c84f15b411ce009a3515fca7ba580">2a85a634</a>,
+passing a non-array-like value (other than <code>undefined</code> or <code>null</code>) through the <code>orderBy</code> filter will
+throw an error. Previously, the input was returned unchanged, which could lead to hard-to-spot bugs
+and was not consistent with other filters (e.g. <code>filter</code>).
+Objects considered array-like include: arrays, array subclasses, strings, NodeLists,
+jqLite/jQuery collections</p>
+<h2 id="ngmessages-ngmessage-">ngMessages (<code>ngMessage</code>)</h2>
+<p>Due to <a href="https://github.com/angular/angular.js/commit/4971ef12d4c2c268cb8d26f90385dc96eba19db8">4971ef12</a>,
+the <code>ngMessage</code> directive is now compiled with a priority of 1, which means directives on the same
+element as <code>ngMessage</code> with a priority lower than 1 will be applied when <code>ngMessage</code> calls its
+<code>$transclude</code> function. Previously, they were applied during the initial compile phase and were
+passed the comment element created by the transclusion of <code>ngMessage</code>.
+If you have custom directives that relied on the previous behavior, you need to give them a priority
+of 1 or greater.</p>
+<h2 id="ngresource-resource-">ngResource (<code>$resource</code>)</h2>
+<p>The <code>$resource</code> service underwent a minor internal refactoring to finally solve a long-standing bug
+preventing requests from being cancelled using promises. Due to the nature of <code>$resource</code>&#39;s
+configuration, it was not possible to follow the <code>$http</code> convention. A new <code>$cancelRequest()</code> method
+was introduced instead.</p>
+<p>Due to <a href="https://github.com/angular/angular.js/commit/98528be311b48269ba0e15ba4e3e2ad9b89693a9">98528be3</a>,
+using a promise as <code>timeout</code> in <code>$resource</code> is no longer supported and will log a warning. This is
+hardly expected to affect the behavior of your application, since a promise as <code>timeout</code> didn&#39;t work
+before either, but it will now warn you explicitly when trying to pass one.
+If you need to be able to cancel pending requests, you can now use the new <code>$cancelRequest()</code> that
+will be available on <code>$resource</code> instances.</p>
+<h2 id="ngroute-ngview-">ngRoute (<code>ngView</code>)</h2>
+<p>Due to <a href="https://github.com/angular/angular.js/commit/983b0598121a8c5a3a51a30120e114d7e3085d4d">983b0598</a>,
+a new property will be available on the scope of the route, allowing easy access to the route&#39;s
+resolved values from the view&#39;s template. The default name for this property is <code>$resolve</code>. This is
+a breaking change, only if a <code>$resolve</code> property is already available on the scope, in which case
+the existing property will be hidden or overwritten.
+To fix this, you should choose a custom name for this property, that does not collide with other
+properties on the scope, by specifying the <code>resolveAs</code> property on the route.</p>
+<h2 id="ngsanitize-sanitize-linky-">ngSanitize (<code>$sanitize</code>, <code>linky</code>)</h2>
+<p>The HTML sanitizer has been re-implemented using inert documents, increasing security, fixing some
+corner-cases that were difficult to handle and reducing its size by about 20% (in terms of loc). In
+order to make it more secure by default, a couple of breaking changes have been introduced:</p>
+<p>Due to <a href="https://github.com/angular/angular.js/commit/181fc567d873df065f1e84af7225deb70a8d2eb9">181fc567</a>,
+SVG support in <code>$sanitize</code> is now an opt-in feature (i.e. disabled by default), as it could make
+an application vulnerable to click-hijacking attacks. If your application relies on it, you can
+still turn it on with <code>$sanitizeProvider.enableSvg(true)</code>, but you extra precautions need to be
+taken in order to keep your application secure. Read the documentation for more information about
+the dangers and ways to mitigate them.</p>
+<p>Due to <a href="https://github.com/angular/angular.js/commit/7a668cdd7d08a7016883eb3c671cbcd586223ae8">7a668cdd</a>,
+the <code>$sanitize</code> service will now remove instances of the <code>&lt;use&gt;</code> tag from the content passed to it.
+This element is used to import external SVG resources, which is a security risk as the <code>$sanitize</code>
+service does not have access to the resource in order to sanitize it.</p>
+<p>Due to <a href="https://github.com/angular/angular.js/commit/98c2db7f9c2d078a408576e722407d518c7ee10a">98c2db7f</a>,
+passing a non-string value (other than <code>undefined</code> or <code>null</code>) through the <code>linky</code> filter will throw
+an error. This is not expected to have any significant impact on applications, since the input was
+always assumed to be of type &#39;string&#39;, so passing non-string values never worked correctly anyway.
+The main difference is that now it will fail faster and with a more informative error message.</p>
 <h1 id="migrating-from-1-3-to-1-4">Migrating from 1.3 to 1.4</h1>
 <p>Angular 1.4 fixes major animation issues and introduces a new API for <code>ngCookies</code>. Further, there
 are changes to <code>ngMessages</code>, <code>$compile</code>, <code>ngRepeat</code>, <code>ngOptions</code>and some fixes to core filters:

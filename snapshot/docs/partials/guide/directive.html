@@ -87,7 +87,7 @@ attributes on DOM elements (e.g. <code>ng-model</code>).</p>
       name="protractor.js"
       type="protractor"
       language="js">
-      <pre><code>it(&#39;should show off bindings&#39;, function() {&#10;  expect(element(by.css(&#39;div[ng-controller=&quot;Controller&quot;] span[ng-bind]&#39;)).getText())&#10;      .toBe(&#39;Max Karl Ernst Ludwig Planck (April 23, 1858 &ndash; October 4, 1947)&#39;);&#10;});</code></pre>
+      <pre><code>it(&#39;should show off bindings&#39;, function() {&#10;  var containerElm = element(by.css(&#39;div[ng-controller=&quot;Controller&quot;]&#39;));&#10;  var nameBindings = containerElm.all(by.binding(&#39;name&#39;));&#10;&#10;  expect(nameBindings.count()).toBe(5);&#10;  nameBindings.each(function(elem) {&#10;    expect(elem.getText()).toEqual(&#39;Max Karl Ernst Ludwig Planck (April 23, 1858 &ndash; October 4, 1947)&#39;);&#10;  });&#10;});</code></pre>
     </div>
   
 
