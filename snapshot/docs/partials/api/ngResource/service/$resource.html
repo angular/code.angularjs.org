@@ -46,7 +46,7 @@ this:</p>
   
   <h2 id="dependencies">Dependencies</h2>
   <ul>
-    <li><a href="api/ng/service/$http"><code>$http</code></a></li><li><a href="api/ng/service/$log"><code>$log</code></a></li><li><a href="api/ng/service/$q"><code>$q</code></a></li>
+    <li><a href="api/ng/service/$http"><code>$http</code></a></li><li><a href="api/ng/service/$log"><code>$log</code></a></li><li><a href="api/ng/service/$q"><code>$q</code></a></li><li><a href="$timeout">$timeout</a></li>
   </ul>
   
 
@@ -177,8 +177,7 @@ If you are looking for a way to cancel requests, you should use the <code>cancel
 <li><strong><code>cancellable</code></strong> – <code>{boolean}</code> – if set to true, the request made by a &quot;non-instance&quot; call
 will be cancelled (if not already completed) by calling <code>$cancelRequest()</code> on the call&#39;s
 return value. Calling <code>$cancelRequest()</code> for a non-cancellable or an already
-completed/cancelled request will have no effect.<br />
-<strong>Note:</strong> If a timeout is specified in millisecondes, <code>cancellable</code> is ignored.</li>
+completed/cancelled request will have no effect.<br /></li>
 <li><strong><code>withCredentials</code></strong> - <code>{boolean}</code> - whether to set the <code>withCredentials</code> flag on the
 XHR object. See
 <a href="https://developer.mozilla.org/en/http_access_control#section_5">requests with credentials</a>

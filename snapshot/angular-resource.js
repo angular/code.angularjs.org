@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.0-build.4544+sha.3be79cd
+ * @license AngularJS v1.5.0-build.4547+sha.d641901
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -70,6 +70,7 @@ function shallowClearAndCopy(src, dst) {
  * @requires $http
  * @requires ng.$log
  * @requires $q
+ * @requires $timeout
  *
  * @description
  * A factory which creates a resource object that lets you interact with
@@ -165,7 +166,6 @@ function shallowClearAndCopy(src, dst) {
  *     will be cancelled (if not already completed) by calling `$cancelRequest()` on the call's
  *     return value. Calling `$cancelRequest()` for a non-cancellable or an already
  *     completed/cancelled request will have no effect.<br />
- *     **Note:** If a timeout is specified in millisecondes, `cancellable` is ignored.
  *   - **`withCredentials`** - `{boolean}` - whether to set the `withCredentials` flag on the
  *     XHR object. See
  *     [requests with credentials](https://developer.mozilla.org/en/http_access_control#section_5)
@@ -421,7 +421,7 @@ angular.module('ngResource', ['ng']).
       }
     };
 
-    this.$get = ['$http', '$log', '$q', function($http, $log, $q) {
+    this.$get = ['$http', '$log', '$q', '$timeout', function($http, $log, $q, $timeout) {
 
       var noop = angular.noop,
         forEach = angular.forEach,
@@ -580,20 +580,19 @@ angular.module('ngResource', ['ng']).
 
         forEach(actions, function(action, name) {
           var hasBody = /^(POST|PUT|PATCH)$/i.test(action.method);
-          var cancellable = false;
+          var numericTimeout = action.timeout;
+          var cancellable = angular.isDefined(action.cancellable) ? action.cancellable :
+              (options && angular.isDefined(options.cancellable)) ? options.cancellable :
+              provider.defaults.cancellable;
 
-          if (!angular.isNumber(action.timeout)) {
-            if (action.timeout) {
-              $log.debug('ngResource:\n' +
-                         '  Only numeric values are allowed as `timeout`.\n' +
-                         '  Promises are not supported in $resource, because the same value would ' +
-                         'be used for multiple requests. If you are looking for a way to cancel ' +
-                         'requests, you should use the `cancellable` option.');
-              delete action.timeout;
-            }
-            cancellable = angular.isDefined(action.cancellable) ? action.cancellable :
-                         (options && angular.isDefined(options.cancellable)) ? options.cancellable :
-                         provider.defaults.cancellable;
+          if (numericTimeout && !angular.isNumber(numericTimeout)) {
+            $log.debug('ngResource:\n' +
+                       '  Only numeric values are allowed as `timeout`.\n' +
+                       '  Promises are not supported in $resource, because the same value would ' +
+                       'be used for multiple requests. If you are looking for a way to cancel ' +
+                       'requests, you should use the `cancellable` option.');
+            delete action.timeout;
+            numericTimeout = null;
           }
 
           Resource[name] = function(a1, a2, a3, a4) {
@@ -644,6 +643,7 @@ angular.module('ngResource', ['ng']).
             var responseErrorInterceptor = action.interceptor && action.interceptor.responseError ||
               undefined;
             var timeoutDeferred;
+            var numericTimeoutPromise;
 
             forEach(action, function(value, key) {
               switch (key) {
@@ -661,6 +661,10 @@ angular.module('ngResource', ['ng']).
             if (!isInstanceCall && cancellable) {
               timeoutDeferred = $q.defer();
               httpConfig.timeout = timeoutDeferred.promise;
+
+              if (numericTimeout) {
+                numericTimeoutPromise = $timeout(timeoutDeferred.resolve, numericTimeout);
+              }
             }
 
             if (hasBody) httpConfig.data = data;
@@ -711,7 +715,8 @@ angular.module('ngResource', ['ng']).
               value.$resolved = true;
               if (!isInstanceCall && cancellable) {
                 value.$cancelRequest = angular.noop;
-                timeoutDeferred = httpConfig.timeout = null;
+                $timeout.cancel(numericTimeoutPromise);
+                timeoutDeferred = numericTimeoutPromise = httpConfig.timeout = null;
               }
             });
 
