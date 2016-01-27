@@ -1821,6 +1821,16 @@ angular.module('pagesData', [])
     "area": "api",
     "path": "api/ngTouch"
   },
+  "api/ngTouch/provider/$touchProvider": {
+    "name": "$touchProvider",
+    "area": "api",
+    "path": "api/ngTouch/provider/$touchProvider"
+  },
+  "api/ngTouch/service/$touch": {
+    "name": "$touch",
+    "area": "api",
+    "path": "api/ngTouch/service/$touch"
+  },
   "app.js": {
     "path": "app.js"
   },
@@ -2708,5 +2718,10 @@ angular.module('pagesData', [])
     "name": "service components in ngTouch",
     "area": "api",
     "path": "api/ngTouch/service"
+  },
+  "api/ngTouch/provider": {
+    "name": "provider components in ngTouch",
+    "area": "api",
+    "path": "api/ngTouch/provider"
   }
 });

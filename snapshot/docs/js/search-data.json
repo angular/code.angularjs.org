@@ -2156,7 +2156,7 @@
   {
     "path": "api/ngTouch/directive/ngClick",
     "titleWords": "ngClick click",
-    "keywords": "$event about after also an and any api as available back be before being browsers can class click config css default depressed designed desktop devices directive down element evaluate event example-example115 expression fall following for from guide handles held html if immediately installed is mobile module more most mouse ng-click-active ngclick ngtouch object on or ordinary partials powerful prevents propagating replacement requires restyle sending sets so tap tap-and-release the them then this to touch touchscreen upon used using version wait well while wish works you",
+    "keywords": "$event $touchprovider about after alert alert-danger also an and angular any api article as available back be before beginning being browsers by can class click com css default delay deprecated depressed designed desktop devices directive down element enable evaluate event example-example115 expression fall following for from function further future gives good guide handles held html if immediately installed is it learn might migrate mobile module more most mouse need ng-click-active ngclick ngclickoverrideenabled ngtouch ngtouchclickdirectivefactory no notice object on or ordinary overview partials powerful prevents propagating receive recommend releases removed replacement requires restyle sending sets so support tap tap-and-release telerik that the them then this to touch touchscreen upon used using version wait we well while will wish with works you",
     "members": ""
   },
   {
@@ -2182,6 +2182,18 @@
     "titleWords": "ngTouch touch",
     "keywords": "$swipe and angular-touch api based com devices doc-module-components event events for handling helpers html implementation is jquery js mobile module ngtouch on other partials provides see the touch touch-enabled usage",
     "members": ""
+  },
+  {
+    "path": "api/ngTouch/provider/$touchProvider",
+    "titleWords": "$touchProvider",
+    "keywords": "$inject $touchprovider allows api directive disabling enabling html module ngclick ngtouch partials provider the",
+    "members": "ngclickoverrideenabled"
+  },
+  {
+    "path": "api/ngTouch/service/$touch",
+    "titleWords": "$touch",
+    "keywords": "$get $touch api html method module ngclickoverrideenabled ngtouch object partials provides service the",
+    "members": "ngclickoverrideenabled"
   },
   {
     "path": "error/$animate",
