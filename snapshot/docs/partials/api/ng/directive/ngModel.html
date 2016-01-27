@@ -59,6 +59,19 @@ implicitly and added to the scope.</p>
 <li><a href="api/ng/directive/select">select</a></li>
 <li><a href="api/ng/directive/textarea">textarea</a></li>
 </ul>
+<h1 id="complex-models-objects-or-collections-">Complex Models (objects or collections)</h1>
+<p>By default, <code>ngModel</code> watches the model by reference, not value. This is important to know when
+binding inputs to models that are objects (e.g. <code>Date</code>) or collections (e.g. arrays). If only properties of the
+object or collection change, <code>ngModel</code> will not be notified and so the input will not be  re-rendered.</p>
+<p>The model must be assigned an entirely new object or collection before a re-rendering will occur.</p>
+<p>Some directives have options that will cause them to use a custom <code>$watchCollection</code> on the model expression</p>
+<ul>
+<li>for example, <code>ngOptions</code> will do so when a <code>track by</code> clause is included in the comprehension expression or
+if the select is given the <code>multiple</code> attribute.</li>
+</ul>
+<p>The <code>$watchCollection()</code> method only does a shallow comparison, meaning that changing properties deeper than the
+first level of the object (or only changing the properties of an item in the collection if it&#39;s an array) will still
+not trigger a re-rendering of the model.</p>
 <h1 id="css-classes">CSS classes</h1>
 <p>The following CSS classes are added and removed on the associated input/select/textarea element
 depending on the validity of the model.</p>

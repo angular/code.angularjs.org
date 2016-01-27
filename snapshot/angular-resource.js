@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.0-build.4549+sha.8348365
+ * @license AngularJS v1.5.0-build.4552+sha.8f94b5b
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -70,7 +70,7 @@ function shallowClearAndCopy(src, dst) {
  * @requires $http
  * @requires ng.$log
  * @requires $q
- * @requires $timeout
+ * @requires ng.$timeout
  *
  * @description
  * A factory which creates a resource object that lets you interact with

@@ -52,16 +52,17 @@
 <p>The object may have following properties:</p>
 <ul>
 <li><strong>path</strong> - <code>{string}</code> - The cookie will be available only for this path and its
-sub-paths. By default, this would be the URL that appears in your base tag.</li>
+sub-paths. By default, this is the URL that appears in your <code>&lt;base&gt;</code> tag.</li>
 <li><strong>domain</strong> - <code>{string}</code> - The cookie will be available only for this domain and
-its sub-domains. For obvious security reasons the user agent will not accept the
-cookie if the current domain is not a sub domain or equals to the requested domain.</li>
+its sub-domains. For security reasons the user agent will not accept the cookie
+if the current domain is not a sub-domain of this domain or equal to it.</li>
 <li><strong>expires</strong> - <code>{string|Date}</code> - String of the form &quot;Wdy, DD Mon YYYY HH:MM:SS GMT&quot;
 or a Date object indicating the exact date/time this cookie will expire.</li>
-<li><strong>secure</strong> - <code>{boolean}</code> - The cookie will be available only in secured connection.</li>
+<li><strong>secure</strong> - <code>{boolean}</code> - If <code>true</code>, then the cookie will only be available through a
+secured connection.</li>
 </ul>
-<p>Note: by default the address that appears in your <code>&lt;base&gt;</code> tag will be used as path.
-This is important so that cookies will be visible for all routes in case html5mode is enabled</p>
+<p>Note: By default, the address that appears in your <code>&lt;base&gt;</code> tag will be used as the path.
+This is important so that cookies will be visible for all routes when html5mode is enabled.</p>
 </td>
   </tr>
 </table>
