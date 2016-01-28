@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.0-build.4555+sha.0dfc1df
+ * @license AngularJS v1.5.0-build.4557+sha.37cb9ad
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -57,7 +57,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.5.0-build.4555+sha.0dfc1df/' +
+    message += '\nhttp://errors.angularjs.org/1.5.0-build.4557+sha.37cb9ad/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -2420,7 +2420,7 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.5.0-build.4555+sha.0dfc1df',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.5.0-build.4557+sha.37cb9ad',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 5,
   dot: 0,
@@ -15136,6 +15136,7 @@ function $ParseProvider() {
       for (var i = 0; fn.inputs && i < fn.inputs.length; ++i) {
         fn.inputs[i] = expensiveChecksInterceptor(fn.inputs[i]);
       }
+      expensiveCheckFn.inputs = fn.inputs;
 
       return expensiveCheckFn;
 
