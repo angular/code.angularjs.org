@@ -358,7 +358,7 @@ should be done in a linking function rather than in a compile function.
 
 <div class="alert alert-warning">
 <strong>Note:</strong> The compile function cannot handle directives that recursively use themselves in their
-own templates or compile functions. Compiling these directives results in an infinite loop and a
+own templates or compile functions. Compiling these directives results in an infinite loop and
 stack overflow errors.
 
 This can be avoided by manually using $compile in the postLink function to imperatively compile
@@ -538,11 +538,11 @@ like this:</p>
 <h3 id="attributes">Attributes</h3>
 <p>The <a href="api/ng/type/$compile.directive.Attributes">Attributes</a> object - passed as a parameter in the
 <code>link()</code> or <code>compile()</code> functions. It has a variety of uses.</p>
-<p>accessing <em>Normalized attribute names:</em>
-Directives like &#39;ngBind&#39; can be expressed in many ways: &#39;ng:bind&#39;, <code>data-ng-bind</code>, or &#39;x-ng-bind&#39;.
-the attributes object allows for normalized access to
-  the attributes.</p>
 <ul>
+<li><p><em>Accessing normalized attribute names:</em> Directives like &#39;ngBind&#39; can be expressed in many ways:
+&#39;ng:bind&#39;, <code>data-ng-bind</code>, or &#39;x-ng-bind&#39;. The attributes object allows for normalized access
+to the attributes.</p>
+</li>
 <li><p><em>Directive inter-communication:</em> All directives share the same instance of the attributes
 object which allows the directives to use the attributes object as inter directive
 communication.</p>
