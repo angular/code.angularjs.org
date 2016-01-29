@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.0-build.4558+sha.63154c3
+ * @license AngularJS v1.5.0-build.4562+sha.ca5b27b
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -57,7 +57,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.5.0-build.4558+sha.63154c3/' +
+    message += '\nhttp://errors.angularjs.org/1.5.0-build.4562+sha.ca5b27b/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -2420,7 +2420,7 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.5.0-build.4558+sha.63154c3',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.5.0-build.4562+sha.ca5b27b',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 5,
   dot: 0,
@@ -7553,121 +7553,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
    *   });
    *
    * ```
-   *
-   * ### Intercomponent Communication
-   * Directives can require the controllers of other directives to enable communication
-   * between the directives. This can be achieved in a component by providing an
-   * object mapping for the `require` property.  Here is the tab pane example built
-   * from components...
-   *
-   * <example module="docsTabsExample">
-   *   <file name="script.js">
-   * angular.module('docsTabsExample', [])
-   *   .component('myTabs', {
-   *     transclude: true,
-   *     controller: function() {
-   *       var panes = this.panes = [];
-   *
-   *       this.select = function(pane) {
-   *         angular.forEach(panes, function(pane) {
-   *           pane.selected = false;
-   *         });
-   *         pane.selected = true;
-   *       };
-   *
-   *       this.addPane = function(pane) {
-   *         if (panes.length === 0) {
-   *           this.select(pane);
-   *         }
-   *         panes.push(pane);
-   *       };
-   *     },
-   *     templateUrl: 'my-tabs.html'
-   *   })
-   *   .component('myPane', {
-   *     transclude: true,
-   *     require: {tabsCtrl: '^myTabs'},
-   *     bindings: {
-   *       title: '@'
-   *     },
-   *     controller: function() {
-   *       this.$onInit = function() {
-   *         this.tabsCtrl.addPane(this);
-   *         console.log(this);
-   *       };
-   *     },
-   *     templateUrl: 'my-pane.html'
-   *   });
-   *   </file>
-   *   <file name="index.html">
-   *   <my-tabs>
-   *     <my-pane title="Hello">
-   *       <h4>Hello</h4>
-   *       <p>Lorem ipsum dolor sit amet</p>
-   *     </my-pane>
-   *     <my-pane title="World">
-   *       <h4>World</h4>
-   *       <em>Mauris elementum elementum enim at suscipit.</em>
-   *       <p><a href ng-click="i = i + 1">counter: {{i || 0}}</a></p>
-   *     </my-pane>
-   *   </my-tabs>
-   *   </file>
-   *   <file name="my-tabs.html">
-   *   <div class="tabbable">
-   *     <ul class="nav nav-tabs">
-   *       <li ng-repeat="pane in $ctrl.panes" ng-class="{active:pane.selected}">
-   *         <a href="" ng-click="$ctrl.select(pane)">{{pane.title}}</a>
-   *       </li>
-   *     </ul>
-   *     <div class="tab-content" ng-transclude></div>
-   *   </div>
-   *   </file>
-   *   <file name="my-pane.html">
-   *     <div class="tab-pane" ng-show="$ctrl.selected" ng-transclude></div>
-   *   </file>
-   * </example>
-   *
-   *
-   * <br />
-   * Components are also useful as route templates (e.g. when using
-   * {@link ngRoute ngRoute}):
-   *
-   * ```js
-   *   var myMod = angular.module('myMod', ['ngRoute']);
-   *
-   *   myMod.component('home', {
-   *     template: '<h1>Home</h1><p>Hello, {{ home.user.name }} !</p>',
-   *     controller: function() {
-   *       this.user = {name: 'world'};
-   *     }
-   *   });
-   *
-   *   myMod.config(function($routeProvider) {
-   *     $routeProvider.when('/', {
-   *       template: '<home></home>'
-   *     });
-   *   });
-   * ```
-   *
-   * <br />
-   * When using {@link ngRoute.$routeProvider $routeProvider}, you can often avoid some
-   * boilerplate, by assigning the resolved dependencies directly on the route scope:
-   *
-   * ```js
-   *   var myMod = angular.module('myMod', ['ngRoute']);
-   *
-   *   myMod.component('home', {
-   *     template: '<h1>Home</h1><p>Hello, {{ home.user.name }} !</p>',
-   *     bindings: {user: '='}
-   *   });
-   *
-   *   myMod.config(function($routeProvider) {
-   *     $routeProvider.when('/', {
-   *       template: '<home user="$resolve.user"></home>',
-   *       resolve: {user: function($http) { return $http.get('...'); }}
-   *     });
-   *   });
-   * ```
+   * For more examples, and an in-depth guide, see the {@link guide/component component guide}.
    *
    * <br />
    * See also {@link ng.$compileProvider#directive $compileProvider.directive()}.
@@ -29572,6 +29458,9 @@ var SelectController =
 
   // Tell the select control that an option, with the given value, has been added
   self.addOption = function(value, element) {
+    // Skip comment nodes, as they only pollute the `optionsMap`
+    if (element[0].nodeType === NODE_TYPE_COMMENT) return;
+
     assertNotHasOwnProperty(value, '"option value"');
     if (value === '') {
       self.emptyOption = element;
@@ -29944,7 +29833,6 @@ var optionDirective = ['$interpolate', function($interpolate) {
     restrict: 'E',
     priority: 100,
     compile: function(element, attr) {
-
       if (isDefined(attr.value)) {
         // If the value attribute is defined, check if it contains an interpolation
         var interpolateValueFn = $interpolate(attr.value, true);
@@ -29958,7 +29846,6 @@ var optionDirective = ['$interpolate', function($interpolate) {
       }
 
       return function(scope, element, attr) {
-
         // This is an optimization over using ^^ since we don't want to have to search
         // all the way to the root of the DOM for every single option element
         var selectCtrlName = '$selectController',

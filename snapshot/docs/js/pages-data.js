@@ -526,6 +526,11 @@ angular.module('pagesData', [])
     "area": "guide",
     "path": "guide/compiler"
   },
+  "guide/component": {
+    "name": "Components",
+    "area": "guide",
+    "path": "guide/component"
+  },
   "guide/concepts": {
     "name": "Conceptual Overview",
     "area": "guide",
@@ -1561,6 +1566,11 @@ angular.module('pagesData', [])
     "area": "api",
     "path": "api/ng/service/$window"
   },
+  "api/ngAnimate/directive/ngAnimateChildren": {
+    "name": "ngAnimateChildren",
+    "area": "api",
+    "path": "api/ngAnimate/directive/ngAnimateChildren"
+  },
   "api/ngAnimate/service/$animateCss": {
     "name": "$animateCss",
     "area": "api",
@@ -1883,6 +1893,42 @@ angular.module('pagesData', [])
   "examples/example-example6": {
     "path": "examples/example-example6"
   },
+  "index.js": {
+    "path": "index.js"
+  },
+  "heroDetail.js": {
+    "path": "heroDetail.js"
+  },
+  "heroDetail.html": {
+    "path": "heroDetail.html"
+  },
+  "examples/example-heroComponentSimple": {
+    "path": "examples/example-heroComponentSimple"
+  },
+  "heroList.js": {
+    "path": "heroList.js"
+  },
+  "editableField.js": {
+    "path": "editableField.js"
+  },
+  "heroList.html": {
+    "path": "heroList.html"
+  },
+  "editableField.html": {
+    "path": "editableField.html"
+  },
+  "examples/example-heroComponentTree": {
+    "path": "examples/example-heroComponentTree"
+  },
+  "my-tabs.html": {
+    "path": "my-tabs.html"
+  },
+  "my-pane.html": {
+    "path": "my-pane.html"
+  },
+  "examples/example-example7": {
+    "path": "examples/example-example7"
+  },
   "examples/example-guide-concepts-1": {
     "path": "examples/example-guide-concepts-1"
   },
@@ -1910,17 +1956,14 @@ angular.module('pagesData', [])
   "examples/example-guide-concepts-3": {
     "path": "examples/example-guide-concepts-3"
   },
-  "examples/example-example7": {
-    "path": "examples/example-example7"
-  },
   "examples/example-example8": {
     "path": "examples/example-example8"
   },
-  "app.css": {
-    "path": "app.css"
-  },
   "examples/example-example9": {
     "path": "examples/example-example9"
+  },
+  "app.css": {
+    "path": "app.css"
   },
   "examples/example-example10": {
     "path": "examples/example-example10"
@@ -1928,11 +1971,14 @@ angular.module('pagesData', [])
   "examples/example-example11": {
     "path": "examples/example-example11"
   },
+  "examples/example-example12": {
+    "path": "examples/example-example12"
+  },
   "my-customer.html": {
     "path": "my-customer.html"
   },
-  "examples/example-example12": {
-    "path": "examples/example-example12"
+  "examples/example-example13": {
+    "path": "examples/example-example13"
   },
   "customer-name.html": {
     "path": "customer-name.html"
@@ -1940,53 +1986,44 @@ angular.module('pagesData', [])
   "customer-address.html": {
     "path": "customer-address.html"
   },
-  "examples/example-example13": {
-    "path": "examples/example-example13"
-  },
   "examples/example-example14": {
     "path": "examples/example-example14"
   },
   "examples/example-example15": {
     "path": "examples/example-example15"
   },
-  "my-customer-iso.html": {
-    "path": "my-customer-iso.html"
-  },
   "examples/example-example16": {
     "path": "examples/example-example16"
   },
-  "my-customer-plus-vojta.html": {
-    "path": "my-customer-plus-vojta.html"
+  "my-customer-iso.html": {
+    "path": "my-customer-iso.html"
   },
   "examples/example-example17": {
     "path": "examples/example-example17"
   },
+  "my-customer-plus-vojta.html": {
+    "path": "my-customer-plus-vojta.html"
+  },
   "examples/example-example18": {
     "path": "examples/example-example18"
-  },
-  "my-dialog.html": {
-    "path": "my-dialog.html"
   },
   "examples/example-example19": {
     "path": "examples/example-example19"
   },
+  "my-dialog.html": {
+    "path": "my-dialog.html"
+  },
   "examples/example-example20": {
     "path": "examples/example-example20"
-  },
-  "my-dialog-close.html": {
-    "path": "my-dialog-close.html"
   },
   "examples/example-example21": {
     "path": "examples/example-example21"
   },
+  "my-dialog-close.html": {
+    "path": "my-dialog-close.html"
+  },
   "examples/example-example22": {
     "path": "examples/example-example22"
-  },
-  "my-tabs.html": {
-    "path": "my-tabs.html"
-  },
-  "my-pane.html": {
-    "path": "my-pane.html"
   },
   "examples/example-example23": {
     "path": "examples/example-example23"
@@ -2039,11 +2076,11 @@ angular.module('pagesData', [])
   "examples/example-example39": {
     "path": "examples/example-example39"
   },
-  "examples/example-message-format-example": {
-    "path": "examples/example-message-format-example"
-  },
   "examples/example-example40": {
     "path": "examples/example-example40"
+  },
+  "examples/example-message-format-example": {
+    "path": "examples/example-message-format-example"
   },
   "examples/example-example41": {
     "path": "examples/example-example41"
@@ -2390,6 +2427,9 @@ angular.module('pagesData', [])
   "examples/example-example112": {
     "path": "examples/example-example112"
   },
+  "examples/example-ngAnimateChildren": {
+    "path": "examples/example-ngAnimateChildren"
+  },
   "home.html": {
     "path": "home.html"
   },
@@ -2604,15 +2644,15 @@ angular.module('pagesData', [])
     "area": "api",
     "path": "api/auto/service"
   },
-  "api/ngAnimate/service": {
-    "name": "service components in ngAnimate",
-    "area": "api",
-    "path": "api/ngAnimate/service"
-  },
   "api/ngAnimate/directive": {
     "name": "directive components in ngAnimate",
     "area": "api",
     "path": "api/ngAnimate/directive"
+  },
+  "api/ngAnimate/service": {
+    "name": "service components in ngAnimate",
+    "area": "api",
+    "path": "api/ngAnimate/service"
   },
   "api/ngAria/provider": {
     "name": "provider components in ngAria",

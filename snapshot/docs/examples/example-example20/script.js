@@ -1,6 +1,6 @@
 (function(angular) {
   'use strict';
-angular.module('docsTransclusionExample', [])
+angular.module('docsTransclusionDirective', [])
   .controller('Controller', ['$scope', function($scope) {
     $scope.name = 'Tobias';
   }])
@@ -8,11 +8,7 @@ angular.module('docsTransclusionExample', [])
     return {
       restrict: 'E',
       transclude: true,
-      scope: {},
-      templateUrl: 'my-dialog.html',
-      link: function (scope, element) {
-        scope.name = 'Jeff';
-      }
+      templateUrl: 'my-dialog.html'
     };
   });
 })(window.angular);

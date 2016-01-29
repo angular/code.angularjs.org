@@ -1,13 +1,16 @@
 (function(angular) {
   'use strict';
-var myApp = angular.module('spicyApp2', []);
+var myApp = angular.module('spicyApp1', []);
 
 myApp.controller('SpicyController', ['$scope', function($scope) {
-    $scope.customSpice = "wasabi";
     $scope.spice = 'very';
 
-    $scope.spicy = function(spice) {
-        $scope.spice = spice;
+    $scope.chiliSpicy = function() {
+        $scope.spice = 'chili';
+    };
+
+    $scope.jalapenoSpicy = function() {
+        $scope.spice = 'jalapeño';
     };
 }]);
 })(window.angular);

@@ -5,18 +5,19 @@
   <title>Example - example-example31-production</title>
   
 
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.1/angular.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.2/angular.min.js"></script>
   <script src="script.js"></script>
   
 
   
 </head>
-<body ng-app="myStatefulFilterApp">
+<body ng-app="myReverseFilterApp">
   <div ng-controller="MyController">
-  Input: <input ng-model="greeting" type="text"><br>
-  Decoration: <input ng-model="decoration.symbol" type="text"><br>
+  <input ng-model="greeting" type="text"><br>
   No filter: {{greeting}}<br>
-  Decorated: {{greeting | decorate}}<br>
+  Reverse: {{greeting|reverse}}<br>
+  Reverse + uppercase: {{greeting|reverse:true}}<br>
+  Reverse, filtered in controller: {{filteredGreeting}}<br>
 </div>
 </body>
 </html>

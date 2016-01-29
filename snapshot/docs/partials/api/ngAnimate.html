@@ -621,6 +621,36 @@ routing controller to hook into that:</p>
   <h2>Module Components</h2>
   
   <div>
+    <h3 class="component-heading" id="directive">Directive</h3>
+    <table class="definition-table">
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      
+      <tr>
+        <td><a href="api/ngAnimate/directive/ngAnimateChildren">ngAnimateChildren</a></td>
+        <td><p>ngAnimateChildren allows you to specify that children of this element should animate even if any
+of the children&#39;s parents are currently animating. By default, when an element has an active <code>enter</code>, <code>leave</code>, or <code>move</code>
+(structural) animation, child elements that also have an active structural animation are not animated.</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><a href="api/ngAnimate/directive/ngAnimateSwap">ngAnimateSwap</a></td>
+        <td><p>ngAnimateSwap is a animation-oriented directive that allows for the container to
+be removed and entered in whenever the associated expression changes. A
+common usecase for this directive is a rotating banner component which
+contains one image being present at a time. When the active image changes
+then the old image will perform a <code>leave</code> animation and the new element
+will be inserted via an <code>enter</code> animation.</p>
+</td>
+      </tr>
+      
+    </table>
+  </div>
+  
+  <div>
     <h3 class="component-heading" id="service">Service</h3>
     <table class="definition-table">
       <tr>
@@ -640,28 +670,6 @@ directives to create more complex animations that can be purely driven using CSS
       <tr>
         <td><a href="api/ngAnimate/service/$animate">$animate</a></td>
         <td><p>The ngAnimate <code>$animate</code> service documentation is the same for the core <code>$animate</code> service.</p>
-</td>
-      </tr>
-      
-    </table>
-  </div>
-  
-  <div>
-    <h3 class="component-heading" id="directive">Directive</h3>
-    <table class="definition-table">
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-      
-      <tr>
-        <td><a href="api/ngAnimate/directive/ngAnimateSwap">ngAnimateSwap</a></td>
-        <td><p>ngAnimateSwap is a animation-oriented directive that allows for the container to
-be removed and entered in whenever the associated expression changes. A
-common usecase for this directive is a rotating banner component which
-contains one image being present at a time. When the active image changes
-then the old image will perform a <code>leave</code> animation and the new element
-will be inserted via an <code>enter</code> animation.</p>
 </td>
       </tr>
       

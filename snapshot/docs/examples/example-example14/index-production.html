@@ -5,15 +5,16 @@
   <title>Example - example-example14-production</title>
   
 
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.1/angular.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.2/angular.min.js"></script>
   <script src="script.js"></script>
   
 
   
 </head>
-<body ng-app="docsRestrictDirective">
+<body ng-app="docsTemplateUrlDirective">
   <div ng-controller="Controller">
-  <my-customer></my-customer>
+  <div my-customer type="name"></div>
+  <div my-customer type="address"></div>
 </div>
 </body>
 </html>

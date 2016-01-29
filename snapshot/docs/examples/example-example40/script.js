@@ -1,13 +1,22 @@
 (function(angular) {
   'use strict';
-// declare a module
-var myAppModule = angular.module('myApp', []);
+angular.module('form-example2', []).directive('contenteditable', function() {
+  return {
+    require: 'ngModel',
+    link: function(scope, elm, attrs, ctrl) {
+      // view -> model
+      elm.on('blur', function() {
+        ctrl.$setViewValue(elm.html());
+      });
 
-// configure the module.
-// in this example we will create a greeting filter
-myAppModule.filter('greet', function() {
- return function(name) {
-    return 'Hello, ' + name + '!';
+      // model -> view
+      ctrl.$render = function() {
+        elm.html(ctrl.$viewValue);
+      };
+
+      // load init value from DOM
+      ctrl.$setViewValue(elm.html());
+    }
   };
 });
 })(window.angular);

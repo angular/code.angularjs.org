@@ -870,6 +870,21 @@ angular.module('navData', [])
         "type": "group",
         "navItems": [
           {
+            "name": "directive",
+            "type": "section",
+            "href": "api/ngAnimate/directive"
+          },
+          {
+            "name": "ngAnimateChildren",
+            "href": "api/ngAnimate/directive/ngAnimateChildren",
+            "type": "directive"
+          },
+          {
+            "name": "ngAnimateSwap",
+            "href": "api/ngAnimate/directive/ngAnimateSwap",
+            "type": "directive"
+          },
+          {
             "name": "service",
             "type": "section",
             "href": "api/ngAnimate/service"
@@ -883,16 +898,6 @@ angular.module('navData', [])
             "name": "$animateCss",
             "href": "api/ngAnimate/service/$animateCss",
             "type": "service"
-          },
-          {
-            "name": "directive",
-            "type": "section",
-            "href": "api/ngAnimate/directive"
-          },
-          {
-            "name": "ngAnimateSwap",
-            "href": "api/ngAnimate/directive/ngAnimateSwap",
-            "type": "directive"
           }
         ]
       },
@@ -1973,6 +1978,11 @@ angular.module('navData', [])
           {
             "name": "Directives",
             "href": "guide/directive",
+            "type": "page"
+          },
+          {
+            "name": "Components",
+            "href": "guide/component",
             "type": "page"
           },
           {
