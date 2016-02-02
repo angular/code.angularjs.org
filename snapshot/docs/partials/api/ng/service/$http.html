@@ -303,13 +303,13 @@ Angular will automatically strip the prefix before processing it as JSON.</p>
 </code></pre>
 <p>Angular will strip the prefix, before processing the JSON.</p>
 <h3 id="cross-site-request-forgery-xsrf-protection">Cross Site Request Forgery (XSRF) Protection</h3>
-<p><a href="http://en.wikipedia.org/wiki/Cross-site_request_forgery">XSRF</a> is a technique by which
-an unauthorized site can gain your user&#39;s private data. Angular provides a mechanism
-to counter XSRF. When performing XHR requests, the $http service reads a token from a cookie
-(by default, <code>XSRF-TOKEN</code>) and sets it as an HTTP header (<code>X-XSRF-TOKEN</code>). Since only
-JavaScript that runs on your domain could read the cookie, your server can be assured that
-the XHR came from JavaScript running on your domain. The header will not be set for
-cross-domain requests.</p>
+<p><a href="http://en.wikipedia.org/wiki/Cross-site_request_forgery">XSRF</a> is an attack technique by
+which the attacker can trick an authenticated user into unknowingly executing actions on your
+website. Angular provides a mechanism to counter XSRF. When performing XHR requests, the
+$http service reads a token from a cookie (by default, <code>XSRF-TOKEN</code>) and sets it as an HTTP
+header (<code>X-XSRF-TOKEN</code>). Since only JavaScript that runs on your domain could read the
+cookie, your server can be assured that the XHR came from JavaScript running on your domain.
+The header will not be set for cross-domain requests.</p>
 <p>To take advantage of this, your server needs to set a token in a JavaScript readable session
 cookie called <code>XSRF-TOKEN</code> on the first HTTP GET request. On subsequent XHR requests the
 server can verify that the cookie matches <code>X-XSRF-TOKEN</code> HTTP header, and therefore be sure

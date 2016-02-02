@@ -28,7 +28,7 @@ angular.module('docsTabsExample', [])
   })
   .directive('myPane', function() {
     return {
-      require: '^myTabs',
+      require: '^^myTabs',
       restrict: 'E',
       transclude: true,
       scope: {

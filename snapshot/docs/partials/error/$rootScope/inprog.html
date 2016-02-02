@@ -131,7 +131,7 @@ work when the element receives focus we will have a problem:</p>
 <p>In this second scenario, we are already inside a <code>$digest</code> when the ngFocus directive makes another
 call to <code>$apply()</code>, causing this error to be thrown.</p>
 <p>It is possible to workaround this problem by moving the call to set the focus outside of the digest,
-by using <code>$timeout(fn, 0, false)</code>, where the <code>false</code> value tells Angular not to wrap this <code>fn</code> in a
+by using <code>$timeout(fn, 0, false)</code>, where the <code>false</code> value tells Angular not to wrap this <code>fn</code> in an
 <code>$apply</code> block:</p>
 <pre><code>myApp.directive(&#39;setFocusIf&#39;, function($timeout) {
   return {
@@ -166,7 +166,7 @@ the top of the call stack.</p>
 <p>Once you have identified this call you work your way up the stack to see what the problem is.</p>
 <ul>
 <li><p>If the second call was made in your application code then you should look at why this code has been
-called from within a <code>$apply</code>/<code>$digest</code>.  It may be a simple oversight or maybe it fits with the
+called from within an <code>$apply</code>/<code>$digest</code>.  It may be a simple oversight or maybe it fits with the
 sync/async scenario described earlier.</p>
 </li>
 <li><p>If the second call was made inside an Angular directive then it is likely that it matches the second
