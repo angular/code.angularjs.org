@@ -12,9 +12,9 @@ which drives many of these changes.</li>
 </ul>
 <h1 id="migrate-from-1-4-to-1-5">Migrate from 1.4 to 1.5</h1>
 <p>Angular 1.5 takes a big step towards preparing developers for a smoother transition to Angular 2 in
-the future. Architecturing your applications using components, making use of lifecycle hooks in
-directive controllers and relying on native ES6 features (such as classes and arrow functions) are
-now all possible with Angular 1.5.</p>
+the future. Architecturing your applications using components, multi-slot transclusion, using
+lifecycle hooks in directive controllers and relying on native ES6 features (such as classes and
+arrow functions) are now all possible with Angular 1.5.</p>
 <p>This release includes numerous bug and security fixes, as well as performance improvements to core
 services, directives, filters and helper functions. Existing applications can start enjoying the
 benefits of such changes in <code>$compile</code>, <code>$parse</code>, <code>$animate</code>, <code>$animateCss</code>, <code>$sanitize</code>, <code>ngOptions</code>,
@@ -27,8 +27,11 @@ configure and promote best practices (plus can bring Angular 1 applications clos
 style of architecture).</li>
 <li>Multi-slot transclusion: Enabling the design of more powerful and complex UI elements with a much
 simpler configuration and reduced boilerplate.</li>
+<li><code>$onInit</code> lifecycle hook: Introducing a new lifecycle hook for directive controllers, called after
+all required controllers have been constructed. This enables access to required controllers from
+a directive&#39;s controller, without having to rely on the linking function.</li>
 <li><code>ngAnimateSwap</code>: A new directive in <code>ngAnimate</code>, making it super easy to create rotating
-banner-like components</li>
+banner-like components.</li>
 <li>Testing helpers: New helper functions in <code>ngMock</code>, simplifying testing for animations, component
 controllers and routing.</li>
 </ul>
@@ -111,11 +114,48 @@ the dangers and ways to mitigate them.</p>
 the <code>$sanitize</code> service will now remove instances of the <code>&lt;use&gt;</code> tag from the content passed to it.
 This element is used to import external SVG resources, which is a security risk as the <code>$sanitize</code>
 service does not have access to the resource in order to sanitize it.</p>
+<p>Similarly, due to <a href="https://github.com/angular/angular.js/commit/234053fc9ad90e0d05be7e8359c6af66be94c094">234053fc</a>,
+the <code>$sanitize</code> service will now also remove instances of the <code>usemap</code> attribute from any elements
+passed to it. This attribute is used to reference another element by <code>name</code> or <code>id</code>. Since the
+<code>name</code> and <code>id</code> attributes are already blacklisted, a sanitized <code>usemap</code> attribute could only
+reference unsanitized content, which is a security risk.</p>
 <p>Due to <a href="https://github.com/angular/angular.js/commit/98c2db7f9c2d078a408576e722407d518c7ee10a">98c2db7f</a>,
 passing a non-string value (other than <code>undefined</code> or <code>null</code>) through the <code>linky</code> filter will throw
 an error. This is not expected to have any significant impact on applications, since the input was
 always assumed to be of type &#39;string&#39;, so passing non-string values never worked correctly anyway.
 The main difference is that now it will fail faster and with a more informative error message.</p>
+<h2 id="ngtouch-ngclick-">ngTouch (<code>ngClick</code>)</h2>
+<p>Due to <a href="https://github.com/angular/angular.js/commit/0dfc1dfebf26af7f951f301c4e3848ac46f05d7f">0dfc1dfe</a>,
+the <code>ngClick</code> override directive from the <code>ngTouch</code> module is <strong>deprecated and disabled by default</strong>.
+This means that on touch-based devices, users might now experience a 300ms delay before a click
+event is fired.</p>
+<p>If you rely on this directive, you can still enable it using
+<code>$touchProvider.ngClickOverrideEnabled()</code>:</p>
+<pre><code class="lang-js">angular.module(&#39;myApp&#39;).config(function($touchProvider) {
+  $touchProvider.ngClickOverrideEnabled(true);
+});
+</code></pre>
+<p>Going forward, we recommend using <a href="https://github.com/ftlabs/fastclick">FastClick</a> or perhaps one of
+the <a href="http://ngmodules.org/tags/touch">Angular 3rd party touch-related modules</a> that provide similar
+functionality.</p>
+<p>Also note that modern browsers already remove the 300ms delay under some circumstances:</p>
+<ul>
+<li><strong>Chrome and Firefox for Android</strong> remove the 300ms delay when the well-known
+<code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;&gt;</code> is set.</li>
+<li><strong>Internet Explorer</strong> removes the delay, when the <code>touch-action</code> css property is set to <code>none</code> or
+<code>manipulation</code>.</li>
+<li>Since <strong>iOS 8, Safari</strong> removes the delay on so-called &quot;slow taps&quot;.</li>
+</ul>
+<p>For more info on the topic, you can take a look at this
+<a href="http://developer.telerik.com/featured/300-ms-click-delay-ios-8/">article by Telerik</a>.</p>
+<div class="alert alert-warning">
+  <strong>Note:</strong> This change does <strong>not</strong> affect the <code>ngSwipe</code> directive.
+</div>
+
+
+
+
+
 <h1 id="migrating-from-1-3-to-1-4">Migrating from 1.3 to 1.4</h1>
 <p>Angular 1.4 fixes major animation issues and introduces a new API for <code>ngCookies</code>. Further, there
 are changes to <code>ngMessages</code>, <code>$compile</code>, <code>ngRepeat</code>, <code>ngOptions</code>and some fixes to core filters:

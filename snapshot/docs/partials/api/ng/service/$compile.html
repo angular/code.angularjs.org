@@ -137,35 +137,61 @@ the object hash map to the name of the property on the isolate scope; the values
 is bound to the parent scope, via matching attributes on the directive&#39;s element:</p>
 <ul>
 <li><p><code>@</code> or <code>@attr</code> - bind a local scope property to the value of DOM attribute. The result is
-always a string since DOM attributes are strings. If no <code>attr</code> name is specified  then the
-attribute name is assumed to be the same as the local name.
-Given <code>&lt;widget my-attr=&quot;hello {{name}}&quot;&gt;</code> and widget definition
-of <code>scope: { localName:&#39;@myAttr&#39; }</code>, then widget scope property <code>localName</code> will reflect
-the interpolated value of <code>hello {{name}}</code>. As the <code>name</code> attribute changes so will the
-<code>localName</code> property on the widget scope. The <code>name</code> is read from the parent scope (not
-component scope).</p>
+always a string since DOM attributes are strings. If no <code>attr</code> name is specified then the
+attribute name is assumed to be the same as the local name. Given <code>&lt;my-component
+my-attr=&quot;hello {{name}}&quot;&gt;</code> and the isolate scope definition <code>scope: { localName:&#39;@myAttr&#39; }</code>,
+the directive&#39;s scope property <code>localName</code> will reflect the interpolated value of <code>hello
+{{name}}</code>. As the <code>name</code> attribute changes so will the <code>localName</code> property on the directive&#39;s
+scope. The <code>name</code> is read from the parent scope (not the directive&#39;s scope).</p>
 </li>
-<li><p><code>=</code> or <code>=attr</code> - set up bi-directional binding between a local scope property and the
-parent scope property of name defined via the value of the <code>attr</code> attribute. If no <code>attr</code>
-name is specified then the attribute name is assumed to be the same as the local name.
-Given <code>&lt;widget my-attr=&quot;parentModel&quot;&gt;</code> and widget definition of
-<code>scope: { localModel:&#39;=myAttr&#39; }</code>, then widget scope property <code>localModel</code> will reflect the
+<li><p><code>=</code> or <code>=attr</code> - set up a bidirectional binding between a local scope property and an expression
+passed via the attribute <code>attr</code>. The expression is evaluated in the context of the parent scope.
+If no <code>attr</code> name is specified then the attribute name is assumed to be the same as the local
+name. Given <code>&lt;my-component my-attr=&quot;parentModel&quot;&gt;</code> and the isolate scope definition <code>scope: {
+localModel: &#39;=myAttr&#39; }</code>, the property <code>localModel</code> on the directive&#39;s scope will reflect the
+value of <code>parentModel</code> on the parent scope. Changes to <code>parentModel</code> will be reflected in
+<code>localModel</code> and vice versa. Optional attributes should be marked as such with a question mark:
+<code>=?</code> or <code>=?attr</code>. If the binding expression is non-assignable, or if the attribute isn&#39;t
+optional and doesn&#39;t exist, an exception (<a href="error/$compile/nonassign"><code>$compile:nonassign</code></a>)
+will be thrown upon discovering changes to the local value, since it will be impossible to sync
+them back to the parent scope. By default, the <a href="api/ng/type/$rootScope.Scope#$watch"><code>$watch</code></a>
+method is used for tracking changes, and the equality check is based on object identity.
+However, if an object literal or an array literal is passed as the binding expression, the
+equality check is done by value (using the <a href="api/ng/function/angular.equals"><code>angular.equals</code></a> function). It&#39;s also possible
+to watch the evaluated value shallowly with <a href="api/ng/type/$rootScope.Scope#$watchCollection"><code>$watchCollection</code></a>: use <code>=*</code> or <code>=*attr</code> (<code>=*?</code> or <code>=*?attr</code> if the attribute is optional).</p>
+</li>
+<li><p><code>&lt;</code> or <code>&lt;attr</code> - set up a one-way (one-directional) binding between a local scope property and an
+expression passed via the attribute <code>attr</code>. The expression is evaluated in the context of the
+parent scope. If no <code>attr</code> name is specified then the attribute name is assumed to be the same as the
+local name. You can also make the binding optional by adding <code>?</code>: <code>&lt;?</code> or <code>&lt;?attr</code>.</p>
+<p>For example, given <code>&lt;my-component my-attr=&quot;parentModel&quot;&gt;</code> and directive definition of
+<code>scope: { localModel:&#39;&lt;myAttr&#39; }</code>, then the isolated scope property <code>localModel</code> will reflect the
 value of <code>parentModel</code> on the parent scope. Any changes to <code>parentModel</code> will be reflected
-in <code>localModel</code> and any changes in <code>localModel</code> will reflect in <code>parentModel</code>. If the parent
-scope property doesn&#39;t exist, it will throw a NON_ASSIGNABLE_MODEL_EXPRESSION exception. You
-can avoid this behavior using <code>=?</code> or <code>=?attr</code> in order to flag the property as optional. If
-you want to shallow watch for changes (i.e. $watchCollection instead of $watch) you can use
-<code>=*</code> or <code>=*attr</code> (<code>=*?</code> or <code>=*?attr</code> if the property is optional).</p>
+in <code>localModel</code>, but changes in <code>localModel</code> will not reflect in <code>parentModel</code>. There are however
+two caveats:</p>
+<ol>
+<li>one-way binding does not copy the value from the parent to the isolate scope, it simply
+sets the same value. That means if your bound value is an object, changes to its properties
+in the isolated scope will be reflected in the parent scope (because both reference the same object).</li>
+<li>one-way binding watches changes to the <strong>identity</strong> of the parent value. That means the
+<a href="api/ng/type/$rootScope.Scope#$watch"><code>$watch</code></a> on the parent value only fires if the reference
+to the value has changed. In most cases, this should not be of concern, but can be important
+to know if you one-way bind to an object, and then replace that object in the isolated scope.
+If you now change a property of the object in your parent scope, the change will not be
+propagated to the isolated scope, because the identity of the object on the parent scope
+has not changed. Instead you must assign a new object.</li>
+</ol>
+<p>One-way binding is useful if you do not plan to propagate changes to your isolated scope bindings
+back to the parent. However, it does not make this completely impossible.</p>
 </li>
-<li><p><code>&amp;</code> or <code>&amp;attr</code> - provides a way to execute an expression in the context of the parent scope.
-If no <code>attr</code> name is specified then the attribute name is assumed to be the same as the
-local name. Given <code>&lt;widget my-attr=&quot;count = count + value&quot;&gt;</code> and widget definition of
-<code>scope: { localFn:&#39;&amp;myAttr&#39; }</code>, then isolate scope property <code>localFn</code> will point to
-a function wrapper for the <code>count = count + value</code> expression. Often it&#39;s desirable to
-pass data from the isolated scope via an expression to the parent scope, this can be
-done by passing a map of local variable names and values into the expression wrapper fn.
-For example, if the expression is <code>increment(amount)</code> then we can specify the amount value
-by calling the <code>localFn</code> as <code>localFn({amount: 22})</code>.</p>
+<li><p><code>&amp;</code> or <code>&amp;attr</code> - provides a way to execute an expression in the context of the parent scope. If
+no <code>attr</code> name is specified then the attribute name is assumed to be the same as the local name.
+Given <code>&lt;my-component my-attr=&quot;count = count + value&quot;&gt;</code> and the isolate scope definition <code>scope: {
+localFn:&#39;&amp;myAttr&#39; }</code>, the isolate scope property <code>localFn</code> will point to a function wrapper for
+the <code>count = count + value</code> expression. Often it&#39;s desirable to pass data from the isolated scope
+via an expression to the parent scope. This can be done by passing a map of local variable names
+and values into the expression wrapper fn. For example, if the expression is <code>increment(amount)</code>
+then we can specify the amount value by calling the <code>localFn</code> as <code>localFn({amount: 22})</code>.</p>
 </li>
 </ul>
 <p>In general it&#39;s possible to apply more than one directive to one element, but there might be limitations
