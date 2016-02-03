@@ -1,16 +1,31 @@
 <a href='https://github.com/angular/angular.js/edit/master/docs/content/guide/migration.ngdoc?message=docs(guide%2FMigrating from Previous Versions)%3A%20describe%20your%20change...' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
+<h1 id="migrating-an-app-to-a-newer-version">Migrating an App to a newer version</h1>
 <p>Minor version releases in AngularJS introduce several breaking changes that may require changes to your
 application&#39;s source code; for instance from 1.0 to 1.2 and from 1.2 to 1.3.</p>
-<p>Although we try to avoid breaking changes, there are some cases where it is unavoidable.</p>
+<p>Although we try to avoid breaking changes, there are some cases where it is unavoidable:</p>
 <ul>
 <li>AngularJS has undergone thorough security reviews to make applications safer by default,
 which drives many of these changes.</li>
 <li>Several new features, especially animations, would not be possible without a few changes.</li>
 <li>Finally, some outstanding bugs were best fixed by changing an existing API.</li>
 </ul>
-<h1 id="migrate-from-1-4-to-1-5">Migrate from 1.4 to 1.5</h1>
+<hr />
+
+<h2 id="contents">Contents</h2>
+<ul class="nav nav-list">
+  <li><a href="guide/migration#migrating-from-1-4-to-1-5">Migrating from 1.4 to 1.5</a></li>
+  <li><a href="guide/migration#migrating-from-1-3-to-1-4">Migrating from 1.3 to 1.4</a></li>
+  <li><a href="guide/migration#migrating-from-1-2-to-1-3">Migrating from 1.2 to 1.3</a></li>
+  <li><a href="guide/migration#migrating-from-1-0-to-1-2">Migrating from 1.0 to 1.2</a></li>
+</ul>
+
+
+
+
+
+<h2 id="migrating-from-1-4-to-1-5">Migrating from 1.4 to 1.5</h2>
 <p>Angular 1.5 takes a big step towards preparing developers for a smoother transition to Angular 2 in
 the future. Architecturing your applications using components, multi-slot transclusion, using
 lifecycle hooks in directive controllers and relying on native ES6 features (such as classes and
@@ -40,16 +55,16 @@ features are now more reliably detected and correctly handled within the core.</
 <p>All this goodness doesn&#39;t come without a price, though. Below is a list of breaking changes (grouped
 by module) that need to be taken into account while migrating from 1.4. Fortunately, the majority of
 them should have a pretty low impact on most applications.</p>
-<h2 id="core">Core</h2>
+<h3 id="core">Core</h3>
 <p>We tried to keep the breaking changes inside the core components to a bare minimum. Still, a few of
 them were unavoidable.</p>
-<h3 id="services-parse-">Services (<code>$parse</code>)</h3>
+<h4 id="services-parse-">Services (<code>$parse</code>)</h4>
 <p>Due to <a href="https://github.com/angular/angular.js/commit/0ea535035a3a1a992948490c3533bffb83235052">0ea53503</a>,
 a new special property, <code>$locals</code>, will be available for accessing the locals from an expression.
 This is a breaking change, only if a <code>$locals</code> property does already exist (and needs to be
 referenced) either on the <code>scope</code> or on the <code>locals</code> object. Your expressions should be changed to
 access such existing properties as <code>this.$locals</code> and <code>$locals.$locals</code> respectively.</p>
-<h3 id="directives-ngoptions-">Directives (<code>ngOptions</code>)</h3>
+<h4 id="directives-ngoptions-">Directives (<code>ngOptions</code>)</h4>
 <p>A fair amount of work has been put into the <code>ngOptions</code> directive, fixing bugs and corner-cases and
 neutralizing browser quirks. A couple of breaking changes were made in the process:</p>
 <p>Due to <a href="https://github.com/angular/angular.js/commit/b71d7c3f3c04e65b02d88b33c22dd90ae3cdfc27">b71d7c3f</a>,
@@ -66,14 +81,14 @@ hard-to-debug errors.
 This is not expected to have any significant impact on applications, since <code>ngOptions</code> didn&#39;t work
 without <code>ngModel</code> before either. The main difference is that now it will fail with a more
 informative error message.</p>
-<h3 id="filters-orderby-">Filters (<code>orderBy</code>)</h3>
+<h4 id="filters-orderby-">Filters (<code>orderBy</code>)</h4>
 <p>Due to <a href="https://github.com/angular/angular.js/commit/2a85a634f86c84f15b411ce009a3515fca7ba580">2a85a634</a>,
 passing a non-array-like value (other than <code>undefined</code> or <code>null</code>) through the <code>orderBy</code> filter will
 throw an error. Previously, the input was returned unchanged, which could lead to hard-to-spot bugs
 and was not consistent with other filters (e.g. <code>filter</code>).
 Objects considered array-like include: arrays, array subclasses, strings, NodeLists,
 jqLite/jQuery collections</p>
-<h2 id="ngmessages-ngmessage-">ngMessages (<code>ngMessage</code>)</h2>
+<h3 id="ngmessages-ngmessage-">ngMessages (<code>ngMessage</code>)</h3>
 <p>Due to <a href="https://github.com/angular/angular.js/commit/4971ef12d4c2c268cb8d26f90385dc96eba19db8">4971ef12</a>,
 the <code>ngMessage</code> directive is now compiled with a priority of 1, which means directives on the same
 element as <code>ngMessage</code> with a priority lower than 1 will be applied when <code>ngMessage</code> calls its
@@ -81,7 +96,7 @@ element as <code>ngMessage</code> with a priority lower than 1 will be applied w
 passed the comment element created by the transclusion of <code>ngMessage</code>.
 If you have custom directives that relied on the previous behavior, you need to give them a priority
 of 1 or greater.</p>
-<h2 id="ngresource-resource-">ngResource (<code>$resource</code>)</h2>
+<h3 id="ngresource-resource-">ngResource (<code>$resource</code>)</h3>
 <p>The <code>$resource</code> service underwent a minor internal refactoring to finally solve a long-standing bug
 preventing requests from being cancelled using promises. Due to the nature of <code>$resource</code>&#39;s
 configuration, it was not possible to follow the <code>$http</code> convention. A new <code>$cancelRequest()</code> method
@@ -92,7 +107,7 @@ hardly expected to affect the behavior of your application, since a promise as <
 before either, but it will now warn you explicitly when trying to pass one.
 If you need to be able to cancel pending requests, you can now use the new <code>$cancelRequest()</code> that
 will be available on <code>$resource</code> instances.</p>
-<h2 id="ngroute-ngview-">ngRoute (<code>ngView</code>)</h2>
+<h3 id="ngroute-ngview-">ngRoute (<code>ngView</code>)</h3>
 <p>Due to <a href="https://github.com/angular/angular.js/commit/983b0598121a8c5a3a51a30120e114d7e3085d4d">983b0598</a>,
 a new property will be available on the scope of the route, allowing easy access to the route&#39;s
 resolved values from the view&#39;s template. The default name for this property is <code>$resolve</code>. This is
@@ -100,7 +115,7 @@ a breaking change, only if a <code>$resolve</code> property is already available
 the existing property will be hidden or overwritten.
 To fix this, you should choose a custom name for this property, that does not collide with other
 properties on the scope, by specifying the <code>resolveAs</code> property on the route.</p>
-<h2 id="ngsanitize-sanitize-linky-">ngSanitize (<code>$sanitize</code>, <code>linky</code>)</h2>
+<h3 id="ngsanitize-sanitize-linky-">ngSanitize (<code>$sanitize</code>, <code>linky</code>)</h3>
 <p>The HTML sanitizer has been re-implemented using inert documents, increasing security, fixing some
 corner-cases that were difficult to handle and reducing its size by about 20% (in terms of loc). In
 order to make it more secure by default, a couple of breaking changes have been introduced:</p>
@@ -156,7 +171,7 @@ functionality.</p>
 
 
 
-<h1 id="migrating-from-1-3-to-1-4">Migrating from 1.3 to 1.4</h1>
+<h2 id="migrating-from-1-3-to-1-4">Migrating from 1.3 to 1.4</h2>
 <p>Angular 1.4 fixes major animation issues and introduces a new API for <code>ngCookies</code>. Further, there
 are changes to <code>ngMessages</code>, <code>$compile</code>, <code>ngRepeat</code>, <code>ngOptions</code>and some fixes to core filters:
 <code>limitTo</code> and <code>filter</code>.</p>
@@ -172,7 +187,7 @@ sure to read the breaking change involved with <code>ngMessagesInclude</code> to
 <p>Other changes, such as the ordering of elements with ngRepeat and ngOptions, may also affect the behavior of your
 application. And be sure to also read up on the changes to <code>$cookies</code>. The migration jump from 1.3 to 1.4 should be
 relatively straightforward otherwise.</p>
-<h2 id="animation-nganimate-">Animation (<code>ngAnimate</code>)</h2>
+<h3 id="animation-nganimate-">Animation (<code>ngAnimate</code>)</h3>
 <p>Animations in 1.4 have been refactored internally, but the API has stayed much the same. There are, however,
 some breaking changes that need to be addressed when upgrading to 1.4.</p>
 <p>Due to <a href="https://github.com/angular/angular.js/commit/c8700f04fb6fb5dc21ac24de8665c0476d6db5ef">c8700f04</a>,
@@ -250,8 +265,8 @@ $animate.enter(element).then(function() {
 <p>Due to <a href="https://github.com/angular/angular.js/commit/c8700f04fb6fb5dc21ac24de8665c0476d6db5ef">c8700f04</a>,
 when an enter, leave or move animation is triggered then it will always end any pending or active parent
 class based animations (animations triggered via ngClass) in order to ensure that any CSS styles are resolved in time.</p>
-<h2 id="forms-ngmessages-ngoptions-select-">Forms (<code>ngMessages</code>, <code>ngOptions</code>, <code>select</code>)</h2>
-<h3 id="ngmessages">ngMessages</h3>
+<h3 id="forms-ngmessages-ngoptions-select-">Forms (<code>ngMessages</code>, <code>ngOptions</code>, <code>select</code>)</h3>
+<h4 id="ngmessages">ngMessages</h4>
 <p>The ngMessages module has also been subject to an internal refactor to allow it to be more flexible
 and compatible with dynamic message data. The <code>ngMessage</code> directive now supports a new attribute
 called <code>ng-message-exp</code> which will evaluate an expression and will keep track of that expression
@@ -290,7 +305,7 @@ where a simple expression is not possible, you can delegate accessing the object
   return ctrl.form[&#39;field_&#39; + $index].$error;
 }
 </code></pre>
-<h3 id="ngoptions">ngOptions</h3>
+<h4 id="ngoptions">ngOptions</h4>
 <p>The <code>ngOptions</code> directive has also been refactored and as a result some long-standing bugs
 have been fixed. The breaking changes are comparatively minor and should not affect most applications.</p>
 <p>Due to <a href="https://github.com/angular/angular.js/commit/7fda214c4f65a6a06b25cf5d5aff013a364e9cef">7fda214c</a>,
@@ -309,7 +324,7 @@ in which the properties were defined.</p>
 setting the ngOptions attribute expression after the element is compiled, will no longer trigger the ngOptions behavior.
 This worked previously because the ngOptions logic was part of the select directive, while
 it is now implemented in the ngOptions directive itself.</p>
-<h3 id="select">select</h3>
+<h4 id="select">select</h4>
 <p>Due to <a href="https://github.com/angular/angular.js/commit/7fda214c4f65a6a06b25cf5d5aff013a364e9cef">7fda214c</a>,
 the <code>select</code> directive will now use strict comparison of the <code>ngModel</code> scope value against <code>option</code>
 values to determine which option is selected. This means non-string scope values (such as <code>Number</code> or <code>Boolean</code>)
@@ -331,8 +346,8 @@ ngModelCtrl.$formatters.push(function(value) {
   return value.toString(); // Convert scope value to string
 });
 </code></pre>
-<h2 id="templating-ngrepeat-compile-">Templating (<code>ngRepeat</code>, <code>$compile</code>)</h2>
-<h3 id="ngrepeat">ngRepeat</h3>
+<h3 id="templating-ngrepeat-compile-">Templating (<code>ngRepeat</code>, <code>$compile</code>)</h3>
+<h4 id="ngrepeat">ngRepeat</h4>
 <p>Due to <a href="https://github.com/angular/angular.js/commit/c260e7386391877625eda086480de73e8a0ba921">c260e738</a>,
 previously, the order of items when using ngRepeat to iterate over object properties was guaranteed to be consistent
 by sorting the keys into alphabetic order.</p>
@@ -345,14 +360,14 @@ when keys are deleted and reinstated. See
 <p>The best approach is to convert Objects into Arrays by a filter such as
 <a href="https://github.com/petebacondarwin/angular-toArrayFilter">https://github.com/petebacondarwin/angular-toArrayFilter</a>
 or some other mechanism, and then sort them manually in the order you need.</p>
-<h3 id="-compile">$compile</h3>
+<h4 id="-compile">$compile</h4>
 <p>Due to <a href="https://github.com/angular/angular.js/commit/6a38dbfd3c34c8f9efff503d17eb3cbeb666d422">6a38dbfd</a>,
 previously, &#39;&amp;&#39; expressions would always set up a function in the isolate scope. Now, if the binding
 is marked as optional and the attribute is not specified, no function will be added to the isolate scope.</p>
 <p>Due to <a href="https://github.com/angular/angular.js/commit/62d514b06937cc7dd86e973ea11165c88343b42d">62d514b</a>,
 returning an object from a controller constructor function will now override the scope. Views that use the
 controllerAs method will no longer get the this reference, but the returned object.</p>
-<h2 id="cookies-ngcookies-">Cookies (<code>ngCookies</code>)</h2>
+<h3 id="cookies-ngcookies-">Cookies (<code>ngCookies</code>)</h3>
 <p>Due to <a href="https://github.com/angular/angular.js/commit/38fbe3ee8370fc449b82d80df07b5c2ed2cd5fbe">38fbe3ee</a>,
 <code>$cookies</code> will no longer expose properties that represent the current browser cookie
 values. <code>$cookies</code> no longer polls the browser for changes to the cookies and <strong><em>no longer copies
@@ -381,7 +396,7 @@ mechanism.</p>
 <p><code>$cookieStore</code> is now deprecated as all the useful logic
 has been moved to <code>$cookies</code>, to which <code>$cookieStore</code> now simply
 delegates calls.</p>
-<h2 id="server-requests-http-">Server Requests (<code>$http</code>)</h2>
+<h3 id="server-requests-http-">Server Requests (<code>$http</code>)</h3>
 <p>Due to <a href="https://github.com/angular/angular.js/commit/5da1256fc2812d5b28fb0af0de81256054856369">5da1256</a>,
 <code>transformRequest</code> functions can no longer modify request headers.</p>
 <p>Before this commit <code>transformRequest</code> could modify request headers, ex.:</p>
@@ -403,19 +418,19 @@ needs to dynamically add / remove headers it should be done in a header function
   }
 })
 </code></pre>
-<h2 id="filters-filter-limitto-">Filters (<code>filter</code>, <code>limitTo</code>)</h2>
-<h3 id="-filter-filter"><code>filter</code> filter</h3>
+<h3 id="filters-filter-limitto-">Filters (<code>filter</code>, <code>limitTo</code>)</h3>
+<h4 id="-filter-filter"><code>filter</code> filter</h4>
 <p>Due to <a href="https://github.com/angular/angular.js/commit/cea8e75144e6910b806b63a6ec2a6d118316fddd">cea8e751</a>,
 the <code>filter</code> filter will throw an error when used with a non-array. Beforehand it would silently
 return an empty array.</p>
 <p>If necessary, this can be worked around by converting an object to an array,
 using a filter such as <a href="https://github.com/petebacondarwin/angular-toArrayFilter">https://github.com/petebacondarwin/angular-toArrayFilter</a>.</p>
-<h3 id="-limitto-filter"><code>limitTo</code> filter</h3>
+<h4 id="-limitto-filter"><code>limitTo</code> filter</h4>
 <p>Due to <a href="https://github.com/angular/angular.js/commit/a3c3bf3332e5685dc319c46faef882cb6ac246e1">a3c3bf33</a>,
 the limitTo filter has changed behavior when the provided limit value is invalid.
 Now, instead of returning empty object/array, it returns unchanged input.</p>
-<h1 id="migrating-from-1-2-to-1-3">Migrating from 1.2 to 1.3</h1>
-<h2 id="controllers">Controllers</h2>
+<h2 id="migrating-from-1-2-to-1-3">Migrating from 1.2 to 1.3</h2>
+<h3 id="controllers">Controllers</h3>
 <p>Due to <a href="https://github.com/angular/angular.js/commit/3f2232b5a181512fac23775b1df4a6ebda67d018">3f2232b5</a>,
 <code>$controller</code> will no longer look for controllers on <code>window</code>.
 The old behavior of looking on <code>window</code> for controllers was originally intended
@@ -441,7 +456,7 @@ as globals:</p>
   $controllerProvider.allowGlobals();
 }]);
 </code></pre>
-<h2 id="angular-expression-parsing-parse-interpolate-">Angular Expression Parsing (<code>$parse</code> + <code>$interpolate</code>)</h2>
+<h3 id="angular-expression-parsing-parse-interpolate-">Angular Expression Parsing (<code>$parse</code> + <code>$interpolate</code>)</h3>
 <ul>
 <li>due to <a href="https://github.com/angular/angular.js/commit/77ada4c82d6b8fc6d977c26f3cdb48c2f5fbe5a5">77ada4c8</a>,</li>
 </ul>
@@ -497,7 +512,7 @@ This array is <strong>always</strong> 1 item longer than the
 </ul>
 </li>
 </ul>
-<h2 id="miscellaneous-angular-helpers">Miscellaneous Angular helpers</h2>
+<h3 id="miscellaneous-angular-helpers">Miscellaneous Angular helpers</h3>
 <ul>
 <li><strong>Angular.copy:</strong> due to <a href="https://github.com/angular/angular.js/commit/b59b04f98a0b59eead53f6a53391ce1bbcbe9b57">b59b04f9</a>,</li>
 </ul>
@@ -527,7 +542,7 @@ be iterated over during the initial forEach call.</li>
 <code>toJson()</code>&#39;s stripping these types of properties before, you will have to do it manually now.
 It will still strip properties starting with <code>$$</code> though.</li>
 </ul>
-<h2 id="jqlite-jquery">jqLite / JQuery</h2>
+<h3 id="jqlite-jquery">jqLite / JQuery</h3>
 <ul>
 <li><strong>jqLite:</strong> due to <a href="https://github.com/angular/angular.js/commit/a196c8bca82a28c08896d31f1863cf4ecd11401c">a196c8bc</a>,
 previously it was possible to set jqLite data on Text/Comment
@@ -539,7 +554,7 @@ jQuery. We don&#39;t expect that app code actually depends on this accidental fe
 the jQuery <code>detach()</code> method does not trigger the <code>$destroy</code> event.
 If you want to destroy Angular data attached to the element, use <code>remove()</code>.</li>
 </ul>
-<h2 id="angular-html-compiler-compile-">Angular HTML Compiler (<code>$compile</code>)</h2>
+<h3 id="angular-html-compiler-compile-">Angular HTML Compiler (<code>$compile</code>)</h3>
 <ul>
 <li>due to <a href="https://github.com/angular/angular.js/commit/2ee29c5da81ffacdc1cabb438f5d125d5e116cb9">2ee29c5d</a>,</li>
 </ul>
@@ -618,7 +633,7 @@ link: function(scope, element, attr) {
   }
 }
 </code></pre>
-<h2 id="forms-inputs-and-ngmodel">Forms, Inputs and ngModel</h2>
+<h3 id="forms-inputs-and-ngmodel">Forms, Inputs and ngModel</h3>
 <ul>
 <li>due to <a href="https://github.com/angular/angular.js/commit/1be9bb9d3527e0758350c4f7417a4228d8571440">1be9bb9d</a>,</li>
 </ul>
@@ -687,7 +702,7 @@ extra pair of quotes, like so:</p>
 <p>See <a href="https://github.com/angular/angular.js/commit/c90cefe16142d973a123e945fc9058e8a874c357">c90cefe1614</a></p>
 </li>
 </ul>
-<h2 id="scopes-and-digests-scope-">Scopes and Digests (<code>$scope</code>)</h2>
+<h3 id="scopes-and-digests-scope-">Scopes and Digests (<code>$scope</code>)</h3>
 <ul>
 <li>due to <a href="https://github.com/angular/angular.js/commit/8c6a8171f9bdaa5cdabc0cc3f7d3ce10af7b434d">8c6a8171</a>,
 Scope#$id is now of type number rather than string. Since the
@@ -703,7 +718,7 @@ null once the event finished propagating. If any code depends on asynchronously 
 <code>currentScope</code> property, it should be migrated to use <code>targetScope</code> instead. All of these cases
 should be considered programming bugs.</li>
 </ul>
-<h2 id="server-requests-http-resource-">Server Requests (<code>$http</code>, <code>$resource</code>)</h2>
+<h3 id="server-requests-http-resource-">Server Requests (<code>$http</code>, <code>$resource</code>)</h3>
 <ul>
 <li><strong>$http:</strong> due to <a href="https://github.com/angular/angular.js/commit/ad4336f9359a073e272930f8f9bcd36587a8648f">ad4336f9</a>,</li>
 </ul>
@@ -758,7 +773,7 @@ $httpProvider.interceptors.push(&#39;myHttpInterceptor&#39;);
 you will have to manually do this yourself now.</p>
 </li>
 </ul>
-<h2 id="modules-and-injector-inject-">Modules and Injector (<code>$inject</code>)</h2>
+<h3 id="modules-and-injector-inject-">Modules and Injector (<code>$inject</code>)</h3>
 <ul>
 <li>due to <a href="https://github.com/angular/angular.js/commit/c0b4e2db9cbc8bc3164cedc4646145d3ab72536e">c0b4e2db</a>,</li>
 </ul>
@@ -790,7 +805,7 @@ registration.</p>
 <p>would have &quot;worked&quot;, meaning behaviour of the config block between the registration of &quot;$rootProvider&quot;
 and &quot;$dependentProvider&quot; would have actually accomplished something and changed the behaviour of the
 app. This is no longer possible within a single module.</p>
-<h2 id="animation-nganimate-">Animation (<code>ngAnimate</code>)</h2>
+<h3 id="animation-nganimate-">Animation (<code>ngAnimate</code>)</h3>
 <ul>
 <li>due to <a href="https://github.com/angular/angular.js/commit/1cb8584e8490ecdb1b410a8846c4478c6c2c0e53">1cb8584e</a>,
 <code>$animate</code> will no longer default the after parameter to the last element of the parent
@@ -833,7 +848,7 @@ present on the base CSS class once the animation kicks off.</p>
 }
 </code></pre>
 <p>Please view the documentation for ngAnimate for more info.</p>
-<h2 id="testing">Testing</h2>
+<h3 id="testing">Testing</h3>
 <ul>
 <li>due to <a href="https://github.com/angular/angular.js/commit/85880a64900fa22a61feb926bf52de0965332ca5">85880a64</a>, some deprecated features of
 Protractor tests no longer work.</li>
@@ -862,12 +877,12 @@ the row. For example, if your template is</p>
 <p>or simply use:</p>
 <pre><code>var el = element(by.repeater(&#39;foo in foos&#39;).row(2))
 </code></pre>
-<h2 id="internet-explorer-8">Internet Explorer 8</h2>
+<h3 id="internet-explorer-8">Internet Explorer 8</h3>
 <ul>
 <li>due to <a href="https://github.com/angular/angular.js/commit/eaa1d00b24008f590b95ad099241b4003688cdda">eaa1d00b</a>,
 As communicated before, IE8 is no longer supported.</li>
 </ul>
-<h1 id="migrating-from-1-0-to-1-2">Migrating from 1.0 to 1.2</h1>
+<h2 id="migrating-from-1-0-to-1-2">Migrating from 1.0 to 1.2</h2>
 <div class="alert alert-warning">
 <p><strong>Note:</strong> AngularJS versions 1.1.x are considered &quot;experimental&quot; with breaking changes between minor releases.
 Version 1.2 is the result of several versions on the 1.1 branch, and has a stable API.</p>
@@ -908,7 +923,7 @@ below should still apply, but you may want to consult the
 </ul>
 
 
-<h2 id="ngroute-has-been-moved-into-its-own-module">ngRoute has been moved into its own module</h2>
+<h3 id="ngroute-has-been-moved-into-its-own-module">ngRoute has been moved into its own module</h3>
 <p>Just like <code>ngResource</code>, <code>ngRoute</code> is now its own module.</p>
 <p>Applications that use <code>$route</code>, <code>ngView</code>, and/or <code>$routeParams</code> will now need to load an
 <code>angular-route.js</code> file and have their application&#39;s module dependency on the <code>ngRoute</code> module.</p>
@@ -924,7 +939,7 @@ below should still apply, but you may want to consult the
 <pre><code class="lang-javascript">var myApp = angular.module(&#39;myApp&#39;, [&#39;ngRoute&#39;, &#39;someOtherModule&#39;]);
 </code></pre>
 <p>See <a href="https://github.com/angular/angular.js/commit/5599b55b04788c2e327d7551a4a699d75516dd21">5599b55b</a>.</p>
-<h2 id="templates-no-longer-automatically-unwrap-promises">Templates no longer automatically unwrap promises</h2>
+<h3 id="templates-no-longer-automatically-unwrap-promises">Templates no longer automatically unwrap promises</h3>
 <p><code>$parse</code> and templates in general will no longer automatically unwrap promises.</p>
 <p>Before:</p>
 <pre><code class="lang-javascript">$scope.foo = $http({method: &#39;GET&#39;, url: &#39;/someUrl&#39;});
@@ -943,7 +958,7 @@ below should still apply, but you may want to consult the
 <code>$parseProvider.unwrapPromises(true)</code> API.</p>
 <p>See <a href="https://github.com/angular/angular.js/commit/5dc35b527b3c99f6544b8cb52e93c6510d3ac577">5dc35b52</a>,
 <a href="https://github.com/angular/angular.js/commit/b6a37d112b3e1478f4d14a5f82faabf700443748">b6a37d11</a>.</p>
-<h2 id="syntax-for-named-wildcard-parameters-changed-in-route-">Syntax for named wildcard parameters changed in <code>$route</code></h2>
+<h3 id="syntax-for-named-wildcard-parameters-changed-in-route-">Syntax for named wildcard parameters changed in <code>$route</code></h3>
 <p>To migrate the code, follow the example below. Here, <code>*highlight</code> becomes <code>:highlight*</code></p>
 <p>Before:</p>
 <pre><code class="lang-javascript">$routeProvider.when(&#39;/Book1/:book/Chapter/:chapter/*highlight/edit&#39;,
@@ -954,7 +969,7 @@ below should still apply, but you may want to consult the
 {controller: noop, templateUrl: &#39;Chapter.html&#39;});
 </code></pre>
 <p>See <a href="https://github.com/angular/angular.js/commit/04cebcc133c8b433a3ac5f72ed19f3631778142b">04cebcc1</a>.</p>
-<h2 id="you-can-only-bind-one-expression-to-src-ng-src-or-action-">You can only bind one expression to <code>*[src]</code>, <code>*[ng-src]</code> or <code>action</code></h2>
+<h3 id="you-can-only-bind-one-expression-to-src-ng-src-or-action-">You can only bind one expression to <code>*[src]</code>, <code>*[ng-src]</code> or <code>action</code></h3>
 <p>With the exception of <code>&lt;a&gt;</code> and <code>&lt;img&gt;</code> elements, you cannot bind more than one expression to the
 <code>src</code> or <code>action</code> attribute of elements.</p>
 <p>This is one of several improvements to security introduces by Angular 1.2.</p>
@@ -1012,7 +1027,7 @@ scope.getIframeSrc = function() {
 <pre><code class="lang-html">&lt;iframe src=&quot;{{getIframeSrc()}}&quot;&gt;
 </code></pre>
 <p>See <a href="https://github.com/angular/angular.js/commit/38deedd6e3d806eb8262bb43f26d47245f6c2739">38deedd6</a>.</p>
-<h2 id="interpolations-inside-dom-event-handlers-are-now-disallowed">Interpolations inside DOM event handlers are now disallowed</h2>
+<h3 id="interpolations-inside-dom-event-handlers-are-now-disallowed">Interpolations inside DOM event handlers are now disallowed</h3>
 <p>DOM event handlers execute arbitrary Javascript code. Using an interpolation for such handlers
 means that the interpolated value is a JS string that is evaluated. Storing or generating such
 strings is error prone and leads to XSS vulnerabilities. On the other hand, <code>ngClick</code> and other
@@ -1028,11 +1043,11 @@ HTML: &lt;div onclick=&quot;{{foo}}&quot;&gt;
 HTML: &lt;div ng-click=&quot;foo()&quot;&gt;
 </code></pre>
 <p>See <a href="https://github.com/angular/angular.js/commit/39841f2ec9b17b3b2920fd1eb548d444251f4f56">39841f2e</a>.</p>
-<h2 id="directives-cannot-end-with-start-or-end">Directives cannot end with -start or -end</h2>
+<h3 id="directives-cannot-end-with-start-or-end">Directives cannot end with -start or -end</h3>
 <p>This change was necessary to enable multi-element directives. The best fix is to rename existing
 directives so that they don&#39;t end with these suffixes.</p>
 <p>See <a href="https://github.com/angular/angular.js/commit/e46100f7097d9a8f174bdb9e15d4c6098395c3f2">e46100f7</a>.</p>
-<h2 id="in-q-promise-always-has-been-renamed-promise-finally">In $q, promise.always has been renamed promise.finally</h2>
+<h3 id="in-q-promise-always-has-been-renamed-promise-finally">In $q, promise.always has been renamed promise.finally</h3>
 <p>The reason for this change is to align <code>$q</code> with the <a href="https://github.com/kriskowal/q">Q promise
 library</a>, despite the fact that this makes it a bit more difficult
 to use with non-ES5 browsers, like IE8.</p>
@@ -1049,13 +1064,13 @@ of the <a href="http://dom.spec.whatwg.org/">DOM promises standard</a>.</p>
 <pre><code class="lang-javascript">$http.get(&#39;/foo&#39;)[&#39;finally&#39;](doSomething);
 </code></pre>
 <p>See <a href="https://github.com/angular/angular.js/commit/f078762d48d0d5d9796dcdf2cb0241198677582c">f078762d</a>.</p>
-<h2 id="ngmobile-is-now-ngtouch">ngMobile is now ngTouch</h2>
+<h3 id="ngmobile-is-now-ngtouch">ngMobile is now ngTouch</h3>
 <p>Many touch-enabled devices are not mobile devices, so we decided to rename this module to better
 reflect its concerns.</p>
 <p>To migrate, replace all references to <code>ngMobile</code> with <code>ngTouch</code> and <code>angular-mobile.js</code> with
 <code>angular-touch.js</code>.</p>
 <p>See <a href="https://github.com/angular/angular.js/commit/94ec84e7b9c89358dc00e4039009af9e287bbd05">94ec84e7</a>.</p>
-<h2 id="resource-then-has-been-removed">resource.$then has been removed</h2>
+<h3 id="resource-then-has-been-removed">resource.$then has been removed</h3>
 <p>Resource instances do not have a <code>$then</code> function anymore. Use the <code>$promise.then</code> instead.</p>
 <p>Before:</p>
 <pre><code class="lang-javascript">Resource.query().$then(callback);
@@ -1064,7 +1079,7 @@ reflect its concerns.</p>
 <pre><code class="lang-javascript">Resource.query().$promise.then(callback);
 </code></pre>
 <p>See <a href="https://github.com/angular/angular.js/commit/05772e15fbecfdc63d4977e2e8839d8b95d6a92d">05772e15</a>.</p>
-<h2 id="resource-methods-return-the-promise">Resource methods return the promise</h2>
+<h3 id="resource-methods-return-the-promise">Resource methods return the promise</h3>
 <p>Methods of a resource instance return the promise rather than the instance itself.</p>
 <p>Before:</p>
 <pre><code class="lang-javascript">resource.$save().chaining = true;
@@ -1074,7 +1089,7 @@ reflect its concerns.</p>
 resource.chaining = true;
 </code></pre>
 <p>See <a href="https://github.com/angular/angular.js/commit/05772e15fbecfdc63d4977e2e8839d8b95d6a92d">05772e15</a>.</p>
-<h2 id="resource-promises-are-resolved-with-the-resource-instance">Resource promises are resolved with the resource instance</h2>
+<h3 id="resource-promises-are-resolved-with-the-resource-instance">Resource promises are resolved with the resource instance</h3>
 <p>On success, the resource promise is resolved with the resource instance rather than HTTP response object.</p>
 <p>Use interceptor API to access the HTTP response object.</p>
 <p>Before:</p>
@@ -1094,7 +1109,7 @@ resource.chaining = true;
 });
 </code></pre>
 <p>See <a href="https://github.com/angular/angular.js/commit/05772e15fbecfdc63d4977e2e8839d8b95d6a92d">05772e15</a>.</p>
-<h2 id="-location-search-supports-multiple-keys">$location.search supports multiple keys</h2>
+<h3 id="-location-search-supports-multiple-keys">$location.search supports multiple keys</h3>
 <p><a href="api/ng/service/$location#search"><code>$location.search</code></a> now supports multiple keys with the
 same value provided that the values are stored in an array.</p>
 <p>Before this change:</p>
@@ -1106,7 +1121,7 @@ same value provided that the values are stored in an array.</p>
 should be fixed, or a simple serialization of the array should be done on the client before
 passing it to <code>$location</code>.</p>
 <p>See <a href="https://github.com/angular/angular.js/commit/807394095b991357225a03d5fed81fea5c9a1abe">80739409</a>.</p>
-<h2 id="ngbindhtmlunsafe-has-been-removed-and-replaced-by-ngbindhtml">ngBindHtmlUnsafe has been removed and replaced by ngBindHtml</h2>
+<h3 id="ngbindhtmlunsafe-has-been-removed-and-replaced-by-ngbindhtml">ngBindHtmlUnsafe has been removed and replaced by ngBindHtml</h3>
 <p><code>ngBindHtml</code> provides <code>ngBindHtmlUnsafe</code> like
 behavior (evaluate an expression and innerHTML the result into the DOM) when bound to the result
 of <code>$sce.trustAsHtml(string)</code>. When bound to a plain string, the string is sanitized via
@@ -1117,7 +1132,7 @@ exception is thrown.</p>
 example at the <a href="api/ng/directive/ngBindHtml"><code>ngBindHtml</code></a> reference) or use the <a href="api/ng/service/$sce"><code>$sce</code></a> service to set the value as
 trusted.</p>
 <p>See <a href="https://github.com/angular/angular.js/commit/dae694739b9581bea5dbc53522ec00d87b26ae55">dae69473</a>.</p>
-<h2 id="form-names-that-are-expressions-are-evaluated">Form names that are expressions are evaluated</h2>
+<h3 id="form-names-that-are-expressions-are-evaluated">Form names that are expressions are evaluated</h3>
 <p>If you have form names that will evaluate as an expression:</p>
 <pre><code>&lt;form name=&quot;ctrl.form&quot;&gt;
 </code></pre>
@@ -1135,13 +1150,13 @@ trusted.</p>
 <p>This makes it possible to access a form from a controller using the new &quot;controller as&quot; syntax.
 Supporting the previous behavior offers no benefit.</p>
 <p>See <a href="https://github.com/angular/angular.js/commit/8ea802a1d23ad8ecacab892a3a451a308d9c39d7">8ea802a1</a>.</p>
-<h2 id="hasownproperty-disallowed-as-an-input-name">hasOwnProperty disallowed as an input name</h2>
+<h3 id="hasownproperty-disallowed-as-an-input-name">hasOwnProperty disallowed as an input name</h3>
 <p>Inputs with name equal to <code>hasOwnProperty</code> are not allowed inside form or ngForm directives.</p>
 <p>Before, inputs whose name was &quot;hasOwnProperty&quot; were quietly ignored and not added to the scope.
 Now a badname exception is thrown. Using &quot;hasOwnProperty&quot; for an input name would be very unusual
 and bad practice. To migrate, change your input name.</p>
 <p>See <a href="https://github.com/angular/angular.js/commit/7a586e5c19f3d1ecc3fefef084ce992072ee7f60">7a586e5c</a>.</p>
-<h2 id="directives-order-of-postlink-functions-reversed">Directives: Order of postLink functions reversed</h2>
+<h3 id="directives-order-of-postlink-functions-reversed">Directives: Order of postLink functions reversed</h3>
 <p>The order of postLink fn is now mirror opposite of the order in which corresponding preLinking and compile functions execute.</p>
 <p>Previously the compile/link fns executed in order, sorted by priority:</p>
 <table class="table table-bordered table-striped code-table">
@@ -1189,7 +1204,7 @@ be necessary to convert it to a preLinking function or give it negative priority
 commit</a> to see how an internal
 attribute interpolation directive was adjusted.</p>
 <p>See <a href="https://github.com/angular/angular.js/commit/31f190d4d53921d32253ba80d9ebe57d6c1de82b">31f190d4</a>.</p>
-<h2 id="directive-priority">Directive priority</h2>
+<h3 id="directive-priority">Directive priority</h3>
 <p>the priority of ngRepeat, ngSwitchWhen, ngIf, ngInclude and ngView has changed. This could affect directives that explicitly specify their priority.</p>
 <p>In order to make ngRepeat, ngSwitchWhen, ngIf, ngInclude and ngView work together in all common scenarios their directives are being adjusted to achieve the following precedence:</p>
 <table>
@@ -1229,25 +1244,25 @@ attribute interpolation directive was adjusted.</p>
 </tbody>
 </table>
 <p>See <a href="https://github.com/angular/angular.js/commit/b7af76b4c5aa77648cc1bfd49935b48583419023">b7af76b4</a>.</p>
-<h2 id="ngscenario">ngScenario</h2>
+<h3 id="ngscenario">ngScenario</h3>
 <p>browserTrigger now uses an eventData object instead of direct parameters for mouse events.
 To migrate, place the <code>keys</code>,<code>x</code> and <code>y</code> parameters inside of an object and place that as the
 third parameter for the browserTrigger function.</p>
 <p>See <a href="https://github.com/angular/angular.js/commit/28f56a383e9d1ff378e3568a3039e941c7ffb1d8">28f56a38</a>.</p>
-<h2 id="nginclude-and-ngview-replace-its-entire-element-on-update">ngInclude and ngView replace its entire element on update</h2>
+<h3 id="nginclude-and-ngview-replace-its-entire-element-on-update">ngInclude and ngView replace its entire element on update</h3>
 <p>Previously <code>ngInclude</code> and <code>ngView</code> only updated its element&#39;s content. Now these directives will
 recreate the element every time a new content is included.</p>
 <p>This ensures that a single rootElement for all the included contents always exists, which makes
 definition of css styles for animations much easier.</p>
 <p>See <a href="https://github.com/angular/angular.js/commit/7d69d52acff8578e0f7d6fe57a6c45561a05b182">7d69d52a</a>,
 <a href="https://github.com/angular/angular.js/commit/aa2133ad818d2e5c27cbd3933061797096356c8a">aa2133ad</a>.</p>
-<h2 id="urls-are-now-sanitized-against-a-whitelist">URLs are now sanitized against a whitelist</h2>
+<h3 id="urls-are-now-sanitized-against-a-whitelist">URLs are now sanitized against a whitelist</h3>
 <p>A whitelist configured via <code>$compileProvider</code> can be used to configure what URLs are considered safe.
 By default all common protocol prefixes are whitelisted including <code>data:</code> URIs with mime types <code>image/*</code>.
 This change shouldn&#39;t impact apps that don&#39;t contain malicious image links.</p>
 <p>See <a href="https://github.com/angular/angular.js/commit/1adf29af13890d61286840177607edd552a9df97">1adf29af</a>,
 <a href="https://github.com/angular/angular.js/commit/3e39ac7e1b10d4812a44dad2f959a93361cd823b">3e39ac7e</a>.</p>
-<h2 id="isolate-scope-only-exposed-to-directives-with-scope-property">Isolate scope only exposed to directives with <code>scope</code> property</h2>
+<h3 id="isolate-scope-only-exposed-to-directives-with-scope-property">Isolate scope only exposed to directives with <code>scope</code> property</h3>
 <p>If you declare a scope option on a directive, that directive will have an
 <a href="https://github.com/angular/angular.js/wiki/Understanding-Scopes">isolate scope</a>. In Angular 1.0, if a
 directive with an isolate scope is used on an element, all directives on that same element have access
@@ -1303,7 +1318,7 @@ from within the isolate scope), change the isolate directive to use scope locals
 <p>See <a href="https://github.com/angular/angular.js/commit/909cabd36d779598763cc358979ecd85bb40d4d7">909cabd3</a>,
 <a href="https://github.com/angular/angular.js/issues/1924">#1924</a> and
 <a href="https://github.com/angular/angular.js/issues/2500">#2500</a>.</p>
-<h2 id="change-to-interpolation-priority">Change to interpolation priority</h2>
+<h3 id="change-to-interpolation-priority">Change to interpolation priority</h3>
 <p>Previously, the interpolation priority was <code>-100</code> in 1.2.0-rc.2, and <code>100</code> before 1.2.0-rc.2.
 Before this change the binding was setup in the post-linking phase.</p>
 <p>Now the attribute interpolation (binding) executes as a directive with priority 100 and the
@@ -1312,7 +1327,7 @@ binding is set up in the pre-linking phase.</p>
 <a href="https://github.com/angular/angular.js/issues/4525">#4525</a>,
 <a href="https://github.com/angular/angular.js/issues/4528">#4528</a>, and
 <a href="https://github.com/angular/angular.js/issues/4649">#4649</a></p>
-<h2 id="underscore-prefixed-suffixed-properties-are-non-bindable">Underscore-prefixed/suffixed properties are non-bindable</h2>
+<h3 id="underscore-prefixed-suffixed-properties-are-non-bindable">Underscore-prefixed/suffixed properties are non-bindable</h3>
 <div class="alert alert-info">
 <p><strong>Reverted</strong>: This breaking change has been reverted in 1.2.1, and so can be ignored if you&#39;re using <strong>version 1.2.1 or higher</strong></p>
 </div>
@@ -1345,12 +1360,12 @@ entire controller on the scope chain greatly increasing the exposed surface.</li
 controllers/scopes. This means Angular expressions can access only those properties that
 are actually needed by the expressions.</p>
 <p>See <a href="https://github.com/angular/angular.js/commit/3d6a89e8888b14ae5cb5640464e12b7811853c7e">3d6a89e8</a>.</p>
-<h2 id="you-cannot-bind-to-select-multiple-">You cannot bind to select[multiple]</h2>
+<h3 id="you-cannot-bind-to-select-multiple-">You cannot bind to select[multiple]</h3>
 <p>Switching between <code>select[single]</code> and <code>select[multiple]</code> has always been odd due to browser quirks.
 This feature never worked with two-way data-binding so it&#39;s not expected that anyone is using it.</p>
 <p>If you are interested in properly adding this feature, please submit a pull request on Github.</p>
 <p>See <a href="https://github.com/angular/angular.js/commit/d87fa0042375b025b98c40bff05e5f42c00af114">d87fa004</a>.</p>
-<h2 id="uncommon-region-specific-local-files-were-removed-from-i18n">Uncommon region-specific local files were removed from i18n</h2>
+<h3 id="uncommon-region-specific-local-files-were-removed-from-i18n">Uncommon region-specific local files were removed from i18n</h3>
 <p>AngularJS uses the Google Closure library&#39;s locale files. The following locales were removed from
 Closure, so Angular is not able to continue to support them:</p>
 <p><code>chr</code>, <code>cy</code>, <code>el-polyton</code>, <code>en-zz</code>, <code>fr-rw</code>, <code>fr-sn</code>, <code>fr-td</code>, <code>fr-tg</code>, <code>haw</code>, <code>it-ch</code>, <code>ln-cg</code>,
@@ -1361,7 +1376,7 @@ Closure, so Angular is not able to continue to support them:</p>
 <p>Although these locales were removed from the official AngularJS repository, you can continue to
 load and use your copy of the locale file provided that you maintain it yourself.</p>
 <p>See <a href="https://github.com/angular/angular.js/commit/6382e21fb28541a2484ac1a241d41cf9fbbe9d2c">6382e21f</a>.</p>
-<h2 id="services-can-now-return-functions">Services can now return functions</h2>
+<h3 id="services-can-now-return-functions">Services can now return functions</h3>
 <p>Previously, the service constructor only returned objects regardless of whether a function was returned.</p>
 <p>Now, <code>$injector.instantiate</code> (and thus <code>$provide.service</code>) behaves the same as the native
 <code>new</code> operator and allows functions to be returned as a service.</p>

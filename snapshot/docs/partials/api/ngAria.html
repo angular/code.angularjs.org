@@ -43,7 +43,8 @@ of assistive technologies, such as screen readers.</p>
 <h2 id="usage">Usage</h2>
 <p>For ngAria to do its magic, simply include the module <code>ngAria</code> as a dependency. The following
 directives are supported:
-<code>ngModel</code>, <code>ngDisabled</code>, <code>ngShow</code>, <code>ngHide</code>, <code>ngClick</code>, <code>ngDblClick</code>, and <code>ngMessages</code>.</p>
+<code>ngModel</code>, <code>ngChecked</code>, <code>ngRequired</code>, <code>ngValue</code>, <code>ngDisabled</code>, <code>ngShow</code>, <code>ngHide</code>, <code>ngClick</code>,
+<code>ngDblClick</code>, and <code>ngMessages</code>.</p>
 <p>Below is a more detailed breakdown of the attributes handled by ngAria:</p>
 <table>
 <thead>
@@ -54,8 +55,24 @@ directives are supported:
 </thead>
 <tbody>
 <tr>
+<td><a href="api/ng/directive/ngModel">ngModel</a></td>
+<td>aria-checked, aria-valuemin, aria-valuemax, aria-valuenow, aria-invalid, aria-required, input roles</td>
+</tr>
+<tr>
 <td><a href="api/ng/directive/ngDisabled">ngDisabled</a></td>
 <td>aria-disabled</td>
+</tr>
+<tr>
+<td><a href="api/ng/directive/ngRequired">ngRequired</a></td>
+<td>aria-required</td>
+</tr>
+<tr>
+<td><a href="api/ng/directive/ngChecked">ngChecked</a></td>
+<td>aria-checked</td>
+</tr>
+<tr>
+<td><a href="api/ng/directive/ngValue">ngValue</a></td>
+<td>aria-checked</td>
 </tr>
 <tr>
 <td><a href="api/ng/directive/ngShow">ngShow</a></td>
@@ -72,10 +89,6 @@ directives are supported:
 <tr>
 <td><a href="api/ngMessages">ngMessages</a></td>
 <td>aria-live</td>
-</tr>
-<tr>
-<td><a href="api/ng/directive/ngModel">ngModel</a></td>
-<td>aria-checked, aria-valuemin, aria-valuemax, aria-valuenow, aria-invalid, aria-required, input roles</td>
 </tr>
 <tr>
 <td><a href="api/ng/directive/ngClick">ngClick</a></td>
