@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.0-build.4583+sha.a460ce4
+ * @license AngularJS v1.5.0-build.4584+sha.f3c8aa2
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -217,7 +217,7 @@ ngAriaModule.directive('ngShow', ['$aria', function($aria) {
 .directive('ngRequired', ['$aria', function($aria) {
   return $aria.$$watchExpr('ngRequired', 'aria-required', nodeBlackList, false);
 }])
-.directive('ngModel', ['$aria', '$parse', function($aria, $parse) {
+.directive('ngModel', ['$aria', function($aria) {
 
   function shouldAttachAttr(attr, normalizedAttr, elem, allowBlacklistEls) {
     return $aria.config(normalizedAttr) && !elem.attr(attr) && (allowBlacklistEls || !isNodeOneOf(elem, nodeBlackList));

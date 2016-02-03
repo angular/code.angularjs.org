@@ -28,8 +28,8 @@ applied to custom controls.</p>
 cannot use interpolation inside <code>required</code>. See the <a href="guide/interpolation">interpolation guide</a>
 for more info.</p>
 <p>The validator will set the <code>required</code> error key to true if the <code>required</code> attribute is set and
-calling <a href="api/ng/type/ngModel.NgModelController#$isEmpty"><code>NgModelController.$isEmpty</code> with the
-{@link ngModel.NgModelController#$viewValue <code>ngModel.$viewValue</code></a> returns <code>true</code>. For example, the
+calling <a href="api/ng/type/ngModel.NgModelController#$isEmpty"><code>NgModelController.$isEmpty</code></a> with the
+<a href="api/ng/type/ngModel.NgModelController#$viewValue"><code>ngModel.$viewValue</code></a> returns <code>true</code>. For example, the
 <code>$isEmpty()</code> implementation for <code>input[text]</code> checks the length of the <code>$viewValue</code>. When developing
 custom controls, <code>$isEmpty()</code> can be overwritten to account for a $viewValue that is not string-based.</p>
 
