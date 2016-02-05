@@ -31,8 +31,8 @@ angular.module('heroApp').component('editableField', {
   templateUrl: 'editableField.html',
   controller: EditableFieldController,
   bindings: {
-    fieldValue: '@',
-    fieldType: '@',
+    fieldValue: '<',
+    fieldType: '@?',
     onUpdate: '&'
   }
 });

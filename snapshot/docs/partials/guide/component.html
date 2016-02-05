@@ -186,12 +186,19 @@ change will be reflected in the parent component. For components however, only t
 the data should modify it, to make it easy to reason about what data is changed, and when. For that reason,
 components should follow a few simple conventions:</p>
 <ul>
-<li>Inputs are realized with <code>@</code> and <code>=</code> bindings<pre><code class="lang-js">bindings: {
-  hero: `=`,
+<li>Inputs should be using <code>&lt;</code> and <code>@</code> bindings. The <code>&lt;</code> symbol denotes <a href="api/ng/service/$compile#-scope-">one-way bindings</a> which are
+available since 1.5. The difference to <code>=</code> is that the bound properties in the component scope are not watched, which means
+if you assign a new value to the property in the component scope, it will not update the parent scope. Note however, that both parent
+and component scope reference the same object, so if you are changing object properties or array elements in the
+component, the parent will still reflect that change.
+The general rule should therefore be to never change an object or array property in the component scope.
+<code>@</code> bindings can be used when the input is a string, especially when the value of the binding doesn&#39;t change.<pre><code class="lang-js">bindings: {
+  hero: `&lt;`,
+  comment: &#39;@&#39;
 }
 </code></pre>
 </li>
-<li>Outputs are realized with <code>&amp;</code> bindings, which function as callbacks to component events<pre><code class="lang-js">bindings: {
+<li>Outputs are realized with <code>&amp;</code> bindings, which function as callbacks to component events.<pre><code class="lang-js">bindings: {
   onDelete: &#39;&amp;&#39;,
   onUpdate: &#39;&amp;&#39;
 }
@@ -225,12 +232,12 @@ of a component is.</p>
 above:</p>
 <p>Instead of an ngController, we now have a heroList component that holds the data of
 different heroes, and creates a heroDetail for each of them.</p>
-<p>The heroDetail component now contains the following new functionality:</p>
+<p>The heroDetail component now contains new functionality:</p>
 <ul>
-<li>a delete button that calls the bound onDelete function of the heroList component</li>
+<li>a delete button that calls the bound <code>onDelete</code> function of the heroList component</li>
 <li>an input to change the hero location, in the form of a reusable editableField component. Instead
-of manipulating the hero object itself, it sends the changes upwards to the heroDetail, which sends
-it upwards to the heroList component, which updates it.</li>
+of manipulating the hero object itself, it sends a changeset upwards to the heroDetail, which sends
+it upwards to the heroList component, which updates the original data.</li>
 </ul>
 <p>
 
@@ -263,14 +270,14 @@ it upwards to the heroList component, which updates it.</li>
       name="heroDetail.js"
       language="js"
       type="js">
-      <pre><code>function HeroDetailController($scope, $element, $attrs) {&#10;  var ctrl = this;&#10;&#10;  ctrl.update = function(prop, value) {&#10;    ctrl.onUpdate({hero: ctrl.hero, prop: prop, value: value});&#10;  };&#10;}&#10;&#10;angular.module(&#39;heroApp&#39;).component(&#39;heroDetail&#39;, {&#10;  templateUrl: &#39;heroDetail.html&#39;,&#10;  controller: HeroDetailController,&#10;  bindings: {&#10;    hero: &#39;=&#39;,&#10;    onDelete: &#39;&amp;&#39;,&#10;    onUpdate: &#39;&amp;&#39;&#10;  }&#10;});</code></pre>
+      <pre><code>function HeroDetailController($scope, $element, $attrs) {&#10;  var ctrl = this;&#10;&#10;  ctrl.update = function(prop, value) {&#10;    ctrl.onUpdate({hero: ctrl.hero, prop: prop, value: value});&#10;  };&#10;}&#10;&#10;angular.module(&#39;heroApp&#39;).component(&#39;heroDetail&#39;, {&#10;  templateUrl: &#39;heroDetail.html&#39;,&#10;  controller: HeroDetailController,&#10;  bindings: {&#10;    hero: &#39;&lt;&#39;,&#10;    onDelete: &#39;&amp;&#39;,&#10;    onUpdate: &#39;&amp;&#39;&#10;  }&#10;});</code></pre>
     </div>
   
     <div class="runnable-example-file" 
       name="editableField.js"
       language="js"
       type="js">
-      <pre><code>function EditableFieldController($scope, $element, $attrs) {&#10;  var ctrl = this;&#10;  this.editMode = false;&#10;&#10;  this.handleModeChange = function() {&#10;    if (ctrl.editMode) {&#10;      ctrl.onUpdate({value: ctrl.fieldValue});&#10;      ctrl.fieldValueCopy = ctrl.fieldValue;&#10;    }&#10;    ctrl.editMode = !ctrl.editMode;&#10;  };&#10;&#10;  this.reset = function() {&#10;    ctrl.fieldValue = ctrl.fieldValueCopy;&#10;  };&#10;&#10;  this.$onInit = function() {&#10;    // Make a copy of the initial value to be able to reset it later&#10;    this.fieldValueCopy = this.fieldValue;&#10;&#10;    // Set a default fieldType&#10;    if (!this.fieldType) {&#10;      this.fieldType = &#39;text&#39;;&#10;    }&#10;  };&#10;}&#10;&#10;angular.module(&#39;heroApp&#39;).component(&#39;editableField&#39;, {&#10;  templateUrl: &#39;editableField.html&#39;,&#10;  controller: EditableFieldController,&#10;  bindings: {&#10;    fieldValue: &#39;@&#39;,&#10;    fieldType: &#39;@&#39;,&#10;    onUpdate: &#39;&amp;&#39;&#10;  }&#10;});</code></pre>
+      <pre><code>function EditableFieldController($scope, $element, $attrs) {&#10;  var ctrl = this;&#10;  this.editMode = false;&#10;&#10;  this.handleModeChange = function() {&#10;    if (ctrl.editMode) {&#10;      ctrl.onUpdate({value: ctrl.fieldValue});&#10;      ctrl.fieldValueCopy = ctrl.fieldValue;&#10;    }&#10;    ctrl.editMode = !ctrl.editMode;&#10;  };&#10;&#10;  this.reset = function() {&#10;    ctrl.fieldValue = ctrl.fieldValueCopy;&#10;  };&#10;&#10;  this.$onInit = function() {&#10;    // Make a copy of the initial value to be able to reset it later&#10;    this.fieldValueCopy = this.fieldValue;&#10;&#10;    // Set a default fieldType&#10;    if (!this.fieldType) {&#10;      this.fieldType = &#39;text&#39;;&#10;    }&#10;  };&#10;}&#10;&#10;angular.module(&#39;heroApp&#39;).component(&#39;editableField&#39;, {&#10;  templateUrl: &#39;editableField.html&#39;,&#10;  controller: EditableFieldController,&#10;  bindings: {&#10;    fieldValue: &#39;&lt;&#39;,&#10;    fieldType: &#39;@?&#39;,&#10;    onUpdate: &#39;&amp;&#39;&#10;  }&#10;});</code></pre>
     </div>
   
     <div class="runnable-example-file" 
@@ -291,7 +298,7 @@ it upwards to the heroList component, which updates it.</li>
       name="heroDetail.html"
       language="html"
       type="html">
-      <pre><code>&lt;hr&gt;&#10;&lt;div&gt;&#10;  Name: {{$ctrl.hero.name}}&lt;br&gt;&#10;  Location: &lt;editable-field field-value=&quot;{{$ctrl.hero.location}}&quot; field-type=&quot;text&quot; on-update=&quot;$ctrl.update(&#39;location&#39;, value)&quot;&gt;&lt;/editable-field&gt;&lt;br&gt;&#10;  &lt;button ng-click=&quot;$ctrl.onDelete({hero: $ctrl.hero})&quot;&gt;Delete&lt;/button&gt;&#10;&lt;/div&gt;</code></pre>
+      <pre><code>&lt;hr&gt;&#10;&lt;div&gt;&#10;  Name: {{$ctrl.hero.name}}&lt;br&gt;&#10;  Location: &lt;editable-field field-value=&quot;$ctrl.hero.location&quot; field-type=&quot;text&quot; on-update=&quot;$ctrl.update(&#39;location&#39;, value)&quot;&gt;&lt;/editable-field&gt;&lt;br&gt;&#10;  &lt;button ng-click=&quot;$ctrl.onDelete({hero: $ctrl.hero})&quot;&gt;Delete&lt;/button&gt;&#10;&lt;/div&gt;</code></pre>
     </div>
   
     <div class="runnable-example-file" 
@@ -326,16 +333,23 @@ myMod.config(function($routeProvider) {
 </code></pre>
 <p><br />
 When using <a href="api/ngRoute/provider/$routeProvider">$routeProvider</a>, you can often avoid some
-boilerplate, by assigning the resolved dependencies directly to the route scope:</p>
+boilerplate, by passing the resolved route dependencies directly to the component. Since 1.5,
+ngRoute automatically assigns the resolves to the route scope property <code>$resolve</code> (you can also
+configure the property name via <code>resolveAs</code>). When using components, you can take advantage of this and pass resolves
+directly into your component without creating an extra route controller:</p>
 <pre><code class="lang-js">var myMod = angular.module(&#39;myMod&#39;, [&#39;ngRoute&#39;]);
 myMod.component(&#39;home&#39;, {
   template: &#39;&lt;h1&gt;Home&lt;/h1&gt;&lt;p&gt;Hello, {{ $ctrl.user.name }} !&lt;/p&gt;&#39;,
-  bindings: {user: &#39;=&#39;}
+  bindings: {
+    user: &#39;&lt;&#39;
+  }
 });
 myMod.config(function($routeProvider) {
   $routeProvider.when(&#39;/&#39;, {
     template: &#39;&lt;home user=&quot;$resolve.user&quot;&gt;&lt;/home&gt;&#39;,
-    resolve: {user: function($http) { return $http.get(&#39;...&#39;); }}
+    resolve: {
+      user: function($http) { return $http.get(&#39;...&#39;); }
+    }
   });
 });
 </code></pre>
@@ -360,7 +374,7 @@ from components:</p>
       name="script.js"
       language="js"
       type="js">
-      <pre><code>angular.module(&#39;docsTabsExample&#39;, [])&#10;.component(&#39;myTabs&#39;, {&#10;  transclude: true,&#10;  controller: function() {&#10;    var panes = this.panes = [];&#10;    this.select = function(pane) {&#10;      angular.forEach(panes, function(pane) {&#10;        pane.selected = false;&#10;      });&#10;      pane.selected = true;&#10;    };&#10;    this.addPane = function(pane) {&#10;      if (panes.length === 0) {&#10;        this.select(pane);&#10;      }&#10;      panes.push(pane);&#10;    };&#10;  },&#10;  templateUrl: &#39;my-tabs.html&#39;&#10;})&#10;.component(&#39;myPane&#39;, {&#10;  transclude: true,&#10;  require: {tabsCtrl: &#39;^myTabs&#39;},&#10;  bindings: {&#10;    title: &#39;@&#39;&#10;  },&#10;  controller: function() {&#10;    this.$onInit = function() {&#10;      this.tabsCtrl.addPane(this);&#10;      console.log(this);&#10;    };&#10;  },&#10;  templateUrl: &#39;my-pane.html&#39;&#10;});</code></pre>
+      <pre><code>angular.module(&#39;docsTabsExample&#39;, [])&#10;.component(&#39;myTabs&#39;, {&#10;  transclude: true,&#10;  controller: function() {&#10;    var panes = this.panes = [];&#10;    this.select = function(pane) {&#10;      angular.forEach(panes, function(pane) {&#10;        pane.selected = false;&#10;      });&#10;      pane.selected = true;&#10;    };&#10;    this.addPane = function(pane) {&#10;      if (panes.length === 0) {&#10;        this.select(pane);&#10;      }&#10;      panes.push(pane);&#10;    };&#10;  },&#10;  templateUrl: &#39;my-tabs.html&#39;&#10;})&#10;.component(&#39;myPane&#39;, {&#10;  transclude: true,&#10;  require: {&#10;    tabsCtrl: &#39;^myTabs&#39;&#10;  },&#10;  bindings: {&#10;    title: &#39;@&#39;&#10;  },&#10;  controller: function() {&#10;    this.$onInit = function() {&#10;      this.tabsCtrl.addPane(this);&#10;      console.log(this);&#10;    };&#10;  },&#10;  templateUrl: &#39;my-pane.html&#39;&#10;});</code></pre>
     </div>
   
     <div class="runnable-example-file" 

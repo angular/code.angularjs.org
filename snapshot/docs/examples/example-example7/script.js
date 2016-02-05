@@ -22,7 +22,9 @@ angular.module('docsTabsExample', [])
   })
   .component('myPane', {
     transclude: true,
-    require: {tabsCtrl: '^myTabs'},
+    require: {
+      tabsCtrl: '^myTabs'
+    },
     bindings: {
       title: '@'
     },
