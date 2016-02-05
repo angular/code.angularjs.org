@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.0-build.4590+sha.39eecd1
+ * @license AngularJS v1.5.1-build.4591+sha.75f23f0
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -57,7 +57,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.5.0-build.4590+sha.39eecd1/' +
+    message += '\nhttp://errors.angularjs.org/1.5.1-build.4591+sha.75f23f0/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -2424,10 +2424,10 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.5.0-build.4590+sha.39eecd1',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.5.1-build.4591+sha.75f23f0',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 5,
-  dot: 0,
+  dot: 1,
   codeName: 'snapshot'
 };
 
@@ -19574,7 +19574,7 @@ function parse(numStr) {
   }
 
   // Count the number of leading zeros.
-  for (i = 0; numStr.charAt(i) == ZERO_CHAR; i++);
+  for (i = 0; numStr.charAt(i) == ZERO_CHAR; i++) {/* jshint noempty: false */}
 
   if (i == (zeros = numStr.length)) {
     // The digits are all zero.
