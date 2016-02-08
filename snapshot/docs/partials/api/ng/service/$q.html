@@ -167,8 +167,9 @@ $http&#39;s response interceptors.</p>
 <li>$q is integrated with the <a href="api/ng/type/$rootScope.Scope"><code>$rootScope.Scope</code></a> Scope model observation
 mechanism in angular, which means faster propagation of resolution or rejection into your
 models and avoiding unnecessary browser repaints, which would result in flickering UI.</li>
-<li><p>Q has many more features than $q, but that comes at a cost of bytes. $q is tiny, but contains
-all the important functionality needed for common async tasks.</p>
+<li>Q has many more features than $q, but that comes at a cost of bytes. $q is tiny, but contains
+all the important functionality needed for common async tasks.</li>
+</ul>
 <h1 id="testing">Testing</h1>
 <pre><code class="lang-js">it(&#39;should simulate promise&#39;, inject(function($q, $rootScope) {
   var deferred = $q.defer();
@@ -190,8 +191,6 @@ all the important functionality needed for common async tasks.</p>
   expect(resolvedValue).toEqual(123);
 }));
 </code></pre>
-</li>
-</ul>
 
 </div>
 

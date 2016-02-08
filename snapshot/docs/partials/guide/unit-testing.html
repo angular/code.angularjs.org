@@ -343,6 +343,12 @@ expect(contents[1].nodeType).toEqual(node.ELEMENT_NODE);
 <a href="https://github.com/karma-runner/karma-ng-html2js-preprocessor">karma-ng-html2js-preprocessor</a>
 to pre-compile HTML templates and thus avoid having to load them over HTTP during test execution.
 Otherwise you may run into issues if the test directory hierarchy differs from the application&#39;s.</p>
+<h2 id="testing-promises">Testing Promises</h2>
+<p>When testing promises, it&#39;s important to know that the resolution of promises is tied to the <a href="api/ng/type/$rootScope.Scope#$digest">digest cycle</a>.
+That means a promise&#39;s <code>then</code>, <code>catch</code> and <code>finally</code> callback functions are only called after a digest has run.
+In tests, you can trigger a digest by calling a scope&#39;s <a href="api/ng/type/$rootScope.Scope#$apply"><code>$apply</code> function</a>.
+If you don&#39;t have a scope in your test, you can inject the <a href="api/ng/service/$rootScope">$rootScope</a> and call <code>$apply</code> on it.
+There is also an example of testing promises in the <a href="api/ng/service/$q#testing"><code>$q</code> service documentation</a>.</p>
 <h2 id="sample-project">Sample project</h2>
 <p>See the <a href="https://github.com/angular/angular-seed">angular-seed</a> project for an example.</p>
 
