@@ -88,6 +88,22 @@ throw an error. Previously, the input was returned unchanged, which could lead t
 and was not consistent with other filters (e.g. <code>filter</code>).
 Objects considered array-like include: arrays, array subclasses, strings, NodeLists,
 jqLite/jQuery collections</p>
+<h3 id="ngaria">ngAria</h3>
+<p>Due to <a href="https://github.com/angular/angular.js/commit/d06431e5309bb0125588877451dc79b935808134">d06431e</a>,
+the <code>ngAria</code>-enhanced directives (e.g. <code>ngModel</code>, <code>ngDisabled</code> etc) will not apply ARIA attributes
+to native inputs, unless necessary. Previously, ARIA attributes were always applied to native
+inputs, despite this being unnecessary in most cases.
+In the context of <code>ngAria</code>, elements considered &quot;native inputs&quot; include:
+<code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, <code>&lt;details&gt;</code>, <code>&lt;input&gt;</code>, <code>&lt;select&gt;</code>, <code>&lt;summary&gt;</code>, <code>&lt;textarea&gt;</code></p>
+<p>This change will not affect the accessibility of your applications (since native inputs are
+accessible by default), but if you relied on ARIA attributes being present on native inputs (for
+whatever reason), you&#39;ll have to add and update them manually.</p>
+<p>Additionally, the <code>aria-multiline</code> attribute, which was previously added to elements with a <code>type</code>
+or <code>role</code> of <code>textbox</code>, will not be added anymore, since there is no way <code>ngAria</code> can tell if the
+textbox element is multiline or not.
+If you relied on <code>aria-multiline=&quot;true&quot;</code> being automatically added by <code>ngAria</code>, you need to apply it
+yourself. E.g. change your code from <code>&lt;div role=&quot;textbox&quot; ng-model=&quot;...&quot; ...&gt;</code> to
+<code>&lt;div role=&quot;textbox&quot; ng-model=&quot;...&quot; ... aria-multiline=&quot;true&quot;&gt;</code>.</p>
 <h3 id="ngmessages-ngmessage-">ngMessages (<code>ngMessage</code>)</h3>
 <p>Due to <a href="https://github.com/angular/angular.js/commit/4971ef12d4c2c268cb8d26f90385dc96eba19db8">4971ef12</a>,
 the <code>ngMessage</code> directive is now compiled with a priority of 1, which means directives on the same
