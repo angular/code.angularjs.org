@@ -81,7 +81,7 @@ so that you can perform an animation when the element is hidden during the time 
 .my-element.ng-hide-remove { ... }
 .my-element.ng-hide-remove.ng-hide-remove-active { ... }
 </code></pre>
-<p>Keep in mind that, as of AngularJS version 1.3.0-beta.11, there is no need to change the display
+<p>Keep in mind that, as of AngularJS version 1.3, there is no need to change the display
 property to block during animation states--ngAnimate will handle the style toggling automatically for you.</p>
 
 </div>
@@ -112,8 +112,24 @@ property to block during animation states--ngAnimate will handle the style toggl
   </div>
   
   <h2 id="animations">Animations</h2>
-  <p>addClass: <code>.ng-hide</code> - happens after the <code>ngShow</code> expression evaluates to a truthy value and the just before contents are set to visible
-removeClass: <code>.ng-hide</code> - happens after the <code>ngShow</code> expression evaluates to a non truthy value and just before the contents are set to hidden</p>
+  <table>
+<thead>
+<tr>
+<th>Animation</th>
+<th>Occurs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="api/ng/service/$animate#addClass">addClass</a> <code>.ng-hide</code></td>
+<td>after the <code>ngShow</code> expression evaluates to a non truthy value and just before the contents are set to hidden</td>
+</tr>
+<tr>
+<td><a href="api/ng/service/$animate#removeClass">removeClass</a>  <code>.ng-hide</code></td>
+<td>after the <code>ngShow</code> expression evaluates to a truthy value and just before contents are set to visible</td>
+</tr>
+</tbody>
+</table>
 
   <a href="api/ngAnimate/service/$animate">Click here</a> to learn more about the steps involved in the animation.
 <section class="api-section">

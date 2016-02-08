@@ -578,22 +578,6 @@ greeting-box.on { transition:0.5s linear all; background:green; color:white; }
 </code></pre>
 <p>The <code>$animate</code> service contains a variety of other methods like <code>enter</code>, <code>leave</code>, <code>animate</code> and <code>setClass</code>. To learn more about what&#39;s
 possible be sure to visit the <a href="api/ng/service/$animate">$animate service API page</a>.</p>
-<h3 id="preventing-collisions-with-third-party-libraries">Preventing Collisions With Third Party Libraries</h3>
-<p>Some third-party frameworks place animation duration defaults across many element or className
-selectors in order to make their code small and reuseable. This can lead to issues with ngAnimate, which
-is expecting actual animations on these elements and has to wait for their completion.</p>
-<p>You can prevent this unwanted behavior by using a prefix on all your animation classes:</p>
-<pre><code class="lang-css">/* prefixed with animate- */
-.animate-fade-add.animate-fade-add-active {
-  transition:1s linear all;
-  opacity:0;
-}
-</code></pre>
-<p>You then configure <code>$animate</code> to enforce this prefix:</p>
-<pre><code class="lang-js">$animateProvider.classNameFilter(/animate-/);
-</code></pre>
-<p>This also may provide your application with a speed boost since only specific elements containing CSS class prefix
-will be evaluated for animation when any DOM changes occur in the application.</p>
 <h2 id="callbacks-and-promises">Callbacks and Promises</h2>
 <p>When <code>$animate</code> is called it returns a promise that can be used to capture when the animation has ended. Therefore if we were to trigger
 an animation (within our directive code) then we can continue performing directive and scope related activities after the animation has
@@ -640,7 +624,7 @@ of the children&#39;s parents are currently animating. By default, when an eleme
         <td><a href="api/ngAnimate/directive/ngAnimateSwap">ngAnimateSwap</a></td>
         <td><p>ngAnimateSwap is a animation-oriented directive that allows for the container to
 be removed and entered in whenever the associated expression changes. A
-common usecase for this directive is a rotating banner component which
+common usecase for this directive is a rotating banner or slider component which
 contains one image being present at a time. When the active image changes
 then the old image will perform a <code>leave</code> animation and the new element
 will be inserted via an <code>enter</code> animation.</p>
