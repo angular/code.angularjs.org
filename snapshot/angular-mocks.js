@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.1-build.4598+sha.17ba2a6
+ * @license AngularJS v1.5.1-build.4599+sha.9881e77
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -2189,29 +2189,27 @@ angular.mock.$ControllerDecorator = ['$delegate', function($delegate) {
  * @return {Object} Instance of requested controller.
  */
 angular.mock.$ComponentControllerProvider = ['$compileProvider', function($compileProvider) {
-  return {
-    $get: ['$controller','$injector', function($controller,$injector) {
-      return function $componentController(componentName, locals, bindings, ident) {
-        // get all directives associated to the component name
-        var directives = $injector.get(componentName + 'Directive');
-        // look for those directives that are components
-        var candidateDirectives = directives.filter(function(directiveInfo) {
-          // components have controller, controllerAs and restrict:'E'
-          return directiveInfo.controller && directiveInfo.controllerAs && directiveInfo.restrict === 'E';
-        });
-        // check if valid directives found
-        if (candidateDirectives.length === 0) {
-          throw new Error('No component found');
-        }
-        if (candidateDirectives.length > 1) {
-          throw new Error('Too many components found');
-        }
-        // get the info of the component
-        var directiveInfo = candidateDirectives[0];
-        return $controller(directiveInfo.controller, locals, bindings, ident || directiveInfo.controllerAs);
-      };
-    }]
-  };
+  this.$get = ['$controller','$injector', function($controller,$injector) {
+    return function $componentController(componentName, locals, bindings, ident) {
+      // get all directives associated to the component name
+      var directives = $injector.get(componentName + 'Directive');
+      // look for those directives that are components
+      var candidateDirectives = directives.filter(function(directiveInfo) {
+        // components have controller, controllerAs and restrict:'E'
+        return directiveInfo.controller && directiveInfo.controllerAs && directiveInfo.restrict === 'E';
+      });
+      // check if valid directives found
+      if (candidateDirectives.length === 0) {
+        throw new Error('No component found');
+      }
+      if (candidateDirectives.length > 1) {
+        throw new Error('Too many components found');
+      }
+      // get the info of the component
+      var directiveInfo = candidateDirectives[0];
+      return $controller(directiveInfo.controller, locals, bindings, ident || directiveInfo.controllerAs);
+    };
+  }];
 }];
 
 
