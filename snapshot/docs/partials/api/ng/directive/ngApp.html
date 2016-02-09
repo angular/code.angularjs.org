@@ -23,10 +23,19 @@
   <p>Use this directive to <strong>auto-bootstrap</strong> an AngularJS application. The <code>ngApp</code> directive
 designates the <strong>root element</strong> of the application and is typically placed near the root element
 of the page - e.g. on the <code>&lt;body&gt;</code> or <code>&lt;html&gt;</code> tags.</p>
-<p>Only one AngularJS application can be auto-bootstrapped per HTML document. The first <code>ngApp</code>
+<p>There are a few things to keep in mind when using <code>ngApp</code>:</p>
+<ul>
+<li>only one AngularJS application can be auto-bootstrapped per HTML document. The first <code>ngApp</code>
 found in the document will be used to define the root element to auto-bootstrap as an
 application. To run multiple applications in an HTML document you must manually bootstrap them using
-<a href="api/ng/function/angular.bootstrap"><code>angular.bootstrap</code></a> instead. AngularJS applications cannot be nested within each other.</p>
+<a href="api/ng/function/angular.bootstrap"><code>angular.bootstrap</code></a> instead.</li>
+<li>AngularJS applications cannot be nested within each other.</li>
+<li>Do not use a directive that uses <a href="api/ng/service/$compile#transclusion">transclusion</a> on the same element as <code>ngApp</code>.
+This includes directives such as <a href="api/ng/directive/ngIf"><code>ngIf</code></a>, <a href="api/ng/directive/ngInclude"><code>ngInclude</code></a> and
+<a href="api/ngRoute/directive/ngView"><code>ngView</code></a>.
+Doing this misplaces the app <a href="api/ng/service/$rootElement"><code>$rootElement</code></a> and the app&#39;s <a href="api/auto/service/$injector">injector</a>,
+causing animations to stop working and making the injector inaccessible from outside the app.</li>
+</ul>
 <p>You can specify an <strong>AngularJS module</strong> to be used as the root module for the application.  This
 module will be loaded into the <a href="api/auto/service/$injector"><code>$injector</code></a> when the application is bootstrapped. It
 should contain the application code needed or have dependencies on other modules that will
