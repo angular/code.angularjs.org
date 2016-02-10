@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.1-build.4602+sha.7b592f9
+ * @license AngularJS v1.5.1-build.4603+sha.f0f6da3
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -711,7 +711,7 @@ angular.module('ngResource', ['ng']).
               return $q.reject(response);
             });
 
-            promise.finally(function() {
+            promise['finally'](function() {
               value.$resolved = true;
               if (!isInstanceCall && cancellable) {
                 value.$cancelRequest = angular.noop;
