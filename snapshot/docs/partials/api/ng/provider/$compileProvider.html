@@ -142,7 +142,8 @@ myMod.component(&#39;myComp&#39;, {
 
 myMod.component(&#39;myComp&#39;, {
   templateUrl: &#39;views/my-comp.html&#39;,
-  controller: &#39;MyCtrl as ctrl&#39;,
+  controller: &#39;MyCtrl&#39;,
+  controllerAs: &#39;ctrl&#39;,
   bindings: {name: &#39;@&#39;}
 });
 </code></pre>
