@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.1-build.4606+sha.b8b5b88
+ * @license AngularJS v1.5.1-build.4608+sha.9421674
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -552,7 +552,7 @@ angular.mock.$IntervalProvider = function() {
  * This directive should go inside the anonymous function but a bug in JSHint means that it would
  * not be enacted early enough to prevent the warning.
  */
-var R_ISO8061_STR = /^(\d{4})-?(\d\d)-?(\d\d)(?:T(\d\d)(?:\:?(\d\d)(?:\:?(\d\d)(?:\.(\d{3}))?)?)?(Z|([+-])(\d\d):?(\d\d)))?$/;
+var R_ISO8061_STR = /^(-?\d{4})-?(\d\d)-?(\d\d)(?:T(\d\d)(?:\:?(\d\d)(?:\:?(\d\d)(?:\.(\d{3}))?)?)?(Z|([+-])(\d\d):?(\d\d)))?$/;
 
 function jsonStringToDate(string) {
   var match;
@@ -578,7 +578,7 @@ function toInt(str) {
   return parseInt(str, 10);
 }
 
-function padNumber(num, digits, trim) {
+function padNumberInMock(num, digits, trim) {
   var neg = '';
   if (num < 0) {
     neg =  '-';
@@ -727,13 +727,13 @@ angular.mock.TzDate = function(offset, timestamp) {
   // provide this method only on browsers that already have it
   if (self.toISOString) {
     self.toISOString = function() {
-      return padNumber(self.origDate.getUTCFullYear(), 4) + '-' +
-            padNumber(self.origDate.getUTCMonth() + 1, 2) + '-' +
-            padNumber(self.origDate.getUTCDate(), 2) + 'T' +
-            padNumber(self.origDate.getUTCHours(), 2) + ':' +
-            padNumber(self.origDate.getUTCMinutes(), 2) + ':' +
-            padNumber(self.origDate.getUTCSeconds(), 2) + '.' +
-            padNumber(self.origDate.getUTCMilliseconds(), 3) + 'Z';
+      return padNumberInMock(self.origDate.getUTCFullYear(), 4) + '-' +
+            padNumberInMock(self.origDate.getUTCMonth() + 1, 2) + '-' +
+            padNumberInMock(self.origDate.getUTCDate(), 2) + 'T' +
+            padNumberInMock(self.origDate.getUTCHours(), 2) + ':' +
+            padNumberInMock(self.origDate.getUTCMinutes(), 2) + ':' +
+            padNumberInMock(self.origDate.getUTCSeconds(), 2) + '.' +
+            padNumberInMock(self.origDate.getUTCMilliseconds(), 3) + 'Z';
     };
   }
 
