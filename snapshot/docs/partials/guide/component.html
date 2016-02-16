@@ -301,7 +301,7 @@ it upwards to the heroList component, which updates the original data.</li>
       name="editableField.html"
       language="html"
       type="html">
-      <pre><code>&lt;span ng-switch=&quot;$ctrl.editMode&quot;&gt;&#10;  &lt;input ng-switch-when=&quot;true&quot; type=&quot;text&quot; ng-model=&quot;$ctrl.fieldValue&quot;&gt;&#10;  &lt;span ng-switch-default&gt;{{$ctrl.fieldValue}}&lt;/span&gt;&#10;&lt;/span&gt;&#10;&lt;button ng-click=&quot;$ctrl.handleModeChange()&quot;&gt;{{$ctrl.editMode ? &#39;Save&#39; : &#39;Edit&#39;}}&lt;/button&gt;&#10;&lt;button ng-if=&quot;$ctrl.editMode&quot; ng-click=&quot;$ctrl.reset()&quot;&gt;Reset&lt;/button&gt;</code></pre>
+      <pre><code>&lt;span ng-switch=&quot;$ctrl.editMode&quot;&gt;&#10;  &lt;input ng-switch-when=&quot;true&quot; type=&quot;{{$ctrl.fieldType}}&quot; ng-model=&quot;$ctrl.fieldValue&quot;&gt;&#10;  &lt;span ng-switch-default&gt;{{$ctrl.fieldValue}}&lt;/span&gt;&#10;&lt;/span&gt;&#10;&lt;button ng-click=&quot;$ctrl.handleModeChange()&quot;&gt;{{$ctrl.editMode ? &#39;Save&#39; : &#39;Edit&#39;}}&lt;/button&gt;&#10;&lt;button ng-if=&quot;$ctrl.editMode&quot; ng-click=&quot;$ctrl.reset()&quot;&gt;Reset&lt;/button&gt;</code></pre>
     </div>
   
 

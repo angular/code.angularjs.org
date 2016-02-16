@@ -309,7 +309,7 @@ Note that you can alternatively use <code>ng-pattern</code> to further restrict 
       name="script.js"
       language="js"
       type="js">
-      <pre><code>var app = angular.module(&#39;form-example-modify-validators&#39;, []);&#10;&#10;app.directive(&#39;overwriteEmail&#39;, function() {&#10;  var EMAIL_REGEXP = /^[a-z0-9!#$%&amp;&#39;*+/=?^_`{|}~.-]+@example\.com$/i;&#10;&#10;  return {&#10;    require: &#39;ngModel&#39;,&#10;    restrict: &#39;&#39;,&#10;    link: function(scope, elm, attrs, ctrl) {&#10;      // only apply the validator if ngModel is present and Angular has added the email validator&#10;      if (ctrl &amp;&amp; ctrl.$validators.email) {&#10;&#10;        // this will overwrite the default Angular email validator&#10;        ctrl.$validators.email = function(modelValue) {&#10;          return ctrl.$isEmpty(modelValue) || EMAIL_REGEXP.test(modelValue);&#10;        };&#10;      }&#10;    }&#10;  };&#10;});</code></pre>
+      <pre><code>var app = angular.module(&#39;form-example-modify-validators&#39;, []);&#10;&#10;app.directive(&#39;overwriteEmail&#39;, function() {&#10;  var EMAIL_REGEXP = /^[a-z0-9!#$%&amp;&#39;*+/=?^_`{|}~.-]+@example\.com$/i;&#10;&#10;  return {&#10;    require: &#39;?ngModel&#39;,&#10;    link: function(scope, elm, attrs, ctrl) {&#10;      // only apply the validator if ngModel is present and Angular has added the email validator&#10;      if (ctrl &amp;&amp; ctrl.$validators.email) {&#10;&#10;        // this will overwrite the default Angular email validator&#10;        ctrl.$validators.email = function(modelValue) {&#10;          return ctrl.$isEmpty(modelValue) || EMAIL_REGEXP.test(modelValue);&#10;        };&#10;      }&#10;    }&#10;  };&#10;});</code></pre>
     </div>
   
 

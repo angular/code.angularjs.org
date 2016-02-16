@@ -6,8 +6,7 @@ app.directive('overwriteEmail', function() {
   var EMAIL_REGEXP = /^[a-z0-9!#$%&'*+/=?^_`{|}~.-]+@example\.com$/i;
 
   return {
-    require: 'ngModel',
-    restrict: '',
+    require: '?ngModel',
     link: function(scope, elm, attrs, ctrl) {
       // only apply the validator if ngModel is present and Angular has added the email validator
       if (ctrl && ctrl.$validators.email) {
