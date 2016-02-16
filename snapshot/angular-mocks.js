@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.1-build.4612+sha.3940edc
+ * @license AngularJS v1.5.1-build.4613+sha.019900d
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -2096,9 +2096,9 @@ angular.mock.$RAFDecorator = ['$delegate', function($delegate) {
  *
  */
 angular.mock.$RootElementProvider = function() {
-  this.$get = function() {
-    return angular.element('<div ng-app></div>');
-  };
+  this.$get = ['$injector', function($injector) {
+    return angular.element('<div ng-app></div>').data('$injector', $injector);
+  }];
 };
 
 /**
