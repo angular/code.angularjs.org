@@ -1,8 +1,8 @@
-<a href='https://github.com/angular/angular.js/edit/master/src/ng/http.js?message=docs($http)%3A%20describe%20your%20change...#L401' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/master/src/ng/http.js?message=docs($http)%3A%20describe%20your%20change...#L400' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 
-<a href='https://github.com/angular/angular.js/tree/master/src/ng/http.js#L401' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/master/src/ng/http.js#L400' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -186,22 +186,32 @@ $http({
 });
 </code></pre>
 <h2 id="caching">Caching</h2>
-<p>To enable caching, set the request configuration <code>cache</code> property to <code>true</code> (to use default
-cache) or to a custom cache object (built with <a href="api/ng/service/$cacheFactory"><code>$cacheFactory</code></a>).
-When the cache is enabled, <code>$http</code> stores the response from the server in the specified
-cache. The next time the same request is made, the response is served from the cache without
-sending a request to the server.</p>
-<p>Note that even if the response is served from cache, delivery of the data is asynchronous in
-the same way that real requests are.</p>
-<p>If there are multiple GET requests for the same URL that should be cached using the same
-cache, but the cache is not populated yet, only one request to the server will be made and
-the remaining requests will be fulfilled using the response from the first request.</p>
-<p>You can change the default cache to a new object (built with
-<a href="api/ng/service/$cacheFactory"><code>$cacheFactory</code></a>) by updating the
-<a href="api/ng/service/$http#defaults"><code>$http.defaults.cache</code></a> property. All requests who set
-their <code>cache</code> property to <code>true</code> will now use this cache object.</p>
-<p>If you set the default cache to <code>false</code> then only requests that specify their own custom
-cache object will be cached.</p>
+<p><a href="api/ng/service/$http"><code>$http</code></a> responses are not cached by default. To enable caching, you must
+set the config.cache value or the default cache value to TRUE or to a cache object (created
+with <a href="api/ng/service/$cacheFactory"><code>$cacheFactory</code></a>). If defined, the value of config.cache takes
+precedence over the default cache value.</p>
+<p>In order to:</p>
+<ul>
+<li>cache all responses - set the default cache value to TRUE or to a cache object</li>
+<li>cache a specific response - set config.cache value to TRUE or to a cache object</li>
+</ul>
+<p>If caching is enabled, but neither the default cache nor config.cache are set to a cache object,
+then the default <code>$cacheFactory($http)</code> object is used.</p>
+<p>The default cache value can be set by updating the
+<a href="api/ng/service/$http#defaults"><code>$http.defaults.cache</code></a> property or the
+<a href="api/ng/provider/$httpProvider#defaults"><code>$httpProvider.defaults.cache</code></a> property.</p>
+<p>When caching is enabled, <a href="api/ng/service/$http"><code>$http</code></a> stores the response from the server using
+the relevant cache object. The next time the same request is made, the response is returned
+from the cache without sending a request to the server.</p>
+<p>Take note that:</p>
+<ul>
+<li>Only GET and JSONP requests are cached.</li>
+<li>The cache key is the request URL including search parameters; headers are not considered.</li>
+<li>Cached responses are returned asynchronously, in the same way as responses from the server.</li>
+<li>If multiple identical requests are made using the same cache, which is not yet populated,
+one request will be made to the server and remaining requests will return the same response.</li>
+<li>A cache-control header on the response does not affect if or how responses are cached.</li>
+</ul>
 <h2 id="interceptors">Interceptors</h2>
 <p>Before you start creating interceptors, be sure to understand the
 <a href="api/ng/service/$q">$q and deferred/promise APIs</a>.</p>
@@ -400,10 +410,9 @@ If specified as string, it is interpreted as function registered with the
 by registering it as a <a href="api/auto/service/$provide#service">service</a>.
 The default serializer is the <a href="api/ng/service/$httpParamSerializer">$httpParamSerializer</a>;
 alternatively, you can use the <a href="api/ng/service/$httpParamSerializerJQLike">$httpParamSerializerJQLike</a></li>
-<li><strong>cache</strong> – <code>{boolean|Cache}</code> – If true, a default $http cache will be used to cache the
-GET request, otherwise if a cache instance built with
-<a href="api/ng/service/$cacheFactory">$cacheFactory</a>, this cache will be used for
-caching.</li>
+<li><strong>cache</strong> – <code>{boolean|Object}</code> – A boolean value or object created with
+<a href="api/ng/service/$cacheFactory"><code>$cacheFactory</code></a> to enable or disable caching of the HTTP response.
+See <a href="api/ng/service/$http#caching">$http Caching</a> for more information.</li>
 <li><strong>timeout</strong> – <code>{number|Promise}</code> – timeout in milliseconds, or <a href="api/ng/service/$q">promise</a>
 that should abort the request when resolved.</li>
 <li><strong>withCredentials</strong> - <code>{boolean}</code> - whether to set the <code>withCredentials</code> flag on the
