@@ -191,7 +191,7 @@ and component scope reference the same object, so if you are changing object pro
 component, the parent will still reflect that change.
 The general rule should therefore be to never change an object or array property in the component scope.
 <code>@</code> bindings can be used when the input is a string, especially when the value of the binding doesn&#39;t change.<pre><code class="lang-js">bindings: {
-  hero: `&lt;`,
+  hero: &#39;&lt;&#39;,
   comment: &#39;@&#39;
 }
 </code></pre>
