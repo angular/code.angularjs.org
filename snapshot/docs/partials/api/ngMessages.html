@@ -43,38 +43,52 @@ sequencing based on the order of how the messages are defined in the template.</
 <p>Currently, the ngMessages module only contains the code for the <code>ngMessages</code>, <code>ngMessagesInclude</code>
 <code>ngMessage</code> and <code>ngMessageExp</code> directives.</p>
 <h1 id="usage">Usage</h1>
-<p>The <code>ngMessages</code> directive listens on a key/value collection which is set on the ngMessages attribute.
-Since the <a href="api/ng/directive/ngModel">ngModel</a> directive exposes an <code>$error</code> object, this error object can be
-used with <code>ngMessages</code> to display control error messages in an easier way than with just regular angular
-template directives.</p>
+<p>The <code>ngMessages</code> directive allows keys in a key/value collection to be associated with a child element
+(or &#39;message&#39;) that will show or hide based on the truthiness of that key&#39;s value in the collection. A common use
+case for <code>ngMessages</code> is to display error messages for inputs using the <code>$error</code> object exposed by the
+<a href="api/ng/directive/ngModel">ngModel</a> directive.</p>
+<p>The child elements of the <code>ngMessages</code> directive are matched to the collection keys by a <code>ngMessage</code> or
+<code>ngMessageExp</code> directive. The value of these attributes must match a key in the collection that is provided by
+the <code>ngMessages</code> directive.</p>
+<p>Consider the following example, which illustrates a typical use case of <code>ngMessages</code>. Within the form <code>myForm</code> we
+have a text input named <code>myField</code> which is bound to the scope variable <code>field</code> using the <a href="api/ng/directive/ngModel">ngModel</a>
+directive.</p>
+<p>The <code>myField</code> field is a required input of type <code>email</code> with a maximum length of 15 characters.</p>
 <pre><code class="lang-html">&lt;form name=&quot;myForm&quot;&gt;
   &lt;label&gt;
     Enter text:
-    &lt;input type=&quot;text&quot; ng-model=&quot;field&quot; name=&quot;myField&quot; required minlength=&quot;5&quot; /&gt;
+    &lt;input type=&quot;email&quot; ng-model=&quot;field&quot; name=&quot;myField&quot; required maxlength=&quot;15&quot; /&gt;
   &lt;/label&gt;
   &lt;div ng-messages=&quot;myForm.myField.$error&quot; role=&quot;alert&quot;&gt;
-    &lt;div ng-message=&quot;required&quot;&gt;You did not enter a field&lt;/div&gt;
-    &lt;div ng-message=&quot;minlength, maxlength&quot;&gt;
-      Your email must be between 5 and 100 characters long
-    &lt;/div&gt;
+    &lt;div ng-message=&quot;required&quot;&gt;Please enter a value for this field.&lt;/div&gt;
+    &lt;div ng-message=&quot;email&quot;&gt;This field must be a valid email address.&lt;/div&gt;
+    &lt;div ng-message=&quot;maxlength&quot;&gt;This field can be at most 15 characters long.&lt;/div&gt;
   &lt;/div&gt;
 &lt;/form&gt;
 </code></pre>
-<p>Now whatever key/value entries are present within the provided object (in this case <code>$error</code>) then
-the ngMessages directive will render the inner first ngMessage directive (depending if the key values
-match the attribute value present on each ngMessage directive). In other words, if your errors
-object contains the following data:</p>
+<p>In order to show error messages corresponding to <code>myField</code> we first create an element with an <code>ngMessages</code> attribute
+set to the <code>$error</code> object owned by the <code>myField</code> input in our <code>myForm</code> form.</p>
+<p>Within this element we then create separate elements for each of the possible errors that <code>myField</code> could have.
+The <code>ngMessage</code> attribute is used to declare which element(s) will appear for which error - for example,
+setting <code>ng-message=&quot;required&quot;</code> specifies that this particular element should be displayed when there
+is no value present for the required field <code>myField</code> (because the key <code>required</code> will be <code>true</code> in the object
+<code>myForm.myField.$error</code>).</p>
+<h3 id="message-order">Message order</h3>
+<p>By default, <code>ngMessages</code> will only display one message for a particular key/value collection at any time. If more
+than one message (or error) key is currently true, then which message is shown is determined by the order of messages
+in the HTML template code (messages declared first are prioritised). This mechanism means the developer does not have
+to prioritise messages using custom JavaScript code.</p>
+<p>Given the following error object for our example (which informs us that the field <code>myField</code> currently has both the
+<code>required</code> and <code>email</code> errors):</p>
 <pre><code class="lang-javascript">&lt;!-- keep in mind that ngModel automatically sets these error flags --&gt;
-myField.$error = { minlength : true, required : true };
+myField.$error = { required : true, email: true, maxlength: false };
 </code></pre>
-<p>Then the <code>required</code> message will be displayed first. When required is false then the <code>minlength</code> message
-will be displayed right after (since these messages are ordered this way in the template HTML code).
-The prioritization of each message is determined by what order they&#39;re present in the DOM.
-Therefore, instead of having custom JavaScript code determine the priority of what errors are
-present before others, the presentation of the errors are handled within the template.</p>
-<p>By default, ngMessages will only display one error at a time. However, if you wish to display all
-messages then the <code>ng-messages-multiple</code> attribute flag can be used on the element containing the
-ngMessages directive to make this happen.</p>
+<p>The <code>required</code> message will be displayed to the user since it appears before the <code>email</code> message in the DOM.
+Once the user types a single character, the <code>required</code> message will disappear (since the field now has a value)
+but the <code>email</code> message will be visible because it is still applicable.</p>
+<h3 id="displaying-multiple-messages-at-the-same-time">Displaying multiple messages at the same time</h3>
+<p>While <code>ngMessages</code> will by default only display one error element at a time, the <code>ng-messages-multiple</code> attribute can
+be applied to the <code>ngMessages</code> container element to cause it to display all applicable error messages at once:</p>
 <pre><code class="lang-html">&lt;!-- attribute-style usage --&gt;
 &lt;div ng-messages=&quot;myForm.myField.$error&quot; ng-messages-multiple&gt;...&lt;/div&gt;
 

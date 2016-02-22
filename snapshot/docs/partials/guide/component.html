@@ -413,12 +413,13 @@ from above.</p>
 <p>The examples use the <a href="http://jasmine.github.io/">Jasmine</a> testing framework.</p>
 <p><strong>Controller Test:</strong></p>
 <pre><code class="lang-js">describe(&#39;component: heroDetail&#39;, function() {
-  var component, scope, hero;
+  var component, scope, hero, $componentController;
 
   beforeEach(module(&#39;simpleComponent&#39;));
 
-  beforeEach(inject(function($rootScope, $componentController) {
+  beforeEach(inject(function($rootScope, _$componentController_) {
     scope = $rootScope.$new();
+    $componentController = _$componentController_;
     hero = {name: &#39;Wolverine&#39;};
   }));
 
