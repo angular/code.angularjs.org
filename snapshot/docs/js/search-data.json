@@ -1161,7 +1161,7 @@
     "path": "api/ng/provider/$controllerProvider",
     "titleWords": "$controllerProvider",
     "keywords": "$controller $controllerprovider allows angular api by controller controllers create html is method module new ng partials provider register registration service the this to used via",
-    "members": "allowglobals register"
+    "members": "allowglobals has register"
   },
   {
     "path": "api/ng/service/$controller",

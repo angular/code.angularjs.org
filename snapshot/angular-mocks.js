@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.1-build.4639+sha.7e112c1
+ * @license AngularJS v1.5.1-build.4641+sha.76f47d5
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -2619,7 +2619,10 @@ if (window.jasmine || window.mocha) {
       }
       angular.element.cleanData(cleanUpNodes);
 
-      injector.get('$rootScope').$destroy();
+      // Ensure `$destroy()` is available, before calling it
+      // (a mocked `$rootScope` might not implement it (or not even be an object at all))
+      var $rootScope = injector.get('$rootScope');
+      if ($rootScope && $rootScope.$destroy) $rootScope.$destroy();
     }
 
     // clean up jquery's fragment cache
