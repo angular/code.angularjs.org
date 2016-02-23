@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.1-build.4633+sha.a7244fd
+ * @license AngularJS v1.5.1-build.4636+sha.f70237a
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -134,12 +134,12 @@ angular.mock.$Browser = function() {
 };
 angular.mock.$Browser.prototype = {
 
-/**
-  * @name $browser#poll
-  *
-  * @description
-  * run all fns in pollFns
-  */
+  /**
+   * @name $browser#poll
+   *
+   * @description
+   * run all fns in pollFns
+   */
   poll: function poll() {
     angular.forEach(this.pollFns, function(pollFn) {
       pollFn();
@@ -2096,10 +2096,12 @@ angular.mock.$RAFDecorator = ['$delegate', function($delegate) {
 /**
  *
  */
+var originalRootElement;
 angular.mock.$RootElementProvider = function() {
-  this.$get = function() {
-    return angular.element('<div ng-app></div>');
-  };
+  this.$get = ['$injector', function($injector) {
+    originalRootElement = angular.element('<div ng-app></div>').data('$injector', $injector);
+    return originalRootElement;
+  }];
 };
 
 /**
@@ -2138,7 +2140,7 @@ angular.mock.$RootElementProvider = function() {
  *     var ctrl = $controller('MyDirectiveController', { /* no locals &#42;/ }, { name: 'Clark Kent' });
  *     expect(ctrl.name).toEqual('Clark Kent');
  *     expect($log.info.logs).toEqual(['Clark Kent']);
- *   });
+ *   }));
  * });
  *
  * ```
@@ -2584,6 +2586,7 @@ if (window.jasmine || window.mocha) {
 
 
   (window.beforeEach || window.setup)(function() {
+    originalRootElement = null;
     annotatedFunctions = [];
     currentSpec = this;
   });
@@ -2607,7 +2610,15 @@ if (window.jasmine || window.mocha) {
     currentSpec = null;
 
     if (injector) {
-      injector.get('$rootElement').off();
+      // Ensure `$rootElement` is instantiated, before checking `originalRootElement`
+      var $rootElement = injector.get('$rootElement');
+      var rootNode = $rootElement && $rootElement[0];
+      var cleanUpNodes = !originalRootElement ? [] : [originalRootElement[0]];
+      if (rootNode && (!originalRootElement || rootNode !== originalRootElement[0])) {
+        cleanUpNodes.push(rootNode);
+      }
+      angular.element.cleanData(cleanUpNodes);
+
       injector.get('$rootScope').$destroy();
     }
 
