@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.1-build.4636+sha.f70237a
+ * @license AngularJS v1.5.1-build.4637+sha.59aef48
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -2666,11 +2666,11 @@ if (window.jasmine || window.mocha) {
         var fn, modules = currentSpec.$modules || (currentSpec.$modules = []);
         angular.forEach(moduleFns, function(module) {
           if (angular.isObject(module) && !angular.isArray(module)) {
-            fn = function($provide) {
+            fn = ['$provide', function($provide) {
               angular.forEach(module, function(value, key) {
                 $provide.value(key, value);
               });
-            };
+            }];
           } else {
             fn = module;
           }
@@ -2791,9 +2791,9 @@ if (window.jasmine || window.mocha) {
     function workFn() {
       var modules = currentSpec.$modules || [];
       var strictDi = !!currentSpec.$injectorStrict;
-      modules.unshift(function($injector) {
+      modules.unshift(['$injector', function($injector) {
         currentSpec.$providerInjector = $injector;
-      });
+      }]);
       modules.unshift('ngMock');
       modules.unshift('ng');
       var injector = currentSpec.$injector;

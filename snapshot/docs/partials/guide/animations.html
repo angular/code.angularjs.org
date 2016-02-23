@@ -299,7 +299,7 @@ performance will take a hit even if an element has no animation.</p>
 which will then be matched against the classes of any element that is about to be animated. The regex
 allows a lot of flexibility - you can either allow animations only for specific classes (useful when
 you are working with 3rd party animations), or exclude specific classes from getting animated.</p>
-<pre><code class="lang-js">app.cofig($animateProvider) {
+<pre><code class="lang-js">app.config(function($animateProvider) {
   $animateProvider.classNameFilter(/animate-/);
 });
 </code></pre>
