@@ -142,6 +142,15 @@ $http(req).then(function(){...}, function(){...});
 and <code>transformResponse</code>. These properties can be a single function that returns
 the transformed value (<code>function(data, headersGetter, status)</code>) or an array of such transformation functions,
 which allows you to <code>push</code> or <code>unshift</code> a new transformation function into the transformation chain.</p>
+<div class="alert alert-warning">
+<strong>Note:</strong> Angular does not make a copy of the <code>data</code> parameter before it is passed into the <code>transformRequest</code> pipeline.
+That means changes to the properties of <code>data</code> are not local to the transform function (since Javascript passes objects by reference).
+For example, when calling <code>$http.get(url, $scope.myObject)</code>, modifications to the object&#39;s properties in a transformRequest
+function will be reflected on the scope and in any templates where the object is data-bound.
+To prevent his, transform functions should have no side-effects.
+If you need to modify properties, it is recommended to make a copy of the data, or create new object to return.
+</div>
+
 <h3 id="default-transformations">Default Transformations</h3>
 <p>The <code>$httpProvider</code> provider and <code>$http</code> service expose <code>defaults.transformRequest</code> and
 <code>defaults.transformResponse</code> properties. If a request does not provide its own transformations

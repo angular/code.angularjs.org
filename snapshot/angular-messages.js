@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.1-build.4643+sha.c900b9c
+ * @license AngularJS v1.5.1-build.4646+sha.32feb2b
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -548,7 +548,10 @@ angular.module('ngMessages', [])
              element.after(contents);
 
              // the anchor is placed for debugging purposes
-             var anchor = jqLite($document[0].createComment(' ngMessagesInclude: ' + src + ' '));
+             var comment = $compile.$$createComment ?
+                 $compile.$$createComment('ngMessagesInclude', src) :
+                 $document[0].createComment(' ngMessagesInclude: ' + src + ' ');
+             var anchor = jqLite(comment);
              element.after(anchor);
 
              // we don't want to pollute the DOM anymore by keeping an empty directive element
