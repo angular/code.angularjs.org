@@ -63,21 +63,26 @@ to is naturally camelcased.</p>
 <pre><code class="lang-html">&lt;svg ng-attr-view_box=&quot;{{viewBox}}&quot;&gt;
 &lt;/svg&gt;
 </code></pre>
-<p>The following attributes are also known to cause problems when used with normal bindings:</p>
+<p>Other attributes may also not work as expected when they contain interpolation markup, and
+can be used with <code>ngAttr</code> instead. The following is a list of known problematic attributes:</p>
 <ul>
-<li><strong>size</strong> in <code>&lt;select&gt;</code> elements (see <a href="https://github.com/angular/angular.js/issues/1619">Github issue 1619</a>)</li>
-<li><strong>placeholder</strong> in <code>&lt;textarea&gt;</code> in Internet Explorer 10/11 (see <a href="https://github.com/angular/angular.js/issues/5025">Github issue 5025</a>)</li>
+<li><strong>size</strong> in <code>&lt;select&gt;</code> elements (see <a href="https://github.com/angular/angular.js/issues/1619">issue 1619</a>)</li>
+<li><strong>placeholder</strong> in <code>&lt;textarea&gt;</code> in Internet Explorer 10/11 (see <a href="https://github.com/angular/angular.js/issues/5025">issue 5025</a>)</li>
+<li><strong>type</strong> in <code>&lt;button&gt;</code> in Internet Explorer 11 (see <a href="https://github.com/angular/angular.js/issues/5025">issue 14117</a>)</li>
 </ul>
 <h3 id="embedding-interpolation-markup-inside-expressions">Embedding interpolation markup inside expressions</h3>
-<p>Angular directives take either expressions or interpolation markup with embedded expressions. So the
-following example which embeds interpolation inside an expression is a bad practice:</p>
+<div class="alert alert-danger">
+<strong>Note:</strong> Angular directive attributes take either expressions <em>or</em> interpolation markup with embedded expressions.
+It is considered <strong>bad practice</strong> to embed interpolation markup inside an expression:
+</div>
+
 <pre><code class="lang-html">&lt;div ng-show=&quot;form{{$index}}.$invalid&quot;&gt;&lt;/div&gt;
 </code></pre>
 <p>You should instead delegate the computation of complex expressions to the scope, like this:</p>
 <pre><code class="lang-html">&lt;div ng-show=&quot;getForm($index).$invalid&quot;&gt;&lt;/div&gt;
 </code></pre>
-<pre><code class="lang-js">function getForm() {
-  return $scope[&#39;form&#39; + $index];
+<pre><code class="lang-js">function getForm(index) {
+  return $scope[&#39;form&#39; + index];
 }
 </code></pre>
 <p>You can also access the <code>scope</code> with <code>this</code> in your templates:</p>

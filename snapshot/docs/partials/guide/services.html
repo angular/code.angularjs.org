@@ -117,9 +117,13 @@ batchModule.factory(&#39;batchLog&#39;, [&#39;$interval&#39;, &#39;$log&#39;, fu
  */
 batchModule.factory(&#39;routeTemplateMonitor&#39;, [&#39;$route&#39;, &#39;batchLog&#39;, &#39;$rootScope&#39;,
   function($route, batchLog, $rootScope) {
-    $rootScope.$on(&#39;$routeChangeSuccess&#39;, function() {
-      batchLog($route.current ? $route.current.template : null);
-    });
+    return {
+      startMonitoring: function() {
+        $rootScope.$on(&#39;$routeChangeSuccess&#39;, function() {
+          batchLog($route.current ? $route.current.template : null);
+        });
+      }
+    };
   }]);
 </code></pre>
 <p>In the example, note that:</p>
