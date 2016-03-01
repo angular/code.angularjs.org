@@ -1113,6 +1113,11 @@ angular.module('navData', [])
             "name": "angular.mock.module",
             "href": "api/ngMock/function/angular.mock.module",
             "type": "function"
+          },
+          {
+            "name": "angular.mock.module.sharedInjector",
+            "href": "api/ngMock/function/angular.mock.module.sharedInjector",
+            "type": "function"
           }
         ]
       },

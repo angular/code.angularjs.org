@@ -349,6 +349,37 @@ That means a promise&#39;s <code>then</code>, <code>catch</code> and <code>final
 In tests, you can trigger a digest by calling a scope&#39;s <a href="api/ng/type/$rootScope.Scope#$apply"><code>$apply</code> function</a>.
 If you don&#39;t have a scope in your test, you can inject the <a href="api/ng/service/$rootScope">$rootScope</a> and call <code>$apply</code> on it.
 There is also an example of testing promises in the <a href="api/ng/service/$q#testing"><code>$q</code> service documentation</a>.</p>
+<h2 id="using-beforeall-">Using <code>beforeAll()</code></h2>
+<p>Jasmine&#39;s <code>beforeAll()</code> and mocha&#39;s <code>before()</code> hooks are often useful for sharing test setup - either to reduce test run-time or simply to make for more focussed test cases.</p>
+<p>By default, ngMock will create an injector per test case to ensure your tests do not affect each other. However, if we want to use <code>beforeAll()</code>, ngMock will have to create the injector before any test cases are run, and share that injector through all the cases for that <code>describe</code>. That is where <a href="api/ngMock/function/angular.mock.module.sharedInjector">module.sharedInjector()</a> comes in. When it&#39;s called within a <code>describe</code> block, a single injector is shared between all hooks and test cases run in that block.</p>
+<p>In the example below we are testing a service that takes a long time to generate its answer. To avoid having all of the assertions we want to write in a single test case, <a href="api/ngMock/function/angular.mock.module.sharedInjector">module.sharedInjector()</a> and Jasmine&#39;s <code>beforeAll()</code> are used to run the service only one. The test cases then all make assertions about the properties added to the service instance.</p>
+<pre><code class="lang-javascript">describe(&quot;Deep Thought&quot;, function() {
+
+  module.sharedInjector();
+
+  beforeAll(module(&quot;UltimateQuestion&quot;));
+
+  beforeAll(inject(function(DeepThought) {
+    expect(DeepThought.answer).toBe(undefined);
+    DeepThought.generateAnswer();
+  }));
+
+  it(&quot;has calculated the answer correctly&quot;, inject(function(DeepThought) {
+    // Because of sharedInjector, we have access to the instance of the DeepThought service 
+    // that was provided to the beforeAll() hook. Therefore we can test the generated answer
+    expect(DeepThought.answer).toBe(42);
+  }));
+
+  it(&quot;has calculated the answer within the expected time&quot;, inject(function(DeepThought) {
+    expect(DeepThought.runTimeMillennia).toBeLessThan(8000);
+  }));
+
+  it(&quot;has double checked the answer&quot;, inject(function(DeepThought) {
+    expect(DeepThought.absolutelySureItIsTheRightAnswer).toBe(true);
+  }));
+
+});
+</code></pre>
 <h2 id="sample-project">Sample project</h2>
 <p>See the <a href="https://github.com/angular/angular-seed">angular-seed</a> project for an example.</p>
 

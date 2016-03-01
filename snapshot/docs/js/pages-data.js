@@ -1746,6 +1746,11 @@ angular.module('pagesData', [])
     "area": "api",
     "path": "api/ngMock/function/angular.mock.module"
   },
+  "api/ngMock/function/angular.mock.module.sharedInjector": {
+    "name": "angular.mock.module.sharedInjector",
+    "area": "api",
+    "path": "api/ngMock/function/angular.mock.module.sharedInjector"
+  },
   "api/ngMock/function/angular.mock.inject": {
     "name": "angular.mock.inject",
     "area": "api",
