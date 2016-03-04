@@ -526,6 +526,11 @@ angular.module('pagesData', [])
     "area": "guide",
     "path": "guide/compiler"
   },
+  "guide/component-router": {
+    "name": "Component Router",
+    "area": "guide",
+    "path": "guide/component-router"
+  },
   "guide/component": {
     "name": "Components",
     "area": "guide",
@@ -1606,6 +1611,56 @@ angular.module('pagesData', [])
     "area": "api",
     "path": "api/ngAria/service/$aria"
   },
+  "api/ngComponentRouter": {
+    "name": "ngComponentRouter",
+    "area": "api",
+    "path": "api/ngComponentRouter"
+  },
+  "api/ngComponentRouter/type/Router": {
+    "name": "Router",
+    "area": "api",
+    "path": "api/ngComponentRouter/type/Router"
+  },
+  "api/ngComponentRouter/type/ChildRouter": {
+    "name": "ChildRouter",
+    "area": "api",
+    "path": "api/ngComponentRouter/type/ChildRouter"
+  },
+  "api/ngComponentRouter/type/RootRouter": {
+    "name": "RootRouter",
+    "area": "api",
+    "path": "api/ngComponentRouter/type/RootRouter"
+  },
+  "api/ngComponentRouter/type/ComponentInstruction": {
+    "name": "ComponentInstruction",
+    "area": "api",
+    "path": "api/ngComponentRouter/type/ComponentInstruction"
+  },
+  "api/ngComponentRouter/type/RouteDefinition": {
+    "name": "RouteDefinition",
+    "area": "api",
+    "path": "api/ngComponentRouter/type/RouteDefinition"
+  },
+  "api/ngComponentRouter/type/RouteParams": {
+    "name": "RouteParams",
+    "area": "api",
+    "path": "api/ngComponentRouter/type/RouteParams"
+  },
+  "api/ngComponentRouter/directive/ngOutlet": {
+    "name": "ngOutlet",
+    "area": "api",
+    "path": "api/ngComponentRouter/directive/ngOutlet"
+  },
+  "api/ngComponentRouter/service/$rootRouter": {
+    "name": "$rootRouter",
+    "area": "api",
+    "path": "api/ngComponentRouter/service/$rootRouter"
+  },
+  "api/ngComponentRouter/service/$routerRootComponent": {
+    "name": "$routerRootComponent",
+    "area": "api",
+    "path": "api/ngComponentRouter/service/$routerRootComponent"
+  },
   "api/ngCookies/service/$cookieStore": {
     "name": "$cookieStore",
     "area": "api",
@@ -1897,6 +1952,24 @@ angular.module('pagesData', [])
   },
   "examples/example-example6": {
     "path": "examples/example-example6"
+  },
+  "heroes.js": {
+    "path": "heroes.js"
+  },
+  "crisis.js": {
+    "path": "crisis.js"
+  },
+  "crisisDetail.html": {
+    "path": "crisisDetail.html"
+  },
+  "dialog.js": {
+    "path": "dialog.js"
+  },
+  "styles.css": {
+    "path": "styles.css"
+  },
+  "examples/example-componentRouter": {
+    "path": "examples/example-componentRouter"
   },
   "index.js": {
     "path": "index.js"
@@ -2668,6 +2741,21 @@ angular.module('pagesData', [])
     "name": "service components in ngAria",
     "area": "api",
     "path": "api/ngAria/service"
+  },
+  "api/ngComponentRouter/type": {
+    "name": "type components in ngComponentRouter",
+    "area": "api",
+    "path": "api/ngComponentRouter/type"
+  },
+  "api/ngComponentRouter/directive": {
+    "name": "directive components in ngComponentRouter",
+    "area": "api",
+    "path": "api/ngComponentRouter/directive"
+  },
+  "api/ngComponentRouter/service": {
+    "name": "service components in ngComponentRouter",
+    "area": "api",
+    "path": "api/ngComponentRouter/service"
   },
   "api/ngCookies/service": {
     "name": "service components in ngCookies",

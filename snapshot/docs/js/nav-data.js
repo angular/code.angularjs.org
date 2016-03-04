@@ -929,6 +929,73 @@ angular.module('navData', [])
         ]
       },
       {
+        "name": "ngComponentRouter",
+        "href": "api/ngComponentRouter",
+        "type": "group",
+        "navItems": [
+          {
+            "name": "type",
+            "type": "section",
+            "href": "api/ngComponentRouter/type"
+          },
+          {
+            "name": "ChildRouter",
+            "href": "api/ngComponentRouter/type/ChildRouter",
+            "type": "type"
+          },
+          {
+            "name": "ComponentInstruction",
+            "href": "api/ngComponentRouter/type/ComponentInstruction",
+            "type": "type"
+          },
+          {
+            "name": "RootRouter",
+            "href": "api/ngComponentRouter/type/RootRouter",
+            "type": "type"
+          },
+          {
+            "name": "RouteDefinition",
+            "href": "api/ngComponentRouter/type/RouteDefinition",
+            "type": "type"
+          },
+          {
+            "name": "RouteParams",
+            "href": "api/ngComponentRouter/type/RouteParams",
+            "type": "type"
+          },
+          {
+            "name": "Router",
+            "href": "api/ngComponentRouter/type/Router",
+            "type": "type"
+          },
+          {
+            "name": "directive",
+            "type": "section",
+            "href": "api/ngComponentRouter/directive"
+          },
+          {
+            "name": "ngOutlet",
+            "href": "api/ngComponentRouter/directive/ngOutlet",
+            "type": "directive"
+          },
+          {
+            "name": "service",
+            "type": "section",
+            "href": "api/ngComponentRouter/service"
+          },
+          {
+            "name": "$rootRouter",
+            "href": "api/ngComponentRouter/service/$rootRouter",
+            "type": "service"
+          },
+          {
+            "name": "$routerRootComponent",
+            "href": "api/ngComponentRouter/service/$routerRootComponent",
+            "type": "service"
+          }
+        ]
+      },
+      {
         "name": "ngCookies",
         "href": "api/ngCookies",
         "type": "group",
@@ -1983,6 +2050,11 @@ angular.module('navData', [])
           {
             "name": "Directives",
             "href": "guide/directive",
+            "type": "page"
+          },
+          {
+            "name": "Component Router",
+            "href": "guide/component-router",
             "type": "page"
           },
           {
