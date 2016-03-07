@@ -38,7 +38,7 @@ tests each with a single assertion.</p>
   beforeAll(module(&quot;UltimateQuestion&quot;));
 
   beforeAll(inject(function(DeepThought) {
-    expect(DeepThought.answer).toBe(undefined);
+    expect(DeepThought.answer).toBeUndefined();
     DeepThought.generateAnswer();
   }));
 

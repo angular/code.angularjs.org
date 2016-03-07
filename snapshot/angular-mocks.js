@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.1-build.4657+sha.6a336ba
+ * @license AngularJS v1.5.1-build.4658+sha.db281c1
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -2677,7 +2677,7 @@ angular.mock.$RootScopeDecorator = ['$delegate', function($delegate) {
    *   beforeAll(module("UltimateQuestion"));
    *
    *   beforeAll(inject(function(DeepThought) {
-   *     expect(DeepThought.answer).toBe(undefined);
+   *     expect(DeepThought.answer).toBeUndefined();
    *     DeepThought.generateAnswer();
    *   }));
    *

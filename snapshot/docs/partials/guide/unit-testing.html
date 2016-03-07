@@ -360,7 +360,7 @@ There is also an example of testing promises in the <a href="api/ng/service/$q#t
   beforeAll(module(&quot;UltimateQuestion&quot;));
 
   beforeAll(inject(function(DeepThought) {
-    expect(DeepThought.answer).toBe(undefined);
+    expect(DeepThought.answer).toBeUndefined();
     DeepThought.generateAnswer();
   }));
 
