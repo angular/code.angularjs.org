@@ -2053,13 +2053,13 @@ angular.module('navData', [])
             "type": "page"
           },
           {
-            "name": "Component Router",
-            "href": "guide/component-router",
+            "name": "Components",
+            "href": "guide/component",
             "type": "page"
           },
           {
-            "name": "Components",
-            "href": "guide/component",
+            "name": "Component Router",
+            "href": "guide/component-router",
             "type": "page"
           },
           {
