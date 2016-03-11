@@ -2,9 +2,9 @@
   'use strict';
 function EditableFieldController($scope, $element, $attrs) {
   var ctrl = this;
-  this.editMode = false;
+  ctrl.editMode = false;
 
-  this.handleModeChange = function() {
+  ctrl.handleModeChange = function() {
     if (ctrl.editMode) {
       ctrl.onUpdate({value: ctrl.fieldValue});
       ctrl.fieldValueCopy = ctrl.fieldValue;
@@ -12,17 +12,17 @@ function EditableFieldController($scope, $element, $attrs) {
     ctrl.editMode = !ctrl.editMode;
   };
 
-  this.reset = function() {
+  ctrl.reset = function() {
     ctrl.fieldValue = ctrl.fieldValueCopy;
   };
 
-  this.$onInit = function() {
+  ctrl.$onInit = function() {
     // Make a copy of the initial value to be able to reset it later
-    this.fieldValueCopy = this.fieldValue;
+    ctrl.fieldValueCopy = ctrl.fieldValue;
 
     // Set a default fieldType
-    if (!this.fieldType) {
-      this.fieldType = 'text';
+    if (!ctrl.fieldType) {
+      ctrl.fieldType = 'text';
     }
   };
 }
