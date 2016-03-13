@@ -1803,7 +1803,7 @@
     "path": "api/ng/provider/$parseProvider",
     "titleWords": "$parseProvider",
     "keywords": "$parse $parseprovider api be behavior can configuring default for html module ng of partials provider service the used",
-    "members": ""
+    "members": "addliteral"
   },
   {
     "path": "api/ng/service/$q",
