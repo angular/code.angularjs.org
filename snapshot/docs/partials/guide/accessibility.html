@@ -5,14 +5,14 @@
 <p>The goal of ngAria is to improve Angular&#39;s default accessibility by enabling common
 <a href="http://www.w3.org/TR/wai-aria/">ARIA</a> attributes that convey state or semantic information for
 assistive technologies used by persons with disabilities.</p>
-<h2 id="including-ngaria">Including ngAria</h2>
+<p>##Including ngAria</p>
 <p>Using <a href="api/ngAria">ngAria</a> is as simple as requiring the ngAria module in your application. ngAria hooks into
 standard AngularJS directives and quietly injects accessibility support into your application
 at runtime.</p>
 <pre><code class="lang-js">angular.module(&#39;myApp&#39;, [&#39;ngAria&#39;])...
 </code></pre>
-<h3 id="using-ngaria">Using ngAria</h3>
-<p>Most of what ngAria does is only visible &quot;under the hood&quot;. To see the module in action, once you&#39;ve
+<p>###Using ngAria
+Most of what ngAria does is only visible &quot;under the hood&quot;. To see the module in action, once you&#39;ve
 added it as a dependency, you can test a few things:</p>
 <ul>
 <li>Using your favorite element inspector, look for attributes added by ngAria in your own code.</li>
@@ -20,8 +20,8 @@ added it as a dependency, you can test a few things:</p>
 <li>Fire up a screen reader such as VoiceOver or NVDA to check for ARIA support.
 <a href="http://webaim.org/articles/screenreader_testing/">Helpful screen reader tips.</a></li>
 </ul>
-<h2 id="supported-directives">Supported directives</h2>
-<p>Currently, ngAria interfaces with the following directives:</p>
+<p>##Supported directives
+Currently, ngAria interfaces with the following directives:</p>
 <ul>
 <li><a href="guide/accessibility#ngmodel">ngModel</a></li>
 <li><a href="guide/accessibility#ngdisabled">ngDisabled</a></li>
@@ -49,7 +49,7 @@ attributes (if they have not been explicitly specified by the developer):</p>
 <li>aria-invalid</li>
 <li>aria-required</li>
 </ul>
-<h3 id="example">Example</h3>
+<p>###Example</p>
 <p>
 
 <div>
@@ -85,7 +85,7 @@ it with your keyboard and at least one mobile and desktop screen reader.</p>
 <a href="api/ng/directive/ngValue">ngValue</a> and <a href="api/ng/directive/ngChecked">ngChecked</a>.
 The original directives were created for native inputs only, so ngAria extends
 support to custom elements by managing <code>aria-checked</code> for accessibility.</p>
-<h3 id="example">Example</h3>
+<p>###Example</p>
 <pre><code class="lang-html">&lt;custom-checkbox ng-checked=&quot;val&quot;&gt;&lt;/custom-checkbox&gt;
 &lt;custom-radio-button ng-value=&quot;val&quot;&gt;&lt;/custom-radio-button&gt;
 </code></pre>
@@ -100,7 +100,7 @@ support to custom elements by managing <code>aria-checked</code> for accessibili
 using ngAria with <a href="api/ng/directive/ngDisabled">ngDisabled</a> will also
 add <code>aria-disabled</code>. This tells assistive technologies when a non-native input is disabled, helping
 custom controls to be more accessible.</p>
-<h3 id="example">Example</h3>
+<p>###Example</p>
 <pre><code class="lang-html">&lt;md-checkbox ng-disabled=&quot;disabled&quot;&gt;&lt;/md-checkbox&gt;
 </code></pre>
 <p>Becomes:</p>
@@ -116,7 +116,7 @@ custom controls to be more accessible.</p>
 <code>textarea</code>. To properly indicate custom element directives such as <code>&lt;md-checkbox&gt;</code> or <code>&lt;custom-input&gt;</code>
 as required, using ngAria with <a href="api/ng/directive/ngRequired">ngRequired</a> will also add
 <code>aria-required</code>. This tells accessibility APIs when a custom control is required.</p>
-<h3 id="example">Example</h3>
+<p>###Example</p>
 <pre><code class="lang-html">&lt;md-checkbox ng-required=&quot;val&quot;&gt;&lt;/md-checkbox&gt;
 </code></pre>
 <p>Becomes:</p>
@@ -140,7 +140,7 @@ interactive child elements from the tab order using <code>tabIndex=“-1”</cod
 screen reader users won&#39;t accidentally focus on &quot;mystery elements&quot;. Managing tab index on every
 child control can be complex and affect performance, so it’s best to just stick with the default
 <code>display: none</code> CSS. See the <a href="http://www.w3.org/TR/aria-in-html/#fourth-rule-of-aria-use">fourth rule of ARIA use</a>.</p>
-<h3 id="example">Example</h3>
+<p>###Example</p>
 <pre><code class="lang-css">.ng-hide {
   display: block;
   opacity: 0;
@@ -197,7 +197,7 @@ Becomes:
 sequencing and animation. To expose these visual messages to screen readers,
 ngAria injects <code>aria-live=&quot;assertive&quot;</code>, causing them to be read aloud any time a message is shown,
 regardless of the user&#39;s focus location.</p>
-<h3 id="example">Example</h3>
+<p>###Example</p>
 <pre><code class="lang-html">&lt;div ng-messages=&quot;myForm.myName.$error&quot;&gt;
   &lt;div ng-message=&quot;required&quot;&gt;You did not enter a field&lt;/div&gt;
   &lt;div ng-message=&quot;maxlength&quot;&gt;Your field is too long&lt;/div&gt;
@@ -209,8 +209,8 @@ regardless of the user&#39;s focus location.</p>
   &lt;div ng-message=&quot;maxlength&quot;&gt;Your field is too long&lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
-<h2 id="disabling-attributes">Disabling attributes</h2>
-<p>The attribute magic of ngAria may not work for every scenario. To disable individual attributes,
+<p>##Disabling attributes
+The attribute magic of ngAria may not work for every scenario. To disable individual attributes,
 you can use the <a href="api/ngAria/provider/$ariaProvider#config">config</a> method. Just keep in mind this will
 tell ngAria to ignore the attribute globally.</p>
 <p>
@@ -238,7 +238,7 @@ tell ngAria to ignore the attribute globally.</p>
 
 
 </p>
-<h2 id="common-accessibility-patterns">Common Accessibility Patterns</h2>
+<p>##Common Accessibility Patterns</p>
 <p>Accessibility best practices that apply to web apps in general also apply to Angular.</p>
 <ul>
 <li><strong>Text alternatives</strong>: Add alternate text content to make visual information accessible using
