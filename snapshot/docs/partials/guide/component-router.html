@@ -542,14 +542,14 @@ changes to the crisis being edited.</p>
 respectively.</p>
 <h2 id="navigation-control-hooks">Navigation Control Hooks</h2>
 <p><strong>How do I prevent navigation from occurring?</strong></p>
-<p>Each <strong>Component</strong> can provide the <code>$routerCanActivate</code> and <code>$routerCanDeactivate</code> <strong>Lifecycle Hooks</strong>. The
-<code>$routerCanDeactivate</code> hook is an instance method on the <strong>Component</strong>. The <code>$routerCanActivate</code> hook is a
-static method defined on either the <strong>Component Definition Object</strong> or the <strong>Component&#39;s</strong> constructor function.</p>
+<p>Each <strong>Component</strong> can provide the <code>$canActivate</code> and <code>$routerCanDeactivate</code> <strong>Lifecycle Hooks</strong>. The
+<code>$routerCanDeactivate</code> hook is an instance method on the <strong>Component</strong>. The <code>$canActivate</code> hook is used as a
+static method defined on the <strong>Component Definition Object</strong>.</p>
 <p>The <strong>Router</strong> will call these hooks to control navigation from one <strong>Route</strong> to another. Each of these hooks can
 return a <code>boolean</code> or a Promise that will resolve to a <code>boolean</code>.</p>
 <p>During a navigation, some <strong>Components</strong> will become inactive and some will become active. Before the navigation
 can complete, all the <strong>Components</strong> must agree that they can be deactivated or activated, respectively.</p>
-<p>The <strong>Router</strong> will call the <code>$routerCanDeactivate</code> and <code>$routerCanActivate</code> hooks, if they are provided. If any
+<p>The <strong>Router</strong> will call the <code>$routerCanDeactivate</code> and <code>$canActivate</code> hooks, if they are provided. If any
 of the hooks resolve to <code>false</code> then the navigation is cancelled.</p>
 <h3 id="dialog-box-service">Dialog Box Service</h3>
 <p>We can implement a very simple dialog box that will prompt the user whether they are happy to lose changes they
