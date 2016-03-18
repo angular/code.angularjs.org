@@ -2,7 +2,7 @@
   'use strict';
 angular.
  module('myServiceModule', []).
-  controller('MyController', ['$scope','notify', function ($scope, notify) {
+  controller('MyController', ['$scope', 'notify', function ($scope, notify) {
     $scope.callNotify = function(msg) {
       notify(msg);
     };
