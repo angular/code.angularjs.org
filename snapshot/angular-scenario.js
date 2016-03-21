@@ -9832,7 +9832,7 @@ return jQuery;
 }));
 
 /**
- * @license AngularJS v1.5.3-build.4683+sha.aa077e8
+ * @license AngularJS v1.5.3-build.4685+sha.4202d8a
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -9891,7 +9891,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.5.3-build.4683+sha.aa077e8/' +
+    message += '\nhttp://errors.angularjs.org/1.5.3-build.4685+sha.4202d8a/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -12277,7 +12277,7 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.5.3-build.4683+sha.aa077e8',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.5.3-build.4685+sha.4202d8a',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 5,
   dot: 3,
@@ -29611,7 +29611,7 @@ function formatNumber(number, pattern, groupSep, decimalSep, fractionSize) {
 
     // format the integer digits with grouping separators
     var groups = [];
-    if (digits.length > pattern.lgSize) {
+    if (digits.length >= pattern.lgSize) {
       groups.unshift(digits.splice(-pattern.lgSize).join(''));
     }
     while (digits.length > pattern.gSize) {
