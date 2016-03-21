@@ -90,11 +90,11 @@ default: <code>enabled:false</code></p>
 </li>
 <li><p><strong>hashPrefix(prefix)</strong>: {string}<br />
 prefix used for Hashbang URLs (used in Hashbang mode or in legacy browser in Html5 mode)<br />
-default: <code>&quot;&quot;</code></p>
+default: <code>&quot;!&quot;</code></p>
 </li>
 </ul>
 <h3 id="example-configuration">Example configuration</h3>
-<pre><code class="lang-js">$locationProvider.html5Mode(true).hashPrefix(&#39;!&#39;);
+<pre><code class="lang-js">$locationProvider.html5Mode(true).hashPrefix(&#39;*&#39;);
 </code></pre>
 <h2 id="getter-and-setter-methods">Getter and setter methods</h2>
 <p><code>$location</code> service provides getter methods for read-only parts of the URL (absUrl, protocol, host,
