@@ -27,12 +27,12 @@ when they are done processing.</p>
 <p>This is an implementation of promises/deferred objects inspired by
 <a href="https://github.com/kriskowal/q">Kris Kowal&#39;s Q</a>.</p>
 <p>$q can be used in two fashions --- one which is more similar to Kris Kowal&#39;s Q or jQuery&#39;s Deferred
-implementations, and the other which resembles ES6 promises to some degree.</p>
+implementations, and the other which resembles ES6 (ES2015) promises to some degree.</p>
 <h1 id="-q-constructor">$q constructor</h1>
 <p>The streamlined ES6 style promise is essentially just using $q as a constructor which takes a <code>resolver</code>
-function as the first argument. This is similar to the native Promise implementation from ES6 Harmony,
+function as the first argument. This is similar to the native Promise implementation from ES6,
 see <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">MDN</a>.</p>
-<p>While the constructor-style use is supported, not all of the supporting methods from ES6 Harmony promises are
+<p>While the constructor-style use is supported, not all of the supporting methods from ES6 promises are
 available yet.</p>
 <p>It can be used like so:</p>
 <pre><code class="lang-js">// for the purpose of this example let&#39;s assume that variables `$q` and `okToGreet`
