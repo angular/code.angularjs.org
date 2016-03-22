@@ -56,7 +56,7 @@
 </tbody>
 </table>
 <h2 id="component-based-applications">Component-based Applications</h2>
-<p>It recommended to develop AngularJS applications as a hierarchy of Components. Each Component
+<p>It is recommended to develop AngularJS applications as a hierarchy of Components. Each Component
 is an isolated part of the application, which is responsible for its own user interface and has
 a well defined programmatic interface to the Component that contains it. Take a look at the
 <a href="guide/component">component guide</a> for more information.</p>
@@ -109,7 +109,7 @@ this <strong>Routing Component</strong>.</p>
 the parts of the URL that have not already been matched by the previous <strong>Router</strong>.</p>
 <p>This process continues until we run out of <strong>Routing Components</strong> or consume the entire URL.</p>
 <p><img src="img/guide/component-routes.svg" alt="Routed Components"></p>
-<p>In the previous diagram can see that the URL <code>/heros/4</code> has been matched against the <code>App</code>, <code>Heroes</code> and
+<p>In the previous diagram, we can see that the URL <code>/heros/4</code> has been matched against the <code>App</code>, <code>Heroes</code> and
 <code>HeroDetail</code> <strong>Routing Components</strong>. The <strong>Routers</strong> for each of the <strong>Routing Components</strong> consumed a part
 of the URL: &quot;/&quot;, &quot;/heroes&quot; and &quot;/4&quot; respectively.</p>
 <p>The result is that we end up with a hierarchy of <strong>Routing Components</strong> rendered in <strong>Outlets</strong>, via the
@@ -189,7 +189,7 @@ of the URL: &quot;/&quot;, &quot;/heroes&quot; and &quot;/4&quot; respectively.<
 <p>In the following sections we will step through building this application. The finished application has views
 to display list and detail views of Heroes and Crises.</p>
 <h2 id="install-the-libraries">Install the libraries</h2>
-<p>It is simplest to use npm to install the <strong>Component Router</strong> module. For this guide we will also install
+<p>It is easier to use npm to install the <strong>Component Router</strong> module. For this guide we will also install
 AngularJS itself via npm:</p>
 <pre><code class="lang-bash">npm init
 npm install@1.5.x angular --save
@@ -202,15 +202,15 @@ npm install @angular/router --save
 &lt;script src=&quot;/app/app.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 <h2 id="create-the-app-module">Create the <code>app</code> module</h2>
-<p>In the app.js file, create the main application module <code>app</code> which depends upon the <code>ngComponentRouter</code>
+<p>In the app.js file, create the main application module <code>app</code> which depends on the <code>ngComponentRouter</code>
 module, which is provided by the <strong>Component Router</strong> script.</p>
 <pre><code class="lang-js">angular.module(&#39;app&#39;, [&#39;ngComponentRouter&#39;])
 </code></pre>
 <p>We must choose what <strong>Location Mode</strong> the <strong>Router</strong> should use. We are going to use HTML5 mode locations,
 so that we will not have hash-based paths. We must rely on the browser to provide <code>pushState</code> support,
-which is true of most modern browsers. See <a href="api/ng/provider/$locationProvider#html5Mode"><code>$locationProvider</code></a> for more information.</p>
+which is true for most modern browsers. See <a href="api/ng/provider/$locationProvider#html5Mode"><code>$locationProvider</code></a> for more information.</p>
 <div class="alert alert-info">
-  Using HTML5 mode means that we can have clean URLs for our application routes but it does require that our
+  Using HTML5 mode means that we can have clean URLs for our application routes. However, HTML5 mode does require that our
   web server, which hosts the application, understands that it must respond with the index.html file for
   requests to URLs that represent all our application routes. We are going to use the <code>lite-server</code> web server
   to do this for us.
@@ -245,7 +245,7 @@ must have a base URL.</p>
 &lt;/body&gt;
 </code></pre>
 <h1 id="implementing-the-appcomponent">Implementing the AppComponent</h1>
-<p>In the previous section we created a single top level <strong>App Component</strong>. Let&#39;s now create some more
+<p>In the previous section we have created a single top level <strong>App Component</strong>. Let&#39;s now create some more
 <strong>Routing Components</strong> and wire up <strong>Route Config</strong> for those. We start with a Heroes Feature, which
 will display one of two views.</p>
 <ul>
@@ -276,7 +276,7 @@ and <code>HeroDetail</code> <strong>Components</strong> that will actually displ
 of this view will be rendered.</p>
 <h3 id="nglink">ngLink</h3>
 <p>We have used the <code>ng-link</code> directive to create a link to navigate to the Heroes Component. By using this
-directive we don&#39;t need to know what the actual URL will be. We can leave the Router to generate that for us.</p>
+directive we don&#39;t need to know what the actual URL will be. We can let the Router generate that for us.</p>
 <p>We have included a link to the Crisis Center but have not included the <code>ng-link</code> directive as we have not yet
 implemented the CrisisCenter component.</p>
 <h3 id="non-terminal-routes">Non-terminal Routes</h3>
@@ -403,7 +403,7 @@ So we implement the <code>$routerOnActivate()</code> instance method.</p>
 </code></pre>
 <p>Running the application should update the browser&#39;s location to <code>/heroes</code> and display the list of heroes
 returned from the <code>heroService</code>.</p>
-<p>By returning a promise for the list of heroes from <code>$routerOnActivate()</code> we can delay activation of the
+<p>By returning a promise for the list of heroes from <code>$routerOnActivate()</code> we can delay the activation of the
 Route until the heroes have arrived successfully. This is similar to how a <code>resolve</code> works in <a href="api/ngRoute"><code>ngRoute</code></a>.</p>
 <h2 id="route-parameters">Route Parameters</h2>
 <p><strong>How do I access parameters for the current route?</strong></p>
