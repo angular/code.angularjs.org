@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.3-build.4694+sha.cc1de81
+ * @license AngularJS v1.5.3-build.4695+sha.7489d56
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -3902,7 +3902,7 @@ var ngAnimateSwapDirective = ['$animate', '$rootScope', function($animate, $root
            deps="angular-animate.js;angular-route.js"
            animations="true">
     <file name="index.html">
-      <a href="#/">Home</a>
+      <a href="#!/">Home</a>
       <hr />
       <div class="view-container">
         <div ng-view class="view"></div>
@@ -3949,7 +3949,7 @@ var ngAnimateSwapDirective = ['$animate', '$rootScope', function($animate, $root
       <h2>Welcome to the home page</h1>
       <p>Please click on an element</p>
       <a class="record"
-         ng-href="#/profile/{{ record.id }}"
+         ng-href="#!/profile/{{ record.id }}"
          ng-animate-ref="{{ record.id }}"
          ng-repeat="record in records">
         {{ record.title }}

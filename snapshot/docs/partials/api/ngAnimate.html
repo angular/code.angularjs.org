@@ -499,7 +499,7 @@ in phases directly via <code>ng-anchor-out</code> and <code>ng-anchor-in</code>.
       name="index.html"
       language="html"
       type="html">
-      <pre><code>&lt;a href=&quot;#/&quot;&gt;Home&lt;/a&gt;&#10;&lt;hr /&gt;&#10;&lt;div class=&quot;view-container&quot;&gt;&#10;  &lt;div ng-view class=&quot;view&quot;&gt;&lt;/div&gt;&#10;&lt;/div&gt;</code></pre>
+      <pre><code>&lt;a href=&quot;#!/&quot;&gt;Home&lt;/a&gt;&#10;&lt;hr /&gt;&#10;&lt;div class=&quot;view-container&quot;&gt;&#10;  &lt;div ng-view class=&quot;view&quot;&gt;&lt;/div&gt;&#10;&lt;/div&gt;</code></pre>
     </div>
   
     <div class="runnable-example-file" 
@@ -513,7 +513,7 @@ in phases directly via <code>ng-anchor-out</code> and <code>ng-anchor-in</code>.
       name="home.html"
       language="html"
       type="html">
-      <pre><code>&lt;h2&gt;Welcome to the home page&lt;/h1&gt;&#10;&lt;p&gt;Please click on an element&lt;/p&gt;&#10;&lt;a class=&quot;record&quot;&#10;   ng-href=&quot;#/profile/{{ record.id }}&quot;&#10;   ng-animate-ref=&quot;{{ record.id }}&quot;&#10;   ng-repeat=&quot;record in records&quot;&gt;&#10;  {{ record.title }}&#10;&lt;/a&gt;</code></pre>
+      <pre><code>&lt;h2&gt;Welcome to the home page&lt;/h1&gt;&#10;&lt;p&gt;Please click on an element&lt;/p&gt;&#10;&lt;a class=&quot;record&quot;&#10;   ng-href=&quot;#!/profile/{{ record.id }}&quot;&#10;   ng-animate-ref=&quot;{{ record.id }}&quot;&#10;   ng-repeat=&quot;record in records&quot;&gt;&#10;  {{ record.title }}&#10;&lt;/a&gt;</code></pre>
     </div>
   
     <div class="runnable-example-file" 
