@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.3-build.4696+sha.874c0fd
+ * @license AngularJS v1.5.3-build.4698+sha.3cd00fa
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -263,6 +263,8 @@ ngAriaModule.directive('ngShow', ['$aria', function($aria) {
           }
 
           function getRadioReaction(newVal) {
+            // Strict comparison would cause a BC
+            /* jshint eqeqeq:false */
             var boolVal = (attr.value == ngModel.$viewValue);
             elem.attr('aria-checked', boolVal);
           }
