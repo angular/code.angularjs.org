@@ -31,6 +31,11 @@ angular.module('pagesData', [])
     "area": "error",
     "path": "error/$compile/ctreq"
   },
+  "error/$compile/infchng": {
+    "name": "infchng",
+    "area": "error",
+    "path": "error/$compile/infchng"
+  },
   "error/$compile/iscp": {
     "name": "iscp",
     "area": "error",

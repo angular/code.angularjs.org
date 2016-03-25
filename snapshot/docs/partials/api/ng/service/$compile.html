@@ -262,9 +262,22 @@ The <code>$transclude</code> function also has a method on it, <code>$transclude
 </ul>
 <p>The controller can provide the following methods that act as life-cycle hooks:</p>
 <ul>
-<li><code>$onInit</code> - Called on each controller after all the controllers on an element have been constructed and
+<li><code>$onInit()</code> - Called on each controller after all the controllers on an element have been constructed and
 had their bindings initialized (and before the pre &amp; post linking functions for the directives on
 this element). This is a good place to put initialization code for your controller.</li>
+<li><code>$onChanges(changesObj)</code> - Called whenever one-way (<code>&lt;</code>) or interpolation (<code>@</code>) bindings are updated. The
+<code>changesObj</code> is a hash whose keys are the names of the bound properties that have changed, and the values are an
+object of the form <code>{ currentValue: ..., previousValue: ... }</code>. Use this hook to trigger updates within a component
+such as cloning the bound value to prevent accidental mutation of the outer value.</li>
+<li><code>$onDestroy()</code> - Called on a controller when its containing scope is destroyed. Use this hook for releasing
+external resources, watches and event handlers. Note that components have their <code>$onDestroy()</code> hooks called in
+the same order as the <code>$scope.$broadcast</code> events are triggered, which is top down. This means that parent
+components will have their <code>$onDestroy()</code> hook called before child components.</li>
+<li><code>$postLink()</code> - Called after this controller&#39;s element and its children have been linked. Similar to the post-link
+function this hook can be used to set up DOM event handlers and do direct DOM manipulation.
+Note that child elements that contain <code>templateUrl</code> directives will not have been compiled and linked since
+they are waiting for their template to load asynchronously and their own compilation and linking has been
+suspended until that occurs.</li>
 </ul>
 <h4 id="-require-"><code>require</code></h4>
 <p>Require another directive and inject its controller as the fourth argument to the linking function. The

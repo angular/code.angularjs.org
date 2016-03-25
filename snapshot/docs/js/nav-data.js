@@ -1405,6 +1405,11 @@ angular.module('navData', [])
             "type": "error"
           },
           {
+            "name": "infchng",
+            "href": "error/$compile/infchng",
+            "type": "error"
+          },
+          {
             "name": "iscp",
             "href": "error/$compile/iscp",
             "type": "error"
