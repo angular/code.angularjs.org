@@ -228,7 +228,7 @@ had their bindings initialized (and before the pre &amp; post linking functions 
 this element). This is a good place to put initialization code for your controller.</li>
 <li><code>$onChanges(changesObj)</code> - Called whenever one-way bindings are updated. The <code>changesObj</code> is a hash whose keys
 are the names of the bound properties that have changed, and the values are an object of the form
-<code>{ currentValue: ..., previousValue: ... }</code>. Use this hook to trigger updates within a component such as
+<code>{ currentValue, previousValue, isFirstChange() }</code>. Use this hook to trigger updates within a component such as
 cloning the bound value to prevent accidental mutation of the outer value.</li>
 <li><code>$onDestroy()</code> - Called on a controller when its containing scope is destroyed. Use this hook for releasing
 external resources, watches and event handlers.</li>

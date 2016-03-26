@@ -9832,7 +9832,7 @@ return jQuery;
 }));
 
 /**
- * @license AngularJS v1.5.4-build.4703+sha.bd0915c
+ * @license AngularJS v1.5.4-build.4704+sha.a6a4b23
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -9891,7 +9891,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.5.4-build.4703+sha.bd0915c/' +
+    message += '\nhttp://errors.angularjs.org/1.5.4-build.4704+sha.a6a4b23/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -12279,7 +12279,7 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.5.4-build.4703+sha.bd0915c',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.5.4-build.4704+sha.a6a4b23',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 5,
   dot: 4,
@@ -16664,8 +16664,8 @@ function $TemplateCacheProvider() {
  *   this element). This is a good place to put initialization code for your controller.
  * * `$onChanges(changesObj)` - Called whenever one-way (`<`) or interpolation (`@`) bindings are updated. The
  *   `changesObj` is a hash whose keys are the names of the bound properties that have changed, and the values are an
- *   object of the form `{ currentValue: ..., previousValue: ... }`. Use this hook to trigger updates within a component
- *   such as cloning the bound value to prevent accidental mutation of the outer value.
+ *   object of the form `{ currentValue, previousValue, isFirstChange() }`. Use this hook to trigger updates within a
+ *   component such as cloning the bound value to prevent accidental mutation of the outer value.
  * * `$onDestroy()` - Called on a controller when its containing scope is destroyed. Use this hook for releasing
  *   external resources, watches and event handlers. Note that components have their `$onDestroy()` hooks called in
  *   the same order as the `$scope.$broadcast` events are triggered, which is top down. This means that parent
@@ -17211,6 +17211,9 @@ function $TemplateCacheProvider() {
  */
 
 var $compileMinErr = minErr('$compile');
+
+function UNINITIALIZED_VALUE() {}
+var _UNINITIALIZED_VALUE = new UNINITIALIZED_VALUE();
 
 /**
  * @ngdoc provider
@@ -19481,6 +19484,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
               // the value to boolean rather than a string, so we special case this situation
               destination[scopeName] = lastValue;
             }
+            recordChanges(scopeName, destination[scopeName], _UNINITIALIZED_VALUE);
             break;
 
           case '=':
@@ -19536,6 +19540,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
             parentGet = $parse(attrs[attrName]);
 
             destination[scopeName] = parentGet(scope);
+            recordChanges(scopeName, destination[scopeName], _UNINITIALIZED_VALUE);
 
             removeWatch = scope.$watch(parentGet, function parentValueWatchAction(newParentValue) {
               var oldValue = destination[scopeName];
@@ -19577,7 +19582,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
             previousValue = changes[key].previousValue;
           }
           // Store this change
-          changes[key] = {previousValue: previousValue, currentValue: currentValue};
+          changes[key] = new SimpleChange(previousValue, currentValue);
         }
       }
 
@@ -19595,6 +19600,13 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
     }
   }];
 }
+
+function SimpleChange(previous, current) {
+  this.previousValue = previous;
+  this.currentValue = current;
+}
+SimpleChange.prototype.isFirstChange = function() { return this.previousValue === _UNINITIALIZED_VALUE; };
+
 
 var PREFIX_REGEXP = /^((?:x|data)[\:\-_])/i;
 /**
