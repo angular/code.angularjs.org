@@ -2180,7 +2180,7 @@
   {
     "path": "api/ngParseExt",
     "titleWords": "ngParseExt parseext",
-    "keywords": "allow allows an and angular angular-parseext any api as be characters convention definition delegates doc-module-components es6 expression expressions follows functionality html identifier identifiers in inside isvalididentifierstart js module naming ngparseext of partials provides rules some that the this to unicode usage used uses",
+    "keywords": "allow allows an and angular angular-parse-ext any api as be characters convention definition delegates doc-module-components es6 expression expressions follows functionality html identifier identifiers in inside isvalididentifierstart js module naming ngparseext of partials provides rules some that the this to unicode usage used uses",
     "members": ""
   },
   {
