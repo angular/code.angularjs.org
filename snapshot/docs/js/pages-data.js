@@ -1816,6 +1816,11 @@ angular.module('pagesData', [])
     "area": "api",
     "path": "api/ngMock/function/angular.mock.inject"
   },
+  "api/ngParseExt": {
+    "name": "ngParseExt",
+    "area": "api",
+    "path": "api/ngParseExt"
+  },
   "api/ngResource": {
     "name": "ngResource",
     "area": "api",

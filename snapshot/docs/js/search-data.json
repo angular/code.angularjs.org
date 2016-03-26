@@ -1809,7 +1809,7 @@
     "path": "api/ng/provider/$parseProvider",
     "titleWords": "$parseProvider",
     "keywords": "$parse $parseprovider api be behavior can configuring default for html module ng of partials provider service the used",
-    "members": "addliteral"
+    "members": "addliteral setidentifierfns"
   },
   {
     "path": "api/ng/service/$q",
@@ -2175,6 +2175,12 @@
     "path": "api/ngMock/function/angular.mock.inject",
     "titleWords": "angular.mock.inject",
     "keywords": "$injector $provide _myservice_ able access aliases all also an and angular any api app are arguments as assign auto available be beforeeach block body by can clauses creates declared default defined describe do dostuff easy enclosed erroraddingdeclarationlocationstack example expect fns for function functions given have help here hide html ignored in inject injectable injected injector inside instance into is it jasmine js like likely load loads looks makes method mocha mock mode module modules most multiple must myapp myapplicationmodule myservice name need new ng ngmock number of often on once only optionally or out outer outside overridden override parameter parameters partials per problem provide published reference references resolved resolving reuse running same scope see series should since strings takes test tests that the then these this to toequal typical underscores use used using v1 value var variable version want we what when which will window with would wrap wrapping wraps you",
+    "members": ""
+  },
+  {
+    "path": "api/ngParseExt",
+    "titleWords": "ngParseExt parseext",
+    "keywords": "allow allows an and angular angular-parseext any api as be characters convention definition delegates doc-module-components es6 expression expressions follows functionality html identifier identifiers in inside isvalididentifierstart js module naming ngparseext of partials provides rules some that the this to unicode usage used uses",
     "members": ""
   },
   {

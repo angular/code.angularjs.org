@@ -1206,6 +1206,12 @@ angular.module('navData', [])
         ]
       },
       {
+        "name": "ngParseExt",
+        "href": "api/ngParseExt",
+        "type": "group",
+        "navItems": []
+      },
+      {
         "name": "ngResource",
         "href": "api/ngResource",
         "type": "group",
