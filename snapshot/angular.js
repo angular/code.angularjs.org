@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.3-build.4698+sha.3cd00fa
+ * @license AngularJS v1.5.4-build.4699+sha.bd7d5f6
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -57,7 +57,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.5.3-build.4698+sha.3cd00fa/' +
+    message += '\nhttp://errors.angularjs.org/1.5.4-build.4699+sha.bd7d5f6/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -2445,10 +2445,10 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.5.3-build.4698+sha.3cd00fa',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.5.4-build.4699+sha.bd7d5f6',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 5,
-  dot: 3,
+  dot: 4,
   codeName: 'snapshot'
 };
 
@@ -14340,7 +14340,7 @@ ASTCompiler.prototype = {
     case AST.Literal:
       expression = this.escape(ast.value);
       this.assign(intoId, expression);
-      recursionFn(expression);
+      recursionFn(intoId || expression);
       break;
     case AST.UnaryExpression:
       this.recurse(ast.argument, undefined, undefined, function(expr) { right = expr; });
@@ -14462,7 +14462,7 @@ ASTCompiler.prototype = {
           self.if_(self.notNull(right), function() {
             self.addEnsureSafeFunction(right);
             forEach(ast.arguments, function(expr) {
-              self.recurse(expr, self.nextId(), undefined, function(argument) {
+              self.recurse(expr, ast.constant ? undefined : self.nextId(), undefined, function(argument) {
                 args.push(self.ensureSafeObject(argument));
               });
             });
@@ -14503,18 +14503,18 @@ ASTCompiler.prototype = {
     case AST.ArrayExpression:
       args = [];
       forEach(ast.elements, function(expr) {
-        self.recurse(expr, self.nextId(), undefined, function(argument) {
+        self.recurse(expr, ast.constant ? undefined : self.nextId(), undefined, function(argument) {
           args.push(argument);
         });
       });
       expression = '[' + args.join(',') + ']';
       this.assign(intoId, expression);
-      recursionFn(expression);
+      recursionFn(intoId || expression);
       break;
     case AST.ObjectExpression:
       args = [];
       forEach(ast.properties, function(property) {
-        self.recurse(property.value, self.nextId(), undefined, function(expr) {
+        self.recurse(property.value, ast.constant ? undefined : self.nextId(), undefined, function(expr) {
           args.push(self.escape(
               property.key.type === AST.Identifier ? property.key.name :
                 ('' + property.key.value)) +
@@ -14523,19 +14523,19 @@ ASTCompiler.prototype = {
       });
       expression = '{' + args.join(',') + '}';
       this.assign(intoId, expression);
-      recursionFn(expression);
+      recursionFn(intoId || expression);
       break;
     case AST.ThisExpression:
       this.assign(intoId, 's');
-      recursionFn('s');
+      recursionFn(intoId || 's');
       break;
     case AST.LocalsExpression:
       this.assign(intoId, 'l');
-      recursionFn('l');
+      recursionFn(intoId || 'l');
       break;
     case AST.NGValueParameter:
       this.assign(intoId, 'v');
-      recursionFn('v');
+      recursionFn(intoId || 'v');
       break;
     }
   },
