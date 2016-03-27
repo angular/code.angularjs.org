@@ -621,6 +621,11 @@ angular.module('navData', [])
             "type": "provider"
           },
           {
+            "name": "$qProvider",
+            "href": "api/ng/provider/$qProvider",
+            "type": "provider"
+          },
+          {
             "name": "$rootScopeProvider",
             "href": "api/ng/provider/$rootScopeProvider",
             "type": "provider"

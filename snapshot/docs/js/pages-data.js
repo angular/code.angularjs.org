@@ -1516,6 +1516,11 @@ angular.module('pagesData', [])
     "area": "api",
     "path": "api/ng/service/$q"
   },
+  "api/ng/provider/$qProvider": {
+    "name": "$qProvider",
+    "area": "api",
+    "path": "api/ng/provider/$qProvider"
+  },
   "api/ng/service/$rootElement": {
     "name": "$rootElement",
     "area": "api",

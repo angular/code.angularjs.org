@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.4-build.4706+sha.0ece2d5
+ * @license AngularJS v1.5.4-build.4707+sha.71cf28c
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -452,7 +452,7 @@ angular.mock.$IntervalProvider = function() {
           promise = deferred.promise;
 
       count = (angular.isDefined(count)) ? count : 0;
-      promise.then(null, null, (!hasParams) ? fn : function() {
+      promise.then(null, function() {}, (!hasParams) ? fn : function() {
         fn.apply(null, args);
       });
 
@@ -512,6 +512,7 @@ angular.mock.$IntervalProvider = function() {
       });
 
       if (angular.isDefined(fnIndex)) {
+        repeatFns[fnIndex].deferred.promise.then(undefined, function() {});
         repeatFns[fnIndex].deferred.reject('canceled');
         repeatFns.splice(fnIndex, 1);
         return true;

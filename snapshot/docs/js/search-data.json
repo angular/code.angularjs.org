@@ -1818,6 +1818,12 @@
     "members": "all defer reject resolve when"
   },
   {
+    "path": "api/ng/provider/$qProvider",
+    "titleWords": "$qProvider",
+    "keywords": "$qprovider api html module ng partials provider",
+    "members": "erroronunhandledrejections"
+  },
+  {
     "path": "api/ng/service/$rootElement",
     "titleWords": "$rootElement",
     "keywords": "$injector $rootelement also and angular api application auto be bootstrap can declared directive either element gets html injector into is it location module ng ngapp of or partials passed published represents retrieved root service the this using was where",

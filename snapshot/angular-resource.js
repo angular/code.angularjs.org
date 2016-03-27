@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.4-build.4706+sha.0ece2d5
+ * @license AngularJS v1.5.4-build.4707+sha.71cf28c
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -706,12 +706,9 @@ angular.module('ngResource', ['ng']).
               response.resource = value;
 
               return response;
-            }, function(response) {
-              (error || noop)(response);
-              return $q.reject(response);
             });
 
-            promise['finally'](function() {
+            promise = promise['finally'](function() {
               value.$resolved = true;
               if (!isInstanceCall && cancellable) {
                 value.$cancelRequest = angular.noop;
@@ -726,7 +723,13 @@ angular.module('ngResource', ['ng']).
                 (success || noop)(value, response.headers);
                 return value;
               },
-              responseErrorInterceptor);
+              responseErrorInterceptor || error ?
+              function(response) {
+                (error || noop)(response);
+                (responseErrorInterceptor || noop)(response);
+                return response;
+              }
+              : undefined);
 
             if (!isInstanceCall) {
               // we are creating instance / collection
@@ -734,13 +737,18 @@ angular.module('ngResource', ['ng']).
               // - return the instance / collection
               value.$promise = promise;
               value.$resolved = false;
-              if (cancellable) value.$cancelRequest = timeoutDeferred.resolve;
+              if (cancellable) value.$cancelRequest = cancelRequest;
 
               return value;
             }
 
             // instance call
             return promise;
+
+            function cancelRequest(value) {
+              promise.catch(noop);
+              timeoutDeferred.resolve(value);
+            }
           };
 
 
