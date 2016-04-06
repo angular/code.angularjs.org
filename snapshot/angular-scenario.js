@@ -9832,11 +9832,11 @@ return jQuery;
 }));
 
 /**
- * @license AngularJS v1.5.4-build.4713+sha.fad6c7c
+ * @license AngularJS v1.5.4-build.4714+sha.ddad264
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
-(function(window, document){
+(function(window){
   var _jQuery = window.jQuery.noConflict(true);
 
 /**
@@ -9891,7 +9891,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.5.4-build.4713+sha.fad6c7c/' +
+    message += '\nhttp://errors.angularjs.org/1.5.4-build.4714+sha.ddad264/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -10072,7 +10072,7 @@ var
  * documentMode is an IE-only property
  * http://msdn.microsoft.com/en-us/library/ie/cc196988(v=vs.85).aspx
  */
-msie = document.documentMode;
+msie = window.document.documentMode;
 
 
 /**
@@ -10930,8 +10930,8 @@ var csp = function() {
   if (!isDefined(csp.rules)) {
 
 
-    var ngCspElement = (document.querySelector('[ng-csp]') ||
-                    document.querySelector('[data-ng-csp]'));
+    var ngCspElement = (window.document.querySelector('[ng-csp]') ||
+                    window.document.querySelector('[data-ng-csp]'));
 
     if (ngCspElement) {
       var ngCspAttribute = ngCspElement.getAttribute('ng-csp') ||
@@ -11006,7 +11006,7 @@ var jq = function() {
   var i, ii = ngAttrPrefixes.length, prefix, name;
   for (i = 0; i < ii; ++i) {
     prefix = ngAttrPrefixes[i];
-    if (el = document.querySelector('[' + prefix.replace(':', '\\:') + 'jq]')) {
+    if (el = window.document.querySelector('[' + prefix.replace(':', '\\:') + 'jq]')) {
       name = el.getAttribute(prefix + 'jq');
       break;
     }
@@ -11071,7 +11071,7 @@ function toJsonReplacer(key, value) {
     val = undefined;
   } else if (isWindow(value)) {
     val = '$WINDOW';
-  } else if (value &&  document === value) {
+  } else if (value &&  window.document === value) {
     val = '$DOCUMENT';
   } else if (isScope(value)) {
     val = '$SCOPE';
@@ -11523,7 +11523,7 @@ function bootstrap(element, modules, config) {
     element = jqLite(element);
 
     if (element.injector()) {
-      var tag = (element[0] === document) ? 'document' : startingTag(element);
+      var tag = (element[0] === window.document) ? 'document' : startingTag(element);
       //Encode angle brackets to prevent input from being sanitized to empty string #8683
       throw ngMinErr(
           'btstrpd',
@@ -12280,7 +12280,7 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.5.4-build.4713+sha.fad6c7c',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.5.4-build.4714+sha.ddad264',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 5,
   dot: 4,
@@ -12659,7 +12659,7 @@ function jqLiteBuildFragment(html, context) {
 }
 
 function jqLiteParseHTML(html, context) {
-  context = context || document;
+  context = context || window.document;
   var parsed;
 
   if ((parsed = SINGLE_TAG_REGEXP.exec(html))) {
@@ -12685,7 +12685,7 @@ function jqLiteWrapNode(node, wrapper) {
 
 
 // IE9-11 has no method "contains" in SVG element and in Node.prototype. Bug #10259.
-var jqLiteContains = Node.prototype.contains || function(arg) {
+var jqLiteContains = window.Node.prototype.contains || function(arg) {
   // jshint bitwise: false
   return !!(this.compareDocumentPosition(arg) & 16);
   // jshint bitwise: true
@@ -12957,8 +12957,8 @@ var JQLitePrototype = JQLite.prototype = {
     }
 
     // check if document is already loaded
-    if (document.readyState === 'complete') {
-      setTimeout(trigger);
+    if (window.document.readyState === 'complete') {
+      window.setTimeout(trigger);
     } else {
       this.on('DOMContentLoaded', trigger); // works for modern browsers and IE9
       // we can not use jqLite since we are not done loading and jQuery could be loaded later.
@@ -17642,7 +17642,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
              $controller,   $rootScope,   $sce,   $animate,   $$sanitizeUri) {
 
     var SIMPLE_ATTR_NAME = /^\w/;
-    var specialAttrHolder = document.createElement('div');
+    var specialAttrHolder = window.document.createElement('div');
 
 
 
@@ -17973,7 +17973,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
       if (debugInfoEnabled) {
         content = ' ' + (directiveName || '') + ': ' + (comment || '') + ' ';
       }
-      return document.createComment(content);
+      return window.document.createComment(content);
     };
 
     return compile;
@@ -18676,7 +18676,9 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
             replaceDirective = directive;
           }
 
+          /* jshint -W021 */
           nodeLinkFn = compileTemplateUrl(directives.splice(i, directives.length - i), $compileNode,
+          /* jshint +W021 */
               templateAttrs, jqCollection, hasTranscludeDirective && childTranscludeFn, preLinkFns, postLinkFns, {
                 controllerDirectives: controllerDirectives,
                 newScopeDirective: (newScopeDirective !== directive) && newScopeDirective,
@@ -19282,7 +19284,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
       switch (type) {
       case 'svg':
       case 'math':
-        var wrapper = document.createElement('div');
+        var wrapper = window.document.createElement('div');
         wrapper.innerHTML = '<' + type + '>' + template + '</' + type + '>';
         return wrapper.childNodes[0].childNodes;
       default:
@@ -19426,7 +19428,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
       // - remove them from the DOM
       // - allow them to still be traversed with .nextSibling
       // - allow a single fragment.qSA to fetch all elements being removed
-      var fragment = document.createDocumentFragment();
+      var fragment = window.document.createDocumentFragment();
       for (i = 0; i < removeCount; i++) {
         fragment.appendChild(elementsToRemove[i]);
       }
@@ -29015,7 +29017,7 @@ function $TimeoutProvider() {
 // doesn't know about mocked locations and resolves URLs to the real document - which is
 // exactly the behavior needed here.  There is little value is mocking these out for this
 // service.
-var urlParsingNode = document.createElement("a");
+var urlParsingNode = window.document.createElement("a");
 var originUrl = urlResolve(window.location.href);
 
 
@@ -35662,7 +35664,7 @@ var ngIncludeFillContentDirective = ['$compile',
           // support innerHTML, so detect this here and try to generate the contents
           // specially.
           $element.empty();
-          $compile(jqLiteBuildFragment(ctrl.template, document).childNodes)(scope,
+          $compile(jqLiteBuildFragment(ctrl.template, window.document).childNodes)(scope,
               function namespaceAdaptedClone(clone) {
             $element.append(clone);
           }, {futureParentElement: $element});
@@ -37737,8 +37739,8 @@ var ngOptionsDirective = ['$compile', '$parse', function($compile, $parse) {
 
   // we can't just jqLite('<option>') since jqLite is not smart enough
   // to create it in <select> and IE barfs otherwise.
-  var optionTemplate = document.createElement('option'),
-      optGroupTemplate = document.createElement('optgroup');
+  var optionTemplate = window.document.createElement('option'),
+      optGroupTemplate = window.document.createElement('optgroup');
 
     function ngOptionsPostLink(scope, selectElement, attr, ctrls) {
 
@@ -39758,7 +39760,7 @@ var SelectController =
   //
   // We can't just jqLite('<option>') since jqLite is not smart enough
   // to create it in <select> and IE barfs otherwise.
-  self.unknownOption = jqLite(document.createElement('option'));
+  self.unknownOption = jqLite(window.document.createElement('option'));
   self.renderUnknownOption = function(val) {
     var unknownVal = '? ' + hashKey(val) + ' ?';
     self.unknownOption.val(unknownVal);
@@ -40824,7 +40826,7 @@ angular.scenario.matcher = angular.scenario.matcher || function(name, fn) {
  */
 angular.scenario.setUpAndRun = function(config) {
   var href = window.location.href;
-  var body = _jQuery(document.body);
+  var body = _jQuery(window.document.body);
   var output = [];
   var objModel = new angular.scenario.ObjectModel($runner);
 
@@ -41107,7 +41109,7 @@ _jQuery.fn.bindings = function(windowJquery, bindExp) {
           evnt = new TransitionEvent(eventType, eventData);
         }
         catch (e) {
-          evnt = document.createEvent('TransitionEvent');
+          evnt = window.document.createEvent('TransitionEvent');
           evnt.initTransitionEvent(eventType, null, null, null, eventData.elapsedTime || 0);
         }
       }
@@ -41120,14 +41122,14 @@ _jQuery.fn.bindings = function(windowJquery, bindExp) {
           evnt = new AnimationEvent(eventType, eventData);
         }
         catch (e) {
-          evnt = document.createEvent('AnimationEvent');
+          evnt = window.document.createEvent('AnimationEvent');
           evnt.initAnimationEvent(eventType, null, null, null, eventData.elapsedTime || 0);
         }
       }
     } else if (/touch/.test(eventType) && supportsTouchEvents()) {
       evnt = createTouchEvent(element, eventType, x, y);
     } else {
-      evnt = document.createEvent('MouseEvents');
+      evnt = window.document.createEvent('MouseEvents');
       x = x || 0;
       y = y || 0;
       evnt.initMouseEvent(eventType, true, true, window, 0, x, y, x, y, pressed('ctrl'),
@@ -41166,12 +41168,12 @@ _jQuery.fn.bindings = function(windowJquery, bindExp) {
     if ('_cached' in supportsTouchEvents) {
       return supportsTouchEvents._cached;
     }
-    if (!document.createTouch || !document.createTouchList) {
+    if (!window.document.createTouch || !window.document.createTouchList) {
       supportsTouchEvents._cached = false;
       return false;
     }
     try {
-      document.createEvent('TouchEvent');
+      window.document.createEvent('TouchEvent');
     } catch (e) {
       supportsTouchEvents._cached = false;
       return false;
@@ -41181,12 +41183,12 @@ _jQuery.fn.bindings = function(windowJquery, bindExp) {
   }
 
   function createTouchEvent(element, eventType, x, y) {
-    var evnt = new Event(eventType);
+    var evnt = new window.Event(eventType);
     x = x || 0;
     y = y || 0;
 
-    var touch = document.createTouch(window, element, Date.now(), x, y, x, y);
-    var touches = document.createTouchList(touch);
+    var touch = window.document.createTouch(window, element, Date.now(), x, y, x, y);
+    var touches = window.document.createTouchList(touch);
 
     evnt.touches = touches;
 
@@ -42377,7 +42379,7 @@ angular.scenario.dsl('binding', function() {
  */
 angular.scenario.dsl('input', function() {
   var chain = {};
-  var supportInputEvent = 'oninput' in document.createElement('div') && !(msie && msie <= 11);
+  var supportInputEvent = 'oninput' in window.document.createElement('div') && !msie;
 
   chain.enter = function(value, event) {
     return this.addFutureAction("input '" + this.name + "' enter '" + value + "'",
@@ -42936,7 +42938,7 @@ bindJQuery();
 publishExternalAPI(angular);
 
 var $runner = new angular.scenario.Runner(window),
-    scripts = document.getElementsByTagName('script'),
+    scripts = window.document.getElementsByTagName('script'),
     script = scripts[scripts.length - 1],
     config = {};
 
@@ -42948,11 +42950,11 @@ angular.forEach(script.attributes, function(attr) {
 });
 
 if (config.autotest) {
-  JQLite(document).ready(function() {
+  JQLite(window.document).ready(function() {
     angular.scenario.setUpAndRun(config);
   });
 }
-})(window, document);
+})(window);
 
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";\n\n[ng\\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak],\n.ng-cloak, .x-ng-cloak,\n.ng-hide:not(.ng-hide-animate) {\n  display: none !important;\n}\n\nng\\:form {\n  display: block;\n}\n\n.ng-animate-shim {\n  visibility:hidden;\n}\n\n.ng-anchor {\n  position:absolute;\n}\n</style>');
