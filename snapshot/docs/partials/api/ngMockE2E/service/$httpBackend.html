@@ -1,8 +1,8 @@
-<a href='https://github.com/angular/angular.js/edit/master/src/ngMock/angular-mocks.js?message=docs($httpBackend)%3A%20describe%20your%20change...#L2259' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/master/src/ngMock/angular-mocks.js?message=docs($httpBackend)%3A%20describe%20your%20change...#L2263' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 
-<a href='https://github.com/angular/angular.js/tree/master/src/ngMock/angular-mocks.js#L2259' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/master/src/ngMock/angular-mocks.js#L2263' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -193,12 +193,12 @@ myAppDev.run(function($httpBackend) {
   control how a matched request is handled. You can save this object for later use and invoke
   <code>respond</code> or <code>passThrough</code> again in order to change how a matched request is handled.</p>
 <ul>
-<li>respond –
-<code>{function([status,] data[, headers, statusText])
-| function(function(method, url, data, headers, params)}</code>
+<li>respond –<pre><code>{ function([status,] data[, headers, statusText])
+| function(function(method, url, data, headers, params)}
+</code></pre>
 – The respond method takes a set of static data to be returned or a function that can return
-an array containing response status (number), response data (string), response headers
-(Object), and the text for the status (string).</li>
+an array containing response status (number), response data (Array|Object|string), response
+headers (Object), and the text for the status (string).</li>
 <li>passThrough – <code>{function()}</code> – Any request matching a backend definition with
 <code>passThrough</code> handler will be passed through to the real backend (an XHR request will be made
 to the server.)</li>

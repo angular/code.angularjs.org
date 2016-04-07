@@ -2196,6 +2196,9 @@ angular.module('pagesData', [])
   "examples/example-example47": {
     "path": "examples/example-example47"
   },
+  "examples/example-equalsExample": {
+    "path": "examples/example-equalsExample"
+  },
   "examples/example-example48": {
     "path": "examples/example-example48"
   },

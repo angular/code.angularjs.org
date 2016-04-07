@@ -410,13 +410,13 @@ $httpBackend.whenRoute(&#39;GET&#39;, &#39;/users&#39;)
   request is handled. You can save this object for later use and invoke <code>respond</code> again in
   order to change how a matched request is handled.</p>
 <ul>
-<li>respond –
-  <code>{function([status,] data[, headers, statusText])
-  | function(function(method, url, data, headers, params)}</code>
+<li>respond –<pre><code class="lang-js">{function([status,] data[, headers, statusText])
+| function(function(method, url, data, headers, params)}
+</code></pre>
 – The respond method takes a set of static data to be returned or a function that can
-return an array containing response status (number), response data (string), response
-headers (Object), and the text for the status (string). The respond method returns the
-<code>requestHandler</code> object for possible overrides.</li>
+return an array containing response status (number), response data (Array|Object|string),
+response headers (Object), and the text for the status (string). The respond method returns
+the <code>requestHandler</code> object for possible overrides.</li>
 </ul>
 </td>
   </tr>
@@ -1183,13 +1183,13 @@ order to change how a matched request is handled. See #when for more info.</p>
  request is handled. You can save this object for later use and invoke <code>respond</code> again in
  order to change how a matched request is handled.</p>
 <ul>
-<li>respond –
-<code>{function([status,] data[, headers, statusText])
-| function(function(method, url, data, headers, params)}</code>
+<li>respond –<pre><code>{ function([status,] data[, headers, statusText])
+| function(function(method, url, data, headers, params)}
+</code></pre>
 – The respond method takes a set of static data to be returned or a function that can
-return an array containing response status (number), response data (string), response
-headers (Object), and the text for the status (string). The respond method returns the
-<code>requestHandler</code> object for possible overrides.</li>
+return an array containing response status (number), response data (Array|Object|string),
+response headers (Object), and the text for the status (string). The respond method returns
+the <code>requestHandler</code> object for possible overrides.</li>
 </ul>
 </td>
   </tr>

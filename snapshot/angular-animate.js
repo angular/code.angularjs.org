@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.4-build.4716+sha.038d990
+ * @license AngularJS v1.5.4-build.4717+sha.796c111
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -3486,7 +3486,7 @@ var ngAnimateSwapDirective = ['$animate', '$rootScope', function($animate, $root
  * <div ng-show="bool" class="fade">
  *   Show and hide me
  * </div>
- * <button ng-click="bool=true">Toggle</button>
+ * <button ng-click="bool=!bool">Toggle</button>
  *
  * <style>
  * .fade.ng-hide {
