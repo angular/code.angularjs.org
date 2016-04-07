@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.4-build.4717+sha.796c111
+ * @license AngularJS v1.5.4-build.4718+sha.c75fb80
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -2486,12 +2486,14 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
 
       var isStructural = ['enter', 'move', 'leave'].indexOf(event) >= 0;
 
+      var documentHidden = $document[0].hidden;
+
       // this is a hard disable of all animations for the application or on
       // the element itself, therefore  there is no need to continue further
       // past this point if not enabled
       // Animations are also disabled if the document is currently hidden (page is not visible
       // to the user), because browsers slow down or do not flush calls to requestAnimationFrame
-      var skipAnimations = !animationsEnabled || $document[0].hidden || disabledElementsLookup.get(node);
+      var skipAnimations = !animationsEnabled || documentHidden || disabledElementsLookup.get(node);
       var existingAnimation = (!skipAnimations && activeAnimationsLookup.get(node)) || {};
       var hasExistingAnimation = !!existingAnimation.state;
 
@@ -2502,7 +2504,10 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
       }
 
       if (skipAnimations) {
+        // Callbacks should fire even if the document is hidden (regression fix for issue #14120)
+        if (documentHidden) notifyProgress(runner, event, 'start');
         close();
+        if (documentHidden) notifyProgress(runner, event, 'close');
         return runner;
       }
 
@@ -2652,6 +2657,11 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
         markElementAnimationState(element, RUNNING_STATE);
         var realRunner = $$animation(element, event, animationDetails.options);
 
+        // this will update the runner's flow-control events based on
+        // the `realRunner` object.
+        runner.setHost(realRunner);
+        notifyProgress(runner, event, 'start', {});
+
         realRunner.done(function(status) {
           close(!status);
           var animationDetails = activeAnimationsLookup.get(node);
@@ -2660,11 +2670,6 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
           }
           notifyProgress(runner, event, 'close', {});
         });
-
-        // this will update the runner's flow-control events based on
-        // the `realRunner` object.
-        runner.setHost(realRunner);
-        notifyProgress(runner, event, 'start', {});
       });
 
       return runner;

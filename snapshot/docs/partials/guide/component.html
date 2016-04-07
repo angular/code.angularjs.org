@@ -204,7 +204,7 @@ The general rule should therefore be to never change an object or array property
 </li>
 <li>Instead of manipulating Input Data, the component calls the correct Output Event with the changed data.
 For a deletion, that means the component doesn&#39;t delete the <code>hero</code> itself, but sends it back to
-the owner component via the correct event.<pre><code class="lang-html">&lt;!-- not that we use snake case for bindings in the template as usual --&gt;
+the owner component via the correct event.<pre><code class="lang-html">&lt;!-- note that we use snake case for bindings in the template as usual --&gt;
 &lt;editable-field on-update=&quot;$ctrl.update(&#39;location&#39;, value)&quot;&gt;&lt;/editable-field&gt;&lt;br&gt;
 &lt;button ng-click=&quot;$ctrl.onDelete({hero: $ctrl.hero})&quot;&gt;Delete&lt;/button&gt;
 </code></pre>
