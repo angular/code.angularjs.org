@@ -400,6 +400,12 @@ with the <code>paramSerializer</code> and appended as GET parameters.</li>
 <li><strong>headers</strong> – <code>{Object}</code> – Map of strings or functions which return strings representing
 HTTP headers to send to the server. If the return value of a function is null, the
 header will not be sent. Functions accept a config object as an argument.</li>
+<li><strong>eventHandlers</strong> - <code>{Object}</code> - Event listeners to be bound to the XMLHttpRequest object.
+To bind events to the XMLHttpRequest upload object, use <code>uploadEventHandlers</code>.
+The handler will be called in the context of a <code>$apply</code> block.</li>
+<li><strong>uploadEventHandlers</strong> - <code>{Object}</code> - Event listeners to be bound to the XMLHttpRequest upload
+object. To bind events to the XMLHttpRequest object, use <code>eventHandlers</code>.
+The handler will be called in the context of a <code>$apply</code> block.</li>
 <li><strong>xsrfHeaderName</strong> – <code>{string}</code> – Name of HTTP header to populate with the XSRF token.</li>
 <li><strong>xsrfCookieName</strong> – <code>{string}</code> – Name of cookie containing the XSRF token.</li>
 <li><strong>transformRequest</strong> –
