@@ -7,11 +7,18 @@
 
 
   <h2 id="installation">Installation</h2>
-<p>Currently use <code>npm</code> to install the <strong>Component Router</strong> module:</p>
+<p>Currently, the <strong>Component Router</strong> module must be installed via <code>npm</code>, it is not yet available
+on Bower or the Google CDN.</p>
 <pre><code class="lang-bash">npm install @angular/router --save
 </code></pre>
 <p>Include <code>angular_1_router.js</code> in your HTML:</p>
 <pre><code class="lang-html">&lt;script src=&quot;/node_modules/@angular/router/angular1/angular_1_router.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>You also need to include ES6 shims to support running on Internet Explorer:</p>
+<pre><code class="lang-html">&lt;!-- IE required polyfills, in this exact order --&gt;
+&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.33.3/es6-shim.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.20/system-polyfills.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://npmcdn.com/angular2/es6/dev/src/testing/shims_for_IE.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 <p>Then load the module in your application by adding it as a dependent module:</p>
 <pre><code class="lang-js">angular.module(&#39;app&#39;, [&#39;ngComponentRouter&#39;]);

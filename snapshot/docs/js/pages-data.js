@@ -1947,6 +1947,9 @@ angular.module('pagesData', [])
   "examples/example-example1": {
     "path": "examples/example-example1"
   },
+  "style.css": {
+    "path": "style.css"
+  },
   "examples/example-example2": {
     "path": "examples/example-example2"
   },
@@ -1958,9 +1961,6 @@ angular.module('pagesData', [])
   },
   "examples/example-example4": {
     "path": "examples/example-example4"
-  },
-  "style.css": {
-    "path": "style.css"
   },
   "examples/example-example5": {
     "path": "examples/example-example5"
