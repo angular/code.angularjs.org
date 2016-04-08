@@ -154,6 +154,9 @@ can be used in three different ways depending on the arguments:</p>
 <pre><code class="lang-js">// remove all the animation event listeners listening for `enter`
 $animate.off(&#39;enter&#39;);
 
+// remove listeners for all animation events from the container element
+$animate.off(container);
+
 // remove all the animation event listeners listening for `enter` on the given element and its children
 $animate.off(&#39;enter&#39;, container);
 
@@ -179,14 +182,16 @@ $animate.off(&#39;enter&#39;, container, callback);
     <tr>
       <td>
         event
-        
+        | container
         
       </td>
       <td>
-        <a href="" class="label type-hint type-hint-string">string</a>
+        <a href="" class="label type-hint type-hint-string">string</a><a href="" class="label type-hint type-hint-domelement">DOMElement</a>
       </td>
       <td>
-        <p>the animation event (e.g. enter, leave, move, addClass, removeClass, etc...)</p>
+        <p>the animation event (e.g. enter, leave, move,
+addClass, removeClass, etc...), or the container element. If it is the element, all other
+arguments are ignored.</p>
 
         
       </td>
