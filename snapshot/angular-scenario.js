@@ -9832,7 +9832,7 @@ return jQuery;
 }));
 
 /**
- * @license AngularJS v1.5.4-build.4728+sha.0348347
+ * @license AngularJS v1.5.4-build.4729+sha.1cb8d52
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -9891,7 +9891,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.5.4-build.4728+sha.0348347/' +
+    message += '\nhttp://errors.angularjs.org/1.5.4-build.4729+sha.1cb8d52/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -12315,7 +12315,7 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.5.4-build.4728+sha.0348347',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.5.4-build.4729+sha.1cb8d52',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 5,
   dot: 4,
@@ -19533,7 +19533,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
               destination[scopeName] = attrs[attrName] = void 0;
             }
             attrs.$observe(attrName, function(value) {
-              if (isString(value)) {
+              if (isString(value) || isBoolean(value)) {
                 var oldValue = destination[scopeName];
                 recordChanges(scopeName, value, oldValue);
                 destination[scopeName] = value;
