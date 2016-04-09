@@ -9832,7 +9832,7 @@ return jQuery;
 }));
 
 /**
- * @license AngularJS v1.5.4-build.4731+sha.92c3b75
+ * @license AngularJS v1.5.4-build.4732+sha.5d695e5
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -9891,7 +9891,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.5.4-build.4731+sha.92c3b75/' +
+    message += '\nhttp://errors.angularjs.org/1.5.4-build.4732+sha.5d695e5/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -10143,11 +10143,7 @@ function forEach(obj, iterator, context) {
   if (obj) {
     if (isFunction(obj)) {
       for (key in obj) {
-        // Need to check if hasOwnProperty exists,
-        // as on IE8 the result of querySelectorAll is an object without a hasOwnProperty function
-        if (key !== 'prototype' && key !== 'length' && key !== 'name' &&
-          (!obj.hasOwnProperty || obj.hasOwnProperty(key))
-        ) {
+        if (key !== 'prototype' && key !== 'length' && key !== 'name' && obj.hasOwnProperty(key)) {
           iterator.call(context, obj[key], key, obj);
         }
       }
@@ -12315,7 +12311,7 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.5.4-build.4731+sha.92c3b75',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.5.4-build.4732+sha.5d695e5',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 5,
   dot: 4,
