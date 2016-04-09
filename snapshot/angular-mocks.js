@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.4-build.4730+sha.a084030
+ * @license AngularJS v1.5.4-build.4731+sha.92c3b75
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -2923,6 +2923,12 @@ angular.mock.$RootScopeDecorator = ['$delegate', function($delegate) {
   window.inject = angular.mock.inject = function() {
     var blockFns = Array.prototype.slice.call(arguments, 0);
     var errorForStack = new Error('Declaration Location');
+    // IE10+ and PhanthomJS do not set stack trace information, until the error is thrown
+    if (!errorForStack.stack) {
+      try {
+        throw errorForStack;
+      } catch (e) {}
+    }
     return wasInjectorCreated() ? workFn.call(currentSpec) : workFn;
     /////////////////////
     function workFn() {
