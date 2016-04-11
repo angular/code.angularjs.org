@@ -102,7 +102,9 @@ formatting pattern. In the case of the default locale, it will be 3.</p>
 <table class="variables-matrix return-arguments">
   <tr>
     <td><a href="" class="label type-hint type-hint-string">string</a></td>
-    <td><p>Number rounded to fractionSize and places a “,” after each third digit.</p>
+    <td><p>Number rounded to <code>fractionSize</code> appropriately formatted based on the current
+                  locale (e.g., in the en_US locale it will have &quot;.&quot; as the decimal separator and
+                  include &quot;,&quot; group separators after each third digit).</p>
 </td>
   </tr>
 </table>

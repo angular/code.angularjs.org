@@ -1676,7 +1676,7 @@
   {
     "path": "api/ng/filter/number",
     "titleWords": "number",
-    "keywords": "$inject after an and api as be case computed current decimal default digit each empty example-example100 filter format formats formatting fraction fractionsize from function html if in infinite infinity input is it just locale module ng not null number of or partials pattern places provided respectively returned round rounded size string symbol text the then third this to undefined will",
+    "keywords": "$inject after an and api appropriately as based be case computed current decimal default digit each empty en_us example-example100 filter format formats formatted formatting fraction fractionsize from function group have html if in include infinite infinity input is it just locale module ng not null number of on or partials pattern places provided respectively returned round rounded separator separators size string symbol text the then third this to undefined will",
     "members": ""
   },
   {
