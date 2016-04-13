@@ -2138,7 +2138,7 @@
   {
     "path": "api/ngMock/service/$componentController",
     "titleWords": "$componentController",
-    "keywords": "$componentcontroller $componentcontrollerprovider $scope add alert alert-info always and api as attached attaching aware be before bindings bindtocontroller can certain class component componentname controller controllers create definition feature for html ident in injection instance instances instantiate instantiated invoking is kinds locals means module must name ngmock object of override param partials properties property provide requested scope service simplify simulate specified tests that the this to use used want we when whose will you",
+    "keywords": "$componentcontroller $componentcontrollerprovider $rootscope $scope add alert alert-info and api as attached attaching aware be before bindings bindtocontroller can certain child class component componentname controller controllers create definition do feature for helper html ident if in injection instance instances instantiate instantiated invoking is isolated kinds locals module name new ngmock not object of override param partials properties property provide requested scope service simplify simulate specified tests that the then this to use used want we when whose will you",
     "members": ""
   },
   {
