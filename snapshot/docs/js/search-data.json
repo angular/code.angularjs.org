@@ -2204,7 +2204,7 @@
   {
     "path": "api/ngRoute/directive/ngView",
     "titleWords": "ngView view",
-    "keywords": "$anchorscroll $animate $inject $route according after an and animation any api as attribute autoscroll be by call changes complements concurrently configuration current directive disable dom eca element enable enter evaluate evaluated every example-ngview-directive expression file from html if included including index inserted installed into is it layout leave main module new ng ngroute ngview not occur occurs of old onload only otherwise overview partials removed rendered requires route scroll scrolling service set should template that the time to truthy updated updates value view viewport when whenever whether with without yields",
+    "keywords": "$anchorscroll $animate $inject $locationchangestart $route according achieve after an and animation another any api appropriate as asynchronously attribute autoscroll be block by call capture changes complements concurrently configuration contained current dependency directive disable dom eca element enable enter evaluate evaluated event every example-ngview-directive expression file from function have html if in included including index initial inserted installed instantiated into is it layout leave load loaded main make module mymodule need new ng nginclude ngroute ngview not occur occurs of old one onload only or otherwise overview partials removed rendered requires route run scroll scrolling service set should sure template templateurl that the then this time to truthy updated updates using value view viewport way when whenever whether with without yields you",
     "members": "$viewcontentloaded"
   },
   {
