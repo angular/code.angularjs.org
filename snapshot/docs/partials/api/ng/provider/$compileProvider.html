@@ -227,6 +227,9 @@ See <a href="api/ng/service/$compile#-bindtocontroller-"><code>bindToController<
 </li>
 <li><code>transclude</code> – <code>{boolean=}</code> – whether <a href="api/ng/service/$compile#transclusion">content transclusion</a> is enabled.
 Disabled by default.</li>
+<li><code>require</code> - <code>{Object&lt;string, string&gt;=}</code> - requires the controllers of other directives and binds them to
+this component&#39;s controller. The object keys specify the property names under which the required
+controllers (object values) will be bound. See <a href="api/ng/service/$compile#-require-"><code>require</code></a>.</li>
 <li><code>$...</code> – additional properties to attach to the directive factory function and the controller
 constructor function. (This is used by the component router to annotate)</li>
 </ul>

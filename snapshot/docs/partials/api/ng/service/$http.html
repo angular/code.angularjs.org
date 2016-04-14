@@ -147,7 +147,7 @@ which allows you to <code>push</code> or <code>unshift</code> a new transformati
 That means changes to the properties of <code>data</code> are not local to the transform function (since Javascript passes objects by reference).
 For example, when calling <code>$http.get(url, $scope.myObject)</code>, modifications to the object&#39;s properties in a transformRequest
 function will be reflected on the scope and in any templates where the object is data-bound.
-To prevent his, transform functions should have no side-effects.
+To prevent this, transform functions should have no side-effects.
 If you need to modify properties, it is recommended to make a copy of the data, or create new object to return.
 </div>
 
