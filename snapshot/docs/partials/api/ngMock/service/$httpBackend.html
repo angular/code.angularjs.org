@@ -24,8 +24,11 @@
 <div class="api-profile-description">
   <p>Fake HTTP backend implementation suitable for unit testing applications that use the
 <a href="api/ng/service/$http">$http service</a>.</p>
-<p><em>Note</em>: For fake HTTP backend implementation suitable for end-to-end testing or backend-less
-development please see <a href="api/ngMockE2E/service/$httpBackend">e2e $httpBackend mock</a>.</p>
+<div class="alert alert-info">
+<strong>Note</strong>: For fake HTTP backend implementation suitable for end-to-end testing or backend-less
+development please see <a href="api/ngMockE2E/service/$httpBackend">e2e $httpBackend mock</a>.
+</div>
+
 <p>During unit testing, we want our unit tests to run quickly and have no external dependencies so
 we don’t want to send <a href="https://developer.mozilla.org/en/xmlhttprequest">XHR</a> or
 <a href="http://en.wikipedia.org/wiki/JSONP">JSONP</a> requests to a real server. All we really need is

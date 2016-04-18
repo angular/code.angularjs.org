@@ -2544,6 +2544,12 @@ angular.module('pagesData', [])
   "examples/example-ngMessages-directive": {
     "path": "examples/example-ngMessages-directive"
   },
+  "e2e.js": {
+    "path": "e2e.js"
+  },
+  "examples/example-httpbackend-e2e-testing": {
+    "path": "examples/example-httpbackend-e2e-testing"
+  },
   "book.html": {
     "path": "book.html"
   },
