@@ -21,6 +21,9 @@ In Angular, expressions are evaluated against a <a href="api/ng/type/$rootScope.
 <li><p><strong>Forgiving:</strong> In JavaScript, trying to evaluate undefined properties generates <code>ReferenceError</code>
 or <code>TypeError</code>. In Angular, expression evaluation is forgiving to <code>undefined</code> and <code>null</code>.</p>
 </li>
+<li><p><strong>Filters:</strong> You can use <a href="guide/filter">filters</a> within expressions to format data before
+displaying it.</p>
+</li>
 <li><p><strong>No Control Flow Statements:</strong> You cannot use the following in an Angular expression:
 conditionals, loops, or exceptions.</p>
 </li>
@@ -32,10 +35,9 @@ in an Angular expression.</p>
 </li>
 <li><p><strong>No Object Creation With New Operator:</strong> You cannot use <code>new</code> operator in an Angular expression.</p>
 </li>
-<li><p><strong>No Comma And Void Operators:</strong> You cannot use <code>,</code> or <code>void</code> operators in an Angular expression.</p>
-</li>
-<li><p><strong>Filters:</strong> You can use <a href="guide/filter">filters</a> within expressions to format data before
-displaying it.</p>
+<li><p><strong>No Bitwise, Comma, And Void Operators:</strong> You cannot use
+<a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators">Bitwise</a>,
+<code>,</code> or <code>void</code> operators in an Angular expression.</p>
 </li>
 </ul>
 <p>If you want to run more complex JavaScript code, you should make it a controller method and call
