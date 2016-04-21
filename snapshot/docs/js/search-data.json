@@ -1946,7 +1946,7 @@
   {
     "path": "api/ngComponentRouter",
     "titleWords": "ngComponentRouter componentrouter",
-    "keywords": "adding also angular angular-componentrouter angular_1_router api app application as available bash be bower by cdn cloudflare com currently dependent es6 exact explorer google html https ie in include install installation installed internet is it js load min module must need ngcomponentrouter not npm on or order partials polyfills required router running shims src support the then this to via yet you your",
+    "keywords": "adding also angular angular-componentrouter angular_1_router api app application as available bash be bower by cdn cloudflare com currently dependent es6 exact explorer google html https ie in include install installed internet is it js load min module must need ngcomponentrouter not npm on or order partials polyfills required router running shims src support the then this to via yet you your",
     "members": ""
   },
   {
@@ -2144,7 +2144,7 @@
   {
     "path": "api/ngMock",
     "titleWords": "ngMock mock",
-    "keywords": "addition also and angular angular-mocks api be can code config controlled core doc-module-components extends html in inject inspected into js manner mock module ng ngmock partials provides services such support synchronous test tests that the they to unit various within",
+    "keywords": "addition adds after also and angular angular-mocks angularjs api are automatically be build can cdn code com config configure controlled core doc doc-module-components download endcode example extends file files for github go google googleapis href html http https in inject inspected install into io is js load manner mock module need ng ngmock npmjs org other packagefile packagename partials production provides ready runner running services set so such support synchronous test tests that the they this to unit use uses various version within you your",
     "members": ""
   },
   {
