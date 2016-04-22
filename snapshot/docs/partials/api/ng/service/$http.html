@@ -57,10 +57,13 @@ functions.</li>
 <li><strong>config</strong> – <code>{Object}</code> – The configuration object that was used to generate the request.</li>
 <li><strong>statusText</strong> – <code>{string}</code> – HTTP status text of the response.</li>
 </ul>
-<p>A response status code between 200 and 299 is considered a success status and
-will result in the success callback being called. Note that if the response is a redirect,
-XMLHttpRequest will transparently follow it, meaning that the error callback will not be
-called for such responses.</p>
+<p>A response status code between 200 and 299 is considered a success status and will result in
+the success callback being called. Any response status code outside of that range is
+considered an error status and will result in the error callback being called.
+Also, status codes less than -1 are normalized to zero. -1 usually means the request was
+aborted, e.g. using a <code>config.timeout</code>.
+Note that if the response is a redirect, XMLHttpRequest will transparently follow it, meaning
+that the outcome (success or error) will be determined by the final response status code.</p>
 <h2 id="shortcut-methods">Shortcut methods</h2>
 <p>Shortcut methods are also available. All shortcut methods require passing in the URL, and
 request data must be passed in for POST/PUT requests. An optional config can be passed as the
