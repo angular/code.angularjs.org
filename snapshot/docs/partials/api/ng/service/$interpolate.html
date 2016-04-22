@@ -94,6 +94,14 @@ when otherwise untrusted data is used by a directive.</p>
 
 
 
+<h2 id="known-issues">Known Issues</h2>
+<div class="known-issue">
+  <p>It is currently not possible for an interpolated expression to contain the interpolation end
+symbol. For example, <code>{{ &#39;}}&#39; }}</code> will be incorrectly interpreted as <code>{{ &#39; }}</code> + <code>&#39; }}</code>, i.e.
+an interpolated expression consisting of a single-quote (<code>&#39;</code>) and the <code>&#39; }}</code> string.</p>
+
+</div>
+
 
 
 
