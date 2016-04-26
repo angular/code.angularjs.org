@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.6-build.4778+sha.b9d76bf
+ * @license AngularJS v1.5.6-build.4779+sha.d71dc2f
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -2245,8 +2245,10 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
 
   this.$get = ['$$rAF', '$rootScope', '$rootElement', '$document', '$$HashMap',
                '$$animation', '$$AnimateRunner', '$templateRequest', '$$jqLite', '$$forceReflow',
+               '$$isDocumentHidden',
        function($$rAF,   $rootScope,   $rootElement,   $document,   $$HashMap,
-                $$animation,   $$AnimateRunner,   $templateRequest,   $$jqLite,   $$forceReflow) {
+                $$animation,   $$AnimateRunner,   $templateRequest,   $$jqLite,   $$forceReflow,
+                $$isDocumentHidden) {
 
     var activeAnimationsLookup = new $$HashMap();
     var disabledElementsLookup = new $$HashMap();
@@ -2510,7 +2512,7 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
 
       var isStructural = ['enter', 'move', 'leave'].indexOf(event) >= 0;
 
-      var documentHidden = $document[0].hidden;
+      var documentHidden = $$isDocumentHidden();
 
       // this is a hard disable of all animations for the application or on
       // the element itself, therefore  there is no need to continue further
