@@ -293,7 +293,7 @@ it upwards to the heroList component, which updates the original data.</li>
       name="heroDetail.js"
       language="js"
       type="js">
-      <pre><code>function HeroDetailController($scope, $element, $attrs) {&#10;  var ctrl = this;&#10;&#10;  ctrl.update = function(prop, value) {&#10;    ctrl.onUpdate({hero: ctrl.hero, prop: prop, value: value});&#10;  };&#10;}&#10;&#10;angular.module(&#39;heroApp&#39;).component(&#39;heroDetail&#39;, {&#10;  templateUrl: &#39;heroDetail.html&#39;,&#10;  controller: HeroDetailController,&#10;  bindings: {&#10;    hero: &#39;&lt;&#39;,&#10;    onDelete: &#39;&amp;&#39;,&#10;    onUpdate: &#39;&amp;&#39;&#10;  }&#10;});</code></pre>
+      <pre><code>function HeroDetailController() {&#10;  var ctrl = this;&#10;&#10;  ctrl.update = function(prop, value) {&#10;    ctrl.onUpdate({hero: ctrl.hero, prop: prop, value: value});&#10;  };&#10;}&#10;&#10;angular.module(&#39;heroApp&#39;).component(&#39;heroDetail&#39;, {&#10;  templateUrl: &#39;heroDetail.html&#39;,&#10;  controller: HeroDetailController,&#10;  bindings: {&#10;    hero: &#39;&lt;&#39;,&#10;    onDelete: &#39;&amp;&#39;,&#10;    onUpdate: &#39;&amp;&#39;&#10;  }&#10;});</code></pre>
     </div>
   
     <div class="runnable-example-file" 
@@ -442,7 +442,7 @@ from above.</p>
 <pre><code class="lang-js">describe(&#39;component: heroDetail&#39;, function() {
   var component, scope, hero, $componentController;
 
-  beforeEach(module(&#39;simpleComponent&#39;));
+  beforeEach(module(&#39;heroApp&#39;));
 
   beforeEach(inject(function($rootScope, _$componentController_) {
     scope = $rootScope.$new();
@@ -450,34 +450,24 @@ from above.</p>
     hero = {name: &#39;Wolverine&#39;};
   }));
 
-  it(&#39;should set the default values of the hero&#39;, function() {
-    // It&#39;s necessary to always pass the scope in the locals, so that the controller instance can be bound to it
-    component = $componentController(&#39;heroDetail&#39;, {$scope: scope});
-
-    expect(component.hero).toEqual({
-      name: undefined,
-      location: &#39;unknown&#39;
-    });
-  });
-
   it(&#39;should assign the name bindings to the hero object&#39;, function() {
     // Here we are passing actual bindings to the component
-
     component = $componentController(&#39;heroDetail&#39;,
-      {$scope: scope},
+      null,
       {hero: hero}
     );
     expect(component.hero.name).toBe(&#39;Wolverine&#39;);
   });
 
   it(&#39;should call the onDelete binding when a hero is deleted&#39;, function() {
+    var deleteSpy = jasmine.createSpy(&#39;deleteSpy&#39;);
     component = $componentController(&#39;heroDetail&#39;,
-      {$scope: scope},
-      {hero: hero, onDelete: jasmine.createSpy(&#39;deleteSpy&#39;)}
+      null,
+      {hero: hero, onDelete: deleteSpy}
     );
 
     component.onDelete({hero: component.hero});
-    expect(spy(&#39;deleteSpy&#39;)).toHaveBeenCalledWith(component.hero);
+    expect(deleteSpy).toHaveBeenCalledWith({hero: component.hero});
   });
 
 });

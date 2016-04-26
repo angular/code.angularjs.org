@@ -1,6 +1,6 @@
 (function(angular) {
   'use strict';
-function HeroDetailController($scope, $element, $attrs) {
+function HeroDetailController() {
   var ctrl = this;
 
   ctrl.update = function(prop, value) {
