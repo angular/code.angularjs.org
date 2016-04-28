@@ -25,6 +25,15 @@ functional style.</p>
 <pre><code class="lang-js">function transformer(transformationFn, value) {
   return (transformationFn || angular.identity)(value);
 };
+
+// E.g.
+function getResult(fn, input) {
+  return (fn || angular.identity)(input);
+};
+
+getResult(function(n) { return n * 2; }, 21);   // returns 42
+getResult(null, 21);                            // returns 21
+getResult(undefined, 21);                       // returns 21
 </code></pre>
 
 </div>
