@@ -293,8 +293,10 @@ controllers.</li>
 <p>If the <code>require</code> property is an object and <code>bindToController</code> is truthy, then the required controllers are
 bound to the controller using the keys of the <code>require</code> property. This binding occurs after all the controllers
 have been constructed but before <code>$onInit</code> is called.
-See the <a href="api/ng/provider/$compileProvider#component"><code>$compileProvider</code></a> helper for an example of how this can be used.</p>
-<p>If no such required directive(s) can be found, or if the directive does not have a controller, then an error is
+If the name of the required controller is the same as the local name (the key), the name can be
+omitted. For example, <code>{parentDir: &#39;^^&#39;}</code> is equivalent to <code>{parentDir: &#39;^^parentDir&#39;}</code>.
+See the <a href="api/ng/provider/$compileProvider#component"><code>$compileProvider</code></a> helper for an example of how this can be used.
+If no such required directive(s) can be found, or if the directive does not have a controller, then an error is
 raised (unless no link function is specified and the required controllers are not being bound to the directive
 controller, in which case error checking is skipped). The name can be prefixed with:</p>
 <ul>
