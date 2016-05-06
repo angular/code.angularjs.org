@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.6-build.4790+sha.d7274f0
+ * @license AngularJS v1.5.6-build.4791+sha.5b053b1
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -132,7 +132,7 @@ function stripCommentsFromElement(element) {
   if (element instanceof jqLite) {
     switch (element.length) {
       case 0:
-        return [];
+        return element;
         break;
 
       case 1:
@@ -1422,7 +1422,7 @@ var $AnimateCssProvider = ['$animateProvider', function($animateProvider) {
           $$jqLite.addClass(element, activeClasses);
 
           if (flags.recalculateTimingStyles) {
-            fullClassName = node.className + ' ' + preparationClasses;
+            fullClassName = node.getAttribute('class') + ' ' + preparationClasses;
             cacheKey = gcsHashFn(node, fullClassName);
 
             timings = computeTimings(node, fullClassName, cacheKey);
@@ -2504,7 +2504,7 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
         return runner;
       }
 
-      var className = [node.className, options.addClass, options.removeClass].join(' ');
+      var className = [node.getAttribute('class'), options.addClass, options.removeClass].join(' ');
       if (!isAnimatableClassName(className)) {
         close();
         return runner;
