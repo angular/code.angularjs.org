@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.6-build.4789+sha.996b1e4
+ * @license AngularJS v1.5.6-build.4790+sha.d7274f0
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -187,7 +187,7 @@ function $SanitizeProvider() {
    *   </code></pre>
    * </div>
    *
-   * @param {boolean=} regexp New regexp to whitelist urls with.
+   * @param {boolean=} flag Enable or disable SVG support in the sanitizer.
    * @returns {boolean|ng.$sanitizeProvider} Returns the currently configured value if called
    *    without an argument or self for chaining otherwise.
    */

@@ -561,6 +561,11 @@ angular.module('pagesData', [])
     "area": "guide",
     "path": "guide/databinding"
   },
+  "guide/decorators": {
+    "name": "Decorators",
+    "area": "guide",
+    "path": "guide/decorators"
+  },
   "guide/di": {
     "name": "Dependency Injection",
     "area": "guide",
@@ -2060,6 +2065,15 @@ angular.module('pagesData', [])
   },
   "examples/example-example10": {
     "path": "examples/example-example10"
+  },
+  "examples/example-service-decorator": {
+    "path": "examples/example-service-decorator"
+  },
+  "examples/example-directive-decorator": {
+    "path": "examples/example-directive-decorator"
+  },
+  "examples/example-filter-decorator": {
+    "path": "examples/example-filter-decorator"
   },
   "examples/example-example11": {
     "path": "examples/example-example11"

@@ -2099,6 +2099,11 @@ angular.module('navData', [])
             "type": "page"
           },
           {
+            "name": "Decorators",
+            "href": "guide/decorators",
+            "type": "page"
+          },
+          {
             "name": "Bootstrap",
             "href": "guide/bootstrap",
             "type": "page"
