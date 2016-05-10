@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.6-build.4791+sha.5b053b1
+ * @license AngularJS v1.5.6-build.4793+sha.3b71474
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -2377,7 +2377,7 @@ angular.module('ngMockE2E', ['ng']).config(['$provide', function($provide) {
  *       phones.push(phone);
  *       return [200, phone, {}];
  *     });
- *     $httpBackend.whenGET(/^\/templates\//).passThrough(); // Requests for templare are handled by the real server
+ *     $httpBackend.whenGET(/^\/templates\//).passThrough(); // Requests for templates are handled by the real server
  *     //...
  *   });
  * ```
