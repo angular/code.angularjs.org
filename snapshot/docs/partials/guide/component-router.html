@@ -465,7 +465,6 @@ Router itself, which was made available by the binding in the <strong>Component 
 <pre><code class="lang-js">function HeroDetailComponent(heroService) {
 ...
 this.gotoHeroes = function() {
-  var heroId = this.hero &amp;&amp; this.hero.id;
   this.$router.navigate([&#39;HeroList&#39;]);
 };
 </code></pre>
