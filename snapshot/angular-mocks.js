@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.6-build.4803+sha.ce9f67b
+ * @license AngularJS v1.5.6-build.4804+sha.921f80e
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -2264,10 +2264,10 @@ angular.mock.$ComponentControllerProvider = ['$compileProvider', function($compi
  *  First, download the file:
  *  * [Google CDN](https://developers.google.com/speed/libraries/devguide#angularjs) e.g.
  *    `"//ajax.googleapis.com/ajax/libs/angularjs/X.Y.Z/"`
- *  * [NPM](https://www.npmjs.com/) e.g. `npm install {$ doc.packageName $}@X.Y.Z`
- *  * [Bower](http://bower.io) e.g. `bower install {$ doc.packageName $}@X.Y.Z`
+ *  * [NPM](https://www.npmjs.com/) e.g. `npm install angular-mocks@X.Y.Z`
+ *  * [Bower](http://bower.io) e.g. `bower install angular-mocks@X.Y.Z`
  *  * [code.angularjs.org](https://code.angularjs.org/) (discouraged for production use)  e.g.
- *    `"//code.angularjs.org/X.Y.Z/{$ doc.packageFile $}"`
+ *    `"//code.angularjs.org/X.Y.Z/angular-mocks.js"`
  *
  * where X.Y.Z is the AngularJS version you are running.
  *
