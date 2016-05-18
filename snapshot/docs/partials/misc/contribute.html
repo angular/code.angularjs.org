@@ -21,9 +21,9 @@ machine:</p>
 <li><p><a href="http://git-scm.com/">Git</a>: The <a href="https://help.github.com/articles/set-up-git">Github Guide to
 Installing Git</a> is a good source of information.</p>
 </li>
-<li><p><a href="http://nodejs.org">Node.js</a>: We use Node to generate the documentation, run a
+<li><p><a href="http://nodejs.org">Node.js v4.x</a>: We use Node to generate the documentation, run a
 development web server, run tests, and generate distributable files. Depending on your system, you can install Node either from source or as a
-pre-packaged bundle.</p>
+pre-packaged bundle. (Currently our build does not work properly on Node v5 or greater - please use v4.x.)</p>
 </li>
 <li><p><a href="http://www.java.com">Java</a>: We minify JavaScript using our
 <a href="https://developers.google.com/closure/">Closure Tools</a> jar. Make sure you have Java (version 7 or higher) installed
@@ -33,13 +33,7 @@ and included in your <a href="http://docs.oracle.com/javase/tutorial/essential/e
 <pre><code class="lang-shell">npm install -g grunt-cli
 </code></pre>
 </li>
-<li><p><a href="http://bower.io/">Bower</a>: We use Bower to manage client-side packages for the docs. Install the <code>bower</code> command-line tool globally with:</p>
-<pre><code class="lang-shell">npm install -g bower
-</code></pre>
-</li>
 </ul>
-<p><strong>Note:</strong> You may need to use sudo (for OSX, *nix, BSD etc) or run your command shell as Administrator (for Windows) to install Grunt &amp;
-Bower globally.</p>
 <h2 id="forking-angular-on-github">Forking Angular on Github</h2>
 <p>To create a Github account, follow the instructions <a href="https://github.com/signup/free">here</a>.
 Afterwards, go ahead and <a href="http://help.github.com/forking">fork</a> the <a href="https://github.com/angular/angular.js">main AngularJS repository</a>.</p>
