@@ -1034,7 +1034,7 @@
   {
     "path": "api/ng/function/angular.toJson",
     "titleWords": "angular.toJson",
-    "keywords": "an and angular api be characters contain function html if indentation input integer internally into json json-formatted json-ified leading many module newlines ng notation obj output partials per properties representing serialized serializes set since spaces string stripped that the this to tojson true uses whitespace will with",
+    "keywords": "_datetojson an and angular api as be browser call catch characters com contain date follows for function html https if indentation information input instanceof instead integer internally into invalid is it js json json-formatted json-ified leading many method module monkeypatch more newlines ng notation null obj object of only output partials per prevent properties prototype rangeerror reliable representing return returning safari see serialized serializes set since spaces string stringify stripped that the this throw throws to tojson tries true try uses value var way when whitespace will with",
     "members": ""
   },
   {

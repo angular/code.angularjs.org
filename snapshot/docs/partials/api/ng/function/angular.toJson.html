@@ -27,6 +27,27 @@ stripped since angular uses this notation internally.</p>
 
 
 
+<h2 id="known-issues">Known Issues</h2>
+<div class="known-issue">
+  <p>The Safari browser throws a <code>RangeError</code> instead of returning <code>null</code> when it tries to stringify a <code>Date</code>
+object with an invalid date value. The only reliable way to prevent this is to monkeypatch the
+<code>Date.prototype.toJSON</code> method as follows:</p>
+<pre><code>var _DatetoJSON = Date.prototype.toJSON;
+Date.prototype.toJSON = function() {
+  try {
+    return _DatetoJSON.call(this);
+  } catch(e) {
+    if (e instanceof RangeError) {
+      return null;
+    }
+    throw e;
+  }
+};
+</code></pre>
+<p>See <a href="https://github.com/angular/angular.js/pull/14221">https://github.com/angular/angular.js/pull/14221</a> for more information.</p>
+
+</div>
+
 
 
 
