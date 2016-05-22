@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.6-build.4812+sha.1581827
+ * @license AngularJS v1.5.6-build.4813+sha.3f8efe7
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -3245,7 +3245,8 @@ var $$AnimationProvider = ['$animateProvider', function($animateProvider) {
         }
 
         function update(element) {
-          getRunner(element).setHost(newRunner);
+          var runner = getRunner(element);
+          if (runner) runner.setHost(newRunner);
         }
       }
 
