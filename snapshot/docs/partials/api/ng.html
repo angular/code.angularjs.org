@@ -41,7 +41,7 @@ Date.prototype.toJSON = function() {
 };
 </code></pre>
 <p>See <a href="https://github.com/angular/angular.js/pull/14221">https://github.com/angular/angular.js/pull/14221</a> for more information.</p>
-
+ 
     </td>
   </tr>
   <tr>
@@ -49,7 +49,7 @@ Date.prototype.toJSON = function() {
     <td>
     <p>You cannot spy on <code>angular.element</code> if you are using Jasmine version 1.x. See
 <a href="https://github.com/angular/angular.js/issues/14251">https://github.com/angular/angular.js/issues/14251</a> for more information.</p>
-
+ 
     </td>
   </tr>
   <tr>
@@ -58,7 +58,20 @@ Date.prototype.toJSON = function() {
     <p>It is currently not possible for an interpolated expression to contain the interpolation end
 symbol. For example, <code>{{ &#39;}}&#39; }}</code> will be incorrectly interpreted as <code>{{ &#39; }}</code> + <code>&#39; }}</code>, i.e.
 an interpolated expression consisting of a single-quote (<code>&#39;</code>) and the <code>&#39; }}</code> string.</p>
-
+ <hr>
+    <p>All directives and components must use the standard <code>{{</code> <code>}}</code> interpolation symbols
+in their templates. If you change the application interpolation symbols the <a href="api/ng/service/$compile"><code>$compile</code></a>
+service will attempt to denormalize the standard symbols to the custom symbols.
+The denormalization process is not clever enough to know not to replace instances of the standard
+symbols where they would not normally be treated as interpolation symbols. For example in the following
+code snippet the closing braces of the literal object will get incorrectly denormalized:</p>
+<pre><code>&lt;div data-context=&#39;{&quot;context&quot;:{&quot;id&quot;:3,&quot;type&quot;:&quot;page&quot;}}&quot;&gt;
+</code></pre>
+<p>The workaround is to ensure that such instances are separated by whitespace:</p>
+<pre><code>&lt;div data-context=&#39;{&quot;context&quot;:{&quot;id&quot;:3,&quot;type&quot;:&quot;page&quot;} }&quot;&gt;
+</code></pre>
+<p>See <a href="https://github.com/angular/angular.js/pull/14610#issuecomment-219401099">https://github.com/angular/angular.js/pull/14610#issuecomment-219401099</a> for more information.</p>
+ 
     </td>
   </tr>
   </table>
