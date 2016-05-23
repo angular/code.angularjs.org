@@ -2,6 +2,10 @@
 
 
 
+<a href='https://github.com/angular/angular.js/tree/master/src/ng/interpolate.js#L140' class='view-source pull-right btn btn-primary'>
+  <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
+</a>
+
 
 <header class="api-profile-header">
   <h1 class="api-profile-header-heading">$interpolate</h1>
@@ -95,7 +99,7 @@ when otherwise untrusted data is used by a directive.</p>
   <p>It is currently not possible for an interpolated expression to contain the interpolation end
 symbol. For example, <code>{{ &#39;}}&#39; }}</code> will be incorrectly interpreted as <code>{{ &#39; }}</code> + <code>&#39; }}</code>, i.e.
 an interpolated expression consisting of a single-quote (<code>&#39;</code>) and the <code>&#39; }}</code> string.</p>
- <hr>
+  <hr>
 </div>
 <div class="known-issue">
   <p>All directives and components must use the standard <code>{{</code> <code>}}</code> interpolation symbols
@@ -110,7 +114,7 @@ code snippet the closing braces of the literal object will get incorrectly denor
 <pre><code>&lt;div data-context=&#39;{&quot;context&quot;:{&quot;id&quot;:3,&quot;type&quot;:&quot;page&quot;} }&quot;&gt;
 </code></pre>
 <p>See <a href="https://github.com/angular/angular.js/pull/14610#issuecomment-219401099">https://github.com/angular/angular.js/pull/14610#issuecomment-219401099</a> for more information.</p>
- 
+  
 </div>
 
 
