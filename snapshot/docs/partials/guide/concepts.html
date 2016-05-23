@@ -263,8 +263,8 @@ The code snippet <code>angular.module(&#39;invoice2&#39;, [&#39;finance2&#39;])<
 In the previous section we saw that controllers are created using a factory function.
 For services there are multiple ways to define their factory
 (see the <a href="guide/services">service guide</a>).
-In the example above, we are using a function that returns the <code>currencyConverter</code> function as the factory
-for the service.</p>
+In the example above, we are using an anonymous function as the factory function for <code>currencyConverter</code> service. 
+This function should return the <code>currencyConverter</code> service instance.</p>
 <p>Back to the initial question: How does the <code>InvoiceController</code> get a reference to the <code>currencyConverter</code> function?
 In Angular, this is done by simply defining arguments on the constructor function. With this, the injector
 is able to create the objects in the right order and pass the previously created objects into the
