@@ -66,6 +66,11 @@ angular.module('pagesData', [])
     "area": "error",
     "path": "error/$compile/nonassign"
   },
+  "error/$compile/reqslot": {
+    "name": "reqslot",
+    "area": "error",
+    "path": "error/$compile/reqslot"
+  },
   "error/$compile/selmulti": {
     "name": "selmulti",
     "area": "error",

@@ -78,6 +78,12 @@
     "members": ""
   },
   {
+    "path": "error/$compile/reqslot",
+    "titleWords": "reqslot",
+    "keywords": "$compile also an angular be because can closing component componentconfig contain could directive doc element elements error example filled generated happen have html if importantcomponent importantslot in inside is it js make mandatory missing module must mycomponent not occurs optional optionalslot or partials path prefix provided reqslot required self slot something tag template that the this to tranclude transclude transcluded transclusion try var was when will with work you",
+    "members": ""
+  },
+  {
     "path": "error/$compile/selmulti",
     "titleWords": "selmulti",
     "keywords": "$compile and array at attribute based be between binding breaks changes different directive directives element elements error example from html if in instance instances invalid is mode model multiple need ng ng-if ng-model ngif ngmodel ngswitch not object of on one or partials pick please runtime select selmulti semantics since single some supported switching template that the them to type types usage use used uses variable which with you your",

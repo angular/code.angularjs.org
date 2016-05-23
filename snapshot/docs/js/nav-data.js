@@ -1451,6 +1451,11 @@ angular.module('navData', [])
             "type": "error"
           },
           {
+            "name": "reqslot",
+            "href": "error/$compile/reqslot",
+            "type": "error"
+          },
+          {
             "name": "selmulti",
             "href": "error/$compile/selmulti",
             "type": "error"
