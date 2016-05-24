@@ -179,6 +179,11 @@ the scope of the route. If omitted, defaults to <code>$resolve</code>.</p>
 </ul>
 <p>The custom <code>redirectTo</code> function is expected to return a string which will be used
 to update <code>$location.path()</code> and <code>$location.search()</code>.</p>
+<p>Routes that specify <code>redirectTo</code> will not have their controllers, template functions
+or resolves called, the <code>$location</code> will be changed to the redirect url and route
+processing will stop. The exception to this is if the <code>redirectTo</code> is a function that
+returns <code>undefined</code>. In this case the route transition occurs as though there was no
+redirection.</p>
 </li>
 <li><p><code>[reloadOnSearch=true]</code> - <code>{boolean=}</code> - reload route when only <code>$location.search()</code>
 or <code>$location.hash()</code> changes.</p>
