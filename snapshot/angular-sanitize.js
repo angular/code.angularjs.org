@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.6-build.4824+sha.7f4b356
+ * @license AngularJS v1.5.6-build.4825+sha.a4e4fee
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -494,7 +494,7 @@ function stripCustomNsAttrs(node) {
     for (var i = 0, l = attrs.length; i < l; i++) {
       var attrNode = attrs[i];
       var attrName = attrNode.name.toLowerCase();
-      if (attrName === 'xmlns:ns1' || attrName.indexOf('ns1:') === 0) {
+      if (attrName === 'xmlns:ns1' || attrName.lastIndexOf('ns1:', 0) === 0) {
         node.removeAttributeNode(attrNode);
         i--;
         l--;
