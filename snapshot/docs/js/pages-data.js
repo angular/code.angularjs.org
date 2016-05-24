@@ -717,54 +717,64 @@ angular.module('pagesData', [])
     "path": "tutorial/step_02"
   },
   "tutorial/step_03": {
-    "name": "3 - Filtering Repeaters",
+    "name": "3 - Components",
     "area": "tutorial",
     "path": "tutorial/step_03"
   },
   "tutorial/step_04": {
-    "name": "4 - Two-way Data Binding",
+    "name": "4 - Directory and File Organization",
     "area": "tutorial",
     "path": "tutorial/step_04"
   },
   "tutorial/step_05": {
-    "name": "5 - XHRs & Dependency Injection",
+    "name": "5 - Filtering Repeaters",
     "area": "tutorial",
     "path": "tutorial/step_05"
   },
   "tutorial/step_06": {
-    "name": "6 - Templating Links & Images",
+    "name": "6 - Two-way Data Binding",
     "area": "tutorial",
     "path": "tutorial/step_06"
   },
   "tutorial/step_07": {
-    "name": "7 - Routing & Multiple Views",
+    "name": "7 - XHR & Dependency Injection",
     "area": "tutorial",
     "path": "tutorial/step_07"
   },
   "tutorial/step_08": {
-    "name": "8 - More Templating",
+    "name": "8 - Templating Links & Images",
     "area": "tutorial",
     "path": "tutorial/step_08"
   },
   "tutorial/step_09": {
-    "name": "9 - Filters",
+    "name": "9 - Routing & Multiple Views",
     "area": "tutorial",
     "path": "tutorial/step_09"
   },
   "tutorial/step_10": {
-    "name": "10 - Event Handlers",
+    "name": "10 - More Templating",
     "area": "tutorial",
     "path": "tutorial/step_10"
   },
   "tutorial/step_11": {
-    "name": "11 - REST and Custom Services",
+    "name": "11 - Custom Filters",
     "area": "tutorial",
     "path": "tutorial/step_11"
   },
   "tutorial/step_12": {
-    "name": "12 - Applying Animations",
+    "name": "12 - Event Handlers",
     "area": "tutorial",
     "path": "tutorial/step_12"
+  },
+  "tutorial/step_13": {
+    "name": "13 - REST and Custom Services",
+    "area": "tutorial",
+    "path": "tutorial/step_13"
+  },
+  "tutorial/step_14": {
+    "name": "14 - Animations",
+    "area": "tutorial",
+    "path": "tutorial/step_14"
   },
   "tutorial/the_end": {
     "name": "The End",

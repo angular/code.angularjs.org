@@ -2228,63 +2228,75 @@ angular.module('navData', [])
             "type": "tutorial"
           },
           {
-            "name": "3 - Filtering Repeaters",
+            "name": "3 - Components",
             "step": 3,
             "href": "tutorial/step_03",
             "type": "tutorial"
           },
           {
-            "name": "4 - Two-way Data Binding",
+            "name": "4 - Directory and File Organization",
             "step": 4,
             "href": "tutorial/step_04",
             "type": "tutorial"
           },
           {
-            "name": "5 - XHRs & Dependency Injection",
+            "name": "5 - Filtering Repeaters",
             "step": 5,
             "href": "tutorial/step_05",
             "type": "tutorial"
           },
           {
-            "name": "6 - Templating Links & Images",
+            "name": "6 - Two-way Data Binding",
             "step": 6,
             "href": "tutorial/step_06",
             "type": "tutorial"
           },
           {
-            "name": "7 - Routing & Multiple Views",
+            "name": "7 - XHR & Dependency Injection",
             "step": 7,
             "href": "tutorial/step_07",
             "type": "tutorial"
           },
           {
-            "name": "8 - More Templating",
+            "name": "8 - Templating Links & Images",
             "step": 8,
             "href": "tutorial/step_08",
             "type": "tutorial"
           },
           {
-            "name": "9 - Filters",
+            "name": "9 - Routing & Multiple Views",
             "step": 9,
             "href": "tutorial/step_09",
             "type": "tutorial"
           },
           {
-            "name": "10 - Event Handlers",
+            "name": "10 - More Templating",
             "step": 10,
             "href": "tutorial/step_10",
             "type": "tutorial"
           },
           {
-            "name": "11 - REST and Custom Services",
+            "name": "11 - Custom Filters",
             "step": 11,
             "href": "tutorial/step_11",
             "type": "tutorial"
           },
           {
-            "name": "12 - Applying Animations",
+            "name": "12 - Event Handlers",
             "step": 12,
             "href": "tutorial/step_12",
+            "type": "tutorial"
+          },
+          {
+            "name": "13 - REST and Custom Services",
+            "step": 13,
+            "href": "tutorial/step_13",
+            "type": "tutorial"
+          },
+          {
+            "name": "14 - Animations",
+            "step": 14,
+            "href": "tutorial/step_14",
             "type": "tutorial"
           },
           {
