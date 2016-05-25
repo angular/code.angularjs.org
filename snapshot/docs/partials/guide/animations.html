@@ -7,6 +7,13 @@ via the <code>$animate</code> service. These animation hooks are set in place to
 triggered, will attempt to perform a CSS Transition, CSS Keyframe Animation or a JavaScript callback Animation (depending on if an animation is
 placed on the given directive). Animations can be placed using vanilla CSS by following the naming conventions set in place by AngularJS
 or with JavaScript code when it&#39;s defined as a factory.</p>
+<div class="alert alert-info">
+  Note that we have used non-prefixed CSS transition properties in our examples as the major browsers now support non-prefixed
+  properties. If you intend to support older browsers or certain mobile browsers then you will need to include prefixed
+  versions of the transition properties.  Take a look at <a href="http://caniuse.com/#feat=css-transitions">http://caniuse.com/#feat=css-transitions</a> for what browsers require prefixes,
+  and <a href="https://github.com/postcss/autoprefixer">https://github.com/postcss/autoprefixer</a> for a tool that can automatically generate the prefixes for you.
+</div>
+
 <p>Animations are not available unless you include the <a href="api/ngAnimate"><code>ngAnimate</code> module</a> as a dependency within your application.</p>
 <p>Below is a quick example of animations being enabled for <code>ngShow</code> and <code>ngHide</code>:</p>
 <p>
@@ -32,7 +39,7 @@ or with JavaScript code when it&#39;s defined as a factory.</p>
       name="animations.css"
       language="css"
       type="css">
-      <pre><code>.sample-show-hide {&#10;  padding:10px;&#10;  border:1px solid black;&#10;  background:white;&#10;}&#10;&#10;.sample-show-hide {&#10;  -webkit-transition:all linear 0.5s;&#10;  transition:all linear 0.5s;&#10;}&#10;&#10;.sample-show-hide.ng-hide {&#10;  opacity:0;&#10;}</code></pre>
+      <pre><code>.sample-show-hide {&#10;  padding: 10px;&#10;  border: 1px solid black;&#10;  background: white;&#10;}&#10;&#10;.sample-show-hide {&#10;  transition: all linear 0.5s;&#10;}&#10;&#10;.sample-show-hide.ng-hide {&#10;  opacity: 0;&#10;}</code></pre>
     </div>
   
 
@@ -66,11 +73,8 @@ occur when ngRepeat triggers them:</p>
   class
 */
 .repeated-item.ng-enter, .repeated-item.ng-move {
-  -webkit-transition:0.5s linear all;
-  -moz-transition:0.5s linear all;
-  -o-transition:0.5s linear all;
-  transition:0.5s linear all;
-  opacity:0;
+  transition: all 0.5s linear;
+  opacity: 0;
 }
 
 /*
@@ -81,7 +85,7 @@ occur when ngRepeat triggers them:</p>
 */
 .repeated-item.ng-enter.ng-enter-active,
 .repeated-item.ng-move.ng-move-active {
-  opacity:1;
+  opacity: 1;
 }
 
 /*
@@ -90,32 +94,10 @@ occur when ngRepeat triggers them:</p>
   that has the .repeated-item class
 */
 .repeated-item.ng-leave {
-  -webkit-animation:0.5s my_animation;
-  -moz-animation:0.5s my_animation;
-  -o-animation:0.5s my_animation;
-  animation:0.5s my_animation;
+  animation: 0.5s my_animation;
 }
 
 @keyframes my_animation {
-  from { opacity:1; }
-  to { opacity:0; }
-}
-
-/*
-  Unfortunately each browser vendor requires
-  its own definition of keyframe animation code...
-*/
-@-webkit-keyframes my_animation {
-  from { opacity:1; }
-  to { opacity:0; }
-}
-
-@-moz-keyframes my_animation {
-  from { opacity:1; }
-  to { opacity:0; }
-}
-
-@-o-keyframes my_animation {
   from { opacity:1; }
   to { opacity:0; }
 }
@@ -207,7 +189,7 @@ able to capture class changes if an <strong>expression</strong> or the <strong>n
       name="style.css"
       language="css"
       type="css">
-      <pre><code>.css-class-add, .css-class-remove {&#10;  -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;&#10;  -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;&#10;  -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;&#10;  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;&#10;}&#10;&#10;.css-class,&#10;.css-class-add.css-class-add-active {&#10;  color: red;&#10;  font-size:3em;&#10;}&#10;&#10;.css-class-remove.css-class-remove-active {&#10;  font-size:1.0em;&#10;  color:black;&#10;}</code></pre>
+      <pre><code>.css-class-add, .css-class-remove {&#10;  transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;&#10;}&#10;&#10;.css-class,&#10;.css-class-add.css-class-add-active {&#10;  color: red;&#10;  font-size:3em;&#10;}&#10;&#10;.css-class-remove.css-class-remove-active {&#10;  font-size:1.0em;&#10;  color: black;&#10;}</code></pre>
     </div>
   
 
@@ -305,8 +287,8 @@ you are working with 3rd party animations), or exclude specific classes from get
 </code></pre>
 <pre><code class="lang-css">/* prefixed with animate- */
 .animate-fade-add.animate-fade-add-active {
-  transition:1s linear all;
-  opacity:0;
+  transition: all 1s linear;
+  opacity: 0;
 }
 </code></pre>
 <p>The classNameFilter approach generally applies the biggest speed boost, because the matching is

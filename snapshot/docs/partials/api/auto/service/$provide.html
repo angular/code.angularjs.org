@@ -37,18 +37,20 @@ provider.  The provider will be no more than a constructor function with a <code
 these cases the <a href="api/auto/service/$provide">$provide</a> service has additional helper methods to register
 services without specifying a provider.</p>
 <ul>
-<li><a href="api/auto/service/$provide#provider">provider(provider)</a> - registers a <strong>service provider</strong> with the
+<li><a href="api/auto/service/$provide#provider">provider(name, provider)</a> - registers a <strong>service provider</strong> with the
   <a href="api/auto/service/$injector">$injector</a></li>
-<li><a href="api/auto/service/$provide#constant">constant(obj)</a> - registers a value/object that can be accessed by
+<li><a href="api/auto/service/$provide#constant">constant(name, obj)</a> - registers a value/object that can be accessed by
   providers and services.</li>
-<li><a href="api/auto/service/$provide#value">value(obj)</a> - registers a value/object that can only be accessed by
+<li><a href="api/auto/service/$provide#value">value(name, obj)</a> - registers a value/object that can only be accessed by
   services, not providers.</li>
-<li><a href="api/auto/service/$provide#factory">factory(fn)</a> - registers a service <strong>factory function</strong>, <code>fn</code>,
+<li><a href="api/auto/service/$provide#factory">factory(name, fn)</a> - registers a service <strong>factory function</strong>
   that will be wrapped in a <strong>service provider</strong> object, whose <code>$get</code> property will contain the
   given factory function.</li>
-<li><a href="api/auto/service/$provide#service">service(class)</a> - registers a <strong>constructor function</strong>, <code>class</code>
+<li><a href="api/auto/service/$provide#service">service(name, Fn)</a> - registers a <strong>constructor function</strong>
   that will be wrapped in a <strong>service provider</strong> object, whose <code>$get</code> property will instantiate
    a new object using the given constructor function.</li>
+<li><a href="api/auto/service/$provide#decorator">decorator(name, decorFn)</a> - registers a <strong>decorator function</strong> that
+   will be able to modify or replace the implementation of another service.</li>
 </ul>
 <p>See the individual methods for more information and examples.</p>
 
@@ -481,10 +483,11 @@ be overridden by an Angular <a href="api/auto/service/$provide#decorator">decora
     <h3><p><code>decorator(name, decorator);</code></p>
 
 </h3>
-    <div><p>Register a <strong>service decorator</strong> with the <a href="api/auto/service/$injector">$injector</a>. A service decorator
+    <div><p>Register a <strong>decorator function</strong> with the <a href="api/auto/service/$injector">$injector</a>. A decorator function
 intercepts the creation of a service, allowing it to override or modify the behavior of the
-service. The object returned by the decorator may be the original service, or a new service
-object which replaces or wraps and delegates to the original service.</p>
+service. The return value of the decorator function may be the original service, or a new service
+that replaces (or wraps and delegates to) the original service.</p>
+<p>You can find out more about using decorators in the <a href="guide/decorators">decorators</a> guide.</p>
 </div>
 
     
@@ -527,11 +530,11 @@ object which replaces or wraps and delegates to the original service.</p>
       </td>
       <td>
         <p>This function will be invoked when the service needs to be
-   instantiated and should return the decorated service instance. The function is called using
+   provided and should return the decorated service instance. The function is called using
    the <a href="api/auto/service/$injector#invoke">injector.invoke</a> method and is therefore fully injectable.
    Local injection arguments:</p>
 <ul>
-<li><code>$delegate</code> - The original service instance, which can be monkey patched, configured,
+<li><code>$delegate</code> - The original service instance, which can be replaced, monkey patched, configured,
 decorated or delegated to.</li>
 </ul>
 
