@@ -2132,7 +2132,7 @@
   {
     "path": "api/ngMock/service/$animate",
     "titleWords": "$animate",
-    "keywords": "$animate additional animations api config exposes for html implementation methods mock module ng ngmock of partials service testing the two",
+    "keywords": "$animate additional animations api beforeeach config exposes for html implementation in instance methods mock module need ng nganimatemock ngmock of partials require service suite test testing the to two you your",
     "members": "closeandflush flush"
   },
   {

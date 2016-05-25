@@ -95,7 +95,7 @@ existence of these services, unless it is configured with proper module definiti
 <ul>
 <li>Load the module definition(s) that you specify in your application.</li>
 <li>Register all Providers defined in these module definition(s).</li>
-<li>When asked to do so, lazily instantiate services and their dependencies, via their Providers, as 
+<li>When asked to do so, lazily instantiate services and their dependencies, via their Providers, as
 parameters to an injectable function.</li>
 </ul>
 <p>Providers are objects that provide (create) instances of services and expose configuration APIs,
@@ -107,7 +107,7 @@ service, the <code>$routeProvider</code> exposes APIs that allow you to define r
 </div>
 
 <p>Angular modules solve the problem of removing global variables from the application and provide a
-way of configuring the injector. As opposed to AMD or require.js modules, Angular modules don&#39;t try 
+way of configuring the injector. As opposed to AMD or require.js modules, Angular modules don&#39;t try
 to solve the problem of script load ordering or lazy script fetching. These goals are totally
 independent and both module systems can live side-by-side and fulfill their goals.</p>
 <p>To deepen your understanding on Angular&#39;s DI, see <a href="https://github.com/angular/angular.js/wiki/Understanding-Dependency-Injection">Understanding Dependency Injection</a>.</p>
@@ -187,13 +187,13 @@ the corresponding services. Here, we use the
 application routes.</p>
 <div class="alert alert-success">
   <p>
-    We also used {@ink $locationProvider#hashPrefix $locationProvider.hashPrefix()} to set the
+    We also used <a href="api/ng/provider/$locationProvider#hashPrefix">$locationProvider.hashPrefix()</a> to set the
     hash-prefix to <code>!</code>. This prefix will appear in the links to our client-side routes, right after
     the hash (<code>#</code>) symbol and before the actual path (e.g. <code>index.html#!/some/path</code>).
   </p>
   <p>
     Setting a prefix is not necessary, but it is considered a good practice (for reasons that are
-    outside the scope of this tutorial). <code>!</code> is the most commonly used prefix. 
+    outside the scope of this tutorial). <code>!</code> is the most commonly used prefix.
   </p>
 </div>
 

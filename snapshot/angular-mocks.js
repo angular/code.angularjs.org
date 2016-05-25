@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.6-build.4829+sha.4d5f5ff
+ * @license AngularJS v1.5.6-build.4830+sha.bf59aa5
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -768,6 +768,8 @@ angular.mock.TzDate.prototype = Date.prototype;
  * @description
  * Mock implementation of the {@link ng.$animate `$animate`} service. Exposes two additional methods
  * for testing animations.
+ *
+ * You need to require the `ngAnimateMock` module in your test suite for instance `beforeEach(module('ngAnimateMock'))`
  */
 angular.mock.animate = angular.module('ngAnimateMock', ['ng'])
 
