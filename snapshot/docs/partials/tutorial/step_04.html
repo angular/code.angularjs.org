@@ -87,11 +87,11 @@ register itself on the <code>phonecatApp</code> module:</p>
 that&#39;s where our component is registered). Now, imagine that we need a list of phones on another
 project that we are working on. Thanks to our modular architecture, we don&#39;t have to reinvent the
 wheel; we simply copy the <code>phone-list/</code> directory on our other project and add the necessary script
-tags in our <code>index.html</code> file and we are done, right ?</p>
+tags in our <code>index.html</code> file and we are done, right?</p>
 <p>Well, not so fast. The new project doesn&#39;t know anything about a <code>phonecatApp</code> module. So, we would
 have to replace all references to <code>phonecatApp</code> with the name of this project&#39;s main module. As you
 can imagine this is both laborious and error-prone.</p>
-<p>Yeah, you guessed it: There is a better way !</p>
+<p>Yeah, you guessed it: There is a better way!</p>
 <p>Each feature/section, will declare its own module and have all related entities registered there.
 The main module (<code>phonecatApp</code>) will declare a dependency on each feature/section module. Now,
 all it takes to reuse the same code on new project is copying the feature directory over and adding
