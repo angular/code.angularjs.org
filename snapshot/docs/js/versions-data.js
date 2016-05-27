@@ -1,39 +1,49 @@
 // Meta data used by the AngularJS docs app
 angular.module('versionsData', [])
   .value('NG_VERSION', {
-  "raw": "v1.5.5",
+  "raw": "v1.5.6",
   "major": 1,
   "minor": 5,
-  "patch": 6,
+  "patch": 7,
   "prerelease": [
     "build",
-    "4836"
+    "4837"
   ],
-  "build": "sha.794e99e",
-  "version": "1.5.6-build.4836",
+  "build": "sha.f58d4fb",
+  "version": "1.5.7-build.4837",
   "codeName": "snapshot",
   "isSnapshot": true,
-  "full": "1.5.6-build.4836+sha.794e99e",
+  "full": "1.5.7-build.4837+sha.f58d4fb",
   "branch": "master",
-  "commitSHA": "794e99e69fe1f02e7436257fc621f2ef8aaeff44"
+  "commitSHA": "f58d4fb7482f0c0884641654d301373268ff2d6b"
 })
   .value('NG_VERSIONS', [
   {
-    "raw": "v1.5.5",
+    "raw": "v1.5.6",
+    "major": 1,
+    "minor": 5,
+    "patch": 7,
+    "prerelease": [
+      "build",
+      "4837"
+    ],
+    "build": "sha.f58d4fb",
+    "version": "1.5.7-build.4837",
+    "codeName": "snapshot",
+    "isSnapshot": true,
+    "full": "1.5.7-build.4837+sha.f58d4fb",
+    "branch": "master",
+    "commitSHA": "f58d4fb7482f0c0884641654d301373268ff2d6b"
+  },
+  {
+    "raw": "v1.5.6",
     "major": 1,
     "minor": 5,
     "patch": 6,
-    "prerelease": [
-      "build",
-      "4836"
-    ],
-    "build": "sha.794e99e",
-    "version": "1.5.6-build.4836",
-    "codeName": "snapshot",
-    "isSnapshot": true,
-    "full": "1.5.6-build.4836+sha.794e99e",
-    "branch": "master",
-    "commitSHA": "794e99e69fe1f02e7436257fc621f2ef8aaeff44"
+    "prerelease": [],
+    "build": [],
+    "version": "1.5.6",
+    "docsUrl": "http://code.angularjs.org/1.5.6/docs"
   },
   {
     "raw": "v1.5.5",
