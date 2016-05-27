@@ -9843,7 +9843,7 @@ return jQuery;
 }));
 
 /**
- * @license AngularJS v1.5.6-build.4833+sha.85db30a
+ * @license AngularJS v1.5.6-build.4834+sha.55b7f7d
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -9902,7 +9902,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.5.6-build.4833+sha.85db30a/' +
+    message += '\nhttp://errors.angularjs.org/1.5.6-build.4834+sha.55b7f7d/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -12355,7 +12355,7 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.5.6-build.4833+sha.85db30a',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.5.6-build.4834+sha.55b7f7d',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 5,
   dot: 6,
