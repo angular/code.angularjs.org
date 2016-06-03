@@ -1670,7 +1670,7 @@
   {
     "path": "api/ng/service/$exceptionHandler",
     "titleWords": "$exceptionHandler",
-    "keywords": "$exceptionhandler $exceptionhandlerprovider $log about action aids angular angular-mocks any api associated bind browser by can catch cause code console context default delegate delegated delegates digest does during error event-listeners example exception exceptionoverride exceptions executed expressions factory fail function happen hard html if implementation in information instead into is it jqlite js just loaded logging logs make manually message methods mock module ng ngmock normal not note of on optional overridden override partials registered return service simply testing tests that the they this those throw thrown to try uncaught unit using was when which will wish with you",
+    "keywords": "$exceptionhandler $exceptionhandlerprovider $log about aids and angular angular-mocks any api associated backend below bind browser by can catch cause code console context default delegate delegated delegates developers digest does during error errors event-listeners example exception exceptionoverwrite exceptions executed expressions factory for function html if implementation in information inspection instead into is it jqlite js later loaded log logerrorstobackend logs manually methods mock module myexceptionhandler ng ngmock not note of on optional order overridden overwrite partials registered return service simply testing tests that the this those thrown to try uncaught unit use using warn was which will wish with you",
     "members": ""
   },
   {
