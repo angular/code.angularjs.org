@@ -1222,6 +1222,16 @@ angular.module('navData', [])
         "type": "group",
         "navItems": [
           {
+            "name": "provider",
+            "type": "section",
+            "href": "api/ngResource/provider"
+          },
+          {
+            "name": "$resourceProvider",
+            "href": "api/ngResource/provider/$resourceProvider",
+            "type": "provider"
+          },
+          {
             "name": "service",
             "type": "section",
             "href": "api/ngResource/service"

@@ -2216,8 +2216,14 @@
   {
     "path": "api/ngResource",
     "titleWords": "ngResource resource",
-    "keywords": "$resource angular-resource api doc-module-components for html interaction js module ngresource partials provider provides restful see service services support the usage via with",
+    "keywords": "$resource $resourceprovider and angular-resource api doc-module-components for html interaction js module ngresource partials provider provides restful see service services support the usage via with",
     "members": ""
+  },
+  {
+    "path": "api/ngResource/provider/$resourceProvider",
+    "titleWords": "$resourceProvider",
+    "keywords": "$resource $resourceprovider api be behavior change default dependencies html installed module ngresource of partials provider requires service the to use",
+    "members": "defaults"
   },
   {
     "path": "api/ngResource/service/$resource",

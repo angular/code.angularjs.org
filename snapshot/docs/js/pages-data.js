@@ -1851,6 +1851,11 @@ angular.module('pagesData', [])
     "area": "api",
     "path": "api/ngResource"
   },
+  "api/ngResource/provider/$resourceProvider": {
+    "name": "$resourceProvider",
+    "area": "api",
+    "path": "api/ngResource/provider/$resourceProvider"
+  },
   "api/ngResource/service/$resource": {
     "name": "$resource",
     "area": "api",
@@ -2859,6 +2864,11 @@ angular.module('pagesData', [])
     "name": "service components in ngMockE2E",
     "area": "api",
     "path": "api/ngMockE2E/service"
+  },
+  "api/ngResource/provider": {
+    "name": "provider components in ngResource",
+    "area": "api",
+    "path": "api/ngResource/provider"
   },
   "api/ngResource/service": {
     "name": "service components in ngResource",
