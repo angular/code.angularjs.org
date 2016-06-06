@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.7-build.4844+sha.cd3673e
+ * @license AngularJS v1.5.7-build.4845+sha.ff0395f
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -2336,6 +2336,7 @@ angular.module('ngMock', ['ng']).provider({
  * the {@link ngMockE2E.$httpBackend e2e $httpBackend} mock.
  */
 angular.module('ngMockE2E', ['ng']).config(['$provide', function($provide) {
+  $provide.value('$httpBackend', angular.injector(['ng']).get('$httpBackend'));
   $provide.decorator('$httpBackend', angular.mock.e2e.$httpBackendDecorator);
 }]);
 
