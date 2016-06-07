@@ -393,7 +393,7 @@ form submission.</p>
   };
 });
 </code></pre>
-<h3 id="templating-ngrepeat-compile-">Templating (<code>ngRepeat</code>, <code>$compile</code>)</h3>
+<h3 id="templating-ngrepeat-compile-nginclude-">Templating (<code>ngRepeat</code>, <code>$compile</code>, <code>ngInclude</code>)</h3>
 <h4 id="ngrepeat">ngRepeat</h4>
 <p>Due to <a href="https://github.com/angular/angular.js/commit/c260e7386391877625eda086480de73e8a0ba921">c260e738</a>,
 previously, the order of items when using ngRepeat to iterate over object properties was guaranteed to be consistent
@@ -414,6 +414,35 @@ is marked as optional and the attribute is not specified, no function will be ad
 <p>Due to <a href="https://github.com/angular/angular.js/commit/62d514b06937cc7dd86e973ea11165c88343b42d">62d514b</a>,
 returning an object from a controller constructor function will now override the scope. Views that use the
 controllerAs method will no longer get the this reference, but the returned object.</p>
+<h4 id="nginclude">ngInclude</h4>
+<p>Due to <a href="https://github.com/angular/angular.js/commit/3c6e8ce044446735eb2e70d0061db8c6db050289">3c6e8ce044446735eb2e70d0061db8c6db050289</a>, the <code>src</code> attribute of ngInclude no longer accepts an
+expression that returns the result of <code>$sce.trustAsResourceUrl</code>. This will now cause an infinite digest:</p>
+<p>Before:</p>
+<pre><code class="lang-html">&lt;div ng-include=&quot;findTemplate(&#39;https://example.com/templates/myTemplate.html&#39;)&quot;&gt;&lt;/div&gt;
+</code></pre>
+<pre><code class="lang-js">$scope.findTemplate = function(templateName) {
+  return $sce.trustAsResourceUrl(templateName);
+};
+</code></pre>
+<p>To migrate, either cache the result of <code>trustAsResourceUrl()</code>, or put the template url in the resource
+whitelist in the <code>config()</code> function:</p>
+<p>After:</p>
+<pre><code class="lang-js">var templateCache = {};
+$scope.findTemplate = function(templateName) {
+  if (!templateCache[templateName]) {
+    templateCache[templateName] = $sce.trustAsResourceUrl(templateName);
+  }
+
+  return templateCache[templateName];
+};
+
+// Alternatively, use `$sceDelegateProvider.resourceUrlWhitelist()`, which means you don&#39;t
+// have to use `$sce.trustAsResourceUrl()` at all:
+
+angular.module(&#39;myApp&#39;, []).config(function($sceDelegateProvider) {
+  $sceDelegateProvider.resourceUrlWhitelist([&#39;self&#39;, &#39;https://example.com/templates/**&#39;])
+});
+</code></pre>
 <h3 id="cookies-ngcookies-">Cookies (<code>ngCookies</code>)</h3>
 <p>Due to <a href="https://github.com/angular/angular.js/commit/38fbe3ee8370fc449b82d80df07b5c2ed2cd5fbe">38fbe3ee</a>,
 <code>$cookies</code> will no longer expose properties that represent the current browser cookie
