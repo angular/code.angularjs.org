@@ -53,6 +53,10 @@ For more information please visit <a href="api/ng/service/$http#cross-site-reque
 <p>Protection from JSON Hijacking is provided if the server prefixes all JSON requests with following string <code>&quot;)]}&#39;,\n&quot;</code>.
 Angular will automatically strip the prefix before processing it as JSON.
 For more information please visit <a href="api/ng/service/$http#json-vulnerability-protection">JSON Hijacking Protection</a>.</p>
+<p>Bear in mind that calling <code>$http.jsonp</code>, like in <a href="https://docs.angularjs.org/guide/concepts#accessing-the-backend">our Yahoo! finance example</a>,
+gives the remote server (and, if the request is not secured, any Man-in-the-Middle attackers)
+instant remote code execution in your application: the result of these requests is handed off
+to the browser as regular <code>&lt;script&gt;</code> tag.</p>
 <h2 id="strict-contextual-escaping">Strict Contextual Escaping</h2>
 <p>Strict Contextual Escaping (SCE) is a mode in which AngularJS requires bindings in certain contexts to require
 a value that is marked as safe to use for that context.</p>
