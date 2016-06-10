@@ -1730,7 +1730,7 @@
   {
     "path": "api/ng/filter/limitTo",
     "titleWords": "limitTo",
-    "keywords": "an and api are array as at be begin beginning by containing converted copied creates defaults either elements end example-example103 exceeds filter from function had html if index indicates input is it items length less limit limitation limited limitto limittofilter module negative new ng number of offset only or partials positive returned sign source specified string sub-array substring taken than the to trimmed unchanged undefined used value which will",
+    "keywords": "also an and api are array array-like as at be begin beginning by collections containing converted copied creates defaults either elements end etc example-example103 exceeds filter from function had html if index indicates input is it items jqlite length less limit limitation limited limitto limittofilter module negative new ng nodelists number objects of offset only or other partials positive returned sign source specified string sub-array subclasses substring supported taken than the to trimmed unchanged undefined used value which will",
     "members": ""
   },
   {

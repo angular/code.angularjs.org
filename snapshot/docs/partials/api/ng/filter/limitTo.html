@@ -20,10 +20,11 @@
 
 
 <div class="api-profile-description">
-  <p>Creates a new array or string containing only a specified number of elements. The elements
-are taken from either the beginning or the end of the source array, string or number, as specified by
-the value and sign (positive or negative) of <code>limit</code>. If a number is used as input, it is
-converted to a string.</p>
+  <p>Creates a new array or string containing only a specified number of elements. The elements are
+taken from either the beginning or the end of the source array, string or number, as specified by
+the value and sign (positive or negative) of <code>limit</code>. Other array-like objects are also supported
+(e.g. array subclasses, NodeLists, jqLite/jQuery collections etc). If a number is used as input,
+it is converted to a string.</p>
 
 </div>
 
@@ -66,10 +67,10 @@ converted to a string.</p>
         
       </td>
       <td>
-        <a href="" class="label type-hint type-hint-array">Array</a><a href="" class="label type-hint type-hint-string">string</a><a href="" class="label type-hint type-hint-number">number</a>
+        <a href="" class="label type-hint type-hint-array">Array</a><a href="" class="label type-hint type-hint-arraylike">ArrayLike</a><a href="" class="label type-hint type-hint-string">string</a><a href="" class="label type-hint type-hint-number">number</a>
       </td>
       <td>
-        <p>Source array, string or number to be limited.</p>
+        <p>Array/array-like, string or number to be limited.</p>
 
         
       </td>
@@ -105,8 +106,8 @@ converted to a string.</p>
         <a href="" class="label type-hint type-hint-string">string</a><a href="" class="label type-hint type-hint-number">number</a>
       </td>
       <td>
-        <p>Index at which to begin limitation. As a negative index, <code>begin</code>
-    indicates an offset from the end of <code>input</code>. Defaults to <code>0</code>.</p>
+        <p>Index at which to begin limitation. As a negative index,
+    <code>begin</code> indicates an offset from the end of <code>input</code>. Defaults to <code>0</code>.</p>
 
         
       </td>
@@ -121,8 +122,8 @@ converted to a string.</p>
 <table class="variables-matrix return-arguments">
   <tr>
     <td><a href="" class="label type-hint type-hint-array">Array</a><a href="" class="label type-hint type-hint-string">string</a></td>
-    <td><p>A new sub-array or substring of length <code>limit</code> or less if input array
-    had less than <code>limit</code> elements.</p>
+    <td><p>A new sub-array or substring of length <code>limit</code> or less if the input had
+    less than <code>limit</code> elements.</p>
 </td>
   </tr>
 </table>
