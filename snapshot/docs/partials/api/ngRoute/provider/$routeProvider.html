@@ -115,12 +115,12 @@
    match.</p>
 <p>   Object properties:</p>
 <ul>
-<li><code>controller</code> – <code>{(string|function()=}</code> – Controller fn that should be associated with
+<li><code>controller</code> – <code>{(string|Function)=}</code> – Controller fn that should be associated with
 newly created scope or the name of a <a href="api/ng/type/angular.Module#controller">registered
 controller</a> if passed as a string.</li>
 <li><code>controllerAs</code> – <code>{string=}</code> – An identifier name for a reference to the controller.
 If present, the controller will be published to scope under the <code>controllerAs</code> name.</li>
-<li><p><code>template</code> – <code>{string=|function()=}</code> – html template as a string or a function that
+<li><p><code>template</code> – <code>{(string|Function)=}</code> – html template as a string or a function that
 returns an html template as a string which should be used by <a href="api/ngRoute/directive/ngView">ngView</a> or <a href="api/ng/directive/ngInclude">ngInclude</a> directives.
 This property takes precedence over <code>templateUrl</code>.</p>
 <p>If <code>template</code> is a function, it will be called with the following parameters:</p>
@@ -129,7 +129,7 @@ This property takes precedence over <code>templateUrl</code>.</p>
 <code>$location.path()</code> by applying the current route</li>
 </ul>
 </li>
-<li><p><code>templateUrl</code> – <code>{string=|function()=}</code> – path or function that returns a path to an html
+<li><p><code>templateUrl</code> – <code>{(string|Function)=}</code> – path or function that returns a path to an html
 template that should be used by <a href="api/ngRoute/directive/ngView">ngView</a>.</p>
 <p>If <code>templateUrl</code> is a function, it will be called with the following parameters:</p>
 <ul>
@@ -137,7 +137,7 @@ template that should be used by <a href="api/ngRoute/directive/ngView">ngView</a
 <code>$location.path()</code> by applying the current route</li>
 </ul>
 </li>
-<li><p><code>resolve</code> - <code>{Object.&lt;string, function&gt;=}</code> - An optional map of dependencies which should
+<li><p><code>resolve</code> - <code>{Object.&lt;string, Function&gt;=}</code> - An optional map of dependencies which should
 be injected into the controller. If any of these dependencies are promises, the router
 will wait for them all to be resolved or one to be rejected before the controller is
 instantiated.
@@ -157,7 +157,7 @@ working with <a href="api/ng/type/angular.Module#component">components</a> as ro
 The map object is:</p>
 <ul>
 <li><code>key</code> – <code>{string}</code>: a name of a dependency to be injected into the controller.</li>
-<li><code>factory</code> - <code>{string|function}</code>: If <code>string</code> then it is an alias for a service.
+<li><code>factory</code> - <code>{string|Function}</code>: If <code>string</code> then it is an alias for a service.
 Otherwise if function, then it is <a href="api/auto/service/$injector#invoke">injected</a>
 and the return value is treated as the dependency. If the result is a promise, it is
 resolved before its value is injected into the controller. Be aware that
@@ -168,7 +168,7 @@ functions.  Use <code>$route.current.params</code> to access the new route param
 <li><p><code>resolveAs</code> - <code>{string=}</code> - The name under which the <code>resolve</code> map will be available on
 the scope of the route. If omitted, defaults to <code>$resolve</code>.</p>
 </li>
-<li><p><code>redirectTo</code> – <code>{(string|function())=}</code> – value to update
+<li><p><code>redirectTo</code> – <code>{(string|Function)=}</code> – value to update
 <a href="api/ng/service/$location">$location</a> path with and trigger route redirection.</p>
 <p>If <code>redirectTo</code> is a function, it will be called with the following parameters:</p>
 <ul>
@@ -178,12 +178,27 @@ the scope of the route. If omitted, defaults to <code>$resolve</code>.</p>
 <li><code>{Object}</code> - current <code>$location.search()</code></li>
 </ul>
 <p>The custom <code>redirectTo</code> function is expected to return a string which will be used
-to update <code>$location.path()</code> and <code>$location.search()</code>.</p>
+to update <code>$location.url()</code>. If the function throws an error, no further processing will
+take place and the <a href="api/ngRoute/service/$route#$routeChangeError">$routeChangeError</a> event will
+be fired.</p>
 <p>Routes that specify <code>redirectTo</code> will not have their controllers, template functions
 or resolves called, the <code>$location</code> will be changed to the redirect url and route
 processing will stop. The exception to this is if the <code>redirectTo</code> is a function that
 returns <code>undefined</code>. In this case the route transition occurs as though there was no
 redirection.</p>
+</li>
+<li><p><code>resolveRedirectTo</code> – <code>{Function=}</code> – a function that will (eventually) return the value
+to update <a href="api/ng/service/$location">$location</a> URL with and trigger route redirection. In
+contrast to <code>redirectTo</code>, dependencies can be injected into <code>resolveRedirectTo</code> and the
+return value can be either a string or a promise that will be resolved to a string.</p>
+<p>Similar to <code>redirectTo</code>, if the return value is <code>undefined</code> (or a promise that gets
+resolved to <code>undefined</code>), no redirection takes place and the route transition occurs as
+though there was no redirection.</p>
+<p>If the function throws an error or the returned promise gets rejected, no further
+processing will take place and the
+<a href="api/ngRoute/service/$route#$routeChangeError">$routeChangeError</a> event will be fired.</p>
+<p><code>redirectTo</code> takes precedence over <code>resolveRedirectTo</code>, so specifying both on the same
+route definition, will cause the latter to be ignored.</p>
 </li>
 <li><p><code>[reloadOnSearch=true]</code> - <code>{boolean=}</code> - reload route when only <code>$location.search()</code>
 or <code>$location.hash()</code> changes.</p>
