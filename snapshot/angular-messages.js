@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.7-build.4866+sha.e986565
+ * @license AngularJS v1.5.7-build.4867+sha.3360b44
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -689,7 +689,7 @@ function ngMessageDirectiveFactory() {
           },
           attach: function() {
             if (!currentElement) {
-              $transclude(scope, function(elm) {
+              $transclude(function(elm, newScope) {
                 $animate.enter(elm, null, element);
                 currentElement = elm;
 
@@ -705,6 +705,7 @@ function ngMessageDirectiveFactory() {
                     ngMessagesCtrl.deregister(commentNode);
                     messageCtrl.detach();
                   }
+                  newScope.$destroy();
                 });
               });
             }
