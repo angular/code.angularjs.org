@@ -128,7 +128,7 @@ calling <code>deferred.promise</code>.</p>
 of the deferred task when it completes.</p>
 <p><strong>Methods</strong></p>
 <ul>
-<li><p><code>then(successCallback, errorCallback, notifyCallback)</code> – regardless of when the promise was or
+<li><p><code>then(successCallback, [errorCallback], [notifyCallback])</code> – regardless of when the promise was or
 will be resolved or rejected, <code>then</code> calls one of the success or error callbacks asynchronously
 as soon as the result is available. The callbacks are called with a single argument: the result
 or rejection reason. Additionally, the notify callback may be called zero or more times to
@@ -138,7 +138,8 @@ provide a progress indication, before the promise is resolved or rejected.</p>
 with the value which is resolved in that promise using
 <a href="http://www.html5rocks.com/en/tutorials/es6/promises/#toc-promises-queues">promise chaining</a>).
 It also notifies via the return value of the <code>notifyCallback</code> method. The promise cannot be
-resolved or rejected from the notifyCallback method.</p>
+resolved or rejected from the notifyCallback method. The errorCallback and notifyCallback
+arguments are optional.</p>
 </li>
 <li><p><code>catch(errorCallback)</code> – shorthand for <code>promise.then(null, errorCallback)</code></p>
 </li>

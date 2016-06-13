@@ -22,9 +22,16 @@ browsers, but it is up to you to test and decide whether it works for your parti
 <ol>
 <li>Use <code>ng-style</code> tags instead of <code>style=&quot;{{ someCss }}&quot;</code>. The latter works in Chrome and Firefox
 but does not work in Internet Explorer &lt;= 11 (the most recent version at time of writing).</li>
-<li>For the <code>type</code> attribute of buttons, use <code>ng-attr-type</code> tags instead of 
-<code>type=&quot;{{ someExpression }}&quot;</code>.  If using the latter, Internet Explorer overwrites the expression
+<li>For the <code>type</code> attribute of buttons, use <code>ng-attr-type</code> tags instead of
+<code>type=&quot;{{ someExpression }}&quot;</code>. If using the latter, Internet Explorer overwrites the expression
 with <code>type=&quot;submit&quot;</code> before Angular has a chance to interpolate it.</li>
+<li>For the <code>value</code> attribute of progress, use <code>ng-attr-value</code> tags instead of
+<code>value=&quot;{{ someExpression}}&quot;</code>. If using the latter, Internet Explorer overwrites the expression
+with <code>value=&quot;0&quot;</code> before Angular has a chance to interpolate it.</li>
+<li>For the <code>placeholder</code> attribute of textarea, use <code>ng-attr-placeholder</code> tags instead
+of <code>placeholder=&quot;{{ someExpression }}&quot;</code>. If using the latter, Internet Explorer will error
+on accessing the <code>nodeValue</code> on a parentless <code>TextNode</code> in Internet Explorer 10 &amp; 11
+(see <a href="https://github.com/angular/angular.js/issues/5025">issue 5025</a>).</li>
 </ol>
 
 
