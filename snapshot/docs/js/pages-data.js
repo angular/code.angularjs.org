@@ -1711,11 +1711,6 @@ angular.module('pagesData', [])
     "area": "api",
     "path": "api/ngCookies/service/$cookies"
   },
-  "api/ngMessageFormat/service/$$messageFormat": {
-    "name": "$$messageFormat",
-    "area": "api",
-    "path": "api/ngMessageFormat/service/$$messageFormat"
-  },
   "api/ngMessageFormat": {
     "name": "ngMessageFormat",
     "area": "api",
@@ -2575,8 +2570,14 @@ angular.module('pagesData', [])
   "examples/example-ngAnimateSwap-directive": {
     "path": "examples/example-ngAnimateSwap-directive"
   },
-  "examples/example-ngMessageFormat-example": {
-    "path": "examples/example-ngMessageFormat-example"
+  "examples/example-ngMessageFormat-example-gender": {
+    "path": "examples/example-ngMessageFormat-example-gender"
+  },
+  "examples/example-ngMessageFormat-example-plural": {
+    "path": "examples/example-ngMessageFormat-example-plural"
+  },
+  "examples/example-ngMessageFormat-example-plural-gender": {
+    "path": "examples/example-ngMessageFormat-example-plural-gender"
   },
   "examples/example-ngMessages-directive": {
     "path": "examples/example-ngMessages-directive"
@@ -2827,11 +2828,6 @@ angular.module('pagesData', [])
     "name": "provider components in ngCookies",
     "area": "api",
     "path": "api/ngCookies/provider"
-  },
-  "api/ngMessageFormat/service": {
-    "name": "service components in ngMessageFormat",
-    "area": "api",
-    "path": "api/ngMessageFormat/service"
   },
   "api/ngMessages/directive": {
     "name": "directive components in ngMessages",

@@ -2052,15 +2052,9 @@
     "members": "get getall getobject put putobject remove"
   },
   {
-    "path": "api/ngMessageFormat/service/$$messageFormat",
-    "titleWords": "$$messageFormat",
-    "keywords": "angular api com example example-ngmessageformat-example expressions extensions for google html https in information internal interpolation messageformat module more ngmessageformat partials recognize see service to",
-    "members": ""
-  },
-  {
     "path": "api/ngMessageFormat",
     "titleWords": "ngMessageFormat messageformat",
-    "keywords": "angular-message-format api html js module ngmessageformat partials",
+    "keywords": "$interpolate account allows also and angular angular-message-format api based be can case cased com current design doc embedded entities example example-ngmessageformat-example-gender example-ngmessageformat-example-plural example-ngmessageformat-example-plural-gender examples extends for gender google handling holds how html http https icu-project in information is js keyword matches message messageformat messages module more ng ngmessageformat note number of offset on one org over partials plural pluralization precedence rules see select service shows special specific specify syntax takes that the this to toc-messageformat together used uses value variable what which with you",
     "members": ""
   },
   {

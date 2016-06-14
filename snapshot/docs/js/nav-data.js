@@ -1036,18 +1036,7 @@ angular.module('navData', [])
         "name": "ngMessageFormat",
         "href": "api/ngMessageFormat",
         "type": "group",
-        "navItems": [
-          {
-            "name": "service",
-            "type": "section",
-            "href": "api/ngMessageFormat/service"
-          },
-          {
-            "name": "$$messageFormat",
-            "href": "api/ngMessageFormat/service/$$messageFormat",
-            "type": "service"
-          }
-        ]
+        "navItems": []
       },
       {
         "name": "ngMessages",
