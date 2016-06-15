@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.7-build.4885+sha.6bc81ae
+ * @license AngularJS v1.5.8-build.4886+sha.ff5f645
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -57,7 +57,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.5.7-build.4885+sha.6bc81ae/' +
+    message += '\nhttp://errors.angularjs.org/1.5.8-build.4886+sha.ff5f645/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -2511,10 +2511,10 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.5.7-build.4885+sha.6bc81ae',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.5.8-build.4886+sha.ff5f645',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 5,
-  dot: 7,
+  dot: 8,
   codeName: 'snapshot'
 };
 
@@ -12133,7 +12133,7 @@ function $InterpolateProvider() {
      *
      * `allOrNothing` is useful for interpolating URLs. `ngSrc` and `ngSrcset` use this behavior.
      *
-     * ####Escaped Interpolation
+     * #### Escaped Interpolation
      * $interpolate provides a mechanism for escaping interpolation markers. Start and end markers
      * can be escaped by preceding each of their characters with a REVERSE SOLIDUS U+005C (backslash).
      * It will be rendered as a regular start/end marker, and will not be interpreted as an expression

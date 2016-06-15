@@ -49,8 +49,8 @@ context.name = &#39;Angular&#39;;
 expect(exp(context)).toEqual(&#39;Hello Angular!&#39;);
 </code></pre>
 <p><code>allOrNothing</code> is useful for interpolating URLs. <code>ngSrc</code> and <code>ngSrcset</code> use this behavior.</p>
-<p>####Escaped Interpolation
-$interpolate provides a mechanism for escaping interpolation markers. Start and end markers
+<h4 id="escaped-interpolation">Escaped Interpolation</h4>
+<p>$interpolate provides a mechanism for escaping interpolation markers. Start and end markers
 can be escaped by preceding each of their characters with a REVERSE SOLIDUS U+005C (backslash).
 It will be rendered as a regular start/end marker, and will not be interpreted as an expression
 or binding.</p>
