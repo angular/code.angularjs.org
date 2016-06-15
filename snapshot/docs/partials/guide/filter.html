@@ -20,6 +20,20 @@ the following syntax:</p>
 </code></pre>
 <p>E.g. the markup <code>{{ 1234 | number:2 }}</code> formats the number 1234 with 2 decimal points using the
 <a href="api/ng/filter/number"><code>number</code></a> filter. The resulting value is <code>1,234.00</code>.</p>
+<h3 id="when-filters-are-executed">When filters are executed</h3>
+<p>In templates, filters are only executed when their inputs have changed. This is more performant than executing
+a filter on each <a href="api/ng/type/$rootScope.Scope#$digest"><code>$digest</code></a> as is the case with <a href="guide/expression">expressions</a>.</p>
+<p>There are two exceptions to this rule:</p>
+<ol>
+<li><p>In general, this applies only to filters that take <a href="https://developer.mozilla.org/docs/Glossary/Primitive">primitive values</a>
+as inputs. Filters that receive <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Objects">Objects</a>
+as input are executed on each <code>$digest</code>, as it would be too costly to track if the inputs have changed.</p>
+</li>
+<li><p>Filters that are marked as <code>$stateful</code> are also executed on each $digest.
+See <a href="guide/filter#stateful-filters">Stateful filters</a> for more information. Note that no Angular
+core filters are $stateful.</p>
+</li>
+</ol>
 <h2 id="using-filters-in-controllers-services-and-directives">Using filters in controllers, services, and directives</h2>
 <p>You can also use filters in controllers, services, and directives.</p>
 <div class="alert alert-info">
@@ -75,8 +89,9 @@ This factory function should return a new filter function which takes the input 
 as the first argument. Any filter arguments are passed in as additional arguments to the filter
 function.</p>
 <p>The filter function should be a <a href="http://en.wikipedia.org/wiki/Pure_function">pure function</a>, which
-means that it should be stateless and idempotent. Angular relies on these properties and executes
-the filter only when the inputs to the function change.</p>
+means that it should be stateless and idempotent, and not rely for example on other Angular services.
+Angular relies on this contract and will by default execute a filter only when the inputs to the function change.
+<a href="guide/filter#stateful-filters">Stateful filters</a> are possible, but less performant.</p>
 <div class="alert alert-warning">
 <strong>Note:</strong> Filter names must be valid angular <a href="guide/expression"><code>Expressions</code></a> identifiers, such as <code>uppercase</code> or <code>orderBy</code>.
 Names with special characters, such as hyphens and dots, are not allowed.  If you wish to namespace
@@ -117,7 +132,7 @@ text upper-case.</p>
 
 
 </p>
-<h2 id="stateful-filters">Stateful filters</h2>
+<h3 id="stateful-filters">Stateful filters</h3>
 <p>It is strongly discouraged to write filters that are stateful, because the execution of those can&#39;t
 be optimized by Angular, which often leads to performance issues. Many stateful filters can be
 converted into stateless filters just by exposing the hidden state as a model and turning it into an
