@@ -2132,7 +2132,7 @@
   {
     "path": "api/ngMock/function/angular.mock.dump",
     "titleWords": "angular.mock.dump",
-    "keywords": "also an angular any api argument available be can common console debug debugging display dump elements etc for function globally html injectable instance into is it just method mock module ngmock not object objects of on partials serialized serializing string strings the this to turn used useful where window",
+    "keywords": "an angular any api argument available common console debugging dump elements etc for function globally html injectable instance into is it just logging method mock module ngmock not object objects of partials serialized serializing string strings the this to turn useful when",
     "members": ""
   },
   {
