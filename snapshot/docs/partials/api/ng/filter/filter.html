@@ -36,11 +36,11 @@
   <h2>Usage</h2>
   <h3>In HTML Template Binding</h3>
   
-    <pre><code>{{ filter_expression | filter : expression : comparator}}</code></pre>
+    <pre><code>{{ filter_expression | filter : expression : comparator : anyPropertyKey}}</code></pre>
   
 
   <h3>In JavaScript</h3>
-  <pre><code>$filter(&#39;filter&#39;)(array, expression, comparator)</code></pre>
+  <pre><code>$filter(&#39;filter&#39;)(array, expression, comparator, anyPropertyKey)</code></pre>
 
   
 <section class="api-section">
@@ -94,10 +94,11 @@ The predicate can be negated by prefixing the string with <code>!</code>.</p>
 <li><p><code>Object</code>: A pattern object can be used to filter specific properties on objects contained
 by <code>array</code>. For example <code>{name:&quot;M&quot;, phone:&quot;1&quot;}</code> predicate will return an array of items
 which have property <code>name</code> containing &quot;M&quot; and property <code>phone</code> containing &quot;1&quot;. A special
-property name <code>$</code> can be used (as in <code>{$:&quot;text&quot;}</code>) to accept a match against any
-property of the object or its nested object properties. That&#39;s equivalent to the simple
-substring match with a <code>string</code> as described above. The predicate can be negated by prefixing
-the string with <code>!</code>.
+property name (<code>$</code> by default) can be used (e.g. as in <code>{$: &quot;text&quot;}</code>) to accept a match
+against any property of the object or its nested object properties. That&#39;s equivalent to the
+simple substring match with a <code>string</code> as described above. The special property name can be
+overwritten, using the <code>anyPropertyKey</code> parameter.
+The predicate can be negated by prefixing the string with <code>!</code>.
 For example <code>{name: &quot;!M&quot;}</code> predicate will return an array of items which have property <code>name</code>
 not containing &quot;M&quot;.</p>
 <p>Note that a named property will match properties on the same level only, while the special
@@ -144,6 +145,23 @@ insensitive way.</p>
 unless they have a custom <code>toString</code> method (e.g. <code>Date</code> objects).</p>
 </li>
 </ul>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        anyPropertyKey
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        <a href="" class="label type-hint type-hint-string">string</a>
+      </td>
+      <td>
+        <p>The special property name that matches against any property.
+    By default <code>$</code>.</p>
 
         
       </td>
