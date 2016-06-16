@@ -118,10 +118,13 @@ this:</p>
   excess keys are appended to the url search query after the <code>?</code>.</p>
 <p>  Given a template <code>/path/:verb</code> and parameter <code>{verb:&#39;greet&#39;, salutation:&#39;Hello&#39;}</code> results in
   URL <code>/path/greet?salutation=Hello</code>.</p>
-<p>  If the parameter value is prefixed with <code>@</code> then the value for that parameter will be extracted
-  from the corresponding property on the <code>data</code> object (provided when calling an action method).
+<p>  If the parameter value is prefixed with <code>@</code>, then the value for that parameter will be
+  extracted from the corresponding property on the <code>data</code> object (provided when calling a
+  &quot;non-GET&quot; action method).
   For example, if the <code>defaultParam</code> object is <code>{someParam: &#39;@someProp&#39;}</code> then the value of
-  <code>someParam</code> will be <code>data.someProp</code>.</p>
+  <code>someParam</code> will be <code>data.someProp</code>.
+  Note that the parameter will be ignored, when calling a &quot;GET&quot; action method (i.e. an action
+  method that does not accept a request body)</p>
 
         
       </td>

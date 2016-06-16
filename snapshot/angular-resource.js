@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.8-build.4891+sha.02aef57
+ * @license AngularJS v1.5.8-build.4892+sha.7ab00f4
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -128,10 +128,13 @@ function shallowClearAndCopy(src, dst) {
  *   Given a template `/path/:verb` and parameter `{verb:'greet', salutation:'Hello'}` results in
  *   URL `/path/greet?salutation=Hello`.
  *
- *   If the parameter value is prefixed with `@` then the value for that parameter will be extracted
- *   from the corresponding property on the `data` object (provided when calling an action method).
+ *   If the parameter value is prefixed with `@`, then the value for that parameter will be
+ *   extracted from the corresponding property on the `data` object (provided when calling a
+ *   "non-GET" action method).
  *   For example, if the `defaultParam` object is `{someParam: '@someProp'}` then the value of
  *   `someParam` will be `data.someProp`.
+ *   Note that the parameter will be ignored, when calling a "GET" action method (i.e. an action
+ *   method that does not accept a request body)
  *
  * @param {Object.<Object>=} actions Hash with declaration of custom actions that should extend
  *   the default set of resource actions. The declaration should be created in the format of {@link
