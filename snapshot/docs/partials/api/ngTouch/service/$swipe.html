@@ -55,13 +55,13 @@ documentation for <code>bind</code> below.</p>
     <div><p>The main method of <code>$swipe</code>. It takes an element to be watched for swipe motions, and an
 object containing event handlers.
 The pointer types that should be used can be specified via the optional
-third argument, which is an array of strings <code>&#39;mouse&#39;</code> and <code>&#39;touch&#39;</code>. By default,
-<code>$swipe</code> will listen for <code>mouse</code> and <code>touch</code> events.</p>
+third argument, which is an array of strings <code>&#39;mouse&#39;</code>, <code>&#39;touch&#39;</code> and <code>&#39;pointer&#39;</code>. By default,
+<code>$swipe</code> will listen for <code>mouse</code>, <code>touch</code> and <code>pointer</code> events.</p>
 <p>The four events are <code>start</code>, <code>move</code>, <code>end</code>, and <code>cancel</code>. <code>start</code>, <code>move</code>, and <code>end</code>
 receive as a parameter a coordinates object of the form <code>{ x: 150, y: 310 }</code> and the raw
 <code>event</code>. <code>cancel</code> receives the raw <code>event</code> as its single parameter.</p>
-<p><code>start</code> is called on either <code>mousedown</code> or <code>touchstart</code>. After this event, <code>$swipe</code> is
-watching for <code>touchmove</code> or <code>mousemove</code> events. These events are ignored until the total
+<p><code>start</code> is called on either <code>mousedown</code>, <code>touchstart</code> or <code>pointerdown</code>. After this event, <code>$swipe</code> is
+watching for <code>touchmove</code>, <code>mousemove</code> or <code>pointermove</code> events. These events are ignored until the total
 distance moved in either dimension exceeds a small threshold.</p>
 <p>Once this threshold is exceeded, either the horizontal or vertical delta is greater.</p>
 <ul>
@@ -69,10 +69,10 @@ distance moved in either dimension exceeds a small threshold.</p>
 <li>If the vertical distance is greater, this is a scroll, and we let the browser take over.
 A <code>cancel</code> event is sent.</li>
 </ul>
-<p><code>move</code> is called on <code>mousemove</code> and <code>touchmove</code> after the above logic has determined that
+<p><code>move</code> is called on <code>mousemove</code>, <code>touchmove</code> and <code>pointermove</code> after the above logic has determined that
 a swipe is in progress.</p>
-<p><code>end</code> is called when a swipe is successfully completed with a <code>touchend</code> or <code>mouseup</code>.</p>
-<p><code>cancel</code> is called either on a <code>touchcancel</code> from the browser, or when we begin scrolling
+<p><code>end</code> is called when a swipe is successfully completed with a <code>touchend</code>, <code>mouseup</code> or <code>pointerup</code>.</p>
+<p><code>cancel</code> is called either on a <code>touchcancel</code> or <code>pointercancel</code>  from the browser, or when we begin scrolling
 as described above.</p>
 </div>
 
