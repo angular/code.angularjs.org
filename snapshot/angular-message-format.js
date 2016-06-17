@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.8-build.4895+sha.4585b93
+ * @license AngularJS v1.5.8-build.4896+sha.d406a15
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -10,11 +10,9 @@
 // This file is compiled with Closure compiler's ADVANCED_OPTIMIZATIONS flag! Be wary of using
 // constructs incompatible with that mode.
 
-var $interpolateMinErr = window['angular']['$interpolateMinErr'];
-
-var noop = window['angular']['noop'],
-    isFunction = window['angular']['isFunction'],
-    toJson = window['angular']['toJson'];
+/* global isFunction: false */
+/* global noop: false */
+/* global toJson: false */
 
 function stringify(value) {
   if (value == null /* null/undefined */) { return ''; }
@@ -860,7 +858,10 @@ MessageFormatParser.prototype.ruleInAngularExpression = function ruleInAngularEx
 // This file is compiled with Closure compiler's ADVANCED_OPTIMIZATIONS flag! Be wary of using
 // constructs incompatible with that mode.
 
-/* global $interpolateMinErr: false */
+/* global $interpolateMinErr: true */
+/* global isFunction: true */
+/* global noop: true */
+/* global toJson: true */
 /* global MessageFormatParser: false */
 /* global stringify: false */
 
@@ -1062,9 +1063,19 @@ var $$interpolateDecorator = ['$$messageFormat', '$delegate', function $$interpo
   return interpolate;
 }];
 
+var $interpolateMinErr;
+var isFunction;
+var noop;
+var toJson;
+
 var module = window['angular']['module']('ngMessageFormat', ['ng']);
 module['factory']('$$messageFormat', $$MessageFormatFactory);
 module['config'](['$provide', function($provide) {
+  $interpolateMinErr = window['angular']['$interpolateMinErr'];
+  isFunction = window['angular']['isFunction'];
+  noop = window['angular']['noop'];
+  toJson = window['angular']['toJson'];
+
   $provide['decorator']('$interpolate', $$interpolateDecorator);
 }]);
 
