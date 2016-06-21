@@ -1496,6 +1496,11 @@ angular.module('pagesData', [])
     "area": "api",
     "path": "api/ng/service/$interval"
   },
+  "api/ng/service/$jsonpCallbacks": {
+    "name": "$jsonpCallbacks",
+    "area": "api",
+    "path": "api/ng/service/$jsonpCallbacks"
+  },
   "api/ng/service/$locale": {
     "name": "$locale",
     "area": "api",

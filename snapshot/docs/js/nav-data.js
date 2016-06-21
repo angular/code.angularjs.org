@@ -726,6 +726,11 @@ angular.module('navData', [])
             "type": "service"
           },
           {
+            "name": "$jsonpCallbacks",
+            "href": "api/ng/service/$jsonpCallbacks",
+            "type": "service"
+          },
+          {
             "name": "$locale",
             "href": "api/ng/service/$locale",
             "type": "service"

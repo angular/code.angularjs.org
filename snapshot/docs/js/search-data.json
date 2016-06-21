@@ -1772,7 +1772,7 @@
   {
     "path": "api/ng/service/$httpBackend",
     "titleWords": "$httpBackend",
-    "keywords": "$document $http $httpbackend $httpbackendprovider $resource $window $xhrfactory abstractions and api backend be browser by can deals delegates directly during higher-level html http implementation incompatibilities instead is jsonp mock module need never ng ngmock ngresource object or partials responses service should swapped testing that the this to trained use used which with xmlhttprequest you",
+    "keywords": "$document $http $httpbackend $httpbackendprovider $jsonpcallbacks $resource $xhrfactory abstractions and api backend be browser by can deals delegates directly during higher-level html http implementation incompatibilities instead is jsonp mock module need never ng ngmock ngresource object or partials responses service should swapped testing that the this to trained use used which with xmlhttprequest you",
     "members": ""
   },
   {
@@ -1792,6 +1792,12 @@
     "titleWords": "$interval",
     "keywords": "$apply $interval $rootscope additional after alert alert-warning always an and angular any api appropriate are at automatically be below between block by call called can cancel checking class consideration controller count created defined delay destroyed details directive dirty do each element every example example-example106 executed explicitly false finished flush fn for forward function functions have how html if in indefinitely interval intervals into invoke is iteration iterations make millis milliseconds model module moment more move must ng ngmock not notification notified number of on or otherwise parameters partials particular pass promise registering repeat repeatedly resolved return run scheduled scope see service set setinterval should skips sure take tests that the them they this tick time times to trigger upon use value when which will window with within wrapper you",
     "members": "cancel"
+  },
+  {
+    "path": "api/ng/service/$jsonpCallbacks",
+    "titleWords": "$jsonpCallbacks",
+    "keywords": "$jsonpcallbacks $jsonpcallbacksprovider $window and api are callbacks compared customise handle handles how html if jsonp lifecycle module ng of override partials requested requests service stored the they this to url vary where wish you",
+    "members": "createcallback getresponse removecallback wascalled"
   },
   {
     "path": "api/ng/service/$locale",
