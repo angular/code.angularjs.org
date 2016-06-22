@@ -2248,6 +2248,12 @@ angular.module('pagesData', [])
   "examples/example-example52": {
     "path": "examples/example-example52"
   },
+  "examples/example-doCheckDateExample": {
+    "path": "examples/example-doCheckDateExample"
+  },
+  "examples/example-doCheckArrayExample": {
+    "path": "examples/example-doCheckArrayExample"
+  },
   "examples/example-example53": {
     "path": "examples/example-example53"
   },

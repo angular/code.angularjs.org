@@ -37,8 +37,9 @@ see the <a href="guide/directive">directive guide</a>.
 <h2 id="comprehensive-directive-api">Comprehensive Directive API</h2>
 <p>There are many different options for a directive.</p>
 <p>The difference resides in the return value of the factory function.
-You can either return a &quot;Directive Definition Object&quot; (see below) that defines the directive properties,
-or just the <code>postLink</code> function (all other properties will have the default values).</p>
+You can either return a <a href="api/ng/service/$compile#directive-definition-object">Directive Definition Object (see below)</a>
+that defines the directive properties, or just the <code>postLink</code> function (all other properties will have
+the default values).</p>
 <div class="alert alert-success">
 <strong>Best Practice:</strong> It&#39;s recommended to use the &quot;directive definition object&quot; form.
 </div>
@@ -95,6 +96,117 @@ myModule.directive(&#39;directiveName&#39;, function factory(injectables) {
   // return function postLink(scope, iElement, iAttrs) { ... }
 });
 </code></pre>
+<h3 id="life-cycle-hooks">Life-cycle hooks</h3>
+<p>Directive controllers can provide the following methods that are called by Angular at points in the life-cycle of the
+directive:</p>
+<ul>
+<li><code>$onInit()</code> - Called on each controller after all the controllers on an element have been constructed and
+had their bindings initialized (and before the pre &amp; post linking functions for the directives on
+this element). This is a good place to put initialization code for your controller.</li>
+<li><code>$onChanges(changesObj)</code> - Called whenever one-way (<code>&lt;</code>) or interpolation (<code>@</code>) bindings are updated. The
+<code>changesObj</code> is a hash whose keys are the names of the bound properties that have changed, and the values are an
+object of the form <code>{ currentValue, previousValue, isFirstChange() }</code>. Use this hook to trigger updates within a
+component such as cloning the bound value to prevent accidental mutation of the outer value.</li>
+<li><code>$doCheck()</code> - Called on each turn of the digest cycle. Provides an opportunity to detect and act on
+changes. Any actions that you wish to take in response to the changes that you detect must be
+invoked from this hook; implementing this has no effect on when <code>$onChanges</code> is called. For example, this hook
+could be useful if you wish to perform a deep equality check, or to check a Date object, changes to which would not
+be detected by Angular&#39;s change detector and thus not trigger <code>$onChanges</code>. This hook is invoked with no arguments;
+if detecting changes, you must store the previous value(s) for comparison to the current values.</li>
+<li><code>$onDestroy()</code> - Called on a controller when its containing scope is destroyed. Use this hook for releasing
+external resources, watches and event handlers. Note that components have their <code>$onDestroy()</code> hooks called in
+the same order as the <code>$scope.$broadcast</code> events are triggered, which is top down. This means that parent
+components will have their <code>$onDestroy()</code> hook called before child components.</li>
+<li><code>$postLink()</code> - Called after this controller&#39;s element and its children have been linked. Similar to the post-link
+function this hook can be used to set up DOM event handlers and do direct DOM manipulation.
+Note that child elements that contain <code>templateUrl</code> directives will not have been compiled and linked since
+they are waiting for their template to load asynchronously and their own compilation and linking has been
+suspended until that occurs.</li>
+</ul>
+<h4 id="comparison-with-angular-2-life-cycle-hooks">Comparison with Angular 2 life-cycle hooks</h4>
+<p>Angular 2 also uses life-cycle hooks for its components. While the Angular 1 life-cycle hooks are similar there are
+some differences that you should be aware of, especially when it comes to moving your code from Angular 1 to Angular 2:</p>
+<ul>
+<li>Angular 1 hooks are prefixed with <code>$</code>, such as <code>$onInit</code>. Angular 2 hooks are prefixed with <code>ng</code>, such as <code>ngOnInit</code>.</li>
+<li>Angular 1 hooks can be defined on the controller prototype or added to the controller inside its constructor.
+In Angular 2 you can only define hooks on the prototype of the Component class.</li>
+<li>Due to the differences in change-detection, you may get many more calls to <code>$doCheck</code> in Angular 1 than you would to
+<code>ngDoCheck</code> in Angular 2</li>
+<li>Changes to the model inside <code>$doCheck</code> will trigger new turns of the digest loop, which will cause the changes to be
+propagated throughout the application.
+Angular 2 does not allow the <code>ngDoCheck</code> hook to trigger a change outside of the component. It will either throw an
+error or do nothing depending upon the state of <code>enableProdMode()</code>.</li>
+</ul>
+<h4 id="life-cycle-hook-examples">Life-cycle hook examples</h4>
+<p>This example shows how you can check for mutations to a Date object even though the identity of the object
+has not changed.</p>
+<p>
+
+<div>
+  <plnkr-opener example-path="examples/example-doCheckDateExample"></plnkr-opener>
+
+  <div class="runnable-example"
+      path="examples/example-doCheckDateExample"
+      name="doCheckDateExample"
+      module="do-check-module">
+
+  
+    <div class="runnable-example-file" 
+      name="app.js"
+      language="js"
+      type="js">
+      <pre><code>angular.module(&#39;do-check-module&#39;, [])&#10;.component(&#39;app&#39;, {&#10;  template:&#10;    &#39;Month: &lt;input ng-model=&quot;$ctrl.month&quot; ng-change=&quot;$ctrl.updateDate()&quot;&gt;&#39; +&#10;    &#39;Date: {{ $ctrl.date }}&#39; +&#10;    &#39;&lt;test date=&quot;$ctrl.date&quot;&gt;&lt;/test&gt;&#39;,&#10;  controller: function() {&#10;    this.date = new Date();&#10;    this.month = this.date.getMonth();&#10;    this.updateDate = function() {&#10;      this.date.setMonth(this.month);&#10;    };&#10;  }&#10;})&#10;.component(&#39;test&#39;, {&#10;  bindings: { date: &#39;&lt;&#39; },&#10;  template:&#10;    &#39;&lt;pre&gt;{{ $ctrl.log | json }}&lt;/pre&gt;&#39;,&#10;  controller: function() {&#10;    var previousValue;&#10;    this.log = [];&#10;    this.$doCheck = function() {&#10;      var currentValue = this.date &amp;&amp; this.date.valueOf();&#10;      if (previousValue !== currentValue) {&#10;        this.log.push(&#39;doCheck: date mutated: &#39; + this.date);&#10;        previousValue = currentValue;&#10;      }&#10;    };&#10;  }&#10;});</code></pre>
+    </div>
+  
+    <div class="runnable-example-file" 
+      name="index.html"
+      language="html"
+      type="html">
+      <pre><code>&lt;app&gt;&lt;/app&gt;</code></pre>
+    </div>
+  
+
+    <iframe class="runnable-example-frame" src="examples/example-doCheckDateExample/index.html" name="example-doCheckDateExample"></iframe>
+  </div>
+</div>
+
+
+</p>
+<p>This example show how you might use <code>$doCheck</code> to trigger changes in your component&#39;s inputs even if the
+actual identity of the component doesn&#39;t change. (Be aware that cloning and deep equality checks on large
+arrays or objects can have a negative impact on your application performance)</p>
+<p>
+
+<div>
+  <plnkr-opener example-path="examples/example-doCheckArrayExample"></plnkr-opener>
+
+  <div class="runnable-example"
+      path="examples/example-doCheckArrayExample"
+      name="doCheckArrayExample"
+      module="do-check-module">
+
+  
+    <div class="runnable-example-file" 
+      name="index.html"
+      language="html"
+      type="html">
+      <pre><code>&lt;div ng-init=&quot;items = []&quot;&gt;&#10;  &lt;button ng-click=&quot;items.push(items.length)&quot;&gt;Add Item&lt;/button&gt;&#10;  &lt;button ng-click=&quot;items = []&quot;&gt;Reset Items&lt;/button&gt;&#10;  &lt;pre&gt;{{ items }}&lt;/pre&gt;&#10;  &lt;test items=&quot;items&quot;&gt;&lt;/test&gt;&#10;&lt;/div&gt;</code></pre>
+    </div>
+  
+    <div class="runnable-example-file" 
+      name="app.js"
+      language="js"
+      type="js">
+      <pre><code>angular.module(&#39;do-check-module&#39;, [])&#10;.component(&#39;test&#39;, {&#10;  bindings: { items: &#39;&lt;&#39; },&#10;  template:&#10;    &#39;&lt;pre&gt;{{ $ctrl.log | json }}&lt;/pre&gt;&#39;,&#10;  controller: function() {&#10;    this.log = [];&#10;&#10;    this.$doCheck = function() {&#10;      if (this.items_ref !== this.items) {&#10;        this.log.push(&#39;doCheck: items changed&#39;);&#10;        this.items_ref = this.items;&#10;      }&#10;      if (!angular.equals(this.items_clone, this.items)) {&#10;        this.log.push(&#39;doCheck: items mutated&#39;);&#10;        this.items_clone = angular.copy(this.items);&#10;      }&#10;    };&#10;  }&#10;});</code></pre>
+    </div>
+  
+
+    <iframe class="runnable-example-frame" src="examples/example-doCheckArrayExample/index.html" name="example-doCheckArrayExample"></iframe>
+  </div>
+</div>
+
+
+</p>
 <h3 id="directive-definition-object">Directive Definition Object</h3>
 <p>The directive definition object provides instructions to the <a href="api/ng/service/$compile">compiler</a>. The attributes are:</p>
 <h4 id="-multielement-"><code>multiElement</code></h4>
@@ -259,25 +371,6 @@ The <code>$transclude</code> function also has a method on it, <code>$transclude
 <code>true</code> if the specified slot contains content (i.e. one or more DOM nodes).</li>
 </ul>
 </li>
-</ul>
-<p>The controller can provide the following methods that act as life-cycle hooks:</p>
-<ul>
-<li><code>$onInit()</code> - Called on each controller after all the controllers on an element have been constructed and
-had their bindings initialized (and before the pre &amp; post linking functions for the directives on
-this element). This is a good place to put initialization code for your controller.</li>
-<li><code>$onChanges(changesObj)</code> - Called whenever one-way (<code>&lt;</code>) or interpolation (<code>@</code>) bindings are updated. The
-<code>changesObj</code> is a hash whose keys are the names of the bound properties that have changed, and the values are an
-object of the form <code>{ currentValue, previousValue, isFirstChange() }</code>. Use this hook to trigger updates within a
-component such as cloning the bound value to prevent accidental mutation of the outer value.</li>
-<li><code>$onDestroy()</code> - Called on a controller when its containing scope is destroyed. Use this hook for releasing
-external resources, watches and event handlers. Note that components have their <code>$onDestroy()</code> hooks called in
-the same order as the <code>$scope.$broadcast</code> events are triggered, which is top down. This means that parent
-components will have their <code>$onDestroy()</code> hook called before child components.</li>
-<li><code>$postLink()</code> - Called after this controller&#39;s element and its children have been linked. Similar to the post-link
-function this hook can be used to set up DOM event handlers and do direct DOM manipulation.
-Note that child elements that contain <code>templateUrl</code> directives will not have been compiled and linked since
-they are waiting for their template to load asynchronously and their own compilation and linking has been
-suspended until that occurs.</li>
 </ul>
 <h4 id="-require-"><code>require</code></h4>
 <p>Require another directive and inject its controller as the fourth argument to the linking function. The

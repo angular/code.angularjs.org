@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.8-build.4898+sha.78e1ba1
+ * @license AngularJS v1.5.8-build.4900+sha.aa8d783
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -270,10 +270,10 @@ function resolveElementClasses(existing, toAdd, toRemove) {
     var prop, allow;
     if (val === ADD_CLASS) {
       prop = 'addClass';
-      allow = !existing[klass];
+      allow = !existing[klass] || existing[klass + REMOVE_CLASS_SUFFIX];
     } else if (val === REMOVE_CLASS) {
       prop = 'removeClass';
-      allow = existing[klass];
+      allow = existing[klass] || existing[klass + ADD_CLASS_SUFFIX];
     }
     if (allow) {
       if (classes[prop].length) {
