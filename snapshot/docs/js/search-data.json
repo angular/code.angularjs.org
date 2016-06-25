@@ -1244,7 +1244,7 @@
   {
     "path": "api/ng/directive/ngReadonly",
     "titleWords": "ngReadonly readonly",
-    "keywords": "api attribute be because cannot directive element example-example57 expression for guide html if info input inside interpolation is module more necessary ng ngattributealiasdirectives ngreadonly on partials readonly see set sets special the then truthy use we will",
+    "keywords": "api applies attr-readonly attribute be because cannot directive docs element elements example-example57 expression for guide html if info information input inside interpolation is mdn module more mozilla necessary ng ngattributealiasdirectives ngreadonly note on only org partials readonly see set sets special specific that the then to truthy types use we will with",
     "members": ""
   },
   {

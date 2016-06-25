@@ -20,8 +20,10 @@
 
 
 <div class="api-profile-description">
-  <p>Sets the <code>readOnly</code> attribute on the element, if the expression inside <code>ngReadonly</code> is truthy.</p>
-<p>A special directive is necessary because we cannot use interpolation inside the <code>readOnly</code>
+  <p>Sets the <code>readonly</code> attribute on the element, if the expression inside <code>ngReadonly</code> is truthy.
+Note that <code>readonly</code> applies only to <code>input</code> elements with specific types. <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-readonly">See the input docs on
+MDN</a> for more information.</p>
+<p>A special directive is necessary because we cannot use interpolation inside the <code>readonly</code>
 attribute. See the <a href="guide/interpolation">interpolation guide</a> for more info.</p>
 
 </div>
