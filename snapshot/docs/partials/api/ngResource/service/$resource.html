@@ -114,7 +114,7 @@ this:</p>
         <p>Default values for <code>url</code> parameters. These can be overridden in
   <code>actions</code> methods. If a parameter value is a function, it will be called every time
   a param value needs to be obtained for a request (unless the param was overridden). The function
-  will be passed the current data value as a argument.</p>
+  will be passed the current data value as an argument.</p>
 <p>  Each key value in the parameter object is first bound to url template if present and then any
   excess keys are appended to the url search query after the <code>?</code>.</p>
 <p>  Given a template <code>/path/:verb</code> and parameter <code>{verb:&#39;greet&#39;, salutation:&#39;Hello&#39;}</code> results in
@@ -156,7 +156,7 @@ your resource object.</li>
 <li><strong><code>params</code></strong> – {Object=} – Optional set of pre-bound parameters for this action. If any of
 the parameter value is a function, it will be called every time when a param value needs to
 be obtained for a request (unless the param was overridden). The function will be passed the
-current data value as a argument.</li>
+current data value as an argument.</li>
 <li><strong><code>url</code></strong> – {string} – action specific <code>url</code> override. The url templating is supported just
 like for the resource-level urls.</li>
 <li><strong><code>isArray</code></strong> – {boolean=} – If true then the returned object for this action is an array,

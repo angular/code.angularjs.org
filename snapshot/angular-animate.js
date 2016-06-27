@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.8-build.4905+sha.56a9eab
+ * @license AngularJS v1.5.8-build.4906+sha.f6c3b35
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -2281,7 +2281,7 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
       }
     );
 
-    var callbackRegistry = {};
+    var callbackRegistry = Object.create(null);
 
     // remember that the classNameFilter is set during the provider/config
     // stage therefore we can optimize here and setup a helper function
