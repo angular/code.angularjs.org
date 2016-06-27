@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.8-build.4907+sha.c855c3f
+ * @license AngularJS v1.5.8-build.4908+sha.7a191eb
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -2961,7 +2961,7 @@ angular.mock.$RootScopeDecorator = ['$delegate', function($delegate) {
     angular.forEach(angular.callbacks, function(val, key) {
       delete angular.callbacks[key];
     });
-    angular.callbacks.counter = 0;
+    angular.callbacks.$$counter = 0;
   };
 
   (window.beforeEach || window.setup)(module.$$beforeEach);
