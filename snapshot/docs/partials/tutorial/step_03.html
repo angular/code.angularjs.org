@@ -168,14 +168,14 @@ inside our component, stays inside our component.</li>
 
 <h1 id="testing">Testing</h1>
 <p>Although we have combined our controller with a template into a component, we still can (and should)
-unit test the controller separately, since this is where are application logic and data reside.</p>
+unit test the controller separately, since this is where our application logic and data reside.</p>
 <p>In order to retrieve and instantiate a component&#39;s controller, Angular provides the
 <a href="api/ngMock/service/$componentController">$componentController</a> service.</p>
 <div class="alert alert-info">
-  The <code>$controller</code> service that we used in the previous step, can only instantiate controllers that
-  where registered by name, using the <code>.controller()</code> method. We could have registered our component
-  controller this way too, if we wanted to. Instead, we chose to define it inline &mdash; inside the
-  CDO &mdash; to keep things localized, but either way works equally well.
+  The <code>$controller</code> service that we used in the previous step can only instantiate controllers that
+  were registered by name, using the <code>.controller()</code> method. We could have registered our component
+  controller this way, too, if we wanted to. Instead, we chose to define it inline &mdash; inside
+  the CDO &mdash; to keep things localized, but either way works equally well.
 </div>
 
 <p><br />
@@ -223,7 +223,7 @@ throughout the application, is a big win.</p>
 </li>
 </ul>
 <h1 id="summary">Summary</h1>
-<p>You have learned how to organize your application and presentation logic into isolated reusable
+<p>You have learned how to organize your application and presentation logic into isolated, reusable
 components. Let&#39;s go to <a href="tutorial/step_04">step 4</a> to learn how to organize our code in directories and
 files, so it remains easy to locate as our application grows.</p>
 <ul doc-tutorial-nav="3"></ul>
