@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.8-build.4910+sha.3cda897
+ * @license AngularJS v1.5.8-build.4911+sha.7ce7e09
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -13,15 +13,7 @@
 /* global isFunction: false */
 /* global noop: false */
 /* global toJson: false */
-
-function stringify(value) {
-  if (value == null /* null/undefined */) { return ''; }
-  switch (typeof value) {
-    case 'string':     return value;
-    case 'number':     return '' + value;
-    default:           return toJson(value);
-  }
-}
+/* global $$stringify: false */
 
 // Convert an index into the string into line/column for use in error messages
 // As such, this doesn't have to be efficient.
@@ -863,7 +855,6 @@ MessageFormatParser.prototype.ruleInAngularExpression = function ruleInAngularEx
 /* global noop: true */
 /* global toJson: true */
 /* global MessageFormatParser: false */
-/* global stringify: false */
 
 /**
  * @ngdoc module
@@ -1033,7 +1024,7 @@ var $$MessageFormatFactory = ['$parse', '$locale', '$sce', '$exceptionHandler', 
     return function stringifier(value) {
       try {
         value = trustedContext ? $sce['getTrusted'](trustedContext, value) : $sce['valueOf'](value);
-        return allOrNothing && (value === void 0) ? value : stringify(value);
+        return allOrNothing && (value === void 0) ? value : $$stringify(value);
       } catch (err) {
         $exceptionHandler($interpolateMinErr['interr'](text, err));
       }
@@ -1067,6 +1058,7 @@ var $interpolateMinErr;
 var isFunction;
 var noop;
 var toJson;
+var $$stringify;
 
 var module = window['angular']['module']('ngMessageFormat', ['ng']);
 module['factory']('$$messageFormat', $$MessageFormatFactory);
@@ -1075,6 +1067,7 @@ module['config'](['$provide', function($provide) {
   isFunction = window['angular']['isFunction'];
   noop = window['angular']['noop'];
   toJson = window['angular']['toJson'];
+  $$stringify = window['angular']['$$stringify'];
 
   $provide['decorator']('$interpolate', $$interpolateDecorator);
 }]);

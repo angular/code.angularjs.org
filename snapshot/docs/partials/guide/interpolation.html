@@ -15,6 +15,15 @@ registers <a href="api/ng/type/$rootScope.Scope#$watch">watches</a> on the compu
 which will update the corresponding text nodes or attribute values as part of the
 normal <a href="api/ng/type/$rootScope.Scope#$digest">digest</a> cycle.</p>
 <p>Note that the interpolateDirective has a priority of 100 and sets up the watch in the preLink function.</p>
+<h3 id="how-the-string-representation-is-computed">How the string representation is computed</h3>
+<p>If the interpolated value is not a <code>String</code>, it is computed as follows:</p>
+<ul>
+<li><code>undefined</code> and <code>null</code> are converted to <code>&#39;&#39;</code></li>
+<li>if the value is an object that is not a <code>Number</code>, <code>Date</code> or <code>Array</code>, $interpolate looks for
+a custom <code>toString()</code> function on the object, and uses that. Custom means that
+<code>myObject.toString !==</code>Object.prototype.toString`.</li>
+<li>if the above doesn&#39;t apply, <code>JSON.stringify</code> is used.</li>
+</ul>
 <h3 id="binding-to-boolean-attributes">Binding to boolean attributes</h3>
 <p>Attributes such as <code>disabled</code> are called <code>boolean</code> attributes, because their presence means <code>true</code> and
 their absence means <code>false</code>. We cannot use normal attribute bindings with them, because the HTML
