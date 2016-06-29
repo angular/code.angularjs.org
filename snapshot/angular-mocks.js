@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.8-build.4911+sha.7ce7e09
+ * @license AngularJS v1.5.8-build.4912+sha.f7405e3
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -3064,7 +3064,7 @@ angular.mock.$RootScopeDecorator = ['$delegate', function($delegate) {
       this.stack = e.stack + '\n' + errorForStack.stack;
     if (e.stackArray) this.stackArray = e.stackArray;
   };
-  ErrorAddingDeclarationLocationStack.prototype.toString = Error.prototype.toString;
+  ErrorAddingDeclarationLocationStack.prototype = Error.prototype;
 
   window.inject = angular.mock.inject = function() {
     var blockFns = Array.prototype.slice.call(arguments, 0);
