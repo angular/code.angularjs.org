@@ -591,6 +591,11 @@ angular.module('pagesData', [])
     "area": "guide",
     "path": "guide/expression"
   },
+  "guide/external-resources": {
+    "name": "External Resources",
+    "area": "guide",
+    "path": "guide/external-resources"
+  },
   "guide/filter": {
     "name": "Filters",
     "area": "guide",

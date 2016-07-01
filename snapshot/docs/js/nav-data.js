@@ -2023,6 +2023,11 @@ angular.module('navData', [])
             "type": "page"
           },
           {
+            "name": "External Resources",
+            "href": "guide/external-resources",
+            "type": "page"
+          },
+          {
             "name": "Data Binding",
             "href": "guide/databinding",
             "type": "page"
