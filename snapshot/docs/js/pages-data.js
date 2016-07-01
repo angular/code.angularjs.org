@@ -2487,8 +2487,11 @@ angular.module('pagesData', [])
   "examples/example-static-select": {
     "path": "examples/example-static-select"
   },
-  "examples/example-ngrepeat-select": {
-    "path": "examples/example-ngrepeat-select"
+  "examples/example-select-ngrepeat": {
+    "path": "examples/example-select-ngrepeat"
+  },
+  "examples/example-select-ngvalue": {
+    "path": "examples/example-select-ngvalue"
   },
   "examples/example-select-with-default-values": {
     "path": "examples/example-select-with-default-values"

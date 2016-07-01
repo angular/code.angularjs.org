@@ -1,8 +1,8 @@
-<a href='https://github.com/angular/angular.js/edit/master/src/ng/directive/select.js?message=docs(select)%3A%20describe%20your%20change...#L140' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/master/src/ng/directive/select.js?message=docs(select)%3A%20describe%20your%20change...#L258' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 
-<a href='https://github.com/angular/angular.js/tree/master/src/ng/directive/select.js#L140' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/master/src/ng/directive/select.js#L258' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -20,7 +20,7 @@
 
 
 <div class="api-profile-description">
-  <p>HTML <code>SELECT</code> element with angular data-binding.</p>
+  <p>HTML <code>select</code> element with angular data-binding.</p>
 <p>The <code>select</code> directive is used together with <a href="api/ng/directive/ngModel"><code>ngModel</code></a> to provide data-binding
 between the scope and the <code>&lt;select&gt;</code> control (including setting default values).
 It also handles dynamic <code>&lt;option&gt;</code> elements, which can be added using the <a href="api/ng/directive/ngRepeat"><code>ngRepeat</a></code> or
@@ -28,25 +28,38 @@ It also handles dynamic <code>&lt;option&gt;</code> elements, which can be added
 <p>When an item in the <code>&lt;select&gt;</code> menu is selected, the value of the selected option will be bound
 to the model identified by the <code>ngModel</code> directive. With static or repeated options, this is
 the content of the <code>value</code> attribute or the textContent of the <code>&lt;option&gt;</code>, if the value attribute is missing.
-If you want dynamic value attributes, you can use interpolation inside the value attribute.</p>
-<div class="alert alert-warning">
-Note that the value of a <code>select</code> directive used without <code>ngOptions</code> is always a string.
-When the model needs to be bound to a non-string value, you must either explicitly convert it
-using a directive (see example below) or use <code>ngOptions</code> to specify the set of options.
-This is because an option element can only be bound to string values at present.
-</div>
-
+Value and textContent can be interpolated.</p>
+<h2 id="matching-model-and-option-values">Matching model and option values</h2>
+<p>In general, the match between the model and an option is evaluated by strictly comparing the model
+value against the value of the available options.</p>
+<p>If you are setting the option value with the option&#39;s <code>value</code> attribute, or textContent, the
+value will always be a <code>string</code> which means that the model value must also be a string.
+Otherwise the <code>select</code> directive cannot match them correctly.</p>
+<p>To bind the model to a non-string value, you can use one of the following strategies:</p>
+<ul>
+<li>the <a href="api/ng/directive/ngOptions"><code>ngOptions</code></a> directive
+(<a href="api/ng/directive/select#using-select-with-ngoptions-and-setting-a-default-value"><code>select</code></a>)</li>
+<li>the <a href="api/ng/directive/ngValue"><code>ngValue</code></a> directive, which allows arbitrary expressions to be
+option values (<a href="api/ng/directive/select#using-ngvalue-to-bind-the-model-to-an-array-of-objects">Example</a>)</li>
+<li>model $parsers / $formatters to convert the string value
+(<a href="api/ng/directive/select#binding-select-to-a-non-string-value-via-ngmodel-parsing-formatting">Example</a>)</li>
+</ul>
 <p>If the viewValue of <code>ngModel</code> does not match any of the options, then the control
 will automatically add an &quot;unknown&quot; option, which it then removes when the mismatch is resolved.</p>
 <p>Optionally, a single hard-coded <code>&lt;option&gt;</code> element, with the value set to an empty string, can
 be nested into the <code>&lt;select&gt;</code> element. This element will then represent the <code>null</code> or &quot;not selected&quot;
 option. See example below for demonstration.</p>
-<div class="alert alert-info">
-In many cases, <code>ngRepeat</code> can be used on <code>&lt;option&gt;</code> elements instead of <a href="api/ng/directive/ngOptions">ngOptions</a> to achieve a similar result. However, <code>ngOptions</code> provides some benefits, such as
-more flexibility in how the <code>&lt;select&gt;</code>&#39;s model is assigned via the <code>select</code> <strong><code>as</code></strong> part of the
-comprehension expression, and additionally in reducing memory and increasing speed by not creating
-a new scope for each repeated instance.
-</div>
+<h2 id="choosing-between-ngrepeat-and-ngoptions-">Choosing between <code>ngRepeat</code> and <code>ngOptions</code></h2>
+<p>In many cases, <code>ngRepeat</code> can be used on <code>&lt;option&gt;</code> elements instead of <a href="api/ng/directive/ngOptions">ngOptions</a> to achieve a similar result. However, <code>ngOptions</code> provides some benefits:</p>
+<ul>
+<li>more flexibility in how the <code>&lt;select&gt;</code>&#39;s model is assigned via the <code>select</code> <strong><code>as</code></strong> part of the
+comprehension expression</li>
+<li>reduced memory consumption by not creating a new scope for each repeated instance</li>
+<li>increased render speed by creating the options in a documentFragment instead of individually</li>
+</ul>
+<p>Specifically, select with repeated options slows down significantly starting at 2000 options in
+Chrome and Internet Explorer / Edge.</p>
+
 </div>
 
 
@@ -253,11 +266,11 @@ set on the model on selection. See <a href="api/ng/directive/ngOptions"><code>ng
 <p>
 
 <div>
-  <plnkr-opener example-path="examples/example-ngrepeat-select"></plnkr-opener>
+  <plnkr-opener example-path="examples/example-select-ngrepeat"></plnkr-opener>
 
   <div class="runnable-example"
-      path="examples/example-ngrepeat-select"
-      name="ngrepeat-select"
+      path="examples/example-select-ngrepeat"
+      name="select-ngrepeat"
       module="ngrepeatSelect">
 
   
@@ -265,18 +278,51 @@ set on the model on selection. See <a href="api/ng/directive/ngOptions"><code>ng
       name="index.html"
       language="html"
       type="html">
-      <pre><code>&lt;div ng-controller=&quot;ExampleController&quot;&gt;&#10;  &lt;form name=&quot;myForm&quot;&gt;&#10;    &lt;label for=&quot;repeatSelect&quot;&gt; Repeat select: &lt;/label&gt;&#10;    &lt;select name=&quot;repeatSelect&quot; id=&quot;repeatSelect&quot; ng-model=&quot;data.repeatSelect&quot;&gt;&#10;      &lt;option ng-repeat=&quot;option in data.availableOptions&quot; value=&quot;{{option.id}}&quot;&gt;{{option.name}}&lt;/option&gt;&#10;    &lt;/select&gt;&#10;  &lt;/form&gt;&#10;  &lt;hr&gt;&#10;  &lt;tt&gt;repeatSelect = {{data.repeatSelect}}&lt;/tt&gt;&lt;br/&gt;&#10;&lt;/div&gt;</code></pre>
+      <pre><code>&lt;div ng-controller=&quot;ExampleController&quot;&gt;&#10;  &lt;form name=&quot;myForm&quot;&gt;&#10;    &lt;label for=&quot;repeatSelect&quot;&gt; Repeat select: &lt;/label&gt;&#10;    &lt;select name=&quot;repeatSelect&quot; id=&quot;repeatSelect&quot; ng-model=&quot;data.model&quot;&gt;&#10;      &lt;option ng-repeat=&quot;option in data.availableOptions&quot; value=&quot;{{option.id}}&quot;&gt;{{option.name}}&lt;/option&gt;&#10;    &lt;/select&gt;&#10;  &lt;/form&gt;&#10;  &lt;hr&gt;&#10;  &lt;tt&gt;model = {{data.model}}&lt;/tt&gt;&lt;br/&gt;&#10;&lt;/div&gt;</code></pre>
     </div>
   
     <div class="runnable-example-file" 
       name="app.js"
       language="js"
       type="js">
-      <pre><code>angular.module(&#39;ngrepeatSelect&#39;, [])&#10; .controller(&#39;ExampleController&#39;, [&#39;$scope&#39;, function($scope) {&#10;   $scope.data = {&#10;    repeatSelect: null,&#10;    availableOptions: [&#10;      {id: &#39;1&#39;, name: &#39;Option A&#39;},&#10;      {id: &#39;2&#39;, name: &#39;Option B&#39;},&#10;      {id: &#39;3&#39;, name: &#39;Option C&#39;}&#10;    ],&#10;   };&#10;}]);</code></pre>
+      <pre><code>angular.module(&#39;ngrepeatSelect&#39;, [])&#10; .controller(&#39;ExampleController&#39;, [&#39;$scope&#39;, function($scope) {&#10;   $scope.data = {&#10;    model: null,&#10;    availableOptions: [&#10;      {id: &#39;1&#39;, name: &#39;Option A&#39;},&#10;      {id: &#39;2&#39;, name: &#39;Option B&#39;},&#10;      {id: &#39;3&#39;, name: &#39;Option C&#39;}&#10;    ],&#10;   };&#10;}]);</code></pre>
     </div>
   
 
-    <iframe class="runnable-example-frame" src="examples/example-ngrepeat-select/index.html" name="example-ngrepeat-select"></iframe>
+    <iframe class="runnable-example-frame" src="examples/example-select-ngrepeat/index.html" name="example-select-ngrepeat"></iframe>
+  </div>
+</div>
+
+
+</p>
+<h3 id="using-ngvalue-to-bind-the-model-to-an-array-of-objects">Using <code>ngValue</code> to bind the model to an array of objects</h3>
+<p>
+
+<div>
+  <plnkr-opener example-path="examples/example-select-ngvalue"></plnkr-opener>
+
+  <div class="runnable-example"
+      path="examples/example-select-ngvalue"
+      name="select-ngvalue"
+      module="ngvalueSelect">
+
+  
+    <div class="runnable-example-file" 
+      name="index.html"
+      language="html"
+      type="html">
+      <pre><code>&lt;div ng-controller=&quot;ExampleController&quot;&gt;&#10;  &lt;form name=&quot;myForm&quot;&gt;&#10;    &lt;label for=&quot;ngvalueselect&quot;&gt; ngvalue select: &lt;/label&gt;&#10;    &lt;select size=&quot;6&quot; name=&quot;ngvalueselect&quot; ng-model=&quot;data.model&quot; multiple&gt;&#10;      &lt;option ng-repeat=&quot;option in data.availableOptions&quot; ng-value=&quot;option.value&quot;&gt;{{option.name}}&lt;/option&gt;&#10;    &lt;/select&gt;&#10;  &lt;/form&gt;&#10;  &lt;hr&gt;&#10;  &lt;pre&gt;model = {{data.model | json}}&lt;/pre&gt;&lt;br/&gt;&#10;&lt;/div&gt;</code></pre>
+    </div>
+  
+    <div class="runnable-example-file" 
+      name="app.js"
+      language="js"
+      type="js">
+      <pre><code>angular.module(&#39;ngvalueSelect&#39;, [])&#10; .controller(&#39;ExampleController&#39;, [&#39;$scope&#39;, function($scope) {&#10;   $scope.data = {&#10;    model: null,&#10;    availableOptions: [&#10;         {value: &#39;myString&#39;, name: &#39;string&#39;},&#10;         {value: 1, name: &#39;integer&#39;},&#10;         {value: true, name: &#39;boolean&#39;},&#10;         {value: null, name: &#39;null&#39;},&#10;         {value: {prop: &#39;value&#39;}, name: &#39;object&#39;},&#10;         {value: [&#39;a&#39;], name: &#39;array&#39;}&#10;    ]&#10;   };&#10;}]);</code></pre>
+    </div>
+  
+
+    <iframe class="runnable-example-frame" src="examples/example-select-ngvalue/index.html" name="example-select-ngvalue"></iframe>
   </div>
 </div>
 

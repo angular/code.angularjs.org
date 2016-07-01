@@ -23,13 +23,13 @@
   <p>The <code>ngOptions</code> attribute can be used to dynamically generate a list of <code>&lt;option&gt;</code>
 elements for the <code>&lt;select&gt;</code> element using the array or object obtained by evaluating the
 <code>ngOptions</code> comprehension expression.</p>
-<p>In many cases, <code>ngRepeat</code> can be used on <code>&lt;option&gt;</code> elements instead of <code>ngOptions</code> to achieve a
-similar result. However, <code>ngOptions</code> provides some benefits such as reducing memory and
-increasing speed by not creating a new scope for each repeated instance, as well as providing
-more flexibility in how the <code>&lt;select&gt;</code>&#39;s model is assigned via the <code>select</code> <strong><code>as</code></strong> part of the
-comprehension expression. <code>ngOptions</code> should be used when the <code>&lt;select&gt;</code> model needs to be bound
- to a non-string value. This is because an option element can only be bound to string values at
-present.</p>
+<p>In many cases, <code>ngRepeat</code> can be used on <code>&lt;option&gt;</code> elements instead of <a href="api/ng/directive/ngOptions">ngOptions</a> to achieve a similar result. However, <code>ngOptions</code> provides some benefits:</p>
+<ul>
+<li>more flexibility in how the <code>&lt;select&gt;</code>&#39;s model is assigned via the <code>select</code> <strong><code>as</code></strong> part of the
+comprehension expression</li>
+<li>reduced memory consumption by not creating a new scope for each repeated instance</li>
+<li>increased render speed by creating the options in a documentFragment instead of individually</li>
+</ul>
 <p>When an item in the <code>&lt;select&gt;</code> menu is selected, the array element or object property
 represented by the selected option will be bound to the model identified by the <code>ngModel</code>
 directive.</p>
