@@ -53,6 +53,24 @@ Date.prototype.toJSON = function() {
     </td>
   </tr>
   <tr>
+    <td><a href="api/ng/directive/ngClass">ngClass</a></td>
+    <td>
+    <p>You should not use <a href="guide/interpolation">interpolation</a> in the value of the <code>class</code>
+attribute, when using the <code>ngClass</code> directive on the same element.
+See <a href="guide/interpolation#known-issues">here</a> for more info.</p>
+ 
+    </td>
+  </tr>
+  <tr>
+    <td><a href="api/ng/directive/ngStyle">ngStyle</a></td>
+    <td>
+    <p>You should not use <a href="guide/interpolation">interpolation</a> in the value of the <code>style</code>
+attribute, when using the <code>ngStyle</code> directive on the same element.
+See <a href="guide/interpolation#known-issues">here</a> for more info.</p>
+ 
+    </td>
+  </tr>
+  <tr>
     <td><a href="api/ng/service/$interpolate">$interpolate</a></td>
     <td>
     <p>It is currently not possible for an interpolated expression to contain the interpolation end
