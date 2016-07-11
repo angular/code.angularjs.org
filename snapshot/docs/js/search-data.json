@@ -2040,6 +2040,12 @@
     "members": ""
   },
   {
+    "path": "api/ngCookies/service/$cookieStore",
+    "titleWords": "$cookieStore",
+    "keywords": "$cookies $cookiestore alert alert-danger angular api are automatically backed be by class controller cookie cookies cookiestoreexample deserialized examplecontroller factory favoritecookie from function get html installed instead is js key-value module myfavorite ngcookies oatmeal objects or partials please provides put remove removing requires retrieved serialized service session storage that the this to tojson use var",
+    "members": "get put remove"
+  },
+  {
     "path": "api/ngCookies",
     "titleWords": "ngCookies cookies",
     "keywords": "$cookies and angular-cookies api browser convenient cookies doc-module-components for html js module ngcookies partials provider provides reading see the usage wrapper writing",
@@ -2056,12 +2062,6 @@
     "titleWords": "$cookies",
     "keywords": "$cookies $get access alert alert-info and angular api be behavior browser changed class controller cookie cookies cookiesexample current etc examplecontroller exposed favoritecookie function get getters has html in installed js module myfavorite ngcookies now oatmeal of partials properties provides put read represented requires retrieving service setters setting standard that the this to until up values var version",
     "members": "get getall getobject put putobject remove"
-  },
-  {
-    "path": "api/ngCookies/service/$cookieStore",
-    "titleWords": "$cookieStore",
-    "keywords": "$cookies $cookiestore alert alert-danger angular api are automatically backed be by class controller cookie cookies cookiestoreexample deserialized examplecontroller factory favoritecookie from function get html installed instead is js key-value module myfavorite ngcookies oatmeal objects or partials please provides put remove removing requires retrieved serialized service session storage that the this to tojson use var",
-    "members": "get put remove"
   },
   {
     "path": "api/ngMessageFormat",

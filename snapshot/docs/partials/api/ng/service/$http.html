@@ -208,7 +208,7 @@ precedence over the default cache value.</p>
 <li>cache a specific response - set config.cache value to TRUE or to a cache object</li>
 </ul>
 <p>If caching is enabled, but neither the default cache nor config.cache are set to a cache object,
-then the default <code>$cacheFactory($http)</code> object is used.</p>
+then the default <code>$cacheFactory(&quot;$http&quot;)</code> object is used.</p>
 <p>The default cache value can be set by updating the
 <a href="api/ng/service/$http#defaults"><code>$http.defaults.cache</code></a> property or the
 <a href="api/ng/provider/$httpProvider#defaults"><code>$httpProvider.defaults.cache</code></a> property.</p>
