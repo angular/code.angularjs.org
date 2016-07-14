@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.8-build.4935+sha.859b1e3
+ * @license AngularJS v1.5.8-build.4940+sha.c8a6481
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -1854,7 +1854,8 @@ function createHttpBackendMock($rootScope, $timeout, $delegate, $browser) {
    *   afterEach($httpBackend.verifyNoOutstandingRequest);
    * ```
    */
-  $httpBackend.verifyNoOutstandingRequest = function() {
+  $httpBackend.verifyNoOutstandingRequest = function(digest) {
+    if (digest !== false) $rootScope.$digest();
     if (responses.length) {
       throw new Error('Unflushed requests: ' + responses.length);
     }
