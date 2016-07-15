@@ -23,7 +23,12 @@
   <p>Sets the <code>selected</code> attribute on the element, if the expression inside <code>ngSelected</code> is truthy.</p>
 <p>A special directive is necessary because we cannot use interpolation inside the <code>selected</code>
 attribute. See the <a href="guide/interpolation">interpolation guide</a> for more info.</p>
-
+<div class="alert alert-warning">
+  <strong>Note:</strong> <code>ngSelected</code> does not interact with the <code>select</code> and <code>ngModel</code> directives, it only
+  sets the <code>selected</code> attribute on the element. If you are using <code>ngModel</code> on the select, you
+  should not use <code>ngSelected</code> on the options, as <code>ngModel</code> will set the select value and
+  selected options.
+</div>
 </div>
 
 
