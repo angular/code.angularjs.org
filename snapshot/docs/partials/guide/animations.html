@@ -377,6 +377,17 @@ case of the spinner, this would be:</p>
 <p>If you do have CSS transitions / animations defined for the animation events, make sure they have higher priority
 than any styles that are independent from ngAnimate.</p>
 <p>You can also use one of the two other <a href="guide/animations#how-to-selectively-enable-disable-and-skip-animations">strategies to disable animations</a>.</p>
+<h3 id="enable-animations-for-elements-outside-of-the-angular-application-dom-tree-link-ng-animate-pin-animate-pin-">Enable animations for elements outside of the Angular application DOM tree: <a href="api/ng/service/$animate#pin">$animate.pin()</a></h3>
+<p>Before animating, <code>ngAnimate</code> checks to see if the element being animated is inside the application DOM tree,
+and if it is not, no animation is run. Usually, this is not a problem as most apps use the <code>ngApp</code>
+attribute / bootstrap the app on the <code>html</code> or <code>body</code> element.</p>
+<p>Problems arise when the application is bootstrapped on a different element, and animations are
+attempted on elements that are outside the application tree, e.g. when libraries append popup and modal
+elements as the last child in the body tag.</p>
+<p>You can use <a href="api/ng/service/$animate#pin"><code>$animate.pin(elementToAnimate, parentHost)</code></a> to specify that an
+element belongs to your application. Simply call it before the element is added to the DOM / before
+the animation starts, with the element you want to animate, and the element which should be its
+assumed parent.</p>
 <h2 id="more-about-animations">More about animations</h2>
 <p>For a full breakdown of each method available on <code>$animate</code>, see the <a href="api/ng/service/$animate">API documentation</a>.</p>
 <p>To see a complete demo, see the <a href="tutorial/step_14">animation step within the AngularJS phonecat tutorial</a>.</p>
