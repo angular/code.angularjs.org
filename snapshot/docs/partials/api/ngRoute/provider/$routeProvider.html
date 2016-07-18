@@ -1,8 +1,8 @@
-<a href='https://github.com/angular/angular.js/edit/master/src/ngRoute/route.js?message=docs($routeProvider)%3A%20describe%20your%20change...#L30' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/master/src/ngRoute/route.js?message=docs($routeProvider)%3A%20describe%20your%20change...#L38' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 
-<a href='https://github.com/angular/angular.js/tree/master/src/ngRoute/route.js#L30' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/master/src/ngRoute/route.js#L38' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -286,6 +286,78 @@ If called with a string, the value maps to <code>redirectTo</code>.</p>
   <tr>
     <td><a href="" class="label type-hint type-hint-object">Object</a></td>
     <td><p>self</p>
+</td>
+  </tr>
+</table>
+    
+
+  </li>
+  
+  <li id="eagerInstantiationEnabled">
+    <h3><p><code>eagerInstantiationEnabled([enabled]);</code></p>
+
+</h3>
+    <div><p>Call this method as a setter to enable/disable eager instantiation of the
+<a href="api/ngRoute/service/$route">$route</a> service upon application bootstrap. You can also call it as a
+getter (i.e. without any arguments) to get the current value of the
+<code>eagerInstantiationEnabled</code> flag.</p>
+<p>Instantiating <code>$route</code> early is necessary for capturing the initial
+<a href="api/ng/service/$location#$locationChangeStart">$locationChangeStart</a> event and navigating to the
+appropriate route. Usually, <code>$route</code> is instantiated in time by the
+<a href="api/ngRoute/directive/ngView">ngView</a> directive. Yet, in cases where <code>ngView</code> is included in an
+asynchronously loaded template (e.g. in another directive&#39;s template), the directive factory
+might not be called soon enough for <code>$route</code> to be instantiated <em>before</em> the initial
+<code>$locationChangeSuccess</code> event is fired. Eager instantiation ensures that <code>$route</code> is always
+instantiated in time, regardless of when <code>ngView</code> will be loaded.</p>
+<p>The default value is true.</p>
+<p><strong>Note</strong>:<br />
+You may want to disable the default behavior when unit-testing modules that depend on
+<code>ngRoute</code>, in order to avoid an unexpected request for the default route&#39;s template.</p>
+</div>
+
+    
+    <h4>Parameters</h4>
+    
+<table class="variables-matrix input-arguments">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        enabled
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        <a href="" class="label type-hint type-hint-boolean">boolean</a>
+      </td>
+      <td>
+        <p>If provided, update the internal <code>eagerInstantiationEnabled</code> flag.</p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+    
+
+    
+    
+    
+    <h4>Returns</h4>
+    <table class="variables-matrix return-arguments">
+  <tr>
+    <td><a href="" class="label type-hint type-hint-object">*</a></td>
+    <td><p>The current value of the <code>eagerInstantiationEnabled</code> flag if used as a getter or
+    itself (for chaining) if used as a setter.</p>
 </td>
   </tr>
 </table>

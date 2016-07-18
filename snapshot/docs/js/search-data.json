@@ -2253,7 +2253,7 @@
     "path": "api/ngRoute/provider/$routeProvider",
     "titleWords": "$routeProvider",
     "keywords": "$route $routeprovider an and api be configuring dependencies example for html installed module ngroute of partials provider requires routes see the to used using",
-    "members": "caseinsensitivematch otherwise when"
+    "members": "caseinsensitivematch eagerinstantiationenabled otherwise when"
   },
   {
     "path": "api/ngRoute/service/$route",
