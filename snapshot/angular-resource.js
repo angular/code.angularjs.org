@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.8-build.4946+sha.c13c666
+ * @license AngularJS v1.5.8-build.4948+sha.5dfb328
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -700,6 +700,8 @@ angular.module('ngResource', ['ng']).
               defaultResponseInterceptor;
             var responseErrorInterceptor = action.interceptor && action.interceptor.responseError ||
               undefined;
+            var hasError = !!error;
+            var hasResponseErrorInterceptor = !!responseErrorInterceptor;
             var timeoutDeferred;
             var numericTimeoutPromise;
 
@@ -781,13 +783,19 @@ angular.module('ngResource', ['ng']).
                 (success || noop)(value, response.headers);
                 return value;
               },
-              responseErrorInterceptor || error ?
+              (hasError || hasResponseErrorInterceptor) ?
               function(response) {
-                (error || noop)(response);
-                (responseErrorInterceptor || noop)(response);
-                return response;
-              }
-              : undefined);
+                if (hasError) error(response);
+                return hasResponseErrorInterceptor ?
+                    responseErrorInterceptor(response) :
+                    $q.reject(response);
+              } :
+              undefined);
+            if (hasError && !hasResponseErrorInterceptor) {
+              // Avoid `Possibly Unhandled Rejection` error,
+              // but still fulfill the returned promise with a rejection
+              promise.catch(noop);
+            }
 
             if (!isInstanceCall) {
               // we are creating instance / collection
