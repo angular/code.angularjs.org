@@ -224,7 +224,7 @@ Closure library&#39;s <a href="http://docs.closure-library.googlecode.com/git/cl
       name="protractor.js"
       type="protractor"
       language="js">
-      <pre><code>describe(&#39;SCE doc demo&#39;, function() {&#10;  it(&#39;should sanitize untrusted values&#39;, function() {&#10;    expect(element.all(by.css(&#39;.htmlComment&#39;)).first().getInnerHtml())&#10;        .toBe(&#39;&lt;span&gt;Is &lt;i&gt;anyone&lt;/i&gt; reading this?&lt;/span&gt;&#39;);&#10;  });&#10;&#10;  it(&#39;should NOT sanitize explicitly trusted values&#39;, function() {&#10;    expect(element(by.id(&#39;explicitlyTrustedHtml&#39;)).getInnerHtml()).toBe(&#10;        &#39;&lt;span onmouseover=&quot;this.textContent=&amp;quot;Explicitly trusted HTML bypasses &#39; +&#10;        &#39;sanitization.&amp;quot;&quot;&gt;Hover over this text.&lt;/span&gt;&#39;);&#10;  });&#10;});</code></pre>
+      <pre><code>describe(&#39;SCE doc demo&#39;, function() {&#10;  it(&#39;should sanitize untrusted values&#39;, function() {&#10;    expect(element.all(by.css(&#39;.htmlComment&#39;)).first().getAttribute(&#39;innerHTML&#39;))&#10;        .toBe(&#39;&lt;span&gt;Is &lt;i&gt;anyone&lt;/i&gt; reading this?&lt;/span&gt;&#39;);&#10;  });&#10;&#10;  it(&#39;should NOT sanitize explicitly trusted values&#39;, function() {&#10;    expect(element(by.id(&#39;explicitlyTrustedHtml&#39;)).getAttribute(&#39;innerHTML&#39;)).toBe(&#10;        &#39;&lt;span onmouseover=&quot;this.textContent=&amp;quot;Explicitly trusted HTML bypasses &#39; +&#10;        &#39;sanitization.&amp;quot;&quot;&gt;Hover over this text.&lt;/span&gt;&#39;);&#10;  });&#10;});</code></pre>
     </div>
   
 

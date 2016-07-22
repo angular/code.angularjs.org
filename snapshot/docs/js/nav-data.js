@@ -2018,13 +2018,13 @@ angular.module('navData', [])
             "type": "page"
           },
           {
-            "name": "Conceptual Overview",
-            "href": "guide/concepts",
+            "name": "External Resources",
+            "href": "guide/external-resources",
             "type": "page"
           },
           {
-            "name": "External Resources",
-            "href": "guide/external-resources",
+            "name": "Conceptual Overview",
+            "href": "guide/concepts",
             "type": "page"
           },
           {
