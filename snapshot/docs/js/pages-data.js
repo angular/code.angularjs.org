@@ -251,6 +251,11 @@ angular.module('pagesData', [])
     "area": "error",
     "path": "error/$location/nostate"
   },
+  "error/$parse/isecaf": {
+    "name": "isecaf",
+    "area": "error",
+    "path": "error/$parse/isecaf"
+  },
   "error/$parse/isecdom": {
     "name": "isecdom",
     "area": "error",

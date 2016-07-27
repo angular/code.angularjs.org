@@ -1670,6 +1670,11 @@ angular.module('navData', [])
             "type": "section"
           },
           {
+            "name": "isecaf",
+            "href": "error/$parse/isecaf",
+            "type": "error"
+          },
+          {
             "name": "isecdom",
             "href": "error/$parse/isecdom",
             "type": "error"
