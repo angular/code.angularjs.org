@@ -42,7 +42,7 @@ directive to convert it into the format the <code>input[number]</code> directive
       name="app.js"
       language="js"
       type="js">
-      <pre><code>angular.module(&#39;numfmt-error-module&#39;, [])&#10;&#10;.run(function($rootScope) {&#10;  $rootScope.typeOf = function(value) {&#10;    return typeof value;&#10;  };&#10;})&#10;&#10;.directive(&#39;stringToNumber&#39;, function() {&#10;  return {&#10;    require: &#39;ngModel&#39;,&#10;    link: function(scope, element, attrs, ngModel) {&#10;      ngModel.$parsers.push(function(value) {&#10;        return &#39;&#39; + value;&#10;      });&#10;      ngModel.$formatters.push(function(value) {&#10;        return parseFloat(value, 10);&#10;      });&#10;    }&#10;  };&#10;});</code></pre>
+      <pre><code>angular.module(&#39;numfmt-error-module&#39;, [])&#10;&#10;.run(function($rootScope) {&#10;  $rootScope.typeOf = function(value) {&#10;    return typeof value;&#10;  };&#10;})&#10;&#10;.directive(&#39;stringToNumber&#39;, function() {&#10;  return {&#10;    require: &#39;ngModel&#39;,&#10;    link: function(scope, element, attrs, ngModel) {&#10;      ngModel.$parsers.push(function(value) {&#10;        return &#39;&#39; + value;&#10;      });&#10;      ngModel.$formatters.push(function(value) {&#10;        return parseFloat(value);&#10;      });&#10;    }&#10;  };&#10;});</code></pre>
     </div>
   
 
