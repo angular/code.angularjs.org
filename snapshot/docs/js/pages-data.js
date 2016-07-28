@@ -1958,8 +1958,8 @@ angular.module('pagesData', [])
     "path": "examples/example-error-$rootScope-inprog"
   },
   "undefined": {},
-  "examples/example-example": {
-    "path": "examples/example-example"
+  "examples/example-number-format-error": {
+    "path": "examples/example-number-format-error"
   },
   "fakeBrowser.js": {
     "path": "fakeBrowser.js"
@@ -1979,29 +1979,29 @@ angular.module('pagesData', [])
   "script.js": {
     "path": "script.js"
   },
-  "examples/example-example1": {
-    "path": "examples/example-example1"
+  "examples/example-location-two-way-binding": {
+    "path": "examples/example-location-two-way-binding"
   },
   "style.css": {
     "path": "style.css"
   },
-  "examples/example-example2": {
-    "path": "examples/example-example2"
+  "examples/example-accessibility-ng-model": {
+    "path": "examples/example-accessibility-ng-model"
   },
-  "examples/example-example3": {
-    "path": "examples/example-example3"
+  "examples/example-accessibility-ng-click": {
+    "path": "examples/example-accessibility-ng-click"
   },
   "animations.css": {
     "path": "animations.css"
   },
-  "examples/example-example4": {
-    "path": "examples/example-example4"
+  "examples/example-animate-ng-show": {
+    "path": "examples/example-animate-ng-show"
   },
-  "examples/example-example5": {
-    "path": "examples/example-example5"
+  "examples/example-animate-css-class": {
+    "path": "examples/example-animate-css-class"
   },
-  "examples/example-example6": {
-    "path": "examples/example-example6"
+  "examples/example-draggable": {
+    "path": "examples/example-draggable"
   },
   "heroes.js": {
     "path": "heroes.js"
@@ -2054,8 +2054,8 @@ angular.module('pagesData', [])
   "my-pane.html": {
     "path": "my-pane.html"
   },
-  "examples/example-example7": {
-    "path": "examples/example-example7"
+  "examples/example-component-tabs-pane": {
+    "path": "examples/example-component-tabs-pane"
   },
   "examples/example-guide-concepts-1": {
     "path": "examples/example-guide-concepts-1"
@@ -2084,17 +2084,17 @@ angular.module('pagesData', [])
   "examples/example-guide-concepts-3": {
     "path": "examples/example-guide-concepts-3"
   },
-  "examples/example-example8": {
-    "path": "examples/example-example8"
+  "examples/example-controller-spicy-1": {
+    "path": "examples/example-controller-spicy-1"
   },
-  "examples/example-example9": {
-    "path": "examples/example-example9"
+  "examples/example-controller-spicy-2": {
+    "path": "examples/example-controller-spicy-2"
   },
   "app.css": {
     "path": "app.css"
   },
-  "examples/example-example10": {
-    "path": "examples/example-example10"
+  "examples/example-controller-scope-inheritance": {
+    "path": "examples/example-controller-scope-inheritance"
   },
   "examples/example-service-decorator": {
     "path": "examples/example-service-decorator"
@@ -2105,17 +2105,17 @@ angular.module('pagesData', [])
   "examples/example-filter-decorator": {
     "path": "examples/example-filter-decorator"
   },
-  "examples/example-example11": {
-    "path": "examples/example-example11"
+  "examples/example-directive-bind": {
+    "path": "examples/example-directive-bind"
   },
-  "examples/example-example12": {
-    "path": "examples/example-example12"
+  "examples/example-directive-simple": {
+    "path": "examples/example-directive-simple"
   },
   "my-customer.html": {
     "path": "my-customer.html"
   },
-  "examples/example-example13": {
-    "path": "examples/example-example13"
+  "examples/example-directive-template-url": {
+    "path": "examples/example-directive-template-url"
   },
   "customer-name.html": {
     "path": "customer-name.html"
@@ -2123,140 +2123,140 @@ angular.module('pagesData', [])
   "customer-address.html": {
     "path": "customer-address.html"
   },
-  "examples/example-example14": {
-    "path": "examples/example-example14"
+  "examples/example-directive-template-url-fn": {
+    "path": "examples/example-directive-template-url-fn"
   },
-  "examples/example-example15": {
-    "path": "examples/example-example15"
+  "examples/example-directive-restrict": {
+    "path": "examples/example-directive-restrict"
   },
-  "examples/example-example16": {
-    "path": "examples/example-example16"
+  "examples/example-directive-scope-problem": {
+    "path": "examples/example-directive-scope-problem"
   },
   "my-customer-iso.html": {
     "path": "my-customer-iso.html"
   },
-  "examples/example-example17": {
-    "path": "examples/example-example17"
+  "examples/example-directive-isolate": {
+    "path": "examples/example-directive-isolate"
   },
   "my-customer-plus-vojta.html": {
     "path": "my-customer-plus-vojta.html"
   },
-  "examples/example-example18": {
-    "path": "examples/example-example18"
+  "examples/example-directive-isolate-2": {
+    "path": "examples/example-directive-isolate-2"
   },
-  "examples/example-example19": {
-    "path": "examples/example-example19"
+  "examples/example-directive-link": {
+    "path": "examples/example-directive-link"
   },
   "my-dialog.html": {
     "path": "my-dialog.html"
   },
-  "examples/example-example20": {
-    "path": "examples/example-example20"
+  "examples/example-directive-transclude": {
+    "path": "examples/example-directive-transclude"
   },
-  "examples/example-example21": {
-    "path": "examples/example-example21"
+  "examples/example-directive-transclusion": {
+    "path": "examples/example-directive-transclusion"
   },
   "my-dialog-close.html": {
     "path": "my-dialog-close.html"
   },
-  "examples/example-example22": {
-    "path": "examples/example-example22"
+  "examples/example-directive-transclusion-scope": {
+    "path": "examples/example-directive-transclusion-scope"
   },
-  "examples/example-example23": {
-    "path": "examples/example-example23"
+  "examples/example-directive-drag": {
+    "path": "examples/example-directive-drag"
   },
-  "examples/example-example24": {
-    "path": "examples/example-example24"
+  "examples/example-directive-tabs": {
+    "path": "examples/example-directive-tabs"
   },
-  "examples/example-example25": {
-    "path": "examples/example-example25"
+  "examples/example-expression-simple": {
+    "path": "examples/example-expression-simple"
   },
-  "examples/example-example26": {
-    "path": "examples/example-example26"
+  "examples/example-expression-eval": {
+    "path": "examples/example-expression-eval"
   },
-  "examples/example-example27": {
-    "path": "examples/example-example27"
+  "examples/example-expression-locals": {
+    "path": "examples/example-expression-locals"
   },
-  "examples/example-example28": {
-    "path": "examples/example-example28"
+  "examples/example-expression-events": {
+    "path": "examples/example-expression-events"
   },
-  "examples/example-example29": {
-    "path": "examples/example-example29"
+  "examples/example-expression-one-time": {
+    "path": "examples/example-expression-one-time"
   },
-  "examples/example-example30": {
-    "path": "examples/example-example30"
+  "examples/example-filter-in-controller": {
+    "path": "examples/example-filter-in-controller"
   },
-  "examples/example-example31": {
-    "path": "examples/example-example31"
+  "examples/example-filter-reverse": {
+    "path": "examples/example-filter-reverse"
   },
-  "examples/example-example32": {
-    "path": "examples/example-example32"
+  "examples/example-filter-stateful": {
+    "path": "examples/example-filter-stateful"
   },
-  "examples/example-example33": {
-    "path": "examples/example-example33"
+  "examples/example-forms-simple": {
+    "path": "examples/example-forms-simple"
   },
-  "examples/example-example34": {
-    "path": "examples/example-example34"
+  "examples/example-forms-css-classes": {
+    "path": "examples/example-forms-css-classes"
   },
-  "examples/example-example35": {
-    "path": "examples/example-example35"
+  "examples/example-forms-custom-error-messages": {
+    "path": "examples/example-forms-custom-error-messages"
   },
-  "examples/example-example36": {
-    "path": "examples/example-example36"
+  "examples/example-forms-custom-triggers": {
+    "path": "examples/example-forms-custom-triggers"
   },
-  "examples/example-example37": {
-    "path": "examples/example-example37"
+  "examples/example-forms-debounce": {
+    "path": "examples/example-forms-debounce"
   },
-  "examples/example-example38": {
-    "path": "examples/example-example38"
+  "examples/example-forms-async-validation": {
+    "path": "examples/example-forms-async-validation"
   },
-  "examples/example-example39": {
-    "path": "examples/example-example39"
+  "examples/example-forms-modify-validators": {
+    "path": "examples/example-forms-modify-validators"
   },
-  "examples/example-example40": {
-    "path": "examples/example-example40"
+  "examples/example-forms-custom-form-controls": {
+    "path": "examples/example-forms-custom-form-controls"
   },
   "examples/example-message-format-example": {
     "path": "examples/example-message-format-example"
   },
-  "examples/example-example41": {
-    "path": "examples/example-example41"
+  "examples/example-module-hello-world": {
+    "path": "examples/example-module-hello-world"
   },
-  "examples/example-example42": {
-    "path": "examples/example-example42"
+  "examples/example-module-suggested-layout": {
+    "path": "examples/example-module-suggested-layout"
   },
-  "examples/example-example43": {
-    "path": "examples/example-example43"
+  "examples/example-scope-data-model": {
+    "path": "examples/example-scope-data-model"
   },
-  "examples/example-example44": {
-    "path": "examples/example-example44"
+  "examples/example-scope-hierarchies": {
+    "path": "examples/example-scope-hierarchies"
   },
-  "examples/example-example45": {
-    "path": "examples/example-example45"
+  "examples/example-scope-events-propagation": {
+    "path": "examples/example-scope-events-propagation"
   },
-  "examples/example-example46": {
-    "path": "examples/example-example46"
+  "examples/example-services-usage": {
+    "path": "examples/example-services-usage"
   },
-  "examples/example-example47": {
-    "path": "examples/example-example47"
+  "examples/example-angular-copy": {
+    "path": "examples/example-angular-copy"
   },
   "examples/example-equalsExample": {
     "path": "examples/example-equalsExample"
   },
-  "examples/example-example48": {
-    "path": "examples/example-example48"
+  "examples/example-ng-app": {
+    "path": "examples/example-ng-app"
   },
-  "examples/example-example49": {
-    "path": "examples/example-example49"
+  "examples/example-strict-di": {
+    "path": "examples/example-strict-di"
   },
-  "examples/example-example50": {
-    "path": "examples/example-example50"
+  "examples/example-anchor-scroll": {
+    "path": "examples/example-anchor-scroll"
   },
-  "examples/example-example51": {
-    "path": "examples/example-example51"
+  "examples/example-anchor-scroll-offset": {
+    "path": "examples/example-anchor-scroll-offset"
   },
-  "examples/example-example52": {
-    "path": "examples/example-example52"
+  "examples/example-cache-factory": {
+    "path": "examples/example-cache-factory"
   },
   "examples/example-doCheckDateExample": {
     "path": "examples/example-doCheckDateExample"
@@ -2264,29 +2264,29 @@ angular.module('pagesData', [])
   "examples/example-doCheckArrayExample": {
     "path": "examples/example-doCheckArrayExample"
   },
-  "examples/example-example53": {
-    "path": "examples/example-example53"
+  "examples/example-compile": {
+    "path": "examples/example-compile"
   },
-  "examples/example-example54": {
-    "path": "examples/example-example54"
+  "examples/example-ng-href": {
+    "path": "examples/example-ng-href"
   },
-  "examples/example-example55": {
-    "path": "examples/example-example55"
+  "examples/example-ng-disabled": {
+    "path": "examples/example-ng-disabled"
   },
-  "examples/example-example56": {
-    "path": "examples/example-example56"
+  "examples/example-ng-checked": {
+    "path": "examples/example-ng-checked"
   },
-  "examples/example-example57": {
-    "path": "examples/example-example57"
+  "examples/example-ng-readonly": {
+    "path": "examples/example-ng-readonly"
   },
-  "examples/example-example58": {
-    "path": "examples/example-example58"
+  "examples/example-ng-selected": {
+    "path": "examples/example-ng-selected"
   },
-  "examples/example-example59": {
-    "path": "examples/example-example59"
+  "examples/example-ng-open": {
+    "path": "examples/example-ng-open"
   },
-  "examples/example-example60": {
-    "path": "examples/example-example60"
+  "examples/example-ng-form": {
+    "path": "examples/example-ng-form"
   },
   "examples/example-text-input-directive": {
     "path": "examples/example-text-input-directive"
@@ -2327,32 +2327,32 @@ angular.module('pagesData', [])
   "examples/example-ngValue-directive": {
     "path": "examples/example-ngValue-directive"
   },
-  "examples/example-example61": {
-    "path": "examples/example-example61"
+  "examples/example-ng-bind": {
+    "path": "examples/example-ng-bind"
   },
-  "examples/example-example62": {
-    "path": "examples/example-example62"
+  "examples/example-ng-bind-template": {
+    "path": "examples/example-ng-bind-template"
   },
-  "examples/example-example63": {
-    "path": "examples/example-example63"
+  "examples/example-ng-bind-html": {
+    "path": "examples/example-ng-bind-html"
   },
   "examples/example-ngChange-directive": {
     "path": "examples/example-ngChange-directive"
   },
-  "examples/example-example64": {
-    "path": "examples/example-example64"
+  "examples/example-ng-class": {
+    "path": "examples/example-ng-class"
   },
-  "examples/example-example65": {
-    "path": "examples/example-example65"
+  "examples/example-ng-class1": {
+    "path": "examples/example-ng-class1"
   },
-  "examples/example-example66": {
-    "path": "examples/example-example66"
+  "examples/example-ng-class-odd": {
+    "path": "examples/example-ng-class-odd"
   },
-  "examples/example-example67": {
-    "path": "examples/example-example67"
+  "examples/example-ng-class-even": {
+    "path": "examples/example-ng-class-even"
   },
-  "examples/example-example68": {
-    "path": "examples/example-example68"
+  "examples/example-ng-cloak": {
+    "path": "examples/example-ng-cloak"
   },
   "examples/example-ngControllerAs": {
     "path": "examples/example-ngControllerAs"
@@ -2363,53 +2363,53 @@ angular.module('pagesData', [])
   "examples/example-example.csp": {
     "path": "examples/example-example.csp"
   },
-  "examples/example-example69": {
-    "path": "examples/example-example69"
+  "examples/example-ng-click": {
+    "path": "examples/example-ng-click"
   },
-  "examples/example-example70": {
-    "path": "examples/example-example70"
+  "examples/example-ng-dblclick": {
+    "path": "examples/example-ng-dblclick"
   },
-  "examples/example-example71": {
-    "path": "examples/example-example71"
+  "examples/example-ng-mousedown": {
+    "path": "examples/example-ng-mousedown"
   },
-  "examples/example-example72": {
-    "path": "examples/example-example72"
+  "examples/example-ng-mouseup": {
+    "path": "examples/example-ng-mouseup"
   },
-  "examples/example-example73": {
-    "path": "examples/example-example73"
+  "examples/example-ng-mouseover": {
+    "path": "examples/example-ng-mouseover"
   },
-  "examples/example-example74": {
-    "path": "examples/example-example74"
+  "examples/example-ng-mouseenter": {
+    "path": "examples/example-ng-mouseenter"
   },
-  "examples/example-example75": {
-    "path": "examples/example-example75"
+  "examples/example-ng-mouseleave": {
+    "path": "examples/example-ng-mouseleave"
   },
-  "examples/example-example76": {
-    "path": "examples/example-example76"
+  "examples/example-ng-mousemove": {
+    "path": "examples/example-ng-mousemove"
   },
-  "examples/example-example77": {
-    "path": "examples/example-example77"
+  "examples/example-ng-keydown": {
+    "path": "examples/example-ng-keydown"
   },
-  "examples/example-example78": {
-    "path": "examples/example-example78"
+  "examples/example-ng-keyup": {
+    "path": "examples/example-ng-keyup"
   },
-  "examples/example-example79": {
-    "path": "examples/example-example79"
+  "examples/example-ng-keypress": {
+    "path": "examples/example-ng-keypress"
   },
-  "examples/example-example80": {
-    "path": "examples/example-example80"
+  "examples/example-ng-submit": {
+    "path": "examples/example-ng-submit"
   },
-  "examples/example-example81": {
-    "path": "examples/example-example81"
+  "examples/example-ng-copy": {
+    "path": "examples/example-ng-copy"
   },
-  "examples/example-example82": {
-    "path": "examples/example-example82"
+  "examples/example-ng-cut": {
+    "path": "examples/example-ng-cut"
   },
-  "examples/example-example83": {
-    "path": "examples/example-example83"
+  "examples/example-ng-paste": {
+    "path": "examples/example-ng-paste"
   },
-  "examples/example-example84": {
-    "path": "examples/example-example84"
+  "examples/example-ng-if": {
+    "path": "examples/example-ng-if"
   },
   "template1.html": {
     "path": "template1.html"
@@ -2417,11 +2417,11 @@ angular.module('pagesData', [])
   "template2.html": {
     "path": "template2.html"
   },
-  "examples/example-example85": {
-    "path": "examples/example-example85"
+  "examples/example-ng-include": {
+    "path": "examples/example-ng-include"
   },
-  "examples/example-example86": {
-    "path": "examples/example-example86"
+  "examples/example-ng-init": {
+    "path": "examples/example-ng-init"
   },
   "examples/example-ngList-directive": {
     "path": "examples/example-ngList-directive"
@@ -2435,8 +2435,8 @@ angular.module('pagesData', [])
   "examples/example-ng-model-cancel-update": {
     "path": "examples/example-ng-model-cancel-update"
   },
-  "examples/example-example87": {
-    "path": "examples/example-example87"
+  "examples/example-ng-model": {
+    "path": "examples/example-ng-model"
   },
   "examples/example-ngModel-getter-setter": {
     "path": "examples/example-ngModel-getter-setter"
@@ -2450,44 +2450,44 @@ angular.module('pagesData', [])
   "examples/example-ngModelOptions-directive-getter-setter": {
     "path": "examples/example-ngModelOptions-directive-getter-setter"
   },
-  "examples/example-example88": {
-    "path": "examples/example-example88"
+  "examples/example-ng-non-bindable": {
+    "path": "examples/example-ng-non-bindable"
   },
-  "examples/example-example89": {
-    "path": "examples/example-example89"
+  "examples/example-select": {
+    "path": "examples/example-select"
   },
-  "examples/example-example90": {
-    "path": "examples/example-example90"
+  "examples/example-ng-pluralize": {
+    "path": "examples/example-ng-pluralize"
   },
-  "examples/example-ngRepeat": {
-    "path": "examples/example-ngRepeat"
+  "examples/example-ng-repeat": {
+    "path": "examples/example-ng-repeat"
   },
   "glyphicons.css": {
     "path": "glyphicons.css"
   },
-  "examples/example-example91": {
-    "path": "examples/example-example91"
+  "examples/example-ng-show": {
+    "path": "examples/example-ng-show"
   },
-  "examples/example-example92": {
-    "path": "examples/example-example92"
+  "examples/example-ng-hide": {
+    "path": "examples/example-ng-hide"
   },
-  "examples/example-example93": {
-    "path": "examples/example-example93"
+  "examples/example-ng-style": {
+    "path": "examples/example-ng-style"
   },
-  "examples/example-example94": {
-    "path": "examples/example-example94"
+  "examples/example-ng-switch": {
+    "path": "examples/example-ng-switch"
   },
   "examples/example-simpleTranscludeExample": {
     "path": "examples/example-simpleTranscludeExample"
   },
-  "examples/example-example95": {
-    "path": "examples/example-example95"
+  "examples/example-ng-transclude": {
+    "path": "examples/example-ng-transclude"
   },
   "examples/example-multiSlotTranscludeExample": {
     "path": "examples/example-multiSlotTranscludeExample"
   },
-  "examples/example-example96": {
-    "path": "examples/example-example96"
+  "examples/example-script-tag": {
+    "path": "examples/example-script-tag"
   },
   "examples/example-static-select": {
     "path": "examples/example-static-select"
@@ -2516,29 +2516,29 @@ angular.module('pagesData', [])
   "examples/example-ngMinlengthDirective": {
     "path": "examples/example-ngMinlengthDirective"
   },
-  "examples/example-example97": {
-    "path": "examples/example-example97"
+  "examples/example-document": {
+    "path": "examples/example-document"
   },
   "examples/example-$filter": {
     "path": "examples/example-$filter"
   },
-  "examples/example-example98": {
-    "path": "examples/example-example98"
+  "examples/example-filter-filter": {
+    "path": "examples/example-filter-filter"
   },
-  "examples/example-example99": {
-    "path": "examples/example-example99"
+  "examples/example-currency-filter": {
+    "path": "examples/example-currency-filter"
   },
-  "examples/example-example100": {
-    "path": "examples/example-example100"
+  "examples/example-number-filter": {
+    "path": "examples/example-number-filter"
   },
-  "examples/example-example101": {
-    "path": "examples/example-example101"
+  "examples/example-filter-date": {
+    "path": "examples/example-filter-date"
   },
-  "examples/example-example102": {
-    "path": "examples/example-example102"
+  "examples/example-filter-json": {
+    "path": "examples/example-filter-json"
   },
-  "examples/example-example103": {
-    "path": "examples/example-example103"
+  "examples/example-limit-to-filter": {
+    "path": "examples/example-limit-to-filter"
   },
   "examples/example-orderBy-static": {
     "path": "examples/example-orderBy-static"
@@ -2555,29 +2555,29 @@ angular.module('pagesData', [])
   "http-hello.html": {
     "path": "http-hello.html"
   },
-  "examples/example-example104": {
-    "path": "examples/example-example104"
+  "examples/example-http-service": {
+    "path": "examples/example-http-service"
   },
   "examples/example-custom-interpolation-markup": {
     "path": "examples/example-custom-interpolation-markup"
   },
-  "examples/example-example105": {
-    "path": "examples/example-example105"
+  "examples/example-interpolation": {
+    "path": "examples/example-interpolation"
   },
-  "examples/example-example106": {
-    "path": "examples/example-example106"
+  "examples/example-interval-service": {
+    "path": "examples/example-interval-service"
   },
-  "examples/example-example107": {
-    "path": "examples/example-example107"
+  "examples/example-log-service": {
+    "path": "examples/example-log-service"
   },
   "test_data.json": {
     "path": "test_data.json"
   },
-  "examples/example-example108": {
-    "path": "examples/example-example108"
+  "examples/example-sce-service": {
+    "path": "examples/example-sce-service"
   },
-  "examples/example-example109": {
-    "path": "examples/example-example109"
+  "examples/example-window-service": {
+    "path": "examples/example-window-service"
   },
   "examples/example-ngAnimateChildren": {
     "path": "examples/example-ngAnimateChildren"
@@ -2624,20 +2624,20 @@ angular.module('pagesData', [])
   "examples/example-$route-service": {
     "path": "examples/example-$route-service"
   },
-  "examples/example-example110": {
-    "path": "examples/example-example110"
+  "examples/example-linky-filter": {
+    "path": "examples/example-linky-filter"
   },
-  "examples/example-example111": {
-    "path": "examples/example-example111"
+  "examples/example-sanitize-service": {
+    "path": "examples/example-sanitize-service"
   },
-  "examples/example-example112": {
-    "path": "examples/example-example112"
+  "examples/example-ng-touch-ng-click": {
+    "path": "examples/example-ng-touch-ng-click"
   },
-  "examples/example-example113": {
-    "path": "examples/example-example113"
+  "examples/example-ng-swipe-left": {
+    "path": "examples/example-ng-swipe-left"
   },
-  "examples/example-example114": {
-    "path": "examples/example-example114"
+  "examples/example-ng-swipe-right": {
+    "path": "examples/example-ng-swipe-right"
   },
   "error/$animate": {
     "name": "$animate",
