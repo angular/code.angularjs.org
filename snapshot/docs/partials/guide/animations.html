@@ -32,14 +32,14 @@ or with JavaScript code when it&#39;s defined as a factory.</p>
       name="index.html"
       language="html"
       type="html">
-      <pre><code>&lt;div ng-init=&quot;checked=true&quot;&gt;&#10;  &lt;label&gt;&#10;    &lt;input type=&quot;checkbox&quot; ng-model=&quot;checked&quot; style=&quot;float:left; margin-right:10px;&quot;&gt; Is Visible...&#10;  &lt;/label&gt;&#10;  &lt;div class=&quot;check-element sample-show-hide&quot; ng-show=&quot;checked&quot; style=&quot;clear:both;&quot;&gt;&#10;    Visible...&#10;  &lt;/div&gt;&#10;&lt;/div&gt;</code></pre>
+      <pre><code>&lt;div ng-init=&quot;checked = true&quot;&gt;&#10;  &lt;label&gt;&#10;    &lt;input type=&quot;checkbox&quot; ng-model=&quot;checked&quot; /&gt;&#10;    Is visible&#10;  &lt;/label&gt;&#10;  &lt;div class=&quot;content-area sample-show-hide&quot; ng-show=&quot;checked&quot;&gt;&#10;    Content...&#10;  &lt;/div&gt;&#10;&lt;/div&gt;</code></pre>
     </div>
   
     <div class="runnable-example-file" 
       name="animations.css"
       language="css"
       type="css">
-      <pre><code>.sample-show-hide {&#10;  padding: 10px;&#10;  border: 1px solid black;&#10;  background: white;&#10;}&#10;&#10;.sample-show-hide {&#10;  transition: all linear 0.5s;&#10;}&#10;&#10;.sample-show-hide.ng-hide {&#10;  opacity: 0;&#10;}</code></pre>
+      <pre><code>.content-area {&#10;  border: 1px solid black;&#10;  margin-top: 10px;&#10;  padding: 10px;&#10;}&#10;&#10;.sample-show-hide {&#10;  transition: all linear 0.5s;&#10;}&#10;.sample-show-hide.ng-hide {&#10;  opacity: 0;&#10;}</code></pre>
     </div>
   
 
