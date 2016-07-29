@@ -172,7 +172,7 @@
       name="protractor.js"
       type="protractor"
       language="js">
-      <pre><code>it(&#39;should change state&#39;, function() {&#10;  var color = element(by.binding(&#39;color.name&#39;));&#10;&#10;  expect(color.getText()).toContain(&#39;blue&#39;);&#10;&#10;  element.all(by.model(&#39;color.name&#39;)).get(0).click();&#10;&#10;  expect(color.getText()).toContain(&#39;red&#39;);&#10;});</code></pre>
+      <pre><code>it(&#39;should change state&#39;, function() {&#10;  var inputs = element.all(by.model(&#39;color.name&#39;));&#10;  var color = element(by.binding(&#39;color.name&#39;));&#10;&#10;  expect(color.getText()).toContain(&#39;blue&#39;);&#10;&#10;  inputs.get(0).click();&#10;  expect(color.getText()).toContain(&#39;red&#39;);&#10;&#10;  inputs.get(1).click();&#10;  expect(color.getText()).toContain(&#39;green&#39;);&#10;});</code></pre>
     </div>
   
 
