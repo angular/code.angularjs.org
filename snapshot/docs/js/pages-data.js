@@ -1126,6 +1126,11 @@ angular.module('pagesData', [])
     "area": "api",
     "path": "api/ng/input/input[radio]"
   },
+  "api/ng/input/input[range]": {
+    "name": "input[range]",
+    "area": "api",
+    "path": "api/ng/input/input[range]"
+  },
   "api/ng/input/input[checkbox]": {
     "name": "input[checkbox]",
     "area": "api",
@@ -2317,6 +2322,12 @@ angular.module('pagesData', [])
   },
   "examples/example-radio-input-directive": {
     "path": "examples/example-radio-input-directive"
+  },
+  "examples/example-range-input-directive": {
+    "path": "examples/example-range-input-directive"
+  },
+  "examples/example-range-input-directive-ng": {
+    "path": "examples/example-range-input-directive-ng"
   },
   "examples/example-checkbox-input-directive": {
     "path": "examples/example-checkbox-input-directive"

@@ -191,6 +191,11 @@ angular.module('navData', [])
             "type": "input"
           },
           {
+            "name": "input[range]",
+            "href": "api/ng/input/input[range]",
+            "type": "input"
+          },
+          {
             "name": "input[text]",
             "href": "api/ng/input/input[text]",
             "type": "input"

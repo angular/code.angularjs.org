@@ -566,7 +566,7 @@
   {
     "path": "error/ngModel/numfmt",
     "titleWords": "numfmt",
-    "keywords": "$formatters $parsers actual and angular application as bad be by case caused contain conversion convert developer directive do does else error errors example example-number-format-error expected expects format from html if in incorrect input into is it logic model ngmodel not number numbers numfmt of on our partials pipeline provide requires set so something stores string stringtonumber that the then this thrown to type up use user validation we will your",
+    "keywords": "$formatters $parsers actual and angular application as bad be by case caused contain conversion convert developer directive directives do does else error errors example example-number-format-error expected expects format from html if in incorrect input into is it logic model ngmodel not number numbers numfmt of on our partials pipeline provide require set so something stores string stringtonumber that the then this thrown to type up use user validation we will your",
     "members": ""
   },
   {
@@ -1347,6 +1347,12 @@
     "path": "api/ng/input/input[radio]",
     "titleWords": "input[radio]",
     "keywords": "angular any api array assignable attribute be boolean button changes complex control data-bind due element example-radio-input-directive executed expression form html if input instead interaction is model models module name need needs ng ngchange ngmodel ngvalue non-string note number object of only partials property published radio radioinputtype scope selected set should string supports that the to too under use used user value values when which will with you",
+    "members": ""
+  },
+  {
+    "path": "api/ng/input/input[range]",
+    "titleWords": "input[range]",
+    "keywords": "adds adjust adjustment affect affected after allows also always an and angular any api application are assignable attribute attributes automatic back be because been being binding bound browser browsers but by can case cause change changes chrome consequences control current data-bind do does due edge element ensure entered error errors example example-range-input-directive example-range-input-directive-ng except executed expression fall firefox following for form greater has have hold html html5 ie9 if immediately in initialized input interaction interpolated invalid is it less max means min model modify module must name native never nevertheless ng ng-model ngchange ngmax ngmin ngmodel no non-numerical not null number numerical of only or other out parsing partials prevent property published range rangeinputtype reflect required respectively safari set sets should since support supported sync takes text than that the then therefore these they this to transformation treat type under update user using val validation value values way when which will with won",
     "members": ""
   },
   {
