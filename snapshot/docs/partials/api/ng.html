@@ -53,6 +53,22 @@ Date.prototype.toJSON = function() {
     </td>
   </tr>
   <tr>
+    <td><a href="api/ng/directive/textarea">textarea</a></td>
+    <td>
+    <p>When specifying the <code>placeholder</code> attribute of <code>&lt;textarea&gt;</code>, Internet Explorer will temporarily
+insert the placeholder value as the textarea&#39;s content. If the placeholder value contains
+interpolation (<code>{{ ... }}</code>), an error will be logged in the console when Angular tries to update
+the value of the by-then-removed text node. This doesn&#39;t affect the functionality of the
+textarea, but can be undesirable.</p>
+<p>You can work around this Internet Explorer issue by using <code>ng-attr-placeholder</code> instead of
+<code>placeholder</code> on textareas, whenever you need interpolation in the placeholder value. You can
+find more details on <code>ngAttr</code> in the
+<a href="guide/interpolation#-ngattr-for-binding-to-arbitrary-attributes">Interpolation</a> section of the
+Developer Guide.</p>
+ 
+    </td>
+  </tr>
+  <tr>
     <td><a href="api/ng/directive/ngClass">ngClass</a></td>
     <td>
     <p>You should not use <a href="guide/interpolation">interpolation</a> in the value of the <code>class</code>

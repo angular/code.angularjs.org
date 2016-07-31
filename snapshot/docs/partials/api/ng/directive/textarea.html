@@ -28,6 +28,21 @@ properties of this element are exactly the same as those of the
 
 
 
+<h2 id="known-issues">Known Issues</h2>
+<div class="known-issue">
+  <p>When specifying the <code>placeholder</code> attribute of <code>&lt;textarea&gt;</code>, Internet Explorer will temporarily
+insert the placeholder value as the textarea&#39;s content. If the placeholder value contains
+interpolation (<code>{{ ... }}</code>), an error will be logged in the console when Angular tries to update
+the value of the by-then-removed text node. This doesn&#39;t affect the functionality of the
+textarea, but can be undesirable.</p>
+<p>You can work around this Internet Explorer issue by using <code>ng-attr-placeholder</code> instead of
+<code>placeholder</code> on textareas, whenever you need interpolation in the placeholder value. You can
+find more details on <code>ngAttr</code> in the
+<a href="guide/interpolation#-ngattr-for-binding-to-arbitrary-attributes">Interpolation</a> section of the
+Developer Guide.</p>
+  
+</div>
+
 
 
 
