@@ -141,8 +141,11 @@ this:</p>
         <a href="" class="label type-hint type-hint-object">Object.&lt;Object&gt;=</a>
       </td>
       <td>
-        <p>Hash with declaration of custom actions that should extend
-  the default set of resource actions. The declaration should be created in the format of <a href="api/ng/service/$http#usage">$http.config</a>:</p>
+        <p>Hash with declaration of custom actions that will be available
+  in addition to the default set of resource actions (see below). If a custom action has the same
+  key as a default action (e.g. <code>save</code>), then the default action will be <em>overwritten</em>, and not
+  extended.</p>
+<p>  The declaration should be created in the format of <a href="api/ng/service/$http#usage">$http.config</a>:</p>
 <pre><code>{action1: {method:?, params:?, isArray:?, headers:?, ...},
  action2: {method:?, params:?, isArray:?, headers:?, ...},
  ...}

@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.9-build.4969+sha.494d12f
+ * @license AngularJS v1.5.9-build.4970+sha.1660ddd
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -137,9 +137,12 @@ function shallowClearAndCopy(src, dst) {
  *   Note that the parameter will be ignored, when calling a "GET" action method (i.e. an action
  *   method that does not accept a request body)
  *
- * @param {Object.<Object>=} actions Hash with declaration of custom actions that should extend
- *   the default set of resource actions. The declaration should be created in the format of {@link
- *   ng.$http#usage $http.config}:
+ * @param {Object.<Object>=} actions Hash with declaration of custom actions that will be available
+ *   in addition to the default set of resource actions (see below). If a custom action has the same
+ *   key as a default action (e.g. `save`), then the default action will be *overwritten*, and not
+ *   extended.
+ *
+ *   The declaration should be created in the format of {@link ng.$http#usage $http.config}:
  *
  *       {action1: {method:?, params:?, isArray:?, headers:?, ...},
  *        action2: {method:?, params:?, isArray:?, headers:?, ...},
