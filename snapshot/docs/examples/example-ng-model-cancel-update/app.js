@@ -6,7 +6,7 @@ angular.module('cancel-update-example', [])
   $scope.model = {};
 
   $scope.setEmpty = function(e, value, rollback) {
-    if (e.keyCode == 27) {
+    if (e.keyCode === 27) {
       e.preventDefault();
       if (rollback) {
         $scope.myForm[value].$rollbackViewValue();

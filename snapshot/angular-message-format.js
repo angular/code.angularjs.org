@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.9-build.4970+sha.1660ddd
+ * @license AngularJS v1.5.9-build.4972+sha.5fc9933
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -19,8 +19,8 @@
 // As such, this doesn't have to be efficient.
 function indexToLineAndColumn(text, index) {
   var lines = text.split(/\n/g);
-  for (var i=0; i < lines.length; i++) {
-    var line=lines[i];
+  for (var i = 0; i < lines.length; i++) {
+    var line = lines[i];
     if (index >= line.length) {
       index -= line.length;
     } else {
@@ -39,7 +39,7 @@ function parseTextLiteral(text) {
   parsedFn['$$watchDelegate'] = function watchDelegate(scope, listener, objectEquality) {
     var unwatch = scope['$watch'](noop,
         function textLiteralWatcher() {
-          if (isFunction(listener)) { listener.call(null, text, text, scope); }
+          if (isFunction(listener)) { listener(text, text, scope); }
           unwatch();
         },
         objectEquality);
@@ -56,14 +56,14 @@ function subtractOffset(expressionFn, offset) {
     return expressionFn;
   }
   function minusOffset(value) {
-    return (value == void 0) ? value : value - offset;
+    return (value == null) ? value : value - offset;
   }
   function parsedFn(context) { return minusOffset(expressionFn(context)); }
   var unwatch;
   parsedFn['$$watchDelegate'] = function watchDelegate(scope, listener, objectEquality) {
     unwatch = scope['$watch'](expressionFn,
         function pluralExpressionWatchListener(newValue, oldValue) {
-          if (isFunction(listener)) { listener.call(null, minusOffset(newValue), minusOffset(oldValue), scope); }
+          if (isFunction(listener)) { listener(minusOffset(newValue), minusOffset(oldValue), scope); }
         },
         objectEquality);
     return unwatch;
@@ -88,7 +88,7 @@ function MessageSelectorBase(expressionFn, choices) {
   var self = this;
   this.expressionFn = expressionFn;
   this.choices = choices;
-  if (choices["other"] === void 0) {
+  if (choices["other"] === undefined) {
     throw $interpolateMinErr('reqother', '“other” is a required option.');
   }
   this.parsedFn = function(context) { return self.getResult(context); };
@@ -122,7 +122,7 @@ function MessageSelectorWatchers(msgSelector, scope, listener, objectEquality) {
   this.msgSelector = msgSelector;
   this.listener = listener;
   this.objectEquality = objectEquality;
-  this.lastMessage = void 0;
+  this.lastMessage = undefined;
   this.messageFnWatcher = noop;
   var expressionFnListener = function(newValue, oldValue) { return self.expressionFnListener(newValue, oldValue); };
   this.expressionFnWatcher = scope['$watch'](msgSelector.expressionFn, expressionFnListener, objectEquality);
@@ -162,7 +162,7 @@ SelectMessageProto.prototype = MessageSelectorBase.prototype;
 
 SelectMessage.prototype = new SelectMessageProto();
 SelectMessage.prototype.categorizeValue = function categorizeSelectValue(value) {
-  return (this.choices[value] !== void 0) ? value : "other";
+  return (this.choices[value] !== undefined) ? value : "other";
 };
 
 /**
@@ -183,11 +183,11 @@ PluralMessage.prototype = new PluralMessageProto();
 PluralMessage.prototype.categorizeValue = function categorizePluralValue(value) {
   if (isNaN(value)) {
     return "other";
-  } else if (this.choices[value] !== void 0) {
+  } else if (this.choices[value] !== undefined) {
     return value;
   } else {
     var category = this.pluralCat(value - this.offset);
-    return (this.choices[category] !== void 0) ? category : "other";
+    return (this.choices[category] !== undefined) ? category : "other";
   }
 };
 
@@ -256,7 +256,7 @@ InterpolationParts.prototype.getExpressionValues = function getExpressionValues(
 InterpolationParts.prototype.getResult = function getResult(expressionValues) {
   for (var i = 0; i < this.expressionIndices.length; i++) {
     var expressionValue = expressionValues[i];
-    if (this.allOrNothing && expressionValue === void 0) return;
+    if (this.allOrNothing && expressionValue === undefined) return;
     this.textParts[this.expressionIndices[i]] = expressionValue;
   }
   return this.textParts.join('');
@@ -267,7 +267,7 @@ InterpolationParts.prototype.toParsedFn = function toParsedFn(mustHaveExpression
   var self = this;
   this.flushPartialText();
   if (mustHaveExpression && this.expressionFns.length === 0) {
-    return void 0;
+    return undefined;
   }
   if (this.textParts.length === 0) {
     return parseTextLiteral('');
@@ -303,7 +303,7 @@ InterpolationParts.prototype.watchDelegate = function watchDelegate(scope, liste
 function InterpolationPartsWatcher(interpolationParts, scope, listener, objectEquality) {
   this.interpolationParts = interpolationParts;
   this.scope = scope;
-  this.previousResult = (void 0);
+  this.previousResult = (undefined);
   this.listener = listener;
   var self = this;
   this.expressionFnsWatcher = scope['$watchGroup'](interpolationParts.expressionFns, function(newExpressionValues, oldExpressionValues) {
@@ -453,7 +453,7 @@ MessageFormatParser.prototype.errorInParseLogic = function errorInParseLogic() {
 };
 
 MessageFormatParser.prototype.assertRuleOrNull = function assertRuleOrNull(rule) {
-  if (rule === void 0) {
+  if (rule === undefined) {
     this.errorInParseLogic();
   }
 };
@@ -553,7 +553,7 @@ MessageFormatParser.prototype.rulePluralOffset = function rulePluralOffset() {
 };
 
 MessageFormatParser.prototype.assertChoiceKeyIsNew = function assertChoiceKeyIsNew(choiceKey, index) {
-  if (this.choices[choiceKey] !== void 0) {
+  if (this.choices[choiceKey] !== undefined) {
     var position = indexToLineAndColumn(this.text, index);
     throw $interpolateMinErr('dupvalue',
         'The choice “{0}” is specified more than once. Duplicate key is at line {1}, column {2} in text “{3}”',
@@ -591,7 +591,7 @@ MessageFormatParser.prototype.rulePluralValueOrKeyword = function rulePluralValu
   this.rule = this.ruleMessageText;
 };
 
-var BRACE_OPEN_RE = /\s*{/g;
+var BRACE_OPEN_RE = /\s*\{/g;
 var BRACE_CLOSE_RE = /}/g;
 MessageFormatParser.prototype.ruleMessageText = function ruleMessageText() {
   if (!this.consumeRe(BRACE_OPEN_RE)) {
@@ -611,7 +611,7 @@ var INTERP_OR_END_MESSAGE_RE = /\\.|{{|}/g;
 var INTERP_OR_PLURALVALUE_OR_END_MESSAGE_RE = /\\.|{{|#|}/g;
 var ESCAPE_OR_MUSTACHE_BEGIN_RE = /\\.|{{/g;
 MessageFormatParser.prototype.advanceInInterpolationOrMessageText = function advanceInInterpolationOrMessageText() {
-  var currentIndex = this.index, match, re;
+  var currentIndex = this.index, match;
   if (this.ruleChoiceKeyword == null) { // interpolation
     match = this.searchRe(ESCAPE_OR_MUSTACHE_BEGIN_RE);
     if (match == null) { // End of interpolation text.  Nothing more to process.
@@ -769,7 +769,6 @@ function getBeginOperator(opEnd) {
 // should support any other type of start/end interpolation symbol.
 var INTERESTING_OPERATORS_RE = /[[\]{}()'",]/g;
 MessageFormatParser.prototype.ruleInAngularExpression = function ruleInAngularExpression() {
-  var startIndex = this.index;
   var match = this.searchRe(INTERESTING_OPERATORS_RE);
   var position;
   if (match == null) {
@@ -1018,13 +1017,13 @@ MessageFormatParser.prototype.ruleInAngularExpression = function ruleInAngularEx
  */
 
 var $$MessageFormatFactory = ['$parse', '$locale', '$sce', '$exceptionHandler', function $$messageFormat(
-                   $parse,   $locale,   $sce,   $exceptionHandler) {
+                               $parse,   $locale,   $sce,   $exceptionHandler) {
 
   function getStringifier(trustedContext, allOrNothing, text) {
     return function stringifier(value) {
       try {
         value = trustedContext ? $sce['getTrusted'](trustedContext, value) : $sce['valueOf'](value);
-        return allOrNothing && (value === void 0) ? value : $$stringify(value);
+        return allOrNothing && (value === undefined) ? value : $$stringify(value);
       } catch (err) {
         $exceptionHandler($interpolateMinErr['interr'](text, err));
       }

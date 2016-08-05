@@ -28,7 +28,8 @@ angular.module('anchoringExample', ['ngAnimate', 'ngRoute'])
   .controller('HomeController', [function() {
     //empty
   }])
-  .controller('ProfileController', ['$rootScope', '$routeParams', function($rootScope, $routeParams) {
+  .controller('ProfileController', ['$rootScope', '$routeParams',
+      function ProfileController($rootScope, $routeParams) {
     var index = parseInt($routeParams.id, 10);
     var record = $rootScope.records[index - 1];
 

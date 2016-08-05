@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.9-build.4970+sha.1660ddd
+ * @license AngularJS v1.5.9-build.4972+sha.5fc9933
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -1222,6 +1222,8 @@ function IDC_Y(cp) {
   if (0xE0100 <= cp && cp <= 0xE01EF) return true;
   return false;
 }
+
+/* eslint-disable new-cap */
 
 /**
  * @ngdoc module

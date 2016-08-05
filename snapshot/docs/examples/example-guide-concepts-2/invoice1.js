@@ -1,7 +1,7 @@
 (function(angular) {
   'use strict';
 angular.module('invoice1', [])
-  .controller('InvoiceController', function() {
+  .controller('InvoiceController', function InvoiceController() {
     this.qty = 1;
     this.cost = 2;
     this.inCurr = 'EUR';

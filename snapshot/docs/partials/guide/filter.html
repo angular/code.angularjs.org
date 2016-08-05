@@ -74,7 +74,7 @@ or the filter expression is changed).</p>
       name="script.js"
       language="js"
       type="js">
-      <pre><code>angular.module(&#39;FilterInControllerModule&#39;, []).&#10;controller(&#39;FilterController&#39;, [&#39;filterFilter&#39;, function(filterFilter) {&#10;  this.array = [&#10;    {name: &#39;Tobias&#39;},&#10;    {name: &#39;Jeff&#39;},&#10;    {name: &#39;Brian&#39;},&#10;    {name: &#39;Igor&#39;},&#10;    {name: &#39;James&#39;},&#10;    {name: &#39;Brad&#39;}&#10;  ];&#10;  this.filteredArray = filterFilter(this.array, &#39;a&#39;);&#10;}]);</code></pre>
+      <pre><code>angular.module(&#39;FilterInControllerModule&#39;, []).&#10;controller(&#39;FilterController&#39;, [&#39;filterFilter&#39;, function FilterController(filterFilter) {&#10;  this.array = [&#10;    {name: &#39;Tobias&#39;},&#10;    {name: &#39;Jeff&#39;},&#10;    {name: &#39;Brian&#39;},&#10;    {name: &#39;Igor&#39;},&#10;    {name: &#39;James&#39;},&#10;    {name: &#39;Brad&#39;}&#10;  ];&#10;  this.filteredArray = filterFilter(this.array, &#39;a&#39;);&#10;}]);</code></pre>
     </div>
   
 

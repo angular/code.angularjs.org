@@ -1,19 +1,19 @@
 (function(angular) {
   'use strict';
-var app = angular.module('ngAria_ngModelExample', ['ngAria'])
-.controller('formsController', function($scope){
+angular.module('ngAria_ngModelExample', ['ngAria'])
+.controller('formsController', function($scope) {
   $scope.checked = false;
-  $scope.toggleCheckbox = function(){
+  $scope.toggleCheckbox = function() {
     $scope.checked = !$scope.checked;
   };
 })
-.directive('someCheckbox', function(){
+.directive('someCheckbox', function() {
   return {
     restrict: 'E',
     link: function($scope, $el, $attrs) {
-      $el.on('keypress', function(event){
+      $el.on('keypress', function(event) {
         event.preventDefault();
-        if(event.keyCode === 32 || event.keyCode === 13){
+        if (event.keyCode === 32 || event.keyCode === 13) {
           $scope.toggleCheckbox();
           $scope.$apply();
         }

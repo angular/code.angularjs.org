@@ -114,7 +114,7 @@ of the children&#39;s parents are currently animating. By default, when an eleme
       name="index.html"
       language="html"
       type="html">
-      <pre><code>&lt;div ng-controller=&quot;mainController as main&quot;&gt;&#10;  &lt;label&gt;Show container? &lt;input type=&quot;checkbox&quot; ng-model=&quot;main.enterElement&quot; /&gt;&lt;/label&gt;&#10;  &lt;label&gt;Animate children? &lt;input type=&quot;checkbox&quot; ng-model=&quot;main.animateChildren&quot; /&gt;&lt;/label&gt;&#10;  &lt;hr&gt;&#10;  &lt;div ng-animate-children=&quot;{{main.animateChildren}}&quot;&gt;&#10;    &lt;div ng-if=&quot;main.enterElement&quot; class=&quot;container&quot;&gt;&#10;      List of items:&#10;      &lt;div ng-repeat=&quot;item in [0, 1, 2, 3]&quot; class=&quot;item&quot;&gt;Item {{item}}&lt;/div&gt;&#10;    &lt;/div&gt;&#10;  &lt;/div&gt;&#10;&lt;/div&gt;</code></pre>
+      <pre><code>&lt;div ng-controller=&quot;MainController as main&quot;&gt;&#10;  &lt;label&gt;Show container? &lt;input type=&quot;checkbox&quot; ng-model=&quot;main.enterElement&quot; /&gt;&lt;/label&gt;&#10;  &lt;label&gt;Animate children? &lt;input type=&quot;checkbox&quot; ng-model=&quot;main.animateChildren&quot; /&gt;&lt;/label&gt;&#10;  &lt;hr&gt;&#10;  &lt;div ng-animate-children=&quot;{{main.animateChildren}}&quot;&gt;&#10;    &lt;div ng-if=&quot;main.enterElement&quot; class=&quot;container&quot;&gt;&#10;      List of items:&#10;      &lt;div ng-repeat=&quot;item in [0, 1, 2, 3]&quot; class=&quot;item&quot;&gt;Item {{item}}&lt;/div&gt;&#10;    &lt;/div&gt;&#10;  &lt;/div&gt;&#10;&lt;/div&gt;</code></pre>
     </div>
   
     <div class="runnable-example-file" 
@@ -128,7 +128,7 @@ of the children&#39;s parents are currently animating. By default, when an eleme
       name="script.js"
       language="js"
       type="js">
-      <pre><code>angular.module(&#39;ngAnimateChildren&#39;, [&#39;ngAnimate&#39;])&#10;.controller(&#39;mainController&#39;, function() {&#10;  this.animateChildren = false;&#10;  this.enterElement = false;&#10;});</code></pre>
+      <pre><code>angular.module(&#39;ngAnimateChildren&#39;, [&#39;ngAnimate&#39;])&#10;.controller(&#39;MainController&#39;, function MainController() {&#10;  this.animateChildren = false;&#10;  this.enterElement = false;&#10;});</code></pre>
     </div>
   
 

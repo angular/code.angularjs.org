@@ -127,7 +127,7 @@
       name="protractor.js"
       type="protractor"
       language="js">
-      <pre><code>it(&#39;should jsonify filtered objects&#39;, function() {&#10;  expect(element(by.id(&#39;default-spacing&#39;)).getText()).toMatch(/\{\n  &quot;name&quot;: ?&quot;value&quot;\n}/);&#10;  expect(element(by.id(&#39;custom-spacing&#39;)).getText()).toMatch(/\{\n    &quot;name&quot;: ?&quot;value&quot;\n}/);&#10;});</code></pre>
+      <pre><code>it(&#39;should jsonify filtered objects&#39;, function() {&#10;  expect(element(by.id(&#39;default-spacing&#39;)).getText()).toMatch(/\{\n {2}&quot;name&quot;: ?&quot;value&quot;\n}/);&#10;  expect(element(by.id(&#39;custom-spacing&#39;)).getText()).toMatch(/\{\n {4}&quot;name&quot;: ?&quot;value&quot;\n}/);&#10;});</code></pre>
     </div>
   
 

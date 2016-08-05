@@ -1,8 +1,8 @@
-<a href='https://github.com/angular/angular.js/edit/master/src/ngMock/angular-mocks.js?message=docs($httpBackend)%3A%20describe%20your%20change...#L2363' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/master/src/ngMock/angular-mocks.js?message=docs($httpBackend)%3A%20describe%20your%20change...#L2367' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 
-<a href='https://github.com/angular/angular.js/tree/master/src/ngMock/angular-mocks.js#L2363' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/master/src/ngMock/angular-mocks.js#L2367' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -78,7 +78,7 @@ myAppDev.run(function($httpBackend) {
       name="app.js"
       language="js"
       type="js">
-      <pre><code>var myApp = angular.module(&#39;myApp&#39;, []);&#10;&#10;myApp.controller(&#39;main&#39;, function($http) {&#10;  var ctrl = this;&#10;&#10;  ctrl.phones = [];&#10;  ctrl.newPhone = {&#10;    name: &#39;&#39;&#10;  };&#10;&#10;  ctrl.getPhones = function() {&#10;    $http.get(&#39;/phones&#39;).then(function(response) {&#10;      ctrl.phones = response.data;&#10;    });&#10;  };&#10;&#10;  ctrl.addPhone = function(phone) {&#10;    $http.post(&#39;/phones&#39;, phone).then(function() {&#10;      ctrl.newPhone = {name: &#39;&#39;};&#10;      return ctrl.getPhones();&#10;    });&#10;  };&#10;&#10;  ctrl.getPhones();&#10;});</code></pre>
+      <pre><code>var myApp = angular.module(&#39;myApp&#39;, []);&#10;&#10;myApp.controller(&#39;MainCtrl&#39;, function MainCtrl($http) {&#10;  var ctrl = this;&#10;&#10;  ctrl.phones = [];&#10;  ctrl.newPhone = {&#10;    name: &#39;&#39;&#10;  };&#10;&#10;  ctrl.getPhones = function() {&#10;    $http.get(&#39;/phones&#39;).then(function(response) {&#10;      ctrl.phones = response.data;&#10;    });&#10;  };&#10;&#10;  ctrl.addPhone = function(phone) {&#10;    $http.post(&#39;/phones&#39;, phone).then(function() {&#10;      ctrl.newPhone = {name: &#39;&#39;};&#10;      return ctrl.getPhones();&#10;    });&#10;  };&#10;&#10;  ctrl.getPhones();&#10;});</code></pre>
     </div>
   
     <div class="runnable-example-file" 
@@ -92,7 +92,7 @@ myAppDev.run(function($httpBackend) {
       name="index.html"
       language="html"
       type="html">
-      <pre><code>&lt;div ng-controller=&quot;main as $ctrl&quot;&gt;&#10;&lt;form name=&quot;newPhoneForm&quot; ng-submit=&quot;$ctrl.addPhone($ctrl.newPhone)&quot;&gt;&#10;  &lt;input type=&quot;text&quot; ng-model=&quot;$ctrl.newPhone.name&quot;&gt;&#10;  &lt;input type=&quot;submit&quot; value=&quot;Add Phone&quot;&gt;&#10;&lt;/form&gt;&#10;&lt;h1&gt;Phones&lt;/h1&gt;&#10;&lt;ul&gt;&#10;  &lt;li ng-repeat=&quot;phone in $ctrl.phones&quot;&gt;{{phone.name}}&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;/div&gt;</code></pre>
+      <pre><code>&lt;div ng-controller=&quot;MainCtrl as $ctrl&quot;&gt;&#10;&lt;form name=&quot;newPhoneForm&quot; ng-submit=&quot;$ctrl.addPhone($ctrl.newPhone)&quot;&gt;&#10;  &lt;input type=&quot;text&quot; ng-model=&quot;$ctrl.newPhone.name&quot;&gt;&#10;  &lt;input type=&quot;submit&quot; value=&quot;Add Phone&quot;&gt;&#10;&lt;/form&gt;&#10;&lt;h1&gt;Phones&lt;/h1&gt;&#10;&lt;ul&gt;&#10;  &lt;li ng-repeat=&quot;phone in $ctrl.phones&quot;&gt;{{phone.name}}&lt;/li&gt;&#10;&lt;/ul&gt;&#10;&lt;/div&gt;</code></pre>
     </div>
   
 

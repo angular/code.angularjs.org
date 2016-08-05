@@ -6,7 +6,7 @@ it('should load template1.html', function() {
 });
 
 it('should load template2.html', function() {
-  if (browser.params.browser == 'firefox') {
+  if (browser.params.browser === 'firefox') {
     // Firefox can't handle using selects
     // See https://github.com/angular/protractor/issues/480
     return;
@@ -17,7 +17,7 @@ it('should load template2.html', function() {
 });
 
 it('should change to blank', function() {
-  if (browser.params.browser == 'firefox') {
+  if (browser.params.browser === 'firefox') {
     // Firefox can't handle using selects
     return;
   }

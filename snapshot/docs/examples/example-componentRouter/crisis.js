@@ -48,8 +48,8 @@ function CrisisService($q) {
 
   this.getCrisis = function(id) {
     return crisesPromise.then(function(crises) {
-      for(var i=0; i<crises.length; i++) {
-        if ( crises[i].id == id) return crises[i];
+      for (var i = 0; i < crises.length; i++) {
+        if (crises[i].id === id) return crises[i];
       }
     });
   };
@@ -69,7 +69,7 @@ function CrisisListComponent(crisisService) {
   };
 
   this.isSelected = function(crisis) {
-    return (crisis.id == selectedId);
+    return (crisis.id === selectedId);
   };
 
   this.onSelect = function(crisis) {

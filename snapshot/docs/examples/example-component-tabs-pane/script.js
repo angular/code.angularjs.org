@@ -3,7 +3,7 @@
 angular.module('docsTabsExample', [])
   .component('myTabs', {
     transclude: true,
-    controller: function() {
+    controller: function MyTabsController() {
       var panes = this.panes = [];
       this.select = function(pane) {
         angular.forEach(panes, function(pane) {

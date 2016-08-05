@@ -4,7 +4,7 @@ it('should init with 1234.56', function() {
   expect(element(by.id('currency-no-fractions')).getText()).toBe('USD$1,235');
 });
 it('should update', function() {
-  if (browser.params.browser == 'safari') {
+  if (browser.params.browser === 'safari') {
     // Safari does not understand the minus key. See
     // https://github.com/angular/protractor/issues/481
     return;

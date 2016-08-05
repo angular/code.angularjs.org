@@ -7,7 +7,8 @@ function SettingsController2($scope) {
   $scope.name = "John Smith";
   $scope.contacts = [
     {type:'phone', value:'408 555 1212'},
-    {type:'email', value:'john.smith@example.org'} ];
+    {type:'email', value:'john.smith@example.org'}
+  ];
 
   $scope.greet = function() {
     alert($scope.name);

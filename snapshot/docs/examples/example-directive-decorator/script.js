@@ -2,7 +2,7 @@
   'use strict';
 angular.module('urlDecorator', []).
 
-  controller('Ctrl', ['$scope', function ($scope) {
+  controller('Ctrl', ['$scope', function($scope) {
     $scope.id = 3;
     $scope.warnCount = 0; // for testing
   }]).
@@ -45,8 +45,8 @@ angular.module('urlDecorator', []).
           var exps = matchExpressions(originalExp);
 
           // create and store the getters using $parse
-          var getters = exps.map(function(el) {
-            if (el) return $parse(el);
+          var getters = exps.map(function(exp) {
+            return exp && $parse(exp);
           });
 
           return function newLinkFn(scope, elem, attr) {

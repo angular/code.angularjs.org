@@ -749,7 +749,7 @@ to cancel any pending debounced updates and to re-render the input.</li>
 <p>To migrate code that used <code>$cancelUpdate()</code> follow the example below:</p>
 <p>Before:</p>
 <pre><code class="lang-js">$scope.resetWithCancel = function (e) {
-  if (e.keyCode == 27) {
+  if (e.keyCode === 27) {
     $scope.myForm.myInput1.$cancelUpdate();
     $scope.myValue = &#39;&#39;;
   }
@@ -757,7 +757,7 @@ to cancel any pending debounced updates and to re-render the input.</li>
 </code></pre>
 <p>After:</p>
 <pre><code class="lang-js">$scope.resetWithCancel = function (e) {
-  if (e.keyCode == 27) {
+  if (e.keyCode === 27) {
     $scope.myForm.myInput1.$rollbackViewValue();
     $scope.myValue = &#39;&#39;;
   }

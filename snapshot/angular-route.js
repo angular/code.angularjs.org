@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.9-build.4970+sha.1660ddd
+ * @license AngularJS v1.5.9-build.4972+sha.5fc9933
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -70,6 +70,7 @@ var isEagerInstantiationEnabled;
 /**
  * @ngdoc provider
  * @name $routeProvider
+ * @this
  *
  * @description
  *
@@ -500,15 +501,15 @@ function $RouteProvider() {
      *     it('should load and compile correct template', function() {
      *       element(by.linkText('Moby: Ch1')).click();
      *       var content = element(by.css('[ng-view]')).getText();
-     *       expect(content).toMatch(/controller\: ChapterController/);
-     *       expect(content).toMatch(/Book Id\: Moby/);
-     *       expect(content).toMatch(/Chapter Id\: 1/);
+     *       expect(content).toMatch(/controller: ChapterController/);
+     *       expect(content).toMatch(/Book Id: Moby/);
+     *       expect(content).toMatch(/Chapter Id: 1/);
      *
      *       element(by.partialLinkText('Scarlet')).click();
      *
      *       content = element(by.css('[ng-view]')).getText();
-     *       expect(content).toMatch(/controller\: BookController/);
-     *       expect(content).toMatch(/Book Id\: Scarlet/);
+     *       expect(content).toMatch(/controller: BookController/);
+     *       expect(content).toMatch(/Book Id: Scarlet/);
      *     });
      *   </file>
      * </example>
@@ -889,6 +890,7 @@ ngRouteModule.provider('$routeParams', $RouteParamsProvider);
  * @ngdoc service
  * @name $routeParams
  * @requires $route
+ * @this
  *
  * @description
  * The `$routeParams` service allows you to retrieve the current set of route parameters.
@@ -1065,16 +1067,16 @@ ngRouteModule.directive('ngView', ngViewFillContentFactory);
               $locationProvider.html5Mode(true);
           }])
           .controller('MainCtrl', ['$route', '$routeParams', '$location',
-            function($route, $routeParams, $location) {
+            function MainCtrl($route, $routeParams, $location) {
               this.$route = $route;
               this.$location = $location;
               this.$routeParams = $routeParams;
           }])
-          .controller('BookCtrl', ['$routeParams', function($routeParams) {
+          .controller('BookCtrl', ['$routeParams', function BookCtrl($routeParams) {
             this.name = "BookCtrl";
             this.params = $routeParams;
           }])
-          .controller('ChapterCtrl', ['$routeParams', function($routeParams) {
+          .controller('ChapterCtrl', ['$routeParams', function ChapterCtrl($routeParams) {
             this.name = "ChapterCtrl";
             this.params = $routeParams;
           }]);
@@ -1085,15 +1087,15 @@ ngRouteModule.directive('ngView', ngViewFillContentFactory);
         it('should load and compile correct template', function() {
           element(by.linkText('Moby: Ch1')).click();
           var content = element(by.css('[ng-view]')).getText();
-          expect(content).toMatch(/controller\: ChapterCtrl/);
-          expect(content).toMatch(/Book Id\: Moby/);
-          expect(content).toMatch(/Chapter Id\: 1/);
+          expect(content).toMatch(/controller: ChapterCtrl/);
+          expect(content).toMatch(/Book Id: Moby/);
+          expect(content).toMatch(/Chapter Id: 1/);
 
           element(by.partialLinkText('Scarlet')).click();
 
           content = element(by.css('[ng-view]')).getText();
-          expect(content).toMatch(/controller\: BookCtrl/);
-          expect(content).toMatch(/Book Id\: Scarlet/);
+          expect(content).toMatch(/controller: BookCtrl/);
+          expect(content).toMatch(/Book Id: Scarlet/);
         });
       </file>
     </example>

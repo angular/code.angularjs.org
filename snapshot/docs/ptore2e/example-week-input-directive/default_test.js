@@ -7,7 +7,6 @@ describe("", function() {
   
 var value = element(by.binding('example.value | date: "yyyy-Www"'));
 var valid = element(by.binding('myForm.input.$valid'));
-var input = element(by.model('example.value'));
 
 // currently protractor/webdriver does not support
 // sending keys to all known HTML5 input controls

@@ -2,7 +2,7 @@
   'use strict';
 var myApp = angular.module('myApp', []);
 
-myApp.controller('main', function($http) {
+myApp.controller('MainCtrl', function MainCtrl($http) {
   var ctrl = this;
 
   ctrl.phones = [];

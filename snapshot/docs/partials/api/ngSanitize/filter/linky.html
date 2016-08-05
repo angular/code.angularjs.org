@@ -153,7 +153,7 @@ the target parameter.</p>
       name="script.js"
       language="js"
       type="js">
-      <pre><code>angular.module(&#39;linkyExample&#39;, [&#39;ngSanitize&#39;])&#10;.controller(&#39;ExampleController&#39;, [&#39;$scope&#39;, function($scope) {&#10;  $scope.snippet =&#10;    &#39;Pretty text with some links:\n&#39;+&#10;    &#39;http://angularjs.org/,\n&#39;+&#10;    &#39;mailto:us@somewhere.org,\n&#39;+&#10;    &#39;another@somewhere.org,\n&#39;+&#10;    &#39;and one more: ftp://127.0.0.1/.&#39;;&#10;  $scope.snippetWithSingleURL = &#39;http://angularjs.org/&#39;;&#10;}]);</code></pre>
+      <pre><code>angular.module(&#39;linkyExample&#39;, [&#39;ngSanitize&#39;])&#10;.controller(&#39;ExampleController&#39;, [&#39;$scope&#39;, function($scope) {&#10;  $scope.snippet =&#10;    &#39;Pretty text with some links:\n&#39; +&#10;    &#39;http://angularjs.org/,\n&#39; +&#10;    &#39;mailto:us@somewhere.org,\n&#39; +&#10;    &#39;another@somewhere.org,\n&#39; +&#10;    &#39;and one more: ftp://127.0.0.1/.&#39;;&#10;  $scope.snippetWithSingleURL = &#39;http://angularjs.org/&#39;;&#10;}]);</code></pre>
     </div>
   
     <div class="runnable-example-file" 

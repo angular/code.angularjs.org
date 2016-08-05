@@ -18,16 +18,16 @@ angular.module('ngViewExample', ['ngRoute', 'ngAnimate'])
       $locationProvider.html5Mode(true);
   }])
   .controller('MainCtrl', ['$route', '$routeParams', '$location',
-    function($route, $routeParams, $location) {
+    function MainCtrl($route, $routeParams, $location) {
       this.$route = $route;
       this.$location = $location;
       this.$routeParams = $routeParams;
   }])
-  .controller('BookCtrl', ['$routeParams', function($routeParams) {
+  .controller('BookCtrl', ['$routeParams', function BookCtrl($routeParams) {
     this.name = "BookCtrl";
     this.params = $routeParams;
   }])
-  .controller('ChapterCtrl', ['$routeParams', function($routeParams) {
+  .controller('ChapterCtrl', ['$routeParams', function ChapterCtrl($routeParams) {
     this.name = "ChapterCtrl";
     this.params = $routeParams;
   }]);

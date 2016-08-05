@@ -9,9 +9,9 @@ angular.module('html5-mode', ['fake-browser', 'address-bar'])
 
 .controller("LocationController", function($scope, $location) {
   $scope.$location = {};
-  angular.forEach("protocol host port path search hash".split(" "), function(method){
-   $scope.$location[method] = function(){
-     var result = $location[method].call($location);
+  angular.forEach("protocol host port path search hash".split(" "), function(method) {
+   $scope.$location[method] = function() {
+     var result = $location[method]();
      return angular.isObject(result) ? angular.toJson(result) : result;
    };
   });

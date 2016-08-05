@@ -1,4 +1,4 @@
 (function(angular) {
   'use strict';
-var mode = angular.module('heroApp', []);
+angular.module('heroApp', []);
 })(window.angular);

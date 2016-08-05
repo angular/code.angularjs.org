@@ -1,3 +1,5 @@
+'use strict';
+
 // Meta data used by the AngularJS docs app
 angular.module('navData', [])
   .value('NG_NAVIGATION', {
@@ -1016,6 +1018,16 @@ angular.module('navData', [])
         "type": "group",
         "navItems": [
           {
+            "name": "provider",
+            "type": "section",
+            "href": "api/ngCookies/provider"
+          },
+          {
+            "name": "$cookiesProvider",
+            "href": "api/ngCookies/provider/$cookiesProvider",
+            "type": "provider"
+          },
+          {
             "name": "service",
             "type": "section",
             "href": "api/ngCookies/service"
@@ -1029,16 +1041,6 @@ angular.module('navData', [])
             "name": "$cookies",
             "href": "api/ngCookies/service/$cookies",
             "type": "service"
-          },
-          {
-            "name": "provider",
-            "type": "section",
-            "href": "api/ngCookies/provider"
-          },
-          {
-            "name": "$cookiesProvider",
-            "href": "api/ngCookies/provider/$cookiesProvider",
-            "type": "provider"
           }
         ]
       },

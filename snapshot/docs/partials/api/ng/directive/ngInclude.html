@@ -387,7 +387,7 @@ access on some browsers.</p>
       name="script.js"
       language="js"
       type="js">
-      <pre><code>angular.module(&#39;includeExample&#39;, [&#39;ngAnimate&#39;])&#10;.controller(&#39;ExampleController&#39;, [&#39;$scope&#39;, function($scope) {&#10;  $scope.templates =&#10;    [ { name: &#39;template1.html&#39;, url: &#39;template1.html&#39;},&#10;      { name: &#39;template2.html&#39;, url: &#39;template2.html&#39;} ];&#10;  $scope.template = $scope.templates[0];&#10;}]);</code></pre>
+      <pre><code>angular.module(&#39;includeExample&#39;, [&#39;ngAnimate&#39;])&#10;.controller(&#39;ExampleController&#39;, [&#39;$scope&#39;, function($scope) {&#10;  $scope.templates =&#10;    [{ name: &#39;template1.html&#39;, url: &#39;template1.html&#39;},&#10;     { name: &#39;template2.html&#39;, url: &#39;template2.html&#39;}];&#10;  $scope.template = $scope.templates[0];&#10;}]);</code></pre>
     </div>
   
     <div class="runnable-example-file" 
@@ -415,7 +415,7 @@ access on some browsers.</p>
       name="protractor.js"
       type="protractor"
       language="js">
-      <pre><code>var templateSelect = element(by.model(&#39;template&#39;));&#10;var includeElem = element(by.css(&#39;[ng-include]&#39;));&#10;&#10;it(&#39;should load template1.html&#39;, function() {&#10;  expect(includeElem.getText()).toMatch(/Content of template1.html/);&#10;});&#10;&#10;it(&#39;should load template2.html&#39;, function() {&#10;  if (browser.params.browser == &#39;firefox&#39;) {&#10;    // Firefox can&#39;t handle using selects&#10;    // See https://github.com/angular/protractor/issues/480&#10;    return;&#10;  }&#10;  templateSelect.click();&#10;  templateSelect.all(by.css(&#39;option&#39;)).get(2).click();&#10;  expect(includeElem.getText()).toMatch(/Content of template2.html/);&#10;});&#10;&#10;it(&#39;should change to blank&#39;, function() {&#10;  if (browser.params.browser == &#39;firefox&#39;) {&#10;    // Firefox can&#39;t handle using selects&#10;    return;&#10;  }&#10;  templateSelect.click();&#10;  templateSelect.all(by.css(&#39;option&#39;)).get(0).click();&#10;  expect(includeElem.isPresent()).toBe(false);&#10;});</code></pre>
+      <pre><code>var templateSelect = element(by.model(&#39;template&#39;));&#10;var includeElem = element(by.css(&#39;[ng-include]&#39;));&#10;&#10;it(&#39;should load template1.html&#39;, function() {&#10;  expect(includeElem.getText()).toMatch(/Content of template1.html/);&#10;});&#10;&#10;it(&#39;should load template2.html&#39;, function() {&#10;  if (browser.params.browser === &#39;firefox&#39;) {&#10;    // Firefox can&#39;t handle using selects&#10;    // See https://github.com/angular/protractor/issues/480&#10;    return;&#10;  }&#10;  templateSelect.click();&#10;  templateSelect.all(by.css(&#39;option&#39;)).get(2).click();&#10;  expect(includeElem.getText()).toMatch(/Content of template2.html/);&#10;});&#10;&#10;it(&#39;should change to blank&#39;, function() {&#10;  if (browser.params.browser === &#39;firefox&#39;) {&#10;    // Firefox can&#39;t handle using selects&#10;    return;&#10;  }&#10;  templateSelect.click();&#10;  templateSelect.all(by.css(&#39;option&#39;)).get(0).click();&#10;  expect(includeElem.isPresent()).toBe(false);&#10;});</code></pre>
     </div>
   
 

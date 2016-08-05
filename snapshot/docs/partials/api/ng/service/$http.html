@@ -1,8 +1,8 @@
-<a href='https://github.com/angular/angular.js/edit/master/src/ng/http.js?message=docs($http)%3A%20describe%20your%20change...#L400' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/master/src/ng/http.js?message=docs($http)%3A%20describe%20your%20change...#L405' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 
-<a href='https://github.com/angular/angular.js/tree/master/src/ng/http.js#L400' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/master/src/ng/http.js#L405' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -1088,7 +1088,7 @@ default headers, withCredentials as well as request and response transformations
       name="protractor.js"
       type="protractor"
       language="js">
-      <pre><code>  var status = element(by.binding(&#39;status&#39;));&#10;  var data = element(by.binding(&#39;data&#39;));&#10;  var fetchBtn = element(by.id(&#39;fetchbtn&#39;));&#10;  var sampleGetBtn = element(by.id(&#39;samplegetbtn&#39;));&#10;  var sampleJsonpBtn = element(by.id(&#39;samplejsonpbtn&#39;));&#10;  var invalidJsonpBtn = element(by.id(&#39;invalidjsonpbtn&#39;));&#10;&#10;  it(&#39;should make an xhr GET request&#39;, function() {&#10;    sampleGetBtn.click();&#10;    fetchBtn.click();&#10;    expect(status.getText()).toMatch(&#39;200&#39;);&#10;    expect(data.getText()).toMatch(/Hello, \$http!/);&#10;  });&#10;&#10;// Commented out due to flakes. See https://github.com/angular/angular.js/issues/9185&#10;// it(&#39;should make a JSONP request to angularjs.org&#39;, function() {&#10;//   sampleJsonpBtn.click();&#10;//   fetchBtn.click();&#10;//   expect(status.getText()).toMatch(&#39;200&#39;);&#10;//   expect(data.getText()).toMatch(/Super Hero!/);&#10;// });&#10;&#10;  it(&#39;should make JSONP request to invalid URL and invoke the error handler&#39;,&#10;      function() {&#10;    invalidJsonpBtn.click();&#10;    fetchBtn.click();&#10;    expect(status.getText()).toMatch(&#39;0&#39;);&#10;    expect(data.getText()).toMatch(&#39;Request failed&#39;);&#10;  });</code></pre>
+      <pre><code>  var status = element(by.binding(&#39;status&#39;));&#10;  var data = element(by.binding(&#39;data&#39;));&#10;  var fetchBtn = element(by.id(&#39;fetchbtn&#39;));&#10;  var sampleGetBtn = element(by.id(&#39;samplegetbtn&#39;));&#10;  var invalidJsonpBtn = element(by.id(&#39;invalidjsonpbtn&#39;));&#10;&#10;  it(&#39;should make an xhr GET request&#39;, function() {&#10;    sampleGetBtn.click();&#10;    fetchBtn.click();&#10;    expect(status.getText()).toMatch(&#39;200&#39;);&#10;    expect(data.getText()).toMatch(/Hello, \$http!/);&#10;  });&#10;&#10;// Commented out due to flakes. See https://github.com/angular/angular.js/issues/9185&#10;// it(&#39;should make a JSONP request to angularjs.org&#39;, function() {&#10;//   var sampleJsonpBtn = element(by.id(&#39;samplejsonpbtn&#39;));&#10;//   sampleJsonpBtn.click();&#10;//   fetchBtn.click();&#10;//   expect(status.getText()).toMatch(&#39;200&#39;);&#10;//   expect(data.getText()).toMatch(/Super Hero!/);&#10;// });&#10;&#10;  it(&#39;should make JSONP request to invalid URL and invoke the error handler&#39;,&#10;      function() {&#10;    invalidJsonpBtn.click();&#10;    fetchBtn.click();&#10;    expect(status.getText()).toMatch(&#39;0&#39;);&#10;    expect(data.getText()).toMatch(&#39;Request failed&#39;);&#10;  });</code></pre>
     </div>
   
 

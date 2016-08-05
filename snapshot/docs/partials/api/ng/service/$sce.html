@@ -1,8 +1,8 @@
-<a href='https://github.com/angular/angular.js/edit/master/src/ng/sce.js?message=docs($sce)%3A%20describe%20your%20change...#L404' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/master/src/ng/sce.js?message=docs($sce)%3A%20describe%20your%20change...#L408' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 
-<a href='https://github.com/angular/angular.js/tree/master/src/ng/sce.js#L404' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/master/src/ng/sce.js#L408' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -211,7 +211,7 @@ Closure library&#39;s <a href="http://docs.closure-library.googlecode.com/git/cl
       name="script.js"
       language="js"
       type="js">
-      <pre><code>angular.module(&#39;mySceApp&#39;, [&#39;ngSanitize&#39;])&#10;.controller(&#39;AppController&#39;, [&#39;$http&#39;, &#39;$templateCache&#39;, &#39;$sce&#39;,&#10;  function($http, $templateCache, $sce) {&#10;    var self = this;&#10;    $http.get(&quot;test_data.json&quot;, {cache: $templateCache}).success(function(userComments) {&#10;      self.userComments = userComments;&#10;    });&#10;    self.explicitlyTrustedHtml = $sce.trustAsHtml(&#10;        &#39;&lt;span onmouseover=&quot;this.textContent=&amp;quot;Explicitly trusted HTML bypasses &#39; +&#10;        &#39;sanitization.&amp;quot;&quot;&gt;Hover over this text.&lt;/span&gt;&#39;);&#10;  }]);</code></pre>
+      <pre><code>angular.module(&#39;mySceApp&#39;, [&#39;ngSanitize&#39;])&#10;.controller(&#39;AppController&#39;, [&#39;$http&#39;, &#39;$templateCache&#39;, &#39;$sce&#39;,&#10;  function AppController($http, $templateCache, $sce) {&#10;    var self = this;&#10;    $http.get(&quot;test_data.json&quot;, {cache: $templateCache}).success(function(userComments) {&#10;      self.userComments = userComments;&#10;    });&#10;    self.explicitlyTrustedHtml = $sce.trustAsHtml(&#10;        &#39;&lt;span onmouseover=&quot;this.textContent=&amp;quot;Explicitly trusted HTML bypasses &#39; +&#10;        &#39;sanitization.&amp;quot;&quot;&gt;Hover over this text.&lt;/span&gt;&#39;);&#10;  }]);</code></pre>
     </div>
   
     <div class="runnable-example-file" 

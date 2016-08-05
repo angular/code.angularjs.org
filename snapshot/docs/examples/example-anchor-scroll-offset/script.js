@@ -5,7 +5,7 @@ angular.module('anchorScrollOffsetExample', [])
     $anchorScroll.yOffset = 50;   // always scroll by 50 extra pixels
   }])
   .controller('headerCtrl', ['$anchorScroll', '$location', '$scope',
-    function ($anchorScroll, $location, $scope) {
+    function($anchorScroll, $location, $scope) {
       $scope.gotoAnchor = function(x) {
         var newHash = 'anchor' + x;
         if ($location.hash() !== newHash) {

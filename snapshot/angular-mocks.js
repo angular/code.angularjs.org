@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.9-build.4970+sha.1660ddd
+ * @license AngularJS v1.5.9-build.4972+sha.5fc9933
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -252,7 +252,7 @@ angular.mock.$ExceptionHandlerProvider = function() {
       case 'rethrow':
         var errors = [];
         handler = function(e) {
-          if (arguments.length == 1) {
+          if (arguments.length === 1) {
             errors.push(e);
           } else {
             errors.push([].slice.call(arguments, 0));
@@ -559,16 +559,13 @@ angular.mock.$IntervalProvider = function() {
 };
 
 
-/* jshint -W101 */
-/* The R_ISO8061_STR regex is never going to fit into the 100 char limit!
- * This directive should go inside the anonymous function but a bug in JSHint means that it would
- * not be enacted early enough to prevent the warning.
- */
-var R_ISO8061_STR = /^(-?\d{4})-?(\d\d)-?(\d\d)(?:T(\d\d)(?:\:?(\d\d)(?:\:?(\d\d)(?:\.(\d{3}))?)?)?(Z|([+-])(\d\d):?(\d\d)))?$/;
-
 function jsonStringToDate(string) {
+  // The R_ISO8061_STR regex is never going to fit into the 100 char limit!
+  // eslit-disable-next-line max-len
+  var R_ISO8061_STR = /^(-?\d{4})-?(\d\d)-?(\d\d)(?:T(\d\d)(?::?(\d\d)(?::?(\d\d)(?:\.(\d{3}))?)?)?(Z|([+-])(\d\d):?(\d\d)))?$/;
+
   var match;
-  if (match = string.match(R_ISO8061_STR)) {
+  if ((match = string.match(R_ISO8061_STR))) {
     var date = new Date(0),
         tzHour = 0,
         tzMin  = 0;
@@ -651,6 +648,7 @@ angular.mock.TzDate = function(offset, timestamp) {
 
     timestamp = self.origDate.getTime();
     if (isNaN(timestamp)) {
+      // eslint-disable-next-line no-throw-literal
       throw {
         name: "Illegal Argument",
         message: "Arg '" + tsStr + "' passed into TzDate constructor is not a valid date string"
@@ -768,7 +766,6 @@ angular.mock.TzDate = function(offset, timestamp) {
 
 //make "tzDateInstance instanceof Date" return true
 angular.mock.TzDate.prototype = Date.prototype;
-/* jshint +W101 */
 
 
 /**
@@ -1216,7 +1213,7 @@ angular.mock.dump = function(object) {
          $httpBackend.expectPOST('/add-msg.py', undefined, function(headers) {
            // check if the header was sent, if it wasn't the expectation won't
            // match the request and the test will fail
-           return headers['Authorization'] == 'xxx';
+           return headers['Authorization'] === 'xxx';
          }).respond(201, '');
 
          $rootScope.saveMessage('whatever');
@@ -1358,7 +1355,11 @@ function createHttpBackendMock($rootScope, $timeout, $delegate, $browser) {
 
     function wrapResponse(wrapped) {
       if (!$browser && timeout) {
-        timeout.then ? timeout.then(handleTimeout) : $timeout(handleTimeout, timeout);
+        if (timeout.then) {
+          timeout.then(handleTimeout);
+        } else {
+          $timeout(handleTimeout, timeout);
+        }
       }
 
       return handleResponse;
@@ -1918,14 +1919,15 @@ function MockHttpExpectation(method, url, data, headers, keys) {
   }
 
   function compareUrl(u) {
-    return (url.slice(0, url.indexOf('?')) == u.slice(0, u.indexOf('?')) && getUrlParams(url).join() == getUrlParams(u).join());
+    return (url.slice(0, url.indexOf('?')) === u.slice(0, u.indexOf('?')) &&
+      getUrlParams(url).join() === getUrlParams(u).join());
   }
 
   this.data = data;
   this.headers = headers;
 
   this.match = function(m, u, d, h) {
-    if (method != m) return false;
+    if (method !== m) return false;
     if (!this.matchUrl(u)) return false;
     if (angular.isDefined(d) && !this.matchData(d)) return false;
     if (angular.isDefined(h) && !this.matchHeaders(h)) return false;
@@ -1936,7 +1938,7 @@ function MockHttpExpectation(method, url, data, headers, keys) {
     if (!url) return true;
     if (angular.isFunction(url.test)) return url.test(u);
     if (angular.isFunction(url)) return url(u);
-    return (url == u || compareUrl(u));
+    return (url === u || compareUrl(u));
   };
 
   this.matchHeaders = function(h) {
@@ -1952,6 +1954,7 @@ function MockHttpExpectation(method, url, data, headers, keys) {
     if (data && !angular.isString(data)) {
       return angular.equals(angular.fromJson(angular.toJson(data)), angular.fromJson(d));
     }
+    // eslint-disable-next-line eqeqeq
     return data == d;
   };
 
@@ -2050,7 +2053,7 @@ function MockXhr() {
 
     header = undefined;
     angular.forEach(this.$$respHeaders, function(headerVal, headerName) {
-      if (!header && angular.lowercase(headerName) == name) header = headerVal;
+      if (!header && angular.lowercase(headerName) === name) header = headerVal;
     });
     return header;
   };
@@ -2123,7 +2126,7 @@ angular.mock.$TimeoutDecorator = ['$delegate', '$browser', function($delegate, $
   function formatPendingTasksAsString(tasks) {
     var result = [];
     angular.forEach(tasks, function(task) {
-      result.push('{id: ' + task.id + ', ' + 'time: ' + task.time + '}');
+      result.push('{id: ' + task.id + ', time: ' + task.time + '}');
     });
 
     return result.join(', ');
@@ -2264,7 +2267,8 @@ angular.mock.$ControllerDecorator = ['$delegate', function($delegate) {
  * @param {string=} ident Override the property name to use when attaching the controller to the scope.
  * @return {Object} Instance of requested controller.
  */
-angular.mock.$ComponentControllerProvider = ['$compileProvider', function($compileProvider) {
+angular.mock.$ComponentControllerProvider = ['$compileProvider',
+    function ComponentControllerProvider($compileProvider) {
   this.$get = ['$controller','$injector', '$rootScope', function($controller, $injector, $rootScope) {
     return function $componentController(componentName, locals, bindings, ident) {
       // get all directives associated to the component name
@@ -2424,7 +2428,7 @@ angular.module('ngMockE2E', ['ng']).config(['$provide', function($provide) {
  * <file name="app.js">
  *   var myApp = angular.module('myApp', []);
  *
- *   myApp.controller('main', function($http) {
+ *   myApp.controller('MainCtrl', function MainCtrl($http) {
  *     var ctrl = this;
  *
  *     ctrl.phones = [];
@@ -2466,7 +2470,7 @@ angular.module('ngMockE2E', ['ng']).config(['$provide', function($provide) {
  *   });
  * </file>
  * <file name="index.html">
- *   <div ng-controller="main as $ctrl">
+ *   <div ng-controller="MainCtrl as $ctrl">
  *   <form name="newPhoneForm" ng-submit="$ctrl.addPhone($ctrl.newPhone)">
  *     <input type="text" ng-model="$ctrl.newPhone.name">
  *     <input type="submit" value="Add Phone">
@@ -2679,6 +2683,7 @@ angular.mock.$RootScopeDecorator = ['$delegate', function($delegate) {
    * @ngdoc method
    * @name $rootScope.Scope#$countChildScopes
    * @module ngMock
+   * @this $rootScope.Scope
    * @description
    * Counts all the direct and indirect child scopes of the current scope.
    *
@@ -2687,7 +2692,6 @@ angular.mock.$RootScopeDecorator = ['$delegate', function($delegate) {
    * @returns {number} Total number of child scopes.
    */
   function countChildScopes() {
-    // jshint validthis: true
     var count = 0; // exclude the current scope
     var pendingChildHeads = [this.$$childHead];
     var currentScope;
@@ -2709,6 +2713,7 @@ angular.mock.$RootScopeDecorator = ['$delegate', function($delegate) {
   /**
    * @ngdoc method
    * @name $rootScope.Scope#$countWatchers
+   * @this $rootScope.Scope
    * @module ngMock
    * @description
    * Counts all the watchers of direct and indirect child scopes of the current scope.
@@ -2719,7 +2724,6 @@ angular.mock.$RootScopeDecorator = ['$delegate', function($delegate) {
    * @returns {number} Total number of watchers.
    */
   function countWatchers() {
-    // jshint validthis: true
     var count = this.$$watchers ? this.$$watchers.length : 0; // include the current scope
     var pendingChildHeads = [this.$$childHead];
     var currentScope;
@@ -2739,7 +2743,7 @@ angular.mock.$RootScopeDecorator = ['$delegate', function($delegate) {
 }];
 
 
-!(function(jasmineOrMocha) {
+(function(jasmineOrMocha) {
 
   if (!jasmineOrMocha) {
     return;
@@ -2834,7 +2838,7 @@ angular.mock.$RootScopeDecorator = ['$delegate', function($delegate) {
    *
    * You cannot call `sharedInjector()` from within a context already using `sharedInjector()`.
    *
-   * ## Example
+   * ## Example
    *
    * Typically beforeAll is used to make many assertions about a single operation. This can
    * cut down test run-time as the test setup doesn't need to be re-run, and enabling focussed
@@ -2877,7 +2881,7 @@ angular.mock.$RootScopeDecorator = ['$delegate', function($delegate) {
 
     var initialized = false;
 
-    module.$$beforeAllHook(function() {
+    module.$$beforeAllHook(/* @this */ function() {
       if (injectorState.shared) {
         injectorState.sharedError = Error("sharedInjector() cannot be called inside a context that has already called sharedInjector()");
         throw injectorState.sharedError;
@@ -2898,7 +2902,7 @@ angular.mock.$RootScopeDecorator = ['$delegate', function($delegate) {
   };
 
   module.$$beforeEach = function() {
-    if (injectorState.shared && currentSpec && currentSpec != this) {
+    if (injectorState.shared && currentSpec && currentSpec !== this) {
       var state = currentSpec;
       currentSpec = this;
       angular.forEach(["$injector","$modules","$providerInjector", "$injectorStrict"], function(k) {
@@ -3056,7 +3060,7 @@ angular.mock.$RootScopeDecorator = ['$delegate', function($delegate) {
 
 
 
-  var ErrorAddingDeclarationLocationStack = function(e, errorForStack) {
+  var ErrorAddingDeclarationLocationStack = function ErrorAddingDeclarationLocationStack(e, errorForStack) {
     this.message = e.message;
     this.name = e.name;
     if (e.line) this.line = e.line;
@@ -3074,11 +3078,11 @@ angular.mock.$RootScopeDecorator = ['$delegate', function($delegate) {
     if (!errorForStack.stack) {
       try {
         throw errorForStack;
-      } catch (e) {}
+      } catch (e) { /* empty */ }
     }
-    return wasInjectorCreated() ? workFn.call(currentSpec) : workFn;
+    return wasInjectorCreated() ? WorkFn.call(currentSpec) : WorkFn;
     /////////////////////
-    function workFn() {
+    function WorkFn() {
       var modules = currentSpec.$modules || [];
       var strictDi = !!currentSpec.$injectorStrict;
       modules.unshift(['$injector', function($injector) {
@@ -3106,9 +3110,7 @@ angular.mock.$RootScopeDecorator = ['$delegate', function($delegate) {
           injector.annotate(blockFns[i]);
         }
         try {
-          /* jshint -W040 *//* Jasmine explicitly provides a `this` object when calling functions */
           injector.invoke(blockFns[i] || angular.noop, this);
-          /* jshint +W040 */
         } catch (e) {
           if (e.stack && errorForStack) {
             throw new ErrorAddingDeclarationLocationStack(e, errorForStack);
@@ -3203,26 +3205,24 @@ angular.mock.$RootScopeDecorator = ['$delegate', function($delegate) {
     var evnt;
     if (/transitionend/.test(eventType)) {
       if (window.WebKitTransitionEvent) {
-        evnt = new WebKitTransitionEvent(eventType, eventData);
+        evnt = new window.WebKitTransitionEvent(eventType, eventData);
         evnt.initEvent(eventType, false, true);
       } else {
         try {
-          evnt = new TransitionEvent(eventType, eventData);
-        }
-        catch (e) {
+          evnt = new window.TransitionEvent(eventType, eventData);
+        } catch (e) {
           evnt = window.document.createEvent('TransitionEvent');
           evnt.initTransitionEvent(eventType, null, null, null, eventData.elapsedTime || 0);
         }
       }
     } else if (/animationend/.test(eventType)) {
       if (window.WebKitAnimationEvent) {
-        evnt = new WebKitAnimationEvent(eventType, eventData);
+        evnt = new window.WebKitAnimationEvent(eventType, eventData);
         evnt.initEvent(eventType, false, true);
       } else {
         try {
-          evnt = new AnimationEvent(eventType, eventData);
-        }
-        catch (e) {
+          evnt = new window.AnimationEvent(eventType, eventData);
+        } catch (e) {
           evnt = window.document.createEvent('AnimationEvent');
           evnt.initAnimationEvent(eventType, null, null, null, eventData.elapsedTime || 0);
         }
@@ -3343,6 +3343,7 @@ angular.mock.$RootScopeDecorator = ['$delegate', function($delegate) {
     patchEventTargetForBubbling(evnt, element);
     do {
       element.dispatchEvent(evnt);
+      // eslint-disable-next-line no-unmodified-loop-condition
     } while (!stop && (element = element.parentNode));
   }
 
@@ -3352,14 +3353,14 @@ angular.mock.$RootScopeDecorator = ['$delegate', function($delegate) {
   }
 
   function isAttachedToDocument(element) {
-    while (element = element.parentNode) {
+    while ((element = element.parentNode)) {
         if (element === window) {
             return true;
         }
     }
     return false;
   }
-}());
+})();
 
 
 })(window, window.angular);

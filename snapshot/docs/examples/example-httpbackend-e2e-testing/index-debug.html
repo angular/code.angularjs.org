@@ -14,7 +14,7 @@
   
 </head>
 <body ng-app="myAppE2E">
-  <div ng-controller="main as $ctrl">
+  <div ng-controller="MainCtrl as $ctrl">
 <form name="newPhoneForm" ng-submit="$ctrl.addPhone($ctrl.newPhone)">
   <input type="text" ng-model="$ctrl.newPhone.name">
   <input type="submit" value="Add Phone">

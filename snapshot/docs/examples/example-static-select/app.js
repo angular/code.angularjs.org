@@ -5,7 +5,7 @@ angular.module('staticSelect', [])
     $scope.data = {
      singleSelect: null,
      multipleSelect: [],
-     option1: 'option-1',
+     option1: 'option-1'
     };
 
     $scope.forceUnknownOption = function() {

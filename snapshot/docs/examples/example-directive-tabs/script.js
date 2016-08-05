@@ -6,7 +6,7 @@ angular.module('docsTabsExample', [])
       restrict: 'E',
       transclude: true,
       scope: {},
-      controller: ['$scope', function($scope) {
+      controller: ['$scope', function MyTabsController($scope) {
         var panes = $scope.panes = [];
 
         $scope.select = function(pane) {

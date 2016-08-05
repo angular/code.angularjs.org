@@ -14,8 +14,8 @@ angular.module('eventExampleApp', []).
      * return a copy of an object with only non-object keys
      * we need this to avoid circular references
      */
-    function simpleKeys (original) {
-      return Object.keys(original).reduce(function (obj, key) {
+    function simpleKeys(original) {
+      return Object.keys(original).reduce(function(obj, key) {
         obj[key] = typeof original[key] === 'object' ? '{ ... }' : original[key];
         return obj;
       }, {});

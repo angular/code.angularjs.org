@@ -3,13 +3,13 @@
 angular.module('finance3', [])
   .factory('currencyConverter', ['$http', function($http) {
     var YAHOO_FINANCE_URL_PATTERN =
-          '//query.yahooapis.com/v1/public/yql?q=select * from '+
-          'yahoo.finance.xchange where pair in ("PAIRS")&format=json&'+
+          '//query.yahooapis.com/v1/public/yql?q=select * from ' +
+          'yahoo.finance.xchange where pair in ("PAIRS")&format=json&' +
           'env=store://datatables.org/alltableswithkeys&callback=JSON_CALLBACK';
     var currencies = ['USD', 'EUR', 'CNY'];
     var usdToForeignRates = {};
 
-    var convert = function (amount, inCurr, outCurr) {
+    var convert = function(amount, inCurr, outCurr) {
       return amount * usdToForeignRates[outCurr] / usdToForeignRates[inCurr];
     };
 

@@ -150,7 +150,7 @@ If not specified, the timezone of the browser will be used.</li>
       name="app.js"
       language="js"
       type="js">
-      <pre><code>angular.module(&#39;optionsExample&#39;, [])&#10;.controller(&#39;ExampleController&#39;, [&#39;$scope&#39;, function($scope) {&#10;  $scope.user = { name: &#39;John&#39;, data: &#39;&#39; };&#10;&#10;  $scope.cancel = function(e) {&#10;    if (e.keyCode == 27) {&#10;      $scope.userForm.userName.$rollbackViewValue();&#10;    }&#10;  };&#10;}]);</code></pre>
+      <pre><code>angular.module(&#39;optionsExample&#39;, [])&#10;.controller(&#39;ExampleController&#39;, [&#39;$scope&#39;, function($scope) {&#10;  $scope.user = { name: &#39;John&#39;, data: &#39;&#39; };&#10;&#10;  $scope.cancel = function(e) {&#10;    if (e.keyCode === 27) {&#10;      $scope.userForm.userName.$rollbackViewValue();&#10;    }&#10;  };&#10;}]);</code></pre>
     </div>
   
     <div class="runnable-example-file" 

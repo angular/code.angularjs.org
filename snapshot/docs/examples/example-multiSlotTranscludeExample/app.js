@@ -1,7 +1,7 @@
 (function(angular) {
   'use strict';
 angular.module('multiSlotTranscludeExample', [])
- .directive('pane', function(){
+ .directive('pane', function() {
     return {
       restrict: 'E',
       transclude: {

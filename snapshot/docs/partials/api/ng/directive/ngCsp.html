@@ -147,7 +147,7 @@ E.g.<code>&lt;body ng-csp=&quot;no-inline-style;no-unsafe-eval&quot;&gt;</code><
       name="script.js"
       language="js"
       type="js">
-      <pre><code>angular.module(&#39;cspExample&#39;, [])&#10;.controller(&#39;MainController&#39;, function() {&#10;   this.counter = 0;&#10;   this.inc = function() {&#10;     this.counter++;&#10;   };&#10;   this.evil = function() {&#10;     // jshint evil:true&#10;     try {&#10;       eval(&#39;1+2&#39;);&#10;     } catch (e) {&#10;       this.evilError = e.message;&#10;     }&#10;   };&#10; });</code></pre>
+      <pre><code>angular.module(&#39;cspExample&#39;, [])&#10;.controller(&#39;MainController&#39;, function MainController() {&#10;   this.counter = 0;&#10;   this.inc = function() {&#10;     this.counter++;&#10;   };&#10;   this.evil = function() {&#10;     try {&#10;       eval(&#39;1+2&#39;); // eslint-disable-line no-eval&#10;     } catch (e) {&#10;       this.evilError = e.message;&#10;     }&#10;   };&#10; });</code></pre>
     </div>
   
     <div class="runnable-example-file" 

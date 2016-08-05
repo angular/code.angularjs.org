@@ -8,7 +8,7 @@ angular.module('ngrepeatSelect', [])
        {id: '1', name: 'Option A'},
        {id: '2', name: 'Option B'},
        {id: '3', name: 'Option C'}
-     ],
+     ]
     };
  }]);
 })(window.angular);

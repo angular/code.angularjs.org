@@ -1,3 +1,5 @@
+'use strict';
+
 // Meta data used by the AngularJS docs app
 angular.module('pagesData', [])
   .value('NG_PAGES', {
@@ -1711,11 +1713,6 @@ angular.module('pagesData', [])
     "area": "api",
     "path": "api/ngComponentRouter/service/$routerRootComponent"
   },
-  "api/ngCookies/service/$cookieStore": {
-    "name": "$cookieStore",
-    "area": "api",
-    "path": "api/ngCookies/service/$cookieStore"
-  },
   "api/ngCookies": {
     "name": "ngCookies",
     "area": "api",
@@ -1730,6 +1727,11 @@ angular.module('pagesData', [])
     "name": "$cookies",
     "area": "api",
     "path": "api/ngCookies/service/$cookies"
+  },
+  "api/ngCookies/service/$cookieStore": {
+    "name": "$cookieStore",
+    "area": "api",
+    "path": "api/ngCookies/service/$cookieStore"
   },
   "api/ngMessageFormat": {
     "name": "ngMessageFormat",
@@ -2854,15 +2856,15 @@ angular.module('pagesData', [])
     "area": "api",
     "path": "api/ngComponentRouter/service"
   },
-  "api/ngCookies/service": {
-    "name": "service components in ngCookies",
-    "area": "api",
-    "path": "api/ngCookies/service"
-  },
   "api/ngCookies/provider": {
     "name": "provider components in ngCookies",
     "area": "api",
     "path": "api/ngCookies/provider"
+  },
+  "api/ngCookies/service": {
+    "name": "service components in ngCookies",
+    "area": "api",
+    "path": "api/ngCookies/service"
   },
   "api/ngMessages/directive": {
     "name": "directive components in ngMessages",

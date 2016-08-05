@@ -53,8 +53,8 @@ function HeroService($q) {
 
   this.getHero = function(id) {
     return heroesPromise.then(function(heroes) {
-      for(var i=0; i<heroes.length; i++) {
-        if ( heroes[i].id == id) return heroes[i];
+      for (var i = 0; i < heroes.length; i++) {
+        if (heroes[i].id === id) return heroes[i];
       }
     });
   };
@@ -73,7 +73,7 @@ function HeroListComponent(heroService) {
   };
 
   this.isSelected = function(hero) {
-    return (hero.id == selectedId);
+    return (hero.id === selectedId);
   };
 }
 

@@ -1,8 +1,8 @@
-<a href='https://github.com/angular/angular.js/edit/master/src/ng/directive/ngRepeat.js?message=docs(ngRepeat)%3A%20describe%20your%20change...#L3' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/master/src/ng/directive/ngRepeat.js?message=docs(ngRepeat)%3A%20describe%20your%20change...#L5' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 
-<a href='https://github.com/angular/angular.js/tree/master/src/ng/directive/ngRepeat.js#L3' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/master/src/ng/directive/ngRepeat.js#L5' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -343,7 +343,7 @@ results by name. New (entering) and removed (leaving) items are animated.
       name="index.html"
       language="html"
       type="html">
-      <pre><code>&lt;div ng-controller=&quot;repeatController&quot;&gt;&#10;  I have {{friends.length}} friends. They are:&#10;  &lt;input type=&quot;search&quot; ng-model=&quot;q&quot; placeholder=&quot;filter friends...&quot; aria-label=&quot;filter friends&quot; /&gt;&#10;  &lt;ul class=&quot;example-animate-container&quot;&gt;&#10;    &lt;li class=&quot;animate-repeat&quot; ng-repeat=&quot;friend in friends | filter:q as results&quot;&gt;&#10;      [{{$index + 1}}] {{friend.name}} who is {{friend.age}} years old.&#10;    &lt;/li&gt;&#10;    &lt;li class=&quot;animate-repeat&quot; ng-if=&quot;results.length == 0&quot;&gt;&#10;      &lt;strong&gt;No results found...&lt;/strong&gt;&#10;    &lt;/li&gt;&#10;  &lt;/ul&gt;&#10;&lt;/div&gt;</code></pre>
+      <pre><code>&lt;div ng-controller=&quot;repeatController&quot;&gt;&#10;  I have {{friends.length}} friends. They are:&#10;  &lt;input type=&quot;search&quot; ng-model=&quot;q&quot; placeholder=&quot;filter friends...&quot; aria-label=&quot;filter friends&quot; /&gt;&#10;  &lt;ul class=&quot;example-animate-container&quot;&gt;&#10;    &lt;li class=&quot;animate-repeat&quot; ng-repeat=&quot;friend in friends | filter:q as results&quot;&gt;&#10;      [{{$index + 1}}] {{friend.name}} who is {{friend.age}} years old.&#10;    &lt;/li&gt;&#10;    &lt;li class=&quot;animate-repeat&quot; ng-if=&quot;results.length === 0&quot;&gt;&#10;      &lt;strong&gt;No results found...&lt;/strong&gt;&#10;    &lt;/li&gt;&#10;  &lt;/ul&gt;&#10;&lt;/div&gt;</code></pre>
     </div>
   
     <div class="runnable-example-file" 

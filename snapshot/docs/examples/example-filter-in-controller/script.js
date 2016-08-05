@@ -1,7 +1,7 @@
 (function(angular) {
   'use strict';
 angular.module('FilterInControllerModule', []).
-  controller('FilterController', ['filterFilter', function(filterFilter) {
+  controller('FilterController', ['filterFilter', function FilterController(filterFilter) {
     this.array = [
       {name: 'Tobias'},
       {name: 'Jeff'},

@@ -1,5 +1,5 @@
 it('should calculate expression in binding', function() {
-  if (browser.params.browser == 'safari') {
+  if (browser.params.browser === 'safari') {
     // Safari can't handle dialogs.
     return;
   }

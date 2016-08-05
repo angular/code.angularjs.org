@@ -8,7 +8,7 @@ describe("", function() {
 var addressBar = element(by.css("#addressBar")),
      url = 'http://www.example.com/base/index.html#!/path?a=b#h';
 
-it("should show fake browser info on load", function(){
+it("should show fake browser info on load", function() {
   expect(addressBar.getAttribute('value')).toBe(url);
 
   expect(element(by.binding('$location.protocol()')).getText()).toBe('http');
@@ -20,7 +20,7 @@ it("should show fake browser info on load", function(){
 
 });
 
-it("should change $location accordingly", function(){
+it("should change $location accordingly", function() {
   var navigation = element.all(by.css("#navigation a"));
 
   navigation.get(0).click();

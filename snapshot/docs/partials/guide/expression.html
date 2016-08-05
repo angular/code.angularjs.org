@@ -153,7 +153,7 @@ identifier <code>$locals</code>.</p>
       name="protractor.js"
       type="protractor"
       language="js">
-      <pre><code>it(&#39;should calculate expression in binding&#39;, function() {&#10;  if (browser.params.browser == &#39;safari&#39;) {&#10;    // Safari can&#39;t handle dialogs.&#10;    return;&#10;  }&#10;  element(by.css(&#39;[ng-click=&quot;greet()&quot;]&#39;)).click();&#10;&#10;  // We need to give the browser time to display the alert&#10;  browser.wait(protractor.ExpectedConditions.alertIsPresent(), 1000);&#10;&#10;  var alertDialog = browser.switchTo().alert();&#10;&#10;  expect(alertDialog.getText()).toEqual(&#39;Hello World&#39;);&#10;&#10;  alertDialog.accept();&#10;});</code></pre>
+      <pre><code>it(&#39;should calculate expression in binding&#39;, function() {&#10;  if (browser.params.browser === &#39;safari&#39;) {&#10;    // Safari can&#39;t handle dialogs.&#10;    return;&#10;  }&#10;  element(by.css(&#39;[ng-click=&quot;greet()&quot;]&#39;)).click();&#10;&#10;  // We need to give the browser time to display the alert&#10;  browser.wait(protractor.ExpectedConditions.alertIsPresent(), 1000);&#10;&#10;  var alertDialog = browser.switchTo().alert();&#10;&#10;  expect(alertDialog.getText()).toEqual(&#39;Hello World&#39;);&#10;&#10;  alertDialog.accept();&#10;});</code></pre>
     </div>
   
 
@@ -209,7 +209,7 @@ similar jqLite object.</p>
       name="script.js"
       language="js"
       type="js">
-      <pre><code>angular.module(&#39;eventExampleApp&#39;, []).&#10;controller(&#39;EventController&#39;, [&#39;$scope&#39;, function($scope) {&#10;  /*&#10;   * expose the event object to the scope&#10;   */&#10;  $scope.clickMe = function(clickEvent) {&#10;    $scope.clickEvent = simpleKeys(clickEvent);&#10;    console.log(clickEvent);&#10;  };&#10;&#10;  /*&#10;   * return a copy of an object with only non-object keys&#10;   * we need this to avoid circular references&#10;   */&#10;  function simpleKeys (original) {&#10;    return Object.keys(original).reduce(function (obj, key) {&#10;      obj[key] = typeof original[key] === &#39;object&#39; ? &#39;{ ... }&#39; : original[key];&#10;      return obj;&#10;    }, {});&#10;  }&#10;}]);</code></pre>
+      <pre><code>angular.module(&#39;eventExampleApp&#39;, []).&#10;controller(&#39;EventController&#39;, [&#39;$scope&#39;, function($scope) {&#10;  /*&#10;   * expose the event object to the scope&#10;   */&#10;  $scope.clickMe = function(clickEvent) {&#10;    $scope.clickEvent = simpleKeys(clickEvent);&#10;    console.log(clickEvent);&#10;  };&#10;&#10;  /*&#10;   * return a copy of an object with only non-object keys&#10;   * we need this to avoid circular references&#10;   */&#10;  function simpleKeys(original) {&#10;    return Object.keys(original).reduce(function(obj, key) {&#10;      obj[key] = typeof original[key] === &#39;object&#39; ? &#39;{ ... }&#39; : original[key];&#10;      return obj;&#10;    }, {});&#10;  }&#10;}]);</code></pre>
     </div>
   
 

@@ -1,8 +1,8 @@
-<a href='https://github.com/angular/angular.js/edit/master/src/ng/anchorScroll.js?message=docs($anchorScroll)%3A%20describe%20your%20change...#L32' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/master/src/ng/anchorScroll.js?message=docs($anchorScroll)%3A%20describe%20your%20change...#L33' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 
-<a href='https://github.com/angular/angular.js/tree/master/src/ng/anchorScroll.js#L32' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/master/src/ng/anchorScroll.js#L33' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -154,7 +154,7 @@ not some child element.
       name="script.js"
       language="js"
       type="js">
-      <pre><code>angular.module(&#39;anchorScrollExample&#39;, [])&#10;.controller(&#39;ScrollController&#39;, [&#39;$scope&#39;, &#39;$location&#39;, &#39;$anchorScroll&#39;,&#10;  function ($scope, $location, $anchorScroll) {&#10;    $scope.gotoBottom = function() {&#10;      // set the location.hash to the id of&#10;      // the element you wish to scroll to.&#10;      $location.hash(&#39;bottom&#39;);&#10;&#10;      // call $anchorScroll()&#10;      $anchorScroll();&#10;    };&#10;  }]);</code></pre>
+      <pre><code>angular.module(&#39;anchorScrollExample&#39;, [])&#10;.controller(&#39;ScrollController&#39;, [&#39;$scope&#39;, &#39;$location&#39;, &#39;$anchorScroll&#39;,&#10;  function($scope, $location, $anchorScroll) {&#10;    $scope.gotoBottom = function() {&#10;      // set the location.hash to the id of&#10;      // the element you wish to scroll to.&#10;      $location.hash(&#39;bottom&#39;);&#10;&#10;      // call $anchorScroll()&#10;      $anchorScroll();&#10;    };&#10;  }]);</code></pre>
     </div>
   
     <div class="runnable-example-file" 
@@ -196,7 +196,7 @@ See <a href="api/ng/service/$anchorScroll#yOffset">$anchorScroll.yOffset</a> for
       name="script.js"
       language="js"
       type="js">
-      <pre><code>angular.module(&#39;anchorScrollOffsetExample&#39;, [])&#10;.run([&#39;$anchorScroll&#39;, function($anchorScroll) {&#10;  $anchorScroll.yOffset = 50;   // always scroll by 50 extra pixels&#10;}])&#10;.controller(&#39;headerCtrl&#39;, [&#39;$anchorScroll&#39;, &#39;$location&#39;, &#39;$scope&#39;,&#10;  function ($anchorScroll, $location, $scope) {&#10;    $scope.gotoAnchor = function(x) {&#10;      var newHash = &#39;anchor&#39; + x;&#10;      if ($location.hash() !== newHash) {&#10;        // set the $location.hash to `newHash` and&#10;        // $anchorScroll will automatically scroll to it&#10;        $location.hash(&#39;anchor&#39; + x);&#10;      } else {&#10;        // call $anchorScroll() explicitly,&#10;        // since $location.hash hasn&#39;t changed&#10;        $anchorScroll();&#10;      }&#10;    };&#10;  }&#10;]);</code></pre>
+      <pre><code>angular.module(&#39;anchorScrollOffsetExample&#39;, [])&#10;.run([&#39;$anchorScroll&#39;, function($anchorScroll) {&#10;  $anchorScroll.yOffset = 50;   // always scroll by 50 extra pixels&#10;}])&#10;.controller(&#39;headerCtrl&#39;, [&#39;$anchorScroll&#39;, &#39;$location&#39;, &#39;$scope&#39;,&#10;  function($anchorScroll, $location, $scope) {&#10;    $scope.gotoAnchor = function(x) {&#10;      var newHash = &#39;anchor&#39; + x;&#10;      if ($location.hash() !== newHash) {&#10;        // set the $location.hash to `newHash` and&#10;        // $anchorScroll will automatically scroll to it&#10;        $location.hash(&#39;anchor&#39; + x);&#10;      } else {&#10;        // call $anchorScroll() explicitly,&#10;        // since $location.hash hasn&#39;t changed&#10;        $anchorScroll();&#10;      }&#10;    };&#10;  }&#10;]);</code></pre>
     </div>
   
     <div class="runnable-example-file" 

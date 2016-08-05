@@ -4,7 +4,7 @@ angular.module('address-bar', [])
 .directive('ngAddressBar', function($browser, $timeout) {
    return {
      template: 'Address: <input id="addressBar" type="text" style="width: 400px" >',
-     link: function(scope, element, attrs){
+     link: function(scope, element, attrs) {
        var input = element.children("input"), delay;
 
        input.on('keypress keyup keydown', function(event) {

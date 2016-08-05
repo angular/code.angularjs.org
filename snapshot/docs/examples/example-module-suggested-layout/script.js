@@ -32,7 +32,7 @@ angular.module('xmpl', ['xmpl.service', 'xmpl.directive', 'xmpl.filter'])
     user.load('World');
   })
 
-  .controller('XmplController', function($scope, greeter, user){
+  .controller('XmplController', function($scope, greeter, user) {
     $scope.greeting = greeter.greet(user.name);
   });
 })(window.angular);

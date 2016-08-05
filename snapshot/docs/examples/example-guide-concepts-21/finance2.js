@@ -8,7 +8,7 @@ angular.module('finance2', [])
       EUR: 0.74,
       CNY: 6.09
     };
-    var convert = function (amount, inCurr, outCurr) {
+    var convert = function(amount, inCurr, outCurr) {
       return amount * usdToForeignRates[outCurr] / usdToForeignRates[inCurr];
     };
 

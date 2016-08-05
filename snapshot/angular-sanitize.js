@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.9-build.4970+sha.1660ddd
+ * @license AngularJS v1.5.9-build.4972+sha.5fc9933
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -148,6 +148,7 @@ var htmlSanitizeWriter;
 /**
  * @ngdoc provider
  * @name $sanitizeProvider
+ * @this
  *
  * @description
  * Creates and configures {@link $sanitize} instance.
@@ -225,7 +226,7 @@ function $SanitizeProvider() {
   // Regular Expressions for parsing tags and attributes
   var SURROGATE_PAIR_REGEXP = /[\uD800-\uDBFF][\uDC00-\uDFFF]/g,
     // Match everything outside of normal chars and " (quote character)
-    NON_ALPHANUMERIC_REGEXP = /([^\#-~ |!])/g;
+    NON_ALPHANUMERIC_REGEXP = /([^#-~ |!])/g;
 
 
   // Good source of info about elements and attributes
@@ -400,7 +401,7 @@ function $SanitizeProvider() {
       node = nextNode;
     }
 
-    while (node = inertBodyElement.firstChild) {
+    while ((node = inertBodyElement.firstChild)) {
       inertBodyElement.removeChild(node);
     }
   }
@@ -481,6 +482,7 @@ function $SanitizeProvider() {
           out(tag);
           out('>');
         }
+        // eslint-disable-next-line eqeqeq
         if (tag == ignoreCurrentElement) {
           ignoreCurrentElement = false;
         }
@@ -616,10 +618,10 @@ angular.module('ngSanitize', []).provider('$sanitize', $SanitizeProvider);
        angular.module('linkyExample', ['ngSanitize'])
          .controller('ExampleController', ['$scope', function($scope) {
            $scope.snippet =
-             'Pretty text with some links:\n'+
-             'http://angularjs.org/,\n'+
-             'mailto:us@somewhere.org,\n'+
-             'another@somewhere.org,\n'+
+             'Pretty text with some links:\n' +
+             'http://angularjs.org/,\n' +
+             'mailto:us@somewhere.org,\n' +
+             'another@somewhere.org,\n' +
              'and one more: ftp://127.0.0.1/.';
            $scope.snippetWithSingleURL = 'http://angularjs.org/';
          }]);

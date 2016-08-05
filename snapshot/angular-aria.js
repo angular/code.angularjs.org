@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.9-build.4970+sha.1660ddd
+ * @license AngularJS v1.5.9-build.4972+sha.5fc9933
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -58,7 +58,6 @@
  * {@link ngAria.$ariaProvider#config config} method. For more details, see the
  * {@link guide/accessibility Developer Guide}.
  */
- /* global -ngAriaModule */
 var ngAriaModule = angular.module('ngAria', ['ng']).
                         provider('$aria', $AriaProvider);
 
@@ -75,6 +74,7 @@ var isNodeOneOf = function(elem, nodeTypeArray) {
 /**
  * @ngdoc provider
  * @name $ariaProvider
+ * @this
  *
  * @description
  *
@@ -274,7 +274,7 @@ ngAriaModule.directive('ngShow', ['$aria', function($aria) {
 
           function getRadioReaction(newVal) {
             // Strict comparison would cause a BC
-            /* jshint eqeqeq:false */
+            // eslint-disable-next-line eqeqeq
             var boolVal = (attr.value == ngModel.$viewValue);
             elem.attr('aria-checked', boolVal);
           }
