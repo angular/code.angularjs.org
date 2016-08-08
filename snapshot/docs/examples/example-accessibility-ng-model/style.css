@@ -1,18 +1,17 @@
-[role=checkbox] {
+custom-checkbox {
   cursor: pointer;
   display: inline-block;
 }
-[role=checkbox] .icon:before {
+
+custom-checkbox .icon:before {
   content: '\2610';
   display: inline-block;
   font-size: 2em;
   line-height: 1;
-  vertical-align: middle;
   speak: none;
+  vertical-align: middle;
 }
-[role=checkbox].active .icon:before {
+
+custom-checkbox.checked .icon:before {
   content: '\2611';
-}
-pre {
-  white-space: pre-wrap;
 }

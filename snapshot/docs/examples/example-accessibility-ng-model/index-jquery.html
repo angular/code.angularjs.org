@@ -15,13 +15,13 @@
   
 </head>
 <body ng-app="ngAria_ngModelExample">
-  <form ng-controller="formsController">
-  <some-checkbox role="checkbox" ng-model="checked" ng-class="{active: checked}"
-    ng-disabled="isDisabled" ng-click="toggleCheckbox()"
-    aria-label="Custom Checkbox" show-attrs>
-    <span class="icon" aria-hidden="true"></span>
-    Custom Checkbox
-  </some-checkbox>
+  <form>
+  <custom-checkbox role="checkbox" ng-model="checked" required
+      aria-label="Custom checkbox" show-attrs>
+    Custom checkbox
+  </custom-checkbox>
 </form>
+<hr />
+<b>Is checked:</b> {{ !!checked }}
 </body>
 </html>

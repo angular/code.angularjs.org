@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.9-build.4980+sha.e8d7496
+ * @license AngularJS v1.5.9-build.4981+sha.975a617
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -257,14 +257,6 @@ ngAriaModule.directive('ngShow', ['$aria', function($aria) {
       var shape = getShape(attr, elem);
 
       return {
-        pre: function(scope, elem, attr, ngModel) {
-          if (shape === 'checkbox') {
-            //Use the input[checkbox] $isEmpty implementation for elements with checkbox roles
-            ngModel.$isEmpty = function(value) {
-              return value === false;
-            };
-          }
-        },
         post: function(scope, elem, attr, ngModel) {
           var needsTabIndex = shouldAttachAttr('tabindex', 'tabindex', elem, false);
 

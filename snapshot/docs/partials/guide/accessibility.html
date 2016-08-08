@@ -50,6 +50,7 @@ attributes (if they have not been explicitly specified by the developer):</p>
 <li>aria-invalid</li>
 <li>aria-required</li>
 <li>aria-readonly</li>
+<li>aria-disabled</li>
 </ul>
 <h3 id="example">Example</h3>
 <p>
@@ -68,21 +69,28 @@ attributes (if they have not been explicitly specified by the developer):</p>
       name="index.html"
       language="html"
       type="html">
-      <pre><code>&lt;form ng-controller=&quot;formsController&quot;&gt;&#10;  &lt;some-checkbox role=&quot;checkbox&quot; ng-model=&quot;checked&quot; ng-class=&quot;{active: checked}&quot;&#10;    ng-disabled=&quot;isDisabled&quot; ng-click=&quot;toggleCheckbox()&quot;&#10;    aria-label=&quot;Custom Checkbox&quot; show-attrs&gt;&#10;    &lt;span class=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;&#10;    Custom Checkbox&#10;  &lt;/some-checkbox&gt;&#10;&lt;/form&gt;</code></pre>
+      <pre><code>&lt;form&gt;&#10;  &lt;custom-checkbox role=&quot;checkbox&quot; ng-model=&quot;checked&quot; required&#10;      aria-label=&quot;Custom checkbox&quot; show-attrs&gt;&#10;    Custom checkbox&#10;  &lt;/custom-checkbox&gt;&#10;&lt;/form&gt;&#10;&lt;hr /&gt;&#10;&lt;b&gt;Is checked:&lt;/b&gt; {{ !!checked }}</code></pre>
     </div>
   
     <div class="runnable-example-file" 
       name="script.js"
       language="js"
       type="js">
-      <pre><code>angular.module(&#39;ngAria_ngModelExample&#39;, [&#39;ngAria&#39;])&#10;.controller(&#39;formsController&#39;, function($scope) {&#10;  $scope.checked = false;&#10;  $scope.toggleCheckbox = function() {&#10;    $scope.checked = !$scope.checked;&#10;  };&#10;})&#10;.directive(&#39;someCheckbox&#39;, function() {&#10;  return {&#10;    restrict: &#39;E&#39;,&#10;    link: function($scope, $el, $attrs) {&#10;      $el.on(&#39;keypress&#39;, function(event) {&#10;        event.preventDefault();&#10;        if (event.keyCode === 32 || event.keyCode === 13) {&#10;          $scope.toggleCheckbox();&#10;          $scope.$apply();&#10;        }&#10;      });&#10;    }&#10;  };&#10;})&#10;.directive(&#39;showAttrs&#39;, function() {&#10;  return function($scope, $el, $attrs) {&#10;    var pre = document.createElement(&#39;pre&#39;);&#10;    $el.after(pre);&#10;    $scope.$watch(function() {&#10;      var $attrs = {};&#10;      Array.prototype.slice.call($el[0].attributes, 0).forEach(function(item) {&#10;        if (item.name !== &#39;show-$attrs&#39;) {&#10;          $attrs[item.name] = item.value;&#10;        }&#10;      });&#10;      return $attrs;&#10;    }, function(newAttrs, oldAttrs) {&#10;      pre.textContent = JSON.stringify(newAttrs, null, 2);&#10;    }, true);&#10;  };&#10;});</code></pre>
+      <pre><code>angular.&#10;  module(&#39;ngAria_ngModelExample&#39;, [&#39;ngAria&#39;]).&#10;  directive(&#39;customCheckbox&#39;, customCheckboxDirective).&#10;  directive(&#39;showAttrs&#39;, showAttrsDirective);&#10;&#10;function customCheckboxDirective() {&#10;  return {&#10;    restrict: &#39;E&#39;,&#10;    require: &#39;ngModel&#39;,&#10;    transclude: true,&#10;    template:&#10;        &#39;&lt;span class=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt; &#39; +&#10;        &#39;&lt;ng-transclude&gt;&lt;/ng-transclude&gt;&#39;,&#10;    link: function(scope, elem, attrs, ctrl) {&#10;      // Overwrite necessary `NgModelController` methods&#10;      ctrl.$isEmpty = isEmpty;&#10;      ctrl.$render = render;&#10;&#10;      // Bind to events&#10;      elem.on(&#39;click&#39;, function(event) {&#10;        event.preventDefault();&#10;        scope.$apply(toggleCheckbox);&#10;      });&#10;      elem.on(&#39;keypress&#39;, function(event) {&#10;        event.preventDefault();&#10;        if (event.keyCode === 32 || event.keyCode === 13) {&#10;          scope.$apply(toggleCheckbox);&#10;        }&#10;      });&#10;&#10;      // Helpers&#10;      function isEmpty(value) {&#10;        return !value;&#10;      }&#10;      &#10;      function render() {&#10;        elem[ctrl.$viewValue ? &#39;addClass&#39; : &#39;removeClass&#39;](&#39;checked&#39;);&#10;      }&#10; &#10;      function toggleCheckbox() {&#10;        ctrl.$setViewValue(!ctrl.$viewValue);&#10;        ctrl.$render();&#10;      }&#10;    }&#10;  };&#10;}&#10;&#10;function showAttrsDirective($timeout) {&#10;  return function(scope, elem, attrs) {&#10;    var pre = document.createElement(&#39;pre&#39;);&#10;    elem.after(pre);&#10;&#10;    scope.$watchCollection(function() {&#10;      return Array.prototype.slice.call(elem[0].attributes).reduce(function(aggr, attr) {&#10;        if (attr.name !== attrs.$attr.showAttrs) aggr[attr.name] = attr.value;&#10;        return aggr;&#10;      }, {});&#10;    }, function(newValues) {&#10;      $timeout(function() {&#10;        pre.textContent = angular.toJson(newValues, 2);&#10;      });&#10;    });&#10;  };&#10;}</code></pre>
     </div>
   
     <div class="runnable-example-file" 
       name="style.css"
       language="css"
       type="css">
-      <pre><code>[role=checkbox] {&#10;  cursor: pointer;&#10;  display: inline-block;&#10;}&#10;[role=checkbox] .icon:before {&#10;  content: &#39;\2610&#39;;&#10;  display: inline-block;&#10;  font-size: 2em;&#10;  line-height: 1;&#10;  vertical-align: middle;&#10;  speak: none;&#10;}&#10;[role=checkbox].active .icon:before {&#10;  content: &#39;\2611&#39;;&#10;}&#10;pre {&#10;  white-space: pre-wrap;&#10;}</code></pre>
+      <pre><code>custom-checkbox {&#10;  cursor: pointer;&#10;  display: inline-block;&#10;}&#10;&#10;custom-checkbox .icon:before {&#10;  content: &#39;\2610&#39;;&#10;  display: inline-block;&#10;  font-size: 2em;&#10;  line-height: 1;&#10;  speak: none;&#10;  vertical-align: middle;&#10;}&#10;&#10;custom-checkbox.checked .icon:before {&#10;  content: &#39;\2611&#39;;&#10;}</code></pre>
+    </div>
+  
+    <div class="runnable-example-file" 
+      name="protractor.js"
+      type="protractor"
+      language="js">
+      <pre><code>var checkbox = element(by.css(&#39;custom-checkbox&#39;));&#10;var checkedCheckbox = element(by.css(&#39;custom-checkbox.checked&#39;));&#10;&#10;it(&#39;should have the `checked` class only when checked&#39;, function() {&#10;  expect(checkbox.isPresent()).toBe(true);&#10;  expect(checkedCheckbox.isPresent()).toBe(false);&#10;&#10;  checkbox.click();&#10;  expect(checkedCheckbox.isPresent()).toBe(true);&#10;&#10;  checkbox.click();&#10;  expect(checkedCheckbox.isPresent()).toBe(false);&#10;});&#10;&#10;it(&#39;should have the `aria-checked` attribute set to the appropriate value&#39;, function() {&#10;  expect(checkedCheckbox.isPresent()).toBe(false);&#10;  expect(checkbox.getAttribute(&#39;aria-checked&#39;)).toBe(&#39;false&#39;);&#10;&#10;  checkbox.click();&#10;  expect(checkedCheckbox.isPresent()).toBe(true);&#10;  expect(checkbox.getAttribute(&#39;aria-checked&#39;)).toBe(&#39;true&#39;);&#10;&#10;  checkbox.click();&#10;  expect(checkedCheckbox.isPresent()).toBe(false);&#10;  expect(checkbox.getAttribute(&#39;aria-checked&#39;)).toBe(&#39;false&#39;);&#10;});</code></pre>
     </div>
   
 
