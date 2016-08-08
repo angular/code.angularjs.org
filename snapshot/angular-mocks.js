@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.9-build.4983+sha.fdf8e0f
+ * @license AngularJS v1.5.9-build.4984+sha.b62f33f
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -1796,24 +1796,34 @@ function createHttpBackendMock($rootScope, $timeout, $delegate, $browser) {
    * @ngdoc method
    * @name $httpBackend#flush
    * @description
-   * Flushes all pending requests using the trained responses.
+   * Flushes pending requests using the trained responses. Requests are flushed in the order they
+   * were made, but it is also possible to skip one or more requests (for example to have them
+   * flushed later). This is useful for simulating scenarios where responses arrive from the server
+   * in any order.
    *
-   * @param {number=} count Number of responses to flush (in the order they arrived). If undefined,
-   *   all pending requests will be flushed. If there are no pending requests when the flush method
-   *   is called an exception is thrown (as this typically a sign of programming error).
+   * If there are no pending requests to flush when the method is called, an exception is thrown (as
+   * this is typically a sign of programming error).
+   *
+   * @param {number=} count - Number of responses to flush. If undefined/null, all pending requests
+   *     (starting after `skip`) will be flushed.
+   * @param {number=} [skip=0] - Number of pending requests to skip. For example, a value of `5`
+   *     would skip the first 5 pending requests and start flushing from the 6th onwards.
    */
-  $httpBackend.flush = function(count, digest) {
+  $httpBackend.flush = function(count, skip, digest) {
     if (digest !== false) $rootScope.$digest();
-    if (!responses.length) throw new Error('No pending request to flush !');
+
+    skip = skip || 0;
+    if (skip >= responses.length) throw new Error('No pending request to flush !');
 
     if (angular.isDefined(count) && count !== null) {
       while (count--) {
-        if (!responses.length) throw new Error('No more pending request to flush !');
-        responses.shift()();
+        var part = responses.splice(skip, 1);
+        if (!part.length) throw new Error('No more pending request to flush !');
+        part[0]();
       }
     } else {
-      while (responses.length) {
-        responses.shift()();
+      while (responses.length > skip) {
+        responses.splice(skip, 1)[0]();
       }
     }
     $httpBackend.verifyNoOutstandingExpectation(digest);

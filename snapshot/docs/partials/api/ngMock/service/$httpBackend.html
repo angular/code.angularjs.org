@@ -1953,10 +1953,15 @@ order to change how a matched request is handled. See #expect for more info.</p>
   </li>
   
   <li id="flush">
-    <h3><p><code>flush([count]);</code></p>
+    <h3><p><code>flush([count], [skip]);</code></p>
 
 </h3>
-    <div><p>Flushes all pending requests using the trained responses.</p>
+    <div><p>Flushes pending requests using the trained responses. Requests are flushed in the order they
+were made, but it is also possible to skip one or more requests (for example to have them
+flushed later). This is useful for simulating scenarios where responses arrive from the server
+in any order.</p>
+<p>If there are no pending requests to flush when the method is called, an exception is thrown (as
+this is typically a sign of programming error).</p>
 </div>
 
     
@@ -1982,11 +1987,27 @@ order to change how a matched request is handled. See #expect for more info.</p>
         <a href="" class="label type-hint type-hint-number">number</a>
       </td>
       <td>
-        <p>Number of responses to flush (in the order they arrived). If undefined,
-  all pending requests will be flushed. If there are no pending requests when the flush method
-  is called an exception is thrown (as this typically a sign of programming error).</p>
+        <p>Number of responses to flush. If undefined/null, all pending requests
+    (starting after <code>skip</code>) will be flushed.</p>
 
         
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        skip
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        <a href="" class="label type-hint type-hint-number">number</a>
+      </td>
+      <td>
+        <p>Number of pending requests to skip. For example, a value of <code>5</code>
+    would skip the first 5 pending requests and start flushing from the 6th onwards.</p>
+
+        <p><em>(default: 0)</em></p>
       </td>
     </tr>
     
