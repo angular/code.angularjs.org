@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.9-build.4981+sha.975a617
+ * @license AngularJS v1.5.9-build.4982+sha.ec565dd
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -2881,7 +2881,7 @@ angular.mock.$RootScopeDecorator = ['$delegate', function($delegate) {
 
     var initialized = false;
 
-    module.$$beforeAllHook(/* @this */ function() {
+    module.$$beforeAllHook(/** @this */ function() {
       if (injectorState.shared) {
         injectorState.sharedError = Error("sharedInjector() cannot be called inside a context that has already called sharedInjector()");
         throw injectorState.sharedError;

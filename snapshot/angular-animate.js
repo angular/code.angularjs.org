@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.9-build.4981+sha.975a617
+ * @license AngularJS v1.5.9-build.4982+sha.ec565dd
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -858,7 +858,7 @@ function registerRestorableStyles(backup, node, properties) {
   });
 }
 
-var $AnimateCssProvider = ['$animateProvider', /* @this */ function($animateProvider) {
+var $AnimateCssProvider = ['$animateProvider', /** @this */ function($animateProvider) {
   var gcsLookup = createLocalCacheLookup();
   var gcsStaggerLookup = createLocalCacheLookup();
 
@@ -1517,7 +1517,7 @@ var $AnimateCssProvider = ['$animateProvider', /* @this */ function($animateProv
   }];
 }];
 
-var $$AnimateCssDriverProvider = ['$$animationProvider', /* @this */ function($$animationProvider) {
+var $$AnimateCssDriverProvider = ['$$animationProvider', /** @this */ function($$animationProvider) {
   $$animationProvider.drivers.push('$$animateCssDriver');
 
   var NG_ANIMATE_SHIM_CLASS_NAME = 'ng-animate-shim';
@@ -1787,7 +1787,7 @@ var $$AnimateCssDriverProvider = ['$$animationProvider', /* @this */ function($$
 // TODO(matsko): add documentation
 //  by the time...
 
-var $$AnimateJsProvider = ['$animateProvider', /* @this */ function($animateProvider) {
+var $$AnimateJsProvider = ['$animateProvider', /** @this */ function($animateProvider) {
   this.$get = ['$injector', '$$AnimateRunner', '$$jqLite',
        function($injector,   $$AnimateRunner,   $$jqLite) {
 
@@ -2074,7 +2074,7 @@ var $$AnimateJsProvider = ['$animateProvider', /* @this */ function($animateProv
   }];
 }];
 
-var $$AnimateJsDriverProvider = ['$$animationProvider', /* @this */ function($$animationProvider) {
+var $$AnimateJsDriverProvider = ['$$animationProvider', /** @this */ function($$animationProvider) {
   $$animationProvider.drivers.push('$$animateJsDriver');
   this.$get = ['$$animateJs', '$$AnimateRunner', function($$animateJs, $$AnimateRunner) {
     return function initDriverFn(animationDetails) {
@@ -2136,7 +2136,7 @@ var $$AnimateJsDriverProvider = ['$$animationProvider', /* @this */ function($$a
 
 var NG_ANIMATE_ATTR_NAME = 'data-ng-animate';
 var NG_ANIMATE_PIN_DATA = '$ngAnimatePin';
-var $$AnimateQueueProvider = ['$animateProvider', /* @this */ function($animateProvider) {
+var $$AnimateQueueProvider = ['$animateProvider', /** @this */ function($animateProvider) {
   var PRE_DIGEST_STATE = 1;
   var RUNNING_STATE = 2;
   var ONE_SPACE = ' ';
@@ -2310,7 +2310,7 @@ var $$AnimateQueueProvider = ['$animateProvider', /* @this */ function($animateP
     }
 
     // IE9-11 has no method "contains" in SVG element and in Node.prototype. Bug #10259.
-    var contains = window.Node.prototype.contains || /* @this */ function(arg) {
+    var contains = window.Node.prototype.contains || /** @this */ function(arg) {
       // eslint-disable-next-line no-bitwise
       return this === arg || !!(this.compareDocumentPosition(arg) & 16);
     };
@@ -2858,7 +2858,7 @@ var $$AnimateQueueProvider = ['$animateProvider', /* @this */ function($animateP
 
 /* exported $$AnimationProvider */
 
-var $$AnimationProvider = ['$animateProvider', /* @this */ function($animateProvider) {
+var $$AnimationProvider = ['$animateProvider', /** @this */ function($animateProvider) {
   var NG_ANIMATE_REF_ATTR = 'ng-animate-ref';
 
   var drivers = this.drivers = [];

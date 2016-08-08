@@ -10071,7 +10071,7 @@ return jQuery;
 } );
 
 /**
- * @license AngularJS v1.5.9-build.4981+sha.975a617
+ * @license AngularJS v1.5.9-build.4982+sha.ec565dd
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -10130,7 +10130,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.5.9-build.4981+sha.975a617/' +
+    message += '\nhttp://errors.angularjs.org/1.5.9-build.4982+sha.ec565dd/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -12619,7 +12619,7 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.5.9-build.4981+sha.975a617',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.5.9-build.4982+sha.ec565dd',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 5,
   dot: 9,
@@ -13032,7 +13032,7 @@ function jqLiteWrapNode(node, wrapper) {
 
 
 // IE9-11 has no method "contains" in SVG element and in Node.prototype. Bug #10259.
-var jqLiteContains = window.Node.prototype.contains || /* @this */ function(arg) {
+var jqLiteContains = window.Node.prototype.contains || /** @this */ function(arg) {
   // eslint-disable-next-line no-bitwise
   return !!(this.compareDocumentPosition(arg) & 16);
 };
@@ -13838,7 +13838,7 @@ forEach({
 
 
 // Provider for private $$jqLite service
-/* @this */
+/** @this */
 function $$jqLiteProvider() {
   this.$get = function $$jqLite() {
     return extend(JQLite, {
@@ -13931,7 +13931,7 @@ HashMap.prototype = {
   }
 };
 
-var $$HashMapProvider = [/* @this */function() {
+var $$HashMapProvider = [/** @this */function() {
   this.$get = [function() {
     return HashMap;
   }];
@@ -14647,7 +14647,7 @@ function createInjector(modulesToLoad, strictDi) {
   }
 
   function enforceReturnValue(name, factory) {
-    return /* @this */ function enforcedReturnValue() {
+    return /** @this */ function enforcedReturnValue() {
       var result = instanceInjector.invoke(factory, this);
       if (isUndefined(result)) {
         throw $injectorMinErr('undef', "Provider '{0}' must return a value from $get factory method.", name);
@@ -15171,13 +15171,13 @@ function prepareAnimateOptions(options) {
       : {};
 }
 
-var $$CoreAnimateJsProvider = /* @this */ function() {
+var $$CoreAnimateJsProvider = /** @this */ function() {
   this.$get = noop;
 };
 
 // this is prefixed with Core since it conflicts with
 // the animateQueueProvider defined in ngAnimate/animateQueue.js
-var $$CoreAnimateQueueProvider = /* @this */ function() {
+var $$CoreAnimateQueueProvider = /** @this */ function() {
   var postDigestQueue = new HashMap();
   var postDigestElements = [];
 
@@ -15295,7 +15295,7 @@ var $$CoreAnimateQueueProvider = /* @this */ function() {
  *
  * To see the functional implementation check out `src/ngAnimate/animate.js`.
  */
-var $AnimateProvider = ['$provide', /* @this */ function($provide) {
+var $AnimateProvider = ['$provide', /** @this */ function($provide) {
   var provider = this;
 
   this.$$registeredAnimations = Object.create(null);
@@ -15774,7 +15774,7 @@ var $AnimateProvider = ['$provide', /* @this */ function($provide) {
   }];
 }];
 
-var $$AnimateAsyncRunFactoryProvider = /* @this */ function() {
+var $$AnimateAsyncRunFactoryProvider = /** @this */ function() {
   this.$get = ['$$rAF', function($$rAF) {
     var waitQueue = [];
 
@@ -15805,7 +15805,7 @@ var $$AnimateAsyncRunFactoryProvider = /* @this */ function() {
   }];
 };
 
-var $$AnimateRunnerFactoryProvider = /* @this */ function() {
+var $$AnimateRunnerFactoryProvider = /** @this */ function() {
   this.$get = ['$q', '$sniffer', '$$animateAsyncRun', '$$isDocumentHidden', '$timeout',
        function($q,   $sniffer,   $$animateAsyncRun,   $$isDocumentHidden,   $timeout) {
 
@@ -16390,7 +16390,7 @@ function Browser(window, document, $log, $sniffer) {
 
 }
 
-/* @this */
+/** @this */
 function $BrowserProvider() {
   this.$get = ['$window', '$log', '$sniffer', '$document',
       function($window, $log, $sniffer, $document) {
@@ -17760,7 +17760,7 @@ var _UNINITIALIZED_VALUE = new UNINITIALIZED_VALUE();
  * @description
  */
 $CompileProvider.$inject = ['$provide', '$$sanitizeUriProvider'];
-/* @this */
+/** @this */
 function $CompileProvider($provide, $$sanitizeUriProvider) {
   var hasDirectives = {},
       Suffix = 'Directive',
@@ -18019,7 +18019,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
     function factory($injector) {
       function makeInjectable(fn) {
         if (isFunction(fn) || isArray(fn)) {
-          return /* @this */ function(tElement, tAttrs) {
+          return /** @this */ function(tElement, tAttrs) {
             return $injector.invoke(fn, this, {$element: tElement, $attrs: tAttrs});
           };
         } else {
@@ -19010,7 +19010,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
       if (eager) {
         return compile($compileNodes, transcludeFn, maxPriority, ignoreDirective, previousCompileContext);
       }
-      return /* @this */ function lazyCompilation() {
+      return /** @this */ function lazyCompilation() {
         if (!compiled) {
           compiled = compile($compileNodes, transcludeFn, maxPriority, ignoreDirective, previousCompileContext);
 
@@ -20690,7 +20690,7 @@ function $ExceptionHandlerProvider() {
   }];
 }
 
-var $$ForceReflowProvider = /* @this */ function() {
+var $$ForceReflowProvider = /** @this */ function() {
   this.$get = ['$document', function($document) {
     return function(domNode) {
       //the line below will force the browser to perform a repaint so
@@ -20736,7 +20736,7 @@ function serializeValue(v) {
 }
 
 
-/* @this */
+/** @this */
 function $HttpParamSerializerProvider() {
   /**
    * @ngdoc service
@@ -20774,7 +20774,7 @@ function $HttpParamSerializerProvider() {
   };
 }
 
-/* @this */
+/** @this */
 function $HttpParamSerializerJQLikeProvider() {
   /**
    * @ngdoc service
@@ -22641,7 +22641,7 @@ function $InterpolateProvider() {
           expressions: expressions,
           $$watchDelegate: function(scope, listener) {
             var lastValue;
-            return scope.$watchGroup(parseFns, /* @this */ function interpolateFnWatcher(values, oldValues) {
+            return scope.$watchGroup(parseFns, /** @this */ function interpolateFnWatcher(values, oldValues) {
               var currValue = compute(values);
               if (isFunction(listener)) {
                 listener.call(this, currValue, values !== oldValues ? lastValue : currValue, scope);
@@ -22698,7 +22698,7 @@ function $InterpolateProvider() {
   }];
 }
 
-/* @this */
+/** @this */
 function $IntervalProvider() {
   this.$get = ['$rootScope', '$window', '$q', '$$q', '$browser',
        function($rootScope,   $window,   $q,   $$q,   $browser) {
@@ -22909,7 +22909,7 @@ function $IntervalProvider() {
  * Override this service if you wish to customise where the callbacks are stored and
  * how they vary compared to the requested url.
  */
-var $jsonpCallbacksProvider = /* @this */ function() {
+var $jsonpCallbacksProvider = /** @this */ function() {
   this.$get = ['$window', function($window) {
     var callbacks = $window.angular.callbacks;
     var callbackMap = {};
@@ -23649,14 +23649,14 @@ forEach([LocationHashbangInHtml5Url, LocationHashbangUrl, LocationHtml5Url], fun
 
 
 function locationGetter(property) {
-  return /* @this */ function() {
+  return /** @this */ function() {
     return this[property];
   };
 }
 
 
 function locationGetterSetter(property, preprocess) {
-  return /* @this */ function(value) {
+  return /** @this */ function(value) {
     if (isUndefined(value)) {
       return this[property];
     }
@@ -26589,7 +26589,7 @@ function $QProvider() {
   };
 }
 
-/* @this */
+/** @this */
 function $$QProvider() {
   var errorOnUnhandledRejections = true;
   this.$get = ['$browser', '$exceptionHandler', function($browser, $exceptionHandler) {
@@ -27033,7 +27033,7 @@ function qFactory(nextTick, exceptionHandler, errorOnUnhandledRejections) {
   return $Q;
 }
 
-/* @this */
+/** @this */
 function $$RAFProvider() { //rAF
   this.$get = ['$window', '$timeout', function($window, $timeout) {
     var requestAnimationFrame = $window.requestAnimationFrame ||
@@ -29808,7 +29808,7 @@ function $TemplateRequestProvider() {
   }];
 }
 
-/* @this */
+/** @this */
 function $$TestabilityProvider() {
   this.$get = ['$rootScope', '$browser', '$location',
        function($rootScope,   $browser,   $location) {
@@ -29924,7 +29924,7 @@ function $$TestabilityProvider() {
   }];
 }
 
-/* @this */
+/** @this */
 function $TimeoutProvider() {
   this.$get = ['$rootScope', '$browser', '$q', '$$q', '$exceptionHandler',
        function($rootScope,   $browser,   $q,   $$q,   $exceptionHandler) {
@@ -30214,7 +30214,7 @@ function $$CookieReader($document) {
 
 $$CookieReader.$inject = ['$document'];
 
-/* @this */
+/** @this */
 function $$CookieReaderProvider() {
   this.$get = $$CookieReader;
 }
@@ -30325,7 +30325,7 @@ function $$CookieReaderProvider() {
    </example>
   */
 $FilterProvider.$inject = ['$provide'];
-/* @this */
+/** @this */
 function $FilterProvider($provide) {
   var suffix = 'Filter';
 
@@ -34485,7 +34485,7 @@ function baseInputType(scope, element, attr, ctrl, $sniffer, $browser) {
       }
     };
 
-    element.on('keydown', /* @this */ function(event) {
+    element.on('keydown', /** @this */ function(event) {
       var key = event.keyCode;
 
       // ignore
@@ -34510,7 +34510,7 @@ function baseInputType(scope, element, attr, ctrl, $sniffer, $browser) {
   // For these event types, when native validators are present and the browser supports the type,
   // check for validity changes on various DOM events.
   if (PARTIAL_VALIDATION_TYPES[type] && ctrl.$$hasNativeValidators && type === attr.type) {
-    element.on(PARTIAL_VALIDATION_EVENTS, /* @this */ function(ev) {
+    element.on(PARTIAL_VALIDATION_EVENTS, /** @this */ function(ev) {
       if (!timeout) {
         var validity = this[VALIDITY_STATE_PROPERTY];
         var origBadInput = validity.badInput;
@@ -37771,7 +37771,7 @@ is set to `true`. The parse error is stored in `ngModel.$error.parse`.
  *
  */
 var NgModelController = ['$scope', '$exceptionHandler', '$attrs', '$element', '$parse', '$animate', '$timeout', '$rootScope', '$q', '$interpolate',
-    /* @this */ function($scope, $exceptionHandler, $attr, $element, $parse, $animate, $timeout, $rootScope, $q, $interpolate) {
+    /** @this */ function($scope, $exceptionHandler, $attr, $element, $parse, $animate, $timeout, $rootScope, $q, $interpolate) {
   this.$viewValue = Number.NaN;
   this.$modelValue = Number.NaN;
   this.$$rawModelValue = undefined; // stores the parsed modelValue / model set from scope regardless of validity.
@@ -41405,7 +41405,7 @@ var noopNgModelController = { $setViewValue: noop, $render: noop };
  * added `<option>` elements, perhaps by an `ngRepeat` directive.
  */
 var SelectController =
-        ['$element', '$scope', /* @this */ function($element, $scope) {
+        ['$element', '$scope', /** @this */ function($element, $scope) {
 
   var self = this,
       optionsMap = new HashMap();
@@ -42588,7 +42588,7 @@ angular.scenario.output = angular.scenario.output || function(name, fn) {
 angular.scenario.dsl = angular.scenario.dsl || function(name, fn) {
   angular.scenario.dsl[name] = function() {
     // The dsl binds `this` for us when calling chained functions
-    /* @this */
+    /** @this */
     function executeStatement(statement, args) {
       var result = statement.apply(this, args);
       if (angular.isFunction(result) || result instanceof angular.scenario.Future) {
@@ -42608,7 +42608,7 @@ angular.scenario.dsl = angular.scenario.dsl || function(name, fn) {
       return chain;
     }
     var statement = fn.apply(this, arguments);
-    return /* @this */ function() {
+    return /** @this */ function() {
       return executeStatement.call(this, statement, arguments);
     };
   };
@@ -43040,7 +43040,7 @@ angular.scenario.Describe = function(descName, parent) {
   var beforeEachFns = this.beforeEachFns;
   this.setupBefore = function() {
     if (parent) parent.setupBefore.call(this);
-    angular.forEach(beforeEachFns, /* @this */ function(fn) { fn.call(this); }, this);
+    angular.forEach(beforeEachFns, /** @this */ function(fn) { fn.call(this); }, this);
   };
 
   /**
@@ -43048,7 +43048,7 @@ angular.scenario.Describe = function(descName, parent) {
    */
   var afterEachFns = this.afterEachFns;
   this.setupAfter  = function() {
-    angular.forEach(afterEachFns, /* @this */ function(fn) { fn.call(this); }, this);
+    angular.forEach(afterEachFns, /** @this */ function(fn) { fn.call(this); }, this);
     if (parent) parent.setupAfter.call(this);
   };
 };
@@ -43506,7 +43506,7 @@ angular.scenario.Runner = function($window) {
     beforeEach: this.beforeEach,
     afterEach: this.afterEach
   };
-  angular.forEach(this.api, angular.bind(this, /* @this */ function(fn, key) {
+  angular.forEach(this.api, angular.bind(this, /** @this */ function(fn, key) {
     this.$window[key] = angular.bind(this, fn);
   }));
 };
@@ -43551,7 +43551,7 @@ angular.scenario.Runner.prototype.on = function(eventName, listener) {
  */
 angular.scenario.Runner.prototype.describe = function(name, body) {
   var self = this;
-  this.currentDescribe.describe(name, /* @this */ function() {
+  this.currentDescribe.describe(name, /** @this */ function() {
     var parentDescribe = self.currentDescribe;
     self.currentDescribe = this;
     try {
@@ -43572,7 +43572,7 @@ angular.scenario.Runner.prototype.describe = function(name, body) {
  */
 angular.scenario.Runner.prototype.ddescribe = function(name, body) {
   var self = this;
-  this.currentDescribe.ddescribe(name, /* @this */ function() {
+  this.currentDescribe.ddescribe(name, /** @this */ function() {
     var parentDescribe = self.currentDescribe;
     self.currentDescribe = this;
     try {
@@ -43700,7 +43700,7 @@ angular.scenario.Runner.prototype.run = function(application) {
         return scope.dsl[key].apply(scope, arguments);
       };
     });
-    runner.run(spec, /* @this */ function() {
+    runner.run(spec, /** @this */ function() {
       runner.$destroy();
       specDone.apply(this, arguments);
     });
@@ -43820,7 +43820,7 @@ angular.scenario.SpecRunner.prototype.addFuture = function(name, behavior, line)
 angular.scenario.SpecRunner.prototype.addFutureAction = function(name, behavior, line) {
   var self = this;
   var NG = /\[ng\\:/;
-  return this.addFuture(name, /* @this */ function(done) {
+  return this.addFuture(name, /** @this */ function(done) {
     this.application.executeAction(function($window, $document) {
 
       //TODO(esprehn): Refactor this so it doesn't need to be in here.
@@ -44341,43 +44341,43 @@ angular.scenario.dsl('element', function() {
  * Matchers for implementing specs. Follows the Jasmine spec conventions.
  */
 
-angular.scenario.matcher('toEqual', /* @this */ function(expected) {
+angular.scenario.matcher('toEqual', /** @this */ function(expected) {
   return angular.equals(this.actual, expected);
 });
 
-angular.scenario.matcher('toBe', /* @this */ function(expected) {
+angular.scenario.matcher('toBe', /** @this */ function(expected) {
   return this.actual === expected;
 });
 
-angular.scenario.matcher('toBeDefined', /* @this */ function() {
+angular.scenario.matcher('toBeDefined', /** @this */ function() {
   return angular.isDefined(this.actual);
 });
 
-angular.scenario.matcher('toBeTruthy', /* @this */ function() {
+angular.scenario.matcher('toBeTruthy', /** @this */ function() {
   return this.actual;
 });
 
-angular.scenario.matcher('toBeFalsy', /* @this */ function() {
+angular.scenario.matcher('toBeFalsy', /** @this */ function() {
   return !this.actual;
 });
 
-angular.scenario.matcher('toMatch', /* @this */ function(expected) {
+angular.scenario.matcher('toMatch', /** @this */ function(expected) {
   return new RegExp(expected).test(this.actual);
 });
 
-angular.scenario.matcher('toBeNull', /* @this */ function() {
+angular.scenario.matcher('toBeNull', /** @this */ function() {
   return this.actual === null;
 });
 
-angular.scenario.matcher('toContain', /* @this */ function(expected) {
+angular.scenario.matcher('toContain', /** @this */ function(expected) {
   return includes(this.actual, expected);
 });
 
-angular.scenario.matcher('toBeLessThan', /* @this */ function(expected) {
+angular.scenario.matcher('toBeLessThan', /** @this */ function(expected) {
   return this.actual < expected;
 });
 
-angular.scenario.matcher('toBeGreaterThan', /* @this */ function(expected) {
+angular.scenario.matcher('toBeGreaterThan', /** @this */ function(expected) {
   return this.actual > expected;
 });
 

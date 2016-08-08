@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.9-build.4981+sha.975a617
+ * @license AngularJS v1.5.9-build.4982+sha.ec565dd
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -28,7 +28,7 @@ angular.module('ngCookies', ['ng']).
    * @description
    * Use `$cookiesProvider` to change the default behavior of the {@link ngCookies.$cookies $cookies} service.
    * */
-   provider('$cookies', [/* @this */function $CookiesProvider() {
+   provider('$cookies', [/** @this */function $CookiesProvider() {
     /**
      * @ngdoc property
      * @name $cookiesProvider#defaults
@@ -314,7 +314,7 @@ function $$CookieWriter($document, $log, $browser) {
 
 $$CookieWriter.$inject = ['$document', '$log', '$browser'];
 
-angular.module('ngCookies').provider('$$cookieWriter', /* @this */ function $$CookieWriterProvider() {
+angular.module('ngCookies').provider('$$cookieWriter', /** @this */ function $$CookieWriterProvider() {
   this.$get = $$CookieWriter;
 });
 
