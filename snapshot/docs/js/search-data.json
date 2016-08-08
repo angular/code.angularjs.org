@@ -776,7 +776,7 @@
   {
     "path": "guide/production",
     "titleWords": "Running in Production",
-    "keywords": "$compileprovider about accessed adds also an and angular angularjs annotated annotation app application are as attached attaches automate available be because binding boost bootstrap browser but by call can class classes code com compiler config consider console corresponding created css data data-bound debug debuginfoenabled default dependencies dependency-annotation deploy di directly disable disabling discover docs doesn dom dynamically either element elements enable errors explicit explicitly few for force function functions guide has have help here however html if improve in information injectable injecting intended interpolations is isolatescope it js like make method might minified mode more myapp need new ng ng-app ng-binding ng-isolated-scope ng-scope ng-strict-di ngbind ngbindhtml nodes not now of on open options or overview page pages partials performance production recommended references reload reloadwithdebuginfo result run running scope scopes see should significant strict strictdi sure that the then there these things this throw to tool tools true two up using using-strict-dependency-injection via when where which will wish with work you your",
+    "keywords": "$compileprovider about accessed adds all also an and angular angularjs annotated annotation any app application are as attached attaches attribute automate available be because binding boost bootstrap browser but by call can check class classes code com comment commentdirectivesenabled comments compilation compile compiler compiles config consider console corresponding created css cssclassdirectivesenabled data data-bound debug debuginfoenabled default dependencies dependency-annotation deploy di directives directly disable disabling discover docs does doesn dom dynamically either element elements enable errors executes explicit explicitly few for force function functions gain guide has have help here however html if improve in information injectable injecting inside intended interpolations is isolatescope it js library like look looking make method might minified mode more most must myapp need new ng ng-app ng-binding ng-isolated-scope ng-scope ng-strict-di ngbind ngbindhtml no nodes not now nowadays of on only open options or order overview page pages parse part partials perform performance production project projects recommended references reload reloadwithdebuginfo result results run running scope scopes see should significant strict strictdi such sure task that the then there these things this throw to tool tools true two up use uses using using-strict-dependency-injection via when where which whole will wish with work you your",
     "members": ""
   },
   {
@@ -1197,7 +1197,7 @@
     "path": "api/ng/provider/$compileProvider",
     "titleWords": "$compileProvider",
     "keywords": "$compileprovider $inject api html module ng partials provider",
-    "members": "ahrefsanitizationwhitelist component debuginfoenabled directive imgsrcsanitizationwhitelist onchangesttl"
+    "members": "ahrefsanitizationwhitelist commentdirectivesenabled component cssclassdirectivesenabled debuginfoenabled directive imgsrcsanitizationwhitelist onchangesttl"
   },
   {
     "path": "api/ng/type/$compile.directive.Attributes",

@@ -52,5 +52,31 @@ strict di mode)</p>
 </code></pre>
 <p>For more information, see the
 <a href="guide/di#using-strict-dependency-injection">DI Guide</a>.</p>
+<h2 id="disable-comment-and-css-class-directives">Disable comment and css class directives</h2>
+<p>By default AngularJS compiles and executes all directives inside comments and element classes.
+In order to perform this task, angular compiler must look for directives by:</p>
+<ul>
+<li><p>Parse all your application element classes.</p>
+</li>
+<li><p>Parse all your application html comments.</p>
+</li>
+</ul>
+<p>Nowadays most of the Angular projects are using only element and attribute directives,
+and in such projects there is no need to compile comments and classes.</p>
+<p>If you are sure that your project only uses element and attribute directives,
+and you are not using any 3rd part library that uses
+directives inside element classes or html comments,
+you can disable the compilation of directives on element classes and comments
+for the whole application.
+This results in a compilation performance gain,
+as the compiler does not have to check comments and element classes looking for directives.</p>
+<p>To disable comment and css class directives use the <code>$compileProvider</code>:</p>
+<pre><code>$compileProvider.commentDirectivesEnabled(false);
+$compileProvider.cssClassDirectivesEnabled(false);
+</code></pre>
+<p>For more see the docs pages on
+<a href="api/ng/provider/$compileProvider#commentDirectivesEnabled"><code>$compileProvider.commentDirectivesEnabled</code></a>
+and
+<a href="api/ng/provider/$compileProvider#cssClassDirectivesEnabled"><code>$compileProvider.cssClassDirectivesEnabled</code></a>.</p>
 
 
