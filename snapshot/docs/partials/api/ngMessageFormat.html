@@ -71,7 +71,7 @@ with a syntax for handling pluralization and gender specific messages, which is 
       name="script.js"
       language="js"
       type="js">
-      <pre><code>function Person(name, gender) {&#10;  this.name = name;&#10;  this.gender = gender;&#10;}&#10;&#10;var alice   = new Person(&quot;Alice&quot;, &quot;female&quot;),&#10;    bob     = new Person(&quot;Bob&quot;, &quot;male&quot;),&#10;    ashley = new Person(&quot;Ashley&quot;, &quot;&quot;);&#10;&#10;angular.module(&#39;msgFmtExample&#39;, [&#39;ngMessageFormat&#39;])&#10;  .controller(&#39;AppController&#39;, [&#39;$scope&#39;, function($scope) {&#10;      $scope.recipients = [alice, bob, ashley];&#10;      $scope.recipient = $scope.recipients[0];&#10;    }]);</code></pre>
+      <pre><code>function Person(name, gender) {&#10;  this.name = name;&#10;  this.gender = gender;&#10;}&#10;&#10;var alice   = new Person(&#39;Alice&#39;, &#39;female&#39;),&#10;    bob     = new Person(&#39;Bob&#39;, &#39;male&#39;),&#10;    ashley = new Person(&#39;Ashley&#39;, &#39;&#39;);&#10;&#10;angular.module(&#39;msgFmtExample&#39;, [&#39;ngMessageFormat&#39;])&#10;  .controller(&#39;AppController&#39;, [&#39;$scope&#39;, function($scope) {&#10;      $scope.recipients = [alice, bob, ashley];&#10;      $scope.recipient = $scope.recipients[0];&#10;    }]);</code></pre>
     </div>
   
 
@@ -109,7 +109,7 @@ The &quot;#&quot; variable holds the current number and can be embedded in the m
       name="script.js"
       language="js"
       type="js">
-      <pre><code>function Person(name, gender) {&#10;  this.name = name;&#10;  this.gender = gender;&#10;}&#10;&#10;var alice   = new Person(&quot;Alice&quot;, &quot;female&quot;),&#10;    bob     = new Person(&quot;Bob&quot;, &quot;male&quot;),&#10;    sarah     = new Person(&quot;Sarah&quot;, &quot;female&quot;),&#10;    harry   = new Person(&quot;Harry Potter&quot;, &quot;male&quot;),&#10;    ashley   = new Person(&quot;Ashley&quot;, &quot;&quot;);&#10;&#10;angular.module(&#39;msgFmtExample&#39;, [&#39;ngMessageFormat&#39;])&#10;  .controller(&#39;AppController&#39;, [&#39;$scope&#39;, function($scope) {&#10;      $scope.people = [alice, bob, sarah, ashley];&#10;      $scope.recipients = [alice, bob, sarah];&#10;      $scope.sender = harry;&#10;    }]);</code></pre>
+      <pre><code>function Person(name, gender) {&#10;  this.name = name;&#10;  this.gender = gender;&#10;}&#10;&#10;var alice   = new Person(&#39;Alice&#39;, &#39;female&#39;),&#10;    bob     = new Person(&#39;Bob&#39;, &#39;male&#39;),&#10;    sarah     = new Person(&#39;Sarah&#39;, &#39;female&#39;),&#10;    harry   = new Person(&#39;Harry Potter&#39;, &#39;male&#39;),&#10;    ashley   = new Person(&#39;Ashley&#39;, &#39;&#39;);&#10;&#10;angular.module(&#39;msgFmtExample&#39;, [&#39;ngMessageFormat&#39;])&#10;  .controller(&#39;AppController&#39;, [&#39;$scope&#39;, function($scope) {&#10;      $scope.people = [alice, bob, sarah, ashley];&#10;      $scope.recipients = [alice, bob, sarah];&#10;      $scope.sender = harry;&#10;    }]);</code></pre>
     </div>
   
     <div class="runnable-example-file" 
@@ -152,7 +152,7 @@ The &quot;#&quot; variable holds the current number and can be embedded in the m
       name="script.js"
       language="js"
       type="js">
-      <pre><code>function Person(name, gender) {&#10;  this.name = name;&#10;  this.gender = gender;&#10;}&#10;&#10;var alice   = new Person(&quot;Alice&quot;, &quot;female&quot;),&#10;    bob     = new Person(&quot;Bob&quot;, &quot;male&quot;),&#10;    harry   = new Person(&quot;Harry Potter&quot;, &quot;male&quot;),&#10;    ashley   = new Person(&quot;Ashley&quot;, &quot;&quot;);&#10;&#10;angular.module(&#39;msgFmtExample&#39;, [&#39;ngMessageFormat&#39;])&#10;  .controller(&#39;AppController&#39;, [&#39;$scope&#39;, function($scope) {&#10;      $scope.people = [alice, bob, ashley];&#10;      $scope.recipients = [alice];&#10;      $scope.sender = harry;&#10;    }]);</code></pre>
+      <pre><code>function Person(name, gender) {&#10;  this.name = name;&#10;  this.gender = gender;&#10;}&#10;&#10;var alice   = new Person(&#39;Alice&#39;, &#39;female&#39;),&#10;    bob     = new Person(&#39;Bob&#39;, &#39;male&#39;),&#10;    harry   = new Person(&#39;Harry Potter&#39;, &#39;male&#39;),&#10;    ashley   = new Person(&#39;Ashley&#39;, &#39;&#39;);&#10;&#10;angular.module(&#39;msgFmtExample&#39;, [&#39;ngMessageFormat&#39;])&#10;  .controller(&#39;AppController&#39;, [&#39;$scope&#39;, function($scope) {&#10;      $scope.people = [alice, bob, ashley];&#10;      $scope.recipients = [alice];&#10;      $scope.sender = harry;&#10;    }]);</code></pre>
     </div>
   
 

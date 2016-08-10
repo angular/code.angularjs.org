@@ -15,7 +15,7 @@ angular.module('httpExample', [])
             $scope.status = response.status;
             $scope.data = response.data;
           }, function(response) {
-            $scope.data = response.data || "Request failed";
+            $scope.data = response.data || 'Request failed';
             $scope.status = response.status;
         });
       };

@@ -12,7 +12,7 @@ angular.
     return function(msg) {
       msgs.push(msg);
       if (msgs.length === 3) {
-        win.alert(msgs.join("\n"));
+        win.alert(msgs.join('\n'));
         msgs = [];
       }
     };

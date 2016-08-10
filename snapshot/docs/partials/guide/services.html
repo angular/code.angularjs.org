@@ -45,7 +45,7 @@ subsystem takes care of the rest.</p>
       name="script.js"
       language="js"
       type="js">
-      <pre><code>angular.&#10;module(&#39;myServiceModule&#39;, []).&#10; controller(&#39;MyController&#39;, [&#39;$scope&#39;, &#39;notify&#39;, function($scope, notify) {&#10;   $scope.callNotify = function(msg) {&#10;     notify(msg);&#10;   };&#10; }]).&#10;factory(&#39;notify&#39;, [&#39;$window&#39;, function(win) {&#10;   var msgs = [];&#10;   return function(msg) {&#10;     msgs.push(msg);&#10;     if (msgs.length === 3) {&#10;       win.alert(msgs.join(&quot;\n&quot;));&#10;       msgs = [];&#10;     }&#10;   };&#10; }]);</code></pre>
+      <pre><code>angular.&#10;module(&#39;myServiceModule&#39;, []).&#10; controller(&#39;MyController&#39;, [&#39;$scope&#39;, &#39;notify&#39;, function($scope, notify) {&#10;   $scope.callNotify = function(msg) {&#10;     notify(msg);&#10;   };&#10; }]).&#10;factory(&#39;notify&#39;, [&#39;$window&#39;, function(win) {&#10;   var msgs = [];&#10;   return function(msg) {&#10;     msgs.push(msg);&#10;     if (msgs.length === 3) {&#10;       win.alert(msgs.join(&#39;\n&#39;));&#10;       msgs = [];&#10;     }&#10;   };&#10; }]);</code></pre>
     </div>
   
     <div class="runnable-example-file" 

@@ -7,11 +7,11 @@ function Person(name, gender) {
 
 angular.module('messageFormatExample', ['ngMessageFormat'])
   .controller('ckCtrl', function($scope, $injector, $parse) {
-    var people = [new Person("Alice", "female"),
-                  new Person("Bob", "male"),
-                  new Person("Charlie", "male")];
+    var people = [new Person('Alice', 'female'),
+                  new Person('Bob', 'male'),
+                  new Person('Charlie', 'male')];
 
-    $scope.sender = new Person("Harry Potter", "male");
+    $scope.sender = new Person('Harry Potter', 'male');
     $scope.recipients = people.slice();
 
     $scope.setNumRecipients = function(n) {

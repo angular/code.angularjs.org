@@ -125,7 +125,7 @@ text upper-case.</p>
       name="script.js"
       language="js"
       type="js">
-      <pre><code>angular.module(&#39;myReverseFilterApp&#39;, [])&#10;.filter(&#39;reverse&#39;, function() {&#10;  return function(input, uppercase) {&#10;    input = input || &#39;&#39;;&#10;    var out = &quot;&quot;;&#10;    for (var i = 0; i &lt; input.length; i++) {&#10;      out = input.charAt(i) + out;&#10;    }&#10;    // conditional based on optional argument&#10;    if (uppercase) {&#10;      out = out.toUpperCase();&#10;    }&#10;    return out;&#10;  };&#10;})&#10;.controller(&#39;MyController&#39;, [&#39;$scope&#39;, &#39;reverseFilter&#39;, function($scope, reverseFilter) {&#10;  $scope.greeting = &#39;hello&#39;;&#10;  $scope.filteredGreeting = reverseFilter($scope.greeting);&#10;}]);</code></pre>
+      <pre><code>angular.module(&#39;myReverseFilterApp&#39;, [])&#10;.filter(&#39;reverse&#39;, function() {&#10;  return function(input, uppercase) {&#10;    input = input || &#39;&#39;;&#10;    var out = &#39;&#39;;&#10;    for (var i = 0; i &lt; input.length; i++) {&#10;      out = input.charAt(i) + out;&#10;    }&#10;    // conditional based on optional argument&#10;    if (uppercase) {&#10;      out = out.toUpperCase();&#10;    }&#10;    return out;&#10;  };&#10;})&#10;.controller(&#39;MyController&#39;, [&#39;$scope&#39;, &#39;reverseFilter&#39;, function($scope, reverseFilter) {&#10;  $scope.greeting = &#39;hello&#39;;&#10;  $scope.filteredGreeting = reverseFilter($scope.greeting);&#10;}]);</code></pre>
     </div>
   
 

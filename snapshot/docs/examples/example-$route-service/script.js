@@ -9,12 +9,12 @@ angular.module('ngRouteExample', ['ngRoute'])
  })
 
  .controller('BookController', function($scope, $routeParams) {
-     $scope.name = "BookController";
+     $scope.name = 'BookController';
      $scope.params = $routeParams;
  })
 
  .controller('ChapterController', function($scope, $routeParams) {
-     $scope.name = "ChapterController";
+     $scope.name = 'ChapterController';
      $scope.params = $routeParams;
  })
 

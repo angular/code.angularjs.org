@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.9-build.4987+sha.42a0061
+ * @license AngularJS v1.5.9-build.4988+sha.9360aa2
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -463,12 +463,12 @@ function $RouteProvider() {
      *      })
      *
      *      .controller('BookController', function($scope, $routeParams) {
-     *          $scope.name = "BookController";
+     *          $scope.name = 'BookController';
      *          $scope.params = $routeParams;
      *      })
      *
      *      .controller('ChapterController', function($scope, $routeParams) {
-     *          $scope.name = "ChapterController";
+     *          $scope.name = 'ChapterController';
      *          $scope.params = $routeParams;
      *      })
      *
@@ -1073,11 +1073,11 @@ ngRouteModule.directive('ngView', ngViewFillContentFactory);
               this.$routeParams = $routeParams;
           }])
           .controller('BookCtrl', ['$routeParams', function BookCtrl($routeParams) {
-            this.name = "BookCtrl";
+            this.name = 'BookCtrl';
             this.params = $routeParams;
           }])
           .controller('ChapterCtrl', ['$routeParams', function ChapterCtrl($routeParams) {
-            this.name = "ChapterCtrl";
+            this.name = 'ChapterCtrl';
             this.params = $routeParams;
           }]);
 

@@ -15,7 +15,7 @@ angular.module('ngAppStrictDemo', [])
   }])
   .controller('GoodController2', GoodController2);
   function GoodController2($scope) {
-    $scope.name = "World";
+    $scope.name = 'World';
   }
   GoodController2.$inject = ['$scope'];
 })(window.angular);

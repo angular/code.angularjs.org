@@ -5,11 +5,11 @@ function Person(name, gender) {
   this.gender = gender;
 }
 
-var alice   = new Person("Alice", "female"),
-    bob     = new Person("Bob", "male"),
-    sarah     = new Person("Sarah", "female"),
-    harry   = new Person("Harry Potter", "male"),
-    ashley   = new Person("Ashley", "");
+var alice   = new Person('Alice', 'female'),
+    bob     = new Person('Bob', 'male'),
+    sarah     = new Person('Sarah', 'female'),
+    harry   = new Person('Harry Potter', 'male'),
+    ashley   = new Person('Ashley', '');
 
 angular.module('msgFmtExample', ['ngMessageFormat'])
   .controller('AppController', ['$scope', function($scope) {

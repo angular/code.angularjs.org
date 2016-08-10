@@ -7,9 +7,9 @@ angular.module('html5-mode', ['fake-browser', 'address-bar'])
 .constant('baseHref', '/base/index.html')
 .value('$sniffer', { history: true })
 
-.controller("LocationController", function($scope, $location) {
+.controller('LocationController', function($scope, $location) {
   $scope.$location = {};
-  angular.forEach("protocol host port path search hash".split(" "), function(method) {
+  angular.forEach('protocol host port path search hash'.split(' '), function(method) {
    $scope.$location[method] = function() {
      var result = $location[method]();
      return angular.isObject(result) ? angular.toJson(result) : result;

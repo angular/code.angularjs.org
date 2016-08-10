@@ -4,7 +4,7 @@ angular.module('controllerExample', [])
   .controller('SettingsController2', ['$scope', SettingsController2]);
 
 function SettingsController2($scope) {
-  $scope.name = "John Smith";
+  $scope.name = 'John Smith';
   $scope.contacts = [
     {type:'phone', value:'408 555 1212'},
     {type:'email', value:'john.smith@example.org'}

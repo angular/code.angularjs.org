@@ -19,7 +19,7 @@ angular.module('invoice1', [])
       return amount * this.usdToForeignRates[outCurr] / this.usdToForeignRates[inCurr];
     };
     this.pay = function pay() {
-      window.alert("Thanks!");
+      window.alert('Thanks!');
     };
   });
 })(window.angular);

@@ -153,7 +153,7 @@ different currencies and also pay the invoice.</p>
       name="invoice1.js"
       language="js"
       type="js">
-      <pre><code>angular.module(&#39;invoice1&#39;, [])&#10;.controller(&#39;InvoiceController&#39;, function InvoiceController() {&#10;  this.qty = 1;&#10;  this.cost = 2;&#10;  this.inCurr = &#39;EUR&#39;;&#10;  this.currencies = [&#39;USD&#39;, &#39;EUR&#39;, &#39;CNY&#39;];&#10;  this.usdToForeignRates = {&#10;    USD: 1,&#10;    EUR: 0.74,&#10;    CNY: 6.09&#10;  };&#10;&#10;  this.total = function total(outCurr) {&#10;    return this.convertCurrency(this.qty * this.cost, this.inCurr, outCurr);&#10;  };&#10;  this.convertCurrency = function convertCurrency(amount, inCurr, outCurr) {&#10;    return amount * this.usdToForeignRates[outCurr] / this.usdToForeignRates[inCurr];&#10;  };&#10;  this.pay = function pay() {&#10;    window.alert(&quot;Thanks!&quot;);&#10;  };&#10;});</code></pre>
+      <pre><code>angular.module(&#39;invoice1&#39;, [])&#10;.controller(&#39;InvoiceController&#39;, function InvoiceController() {&#10;  this.qty = 1;&#10;  this.cost = 2;&#10;  this.inCurr = &#39;EUR&#39;;&#10;  this.currencies = [&#39;USD&#39;, &#39;EUR&#39;, &#39;CNY&#39;];&#10;  this.usdToForeignRates = {&#10;    USD: 1,&#10;    EUR: 0.74,&#10;    CNY: 6.09&#10;  };&#10;&#10;  this.total = function total(outCurr) {&#10;    return this.convertCurrency(this.qty * this.cost, this.inCurr, outCurr);&#10;  };&#10;  this.convertCurrency = function convertCurrency(amount, inCurr, outCurr) {&#10;    return amount * this.usdToForeignRates[outCurr] / this.usdToForeignRates[inCurr];&#10;  };&#10;  this.pay = function pay() {&#10;    window.alert(&#39;Thanks!&#39;);&#10;  };&#10;});</code></pre>
     </div>
   
     <div class="runnable-example-file" 
@@ -222,7 +222,7 @@ from the web, e.g. by calling the Yahoo Finance API, without changing the contro
       name="invoice2.js"
       language="js"
       type="js">
-      <pre><code>angular.module(&#39;invoice2&#39;, [&#39;finance2&#39;])&#10;.controller(&#39;InvoiceController&#39;, [&#39;currencyConverter&#39;, function InvoiceController(currencyConverter) {&#10;  this.qty = 1;&#10;  this.cost = 2;&#10;  this.inCurr = &#39;EUR&#39;;&#10;  this.currencies = currencyConverter.currencies;&#10;&#10;  this.total = function total(outCurr) {&#10;    return currencyConverter.convert(this.qty * this.cost, this.inCurr, outCurr);&#10;  };&#10;  this.pay = function pay() {&#10;    window.alert(&quot;Thanks!&quot;);&#10;  };&#10;}]);</code></pre>
+      <pre><code>angular.module(&#39;invoice2&#39;, [&#39;finance2&#39;])&#10;.controller(&#39;InvoiceController&#39;, [&#39;currencyConverter&#39;, function InvoiceController(currencyConverter) {&#10;  this.qty = 1;&#10;  this.cost = 2;&#10;  this.inCurr = &#39;EUR&#39;;&#10;  this.currencies = currencyConverter.currencies;&#10;&#10;  this.total = function total(outCurr) {&#10;    return currencyConverter.convert(this.qty * this.cost, this.inCurr, outCurr);&#10;  };&#10;  this.pay = function pay() {&#10;    window.alert(&#39;Thanks!&#39;);&#10;  };&#10;}]);</code></pre>
     </div>
   
     <div class="runnable-example-file" 
@@ -296,7 +296,7 @@ The following example shows how this is done with Angular:</p>
       name="invoice3.js"
       language="js"
       type="js">
-      <pre><code>angular.module(&#39;invoice3&#39;, [&#39;finance3&#39;])&#10;.controller(&#39;InvoiceController&#39;, [&#39;currencyConverter&#39;, function InvoiceController(currencyConverter) {&#10;  this.qty = 1;&#10;  this.cost = 2;&#10;  this.inCurr = &#39;EUR&#39;;&#10;  this.currencies = currencyConverter.currencies;&#10;&#10;  this.total = function total(outCurr) {&#10;    return currencyConverter.convert(this.qty * this.cost, this.inCurr, outCurr);&#10;  };&#10;  this.pay = function pay() {&#10;    window.alert(&quot;Thanks!&quot;);&#10;  };&#10;}]);</code></pre>
+      <pre><code>angular.module(&#39;invoice3&#39;, [&#39;finance3&#39;])&#10;.controller(&#39;InvoiceController&#39;, [&#39;currencyConverter&#39;, function InvoiceController(currencyConverter) {&#10;  this.qty = 1;&#10;  this.cost = 2;&#10;  this.inCurr = &#39;EUR&#39;;&#10;  this.currencies = currencyConverter.currencies;&#10;&#10;  this.total = function total(outCurr) {&#10;    return currencyConverter.convert(this.qty * this.cost, this.inCurr, outCurr);&#10;  };&#10;  this.pay = function pay() {&#10;    window.alert(&#39;Thanks!&#39;);&#10;  };&#10;}]);</code></pre>
     </div>
   
     <div class="runnable-example-file" 
