@@ -43,8 +43,10 @@ initialized. It also means a range input can never have the required error.</p>
 <code>max</code> attributes. When these change in a way that will cause the browser to modify the input value,
 Angular will also update the model value.</p>
 <p>Automatic value adjustment also means that a range input element can never have the <code>required</code>,
-<code>min</code>, or <code>max</code> errors, except when using <code>ngMax</code> and <code>ngMin</code>, which are not affected by automatic
-value adjustment, because they do not set the <code>min</code> and <code>max</code> attributes.</p>
+<code>min</code>, or <code>max</code> errors.</p>
+<p>Note that <code>input[range]</code> is not compatible with<code>ngMax</code> and <code>ngMin</code>, because they do not set the
+<code>min</code> and <code>max</code> attributes, which means that the browser won&#39;t automatically adjust the input
+value based on their values, and will always assume min = 0 and max = 100.</p>
 
 </div>
 
@@ -66,7 +68,7 @@ value adjustment, because they do not set the <code>min</code> and <code>max</co
 
   
   <h2>Usage</h2>
-  <pre><code>&lt;input type=&quot;range&quot;&#10;       ng-model=&quot;string&quot;&#10;       [name=&quot;string&quot;]&#10;       [min=&quot;string&quot;]&#10;       [max=&quot;string&quot;]&#10;       [ng-min=&quot;string&quot;]&#10;       [ng-max=&quot;string&quot;]&#10;       [ng-change=&quot;string&quot;]&gt;</code></pre>
+  <pre><code>&lt;input type=&quot;range&quot;&#10;       ng-model=&quot;string&quot;&#10;       [name=&quot;string&quot;]&#10;       [min=&quot;string&quot;]&#10;       [max=&quot;string&quot;]&#10;       [ng-change=&quot;string&quot;]&gt;</code></pre>
 
 <section class="api-section">
   <h3>Arguments</h3>
@@ -142,44 +144,6 @@ value adjustment, because they do not set the <code>min</code> and <code>max</co
       <td>
         <p>Sets the <code>max</code> validation to ensure that the value entered is less than <code>max</code>.
                  Can be interpolated.</p>
-
-        
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        ngMin
-        
-        <div><em>(optional)</em></div>
-      </td>
-      <td>
-        <a href="" class="label type-hint type-hint-string">string</a>
-      </td>
-      <td>
-        <p>Takes an expression. Sets the <code>min</code> validation to ensure that the value
-                 entered is greater than <code>min</code>. Does not set the <code>min</code> attribute and therefore
-                 adds no native HTML5 validation. It also means the browser won&#39;t adjust the
-                 element value in case <code>min</code> is greater than the current value.</p>
-
-        
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-        ngMax
-        
-        <div><em>(optional)</em></div>
-      </td>
-      <td>
-        <a href="" class="label type-hint type-hint-string">string</a>
-      </td>
-      <td>
-        <p>Takes an expression. Sets the <code>max</code> validation to ensure that the value
-                 entered is less than <code>max</code>. Does not set the <code>max</code> attribute and therefore
-                 adds no native HTML5 validation. It also means the browser won&#39;t adjust the
-                 element value in case <code>max</code> is less than the current value.</p>
 
         
       </td>
