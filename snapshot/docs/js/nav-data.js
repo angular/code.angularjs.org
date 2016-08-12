@@ -1497,6 +1497,11 @@ angular.module('navData', [])
             "type": "error"
           },
           {
+            "name": "ctrlreg",
+            "href": "error/$controller/ctrlreg",
+            "type": "error"
+          },
+          {
             "name": "noscp",
             "href": "error/$controller/noscp",
             "type": "error"

@@ -114,6 +114,12 @@
     "members": ""
   },
   {
+    "path": "error/$controller/ctrlreg",
+    "titleWords": "ctrlreg",
+    "keywords": "$controller $controllerprovider $routeprovider also angular any api attribute be been call called can causes component consult controller controllers ctrlreg definition directive directly docs does error example for has have html in indirectly inside instantiate invoked is learn match may module modules more name ng ngcontroller ngroute nor not occurs of or partials please property reference register registered route service string that the third-party this through to typo using via when with you your",
+    "members": ""
+  },
+  {
     "path": "error/$controller/noscp",
     "titleWords": "noscp",
     "keywords": "$controller $scope above api as but call called cannot consult controller docs error example export fix html in incorrect instantiate is leads learn locals map missing more new newscope ng no noscp object occurs of order partials please property provide provided scope service that the this to usage via when",
@@ -500,7 +506,7 @@
   {
     "path": "error/ng/areq",
     "titleWords": "areq",
-    "keywords": "and angularjs areq argument assertion asserts bad be certain defined error expects fails fix function helper html if is make ng ng:areq often partials present problem sure that the this thrown to truthy using value values will",
+    "keywords": "and angularjs areq argument assertion asserts bad be certain defined error expects fails fix function helper html if in is make matches mentioned ng ng:areq often partials present problem sure that the this thrown to truthy type using value values will",
     "members": ""
   },
   {

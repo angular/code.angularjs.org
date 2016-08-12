@@ -98,6 +98,11 @@ angular.module('pagesData', [])
     "area": "error",
     "path": "error/$controller/ctrlfmt"
   },
+  "error/$controller/ctrlreg": {
+    "name": "ctrlreg",
+    "area": "error",
+    "path": "error/$controller/ctrlreg"
+  },
   "error/$controller/noscp": {
     "name": "noscp",
     "area": "error",
