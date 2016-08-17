@@ -56,7 +56,7 @@ will also be an empty string.</p>
 
   
   <h2>Usage</h2>
-  <pre><code>&lt;input type=&quot;number&quot;&#10;       ng-model=&quot;string&quot;&#10;       [name=&quot;string&quot;]&#10;       [min=&quot;string&quot;]&#10;       [max=&quot;string&quot;]&#10;       [required=&quot;string&quot;]&#10;       [ng-required=&quot;string&quot;]&#10;       [ng-minlength=&quot;number&quot;]&#10;       [ng-maxlength=&quot;number&quot;]&#10;       [pattern=&quot;string&quot;]&#10;       [ng-pattern=&quot;string&quot;]&#10;       [ng-change=&quot;string&quot;]&gt;</code></pre>
+  <pre><code>&lt;input type=&quot;number&quot;&#10;       ng-model=&quot;string&quot;&#10;       [name=&quot;string&quot;]&#10;       [min=&quot;string&quot;]&#10;       [max=&quot;string&quot;]&#10;       [ng-min=&quot;string&quot;]&#10;       [ng-max=&quot;string&quot;]&#10;       [step=&quot;string&quot;]&#10;       [ng-step=&quot;string&quot;]&#10;       [required=&quot;string&quot;]&#10;       [ng-required=&quot;string&quot;]&#10;       [ng-minlength=&quot;number&quot;]&#10;       [ng-maxlength=&quot;number&quot;]&#10;       [pattern=&quot;string&quot;]&#10;       [ng-pattern=&quot;string&quot;]&#10;       [ng-change=&quot;string&quot;]&gt;</code></pre>
 
 <section class="api-section">
   <h3>Arguments</h3>
@@ -113,7 +113,8 @@ will also be an empty string.</p>
         <a href="" class="label type-hint type-hint-string">string</a>
       </td>
       <td>
-        <p>Sets the <code>min</code> validation error key if the value entered is less than <code>min</code>.</p>
+        <p>Sets the <code>min</code> validation error key if the value entered is less than <code>min</code>.
+   Can be interpolated.</p>
 
         
       </td>
@@ -129,7 +130,76 @@ will also be an empty string.</p>
         <a href="" class="label type-hint type-hint-string">string</a>
       </td>
       <td>
-        <p>Sets the <code>max</code> validation error key if the value entered is greater than <code>max</code>.</p>
+        <p>Sets the <code>max</code> validation error key if the value entered is greater than <code>max</code>.
+   Can be interpolated.</p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        ngMin
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        <a href="" class="label type-hint type-hint-string">string</a>
+      </td>
+      <td>
+        <p>Like <code>min</code>, sets the <code>min</code> validation error key if the value entered is less than <code>ngMin</code>,
+   but does not trigger HTML5 native validation. Takes an expression.</p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        ngMax
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        <a href="" class="label type-hint type-hint-string">string</a>
+      </td>
+      <td>
+        <p>Like <code>max</code>, sets the <code>max</code> validation error key if the value entered is greater than <code>ngMax</code>,
+   but does not trigger HTML5 native validation. Takes an expression.</p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        step
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        <a href="" class="label type-hint type-hint-string">string</a>
+      </td>
+      <td>
+        <p>Sets the <code>step</code> validation error key if the value entered does not fit the <code>step</code> constraint.
+   Can be interpolated.</p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        ngStep
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        <a href="" class="label type-hint type-hint-string">string</a>
+      </td>
+      <td>
+        <p>Like <code>step</code>, sets the <code>max</code> validation error key if the value entered does not fit the <code>ngStep</code> constraint,
+   but does not trigger HTML5 native validation. Takes an expression.</p>
 
         
       </td>
