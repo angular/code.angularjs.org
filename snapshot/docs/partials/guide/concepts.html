@@ -172,8 +172,9 @@ different currencies and also pay the invoice.</p>
 </p>
 <p>What changed?</p>
 <p>First, there is a new JavaScript file that contains a <a name="controller"><a href="guide/controller">controller</a></a>.
-More exactly, the file contains a constructor function that creates the actual controller instance.
-The purpose of controllers is to expose variables and functionality to expressions and directives.</p>
+More accurately, the file specifies a constructor function that will be used to create the actual
+controller instance. The purpose of controllers is to expose variables and functionality to
+expressions and directives.</p>
 <p>Besides the new file that contains the controller code we also added an
 <a href="api/ng/directive/ngController"><code>ng-controller</code></a> directive to the HTML.
 This directive tells Angular that the new <code>InvoiceController</code> is responsible for the element with the directive
@@ -240,8 +241,8 @@ from the web, e.g. by calling the Yahoo Finance API, without changing the contro
 
 </p>
 <p><img class="pull-right" style="padding-left: 3em; padding-bottom: 1em;" src="img/guide/concepts-module-service.png"></p>
-<p>What changed?
-We moved the <code>convertCurrency</code> function and the definition of the existing currencies
+<p>What changed?</p>
+<p>We moved the <code>convertCurrency</code> function and the definition of the existing currencies
 into the new file <code>finance2.js</code>. But how does the controller
 get a hold of the now separated function?</p>
 <p>This is where <a name="di"><a href="guide/di">Dependency Injection</a></a> comes into play.
@@ -260,10 +261,11 @@ to use the <code>invoice2</code> module as the main module for the application.
 The code snippet <code>angular.module(&#39;invoice2&#39;, [&#39;finance2&#39;])</code>  specifies that the <code>invoice2</code> module depends on the
 <code>finance2</code> module. By this, Angular uses the <code>InvoiceController</code> as well as the <code>currencyConverter</code> service.</p>
 <p>Now that Angular knows of all the parts of the application, it needs to create them.
-In the previous section we saw that controllers are created using a factory function.
-For services there are multiple ways to define their factory
+In the previous section we saw that controllers are created using a constructor function.
+For services, there are multiple ways to specify how they are created
 (see the <a href="guide/services">service guide</a>).
-In the example above, we are using an anonymous function as the factory function for <code>currencyConverter</code> service.
+In the example above, we are using an anonymous function as the factory function for the
+<code>currencyConverter</code> service.
 This function should return the <code>currencyConverter</code> service instance.</p>
 <p>Back to the initial question: How does the <code>InvoiceController</code> get a reference to the <code>currencyConverter</code> function?
 In Angular, this is done by simply defining arguments on the constructor function. With this, the injector
