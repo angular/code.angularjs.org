@@ -169,12 +169,13 @@ see <code>returns</code> section.</li>
 transform function or an array of such functions. The transform function takes the http
 request body and headers and returns its transformed (typically serialized) version.
 By default, transformRequest will contain one function that checks if the request data is
-an object and serializes to using <code>angular.toJson</code>. To prevent this behavior, set
+an object and serializes it using <code>angular.toJson</code>. To prevent this behavior, set
 <code>transformRequest</code> to an empty array: <code>transformRequest: []</code></li>
 <li><strong><code>transformResponse</code></strong> –
-<code>{function(data, headersGetter)|Array.&lt;function(data, headersGetter)&gt;}</code> –
+<code>{function(data, headersGetter, status)|Array.&lt;function(data, headersGetter, status)&gt;}</code> –
 transform function or an array of such functions. The transform function takes the http
-response body and headers and returns its transformed (typically deserialized) version.
+response body, headers and status and returns its transformed (typically deserialized)
+version.
 By default, transformResponse will contain one function that checks if the response looks
 like a JSON string and deserializes it using <code>angular.fromJson</code>. To prevent this behavior,
 set <code>transformResponse</code> to an empty array: <code>transformResponse: []</code></li>
