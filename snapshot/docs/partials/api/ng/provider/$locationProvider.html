@@ -139,8 +139,12 @@ support <code>pushState</code>.</li>
 whether or not a <base> tag is required to be present. If <code>enabled</code> and <code>requireBase</code> are
 true, and a base tag is not present, an error will be thrown when <code>$location</code> is injected.
 See the <a href="guide/$location">$location guide for more information</a></li>
-<li><strong>rewriteLinks</strong> - <code>{boolean}</code> - (default: <code>true</code>) When html5Mode is enabled,
-enables/disables url rewriting for relative links.</li>
+<li><strong>rewriteLinks</strong> - <code>{boolean|string}</code> - (default: <code>true</code>) When html5Mode is enabled,
+enables/disables URL rewriting for relative links. If set to a string, URL rewriting will
+only happen on links with an attribute that matches the given string. For example, if set
+to <code>&#39;internal-link&#39;</code>, then the URL will only be rewritten for <code>&lt;a internal-link&gt;</code> links.
+Note that <a href="guide/directive#normalization">attribute name normalization</a> does not apply
+here, so <code>&#39;internalLink&#39;</code> will <strong>not</strong> match <code>&#39;internal-link&#39;</code>.</li>
 </ul>
 
         

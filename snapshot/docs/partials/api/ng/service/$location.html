@@ -72,9 +72,9 @@ $location service and changes to $location are reflected into the browser addres
 
 </h3>
     <div><p>This method is getter only.</p>
-<p>Return full url representation with all segments encoded according to rules specified in
+<p>Return full URL representation with all segments encoded according to rules specified in
 <a href="http://www.ietf.org/rfc/rfc3986.txt">RFC 3986</a>.</p>
-<pre><code class="lang-js">// given url http://example.com/#/some/path?foo=bar&amp;baz=xoxo
+<pre><code class="lang-js">// given URL http://example.com/#/some/path?foo=bar&amp;baz=xoxo
 var absUrl = $location.absUrl();
 // =&gt; &quot;http://example.com/#/some/path?foo=bar&amp;baz=xoxo&quot;
 </code></pre>
@@ -89,7 +89,7 @@ var absUrl = $location.absUrl();
     <table class="variables-matrix return-arguments">
   <tr>
     <td><a href="" class="label type-hint type-hint-string">string</a></td>
-    <td><p>full url</p>
+    <td><p>full URL</p>
 </td>
   </tr>
 </table>
@@ -102,9 +102,9 @@ var absUrl = $location.absUrl();
 
 </h3>
     <div><p>This method is getter / setter.</p>
-<p>Return url (e.g. <code>/path?a=b#hash</code>) when called without any parameter.</p>
+<p>Return URL (e.g. <code>/path?a=b#hash</code>) when called without any parameter.</p>
 <p>Change path, search and hash, when called with parameter and return <code>$location</code>.</p>
-<pre><code class="lang-js">// given url http://example.com/#/some/path?foo=bar&amp;baz=xoxo
+<pre><code class="lang-js">// given URL http://example.com/#/some/path?foo=bar&amp;baz=xoxo
 var url = $location.url();
 // =&gt; &quot;/some/path?foo=bar&amp;baz=xoxo&quot;
 </code></pre>
@@ -133,7 +133,7 @@ var url = $location.url();
         <a href="" class="label type-hint type-hint-string">string</a>
       </td>
       <td>
-        <p>New url without base prefix (e.g. <code>/path?a=b#hash</code>)</p>
+        <p>New URL without base prefix (e.g. <code>/path?a=b#hash</code>)</p>
 
         
       </td>
@@ -164,8 +164,8 @@ var url = $location.url();
 
 </h3>
     <div><p>This method is getter only.</p>
-<p>Return protocol of current url.</p>
-<pre><code class="lang-js">// given url http://example.com/#/some/path?foo=bar&amp;baz=xoxo
+<p>Return protocol of current URL.</p>
+<pre><code class="lang-js">// given URL http://example.com/#/some/path?foo=bar&amp;baz=xoxo
 var protocol = $location.protocol();
 // =&gt; &quot;http&quot;
 </code></pre>
@@ -180,7 +180,7 @@ var protocol = $location.protocol();
     <table class="variables-matrix return-arguments">
   <tr>
     <td><a href="" class="label type-hint type-hint-string">string</a></td>
-    <td><p>protocol of current url</p>
+    <td><p>protocol of current URL</p>
 </td>
   </tr>
 </table>
@@ -193,13 +193,13 @@ var protocol = $location.protocol();
 
 </h3>
     <div><p>This method is getter only.</p>
-<p>Return host of current url.</p>
+<p>Return host of current URL.</p>
 <p>Note: compared to the non-angular version <code>location.host</code> which returns <code>hostname:port</code>, this returns the <code>hostname</code> portion only.</p>
-<pre><code class="lang-js">// given url http://example.com/#/some/path?foo=bar&amp;baz=xoxo
+<pre><code class="lang-js">// given URL http://example.com/#/some/path?foo=bar&amp;baz=xoxo
 var host = $location.host();
 // =&gt; &quot;example.com&quot;
 
-// given url http://user:password@example.com:8080/#/some/path?foo=bar&amp;baz=xoxo
+// given URL http://user:password@example.com:8080/#/some/path?foo=bar&amp;baz=xoxo
 host = $location.host();
 // =&gt; &quot;example.com&quot;
 host = location.host;
@@ -216,7 +216,7 @@ host = location.host;
     <table class="variables-matrix return-arguments">
   <tr>
     <td><a href="" class="label type-hint type-hint-string">string</a></td>
-    <td><p>host of current url.</p>
+    <td><p>host of current URL.</p>
 </td>
   </tr>
 </table>
@@ -229,8 +229,8 @@ host = location.host;
 
 </h3>
     <div><p>This method is getter only.</p>
-<p>Return port of current url.</p>
-<pre><code class="lang-js">// given url http://example.com/#/some/path?foo=bar&amp;baz=xoxo
+<p>Return port of current URL.</p>
+<pre><code class="lang-js">// given URL http://example.com/#/some/path?foo=bar&amp;baz=xoxo
 var port = $location.port();
 // =&gt; 80
 </code></pre>
@@ -258,11 +258,11 @@ var port = $location.port();
 
 </h3>
     <div><p>This method is getter / setter.</p>
-<p>Return path of current url when called without any parameter.</p>
+<p>Return path of current URL when called without any parameter.</p>
 <p>Change path when called with parameter and return <code>$location</code>.</p>
 <p>Note: Path should always begin with forward slash (/), this method will add the forward slash
 if it is missing.</p>
-<pre><code class="lang-js">// given url http://example.com/#/some/path?foo=bar&amp;baz=xoxo
+<pre><code class="lang-js">// given URL http://example.com/#/some/path?foo=bar&amp;baz=xoxo
 var path = $location.path();
 // =&gt; &quot;/some/path&quot;
 </code></pre>
@@ -322,9 +322,9 @@ var path = $location.path();
 
 </h3>
     <div><p>This method is getter / setter.</p>
-<p>Return search part (as object) of current url when called without any parameter.</p>
+<p>Return search part (as object) of current URL when called without any parameter.</p>
 <p>Change search part when called with parameter and return <code>$location</code>.</p>
-<pre><code class="lang-js">// given url http://example.com/#/some/path?foo=bar&amp;baz=xoxo
+<pre><code class="lang-js">// given URL http://example.com/#/some/path?foo=bar&amp;baz=xoxo
 var searchObject = $location.search();
 // =&gt; {foo: &#39;bar&#39;, baz: &#39;xoxo&#39;}
 
@@ -362,7 +362,7 @@ hash object.</p>
 <p>When called with a single argument the method acts as a setter, setting the <code>search</code> component
 of <code>$location</code> to the specified value.</p>
 <p>If the argument is a hash object containing an array of values, these values will be encoded
-as duplicate search parameters in the url.</p>
+as duplicate search parameters in the URL.</p>
 
         
       </td>
@@ -418,7 +418,7 @@ one or more arguments returns <code>$location</code> object itself.</p>
     <div><p>This method is getter / setter.</p>
 <p>Returns the hash fragment when called without any parameters.</p>
 <p>Changes the hash fragment when called with a parameter and returns <code>$location</code>.</p>
-<pre><code class="lang-js">// given url http://example.com/#/some/path?foo=bar&amp;baz=xoxo#hashValue
+<pre><code class="lang-js">// given URL http://example.com/#/some/path?foo=bar&amp;baz=xoxo#hashValue
 var hash = $location.hash();
 // =&gt; &quot;hashValue&quot;
 </code></pre>
