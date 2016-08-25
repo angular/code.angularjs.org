@@ -61,8 +61,9 @@ application or vice versa.</p>
 <p>To create a component, we use the <a href="api/ng/type/angular.Module#component">.component()</a> method of an
 <a href="guide/module">Angular module</a>. We must provide the name of the component and the Component
 Definition Object (CDO for short).</p>
-<p>Remember that (since components are also directives) the name of the component is in <code>camelCase</code>,
-but we will use <code>kebab-case</code>, when referring to it in our HTML.</p>
+<p>Remember that (since components are also directives) the name of the component is in <code>camelCase</code>
+(e.g. <code>myAwesomeComponent</code>), but we will use <code>kebab-case</code> (e.g. <code>my-awesome-component</code>) when
+referring to it in our HTML. (See <a href="https://en.wikipedia.org/wiki/Letter_case#Special_case_styles">here</a> for a description of different case styles.)</p>
 <p>In its simplest form, the CDO will just contain a template and a controller. (We can actually omit
 the controller and Angular will create a dummy controller for us. This is useful for simple
 &quot;presentational&quot; components, that don&#39;t attach any behavior to the template.)</p>
