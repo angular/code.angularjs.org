@@ -272,9 +272,9 @@ var user = User.get({userId:123}, function() {
 <li>non-GET &quot;class&quot; actions: <code>Resource.action([parameters], postData, [success], [error])</code></li>
 <li>non-GET instance actions:  <code>instance.$action([parameters], [success], [error])</code></li>
 </ul>
-<p>  Success callback is called with (value, responseHeaders) arguments, where the value is
-  the populated resource instance or collection object. The error callback is called
-  with (httpResponse) argument.</p>
+<p>  Success callback is called with (value (Object|Array), responseHeaders (Function),
+  status (number), statusText (string)) arguments, where the value is the populated resource
+  instance or collection object. The error callback is called with (httpResponse) argument.</p>
 <p>  Class actions return empty instance (with additional properties below).
   Instance actions return promise of the action.</p>
 <p>  The Resource instances and collections have these additional properties:</p>
