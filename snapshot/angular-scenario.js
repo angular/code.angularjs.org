@@ -10071,7 +10071,7 @@ return jQuery;
 } );
 
 /**
- * @license AngularJS v1.5.9-build.5003+sha.ad9a99d
+ * @license AngularJS v1.5.9-build.5004+sha.c75698d
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -10130,7 +10130,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.5.9-build.5003+sha.ad9a99d/' +
+    message += '\nhttp://errors.angularjs.org/1.5.9-build.5004+sha.c75698d/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -12621,7 +12621,7 @@ function toDebugString(obj) {
 var version = {
   // These placeholder strings will be replaced by grunt's `build` task.
   // They need to be double- or single-quoted.
-  full: '1.5.9-build.5003+sha.ad9a99d',
+  full: '1.5.9-build.5004+sha.c75698d',
   major: 1,
   minor: 5,
   dot: 9,
@@ -39555,15 +39555,14 @@ var ngOptionsDirective = ['$compile', '$document', '$parse', function($compile, 
 
       // The emptyOption allows the application developer to provide their own custom "empty"
       // option when the viewValue does not match any of the option values.
-      var emptyOption;
       for (var i = 0, children = selectElement.children(), ii = children.length; i < ii; i++) {
         if (children[i].value === '') {
-          emptyOption = children.eq(i);
+          selectCtrl.emptyOption = children.eq(i);
           break;
         }
       }
 
-      var providedEmptyOption = !!emptyOption;
+      var providedEmptyOption = !!selectCtrl.emptyOption;
 
       var unknownOption = jqLite(optionTemplate.cloneNode(false));
       unknownOption.val('?');
@@ -39575,32 +39574,9 @@ var ngOptionsDirective = ['$compile', '$document', '$parse', function($compile, 
       // we only need to create it once.
       var listFragment = $document[0].createDocumentFragment();
 
-      var renderEmptyOption = function() {
-        if (!providedEmptyOption) {
-          selectElement.prepend(emptyOption);
-        }
-        selectElement.val('');
-        emptyOption.prop('selected', true); // needed for IE
-        emptyOption.attr('selected', true);
-      };
-
-      var removeEmptyOption = function() {
-        if (!providedEmptyOption) {
-          emptyOption.remove();
-        } else {
-          emptyOption.removeAttr('selected');
-        }
-      };
-
-      var renderUnknownOption = function() {
-        selectElement.prepend(unknownOption);
-        selectElement.val('?');
-        unknownOption.prop('selected', true); // needed for IE
-        unknownOption.attr('selected', true);
-      };
-
-      var removeUnknownOption = function() {
-        unknownOption.remove();
+      // Overwrite the implementation. ngOptions doesn't use hashes
+      selectCtrl.generateUnknownOptionValue = function(val) {
+        return '?';
       };
 
       // Update the controller methods for multiple selectable options
@@ -39621,8 +39597,8 @@ var ngOptionsDirective = ['$compile', '$document', '$parse', function($compile, 
             // set always
 
             if (selectElement[0].value !== option.selectValue) {
-              removeUnknownOption();
-              removeEmptyOption();
+              selectCtrl.removeUnknownOption();
+              selectCtrl.unselectEmptyOption();
 
               selectElement[0].value = option.selectValue;
               option.element.selected = true;
@@ -39630,12 +39606,13 @@ var ngOptionsDirective = ['$compile', '$document', '$parse', function($compile, 
 
             option.element.setAttribute('selected', 'selected');
           } else {
-            if (value === null || providedEmptyOption) {
-              removeUnknownOption();
-              renderEmptyOption();
+
+            if (providedEmptyOption) {
+              selectCtrl.selectEmptyOption();
+            } else if (selectCtrl.unknownOption.parent().length) {
+              selectCtrl.updateUnknownOption(value);
             } else {
-              removeEmptyOption();
-              renderUnknownOption();
+              selectCtrl.renderUnknownOption(value);
             }
           }
         };
@@ -39645,8 +39622,8 @@ var ngOptionsDirective = ['$compile', '$document', '$parse', function($compile, 
           var selectedOption = options.selectValueMap[selectElement.val()];
 
           if (selectedOption && !selectedOption.disabled) {
-            removeEmptyOption();
-            removeUnknownOption();
+            selectCtrl.unselectEmptyOption();
+            selectCtrl.removeUnknownOption();
             return options.getViewValueFromOption(selectedOption);
           }
           return null;
@@ -39663,11 +39640,6 @@ var ngOptionsDirective = ['$compile', '$document', '$parse', function($compile, 
         }
 
       } else {
-
-        ngModelCtrl.$isEmpty = function(value) {
-          return !value || value.length === 0;
-        };
-
 
         selectCtrl.writeValue = function writeNgOptionsMultiple(value) {
           options.items.forEach(function(option) {
@@ -39712,21 +39684,18 @@ var ngOptionsDirective = ['$compile', '$document', '$parse', function($compile, 
         }
       }
 
-
       if (providedEmptyOption) {
 
         // we need to remove it before calling selectElement.empty() because otherwise IE will
         // remove the label from the element. wtf?
-        emptyOption.remove();
+        selectCtrl.emptyOption.remove();
 
         // compile the element since there might be bindings in it
-        $compile(emptyOption)(scope);
+        $compile(selectCtrl.emptyOption)(scope);
 
         // remove the class, which is added automatically because we recompile the element and it
         // becomes the compilation root
-        emptyOption.removeClass('ng-scope');
-      } else {
-        emptyOption = jqLite(optionTemplate.cloneNode(false));
+        selectCtrl.emptyOption.removeClass('ng-scope');
       }
 
       selectElement.empty();
@@ -39788,7 +39757,7 @@ var ngOptionsDirective = ['$compile', '$document', '$parse', function($compile, 
 
         // Ensure that the empty option is always there if it was explicitly provided
         if (providedEmptyOption) {
-          selectElement.prepend(emptyOption);
+          selectElement.prepend(selectCtrl.emptyOption);
         }
 
         options.items.forEach(function addOption(option) {
@@ -41546,28 +41515,54 @@ var SelectController =
   // We can't just jqLite('<option>') since jqLite is not smart enough
   // to create it in <select> and IE barfs otherwise.
   self.unknownOption = jqLite(window.document.createElement('option'));
+
   self.renderUnknownOption = function(val) {
-    var unknownVal = '? ' + hashKey(val) + ' ?';
+    var unknownVal = self.generateUnknownOptionValue(val);
     self.unknownOption.val(unknownVal);
     $element.prepend(self.unknownOption);
+    setOptionAsSelected(self.unknownOption);
     $element.val(unknownVal);
   };
 
   self.updateUnknownOption = function(val) {
-    var unknownVal = '? ' + hashKey(val) + ' ?';
+    var unknownVal = self.generateUnknownOptionValue(val);
     self.unknownOption.val(unknownVal);
+    setOptionAsSelected(self.unknownOption);
     $element.val(unknownVal);
+  };
+
+  self.generateUnknownOptionValue = function(val) {
+    return '? ' + hashKey(val) + ' ?';
+  };
+
+  self.removeUnknownOption = function() {
+    if (self.unknownOption.parent()) self.unknownOption.remove();
+  };
+
+  // The empty option is an option with the value '' that te application developer can
+  // provide inside the select. When the model changes to a value that doesn't match an option,
+  // it is selected - so if an empty option is provided, no unknown option is generated.
+  // However, the empty option is not removed when the model matches an option. It is always selectable
+  // and indicates that a "null" selection has been made.
+  self.emptyOption = undefined;
+
+  self.selectEmptyOption = function() {
+    if (self.emptyOption) {
+      $element.val('');
+      setOptionAsSelected(self.emptyOption);
+    }
+  };
+
+  self.unselectEmptyOption = function() {
+    if (self.emptyOption) {
+      self.emptyOption.removeAttr('selected');
+    }
   };
 
   $scope.$on('$destroy', function() {
     // disable unknown option so that we don't do work when the whole select is being destroyed
     self.renderUnknownOption = noop;
   });
-
-  self.removeUnknownOption = function() {
-    if (self.unknownOption.parent()) self.unknownOption.remove();
-  };
-
 
   // Read the value of the select control, the implementation of this changes depending
   // upon whether the select can have multiple values and whether ngOptions is at work.
@@ -41587,16 +41582,24 @@ var SelectController =
   // Write the value to the select control, the implementation of this changes depending
   // upon whether the select can have multiple values and whether ngOptions is at work.
   self.writeValue = function writeSingleValue(value) {
+    // Make sure to remove the selected attribute from the previously selected option
+    // Otherwise, screen readers might get confused
+    var currentlySelectedOption = $element[0].options[$element[0].selectedIndex];
+    if (currentlySelectedOption) currentlySelectedOption.removeAttribute('selected');
+
     if (self.hasOption(value)) {
       self.removeUnknownOption();
+
       var hashedVal = hashKey(value);
       $element.val(hashedVal in self.selectValueMap ? hashedVal : value);
 
-      if (value === '') self.emptyOption.prop('selected', true); // to make IE9 happy
+      // Set selected attribute and property on selected option for screen readers
+      var selectedOption = $element[0].options[$element[0].selectedIndex];
+      setOptionAsSelected(jqLite(selectedOption));
     } else {
       if (value == null && self.emptyOption) {
         self.removeUnknownOption();
-        $element.val('');
+        self.selectEmptyOption();
       } else if (self.unknownOption.parent().length) {
         self.updateUnknownOption(value);
       } else {
@@ -41768,6 +41771,11 @@ var SelectController =
       }
     });
   };
+
+  function setOptionAsSelected(optionEl) {
+    optionEl.prop('selected', true); // needed for IE
+    optionEl.attr('selected', true);
+  }
 }];
 
 /**
