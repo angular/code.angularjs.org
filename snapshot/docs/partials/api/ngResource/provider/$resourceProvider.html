@@ -85,7 +85,7 @@ The default actions are:<pre><code class="lang-js">{
 <p>For example, you can specify a new <code>update</code> action that uses the <code>PUT</code> HTTP verb:</p>
 <pre><code class="lang-js">angular.
   module(&#39;myApp&#39;).
-  config([&#39;resourceProvider&#39;, function ($resourceProvider) {
+  config([&#39;$resourceProvider&#39;, function ($resourceProvider) {
     $resourceProvider.defaults.actions.update = {
       method: &#39;PUT&#39;
     };
@@ -94,7 +94,7 @@ The default actions are:<pre><code class="lang-js">{
 <p>Or you can even overwrite the whole <code>actions</code> list and specify your own:</p>
 <pre><code class="lang-js">angular.
   module(&#39;myApp&#39;).
-  config([&#39;resourceProvider&#39;, function ($resourceProvider) {
+  config([&#39;$resourceProvider&#39;, function ($resourceProvider) {
     $resourceProvider.defaults.actions = {
       create: {method: &#39;POST&#39;}
       get:    {method: &#39;GET&#39;},
