@@ -118,7 +118,11 @@ On child elements add:</p>
 <ul>
 <li><code>ngSwitchWhen</code>: the case statement to match against. If match then this
 case will be displayed. If the same match appears multiple times, all the
-elements will be displayed.</li>
+elements will be displayed. It is possible to associate mutiple values to
+the same <code>ngSwitchWhen</code> by defining the optional attribute
+<code>ngSwitchWhenSeparator</code>. The separator will be used to split the value of
+the <code>ngSwitchWhen</code> attribute into multiple tokens, and the element will show
+if any of the <code>ngSwitch</code> evaluates to any of these tokens.</li>
 <li><code>ngSwitchDefault</code>: the default case when no other case match. If there
 are multiple default cases, all of them will be displayed when no other
 case match.</li>
@@ -153,14 +157,14 @@ case match.</li>
       name="index.html"
       language="html"
       type="html">
-      <pre><code>&lt;div ng-controller=&quot;ExampleController&quot;&gt;&#10;  &lt;select ng-model=&quot;selection&quot; ng-options=&quot;item for item in items&quot;&gt;&#10;  &lt;/select&gt;&#10;  &lt;code&gt;selection={{selection}}&lt;/code&gt;&#10;  &lt;hr/&gt;&#10;  &lt;div class=&quot;animate-switch-container&quot;&#10;    ng-switch on=&quot;selection&quot;&gt;&#10;      &lt;div class=&quot;animate-switch&quot; ng-switch-when=&quot;settings&quot;&gt;Settings Div&lt;/div&gt;&#10;      &lt;div class=&quot;animate-switch&quot; ng-switch-when=&quot;home&quot;&gt;Home Span&lt;/div&gt;&#10;      &lt;div class=&quot;animate-switch&quot; ng-switch-default&gt;default&lt;/div&gt;&#10;  &lt;/div&gt;&#10;&lt;/div&gt;</code></pre>
+      <pre><code>&lt;div ng-controller=&quot;ExampleController&quot;&gt;&#10;  &lt;select ng-model=&quot;selection&quot; ng-options=&quot;item for item in items&quot;&gt;&#10;  &lt;/select&gt;&#10;  &lt;code&gt;selection={{selection}}&lt;/code&gt;&#10;  &lt;hr/&gt;&#10;  &lt;div class=&quot;animate-switch-container&quot;&#10;    ng-switch on=&quot;selection&quot;&gt;&#10;      &lt;div class=&quot;animate-switch&quot; ng-switch-when=&quot;settings|options&quot; ng-switch-when-separator=&quot;|&quot;&gt;Settings Div&lt;/div&gt;&#10;      &lt;div class=&quot;animate-switch&quot; ng-switch-when=&quot;home&quot;&gt;Home Span&lt;/div&gt;&#10;      &lt;div class=&quot;animate-switch&quot; ng-switch-default&gt;default&lt;/div&gt;&#10;  &lt;/div&gt;&#10;&lt;/div&gt;</code></pre>
     </div>
   
     <div class="runnable-example-file" 
       name="script.js"
       language="js"
       type="js">
-      <pre><code>angular.module(&#39;switchExample&#39;, [&#39;ngAnimate&#39;])&#10;.controller(&#39;ExampleController&#39;, [&#39;$scope&#39;, function($scope) {&#10;  $scope.items = [&#39;settings&#39;, &#39;home&#39;, &#39;other&#39;];&#10;  $scope.selection = $scope.items[0];&#10;}]);</code></pre>
+      <pre><code>angular.module(&#39;switchExample&#39;, [&#39;ngAnimate&#39;])&#10;.controller(&#39;ExampleController&#39;, [&#39;$scope&#39;, function($scope) {&#10;  $scope.items = [&#39;settings&#39;, &#39;home&#39;, &#39;options&#39;, &#39;other&#39;];&#10;  $scope.selection = $scope.items[0];&#10;}]);</code></pre>
     </div>
   
     <div class="runnable-example-file" 
@@ -174,7 +178,7 @@ case match.</li>
       name="protractor.js"
       type="protractor"
       language="js">
-      <pre><code>var switchElem = element(by.css(&#39;[ng-switch]&#39;));&#10;var select = element(by.model(&#39;selection&#39;));&#10;&#10;it(&#39;should start in settings&#39;, function() {&#10;  expect(switchElem.getText()).toMatch(/Settings Div/);&#10;});&#10;it(&#39;should change to home&#39;, function() {&#10;  select.all(by.css(&#39;option&#39;)).get(1).click();&#10;  expect(switchElem.getText()).toMatch(/Home Span/);&#10;});&#10;it(&#39;should select default&#39;, function() {&#10;  select.all(by.css(&#39;option&#39;)).get(2).click();&#10;  expect(switchElem.getText()).toMatch(/default/);&#10;});</code></pre>
+      <pre><code>var switchElem = element(by.css(&#39;[ng-switch]&#39;));&#10;var select = element(by.model(&#39;selection&#39;));&#10;&#10;it(&#39;should start in settings&#39;, function() {&#10;  expect(switchElem.getText()).toMatch(/Settings Div/);&#10;});&#10;it(&#39;should change to home&#39;, function() {&#10;  select.all(by.css(&#39;option&#39;)).get(1).click();&#10;  expect(switchElem.getText()).toMatch(/Home Span/);&#10;});&#10;it(&#39;should change to settings via &quot;options&quot;&#39;, function() {&#10;  select.all(by.css(&#39;option&#39;)).get(2).click();&#10;  expect(switchElem.getText()).toMatch(/Settings Div/);&#10;});&#10;it(&#39;should select default&#39;, function() {&#10;  select.all(by.css(&#39;option&#39;)).get(3).click();&#10;  expect(switchElem.getText()).toMatch(/default/);&#10;});</code></pre>
     </div>
   
 
