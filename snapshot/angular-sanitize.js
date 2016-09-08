@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.9-build.5006+sha.e3a378e
+ * @license AngularJS v1.5.9-build.5007+sha.704123a
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -504,27 +504,26 @@ function $SanitizeProvider() {
    * @param node Root element to process
    */
   function stripCustomNsAttrs(node) {
-    if (node.nodeType === window.Node.ELEMENT_NODE) {
-      var attrs = node.attributes;
-      for (var i = 0, l = attrs.length; i < l; i++) {
-        var attrNode = attrs[i];
-        var attrName = attrNode.name.toLowerCase();
-        if (attrName === 'xmlns:ns1' || attrName.lastIndexOf('ns1:', 0) === 0) {
-          node.removeAttributeNode(attrNode);
-          i--;
-          l--;
+    while (node) {
+      if (node.nodeType === window.Node.ELEMENT_NODE) {
+        var attrs = node.attributes;
+        for (var i = 0, l = attrs.length; i < l; i++) {
+          var attrNode = attrs[i];
+          var attrName = attrNode.name.toLowerCase();
+          if (attrName === 'xmlns:ns1' || attrName.lastIndexOf('ns1:', 0) === 0) {
+            node.removeAttributeNode(attrNode);
+            i--;
+            l--;
+          }
         }
       }
-    }
 
-    var nextNode = node.firstChild;
-    if (nextNode) {
-      stripCustomNsAttrs(nextNode);
-    }
+      var nextNode = node.firstChild;
+      if (nextNode) {
+        stripCustomNsAttrs(nextNode);
+      }
 
-    nextNode = node.nextSibling;
-    if (nextNode) {
-      stripCustomNsAttrs(nextNode);
+      node = node.nextSibling;
     }
   }
 }

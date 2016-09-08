@@ -1,4 +1,4 @@
-<a href='https://github.com/angular/angular.js/edit/master/src/Angular.js?message=docs(ng)%3A%20describe%20your%20change...#L102' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/master/src/Angular.js?message=docs(ng)%3A%20describe%20your%20change...#L103' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 <h1>
@@ -652,9 +652,9 @@ which is created and exposed by this directive.</p>
       
       <tr>
         <td><a href="api/ng/directive/ngModelOptions">ngModelOptions</a></td>
-        <td><p>Allows tuning how model updates are done. Using <code>ngModelOptions</code> you can specify a custom list of
-events that will trigger a model update and/or a debouncing delay so that the actual update only
-takes place when a timer expires; this timer will be reset after another change takes place.</p>
+        <td><p>This directive allows you to modify the behaviour of ngModel and input directives within your
+application. You can specify an ngModelOptions directive on any element and the settings affect
+the ngModel and input directives on all descendent elements.</p>
 </td>
       </tr>
       
@@ -850,6 +850,13 @@ At the end of this page you can find a <a href="api/ng/type/ngModel.NgModelContr
       </tr>
       
       <tr>
+        <td><a href="api/ng/type/ModelOptions">ModelOptions</a></td>
+        <td><p>A container for the options set by the <a href="api/ng/directive/ngModelOptions"><code>ngModelOptions</code></a> directive
+and the <a href="api/ng/service/$modelOptions"><code>$modelOptions</code></a> service.</p>
+</td>
+      </tr>
+      
+      <tr>
         <td><a href="api/ng/type/select.SelectController">select.SelectController</a></td>
         <td><p>The controller for the <code>&lt;select&gt;</code> directive. This provides support for reading
 and writing the selected value(s) of the control and also coordinates dynamically
@@ -901,6 +908,13 @@ synchronously performs DOM updates and resolves the returned runner promise.</p>
         <td><a href="api/ng/provider/$controllerProvider">$controllerProvider</a></td>
         <td><p>The <a href="api/ng/service/$controller">$controller service</a> is used by Angular to create new
 controllers.</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><a href="api/ng/provider/$modelOptionsProvider">$modelOptionsProvider</a></td>
+        <td><p>Here, you can change the default settings from which <a href="api/ng/directive/ngModelOptions"><code>ngModelOptions</code></a>
+directives inherit.</p>
 </td>
       </tr>
       
@@ -1039,6 +1053,14 @@ can then be used to link <a href="api/ng/type/$rootScope.Scope"><code>scope</cod
       <tr>
         <td><a href="api/ng/service/$controller">$controller</a></td>
         <td><p><code>$controller</code> service is responsible for instantiating controllers.</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><a href="api/ng/service/$modelOptions">$modelOptions</a></td>
+        <td><p>This service provides the application wide default <a href="api/ng/type/ModelOptions"><code>ModelOptions</code></a> options that
+will be used by <a href="api/ng/directive/ngModel"><code>ngModel</code></a> directives if no <a href="api/ng/directive/ngModelOptions"><code>ngModelOptions</code></a> directive is
+specified.</p>
 </td>
       </tr>
       

@@ -28,6 +28,11 @@ angular.module('pagesData', [])
     "area": "error",
     "path": "error/$compile/baddir"
   },
+  "error/$compile/badrestrict": {
+    "name": "badrestrict",
+    "area": "error",
+    "path": "error/$compile/badrestrict"
+  },
   "error/$compile/ctreq": {
     "name": "ctreq",
     "area": "error",
@@ -47,6 +52,11 @@ angular.module('pagesData', [])
     "name": "multidir",
     "area": "error",
     "path": "error/$compile/multidir"
+  },
+  "error/$compile/multilink": {
+    "name": "multilink",
+    "area": "error",
+    "path": "error/$compile/multilink"
   },
   "error/$compile/noctrl": {
     "name": "noctrl",
@@ -1327,6 +1337,21 @@ angular.module('pagesData', [])
     "name": "ngModelOptions",
     "area": "api",
     "path": "api/ng/directive/ngModelOptions"
+  },
+  "api/ng/provider/$modelOptionsProvider": {
+    "name": "$modelOptionsProvider",
+    "area": "api",
+    "path": "api/ng/provider/$modelOptionsProvider"
+  },
+  "api/ng/service/$modelOptions": {
+    "name": "$modelOptions",
+    "area": "api",
+    "path": "api/ng/service/$modelOptions"
+  },
+  "api/ng/type/ModelOptions": {
+    "name": "ModelOptions",
+    "area": "api",
+    "path": "api/ng/type/ModelOptions"
   },
   "api/ng/directive/ngNonBindable": {
     "name": "ngNonBindable",

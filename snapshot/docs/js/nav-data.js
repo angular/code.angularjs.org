@@ -553,6 +553,11 @@ angular.module('navData', [])
             "type": "type"
           },
           {
+            "name": "ModelOptions",
+            "href": "api/ng/type/ModelOptions",
+            "type": "type"
+          },
+          {
             "name": "angular.Module",
             "href": "api/ng/type/angular.Module",
             "type": "type"
@@ -620,6 +625,11 @@ angular.module('navData', [])
           {
             "name": "$logProvider",
             "href": "api/ng/provider/$logProvider",
+            "type": "provider"
+          },
+          {
+            "name": "$modelOptionsProvider",
+            "href": "api/ng/provider/$modelOptionsProvider",
             "type": "provider"
           },
           {
@@ -750,6 +760,11 @@ angular.module('navData', [])
           {
             "name": "$log",
             "href": "api/ng/service/$log",
+            "type": "service"
+          },
+          {
+            "name": "$modelOptions",
+            "href": "api/ng/service/$modelOptions",
             "type": "service"
           },
           {
@@ -1422,6 +1437,11 @@ angular.module('navData', [])
             "type": "error"
           },
           {
+            "name": "badrestrict",
+            "href": "error/$compile/badrestrict",
+            "type": "error"
+          },
+          {
             "name": "ctreq",
             "href": "error/$compile/ctreq",
             "type": "error"
@@ -1439,6 +1459,11 @@ angular.module('navData', [])
           {
             "name": "multidir",
             "href": "error/$compile/multidir",
+            "type": "error"
+          },
+          {
+            "name": "multilink",
+            "href": "error/$compile/multilink",
             "type": "error"
           },
           {

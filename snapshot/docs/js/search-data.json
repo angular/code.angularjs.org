@@ -30,6 +30,12 @@
     "members": ""
   },
   {
+    "path": "error/$compile/badrestrict",
+    "titleWords": "badrestrict",
+    "keywords": "$compile badrestrict be characters directive eac error example following for html including invalid is javascript more must not occurs of one partials property restrict string the this valid when",
+    "members": ""
+  },
+  {
     "path": "error/$compile/ctreq",
     "titleWords": "ctreq",
     "keywords": "$compile an ancestor and as be but by can compiler comprehensive-directive-api controller ctreq current definition directive directive-definition-object dom element ensure error example expected form found from function html if in is its make missing my-directive myapp mydirective myform name ng ng-model ngmodel no not occurs of on option optionally or partials path prefix present process requested require required requires resolve return some specified specifies specify sure that the then there this to tries typo use used was when with you",
@@ -51,6 +57,12 @@
     "path": "error/$compile/multidir",
     "titleWords": "multidir",
     "keywords": "$compile an and applied are asking attempting causing collision configuration contention controller declared define directive directives dom element error example for html in include incompatible is isolated issue multidir multiple name occurs of on one option or partials processing publishing remove requesting resolve resource result same scenarios scope template templateurl the them this to transclusion under unsupported when which with would",
+    "members": ""
+  },
+  {
+    "path": "error/$compile/multilink",
+    "titleWords": "multilink",
+    "keywords": "$compile already an and as be been can clone cloning compiled element error example for function has however html if is it linked linker linking more multilink multiple not occurs ok once partials re-linked single then this times twice var when without",
     "members": ""
   },
   {
@@ -722,7 +734,7 @@
   {
     "path": "guide/external-resources",
     "titleWords": "External Resources",
-    "keywords": "add alex amazon amit an analytics and angular angularjs app application apps ari articles at auth authorization automation awesome backends background bacon be bennadel best binding book books bootstrap brad breezejs brombone brunoscopelliti by can christopher client-side cloud co codecademy codeschool coffeescriptlove collection com common communication complementary complete components contenteditable controllers cordova courses creativebloq dancancro dart darwin data dataflow deployment design developers developing development dietz directives django edge editor elements end endpoints enhance errors example external external-resources facebook factory file find firebase folks for framework frederik general gharat github go google green grid guide guides hand handling hiller htm html ie in integrate interceptor introductory io is jetbrains jquery js js-applications jspm karma kevinastone kozlowski kumar languages laravel larger learn learning lerner lessons libraries library list local localization logging lynda map maps material matthias md me minification minutes mobile modeling mongodb more mourafiq multilingual nehlsen net new ng-newsletter ninja no nosql notifications novanet novice of on one-way online onsite options or org other overview package panda partials party patel pawel pete platform pluralsight post practices principles project projects rails4 readthedocs reasons resources rest restful rich roberthorvick rocketeer routing running sandeep seo4ajax server-specific service services seshadri session should shyam sitepoint specific stack started starter starting storage strategy structure studio style styleguide support testing text that the this thoughtram to tool tools topics tutorial ui uk up use vanston video videos vs web webpack webstorm why wintellectnow with wordpress yearofmoo yeoman you youtube",
+    "keywords": "add alex amazon amit an analytics and angular angularjs app application apps ari articles at auth authorization automation awesome backends background bacon be bennadel best binding book books bootstrap brad breezejs brombone brunoscopelliti by can christopher client-side cloud co codecademy codeschool coffeescriptlove collection com common communication complementary complete components contenteditable controllers cordova courses creativebloq dancancro dart darwin data dataflow deployment design developers developing development dietz directives django edge editor elements end endpoints enhance errors example external external-resources facebook factory file find firebase folks for framework frederik general gharat github go google green grid guide guides hand handling hiller htm html ie in integrate interceptor introductory io is jetbrains jquery js js-applications jspm karma kevinastone kozlowski kumar languages laravel larger learn learning lerner lessons libraries library list local localization logging lynda map maps material matthias md me minification minutes mobile modeling mongodb more mourafiq multilingual nehlsen net new ng-newsletter ninja no nosql notifications novanet novice of on one-way online onsite options or org other overview package packtpub panda partials party patel pawel pete platform pluralsight post practices principles project projects rails4 readthedocs reasons resources rest restful rich roberthorvick rocketeer routing running sandeep seo4ajax server-specific service services seshadri session should shyam sitepoint specific stack started starter starting storage strategy structure studio style styleguide support testing text that the this thoughtram to tool tools topics tutorial ui uk up use vanston video videos vs web webpack webstorm why wintellectnow with wordpress yearofmoo yeoman you youtube",
     "members": ""
   },
   {
@@ -1203,7 +1215,7 @@
     "path": "api/ng/provider/$compileProvider",
     "titleWords": "$compileProvider",
     "keywords": "$compileprovider $inject api html module ng partials provider",
-    "members": "ahrefsanitizationwhitelist commentdirectivesenabled component cssclassdirectivesenabled debuginfoenabled directive imgsrcsanitizationwhitelist onchangesttl"
+    "members": "ahrefsanitizationwhitelist commentdirectivesenabled component cssclassdirectivesenabled debuginfoenabled directive imgsrcsanitizationwhitelist onchangesttl preassignbindingsenabled"
   },
   {
     "path": "api/ng/type/$compile.directive.Attributes",
@@ -1586,8 +1598,26 @@
   {
     "path": "api/ng/directive/ngModelOptions",
     "titleWords": "ngModelOptions modeloptions",
-    "keywords": "$rollbackviewvalue abbreviations access action actual after allowinvalid allows also an and another any api apply are as attribute be because becomes before behavior belonging bind blur boolean bound browser but button by called can canceled change changes clear contains continental control controllers correctly current custom date debounce debounced debouncing declared default defines delay delimited descendants determines did different directive displayed done each easiest east effect element empty enclosing escape event events example example-ngmodeloptions-directive-blur example-ngmodeloptions-directive-debounce example-ngmodeloptions-directive-getter-setter expires field fields focus focused following for form from functions general getter getters gettersetter given greenwich has have hours how html if immediate immediately important in indicates input inputs inside instance instead integer invoke is it its key keys last list loses make making matches means meridian method might milliseconds minutes model module name nature ng ng-model-options ngclick ngmodel ngmodelcontroller ngmodeloptions ngmodeloptionsdirective ngsubmit not note object occur of offset on one only options or order override partials pending place placed pressed published read reference related relevant reset scope sec set setting several should shows so space special specified specify specifying string submit submitted supplied sure synchronized take takes that the their there this time timer timezone to treat trigger triggers tuning type undefined under understands update updated updateon updates us use used using utc valid validate value values via view way when whether which while will with within you zone",
+    "keywords": "$modeloptions $rollbackviewvalue abbreviations access action actual affect after all allow allowinvalid allows also an ancestor and angular another any api application apply are as attribute be because becomes before behavior behaviour belonging bind blur boolean bound browser but button by called can canceled change changes clear connecting contain containing contains continental control controllers correctly current custom date debounce debounced debouncing default defines delay delimited descendent determines did different directive directives displayed dom each easiest east element elements empty enclosing escape evaluate evaluating even event events example example-ngmodeloptions-directive-blur example-ngmodeloptions-directive-debounce example-ngmodeloptions-directive-getter-setter expect expires expression field fields first focus focused following for form found fragment from function functions general getter getters gettersetter given greenwich has have hours how html if immediate immediately important in indicates inherit input inputs inside instance instead integer invalid invoke is it its itself js key keys last list loses make making matches means meridian method might milliseconds minutes model modify module name nature next ng ng-model-options ngclick ngmodel ngmodelcontroller ngmodeloptions ngmodeloptionsdirective ngsubmit no not note null object occur of offset on only options or order override partials particular pending place placed pressed properties property providing published rather read reference refers related relevant reset scope sec set setting settings several should shows so space special specified specify specifying still string submit submitted supplied sure synchronized take takes telling than that the their then there this time timer timezone timezones to traversing treat tree trigger triggering triggers true type undefined under understands up update updated updateon updates us use used using utc valid validate validation value values via view way when whether which while whose will with within you your zone",
     "members": ""
+  },
+  {
+    "path": "api/ng/provider/$modelOptionsProvider",
+    "titleWords": "$modelOptionsProvider",
+    "keywords": "$modeloptionsprovider api available can change default directive directives for from here html inherit list module ng ngmodeloptions of options partials provider see settings the which you",
+    "members": "defaultoptions"
+  },
+  {
+    "path": "api/ng/service/$modelOptions",
+    "titleWords": "$modelOptions",
+    "keywords": "$get $modeloptions api application be by default directive directives html if is modeloptions module ng ngmodel ngmodeloptions no options partials provides service specified that the this used wide will",
+    "members": ""
+  },
+  {
+    "path": "api/ng/type/ModelOptions",
+    "titleWords": "ModelOptions",
+    "keywords": "$modeloptions and api by container default_regexp directive for html modeloptions module ng ngmodeloptions options partials service set the type",
+    "members": "createchild getoption"
   },
   {
     "path": "api/ng/directive/ngNonBindable",

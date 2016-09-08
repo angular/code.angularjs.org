@@ -14,11 +14,10 @@
 <body ng-app="getterSetterExample">
   <div ng-controller="ExampleController">
   <form name="userForm">
-    <label>Name:
-      <input type="text" name="userName"
-             ng-model="user.name"
-             ng-model-options="{ getterSetter: true }" />
-    </label>
+    Name:
+    <input type="text" name="userName"
+           ng-model="user.name"
+           ng-model-options="{ getterSetter: true }" />
   </form>
   <pre>user.name = <span ng-bind="user.name()"></span></pre>
 </div>

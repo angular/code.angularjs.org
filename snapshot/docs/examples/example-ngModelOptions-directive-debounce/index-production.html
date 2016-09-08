@@ -14,13 +14,11 @@
 <body ng-app="optionsExample">
   <div ng-controller="ExampleController">
   <form name="userForm">
-    <label>Name:
-      <input type="text" name="userName"
-             ng-model="user.name"
-             ng-model-options="{ debounce: 1000 }" />
-    </label>
-    <button ng-click="userForm.userName.$rollbackViewValue(); user.name=''">Clear</button>
-    <br />
+    Name:
+    <input type="text" name="userName"
+           ng-model="user.name"
+           ng-model-options="{ debounce: 1000 }" />
+    <button ng-click="userForm.userName.$rollbackViewValue(); user.name=''">Clear</button><br />
   </form>
   <pre>user.name = <span ng-bind="user.name"></span></pre>
 </div>

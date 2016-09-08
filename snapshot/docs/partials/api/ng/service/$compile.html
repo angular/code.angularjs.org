@@ -615,7 +615,7 @@ then you must use this transclude function. When you call a transclude function 
 object that contains the compiled DOM, which is linked to the correct transclusion scope.</p>
 <p>When you call a transclusion function you can pass in a <strong>clone attach function</strong>. This function accepts
 two parameters, <code>function(clone, scope) { ... }</code>, where the <code>clone</code> is a fresh compiled copy of your transcluded
-content and the <code>scope</code> is the newly created transclusion scope, to which the clone is bound.</p>
+content and the <code>scope</code> is the newly created transclusion scope, which the clone will be linked to.</p>
 <div class="alert alert-info">
 <strong>Best Practice</strong>: Always provide a <code>cloneFn</code> (clone attach function) when you call a transclude function
 since you then get a fresh clone of the original DOM and also have access to the new transclusion scope.
