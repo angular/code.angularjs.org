@@ -49,33 +49,34 @@ the default values).</p>
 
 myModule.directive(&#39;directiveName&#39;, function factory(injectables) {
   var directiveDefinitionObject = {
-    priority: 0,
-    template: &#39;&lt;div&gt;&lt;/div&gt;&#39;, // or // function(tElement, tAttrs) { ... },
+    <a href="api/ng/service/$compile#-priority-">priority</a>: 0,
+    <a href="api/ng/service/$compile#-template-">template</a>: &#39;&lt;div&gt;&lt;/div&gt;&#39;, // or // function(tElement, tAttrs) { ... },
     // or
-    // templateUrl: &#39;directive.html&#39;, // or // function(tElement, tAttrs) { ... },
-    transclude: false,
-    restrict: &#39;A&#39;,
-    templateNamespace: &#39;html&#39;,
-    scope: false,
-    controller: function($scope, $element, $attrs, $transclude, otherInjectables) { ... },
-    controllerAs: &#39;stringIdentifier&#39;,
-    bindToController: false,
-    require: &#39;siblingDirectiveName&#39;, // or // [&#39;^parentDirectiveName&#39;, &#39;?optionalDirectiveName&#39;, &#39;?^optionalParent&#39;],
-    compile: function compile(tElement, tAttrs, transclude) {
+    // <a href="api/ng/service/$compile#-templateurl-">templateUrl</a>: &#39;directive.html&#39;, // or // function(tElement, tAttrs) { ... },
+    <a href="api/ng/service/$compile#-transclude-">transclude</a>: false,
+    <a href="api/ng/service/$compile#-restrict-">restrict</a>: &#39;A&#39;,
+    <a href="api/ng/service/$compile#-templatenamespace-">templateNamespace</a>: &#39;html&#39;,
+    <a href="api/ng/service/$compile#-scope-">scope</a>: false,
+    <a href="api/ng/service/$compile#-controller-">controller</a>: function($scope, $element, $attrs, $transclude, otherInjectables) { ... },
+    <a href="api/ng/service/$compile#-controlleras-">controllerAs</a>: &#39;stringIdentifier&#39;,
+    <a href="api/ng/service/$compile#-bindtocontroller-">bindToController</a>: false,
+    <a href="api/ng/service/$compile#-require-">require</a>: &#39;siblingDirectiveName&#39;, // or // [&#39;^parentDirectiveName&#39;, &#39;?optionalDirectiveName&#39;, &#39;?^optionalParent&#39;],
+    <a href="api/ng/service/$compile#-multielement-">multiElement</a>: false,
+    <a href="api/ng/service/$compile#-compile-">compile</a>: function compile(tElement, tAttrs, transclude) {
       return {
-        pre: function preLink(scope, iElement, iAttrs, controller) { ... },
-        post: function postLink(scope, iElement, iAttrs, controller) { ... }
+         <a href="api/ng/service/$compile#pre-linking-function">pre</a>: function preLink(scope, iElement, iAttrs, controller) { ... },
+         <a href="api/ng/service/$compile#post-linking-function">post</a>: function postLink(scope, iElement, iAttrs, controller) { ... }
       }
       // or
       // return function postLink( ... ) { ... }
     },
     // or
-    // link: {
-    //  pre: function preLink(scope, iElement, iAttrs, controller) { ... },
-    //  post: function postLink(scope, iElement, iAttrs, controller) { ... }
+    // <a href="api/ng/service/$compile#-link-">link</a>: {
+    //  <a href="api/ng/service/$compile#pre-linking-function">pre</a>: function preLink(scope, iElement, iAttrs, controller) { ... },
+    //  <a href="api/ng/service/$compile#post-linking-function">post</a>: function postLink(scope, iElement, iAttrs, controller) { ... }
     // }
     // or
-    // link: function postLink( ... ) { ... }
+    // <a href="api/ng/service/$compile#-link-">link</a>: function postLink( ... ) { ... }
   };
   return directiveDefinitionObject;
 });
@@ -210,7 +211,7 @@ arrays or objects can have a negative impact on your application performance)</p
 <h3 id="directive-definition-object">Directive Definition Object</h3>
 <p>The directive definition object provides instructions to the <a href="api/ng/service/$compile">compiler</a>. The attributes are:</p>
 <h4 id="-multielement-"><code>multiElement</code></h4>
-<p>When this property is set to true, the HTML compiler will collect DOM nodes between
+<p>When this property is set to true (default is <code>false</code>), the HTML compiler will collect DOM nodes between
 nodes with the attributes <code>directive-name-start</code> and <code>directive-name-end</code>, and group them
 together as the directive elements. It is recommended that this feature be used on directives
 which are not strictly behavioral (such as <a href="api/ng/directive/ngClick"><code>ngClick</code></a>), and which
