@@ -229,14 +229,14 @@ which will execute (any directives at the current priority will still execute
 as the order of execution on same <code>priority</code> is undefined). Note that expressions
 and other directives used in the directive&#39;s template will also be excluded from execution.</p>
 <h4 id="-scope-"><code>scope</code></h4>
-<p>The scope property can be <code>true</code>, an object or a falsy value:</p>
+<p>The scope property can be <code>false</code>, <code>true</code>, or an object:</p>
 <ul>
-<li><p><strong>falsy:</strong> No scope will be created for the directive. The directive will use its parent&#39;s scope.</p>
+<li><p><strong><code>false</code> (default):</strong> No scope will be created for the directive. The directive will use its
+parent&#39;s scope.</p>
 </li>
 <li><p><strong><code>true</code>:</strong> A new child scope that prototypically inherits from its parent will be created for
 the directive&#39;s element. If multiple directives on the same element request a new scope,
-only one new scope is created. The new scope rule does not apply for the root of the template
-since the root of the template always gets a new scope.</p>
+only one new scope is created.</p>
 </li>
 <li><p><strong><code>{...}</code> (an object hash):</strong> A new &quot;isolate&quot; scope is created for the directive&#39;s element. The
 &#39;isolate&#39; scope differs from normal scope in that it does not prototypically inherit from its parent
