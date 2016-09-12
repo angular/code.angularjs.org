@@ -31,17 +31,6 @@ configuration of the <code>$route</code> service.</p>
 
 
 
-<h2 id="known-issues">Known Issues</h2>
-<div class="known-issue">
-  <p>If <code>ngView</code> is contained in an asynchronously loaded template (e.g. in another
-            directive&#39;s templateUrl or in a template loaded using <code>ngInclude</code>), then you need to
-            make sure that <code>$route</code> is instantiated in time to capture the initial
-            <code>$locationChangeStart</code> event and load the appropriate view. One way to achieve this
-            is to have it as a dependency in a <code>.run</code> block:
-            <code>myModule.run([&#39;$route&#39;, function() {}]);</code></p>
-  
-</div>
-
 
 
 
