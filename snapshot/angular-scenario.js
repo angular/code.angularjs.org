@@ -10071,7 +10071,7 @@ return jQuery;
 } );
 
 /**
- * @license AngularJS v1.5.9-build.5020+sha.0784977
+ * @license AngularJS v1.5.9-build.5021+sha.21e4db9
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -10130,7 +10130,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.5.9-build.5020+sha.0784977/' +
+    message += '\nhttp://errors.angularjs.org/1.5.9-build.5021+sha.21e4db9/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -12628,7 +12628,7 @@ function toDebugString(obj) {
 var version = {
   // These placeholder strings will be replaced by grunt's `build` task.
   // They need to be double- or single-quoted.
-  full: '1.5.9-build.5020+sha.0784977',
+  full: '1.5.9-build.5021+sha.21e4db9',
   major: 1,
   minor: 5,
   dot: 9,
@@ -34427,7 +34427,7 @@ var inputType = {
             <hr>
             Model as number: <input type="number" ng-model="value"><br>
             Min: <input type="number" ng-model="min"><br>
-            Max: <input type="number" ng-model="min"><br>
+            Max: <input type="number" ng-model="max"><br>
             value = <code>{{value}}</code><br/>
             myForm.range.$valid = <code>{{myForm.range.$valid}}</code><br/>
             myForm.range.$error = <code>{{myForm.range.$error}}</code>
@@ -34453,7 +34453,7 @@ var inputType = {
             <hr>
             Model as number: <input type="number" ng-model="value"><br>
             Min: <input type="number" ng-model="min"><br>
-            Max: <input type="number" ng-model="min"><br>
+            Max: <input type="number" ng-model="max"><br>
             value = <code>{{value}}</code><br/>
             myForm.range.$valid = <code>{{myForm.range.$valid}}</code><br/>
             myForm.range.$error = <code>{{myForm.range.$error}}</code>
