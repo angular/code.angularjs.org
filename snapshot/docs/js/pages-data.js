@@ -268,41 +268,6 @@ angular.module('pagesData', [])
     "area": "error",
     "path": "error/$location/nostate"
   },
-  "error/$parse/isecaf": {
-    "name": "isecaf",
-    "area": "error",
-    "path": "error/$parse/isecaf"
-  },
-  "error/$parse/isecdom": {
-    "name": "isecdom",
-    "area": "error",
-    "path": "error/$parse/isecdom"
-  },
-  "error/$parse/isecff": {
-    "name": "isecff",
-    "area": "error",
-    "path": "error/$parse/isecff"
-  },
-  "error/$parse/isecfld": {
-    "name": "isecfld",
-    "area": "error",
-    "path": "error/$parse/isecfld"
-  },
-  "error/$parse/isecfn": {
-    "name": "isecfn",
-    "area": "error",
-    "path": "error/$parse/isecfn"
-  },
-  "error/$parse/isecobj": {
-    "name": "isecobj",
-    "area": "error",
-    "path": "error/$parse/isecobj"
-  },
-  "error/$parse/isecwindow": {
-    "name": "isecwindow",
-    "area": "error",
-    "path": "error/$parse/isecwindow"
-  },
   "error/$parse/lexerr": {
     "name": "lexerr",
     "area": "error",

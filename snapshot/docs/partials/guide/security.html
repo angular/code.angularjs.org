@@ -16,31 +16,56 @@ of upcoming security patches and other updates.</p>
 <p>Those that stray from Angular standards (such as modifying Angular&#39;s core) may have difficulty updating,
 so keeping to AngularJS standards is not just a functionality issue, it&#39;s also critical in order to
 facilitate rapid security updates.</p>
-<h2 id="expression-sandboxing">Expression Sandboxing</h2>
-<p>AngularJS&#39;s expressions are sandboxed not for security reasons, but instead to maintain a proper
-separation of application responsibilities. For example, access to <code>window</code> is disallowed
-because it makes it easy to introduce brittle global state into your application.</p>
-<p>However, this sandbox is not intended to stop attackers who can edit the template before it&#39;s
-processed by Angular. It may be possible to run arbitrary JavaScript inside double-curly bindings
-if an attacker can modify them.</p>
-<p>But if an attacker can change arbitrary HTML templates, there&#39;s nothing stopping them from doing:</p>
-<pre><code class="lang-html">&lt;script&gt;somethingEvil();&lt;/script&gt;
-</code></pre>
-<p><strong>It&#39;s better to design your application in such a way that users cannot change client-side templates.</strong></p>
-<p>For instance:</p>
+<h2 id="angular-templates-and-expressions">Angular Templates and Expressions</h2>
+<p><strong>If an attacker has access to control Angular templates or expressions, they can exploit an Angular application
+via an XSS attack, regardless of the version.</strong></p>
+<p>There are a number of ways that templates and expressions can be controlled:</p>
+<ul>
+<li><strong>Generating Angular templates on the server containing user-provided content</strong>. This is the most common pitfall
+where you are generating HTML via some server-side engine such as PHP, Java or ASP.NET.</li>
+<li><strong>Passing an expression generated from user-provided content in calls to the following methods on a <a href="guide/scope">scope</a></strong>:<ul>
+<li><code>$watch(userContent, ...)</code></li>
+<li><code>$watchGroup(userContent, ...)</code></li>
+<li><code>$watchCollection(userContent, ...)</code></li>
+<li><code>$eval(userContent)</code></li>
+<li><code>$evalAsync(userContent)</code></li>
+<li><code>$apply(userContent)</code></li>
+<li><code>$applyAsync(userContent)</code></li>
+</ul>
+</li>
+<li><strong>Passing an expression generated from user-provided content in calls to services that parse expressions</strong>:<ul>
+<li><code>$compile(userContent)</code></li>
+<li><code>$parse(userContent)</code></li>
+<li><code>$interpolate(userContent)</code></li>
+</ul>
+</li>
+<li><strong>Passing an expression generated from user provided content as a predicate to <code>orderBy</code> pipe</strong>:
+<code>{{ value | orderBy : userContent }}</code></li>
+</ul>
+<h3 id="sandbox-removal">Sandbox removal</h3>
+<p>Each version of Angular 1 up to, but not including 1.6, contained an expression sandbox, which reduced the surface area of
+the vulnerability but never removed it. <strong>In Angular 1.6 we removed this sandbox as developers kept relying upon it as a security
+feature even though it was always possible to access arbitrary JavaScript code if one could control the Angular templates
+or expressions of applications.</strong></p>
+<p>Control of the Angular templates makes applications vulnerable even if there was a completely secure sandbox:</p>
+<ul>
+<li><a href="https://ryhanson.com/stealing-session-tokens-on-plunker-with-an-angular-expression-injection/">https://ryhanson.com/stealing-session-tokens-on-plunker-with-an-angular-expression-injection/</a> in this blog post the author shows
+a (now closed) vulnerability in the Plunker application due to server-side rendering inside an Angular template.</li>
+<li><a href="https://ryhanson.com/angular-expression-injection-walkthrough/">https://ryhanson.com/angular-expression-injection-walkthrough/</a> in this blog post the author describes an attack, which does not
+rely upon an expression sandbox bypass, that can be made because the sample application is rendering a template on the server that
+contains user entered content.</li>
+</ul>
+<p><strong>It&#39;s best to design your application in such a way that users cannot change client-side templates.</strong></p>
 <ul>
 <li>Do not mix client and server templates</li>
 <li>Do not use user input to generate templates dynamically</li>
-<li>Do not run user input through <code>$scope.$eval</code></li>
+<li>Do not run user input through <code>$scope.$eval</code> (or any of the other expression parsing functions listed above)</li>
 <li>Consider using <a href="api/ng/directive/ngCsp">CSP</a> (but don&#39;t rely only on CSP)</li>
 </ul>
-<h3 id="mixing-client-side-and-server-side-templates">Mixing client-side and server-side templates</h3>
-<p>In general, we recommend against this because it can create unintended XSS vectors.</p>
-<p>However, it&#39;s ok to mix server-side templating in the bootstrap template (<code>index.html</code>) as long
-as user input cannot be used on the server to output html that would then be processed by Angular
-in a way that would allow for arbitrary code execution.</p>
-<p><strong>For instance, you can use server-side templating to dynamically generate CSS, URLs, etc, but not
-for generating templates that are bootstrapped/compiled by Angular.</strong></p>
+<p><strong>You can use suitably sanitized server-side templating to dynamically generate CSS, URLs, etc, but not for generating templates that are
+bootstrapped/compiled by Angular.</strong></p>
+<p><strong>If you must continue to allow user-provided content in an Angular template then the safest option is to ensure that it is only
+present in the part of the template that is made inert via the <a href="api/ng/directive/ngNonBindable"><code>ngNonBindable</code></a> directive.</strong></p>
 <h2 id="http-requests">HTTP Requests</h2>
 <p>Whenever your application makes requests to a server there are potential security issues that need
 to be blocked. Both server and the client must cooperate in order to eliminate these threats.

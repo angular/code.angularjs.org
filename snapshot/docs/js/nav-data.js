@@ -1707,41 +1707,6 @@ angular.module('navData', [])
             "type": "section"
           },
           {
-            "name": "isecaf",
-            "href": "error/$parse/isecaf",
-            "type": "error"
-          },
-          {
-            "name": "isecdom",
-            "href": "error/$parse/isecdom",
-            "type": "error"
-          },
-          {
-            "name": "isecff",
-            "href": "error/$parse/isecff",
-            "type": "error"
-          },
-          {
-            "name": "isecfld",
-            "href": "error/$parse/isecfld",
-            "type": "error"
-          },
-          {
-            "name": "isecfn",
-            "href": "error/$parse/isecfn",
-            "type": "error"
-          },
-          {
-            "name": "isecobj",
-            "href": "error/$parse/isecobj",
-            "type": "error"
-          },
-          {
-            "name": "isecwindow",
-            "href": "error/$parse/isecwindow",
-            "type": "error"
-          },
-          {
             "name": "lexerr",
             "href": "error/$parse/lexerr",
             "type": "error"
