@@ -1628,7 +1628,7 @@
   {
     "path": "api/ng/directive/ngTransclude",
     "titleWords": "ngTransclude transclude",
-    "keywords": "any api as at attribute basic be before by can case component contains content default demonstrates directive displayed dom eac element empty example example-multislottranscludeexample example-ng-transclude example-simpletranscludeexample existing fallback for how html if in including insert inserted insertion instead intact into is its left lets marks module more multi-slot name named nearest ng ng-transclude ng-transclude-slot ngtransclude ngtranscludeminerr no nodes not of one or parent partials point provide provided providing removed same shows slot specify text that the then this to transclude transcluded transclusion use used uses using value want whitespace will with you",
+    "keywords": "any api as at attribute basic be before by can case component contains content default demonstrates directive displayed dom eac element empty example example-multislottranscludeexample example-ng-transclude example-simpletranscludeexample existing fallback for how html if in including insert inserted insertion instead intact into is its left lets marks module more multi-slot name named nearest ng ng-transclude ng-transclude-slot ngtransclude ngtranscludeminerr no nodes not of one only or parent partials point provide provided providing removed same shows slot specify text that the then this to transclude transcluded transclusion use used uses using value want whitespace will with you",
     "members": ""
   },
   {
