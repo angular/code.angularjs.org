@@ -1477,11 +1477,6 @@ angular.module('navData', [])
             "type": "error"
           },
           {
-            "name": "noident",
-            "href": "error/$compile/noident",
-            "type": "error"
-          },
-          {
             "name": "nonassign",
             "href": "error/$compile/nonassign",
             "type": "error"

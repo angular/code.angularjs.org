@@ -68,11 +68,6 @@ angular.module('pagesData', [])
     "area": "error",
     "path": "error/$compile/nodomevents"
   },
-  "error/$compile/noident": {
-    "name": "noident",
-    "area": "error",
-    "path": "error/$compile/noident"
-  },
   "error/$compile/nonassign": {
     "name": "nonassign",
     "area": "error",
