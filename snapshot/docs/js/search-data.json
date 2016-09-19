@@ -1154,7 +1154,7 @@
   {
     "path": "api/ng/service/$templateCache",
     "titleWords": "$templateCache",
-    "keywords": "$cachefactory $rootelement $templatecache $templatecacheprovider adding angular api attribute be but by cache can consuming containing content descendent directly document does element first for get head html id ignored in included into is it javascript js later load loaded module must myapp need ng ng-app ng-include not of or otherwise partials put quick retrieval retrieve run script see service simply tag template templateid templates text the this time to type use used var via will with you your",
+    "keywords": "$cachefactory $rootelement $templatecache $templatecacheprovider adding angular api attribute be but by cache can component consuming containing content descendent directly document does element first for get head html id ignored in included into is it js later load loaded module must myapp mycomponent need ng ng-app not of or otherwise partials put quick retrieval retrieve run script see service simply tag template templateid templates text the this time to type use used var via will with you your",
     "members": ""
   },
   {

@@ -39,10 +39,12 @@ myApp.run(function($templateCache) {
   $templateCache.put(&#39;templateId.html&#39;, &#39;This is the content of the template&#39;);
 });
 </code></pre>
-<p>To retrieve the template later, simply use it in your HTML:</p>
-<pre><code class="lang-html">&lt;div ng-include=&quot; &#39;templateId.html&#39; &quot;&gt;&lt;/div&gt;
+<p>To retrieve the template later, simply use it in your component:</p>
+<pre><code class="lang-js">myApp.component(&#39;myComponent&#39;, {
+   template: &#39;templateId.html&#39;
+});
 </code></pre>
-<p>or get it via Javascript:</p>
+<p>or get it via $templateCache service:</p>
 <pre><code class="lang-js">$templateCache.get(&#39;templateId.html&#39;)
 </code></pre>
 <p>See <a href="api/ng/service/$cacheFactory">$cacheFactory</a>.</p>
