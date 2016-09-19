@@ -10071,7 +10071,7 @@ return jQuery;
 } );
 
 /**
- * @license AngularJS v1.5.9-build.5030+sha.bb8e955
+ * @license AngularJS v1.5.9-build.5031+sha.e1e2fe1
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -10130,7 +10130,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.5.9-build.5030+sha.bb8e955/' +
+    message += '\nhttp://errors.angularjs.org/1.5.9-build.5031+sha.e1e2fe1/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -12628,7 +12628,7 @@ function toDebugString(obj) {
 var version = {
   // These placeholder strings will be replaced by grunt's `build` task.
   // They need to be double- or single-quoted.
-  full: '1.5.9-build.5030+sha.bb8e955',
+  full: '1.5.9-build.5031+sha.e1e2fe1',
   major: 1,
   minor: 5,
   dot: 9,
@@ -16797,11 +16797,11 @@ function $CacheFactoryProvider() {
  * To retrieve the template later, simply use it in your component:
  * ```js
  * myApp.component('myComponent', {
- *    template: 'templateId.html'
+ *    templateUrl: 'templateId.html'
  * });
  * ```
  *
- * or get it via $templateCache service:
+ * or get it via the `$templateCache` service:
  * ```js
  * $templateCache.get('templateId.html')
  * ```

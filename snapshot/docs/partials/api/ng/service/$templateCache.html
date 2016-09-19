@@ -41,10 +41,10 @@ myApp.run(function($templateCache) {
 </code></pre>
 <p>To retrieve the template later, simply use it in your component:</p>
 <pre><code class="lang-js">myApp.component(&#39;myComponent&#39;, {
-   template: &#39;templateId.html&#39;
+   templateUrl: &#39;templateId.html&#39;
 });
 </code></pre>
-<p>or get it via $templateCache service:</p>
+<p>or get it via the <code>$templateCache</code> service:</p>
 <pre><code class="lang-js">$templateCache.get(&#39;templateId.html&#39;)
 </code></pre>
 <p>See <a href="api/ng/service/$cacheFactory">$cacheFactory</a>.</p>
