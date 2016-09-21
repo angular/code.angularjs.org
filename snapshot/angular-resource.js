@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.9-build.5033+sha.b59bc0b
+ * @license AngularJS v1.5.9-build.5034+sha.8d4d3d5
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -527,7 +527,10 @@ angular.module('ngResource', ['ng']).
           forEach = angular.forEach,
           extend = angular.extend,
           copy = angular.copy,
+          isArray = angular.isArray,
+          isDefined = angular.isDefined,
           isFunction = angular.isFunction,
+          isNumber = angular.isNumber,
           encodeUriQuery = angular.$$encodeUriQuery,
           encodeUriSegment = angular.$$encodeUriSegment;
 
@@ -566,7 +569,7 @@ angular.module('ngResource', ['ng']).
           params = params || {};
           forEach(self.urlParams, function(paramInfo, urlParam) {
             val = params.hasOwnProperty(urlParam) ? params[urlParam] : self.defaults[urlParam];
-            if (angular.isDefined(val) && val !== null) {
+            if (isDefined(val) && val !== null) {
               if (paramInfo.isQueryParamValue) {
                 encodedVal = encodeUriQuery(val, true);
               } else {
@@ -644,11 +647,10 @@ angular.module('ngResource', ['ng']).
         forEach(actions, function(action, name) {
           var hasBody = /^(POST|PUT|PATCH)$/i.test(action.method);
           var numericTimeout = action.timeout;
-          var cancellable = angular.isDefined(action.cancellable) ? action.cancellable :
-              (options && angular.isDefined(options.cancellable)) ? options.cancellable :
-              provider.defaults.cancellable;
+          var cancellable = isDefined(action.cancellable) ?
+              action.cancellable : route.defaults.cancellable;
 
-          if (numericTimeout && !angular.isNumber(numericTimeout)) {
+          if (numericTimeout && !isNumber(numericTimeout)) {
             $log.debug('ngResource:\n' +
                        '  Only numeric values are allowed as `timeout`.\n' +
                        '  Promises are not supported in $resource, because the same value would ' +
@@ -741,11 +743,11 @@ angular.module('ngResource', ['ng']).
 
               if (data) {
                 // Need to convert action.isArray to boolean in case it is undefined
-                if (angular.isArray(data) !== (!!action.isArray)) {
+                if (isArray(data) !== (!!action.isArray)) {
                   throw $resourceMinErr('badcfg',
                       'Error in resource configuration for action `{0}`. Expected response to ' +
                       'contain an {1} but got an {2} (Request: {3} {4})', name, action.isArray ? 'array' : 'object',
-                    angular.isArray(data) ? 'array' : 'object', httpConfig.method, httpConfig.url);
+                    isArray(data) ? 'array' : 'object', httpConfig.method, httpConfig.url);
                 }
                 if (action.isArray) {
                   value.length = 0;
@@ -773,7 +775,7 @@ angular.module('ngResource', ['ng']).
             promise = promise['finally'](function() {
               value.$resolved = true;
               if (!isInstanceCall && cancellable) {
-                value.$cancelRequest = angular.noop;
+                value.$cancelRequest = noop;
                 $timeout.cancel(numericTimeoutPromise);
                 timeoutDeferred = numericTimeoutPromise = httpConfig.timeout = null;
               }
@@ -830,7 +832,8 @@ angular.module('ngResource', ['ng']).
         });
 
         Resource.bind = function(additionalParamDefaults) {
-          return resourceFactory(url, extend({}, paramDefaults, additionalParamDefaults), actions);
+          var extendedParamDefaults = extend({}, paramDefaults, additionalParamDefaults);
+          return resourceFactory(url, extendedParamDefaults, actions, options);
         };
 
         return Resource;
