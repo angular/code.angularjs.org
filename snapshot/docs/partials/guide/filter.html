@@ -91,8 +91,9 @@ This factory function should return a new filter function which takes the input 
 as the first argument. Any filter arguments are passed in as additional arguments to the filter
 function.</p>
 <p>The filter function should be a <a href="http://en.wikipedia.org/wiki/Pure_function">pure function</a>, which
-means that it should be stateless and idempotent, and not rely for example on other Angular services.
-Angular relies on this contract and will by default execute a filter only when the inputs to the function change.
+means that it should always return the same result given the same input arguments and should not affect
+external state, for example, other Angular services. Angular relies on this contract and will by default
+execute a filter only when the inputs to the function change.
 <a href="guide/filter#stateful-filters">Stateful filters</a> are possible, but less performant.</p>
 <div class="alert alert-warning">
 <strong>Note:</strong> Filter names must be valid angular <a href="guide/expression"><code>Expressions</code></a> identifiers, such as <code>uppercase</code> or <code>orderBy</code>.
