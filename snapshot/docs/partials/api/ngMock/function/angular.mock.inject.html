@@ -34,7 +34,7 @@ to the <code>inject()</code> function would hide the outer variable.</p>
 <p>To help with this, the injected parameters can, optionally, be enclosed with underscores.
 These are ignored by the injector when the reference name is resolved.</p>
 <p>For example, the parameter <code>_myService_</code> would be resolved as the reference <code>myService</code>.
-Since it is available in the function body as <em>myService</em>, we can then assign it to a variable
+Since it is available in the function body as <code>_myService_</code>, we can then assign it to a variable
 defined in an outer scope.</p>
 <pre><code>// Defined out reference variable outside
 var myService;

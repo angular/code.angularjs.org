@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.9-build.5040+sha.723d64d
+ * @license AngularJS v1.5.9-build.5041+sha.ddb4ef1
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -3015,7 +3015,7 @@ angular.mock.$RootScopeDecorator = ['$delegate', function($delegate) {
    * These are ignored by the injector when the reference name is resolved.
    *
    * For example, the parameter `_myService_` would be resolved as the reference `myService`.
-   * Since it is available in the function body as _myService_, we can then assign it to a variable
+   * Since it is available in the function body as `_myService_`, we can then assign it to a variable
    * defined in an outer scope.
    *
    * ```
