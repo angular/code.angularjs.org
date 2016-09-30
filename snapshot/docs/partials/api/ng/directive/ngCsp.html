@@ -106,13 +106,8 @@ E.g.<code>&lt;body ng-csp=&quot;no-inline-style;no-unsafe-eval&quot;&gt;</code><
   <div class="usage">
   
     <ul>
-    
-      <li>as element:
-      (This directive can be used as custom element, but be aware of <a href="guide/ie">IE restrictions</a>).
-      <pre><code>&lt;ng-csp&gt;&#10;...&#10;&lt;/ng-csp&gt;</code></pre>
-      </li>
     <li>as attribute:
-        <pre><code>&lt;html&gt;&#10;...&#10;&lt;/html&gt;</code></pre>
+        <pre><code>&lt;ANY&gt;&#10;...&#10;&lt;/ANY&gt;</code></pre>
       </li>
     
   </div>
@@ -128,9 +123,8 @@ E.g.<code>&lt;body ng-csp=&quot;no-inline-style;no-unsafe-eval&quot;&gt;</code><
 ...
 &lt;/html&gt;
 </code></pre>
-<p>// Note: the suffix <code>.csp</code> in the example name triggers
-      // csp mode in our http server!
-      
+<!-- Note: the `.csp` suffix in the example name triggers CSP mode in our http server! -->
+<pre><code>
 
 <div>
   <plnkr-opener example-path="examples/example-example.csp"></plnkr-opener>
@@ -169,7 +163,8 @@ E.g.<code>&lt;body ng-csp=&quot;no-inline-style;no-unsafe-eval&quot;&gt;</code><
 </div>
 
 
-</p>
+
+</code></pre>
 
 </div>
 
