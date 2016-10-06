@@ -113,15 +113,15 @@ angular.module('pagesData', [])
     "area": "error",
     "path": "error/$controller/noscp"
   },
+  "error/$http/badjsonp": {
+    "name": "badjsonp",
+    "area": "error",
+    "path": "error/$http/badjsonp"
+  },
   "error/$http/badreq": {
     "name": "badreq",
     "area": "error",
     "path": "error/$http/badreq"
-  },
-  "error/$http/legacy": {
-    "name": "legacy",
-    "area": "error",
-    "path": "error/$http/legacy"
   },
   "error/$injector/cdep": {
     "name": "cdep",

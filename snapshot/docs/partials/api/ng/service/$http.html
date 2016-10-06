@@ -1,8 +1,8 @@
-<a href='https://github.com/angular/angular.js/edit/master/src/ng/http.js?message=docs($http)%3A%20describe%20your%20change...#L405' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/master/src/ng/http.js?message=docs($http)%3A%20describe%20your%20change...#L382' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 
-<a href='https://github.com/angular/angular.js/tree/master/src/ng/http.js#L405' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/master/src/ng/http.js#L382' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -89,14 +89,6 @@ request using trained responses.</p>
 $http.get(...);
 $httpBackend.flush();
 </code></pre>
-<h2 id="deprecation-notice">Deprecation Notice</h2>
-<div class="alert alert-danger">
-  The <code>$http</code> legacy promise methods <code>success</code> and <code>error</code> have been deprecated.
-  Use the standard <code>then</code> method instead.
-  If <a href="api/ng/provider/$httpProvider#useLegacyPromiseExtensions"><code>$httpProvider.useLegacyPromiseExtensions</code></a> is set to
-  <code>false</code> then these methods will throw <a href="error/$http/legacy"><code>$http/legacy</code></a> error.
-</div>
-
 <h2 id="setting-http-headers">Setting HTTP Headers</h2>
 <p>The $http service will automatically add certain HTTP headers to all requests. These defaults
 can be fully configured by accessing the <code>$httpProvider.defaults.headers</code> configuration
@@ -398,7 +390,8 @@ same domain or subdomain, we recommend that each application uses unique cookie 
    processed. The object has following properties:</p>
 <ul>
 <li><strong>method</strong> – <code>{string}</code> – HTTP method (e.g. &#39;GET&#39;, &#39;POST&#39;, etc)</li>
-<li><strong>url</strong> – <code>{string}</code> – Absolute or relative URL of the resource that is being requested.</li>
+<li><strong>url</strong> – <code>{string|TrustedObject}</code> – Absolute or relative URL of the resource that is being requested;
+or an object created by a call to <code>$sce.trustAsResourceUrl(url)</code>.</li>
 <li><strong>params</strong> – <code>{Object.&lt;string|Object&gt;}</code> – Map of strings or objects which will be serialized
 with the <code>paramSerializer</code> and appended as GET parameters.</li>
 <li><strong>data</strong> – <code>{string|Object}</code> – Data to be sent as the request message data.</li>
@@ -491,10 +484,11 @@ for more information.</li>
         
       </td>
       <td>
-        <a href="" class="label type-hint type-hint-string">string</a>
+        <a href="" class="label type-hint type-hint-string">string</a><a href="" class="label type-hint type-hint-trustedobject">TrustedObject</a>
       </td>
       <td>
-        <p>Relative or absolute URL specifying the destination of the request</p>
+        <p>Absolute or relative URL of the resource that is being requested;
+                                  or an object created by a call to <code>$sce.trustAsResourceUrl(url)</code>.</p>
 
         
       </td>
@@ -563,10 +557,11 @@ for more information.</li>
         
       </td>
       <td>
-        <a href="" class="label type-hint type-hint-string">string</a>
+        <a href="" class="label type-hint type-hint-string">string</a><a href="" class="label type-hint type-hint-trustedobject">TrustedObject</a>
       </td>
       <td>
-        <p>Relative or absolute URL specifying the destination of the request</p>
+        <p>Absolute or relative URL of the resource that is being requested;
+                                  or an object created by a call to <code>$sce.trustAsResourceUrl(url)</code>.</p>
 
         
       </td>
@@ -635,10 +630,11 @@ for more information.</li>
         
       </td>
       <td>
-        <a href="" class="label type-hint type-hint-string">string</a>
+        <a href="" class="label type-hint type-hint-string">string</a><a href="" class="label type-hint type-hint-trustedobject">TrustedObject</a>
       </td>
       <td>
-        <p>Relative or absolute URL specifying the destination of the request</p>
+        <p>Absolute or relative URL of the resource that is being requested;
+                                  or an object created by a call to <code>$sce.trustAsResourceUrl(url)</code>.</p>
 
         
       </td>
@@ -684,8 +680,25 @@ for more information.</li>
     <h3><p><code>jsonp(url, [config]);</code></p>
 
 </h3>
-    <div><p>Shortcut method to perform <code>JSONP</code> request.
-If you would like to customize where and how the callbacks are stored then try overriding
+    <div><p>Shortcut method to perform <code>JSONP</code> request.</p>
+<p>Note that, since JSONP requests are sensitive because the response is given full access to the browser,
+the url must be declared, via <a href="api/ng/service/$sce"><code>$sce</code></a> as a trusted resource URL.
+You can trust a URL by adding it to the whitelist via
+<a href="api/ng/provider/$sceDelegateProvider#resourceUrlWhitelist"><code>$sceDelegateProvider.resourceUrlWhitelist</code></a> or
+by explicitly trusting the URL via <a href="api/ng/service/$sce#trustAsResourceUrl"><code>$sce.trustAsResourceUrl(url)</code></a>.</p>
+<p>JSONP requests must specify a callback to be used in the response from the server. This callback
+is passed as a query parameter in the request. You must specify the name of this parameter by
+setting the <code>jsonpCallbackParam</code> property on the request config object.</p>
+<pre><code>$http.jsonp(&#39;some/trusted/url&#39;, {jsonpCallbackParam: &#39;callback&#39;})
+</code></pre>
+<p>You can also specify a default callback parameter name in <code>$http.defaults.jsonpCallbackParam</code>.
+Initially this is set to <code>&#39;callback&#39;</code>.</p>
+<div class="alert alert-danger">
+You can no longer use the <code>JSON_CALLBACK</code> string as a placeholder for specifying where the callback
+parameter value should go.
+</div>
+
+<p>If you would like to customise where and how the callbacks are stored then try overriding
 or decorating the <a href="api/ng/service/$jsonpCallbacks"><code>$jsonpCallbacks</code></a> service.</p>
 </div>
 
@@ -709,11 +722,11 @@ or decorating the <a href="api/ng/service/$jsonpCallbacks"><code>$jsonpCallbacks
         
       </td>
       <td>
-        <a href="" class="label type-hint type-hint-string">string</a>
+        <a href="" class="label type-hint type-hint-string">string</a><a href="" class="label type-hint type-hint-trustedobject">TrustedObject</a>
       </td>
       <td>
-        <p>Relative or absolute URL specifying the destination of the request.
-                    The name of the callback should be the string <code>JSON_CALLBACK</code>.</p>
+        <p>Absolute or relative URL of the resource that is being requested;
+                                  or an object created by a call to <code>$sce.trustAsResourceUrl(url)</code>.</p>
 
         
       </td>
@@ -1067,14 +1080,14 @@ default headers, withCredentials as well as request and response transformations
       name="index.html"
       language="html"
       type="html">
-      <pre><code>&lt;div ng-controller=&quot;FetchController&quot;&gt;&#10;  &lt;select ng-model=&quot;method&quot; aria-label=&quot;Request method&quot;&gt;&#10;    &lt;option&gt;GET&lt;/option&gt;&#10;    &lt;option&gt;JSONP&lt;/option&gt;&#10;  &lt;/select&gt;&#10;  &lt;input type=&quot;text&quot; ng-model=&quot;url&quot; size=&quot;80&quot; aria-label=&quot;URL&quot; /&gt;&#10;  &lt;button id=&quot;fetchbtn&quot; ng-click=&quot;fetch()&quot;&gt;fetch&lt;/button&gt;&lt;br&gt;&#10;  &lt;button id=&quot;samplegetbtn&quot; ng-click=&quot;updateModel(&#39;GET&#39;, &#39;http-hello.html&#39;)&quot;&gt;Sample GET&lt;/button&gt;&#10;  &lt;button id=&quot;samplejsonpbtn&quot;&#10;    ng-click=&quot;updateModel(&#39;JSONP&#39;,&#10;                  &#39;https://angularjs.org/greet.php?callback=JSON_CALLBACK&amp;name=Super%20Hero&#39;)&quot;&gt;&#10;    Sample JSONP&#10;  &lt;/button&gt;&#10;  &lt;button id=&quot;invalidjsonpbtn&quot;&#10;    ng-click=&quot;updateModel(&#39;JSONP&#39;, &#39;https://angularjs.org/doesntexist&amp;callback=JSON_CALLBACK&#39;)&quot;&gt;&#10;      Invalid JSONP&#10;    &lt;/button&gt;&#10;  &lt;pre&gt;http status code: {{status}}&lt;/pre&gt;&#10;  &lt;pre&gt;http response data: {{data}}&lt;/pre&gt;&#10;&lt;/div&gt;</code></pre>
+      <pre><code>&lt;div ng-controller=&quot;FetchController&quot;&gt;&#10;  &lt;select ng-model=&quot;method&quot; aria-label=&quot;Request method&quot;&gt;&#10;    &lt;option&gt;GET&lt;/option&gt;&#10;    &lt;option&gt;JSONP&lt;/option&gt;&#10;  &lt;/select&gt;&#10;  &lt;input type=&quot;text&quot; ng-model=&quot;url&quot; size=&quot;80&quot; aria-label=&quot;URL&quot; /&gt;&#10;  &lt;button id=&quot;fetchbtn&quot; ng-click=&quot;fetch()&quot;&gt;fetch&lt;/button&gt;&lt;br&gt;&#10;  &lt;button id=&quot;samplegetbtn&quot; ng-click=&quot;updateModel(&#39;GET&#39;, &#39;http-hello.html&#39;)&quot;&gt;Sample GET&lt;/button&gt;&#10;  &lt;button id=&quot;samplejsonpbtn&quot;&#10;    ng-click=&quot;updateModel(&#39;JSONP&#39;,&#10;                  &#39;https://angularjs.org/greet.php?name=Super%20Hero&#39;)&quot;&gt;&#10;    Sample JSONP&#10;  &lt;/button&gt;&#10;  &lt;button id=&quot;invalidjsonpbtn&quot;&#10;    ng-click=&quot;updateModel(&#39;JSONP&#39;, &#39;https://angularjs.org/doesntexist&#39;)&quot;&gt;&#10;      Invalid JSONP&#10;    &lt;/button&gt;&#10;  &lt;pre&gt;http status code: {{status}}&lt;/pre&gt;&#10;  &lt;pre&gt;http response data: {{data}}&lt;/pre&gt;&#10;&lt;/div&gt;</code></pre>
     </div>
   
     <div class="runnable-example-file" 
       name="script.js"
       language="js"
       type="js">
-      <pre><code>angular.module(&#39;httpExample&#39;, [])&#10;.controller(&#39;FetchController&#39;, [&#39;$scope&#39;, &#39;$http&#39;, &#39;$templateCache&#39;,&#10;  function($scope, $http, $templateCache) {&#10;    $scope.method = &#39;GET&#39;;&#10;    $scope.url = &#39;http-hello.html&#39;;&#10;&#10;    $scope.fetch = function() {&#10;      $scope.code = null;&#10;      $scope.response = null;&#10;&#10;      $http({method: $scope.method, url: $scope.url, cache: $templateCache}).&#10;        then(function(response) {&#10;          $scope.status = response.status;&#10;          $scope.data = response.data;&#10;        }, function(response) {&#10;          $scope.data = response.data || &#39;Request failed&#39;;&#10;          $scope.status = response.status;&#10;      });&#10;    };&#10;&#10;    $scope.updateModel = function(method, url) {&#10;      $scope.method = method;&#10;      $scope.url = url;&#10;    };&#10;  }]);</code></pre>
+      <pre><code>angular.module(&#39;httpExample&#39;, [])&#10;.config([&#39;$sceDelegateProvider&#39;, function($sceDelegateProvider) {&#10;  // We must whitelist the JSONP endpoint that we are using to show that we trust it&#10;  $sceDelegateProvider.resourceUrlWhitelist([&#10;    &#39;self&#39;,&#10;    &#39;https://angularjs.org/**&#39;&#10;  ]);&#10;}])&#10;.controller(&#39;FetchController&#39;, [&#39;$scope&#39;, &#39;$http&#39;, &#39;$templateCache&#39;,&#10;  function($scope, $http, $templateCache) {&#10;    $scope.method = &#39;GET&#39;;&#10;    $scope.url = &#39;http-hello.html&#39;;&#10;&#10;    $scope.fetch = function() {&#10;      $scope.code = null;&#10;      $scope.response = null;&#10;&#10;      $http({method: $scope.method, url: $scope.url, cache: $templateCache}).&#10;        then(function(response) {&#10;          $scope.status = response.status;&#10;          $scope.data = response.data;&#10;        }, function(response) {&#10;          $scope.data = response.data || &#39;Request failed&#39;;&#10;          $scope.status = response.status;&#10;      });&#10;    };&#10;&#10;    $scope.updateModel = function(method, url) {&#10;      $scope.method = method;&#10;      $scope.url = url;&#10;    };&#10;  }]);</code></pre>
     </div>
   
     <div class="runnable-example-file" 

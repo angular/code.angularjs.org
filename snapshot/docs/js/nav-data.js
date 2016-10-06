@@ -1532,13 +1532,13 @@ angular.module('navData', [])
             "type": "section"
           },
           {
-            "name": "badreq",
-            "href": "error/$http/badreq",
+            "name": "badjsonp",
+            "href": "error/$http/badjsonp",
             "type": "error"
           },
           {
-            "name": "legacy",
-            "href": "error/$http/legacy",
+            "name": "badreq",
+            "href": "error/$http/badreq",
             "type": "error"
           },
           {
