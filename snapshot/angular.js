@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.9-build.5057+sha.8d394de
+ * @license AngularJS v1.5.9-build.5058+sha.606ea5d
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -57,7 +57,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.5.9-build.5057+sha.8d394de/' +
+    message += '\nhttp://errors.angularjs.org/1.5.9-build.5058+sha.606ea5d/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -2555,7 +2555,7 @@ function toDebugString(obj) {
 var version = {
   // These placeholder strings will be replaced by grunt's `build` task.
   // They need to be double- or single-quoted.
-  full: '1.5.9-build.5057+sha.8d394de',
+  full: '1.5.9-build.5058+sha.606ea5d',
   major: 1,
   minor: 5,
   dot: 9,
@@ -8858,13 +8858,17 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
       var nodeType = node.nodeType,
           attrsMap = attrs.$attr,
           match,
+          nodeName,
           className;
 
       switch (nodeType) {
         case NODE_TYPE_ELEMENT: /* Element */
+
+          nodeName = nodeName_(node);
+
           // use the node name: <directive>
           addDirective(directives,
-              directiveNormalize(nodeName_(node)), 'E', maxPriority, ignoreDirective);
+              directiveNormalize(nodeName), 'E', maxPriority, ignoreDirective);
 
           // iterate over the attributes
           for (var attr, name, nName, ngAttrName, value, isNgAttr, nAttrs = node.attributes,
@@ -8904,6 +8908,12 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
             addAttrInterpolateDirective(node, directives, value, nName, isNgAttr);
             addDirective(directives, nName, 'A', maxPriority, ignoreDirective, attrStartName,
                           attrEndName);
+          }
+
+          if (nodeName === 'input' && node.getAttribute('type') === 'hidden') {
+            // Hidden input elements can have strange behaviour when navigating back to the page
+            // This tells the browser not to try to cache and reinstate previous values
+            node.setAttribute('autocomplete', 'off');
           }
 
           // use class as directive
@@ -25138,16 +25148,13 @@ var inputDirective = ['$browser', '$sniffer', '$filter', '$parse',
   return {
     restrict: 'E',
     require: ['?ngModel'],
-    compile: function(tElement, tAttr) {
-      if (lowercase(tAttr.type) === 'hidden') tAttr.$set('autocomplete', 'off');
-      return {
-        pre: function(scope, element, attr, ctrls) {
-          if (ctrls[0]) {
-            (inputType[lowercase(attr.type)] || inputType.text)(scope, element, attr, ctrls[0], $sniffer,
-                                                                $browser, $filter, $parse);
-          }
+    link: {
+      pre: function(scope, element, attr, ctrls) {
+        if (ctrls[0]) {
+          (inputType[lowercase(attr.type)] || inputType.text)(scope, element, attr, ctrls[0], $sniffer,
+                                                              $browser, $filter, $parse);
         }
-      };
+      }
     }
   };
 }];
