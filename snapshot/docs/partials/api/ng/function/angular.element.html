@@ -44,7 +44,7 @@ or <code>$document.find()</code>, or use the standard DOM APIs, e.g. <code>docum
 <li><a href="http://api.jquery.com/after/"><code>after()</code></a></li>
 <li><a href="http://api.jquery.com/append/"><code>append()</code></a></li>
 <li><a href="http://api.jquery.com/attr/"><code>attr()</code></a> - Does not support functions as parameters</li>
-<li><a href="http://api.jquery.com/bind/"><code>bind()</code></a> (<em>deprecated</em> - to be removed in 1.7.0, use <a href="http://api.jquery.com/on/"><code>on()</code></a>) - Does not support namespaces, selectors or eventData</li>
+<li><a href="http://api.jquery.com/bind/"><code>bind()</code></a> (<em>deprecated</em>, use <a href="http://api.jquery.com/on/"><code>on()</code></a>) - Does not support namespaces, selectors or eventData</li>
 <li><a href="http://api.jquery.com/children/"><code>children()</code></a> - Does not support selectors</li>
 <li><a href="http://api.jquery.com/clone/"><code>clone()</code></a></li>
 <li><a href="http://api.jquery.com/contents/"><code>contents()</code></a></li>
@@ -64,7 +64,7 @@ As a setter, does not convert numbers to strings or append &#39;px&#39;, and als
 <li><a href="http://api.jquery.com/parent/"><code>parent()</code></a> - Does not support selectors</li>
 <li><a href="http://api.jquery.com/prepend/"><code>prepend()</code></a></li>
 <li><a href="http://api.jquery.com/prop/"><code>prop()</code></a></li>
-<li><a href="http://api.jquery.com/ready/"><code>ready()</code></a></li>
+<li><a href="http://api.jquery.com/ready/"><code>ready()</code></a> (<em>deprecated</em>, use <code>angular.element(callback)</code> instead of <code>angular.element(document).ready(callback)</code>)</li>
 <li><a href="http://api.jquery.com/remove/"><code>remove()</code></a></li>
 <li><a href="http://api.jquery.com/removeAttr/"><code>removeAttr()</code></a> - Does not support multiple attributes</li>
 <li><a href="http://api.jquery.com/removeClass/"><code>removeClass()</code></a> - Does not support a function as first argument</li>
@@ -73,7 +73,7 @@ As a setter, does not convert numbers to strings or append &#39;px&#39;, and als
 <li><a href="http://api.jquery.com/text/"><code>text()</code></a></li>
 <li><a href="http://api.jquery.com/toggleClass/"><code>toggleClass()</code></a> - Does not support a function as first argument</li>
 <li><a href="http://api.jquery.com/triggerHandler/"><code>triggerHandler()</code></a> - Passes a dummy event object to handlers</li>
-<li><a href="http://api.jquery.com/unbind/"><code>unbind()</code></a> (<em>deprecated</em> - to be removed in 1.7.0, use <a href="http://api.jquery.com/off/"><code>off()</code></a>) - Does not support namespaces or event object as parameter</li>
+<li><a href="http://api.jquery.com/unbind/"><code>unbind()</code></a> (<em>deprecated</em>, use <a href="http://api.jquery.com/off/"><code>off()</code></a>) - Does not support namespaces or event object as parameter</li>
 <li><a href="http://api.jquery.com/val/"><code>val()</code></a></li>
 <li><a href="http://api.jquery.com/wrap/"><code>wrap()</code></a></li>
 </ul>
