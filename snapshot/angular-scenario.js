@@ -10071,7 +10071,7 @@ return jQuery;
 } );
 
 /**
- * @license AngularJS v1.5.9-build.5058+sha.606ea5d
+ * @license AngularJS v1.5.9-build.5059+sha.4f44e01
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -10130,7 +10130,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.5.9-build.5058+sha.606ea5d/' +
+    message += '\nhttp://errors.angularjs.org/1.5.9-build.5059+sha.4f44e01/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -12628,7 +12628,7 @@ function toDebugString(obj) {
 var version = {
   // These placeholder strings will be replaced by grunt's `build` task.
   // They need to be double- or single-quoted.
-  full: '1.5.9-build.5058+sha.606ea5d',
+  full: '1.5.9-build.5059+sha.4f44e01',
   major: 1,
   minor: 5,
   dot: 9,
@@ -25241,7 +25241,7 @@ ASTCompiler.prototype = {
           self.if_(self.stage === 'inputs' || 's', function() {
             if (create && create !== 1) {
               self.if_(
-                self.not(self.nonComputedMember('s', ast.name)),
+                self.isNull(self.nonComputedMember('s', ast.name)),
                 self.lazyAssign(self.nonComputedMember('s', ast.name), '{}'));
             }
             self.assign(intoId, self.nonComputedMember('s', ast.name));
@@ -25270,7 +25270,7 @@ ASTCompiler.prototype = {
             }
           } else {
             if (create && create !== 1) {
-              self.if_(self.not(self.nonComputedMember(left, ast.property.name)), self.lazyAssign(self.nonComputedMember(left, ast.property.name), '{}'));
+              self.if_(self.isNull(self.nonComputedMember(left, ast.property.name)), self.lazyAssign(self.nonComputedMember(left, ast.property.name), '{}'));
             }
             expression = self.nonComputedMember(left, ast.property.name);
             self.assign(intoId, expression);
@@ -25450,6 +25450,10 @@ ASTCompiler.prototype = {
 
   not: function(expression) {
     return '!(' + expression + ')';
+  },
+
+  isNull: function(expression) {
+    return expression + '==null';
   },
 
   notNull: function(expression) {
@@ -25843,7 +25847,7 @@ ASTInterpreter.prototype = {
   identifier: function(name, context, create, expression) {
     return function(scope, locals, assign, inputs) {
       var base = locals && (name in locals) ? locals : scope;
-      if (create && create !== 1 && base && !(base[name])) {
+      if (create && create !== 1 && base && base[name] == null) {
         base[name] = {};
       }
       var value = base ? base[name] : undefined;
@@ -25880,7 +25884,7 @@ ASTInterpreter.prototype = {
     return function(scope, locals, assign, inputs) {
       var lhs = left(scope, locals, assign, inputs);
       if (create && create !== 1) {
-        if (lhs && !(lhs[right])) {
+        if (lhs && lhs[right] == null) {
           lhs[right] = {};
         }
       }
