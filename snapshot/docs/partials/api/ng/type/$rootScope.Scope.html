@@ -401,8 +401,8 @@ expect(scope.foodCounter).toEqual(1);
     <div><p>A variant of <a href="api/ng/type/$rootScope.Scope#$watch">$watch()</a> where it watches an array of <code>watchExpressions</code>.
 If any one expression in the collection changes the <code>listener</code> is executed.</p>
 <ul>
-<li>The items in the <code>watchExpressions</code> array are observed via standard $watch operation and are examined on every
-call to $digest() to see if any items changes.</li>
+<li>The items in the <code>watchExpressions</code> array are observed via the standard <code>$watch</code> operation. Their return
+values are examined for changes on every call to <code>$digest</code>.</li>
 <li>The <code>listener</code> is called whenever any expression in the <code>watchExpressions</code> array changes.</li>
 </ul>
 </div>
