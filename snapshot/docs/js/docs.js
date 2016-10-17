@@ -98,6 +98,11 @@ angular.module('DocsController', [])
   $scope.$on('$includeContentLoaded', function() {
     var pagePath = $scope.currentPage ? $scope.currentPage.path : $location.path();
     $window._gaq.push(['_trackPageview', pagePath]);
+    $scope.loading = false;
+  });
+
+  $scope.$on('$includeContentError', function() {
+    $scope.loading = false;
   });
 
   $scope.$watch(function docsPathWatch() {return $location.path(); }, function docsPathWatchAction(path) {
@@ -105,6 +110,8 @@ angular.module('DocsController', [])
     path = path.replace(/^\/?(.+?)(\/index)?\/?$/, '$1');
 
     var currentPage = $scope.currentPage = NG_PAGES[path];
+
+    $scope.loading = true;
 
     if (currentPage) {
       $scope.partialPath = 'partials/' + path + '.html';
@@ -395,9 +402,8 @@ angular.module('examples', [])
           filePromises.push($http.get(exampleFolder + '/' + filename, { transformResponse: [] })
             .then(function(response) {
 
-              // The manifests provide the production index file but Plunkr wants
-              // a straight index.html
-              if (filename === 'index-production.html') {
+              // Plunkr needs an index file that's simply named index.html
+              if (filename === 'index-plnkr.html') {
                 filename = 'index.html';
               }
 
