@@ -21,9 +21,6 @@ RewriteRule ^angular([\-\w]+)(\d+\.\d+\.[\d\w\-]+)(.*)$   /$2/angular$1$2$3
 RewriteCond %{HTTP_HOST}        ^docs\.angularjs\.org(\:80)?$
 RewriteRule ^(.*)$              /latest/docs/$1
 
-# Map version-info.js files to the latest snapshot
-RewriteRule (1\.\d+\.\d+[-a-z0-9.]*\/docs)?\/js\/versions-data\.js$  /snapshot/docs/js/versions.data.js
-
 ## PERFORMANCE ##
 
 ExpiresActive On
