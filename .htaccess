@@ -3,10 +3,6 @@ IndexIgnore favicon.ico *.php robots.txt .git .gitignore
 RewriteEngine on
 
 
-RewriteCond %{HTTP_HOST}        ^docs-next\.angularjs\.org$ [nc]
-RewriteRule ^(.*)$ http://docs.angularjs.org/$1 [r=301,nc]
-
-
 RewriteCond %{HTTP_HOST}        ^angularjs\.com$ [nc]
 RewriteRule ^(.*)$ http://angularjs.org/$1 [r=301,nc]
 
@@ -21,21 +17,12 @@ RewriteRule ^(.*)$              /partials/$1.html
 RewriteRule ^angular([\-\w]+)(\d+\.\d+\.[\d\w\-]+)(.*)$   /$2/angular$1$2$3
 
 
-# If the user has forgot the trailing slash than add it through redirect
-RewriteRule ^latest$                                /latest/            [R]
-RewriteRule ^latest/docs$                           /latest/docs/       [R]
-
-
-# To change the latest version just change this line.
-# IMPORTANT: the order of lines matters, do not move to top!
-RewriteRule ^latest/(.*)$                           /1.0.2/$1
-
-
-# If the request comes on http://docs.angularjs.org then point it to snapshot/docs
+# If the request comes on http://docs.angularjs.org then point it to latest/docs
 RewriteCond %{HTTP_HOST}        ^docs\.angularjs\.org(\:80)?$
-RewriteRule ^(.*)$              /snapshot/docs/$1
+RewriteRule ^(.*)$              /latest/docs/$1
 
-
+# Map version-info.js files to the latest snapshot
+RewriteRule (1\.\d+\.\d+[-a-z0-9.]*\/docs)?\/js\/versions-data\.js$  /snapshot/docs/js/versions.data.js
 
 ## PERFORMANCE ##
 
