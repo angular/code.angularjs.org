@@ -10071,7 +10071,7 @@ return jQuery;
 } );
 
 /**
- * @license AngularJS v1.5.9-build.5072+sha.7dacbcc
+ * @license AngularJS v1.5.9-build.5073+sha.35482ba
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -10130,7 +10130,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.5.9-build.5072+sha.7dacbcc/' +
+    message += '\nhttp://errors.angularjs.org/1.5.9-build.5073+sha.35482ba/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -12628,7 +12628,7 @@ function toDebugString(obj) {
 var version = {
   // These placeholder strings will be replaced by grunt's `build` task.
   // They need to be double- or single-quoted.
-  full: '1.5.9-build.5072+sha.7dacbcc',
+  full: '1.5.9-build.5073+sha.35482ba',
   major: 1,
   minor: 5,
   dot: 9,
@@ -29552,33 +29552,15 @@ function $SnifferProvider() {
           toInt((/android (\d+)/.exec(lowercase(($window.navigator || {}).userAgent)) || [])[1]),
         boxee = /Boxee/i.test(($window.navigator || {}).userAgent),
         document = $document[0] || {},
-        vendorPrefix,
-        vendorRegex = /^(Moz|webkit|ms)(?=[A-Z])/,
         bodyStyle = document.body && document.body.style,
         transitions = false,
-        animations = false,
-        match;
+        animations = false;
 
     if (bodyStyle) {
-      for (var prop in bodyStyle) {
-        if ((match = vendorRegex.exec(prop))) {
-          vendorPrefix = match[0];
-          vendorPrefix = vendorPrefix[0].toUpperCase() + vendorPrefix.substr(1);
-          break;
-        }
-      }
-
-      if (!vendorPrefix) {
-        vendorPrefix = ('WebkitOpacity' in bodyStyle) && 'webkit';
-      }
-
-      transitions = !!(('transition' in bodyStyle) || (vendorPrefix + 'Transition' in bodyStyle));
-      animations  = !!(('animation' in bodyStyle) || (vendorPrefix + 'Animation' in bodyStyle));
-
-      if (android && (!transitions ||  !animations)) {
-        transitions = isString(bodyStyle.webkitTransition);
-        animations = isString(bodyStyle.webkitAnimation);
-      }
+      // Support: Android <5, Blackberry Browser 10, default Chrome in Android 4.4.x
+      // Mentioned browsers need a -webkit- prefix for transitions & animations.
+      transitions = !!('transition' in bodyStyle || 'webkitTransition' in bodyStyle);
+      animations = !!('animation' in bodyStyle || 'webkitAnimation' in bodyStyle);
     }
 
 
@@ -29608,7 +29590,6 @@ function $SnifferProvider() {
         return eventSupport[event];
       },
       csp: csp(),
-      vendorPrefix: vendorPrefix,
       transitions: transitions,
       animations: animations,
       android: android
