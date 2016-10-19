@@ -1190,7 +1190,7 @@
   {
     "path": "api/ng/directive/a",
     "titleWords": "a",
-    "keywords": "action additem any api attribute behavior causing change changing creation default directive easy empty href html htmlanchordirective is item links list location modifies module ng ng-click ngclick of or page partials permits prevented reloads so tag that the this when with without",
+    "keywords": "action any api attribute attributes behavior creating default directive dynamically empty for href html htmlanchordirective is modifies module ng nghref of partials prevented see so tag tags that the when",
     "members": ""
   },
   {
