@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.9-build.5074+sha.f5f802c
+ * @license AngularJS v1.5.9-build.5075+sha.828f8a6
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -2232,7 +2232,7 @@ angular.mock.$RootElementProvider = function() {
  *    * check if a controller with given name is registered via `$controllerProvider`
  *    * check if evaluating the string on the current scope returns a constructor
  *    * if $controllerProvider#allowGlobals, check `window[constructor]` on the global
- *      `window` object (not recommended)
+ *      `window` object (deprecated, not recommended)
  *
  *    The string can use the `controller as property` syntax, where the controller instance is published
  *    as the specified property on the `scope`; the `scope` must be injected into `locals` param for this

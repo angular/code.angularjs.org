@@ -103,7 +103,7 @@ describe(&#39;myDirectiveController&#39;, function() {
 <li>check if a controller with given name is registered via <code>$controllerProvider</code></li>
 <li>check if evaluating the string on the current scope returns a constructor</li>
 <li><p>if $controllerProvider#allowGlobals, check <code>window[constructor]</code> on the global
-<code>window</code> object (not recommended)</p>
+<code>window</code> object (deprecated, not recommended)</p>
 <p>The string can use the <code>controller as property</code> syntax, where the controller instance is published
 as the specified property on the <code>scope</code>; the <code>scope</code> must be injected into <code>locals</code> param for this
 to work correctly.</p>
