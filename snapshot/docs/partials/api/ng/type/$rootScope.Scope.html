@@ -220,7 +220,7 @@ thus stop participating in model change detection and listener notification by i
 <li>The <code>watchExpression</code> is called on every call to <a href="api/ng/type/$rootScope.Scope#$digest">$digest()</a> and should return the value that will be watched. (<code>watchExpression</code> should not change
 its value when executed multiple times with the same input because it may be executed multiple
 times by <a href="api/ng/type/$rootScope.Scope#$digest">$digest()</a>. That is, <code>watchExpression</code> should be
-<a href="http://en.wikipedia.org/wiki/Idempotence">idempotent</a>.</li>
+<a href="http://en.wikipedia.org/wiki/Idempotence">idempotent</a>.)</li>
 <li>The <code>listener</code> is called only when the value from the current <code>watchExpression</code> and the
 previous call to <code>watchExpression</code> are not equal (with the exception of the initial run,
 see below). Inequality is determined according to reference inequality,
