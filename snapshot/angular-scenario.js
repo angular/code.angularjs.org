@@ -10071,7 +10071,7 @@ return jQuery;
 } );
 
 /**
- * @license AngularJS v1.5.9-build.5076+sha.41034bb
+ * @license AngularJS v1.5.9-build.5077+sha.586e2ac
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -10130,7 +10130,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.5.9-build.5076+sha.41034bb/' +
+    message += '\nhttp://errors.angularjs.org/1.5.9-build.5077+sha.586e2ac/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -12628,7 +12628,7 @@ function toDebugString(obj) {
 var version = {
   // These placeholder strings will be replaced by grunt's `build` task.
   // They need to be double- or single-quoted.
-  full: '1.5.9-build.5076+sha.41034bb',
+  full: '1.5.9-build.5077+sha.586e2ac',
   major: 1,
   minor: 5,
   dot: 9,
@@ -20267,7 +20267,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
             if (!optional && !hasOwnProperty.call(attrs, attrName)) {
               destination[scopeName] = attrs[attrName] = undefined;
             }
-            attrs.$observe(attrName, function(value) {
+            removeWatch = attrs.$observe(attrName, function(value) {
               if (isString(value) || isBoolean(value)) {
                 var oldValue = destination[scopeName];
                 recordChanges(scopeName, value, oldValue);
@@ -20286,6 +20286,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
               destination[scopeName] = lastValue;
             }
             initialChanges[scopeName] = new SimpleChange(_UNINITIALIZED_VALUE, destination[scopeName]);
+            removeWatchCollection.push(removeWatch);
             break;
 
           case '=':
