@@ -881,6 +881,12 @@ registration.</p>
 <p>would have &quot;worked&quot;, meaning behaviour of the config block between the registration of &quot;$rootProvider&quot;
 and &quot;$dependentProvider&quot; would have actually accomplished something and changed the behaviour of the
 app. This is no longer possible within a single module.</p>
+<h3 id="filters-orderby-">Filters (<code>orderBy</code>)</h3>
+<ul>
+<li>due to <a href="https://github.com/angular/angular.js/commit/a097aa95b7c78beab6d1b7d521c25f7d9d7843d9">a097aa95</a>,
+<code>orderBy</code> now treats <code>null</code> values (which in JavaScript have type <code>object</code>) as having a string
+represenation of <code>&#39;null&#39;</code>.</li>
+</ul>
 <h3 id="animation-nganimate-">Animation (<code>ngAnimate</code>)</h3>
 <ul>
 <li>due to <a href="https://github.com/angular/angular.js/commit/1cb8584e8490ecdb1b410a8846c4478c6c2c0e53">1cb8584e</a>,

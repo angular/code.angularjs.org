@@ -89,7 +89,10 @@ locale-insensitive way.</li>
 </li>
 </ol>
 <p><strong>Note:</strong> If you notice numbers not being sorted as expected, make sure they are actually being
-          saved as numbers and not strings.</p>
+          saved as numbers and not strings.
+<strong>Note:</strong> For the purpose of sorting, <code>null</code> values are treated as the string <code>&#39;null&#39;</code> (i.e.
+          <code>type: &#39;string&#39;</code>, <code>value: &#39;null&#39;</code>). This may cause unexpected sort order relative to
+          other values.</p>
 
 </div>
 
