@@ -9,13 +9,13 @@ angular.module('versionsData', [])
   "patch": 9,
   "prerelease": [
     "build",
-    "194"
+    "5085"
   ],
   "build": "sha.74c19f0",
-  "version": "1.5.9-build.194",
+  "version": "1.5.9-build.5085",
   "codeName": "snapshot",
   "isSnapshot": true,
-  "full": "1.5.9-build.194+sha.74c19f0",
+  "full": "1.5.9-build.5085+sha.74c19f0",
   "branch": "master",
   "commitSHA": "74c19f096f9dda1969809e37bfc7a07b3386239b"
 })
@@ -27,15 +27,28 @@ angular.module('versionsData', [])
     "patch": 9,
     "prerelease": [
       "build",
-      "194"
+      "5085"
     ],
     "build": "sha.74c19f0",
-    "version": "1.5.9-build.194",
+    "version": "1.5.9-build.5085",
     "codeName": "snapshot",
     "isSnapshot": true,
-    "full": "1.5.9-build.194+sha.74c19f0",
+    "full": "1.5.9-build.5085+sha.74c19f0",
     "branch": "master",
     "commitSHA": "74c19f096f9dda1969809e37bfc7a07b3386239b"
+  },
+  {
+    "raw": "v1.6.0-rc.0",
+    "major": 1,
+    "minor": 6,
+    "patch": 0,
+    "prerelease": [
+      "rc",
+      0
+    ],
+    "build": [],
+    "version": "1.6.0-rc.0",
+    "docsUrl": "http://code.angularjs.org/1.6.0-rc.0/docs"
   },
   {
     "raw": "v1.5.8",
