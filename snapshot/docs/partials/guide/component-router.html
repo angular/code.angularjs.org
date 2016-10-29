@@ -52,11 +52,11 @@ We are investigating backporting the Angular 2 Router to Angular 1, but alternat
 </tr>
 <tr>
 <td>ngLink</td>
-<td>The directive (<code>ng-link=&quot;...&quot;</code>) for binding a clickable HTML element to a route, via a Link Paramaters Array.</td>
+<td>The directive (<code>ng-link=&quot;...&quot;</code>) for binding a clickable HTML element to a route, via a Link Parameters Array.</td>
 </tr>
 <tr>
 <td>Link Parameters Array</td>
-<td>An array that the router inteprets into a routing instruction. We can bind a RouterLink to that array or pass the array as an argument to the Router.navigate method.</td>
+<td>An array that the router interprets into a routing instruction. We can bind a RouterLink to that array or pass the array as an argument to the Router.navigate method.</td>
 </tr>
 </tbody>
 </table>
@@ -524,7 +524,7 @@ HeroDetailComponent back to the HeroListComponent we can use it to highlight the
   };
 }
 </code></pre>
-<p>Finally, we can use this information to higlight the current hero in the template.</p>
+<p>Finally, we can use this information to highlight the current hero in the template.</p>
 <pre><code class="lang-html">&lt;div ng-repeat=&quot;hero in $ctrl.heroes&quot;
        ng-class=&quot;{ selected: $ctrl.isSelected(hero) }&quot;&gt;
   &lt;a ng-link=&quot;[&#39;HeroDetail&#39;, {id: hero.id}]&quot;&gt;{{hero.name}}&lt;/a&gt;

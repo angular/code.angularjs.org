@@ -83,12 +83,12 @@ can be used with <code>ngAttr</code> instead. The following is a list of known p
 <h2 id="known-issues">Known Issues</h2>
 <h3 id="dynamically-changing-an-interpolated-value">Dynamically changing an interpolated value</h3>
 <p>You should avoid dynamically changing the content of an interpolated string (e.g. attribute value
-or text node). Your changes are likely to be overwriten, when the original string gets evaluated.
+or text node). Your changes are likely to be overwritten, when the original string gets evaluated.
 This restriction applies to both directly changing the content via JavaScript or indirectly using a
 directive.</p>
 <p>For example, you should not use interpolation in the value of the <code>style</code> attribute (e.g.
 <code>style=&quot;color: {{ &#39;orange&#39; }}; font-weight: {{ &#39;bold&#39; }};&quot;</code>) <strong>and</strong> at the same time use a
-directive that changes the content of that attributte, such as <code>ngStyle</code>.</p>
+directive that changes the content of that attribute, such as <code>ngStyle</code>.</p>
 <h3 id="embedding-interpolation-markup-inside-expressions">Embedding interpolation markup inside expressions</h3>
 <div class="alert alert-danger">
 <strong>Note:</strong> Angular directive attributes take either expressions <em>or</em> interpolation markup with embedded expressions.
