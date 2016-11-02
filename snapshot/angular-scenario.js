@@ -10071,7 +10071,7 @@ return jQuery;
 } );
 
 /**
- * @license AngularJS v1.5.9-build.5099+sha.a7076dc
+ * @license AngularJS v1.5.9-build.5100+sha.0ff10e1
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -10130,7 +10130,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.5.9-build.5099+sha.a7076dc/' +
+    message += '\nhttp://errors.angularjs.org/1.5.9-build.5100+sha.0ff10e1/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -11586,6 +11586,26 @@ function getNgAttribute(element, ngAttr) {
   return null;
 }
 
+function allowAutoBootstrap(document) {
+  if (!document.currentScript) {
+    return true;
+  }
+  var src = document.currentScript.getAttribute('src');
+  var link = document.createElement('a');
+  link.href = src;
+  var scriptProtocol = link.protocol;
+  var docLoadProtocol = document.location.protocol;
+  if ((scriptProtocol === 'resource:' ||
+       scriptProtocol === 'chrome-extension:') &&
+      docLoadProtocol !== scriptProtocol) {
+    return false;
+  }
+  return true;
+}
+
+// Cached as it has to run during loading so that document.currentScript is available.
+var isAutoBootstrapAllowed = allowAutoBootstrap(window.document);
+
 /**
  * @ngdoc directive
  * @name ngApp
@@ -11744,6 +11764,11 @@ function angularInit(element, bootstrap) {
     }
   });
   if (appElement) {
+    if (!isAutoBootstrapAllowed) {
+      window.console.error('Angular: disabling automatic bootstrap. <script> protocol indicates ' +
+          'an extension, document.location.href does not match.');
+      return;
+    }
     config.strictDi = getNgAttribute(appElement, 'strict-di') !== null;
     bootstrap(appElement, module ? [module] : [], config);
   }
@@ -12628,7 +12653,7 @@ function toDebugString(obj) {
 var version = {
   // These placeholder strings will be replaced by grunt's `build` task.
   // They need to be double- or single-quoted.
-  full: '1.5.9-build.5099+sha.a7076dc',
+  full: '1.5.9-build.5100+sha.0ff10e1',
   major: 1,
   minor: 5,
   dot: 9,
