@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.9-build.5102+sha.bcd0d4d
+ * @license AngularJS v1.5.9-build.5103+sha.d717884
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -494,7 +494,7 @@ angular.module('ngResource', ['ng']).
      *     module('myApp').
      *     config(['$resourceProvider', function ($resourceProvider) {
      *       $resourceProvider.defaults.actions = {
-     *         create: {method: 'POST'}
+     *         create: {method: 'POST'},
      *         get:    {method: 'GET'},
      *         getAll: {method: 'GET', isArray:true},
      *         update: {method: 'PUT'},
