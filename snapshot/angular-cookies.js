@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.9-build.5103+sha.d717884
+ * @license AngularJS v1.5.9-build.5104+sha.6d33294
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -51,6 +51,16 @@ angular.module('ngCookies', ['ng']).
      * Note: By default, the address that appears in your `<base>` tag will be used as the path.
      * This is important so that cookies will be visible for all routes when html5mode is enabled.
      *
+     * @example
+     *
+     * ```js
+     * angular.module('cookiesProviderExample', ['ngCookies'])
+     *   .config(['$cookiesProvider', function($cookiesProvider) {
+     *     // Setting default options
+     *     $cookiesProvider.defaults.domain = 'foo.com';
+     *     $cookiesProvider.defaults.secure = true;
+     *   }]);
+     * ```
      **/
     var defaults = this.defaults = {};
 
