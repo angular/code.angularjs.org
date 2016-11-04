@@ -128,6 +128,7 @@ This property takes precedence over <code>templateUrl</code>.</p>
 <li><code>{Array.&lt;Object&gt;}</code> - route parameters extracted from the current
 <code>$location.path()</code> by applying the current route</li>
 </ul>
+<p>One of <code>template</code> or <code>templateUrl</code> is required.</p>
 </li>
 <li><p><code>templateUrl</code> – <code>{(string|Function)=}</code> – path or function that returns a path to an html
 template that should be used by <a href="api/ngRoute/directive/ngView">ngView</a>.</p>
@@ -136,6 +137,7 @@ template that should be used by <a href="api/ngRoute/directive/ngView">ngView</a
 <li><code>{Array.&lt;Object&gt;}</code> - route parameters extracted from the current
 <code>$location.path()</code> by applying the current route</li>
 </ul>
+<p>One of <code>templateUrl</code> or <code>template</code> is required.</p>
 </li>
 <li><p><code>resolve</code> - <code>{Object.&lt;string, Function&gt;=}</code> - An optional map of dependencies which should
 be injected into the controller. If any of these dependencies are promises, the router

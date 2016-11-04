@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.9-build.5104+sha.6d33294
+ * @license AngularJS v1.5.9-build.5105+sha.d80cdeb
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -137,6 +137,8 @@ function $RouteProvider() {
    *      - `{Array.<Object>}` - route parameters extracted from the current
    *        `$location.path()` by applying the current route
    *
+   *      One of `template` or `templateUrl` is required.
+   *
    *    - `templateUrl` – `{(string|Function)=}` – path or function that returns a path to an html
    *      template that should be used by {@link ngRoute.directive:ngView ngView}.
    *
@@ -144,6 +146,8 @@ function $RouteProvider() {
    *
    *      - `{Array.<Object>}` - route parameters extracted from the current
    *        `$location.path()` by applying the current route
+   *
+   *      One of `templateUrl` or `template` is required.
    *
    *    - `resolve` - `{Object.<string, Function>=}` - An optional map of dependencies which should
    *      be injected into the controller. If any of these dependencies are promises, the router
