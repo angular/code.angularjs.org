@@ -243,6 +243,11 @@ angular.module('pagesData', [])
     "area": "error",
     "path": "error/$interpolate/wantstring"
   },
+  "error/$location/badpath": {
+    "name": "badpath",
+    "area": "error",
+    "path": "error/$location/badpath"
+  },
   "error/$location/ipthprfx": {
     "name": "ipthprfx",
     "area": "error",

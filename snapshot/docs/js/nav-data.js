@@ -1677,6 +1677,11 @@ angular.module('navData', [])
             "type": "section"
           },
           {
+            "name": "badpath",
+            "href": "error/$location/badpath",
+            "type": "error"
+          },
+          {
             "name": "ipthprfx",
             "href": "error/$location/ipthprfx",
             "type": "error"

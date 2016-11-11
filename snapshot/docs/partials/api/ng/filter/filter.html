@@ -121,10 +121,10 @@ the entire array itself as arguments.</p>
       <td>
         comparator
         
-        
+        <div><em>(optional)</em></div>
       </td>
       <td>
-        <a href="" class="label type-hint type-hint-function">function(actual, expected)</a><a href="" class="label type-hint type-hint-true">true</a><a href="" class="label type-hint type-hint-undefined">undefined</a>
+        <a href="" class="label type-hint type-hint-function">function(actual, expected)</a><a href="" class="label type-hint type-hint-true">true</a><a href="" class="label type-hint type-hint-false">false</a>
       </td>
       <td>
         <p>Comparator which is used in
@@ -139,12 +139,12 @@ should return true if both values should be considered equal.</p>
 <li><p><code>true</code>: A shorthand for <code>function(actual, expected) { return angular.equals(actual, expected)}</code>.
 This is essentially strict comparison of expected and actual.</p>
 </li>
-<li><p><code>false|undefined</code>: A short hand for a function which will look for a substring match in case
-insensitive way.</p>
-<p>Primitive values are converted to strings. Objects are not compared against primitives,
-unless they have a custom <code>toString</code> method (e.g. <code>Date</code> objects).</p>
+<li><p><code>false</code>: A short hand for a function which will look for a substring match in a case
+insensitive way. Primitive values are converted to strings. Objects are not compared against
+primitives, unless they have a custom <code>toString</code> method (e.g. <code>Date</code> objects).</p>
 </li>
 </ul>
+<p>  Defaults to <code>false</code>.</p>
 
         
       </td>
