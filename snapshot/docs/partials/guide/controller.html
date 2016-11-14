@@ -230,10 +230,10 @@ scopes being created for our view:</p>
 <ul>
 <li>The root scope</li>
 <li>The <code>MainController</code> scope, which contains <code>timeOfDay</code> and <code>name</code> properties</li>
-<li>The <code>ChildController</code> scope, which inherits the <code>timeOfDay</code> property but overrides (hides) the <code>name</code>
-property from the previous</li>
-<li>The <code>GrandChildController</code> scope, which overrides (hides) both the <code>timeOfDay</code> property defined in <code>MainController</code>
-and the <code>name</code> property defined in <code>ChildController</code></li>
+<li>The <code>ChildController</code> scope, which inherits the <code>timeOfDay</code> property but overrides (shadows) the
+<code>name</code> property from the previous scope</li>
+<li>The <code>GrandChildController</code> scope, which overrides (shadows) both the <code>timeOfDay</code> property defined
+in <code>MainController</code> and the <code>name</code> property defined in <code>ChildController</code></li>
 </ul>
 <p>Inheritance works with methods in the same way as it does with properties. So in our previous
 examples, all of the properties could be replaced with methods that return string values.</p>
