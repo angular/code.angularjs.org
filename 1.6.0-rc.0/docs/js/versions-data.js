@@ -3,19 +3,18 @@
 // Meta data used by the AngularJS docs app
 angular.module('versionsData', [])
   .value('NG_VERSION', {
-  "raw": "v1.5.8",
+  "raw": "v1.6.0-rc.0",
   "major": 1,
-  "minor": 5,
-  "patch": 9,
+  "minor": 6,
+  "patch": 0,
   "prerelease": [
-    "build",
-    "195"
+    "rc",
+    "0"
   ],
-  "build": "sha.1cf01d6",
-  "version": "1.5.9-build.195",
-  "codeName": "snapshot",
-  "isSnapshot": true,
-  "full": "1.5.9-build.195+sha.1cf01d6",
+  "build": "[]",
+  "version": "1.6.0-rc.0",
+  "codeName": "bracing-vortex",
+  "full": "1.6.0-rc.0",
   "branch": "master",
   "commitSHA": "1cf01d6fa7fcfb45bef46e4a800845ae8ab90b06"
 })
