@@ -1298,25 +1298,15 @@ angular.module('pagesData', [])
     "area": "api",
     "path": "api/ng/directive/ngModel"
   },
-  "api/ng/directive/ngModelOptions": {
-    "name": "ngModelOptions",
-    "area": "api",
-    "path": "api/ng/directive/ngModelOptions"
-  },
-  "api/ng/provider/$modelOptionsProvider": {
-    "name": "$modelOptionsProvider",
-    "area": "api",
-    "path": "api/ng/provider/$modelOptionsProvider"
-  },
-  "api/ng/service/$modelOptions": {
-    "name": "$modelOptions",
-    "area": "api",
-    "path": "api/ng/service/$modelOptions"
-  },
   "api/ng/type/ModelOptions": {
     "name": "ModelOptions",
     "area": "api",
     "path": "api/ng/type/ModelOptions"
+  },
+  "api/ng/directive/ngModelOptions": {
+    "name": "ngModelOptions",
+    "area": "api",
+    "path": "api/ng/directive/ngModelOptions"
   },
   "api/ng/directive/ngNonBindable": {
     "name": "ngNonBindable",

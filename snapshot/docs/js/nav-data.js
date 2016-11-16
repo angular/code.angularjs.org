@@ -628,11 +628,6 @@ angular.module('navData', [])
             "type": "provider"
           },
           {
-            "name": "$modelOptionsProvider",
-            "href": "api/ng/provider/$modelOptionsProvider",
-            "type": "provider"
-          },
-          {
             "name": "$parseProvider",
             "href": "api/ng/provider/$parseProvider",
             "type": "provider"
@@ -760,11 +755,6 @@ angular.module('navData', [])
           {
             "name": "$log",
             "href": "api/ng/service/$log",
-            "type": "service"
-          },
-          {
-            "name": "$modelOptions",
-            "href": "api/ng/service/$modelOptions",
             "type": "service"
           },
           {

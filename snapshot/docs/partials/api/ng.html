@@ -652,9 +652,9 @@ which is created and exposed by this directive.</p>
       
       <tr>
         <td><a href="api/ng/directive/ngModelOptions">ngModelOptions</a></td>
-        <td><p>This directive allows you to modify the behaviour of ngModel and input directives within your
-application. You can specify an ngModelOptions directive on any element and the settings affect
-the ngModel and input directives on all descendent elements.</p>
+        <td><p>This directive allows you to modify the behaviour of <a href="api/ng/directive/ngModel"><code>ngModel</code></a> directives within your
+application. You can specify an <code>ngModelOptions</code> directive on any element. All <a href="api/ng/directive/ngModel"><code>ngModel</code></a>
+directives will use the options of their nearest <code>ngModelOptions</code> ancestor.</p>
 </td>
       </tr>
       
@@ -851,8 +851,7 @@ At the end of this page you can find a <a href="api/ng/type/ngModel.NgModelContr
       
       <tr>
         <td><a href="api/ng/type/ModelOptions">ModelOptions</a></td>
-        <td><p>A container for the options set by the <a href="api/ng/directive/ngModelOptions"><code>ngModelOptions</code></a> directive
-and the <a href="api/ng/service/$modelOptions"><code>$modelOptions</code></a> service.</p>
+        <td><p>A container for the options set by the <a href="api/ng/directive/ngModelOptions"><code>ngModelOptions</code></a> directive</p>
 </td>
       </tr>
       
@@ -908,13 +907,6 @@ synchronously performs DOM updates and resolves the returned runner promise.</p>
         <td><a href="api/ng/provider/$controllerProvider">$controllerProvider</a></td>
         <td><p>The <a href="api/ng/service/$controller">$controller service</a> is used by Angular to create new
 controllers.</p>
-</td>
-      </tr>
-      
-      <tr>
-        <td><a href="api/ng/provider/$modelOptionsProvider">$modelOptionsProvider</a></td>
-        <td><p>Here, you can change the default settings from which <a href="api/ng/directive/ngModelOptions"><code>ngModelOptions</code></a>
-directives inherit.</p>
 </td>
       </tr>
       
@@ -1053,14 +1045,6 @@ can then be used to link <a href="api/ng/type/$rootScope.Scope"><code>scope</cod
       <tr>
         <td><a href="api/ng/service/$controller">$controller</a></td>
         <td><p><code>$controller</code> service is responsible for instantiating controllers.</p>
-</td>
-      </tr>
-      
-      <tr>
-        <td><a href="api/ng/service/$modelOptions">$modelOptions</a></td>
-        <td><p>This service provides the application wide default <a href="api/ng/type/ModelOptions"><code>ModelOptions</code></a> options that
-will be used by <a href="api/ng/directive/ngModel"><code>ngModel</code></a> directives if no <a href="api/ng/directive/ngModelOptions"><code>ngModelOptions</code></a> directive is
-specified.</p>
 </td>
       </tr>
       
