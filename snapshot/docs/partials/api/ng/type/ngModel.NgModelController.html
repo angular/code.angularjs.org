@@ -212,11 +212,11 @@ first focused the control element and then shifted focus away from the control (
 
 </h3>
     <div><p>Cancel an update and reset the input element&#39;s value to prevent an update to the <code>$modelValue</code>,
-which may be caused by a pending debounced event or because the input is waiting for a some
+which may be caused by a pending debounced event or because the input is waiting for some
 future event.</p>
 <p>If you have an input that uses <code>ng-model-options</code> to set up debounced updates or updates that
-depend on special events such as blur, you can have a situation where there is a period when
-the <code>$viewValue</code> is out of sync with the ngModel&#39;s <code>$modelValue</code>.</p>
+depend on special events such as <code>blur</code>, there can be a period when the <code>$viewValue</code> is out of
+sync with the ngModel&#39;s <code>$modelValue</code>.</p>
 <p>In this case, you can use <code>$rollbackViewValue()</code> to manually cancel the debounced / future update
 and reset the input to the last committed view value.</p>
 <p>It is also possible that you run into difficulties if you try to update the ngModel&#39;s <code>$modelValue</code>

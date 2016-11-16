@@ -8,13 +8,13 @@ angular.module('currentVersionData', [])
   "patch": 9,
   "prerelease": [
     "build",
-    "5137"
+    "5138"
   ],
-  "build": "sha.7d9a791",
-  "version": "1.5.9-build.5137",
+  "build": "sha.7dd42d3",
+  "version": "1.5.9-build.5138",
   "codeName": "snapshot",
   "isSnapshot": true,
-  "full": "1.5.9-build.5137+sha.7d9a791",
+  "full": "1.5.9-build.5138+sha.7dd42d3",
   "branch": "master",
   "cdn": {
     "raw": "v1.5.8",
