@@ -24,6 +24,9 @@
 <div class="api-profile-description">
   <p>A decorator for <a href="api/ng/service/$controller"><code>$controller</code></a> with additional <code>bindings</code> parameter, useful when testing
 controllers of directives that use <a href="api/ng/service/$compile#-bindtocontroller-"><code>bindToController</code></a>.</p>
+<p>Depending on the value of
+<a href="api/ng/provider/$compileProvider#preAssignBindingsEnabled"><code>preAssignBindingsEnabled()</code></a>, the properties
+will be bound before or after invoking the constructor.</p>
 <h2 id="example">Example</h2>
 <pre><code class="lang-js">// Directive definition ...
 
@@ -38,18 +41,24 @@ myMod.directive(&#39;myDirective&#39;, {
 // Controller definition ...
 
 myMod.controller(&#39;MyDirectiveController&#39;, [&#39;$log&#39;, function($log) {
-  $log.info(this.name);
+  this.log = function() {
+    $log.info(this.name);
+  };
 }]);
 
 
 // In a test ...
 
 describe(&#39;myDirectiveController&#39;, function() {
-  it(&#39;should write the bound name to the log&#39;, inject(function($controller, $log) {
-    var ctrl = $controller(&#39;MyDirectiveController&#39;, { /* no locals */ }, { name: &#39;Clark Kent&#39; });
-    expect(ctrl.name).toEqual(&#39;Clark Kent&#39;);
-    expect($log.info.logs).toEqual([&#39;Clark Kent&#39;]);
-  }));
+  describe(&#39;log()&#39;, function() {
+    it(&#39;should write the bound name to the log&#39;, inject(function($controller, $log) {
+      var ctrl = $controller(&#39;MyDirectiveController&#39;, { /* no locals */ }, { name: &#39;Clark Kent&#39; });
+      ctrl.log();
+
+      expect(ctrl.name).toEqual(&#39;Clark Kent&#39;);
+      expect($log.info.logs).toEqual([&#39;Clark Kent&#39;]);
+    }));
+  });
 });
 </code></pre>
 
@@ -140,8 +149,8 @@ to work correctly.</p>
         <a href="" class="label type-hint type-hint-object">Object</a>
       </td>
       <td>
-        <p>Properties to add to the controller before invoking the constructor. This is used
-                          to simulate the <code>bindToController</code> feature and simplify certain kinds of tests.</p>
+        <p>Properties to add to the controller instance. This is used to simulate
+                          the <code>bindToController</code> feature and simplify certain kinds of tests.</p>
 
         
       </td>
