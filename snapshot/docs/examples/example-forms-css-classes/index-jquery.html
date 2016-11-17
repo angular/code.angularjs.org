@@ -14,10 +14,10 @@
 <body ng-app="formExample">
   <div ng-controller="ExampleController">
   <form novalidate class="css-form">
-    Name: <input type="text" ng-model="user.name" required /><br />
-    E-mail: <input type="email" ng-model="user.email" required /><br />
-    Gender: <input type="radio" ng-model="user.gender" value="male" />male
-    <input type="radio" ng-model="user.gender" value="female" />female<br />
+    <label>Name: <input type="text" ng-model="user.name" required /></label><br />
+    <label>E-mail: <input type="email" ng-model="user.email" required /></label><br />
+    Gender: <label><input type="radio" ng-model="user.gender" value="male" />male</label>
+    <label><input type="radio" ng-model="user.gender" value="female" />female</label><br />
     <input type="button" ng-click="reset()" value="Reset" />
     <input type="submit" ng-click="update(user)" value="Save" />
   </form>
