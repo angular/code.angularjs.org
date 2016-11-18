@@ -23,6 +23,8 @@
 
 
 
+
+
 <div class="api-profile-description">
   <p><code>$route</code> is used for deep-linking URLs to controllers and views (HTML partials).
 It watches <code>$location.url()</code> and tries to map the path to an existing route definition.</p>
@@ -37,8 +39,6 @@ It watches <code>$location.url()</code> and tries to map the path to an existing
 
 
 
-
-
 <div>
   
   <h2 id="dependencies">Dependencies</h2>
@@ -47,7 +47,7 @@ It watches <code>$location.url()</code> and tries to map the path to an existing
   </ul>
   
 
-    
+  
 
   
 
@@ -67,7 +67,9 @@ creates new scope and reinstantiates the controller.</p>
     
 
     
+
     
+
     
 
   </li>
@@ -82,6 +84,8 @@ Provided property names that match the route&#39;s path segment
 definitions will be interpolated into the location&#39;s path, while
 remaining properties will be treated as query params.</p>
 </div>
+
+    
 
     
     <h4>Parameters</h4>
@@ -118,7 +122,7 @@ remaining properties will be treated as query params.</p>
     
 
     
-    
+
     
 
   </li>
@@ -137,6 +141,8 @@ defined in <code>resolve</code> route property. Once  all of the dependencies ar
 by calling <code>preventDefault</code> method of the event. See <a href="api/ng/type/$rootScope.Scope#$on"><code>$rootScope.Scope</code></a>
 for more details about event object.</p>
 </div>
+
+    
     <div class="inline">
       <h4>Type:</h4>
       <div class="type">broadcast</div>
@@ -219,6 +225,8 @@ The <code>resolve</code> dependencies are now available in the <code>current.loc
 <p><a href="api/ngRoute/directive/ngView">ngView</a> listens for the directive
 to instantiate the controller and render the view.</p>
 </div>
+
+    
     <div class="inline">
       <h4>Type:</h4>
       <div class="type">broadcast</div>
@@ -300,6 +308,8 @@ first route entered.</p>
     <div><p>Broadcasted if a redirection function fails or any redirection or resolve promises are
 rejected.</p>
 </div>
+
+    
     <div class="inline">
       <h4>Type:</h4>
       <div class="type">broadcast</div>
@@ -397,6 +407,8 @@ the rejection reason is the error that caused the promise to get rejected.</p>
     <div><p>The <code>reloadOnSearch</code> property has been set to false, and we are reusing the same
 instance of the Controller.</p>
 </div>
+
+    
     <div class="inline">
       <h4>Type:</h4>
       <div class="type">broadcast</div>
@@ -484,6 +496,7 @@ the property name, using <code>resolveAs</code> in the route definition. See
 </td>
   </tr>
 </table>
+    
   </li>
   
   <li id="routes">
@@ -495,6 +508,7 @@ the property name, using <code>resolveAs</code> in the route definition. See
 </td>
   </tr>
 </table>
+    
   </li>
   </ul>
 

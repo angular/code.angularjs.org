@@ -21,6 +21,8 @@
 
 
 
+
+
 <div class="api-profile-description">
   <p>The <a href="api/auto/service/$provide">$provide</a> service has a number of methods for registering components
 with the <a href="api/auto/service/$injector">$injector</a>. Many of these functions are also exposed on
@@ -59,12 +61,10 @@ services without specifying a provider.</p>
 
 
 
-
-
 <div>
   
 
-    
+  
 
   
 
@@ -88,6 +88,8 @@ method <a href="api/ng/provider/$logProvider#debugEnabled">debugEnabled</a>
 which lets you specify whether the <a href="api/ng/service/$log">$log</a> service will log debug messages to the
 console or not.</p>
 </div>
+
+    
 
     
     <h4>Parameters</h4>
@@ -147,7 +149,7 @@ console or not.</p>
     
 
     
-    
+
     
     <h4>Returns</h4>
     <table class="variables-matrix return-arguments">
@@ -171,6 +173,8 @@ which is the given service factory function.
 You should use <a href="api/auto/service/$provide#factory">$provide.factory(getFn)</a> if you do not need to
 configure your service in a provider.</p>
 </div>
+
+    
 
     
     <h4>Parameters</h4>
@@ -224,7 +228,7 @@ configure your service in a provider.</p>
     
 
     
-    
+
     
     <h4>Returns</h4>
     <table class="variables-matrix return-arguments">
@@ -257,6 +261,8 @@ function.</p>
 <p>You should use <a href="api/auto/service/$provide#service">$provide.service(class)</a> if you define your service
 as a type/class.</p>
 </div>
+
+    
 
     
     <h4>Parameters</h4>
@@ -310,7 +316,7 @@ as a type/class.</p>
     
 
     
-    
+
     
     <h4>Returns</h4>
     <table class="variables-matrix return-arguments">
@@ -336,6 +342,8 @@ service</strong>. That also means it is not possible to inject other services in
 module configuration function (see <a href="api/ng/type/angular.Module#config"><code>angular.Module</code></a>) but they can be overridden by
 an Angular <a href="api/auto/service/$provide#decorator">decorator</a>.</p>
 </div>
+
+    
 
     
     <h4>Parameters</h4>
@@ -388,7 +396,7 @@ an Angular <a href="api/auto/service/$provide#decorator">decorator</a>.</p>
     
 
     
-    
+
     
     <h4>Returns</h4>
     <table class="variables-matrix return-arguments">
@@ -413,6 +421,8 @@ possible to inject other services into a constant.</p>
 injected into a module configuration function (see <a href="api/ng/type/angular.Module#config"><code>angular.Module</code></a>) and it cannot
 be overridden by an Angular <a href="api/auto/service/$provide#decorator">decorator</a>.</p>
 </div>
+
+    
 
     
     <h4>Parameters</h4>
@@ -465,7 +475,7 @@ be overridden by an Angular <a href="api/auto/service/$provide#decorator">decora
     
 
     
-    
+
     
     <h4>Returns</h4>
     <table class="variables-matrix return-arguments">
@@ -489,6 +499,8 @@ service. The return value of the decorator function may be the original service,
 that replaces (or wraps and delegates to) the original service.</p>
 <p>You can find out more about using decorators in the <a href="guide/decorators">decorators</a> guide.</p>
 </div>
+
+    
 
     
     <h4>Parameters</h4>
@@ -548,7 +560,7 @@ decorated or delegated to.</li>
     
 
     
-    
+
     
 
   </li>

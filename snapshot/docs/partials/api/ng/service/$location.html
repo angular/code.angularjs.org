@@ -23,6 +23,8 @@
 
 
 
+
+
 <div class="api-profile-description">
   <p>The $location service parses the URL in the browser address bar (based on the
 <a href="https://developer.mozilla.org/en/window.location">window.location</a>) and makes the URL
@@ -50,8 +52,6 @@ $location service and changes to $location are reflected into the browser addres
 
 
 
-
-
 <div>
   
   <h2 id="dependencies">Dependencies</h2>
@@ -60,7 +60,7 @@ $location service and changes to $location are reflected into the browser addres
   </ul>
   
 
-    
+  
 
   
 
@@ -83,7 +83,9 @@ var absUrl = $location.absUrl();
     
 
     
+
     
+
     
     <h4>Returns</h4>
     <table class="variables-matrix return-arguments">
@@ -109,6 +111,8 @@ var url = $location.url();
 // =&gt; &quot;/some/path?foo=bar&amp;baz=xoxo&quot;
 </code></pre>
 </div>
+
+    
 
     
     <h4>Parameters</h4>
@@ -145,7 +149,7 @@ var url = $location.url();
     
 
     
-    
+
     
     <h4>Returns</h4>
     <table class="variables-matrix return-arguments">
@@ -174,7 +178,9 @@ var protocol = $location.protocol();
     
 
     
+
     
+
     
     <h4>Returns</h4>
     <table class="variables-matrix return-arguments">
@@ -210,7 +216,9 @@ host = location.host;
     
 
     
+
     
+
     
     <h4>Returns</h4>
     <table class="variables-matrix return-arguments">
@@ -239,7 +247,9 @@ var port = $location.port();
     
 
     
+
     
+
     
     <h4>Returns</h4>
     <table class="variables-matrix return-arguments">
@@ -267,6 +277,8 @@ var path = $location.path();
 // =&gt; &quot;/some/path&quot;
 </code></pre>
 </div>
+
+    
 
     
     <h4>Parameters</h4>
@@ -303,7 +315,7 @@ var path = $location.path();
     
 
     
-    
+
     
     <h4>Returns</h4>
     <table class="variables-matrix return-arguments">
@@ -333,6 +345,8 @@ $location.search(&#39;foo&#39;, &#39;yipee&#39;);
 // $location.search() =&gt; {foo: &#39;yipee&#39;, baz: &#39;xoxo&#39;}
 </code></pre>
 </div>
+
+    
 
     
     <h4>Parameters</h4>
@@ -396,7 +410,7 @@ value nor trailing equal sign.</p>
     
 
     
-    
+
     
     <h4>Returns</h4>
     <table class="variables-matrix return-arguments">
@@ -423,6 +437,8 @@ var hash = $location.hash();
 // =&gt; &quot;hashValue&quot;
 </code></pre>
 </div>
+
+    
 
     
     <h4>Parameters</h4>
@@ -459,7 +475,7 @@ var hash = $location.hash();
     
 
     
-    
+
     
     <h4>Returns</h4>
     <table class="variables-matrix return-arguments">
@@ -484,7 +500,9 @@ record, instead of adding a new one.</p>
     
 
     
+
     
+
     
 
   </li>
@@ -501,6 +519,8 @@ The state object is later passed to <code>pushState</code> or <code>replaceState
 the HTML5 History API (i.e. methods <code>pushState</code> and <code>replaceState</code>). If you need to support
 older browsers (like IE9 or Android &lt; 4.0), don&#39;t use this method.</p>
 </div>
+
+    
 
     
     <h4>Parameters</h4>
@@ -537,7 +557,7 @@ older browsers (like IE9 or Android &lt; 4.0), don&#39;t use this method.</p>
     
 
     
-    
+
     
     <h4>Returns</h4>
     <table class="variables-matrix return-arguments">
@@ -564,6 +584,8 @@ details about event object. Upon successful change
 <p>The <code>newState</code> and <code>oldState</code> parameters may be defined only in HTML5 mode and when
 the browser supports the HTML5 History API.</p>
 </div>
+
+    
     <div class="inline">
       <h4>Type:</h4>
       <div class="type">broadcast</div>
@@ -677,6 +699,8 @@ the browser supports the HTML5 History API.</p>
 <p>The <code>newState</code> and <code>oldState</code> parameters may be defined only in HTML5 mode and when
 the browser supports the HTML5 History API.</p>
 </div>
+
+    
     <div class="inline">
       <h4>Type:</h4>
       <div class="type">broadcast</div>

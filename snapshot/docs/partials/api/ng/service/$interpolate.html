@@ -23,6 +23,8 @@
 
 
 
+
+
 <div class="api-profile-description">
   <p>Compiles a string with markup into an interpolation function. This service is used by the
 HTML <a href="api/ng/service/$compile">$compile</a> service for data binding. See
@@ -100,7 +102,7 @@ when otherwise untrusted data is used by a directive.</p>
   <p>It is currently not possible for an interpolated expression to contain the interpolation end
 symbol. For example, <code>{{ &#39;}}&#39; }}</code> will be incorrectly interpreted as <code>{{ &#39; }}</code> + <code>&#39; }}</code>, i.e.
 an interpolated expression consisting of a single-quote (<code>&#39;</code>) and the <code>&#39; }}</code> string.</p>
-  <hr>
+
 </div>
 <div class="known-issue">
   <p>All directives and components must use the standard <code>{{</code> <code>}}</code> interpolation symbols
@@ -115,10 +117,8 @@ code snippet the closing braces of the literal object will get incorrectly denor
 <pre><code>&lt;div data-context=&#39;{&quot;context&quot;:{&quot;id&quot;:3,&quot;type&quot;:&quot;page&quot;} }&quot;&gt;
 </code></pre>
 <p>See <a href="https://github.com/angular/angular.js/pull/14610#issuecomment-219401099">https://github.com/angular/angular.js/pull/14610#issuecomment-219401099</a> for more information.</p>
-  
+
 </div>
-
-
 
 
 <div>
@@ -129,7 +129,7 @@ code snippet the closing braces of the literal object will get incorrectly denor
   </ul>
   
 
-    
+  
 
   <h2 id="usage">Usage</h2>
     
@@ -255,7 +255,9 @@ the symbol.</p>
     
 
     
+
     
+
     
     <h4>Returns</h4>
     <table class="variables-matrix return-arguments">
@@ -281,7 +283,9 @@ the symbol.</p>
     
 
     
+
     
+
     
     <h4>Returns</h4>
     <table class="variables-matrix return-arguments">

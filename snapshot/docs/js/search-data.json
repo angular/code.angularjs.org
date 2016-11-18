@@ -1976,7 +1976,7 @@
   {
     "path": "api/ngComponentRouter",
     "titleWords": "ngComponentRouter componentrouter",
-    "keywords": "adding alert alert-info also alternatively an and android angular angular-componentrouter angular_1_router api app application are as available backporting bash be been bower browsers but by cdn changes class cloudflare code com community component currently dependent deprecated developed do effort es6 exact explorer for further google has html https ie implementation in include install installed investigating ios is it js keep load min mobile module must need ngcomponentrouter ngroute not notice npm of on or order partials polyfills projects receive required router shims src support synchronized that the then this to updates use via we will windows with yet you your",
+    "keywords": "adding also alternatively an and android angular angular-componentrouter angular_1_router api app application are as available backporting bash be been bower browsers but by cdn changes cloudflare code com community component currently dependent deprecated developed do effort es6 exact explorer for further google has html https ie implementation in include install installed investigating ios is it js keep load min mobile module must need ngcomponentrouter ngroute not npm of on or order partials polyfills projects receive required router shims src support synchronized that the then this to updates use via we will windows with yet you your",
     "members": ""
   },
   {
@@ -2054,7 +2054,7 @@
   {
     "path": "api/ngCookies/service/$cookieStore",
     "titleWords": "$cookieStore",
-    "keywords": "$cookies $cookiestore alert alert-danger angular api are automatically backed be by class controller cookie cookies cookiestoreexample deserialized examplecontroller factory favoritecookie from function get html installed instead is js key-value module myfavorite ngcookies oatmeal objects or partials please provides put remove removing requires retrieved serialized service session storage that the this to tojson use var",
+    "keywords": "$cookies $cookiestore angular api are automatically backed be by controller cookie cookies cookiestoreexample deserialized examplecontroller factory favoritecookie from function get html installed instead is js key-value module myfavorite ngcookies oatmeal objects or partials please provides put remove removing requires retrieved serialized service session storage that the this to tojson use var",
     "members": "get put remove"
   },
   {
@@ -2288,7 +2288,7 @@
   {
     "path": "api/ngTouch/directive/ngClick",
     "titleWords": "ngClick click",
-    "keywords": "$event $touchprovider about after alert alert-danger also an and angular any api article as available back be before beginning being browsers by can class click com css default delay deprecated depressed designed desktop devices directive down element enable evaluate event example-ng-touch-ng-click expression fall following for from function further future gives good guide handles held html if immediately installed is it learn might migrate mobile module more most mouse need ng-click-active ngclick ngclickoverrideenabled ngtouch ngtouchclickdirectivefactory no notice object on or ordinary overview partials powerful prevents propagating receive recommend releases removed replacement requires restyle sending sets so support tap tap-and-release telerik that the them then this to touch touchscreen upon used using version wait we well while will wish with works you",
+    "keywords": "$event $touchprovider about after also an and angular any api article as available back be before beginning being browsers by can class click com css default delay deprecated depressed designed desktop devices directive down element enable evaluate event example-ng-touch-ng-click expression fall following for from function further future gives good guide handles held html if immediately installed is it learn might migrate mobile module more most mouse need ng-click-active ngclick ngclickoverrideenabled ngtouch ngtouchclickdirectivefactory no object on or ordinary overview partials powerful prevents propagating receive recommend releases removed replacement requires restyle sending sets so support tap tap-and-release telerik that the them then this to touch touchscreen upon used using version wait we well while will wish with works you",
     "members": ""
   },
   {

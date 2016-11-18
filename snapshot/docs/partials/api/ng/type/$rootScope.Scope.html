@@ -19,6 +19,8 @@
 
 
 
+
+
 <div class="api-profile-description">
   <p>A root scope can be retrieved using the <a href="api/ng/service/$rootScope">$rootScope</a> key from the
 <a href="api/auto/service/$injector">$injector</a>. Child scopes are created using the
@@ -46,12 +48,10 @@ details.</p>
 
 
 
-
-
 <div>
   
 
-    
+  
 
   <h2 id="usage">Usage</h2>
     
@@ -140,6 +140,8 @@ thus stop participating in model change detection and listener notification by i
 </div>
 
     
+
+    
     <h4>Parameters</h4>
     
 <table class="variables-matrix input-arguments">
@@ -197,7 +199,7 @@ thus stop participating in model change detection and listener notification by i
     
 
     
-    
+
     
     <h4>Returns</h4>
     <table class="variables-matrix return-arguments">
@@ -301,6 +303,8 @@ expect(scope.foodCounter).toEqual(1);
 </div>
 
     
+
+    
     <h4>Parameters</h4>
     
 <table class="variables-matrix input-arguments">
@@ -380,7 +384,7 @@ expect(scope.foodCounter).toEqual(1);
     
 
     
-    
+
     
     <h4>Returns</h4>
     <table class="variables-matrix return-arguments">
@@ -406,6 +410,8 @@ values are examined for changes on every call to <code>$digest</code>.</li>
 <li>The <code>listener</code> is called whenever any expression in the <code>watchExpressions</code> array changes.</li>
 </ul>
 </div>
+
+    
 
     
     <h4>Parameters</h4>
@@ -465,7 +471,7 @@ watched using <a href="api/ng/type/$rootScope.Scope#$watch">$watch()</a></p>
     
 
     
-    
+
     
     <h4>Returns</h4>
     <table class="variables-matrix return-arguments">
@@ -513,6 +519,8 @@ $scope.$digest();
 expect($scope.dataCount).toEqual(3);
 </code></pre>
 </div>
+
+    
 
     
     <h4>Parameters</h4>
@@ -576,7 +584,7 @@ Due to performance considerations, the<code>oldCollection</code> value is comput
     
 
     
-    
+
     
     <h4>Returns</h4>
     <table class="variables-matrix return-arguments">
@@ -638,7 +646,9 @@ expect(scope.counter).toEqual(2);
     
 
     
+
     
+
     
 
   </li>
@@ -664,7 +674,9 @@ clean up DOM bindings before an element is removed from the DOM.</p>
     
 
     
+
     
+
     
 
   </li>
@@ -685,6 +697,8 @@ expect(scope.$eval(&#39;a+b&#39;)).toEqual(3);
 expect(scope.$eval(function(scope){ return scope.a + scope.b; })).toEqual(3);
 </code></pre>
 </div>
+
+    
 
     
     <h4>Parameters</h4>
@@ -741,7 +755,7 @@ expect(scope.$eval(function(scope){ return scope.a + scope.b; })).toEqual(3);
     
 
     
-    
+
     
     <h4>Returns</h4>
     <table class="variables-matrix return-arguments">
@@ -774,6 +788,8 @@ rendering).</li>
 will be scheduled. However, it is encouraged to always call code that changes the model
 from within an <code>$apply</code> call. That includes code evaluated via <code>$evalAsync</code>.</p>
 </div>
+
+    
 
     
     <h4>Parameters</h4>
@@ -830,7 +846,7 @@ from within an <code>$apply</code> call. That includes code evaluated via <code>
     
 
     
-    
+
     
 
   </li>
@@ -868,6 +884,8 @@ expression was executed using the <a href="api/ng/type/$rootScope.Scope#$digest"
 </div>
 
     
+
+    
     <h4>Parameters</h4>
     
 <table class="variables-matrix input-arguments">
@@ -906,7 +924,7 @@ expression was executed using the <a href="api/ng/type/$rootScope.Scope#$digest"
     
 
     
-    
+
     
     <h4>Returns</h4>
     <table class="variables-matrix return-arguments">
@@ -931,6 +949,8 @@ digest.</p>
 </div>
 
     
+
+    
     <h4>Parameters</h4>
     
 <table class="variables-matrix input-arguments">
@@ -969,7 +989,7 @@ digest.</p>
     
 
     
-    
+
     
 
   </li>
@@ -995,6 +1015,8 @@ to true.</li>
 <li><code>defaultPrevented</code> - <code>{boolean}</code>: true if <code>preventDefault</code> was called.</li>
 </ul>
 </div>
+
+    
 
     
     <h4>Parameters</h4>
@@ -1047,7 +1069,7 @@ to true.</li>
     
 
     
-    
+
     
     <h4>Returns</h4>
     <table class="variables-matrix return-arguments">
@@ -1075,6 +1097,8 @@ cancels it.</p>
 <p>Any exception emitted from the <a href="api/ng/type/$rootScope.Scope#$on">listeners</a> will be passed
 onto the <a href="api/ng/service/$exceptionHandler">$exceptionHandler</a> service.</p>
 </div>
+
+    
 
     
     <h4>Parameters</h4>
@@ -1127,7 +1151,7 @@ onto the <a href="api/ng/service/$exceptionHandler">$exceptionHandler</a> servic
     
 
     
-    
+
     
     <h4>Returns</h4>
     <table class="variables-matrix return-arguments">
@@ -1154,6 +1178,8 @@ scope and calls all registered listeners along the way. The event cannot be canc
 <p>Any exception emitted from the <a href="api/ng/type/$rootScope.Scope#$on">listeners</a> will be passed
 onto the <a href="api/ng/service/$exceptionHandler">$exceptionHandler</a> service.</p>
 </div>
+
+    
 
     
     <h4>Parameters</h4>
@@ -1206,7 +1232,7 @@ onto the <a href="api/ng/service/$exceptionHandler">$exceptionHandler</a> servic
     
 
     
-    
+
     
     <h4>Returns</h4>
     <table class="variables-matrix return-arguments">
@@ -1229,6 +1255,8 @@ onto the <a href="api/ng/service/$exceptionHandler">$exceptionHandler</a> servic
 <p>Note that, in AngularJS, there is also a <code>$destroy</code> jQuery event, which can be used to
 clean up DOM bindings before an element is removed from the DOM.</p>
 </div>
+
+    
     <div class="inline">
       <h4>Type:</h4>
       <div class="type">broadcast</div>
@@ -1253,6 +1281,7 @@ clean up DOM bindings before an element is removed from the DOM.</p>
 </td>
   </tr>
 </table>
+    
   </li>
   
   <li id="$parent">
@@ -1264,6 +1293,7 @@ clean up DOM bindings before an element is removed from the DOM.</p>
 </td>
   </tr>
 </table>
+    
   </li>
   
   <li id="$root">
@@ -1275,6 +1305,7 @@ clean up DOM bindings before an element is removed from the DOM.</p>
 </td>
   </tr>
 </table>
+    
   </li>
   </ul>
 

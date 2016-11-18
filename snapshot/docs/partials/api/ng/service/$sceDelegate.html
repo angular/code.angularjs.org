@@ -23,6 +23,8 @@
 
 
 
+
+
 <div class="api-profile-description">
   <p><code>$sceDelegate</code> is a service that is used by the <code>$sce</code> service to provide <a href="api/ng/service/$sce">Strict
 Contextual Escaping (SCE)</a> services to AngularJS.</p>
@@ -43,12 +45,10 @@ templates.  Refer <a href="api/ng/provider/$sceDelegateProvider#resourceUrlWhite
 
 
 
-
-
 <div>
   
 
-    
+  
 
   <h2 id="usage">Usage</h2>
     
@@ -74,6 +74,8 @@ attribute interpolation, any dom event binding attribute interpolation
 such as for onclick,  etc.) that uses the provided value.
 See <a href="api/ng/service/$sce">$sce</a> for enabling strict contextual escaping.</p>
 </div>
+
+    
 
     
     <h4>Parameters</h4>
@@ -127,7 +129,7 @@ See <a href="api/ng/service/$sce">$sce</a> for enabling strict contextual escapi
     
 
     
-    
+
     
     <h4>Returns</h4>
     <table class="variables-matrix return-arguments">
@@ -149,6 +151,8 @@ where Angular expects a $sce.trustAs() return value.</p>
     <div><p>If the passed parameter had been returned by a prior call to <a href="api/ng/service/$sceDelegate#trustAs"><code>$sceDelegate.trustAs</code></a>, returns the value that had been passed to <a href="api/ng/service/$sceDelegate#trustAs"><code>$sceDelegate.trustAs</code></a>.</p>
 <p>If the passed parameter is not a value that had been returned by <a href="api/ng/service/$sceDelegate#trustAs"><code>$sceDelegate.trustAs</code></a>, returns it as-is.</p>
 </div>
+
+    
 
     
     <h4>Parameters</h4>
@@ -186,7 +190,7 @@ where Angular expects a $sce.trustAs() return value.</p>
     
 
     
-    
+
     
     <h4>Returns</h4>
     <table class="variables-matrix return-arguments">
@@ -212,6 +216,8 @@ created type.  If this condition isn&#39;t satisfied, throws an exception.</p>
 Disabling auto-escaping is extremely dangerous, it usually creates a Cross Site Scripting
 (XSS) vulnerability in your application.
 </div></div>
+
+    
 
     
     <h4>Parameters</h4>
@@ -264,7 +270,7 @@ Disabling auto-escaping is extremely dangerous, it usually creates a Cross Site 
     
 
     
-    
+
     
     <h4>Returns</h4>
     <table class="variables-matrix return-arguments">

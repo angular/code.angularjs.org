@@ -19,6 +19,8 @@
 
 
 
+
+
 <div class="api-profile-description">
   <p><code>NgModelController</code> provides API for the <a href="api/ng/directive/ngModel"><code>ngModel</code></a> directive.
 The controller contains services for data-binding, validation, CSS updates, and value formatting
@@ -34,12 +36,10 @@ At the end of this page you can find a <a href="api/ng/type/ngModel.NgModelContr
 
 
 
-
-
 <div>
   
 
-    
+  
 
   
 
@@ -68,7 +68,9 @@ invoked if you only change a property on the objects.</p>
     
 
     
+
     
+
     
 
   </li>
@@ -84,6 +86,8 @@ invoked if you only change a property on the objects.</p>
 default. The <code>checkboxInputType</code> directive does this because in its case a value of <code>false</code>
 implies empty.</p>
 </div>
+
+    
 
     
     <h4>Parameters</h4>
@@ -120,7 +124,7 @@ implies empty.</p>
     
 
     
-    
+
     
     <h4>Returns</h4>
     <table class="variables-matrix return-arguments">
@@ -147,7 +151,9 @@ has not been changed from when first compiled.</p>
     
 
     
+
     
+
     
 
   </li>
@@ -165,7 +171,9 @@ from when first compiled.</p>
     
 
     
+
     
+
     
 
   </li>
@@ -184,7 +192,9 @@ already been touched by the user.</p>
     
 
     
+
     
+
     
 
   </li>
@@ -202,7 +212,9 @@ first focused the control element and then shifted focus away from the control (
     
 
     
+
     
+
     
 
   </li>
@@ -269,7 +281,9 @@ input field will be updated with the new model value and any pending operations 
     
 
     
+
     
+
     
 
   </li>
@@ -289,7 +303,9 @@ If the validity changes to valid, it will set the model to the last available va
     
 
     
+
     
+
     
 
   </li>
@@ -307,7 +323,9 @@ usually handles calling this in response to input events.</p>
     
 
     
+
     
+
     
 
   </li>
@@ -352,6 +370,8 @@ programmatically, we should update the <code>ngModel</code> scope expression. It
 picked up by the model controller, which will run it through the <code>$formatters</code>, <code>$render</code> it
 to update the DOM, and finally call <code>$validate</code> on it.
 </div></div>
+
+    
 
     
     <h4>Parameters</h4>
@@ -404,7 +424,7 @@ to update the DOM, and finally call <code>$validate</code> on it.
     
 
     
-    
+
     
 
   </li>
@@ -418,6 +438,8 @@ to update the DOM, and finally call <code>$validate</code> on it.
 However, in most cases it should be sufficient to use the <code>ngModel.$validators</code> and
 <code>ngModel.$asyncValidators</code> collections which will call <code>$setValidity</code> automatically.</p>
 </div>
+
+    
 
     
     <h4>Parameters</h4>
@@ -478,7 +500,7 @@ However, in most cases it should be sufficient to use the <code>ngModel.$validat
     
 
     
-    
+
     
 
   </li>
@@ -498,6 +520,7 @@ is set.</p>
 </td>
   </tr>
 </table>
+    
   </li>
   
   <li id="$modelValue">
@@ -509,6 +532,7 @@ is set.</p>
 </td>
   </tr>
 </table>
+    
   </li>
   
   <li id="$parsers">
@@ -528,6 +552,7 @@ is set to <code>true</code>. The parse error is stored in <code>ngModel.$error.p
 </td>
   </tr>
 </table>
+    
   </li>
   
   <li id="$formatters">
@@ -549,6 +574,7 @@ ngModel.$formatters.push(formatter);
 </td>
   </tr>
 </table>
+    
   </li>
   
   <li id="$validators">
@@ -572,6 +598,7 @@ ngModel.$formatters.push(formatter);
 </td>
   </tr>
 </table>
+    
   </li>
   
   <li id="$asyncValidators">
@@ -606,6 +633,7 @@ in order to fulfill the validation and a status level of <code>4xx</code> in ord
 </td>
   </tr>
 </table>
+    
   </li>
   
   <li id="$viewChangeListeners">
@@ -619,6 +647,7 @@ in order to fulfill the validation and a status level of <code>4xx</code> in ord
 </td>
   </tr>
 </table>
+    
   </li>
   
   <li id="$error">
@@ -630,6 +659,7 @@ in order to fulfill the validation and a status level of <code>4xx</code> in ord
 </td>
   </tr>
 </table>
+    
   </li>
   
   <li id="$pending">
@@ -641,6 +671,7 @@ in order to fulfill the validation and a status level of <code>4xx</code> in ord
 </td>
   </tr>
 </table>
+    
   </li>
   
   <li id="$untouched">
@@ -652,6 +683,7 @@ in order to fulfill the validation and a status level of <code>4xx</code> in ord
 </td>
   </tr>
 </table>
+    
   </li>
   
   <li id="$touched">
@@ -663,6 +695,7 @@ in order to fulfill the validation and a status level of <code>4xx</code> in ord
 </td>
   </tr>
 </table>
+    
   </li>
   
   <li id="$pristine">
@@ -674,6 +707,7 @@ in order to fulfill the validation and a status level of <code>4xx</code> in ord
 </td>
   </tr>
 </table>
+    
   </li>
   
   <li id="$dirty">
@@ -685,6 +719,7 @@ in order to fulfill the validation and a status level of <code>4xx</code> in ord
 </td>
   </tr>
 </table>
+    
   </li>
   
   <li id="$valid">
@@ -696,6 +731,7 @@ in order to fulfill the validation and a status level of <code>4xx</code> in ord
 </td>
   </tr>
 </table>
+    
   </li>
   
   <li id="$invalid">
@@ -707,6 +743,7 @@ in order to fulfill the validation and a status level of <code>4xx</code> in ord
 </td>
   </tr>
 </table>
+    
   </li>
   
   <li id="$name">
@@ -718,6 +755,7 @@ in order to fulfill the validation and a status level of <code>4xx</code> in ord
 </td>
   </tr>
 </table>
+    
   </li>
   </ul>
 
