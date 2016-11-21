@@ -904,7 +904,7 @@ Foo.get({id: 42, bar: &#39;baz&#39;, toString: &#39;hmm&#39;});
 <p>After:</p>
 <pre><code class="lang-js">var Foo = $resource(&#39;/foo/:id&#39;);
 Foo.get({id: 42, bar: &#39;baz&#39;, toString: &#39;hmm&#39;});
-    // URL: /foo/42?bar=baz&amp;amp;toString=hmm
+    // URL: /foo/42?bar=baz&amp;toString=hmm
     // Note that `toString` _is_ included in the query, as expected :)
 </code></pre>
 <p><hr /></p>
