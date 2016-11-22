@@ -5,7 +5,8 @@
 <div class="alert alert-warning">
 <strong>Note:</strong> this guide is targeted towards developers who are already familiar with AngularJS basics.
 If you&#39;re just getting started, we recommend the <a href="tutorial/">tutorial</a> first.
-If you&#39;re looking for the <strong>directives API</strong>, we recently moved it to <a href="api/ng/service/$compile"><code>$compile</code></a>.
+If you&#39;re looking for the <strong>directives API</strong>, you can find it in the
+<a href="api/ng/service/$compile"><code>$compile</code> API docs</a>.
 </div>
 
 
@@ -41,7 +42,7 @@ directive when the directive is part of its declaration.</p>
 <p>The following <code>&lt;input&gt;</code> element also <strong>matches</strong> <code>ngModel</code>:</p>
 <pre><code class="lang-html">&lt;input data-ng-model=&quot;foo&quot;&gt;
 </code></pre>
-<p>And the following <person> element <strong>matches</strong> the <code>person</code> directive:</p>
+<p>And the following <code>&lt;person&gt;</code> element <strong>matches</strong> the <code>person</code> directive:</p>
 <pre><code class="lang-html">&lt;person&gt;{{name}}&lt;/person&gt;
 </code></pre>
 <h3 id="normalization">Normalization</h3>
@@ -350,9 +351,7 @@ create directives that are triggered by class name, you need to use the <code>re
 
 
 </p>
-<p>For more on the
-<a href="api/ng/service/$compile#directive-definition-object"><code>restrict</code></a>
-property, see the
+<p>For more on the <code>restrict</code> property, see the
 <a href="api/ng/service/$compile#directive-definition-object">API docs</a>.</p>
 <div class="alert alert-info">
 <strong>When should I use an attribute versus an element?</strong>
@@ -465,8 +464,8 @@ scope: {
 <p>The <strong>scope option</strong> is an object that contains a property for each isolate scope binding.  In this
 case it has just one property:</p>
 <ul>
-<li>Its name (<code>customerInfo</code>) corresponds to the
-directive&#39;s <strong>isolate scope</strong> property <code>customerInfo</code>.</li>
+<li>Its name (<code>customerInfo</code>) corresponds to the directive&#39;s <strong>isolate scope</strong> property,
+<code>customerInfo</code>.</li>
 <li>Its value (<code>=info</code>) tells <code>$compile</code> to bind to the <code>info</code> attribute.</li>
 </ul>
 <div class="alert alert-warning">
@@ -535,7 +534,8 @@ components because it prevents a component from changing your model state except
 that you explicitly pass in.</p>
 <div class="alert alert-warning">
 <strong>Note:</strong> Normally, a scope prototypically inherits from its parent. An isolated scope does not.
-See the <a href="api/ng/service/$compile#directive-definition-object">&quot;Directive Definition Object - scope&quot;</a> section for more information about isolate scopes.
+See the <a href="api/ng/service/$compile#directive-definition-object">&quot;Directive Definition Object - scope&quot;</a> section
+for more information about isolate scopes.
 </div>
 
 <div class="alert alert-success">
