@@ -2054,7 +2054,7 @@
   {
     "path": "api/ngCookies/service/$cookieStore",
     "titleWords": "$cookieStore",
-    "keywords": "$cookies $cookiestore angular api are automatically backed be by controller cookie cookies cookiestoreexample deserialized examplecontroller factory favoritecookie from function get html installed instead is js key-value module myfavorite ngcookies oatmeal objects or partials please provides put remove removing requires retrieved serialized service session storage that the this to tojson use var",
+    "keywords": "$cookies $cookiestore angular api are automatically backed be by controller cookie cookies cookiestoreexample deserialized examplecontroller factory favoritecookie from function get html installed instead is js key-value module myfavorite ngcookies oatmeal objects or partials please provides put remove removing requires retrieved serialized service session sinceversion storage that the this to tojson use v1 var",
     "members": "get put remove"
   },
   {
@@ -2288,7 +2288,7 @@
   {
     "path": "api/ngTouch/directive/ngClick",
     "titleWords": "ngClick click",
-    "keywords": "$event $touchprovider about after also an and angular any api article as available back be before beginning being browsers by can class click com css default delay deprecated depressed designed desktop devices directive down element enable evaluate event example-ng-touch-ng-click expression fall following for from function further future gives good guide handles held html if immediately installed is it learn might migrate mobile module more most mouse need ng-click-active ngclick ngclickoverrideenabled ngtouch ngtouchclickdirectivefactory no object on or ordinary overview partials powerful prevents propagating receive recommend releases removed replacement requires restyle sending sets so support tap tap-and-release telerik that the them then this to touch touchscreen upon used using version wait we well while will wish with works you",
+    "keywords": "$event $touchprovider about after also an and any api article as available back be before being browsers by can class click com css default delay deprecated depressed designed desktop devices directive down element enable evaluate event example-ng-touch-ng-click expression fall following for from function further future gives good guide handles held html if immediately installed is it learn might migrate mobile module more most mouse need ng-click-active ngclick ngclickoverrideenabled ngtouch ngtouchclickdirectivefactory no object on or ordinary overview partials powerful prevents propagating receive recommend releases removed replacement requires restyle sending sets sinceversion so support tap tap-and-release telerik that the them then this to touch touchscreen upon used using v1 version wait we well while will wish with works you",
     "members": ""
   },
   {
