@@ -55,6 +55,16 @@ Date.prototype.toJSON = function() {
     </td>
   </tr>
   <tr>
+    <td><a href="api/ng/service/$compile">$compile</a></td>
+    <td>
+    <h3 id="double-compilation">Double Compilation</h3>
+<p>   Double compilation occurs when an already compiled part of the DOM gets
+   compiled again. This is an undesired effect and can lead to misbehaving directives, performance issues,
+   and memory leaks. Refer to the Compiler Guide <a href="guide/compiler#double-compilation-and-how-to-avoid-it">section on double compilation</a> for an in-depth explanation and ways to avoid it.</p>
+ 
+    </td>
+  </tr>
+  <tr>
     <td><a href="api/ng/directive/textarea">textarea</a></td>
     <td>
     <p>When specifying the <code>placeholder</code> attribute of <code>&lt;textarea&gt;</code>, Internet Explorer will temporarily

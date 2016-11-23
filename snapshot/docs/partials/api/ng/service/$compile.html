@@ -747,6 +747,15 @@ to illustrate how <code>$compile</code> works.
 
 
 
+<h2 id="known-issues">Known Issues</h2>
+<div class="known-issue">
+  <h3 id="double-compilation">Double Compilation</h3>
+<p>   Double compilation occurs when an already compiled part of the DOM gets
+   compiled again. This is an undesired effect and can lead to misbehaving directives, performance issues,
+   and memory leaks. Refer to the Compiler Guide <a href="guide/compiler#double-compilation-and-how-to-avoid-it">section on double compilation</a> for an in-depth explanation and ways to avoid it.</p>
+
+</div>
+
 
 <div>
   
