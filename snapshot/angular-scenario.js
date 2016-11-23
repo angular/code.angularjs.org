@@ -10071,7 +10071,7 @@ return jQuery;
 } );
 
 /**
- * @license AngularJS v1.5.9-build.5153+sha.05a9d3a
+ * @license AngularJS v1.5.9-build.5154+sha.f4fb6e0
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -10130,7 +10130,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.5.9-build.5153+sha.05a9d3a/' +
+    message += '\nhttp://errors.angularjs.org/1.5.9-build.5154+sha.f4fb6e0/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -12652,7 +12652,7 @@ function toDebugString(obj) {
 var version = {
   // These placeholder strings will be replaced by grunt's `build` task.
   // They need to be double- or single-quoted.
-  full: '1.5.9-build.5153+sha.05a9d3a',
+  full: '1.5.9-build.5154+sha.f4fb6e0',
   major: 1,
   minor: 5,
   dot: 9,
@@ -37218,8 +37218,8 @@ var ngIfDirective = ['$animate', '$compile', function($animate, $compile) {
             }
             if (block) {
               previousElements = getBlockNodes(block.clone);
-              $animate.leave(previousElements).then(function() {
-                previousElements = null;
+              $animate.leave(previousElements).done(function(response) {
+                if (response !== false) previousElements = null;
               });
               block = null;
             }
@@ -37443,8 +37443,8 @@ var ngIncludeDirective = ['$templateRequest', '$anchorScroll', '$animate',
             currentScope = null;
           }
           if (currentElement) {
-            $animate.leave(currentElement).then(function() {
-              previousElement = null;
+            $animate.leave(currentElement).done(function(response) {
+              if (response !== false) previousElement = null;
             });
             previousElement = currentElement;
             currentElement = null;
@@ -37452,9 +37452,10 @@ var ngIncludeDirective = ['$templateRequest', '$anchorScroll', '$animate',
         };
 
         scope.$watch(srcExp, function ngIncludeWatchAction(src) {
-          var afterAnimation = function() {
-            if (isDefined(autoScrollExp) && (!autoScrollExp || scope.$eval(autoScrollExp))) {
-              $anchorScroll();
+          var afterAnimation = function(response) {
+            if (response !== false && isDefined(autoScrollExp) &&
+              (!autoScrollExp || scope.$eval(autoScrollExp))) {
+                $anchorScroll();
             }
           };
           var thisChangeId = ++changeCounter;
@@ -37477,7 +37478,7 @@ var ngIncludeDirective = ['$templateRequest', '$anchorScroll', '$animate',
               // directives to non existing elements.
               var clone = $transclude(newScope, function(clone) {
                 cleanupLastIncludeContent();
-                $animate.enter(clone, null, $element).then(afterAnimation);
+                $animate.enter(clone, null, $element).done(afterAnimation);
               });
 
               currentScope = newScope;
@@ -41317,21 +41318,24 @@ var ngSwitchDirective = ['$animate', '$compile', function($animate, $compile) {
           selectedScopes = [];
 
       var spliceFactory = function(array, index) {
-          return function() { array.splice(index, 1); };
+          return function(response) {
+            if (response !== false) array.splice(index, 1);
+          };
       };
 
       scope.$watch(watchExpr, function ngSwitchWatchAction(value) {
         var i, ii;
-        for (i = 0, ii = previousLeaveAnimations.length; i < ii; ++i) {
-          $animate.cancel(previousLeaveAnimations[i]);
+
+        // Start with the last, in case the array is modified during the loop
+        while (previousLeaveAnimations.length) {
+          $animate.cancel(previousLeaveAnimations.pop());
         }
-        previousLeaveAnimations.length = 0;
 
         for (i = 0, ii = selectedScopes.length; i < ii; ++i) {
           var selected = getBlockNodes(selectedElements[i].clone);
           selectedScopes[i].$destroy();
-          var promise = previousLeaveAnimations[i] = $animate.leave(selected);
-          promise.then(spliceFactory(previousLeaveAnimations, i));
+          var runner = previousLeaveAnimations[i] = $animate.leave(selected);
+          runner.done(spliceFactory(previousLeaveAnimations, i));
         }
 
         selectedElements.length = 0;
