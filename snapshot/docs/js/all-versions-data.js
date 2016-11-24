@@ -29,17 +29,17 @@ angular.module('allVersionsData', [])
   },
   {
     "version": {
-      "raw": "1.5.8",
+      "raw": "1.5.9",
       "major": 1,
       "minor": 5,
-      "patch": 8,
+      "patch": 9,
       "prerelease": [],
       "build": [],
-      "version": "1.5.8"
+      "version": "1.5.9"
     },
-    "label": "v1.5.8",
+    "label": "v1.5.9",
     "group": "Latest",
-    "docsUrl": "https://code.angularjs.org/1.5.8/docs"
+    "docsUrl": "https://code.angularjs.org/1.5.9/docs"
   },
   {
     "version": {
@@ -144,6 +144,20 @@ angular.module('allVersionsData', [])
     "label": "v1.6.0-rc.0",
     "group": "v1.6",
     "docsUrl": "https://code.angularjs.org/1.6.0-rc.0/docs"
+  },
+  {
+    "version": {
+      "raw": "1.5.9",
+      "major": 1,
+      "minor": 5,
+      "patch": 9,
+      "prerelease": [],
+      "build": [],
+      "version": "1.5.9"
+    },
+    "label": "v1.5.9",
+    "group": "v1.5",
+    "docsUrl": "https://code.angularjs.org/1.5.9/docs"
   },
   {
     "version": {

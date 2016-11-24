@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.9-build.5160+sha.6e91f9c
+ * @license AngularJS v1.5.10-build.5161+sha.d7cc863
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -57,7 +57,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.5.9-build.5160+sha.6e91f9c/' +
+    message += '\nhttp://errors.angularjs.org/1.5.10-build.5161+sha.d7cc863/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -2589,10 +2589,10 @@ function toDebugString(obj) {
 var version = {
   // These placeholder strings will be replaced by grunt's `build` task.
   // They need to be double- or single-quoted.
-  full: '1.5.9-build.5160+sha.6e91f9c',
+  full: '1.5.10-build.5161+sha.d7cc863',
   major: 1,
   minor: 5,
-  dot: 9,
+  dot: 10,
   codeName: 'snapshot'
 };
 
