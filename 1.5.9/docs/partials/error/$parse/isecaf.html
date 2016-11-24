@@ -1,0 +1,22 @@
+<a href='https://github.com/angular/angular.js/edit/v1.5.x/docs/content/error/$parse/isecaf.ngdoc?message=docs(error%2Fisecaf)%3A%20describe%20your%20change...' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+
+
+<h1>Error: $parse:isecaf
+  <div><span class='hint'>Assigning to Fields of Disallowed Context</span></div>
+</h1>
+
+<div>
+    <pre class="minerr-errmsg" error-display="Assigning to a constructor or its prototype is disallowed! Expression: {0}">Assigning to a constructor or its prototype is disallowed! Expression: {0}</pre>
+</div>
+
+<h2>Description</h2>
+<div class="description">
+  <p>Occurs when an expression attempts to assign a value on a field of any of the <code>Boolean</code>, <code>Number</code>,
+<code>String</code>, <code>Array</code>, <code>Object</code>, or <code>Function</code> constructors or the corresponding prototypes.</p>
+<p>Angular bans the modification of these constructors or their prototypes from within expressions,
+since it is a known way to modify the behaviour of existing functions/operations.</p>
+<p>To resolve this error, avoid assigning to fields of constructors or their prototypes in expressions.</p>
+
+</div>
+
+
