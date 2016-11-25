@@ -10071,7 +10071,7 @@ return jQuery;
 } );
 
 /**
- * @license AngularJS v1.5.10-build.5163+sha.cdb9e08
+ * @license AngularJS v1.5.10-build.5164+sha.44f9ae6
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -10130,7 +10130,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.5.10-build.5163+sha.cdb9e08/' +
+    message += '\nhttp://errors.angularjs.org/1.5.10-build.5164+sha.44f9ae6/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -12662,7 +12662,7 @@ function toDebugString(obj) {
 var version = {
   // These placeholder strings will be replaced by grunt's `build` task.
   // They need to be double- or single-quoted.
-  full: '1.5.10-build.5163+sha.cdb9e08',
+  full: '1.5.10-build.5164+sha.44f9ae6',
   major: 1,
   minor: 5,
   dot: 10,
@@ -33978,7 +33978,7 @@ var inputType = {
    *    but does not trigger HTML5 native validation. Takes an expression.
    * @param {string=} step Sets the `step` validation error key if the value entered does not fit the `step` constraint.
    *    Can be interpolated.
-   * @param {string=} ngStep Like `step`, sets the `max` validation error key if the value entered does not fit the `ngStep` constraint,
+   * @param {string=} ngStep Like `step`, sets the `step` validation error key if the value entered does not fit the `ngStep` constraint,
    *    but does not trigger HTML5 native validation. Takes an expression.
    * @param {string=} required Sets `required` validation error key if the value is not entered.
    * @param {string=} ngRequired Adds `required` attribute and `required` validation constraint to
