@@ -104,6 +104,7 @@ Below is the full list of breaking changes:</p>
 <li>Core:<ul>
 <li><a href="guide/migration#migrate1.5to1.6-ng-directives">Directives</a><ul>
 <li><a href="guide/migration#migrate1.5to1.6-ng-directives-form">form</a></li>
+<li><a href="guide/migration#migrate1.5to1.6-ng-directives-input[number]">input[number]</a></li>
 <li><a href="guide/migration#migrate1.5to1.6-ng-directives-input[radio]">input[radio]</a></li>
 <li><a href="guide/migration#migrate1.5to1.6-ng-directives-input[range]">input[range]</a></li>
 <li><a href="guide/migration#migrate1.5to1.6-ng-directives-ngBind">ngBind</a></li>
@@ -166,6 +167,32 @@ method is passed without any context. The code must now be changed to:</p>
 })
 </code></pre>
 <p>or you can use <code>Function.prototype.bind</code> or <code>angular.bind</code>.</p>
+<p><a name="migrate1.5to1.6-ng-directives-input[number]"></a></p>
+<h4 id="-input-type-number-"><strong>input[type=number]</strong>:</h4>
+<p><minor />
+<strong>Due to <a href="https://github.com/angular/angular.js/commit/e1da4bed8e291003d485a8ad346ab80bed8ae2e3">e1da4be</a></strong>,
+number inputs that use <code>ngModel</code> and specify a <code>step</code> constraint (via <code>step</code>/<code>ngStep</code> attributes)
+will now have a new validator (<code>step</code>), which will verify that the current value is valid under the
+<code>step</code> constraint (according to the <a href="https://www.w3.org/TR/html5/forms.html#the-step-attribute">spec</a>).
+Previously, the <code>step</code> constraint was ignored by <code>ngModel</code>, treating values as valid even when there
+was a step-mismatch.</p>
+<p>If you want to restore the previous behavior (use the <code>step</code> attribute while disabling step
+validation), you can overwrite the built-in <code>step</code> validator with a custom directive. For example:</p>
+<pre><code class="lang-js">// For all `input` elements...
+.directive(&#39;input&#39;, function() {
+  return {
+    restrict: &#39;E&#39;,
+    require: &#39;?ngModel&#39;,
+    link: function (scope, elem, attrs, ngModelCtrl) {
+      // ...that are of type &quot;number&quot; and have `ngModel`...
+      if ((attrs.type === &#39;number&#39;) &amp;&amp; ngModelCtrl) {
+        // ...remove the `step` validator.
+        delete ngModelCtrl.$validators.step;
+      }
+    }
+  };
+})
+</code></pre>
 <p><a name="migrate1.5to1.6-ng-directives-input[radio]"></a></p>
 <h4 id="-input-type-radio-"><strong>input[type=radio]</strong>:</h4>
 <p><major />
