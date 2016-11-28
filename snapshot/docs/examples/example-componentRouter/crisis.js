@@ -35,7 +35,7 @@ angular.module('crisis-center', ['dialog'])
 
 
 function CrisisService($q) {
-  var crisesPromise = $q.when([
+  var crisesPromise = $q.resolve([
     {id: 1, name: 'Princess Held Captive'},
     {id: 2, name: 'Dragon Burning Cities'},
     {id: 3, name: 'Giant Asteroid Heading For Earth'},

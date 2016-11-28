@@ -6,7 +6,7 @@ angular.module('dialog', [])
 
 function DialogService($q) {
   this.confirm = function(message) {
-    return $q.when(window.confirm(message || 'Is it OK?'));
+    return $q.resolve(window.confirm(message || 'Is it OK?'));
   };
 }
 })(window.angular);

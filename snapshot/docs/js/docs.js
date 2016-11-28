@@ -332,7 +332,7 @@ angular.module('examples', [])
 
       ctrl.prepareExampleData = function() {
         if (ctrl.example.manifest) {
-          return $q.when(ctrl.example);
+          return $q.resolve(ctrl.example);
         }
 
         return getExampleData(ctrl.examplePath).then(function(data) {
