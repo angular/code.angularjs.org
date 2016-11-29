@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.10-build.5170+sha.d1e4f57
+ * @license AngularJS v1.5.10-build.5171+sha.b77defd
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -435,7 +435,7 @@ function shallowClearAndCopy(src, dst) {
  */
 angular.module('ngResource', ['ng']).
   provider('$resource', function ResourceProvider() {
-    var PROTOCOL_AND_DOMAIN_REGEX = /^https?:\/\/[^\/]*/;
+    var PROTOCOL_AND_DOMAIN_REGEX = /^https?:\/\/[^/]*/;
 
     var provider = this;
 

@@ -2,7 +2,7 @@
   'use strict';
 var app = angular.module('form-example1', []);
 
-var INTEGER_REGEXP = /^\-?\d+$/;
+var INTEGER_REGEXP = /^-?\d+$/;
 app.directive('integer', function() {
   return {
     require: 'ngModel',

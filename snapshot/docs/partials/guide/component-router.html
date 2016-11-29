@@ -138,7 +138,7 @@ of the URL: &quot;/&quot;, &quot;/heroes&quot; and &quot;/4&quot; respectively.<
       name="index.html"
       language="html"
       type="html">
-      <pre><code>&lt;h1 class=&quot;title&quot;&gt;Component Router&lt;/h1&gt;&#10;&lt;app&gt;&lt;/app&gt;&#10;&#10;&lt;!-- Load up the router library - normally you might use npm and host it locally --&gt;&#10;&lt;script src=&quot;https://unpkg.com/@angular/router@0.2.0/angular1/angular_1_router.js&quot;&gt;&lt;/script&gt;</code></pre>
+      <pre><code>&lt;h1 class=&quot;title&quot;&gt;Component Router&lt;/h1&gt;&#10;&lt;app&gt;&lt;/app&gt;&#10;&#10;&lt;!-- Load up the router library - normally you might use npm/yarn and host it locally --&gt;&#10;&lt;script src=&quot;https://unpkg.com/@angular/router@0.2.0/angular1/angular_1_router.js&quot;&gt;&lt;/script&gt;</code></pre>
     </div>
   
     <div class="runnable-example-file" 
@@ -194,11 +194,10 @@ of the URL: &quot;/&quot;, &quot;/heroes&quot; and &quot;/4&quot; respectively.<
 <p>In the following sections we will step through building this application. The finished application has views
 to display list and detail views of Heroes and Crises.</p>
 <h2 id="install-the-libraries">Install the libraries</h2>
-<p>It is easier to use npm to install the <strong>Component Router</strong> module. For this guide we will also install
-AngularJS itself via npm:</p>
-<pre><code class="lang-bash">npm init
-npm install angular@1.5.x --save
-npm install @angular/router@0.2.0 --save
+<p>It is easier to use <a href="https://yarnpkg.com">Yarn</a> or <a href="https://www.npmjs.com">npm</a> to install the
+<strong>Component Router</strong> module. For this guide we will also install AngularJS itself via Yarn:</p>
+<pre><code class="lang-bash">yarn init
+yarn add angular@1.5.x @angular/router@0.2.0
 </code></pre>
 <h2 id="load-the-scripts">Load the scripts</h2>
 <p>Just like any Angular application, we load the JavaScript files into our <code>index.html</code>:</p>

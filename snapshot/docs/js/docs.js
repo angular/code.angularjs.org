@@ -137,7 +137,7 @@ angular.module('DocsController', ['currentVersionData'])
   $scope.loading = 0;
 
 
-  var INDEX_PATH = /^(\/|\/index[^\.]*.html)$/;
+  var INDEX_PATH = /^(\/|\/index[^.]*.html)$/;
   if (!$location.path() || INDEX_PATH.test($location.path())) {
     $location.path('/api').replace();
   }
@@ -149,7 +149,7 @@ angular.module('DocsController', ['currentVersionData'])
 angular.module('errors', ['ngSanitize'])
 
 .filter('errorLink', ['$sanitize', function($sanitize) {
-  var LINKY_URL_REGEXP = /((ftp|https?):\/\/|(mailto:)?[A-Za-z0-9._%+-]+@)\S*[^\s\.;,\(\)\{\}<>]/g,
+  var LINKY_URL_REGEXP = /((ftp|https?):\/\/|(mailto:)?[A-Za-z0-9._%+-]+@)\S*[^\s.;,(){}<>]/g,
       MAILTO_REGEXP = /^mailto:/,
       STACK_TRACE_REGEXP = /:\d+:\d+$/;
 
@@ -494,7 +494,7 @@ angular.module('search', [])
 
 .controller('Error404SearchCtrl', ['$scope', '$location', 'docsSearch',
         function($scope, $location, docsSearch) {
-  docsSearch($location.path().split(/[\/\.:]/).pop()).then(function(results) {
+  docsSearch($location.path().split(/[/.:]/).pop()).then(function(results) {
     $scope.results = {};
     angular.forEach(results, function(result) {
       var area = $scope.results[result.area] || [];

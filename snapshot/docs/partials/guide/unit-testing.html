@@ -41,7 +41,7 @@ a web server which loads your application&#39;s source code and executes your te
 Karma to run against a number of browsers, which is useful for being confident that your application
 works on all browsers you need to support. Karma is executed on the command line and will display
 the results of your tests on the command line once they have run in the browser.</p>
-<p>Karma is a NodeJS application, and should be installed through npm. Full installation instructions
+<p>Karma is a NodeJS application, and should be installed through npm/yarn. Full installation instructions
 are available on <a href="http://karma-runner.github.io/0.12/intro/installation.html">the Karma website</a>.</p>
 <h3 id="jasmine">Jasmine</h3>
 <p><a href="http://jasmine.github.io/1.3/introduction.html">Jasmine</a> is a behavior driven development framework for
@@ -366,7 +366,7 @@ There is also an example of testing promises in the <a href="api/ng/service/$q#t
   }));
 
   it(&quot;has calculated the answer correctly&quot;, inject(function(DeepThought) {
-    // Because of sharedInjector, we have access to the instance of the DeepThought service 
+    // Because of sharedInjector, we have access to the instance of the DeepThought service
     // that was provided to the beforeAll() hook. Therefore we can test the generated answer
     expect(DeepThought.answer).toBe(42);
   }));
