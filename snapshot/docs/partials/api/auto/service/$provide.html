@@ -160,8 +160,66 @@ console or not.</p>
   </tr>
 </table>
     
+    <h4 id="$provide.provider-examples">Examples</h4><p>The following example shows how to create a simple event tracking service and register it using
+<a href="api/auto/service/$provide#provider">$provide.provider()</a>.</p>
+<pre><code class="lang-js">// Define the eventTracker provider
+function EventTrackerProvider() {
+  var trackingUrl = &#39;/track&#39;;
 
-  </li>
+  // A provider method for configuring where the tracked events should been saved
+  this.setTrackingUrl = function(url) {
+    trackingUrl = url;
+  };
+
+  // The service factory function
+  this.$get = [&#39;$http&#39;, function($http) {
+    var trackedEvents = {};
+    return {
+      // Call this to track an event
+      event: function(event) {
+        var count = trackedEvents[event] || 0;
+        count += 1;
+        trackedEvents[event] = count;
+        return count;
+      },
+      // Call this to save the tracked events to the trackingUrl
+      save: function() {
+        $http.post(trackingUrl, trackedEvents);
+      }
+    };
+  }];
+}
+
+describe(&#39;eventTracker&#39;, function() {
+  var postSpy;
+
+  beforeEach(module(function($provide) {
+    // Register the eventTracker provider
+    $provide.provider(&#39;eventTracker&#39;, EventTrackerProvider);
+  }));
+
+  beforeEach(module(function(eventTrackerProvider) {
+    // Configure eventTracker provider
+    eventTrackerProvider.setTrackingUrl(&#39;/custom-track&#39;);
+  }));
+
+  it(&#39;tracks events&#39;, inject(function(eventTracker) {
+    expect(eventTracker.event(&#39;login&#39;)).toEqual(1);
+    expect(eventTracker.event(&#39;login&#39;)).toEqual(2);
+  }));
+
+  it(&#39;saves to the tracking url&#39;, inject(function(eventTracker, $http) {
+    postSpy = spyOn($http, &#39;post&#39;);
+    eventTracker.event(&#39;login&#39;);
+    eventTracker.save();
+    expect(postSpy).toHaveBeenCalled();
+    expect(postSpy.mostRecentCall.args[0]).not.toEqual(&#39;/track&#39;);
+    expect(postSpy.mostRecentCall.args[0]).toEqual(&#39;/custom-track&#39;);
+    expect(postSpy.mostRecentCall.args[1]).toEqual({ &#39;login&#39;: 1 });
+  }));
+});
+</code></pre>
+</li>
   
   <li id="factory">
     <h3><p><code>factory(name, $getFn);</code></p>
@@ -239,8 +297,19 @@ configure your service in a provider.</p>
   </tr>
 </table>
     
-
-  </li>
+    <h4 id="$provide.factory-examples">Examples</h4><p>Here is an example of registering a service</p>
+<pre><code class="lang-js">$provide.factory(&#39;ping&#39;, [&#39;$http&#39;, function($http) {
+  return function ping() {
+    return $http.send(&#39;/ping&#39;);
+  };
+}]);
+</code></pre>
+<p>You would then inject and use this service like this:</p>
+<pre><code class="lang-js">someModule.controller(&#39;Ctrl&#39;, [&#39;ping&#39;, function(ping) {
+  ping();
+}]);
+</code></pre>
+</li>
   
   <li id="service">
     <h3><p><code>service(name, constructor);</code></p>
@@ -327,8 +396,25 @@ as a type/class.</p>
   </tr>
 </table>
     
+    <h4 id="$provide.service-examples">Examples</h4><p>Here is an example of registering a service using
+<a href="api/auto/service/$provide#service">$provide.service(class)</a>.</p>
+<pre><code class="lang-js">var Ping = function($http) {
+  this.$http = $http;
+};
 
-  </li>
+Ping.$inject = [&#39;$http&#39;];
+
+Ping.prototype.send = function() {
+  return this.$http.get(&#39;/ping&#39;);
+};
+$provide.service(&#39;ping&#39;, Ping);
+</code></pre>
+<p>You would then inject and use this service like this:</p>
+<pre><code class="lang-js">someModule.controller(&#39;Ctrl&#39;, [&#39;ping&#39;, function(ping) {
+  ping.send();
+}]);
+</code></pre>
+</li>
   
   <li id="value">
     <h3><p><code>value(name, value);</code></p>
@@ -407,8 +493,16 @@ an Angular <a href="api/auto/service/$provide#decorator">decorator</a>.</p>
   </tr>
 </table>
     
+    <h4 id="$provide.value-examples">Examples</h4><p>Here are some examples of creating value services.</p>
+<pre><code class="lang-js">$provide.value(&#39;ADMIN_USER&#39;, &#39;admin&#39;);
 
-  </li>
+$provide.value(&#39;RoleLookup&#39;, { admin: 0, writer: 1, reader: 2 });
+
+$provide.value(&#39;halfOf&#39;, function(value) {
+  return value / 2;
+});
+</code></pre>
+</li>
   
   <li id="constant">
     <h3><p><code>constant(name, value);</code></p>
@@ -486,8 +580,16 @@ be overridden by an Angular <a href="api/auto/service/$provide#decorator">decora
   </tr>
 </table>
     
+    <h4 id="$provide.constant-examples">Examples</h4><p>Here a some examples of creating constants:</p>
+<pre><code class="lang-js">$provide.constant(&#39;SHARD_HEIGHT&#39;, 306);
 
-  </li>
+$provide.constant(&#39;MY_COLOURS&#39;, [&#39;red&#39;, &#39;blue&#39;, &#39;grey&#39;]);
+
+$provide.constant(&#39;double&#39;, function(value) {
+  return value * 2;
+});
+</code></pre>
+</li>
   
   <li id="decorator">
     <h3><p><code>decorator(name, decorator);</code></p>
@@ -562,8 +664,14 @@ decorated or delegated to.</li>
     
 
     
-
-  </li>
+    <h4 id="$provide.decorator-examples">Examples</h4><p>Here we decorate the <a href="api/ng/service/$log">$log</a> service to convert warnings to errors by intercepting
+calls to <a href="api/ng/service/$log#error">$log.warn()</a>.</p>
+<pre><code class="lang-js">$provide.decorator(&#39;$log&#39;, [&#39;$delegate&#39;, function($delegate) {
+  $delegate.warn = $delegate.error;
+  return $delegate;
+}]);
+</code></pre>
+</li>
   </ul>
   
   
