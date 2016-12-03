@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.5.10-build.5178+sha.1102c84
+ * @license AngularJS v1.5.10-build.5179+sha.752b1e6
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -435,7 +435,7 @@ function shallowClearAndCopy(src, dst) {
  */
 angular.module('ngResource', ['ng']).
   provider('$resource', function ResourceProvider() {
-    var PROTOCOL_AND_DOMAIN_REGEX = /^https?:\/\/[^/]*/;
+    var PROTOCOL_AND_IPV6_REGEX = /^https?:\/\/\[[^\]]*][^/]*/;
 
     var provider = this;
 
@@ -546,7 +546,7 @@ angular.module('ngResource', ['ng']).
             url = actionUrl || self.template,
             val,
             encodedVal,
-            protocolAndDomain = '';
+            protocolAndIpv6 = '';
 
           var urlParams = self.urlParams = Object.create(null);
           forEach(url.split(/\W/), function(param) {
@@ -561,8 +561,8 @@ angular.module('ngResource', ['ng']).
             }
           });
           url = url.replace(/\\:/g, ':');
-          url = url.replace(PROTOCOL_AND_DOMAIN_REGEX, function(match) {
-            protocolAndDomain = match;
+          url = url.replace(PROTOCOL_AND_IPV6_REGEX, function(match) {
+            protocolAndIpv6 = match;
             return '';
           });
 
@@ -599,7 +599,7 @@ angular.module('ngResource', ['ng']).
           // E.g. `http://url.com/id./format?q=x` becomes `http://url.com/id.format?q=x`
           url = url.replace(/\/\.(?=\w+($|\?))/, '.');
           // replace escaped `/\.` with `/.`
-          config.url = protocolAndDomain + url.replace(/\/\\\./, '/.');
+          config.url = protocolAndIpv6 + url.replace(/\/\\\./, '/.');
 
 
           // set params - delegate param encoding to $http
