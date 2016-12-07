@@ -356,9 +356,9 @@ pre-assigning bindings on controller instances is disabled by default. It is sti
 it back on, which should help during the migration. Pre-assigning bindings has been deprecated and
 will be removed in a future version, so we strongly recommend migrating your applications to not
 rely on it as soon as possible.</p>
-<p>Initialization logic that relies on relies on bindings being present should be put in the
-controller&#39;s <code>$onInit()</code> method, which is guarranteed to always be called <em>after</em> the bindings have
-been assigned.</p>
+<p>Initialization logic that relies on bindings being present should be put in the controller&#39;s
+<code>$onInit()</code> method, which is guarranteed to always be called <em>after</em> the bindings have been
+assigned.</p>
 <p>Before:</p>
 <pre><code class="lang-js">.component(&#39;myComponent&#39;, {
   bindings: {value: &#39;&lt;&#39;},
