@@ -12,20 +12,17 @@ angular.module('allVersionsData', [])
   },
   {
     "version": {
-      "raw": "1.6.0-rc.2",
+      "raw": "1.6.0",
       "major": 1,
       "minor": 6,
       "patch": 0,
-      "prerelease": [
-        "rc",
-        2
-      ],
+      "prerelease": [],
       "build": [],
-      "version": "1.6.0-rc.2"
+      "version": "1.6.0"
     },
-    "label": "v1.6.0-rc.2",
+    "label": "v1.6.0",
     "group": "Latest",
-    "docsUrl": "https://code.angularjs.org/1.6.0-rc.2/docs"
+    "docsUrl": "https://code.angularjs.org/1.6.0/docs"
   },
   {
     "version": {
@@ -110,6 +107,20 @@ angular.module('allVersionsData', [])
     "label": "v1.0.8",
     "group": "Latest",
     "docsUrl": "https://code.angularjs.org/1.0.8/docs"
+  },
+  {
+    "version": {
+      "raw": "1.6.0",
+      "major": 1,
+      "minor": 6,
+      "patch": 0,
+      "prerelease": [],
+      "build": [],
+      "version": "1.6.0"
+    },
+    "label": "v1.6.0",
+    "group": "v1.6",
+    "docsUrl": "https://code.angularjs.org/1.6.0/docs"
   },
   {
     "version": {
