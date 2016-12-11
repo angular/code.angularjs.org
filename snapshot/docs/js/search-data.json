@@ -2102,7 +2102,7 @@
   {
     "path": "api/ngMessages/directive/ngMessageExp",
     "titleWords": "ngMessageExp messageexp",
-    "keywords": "about ae an and any api are attribute based be by click corresponding determines directive directives dom element expression expressionvalue for here hide html is it key learn listens map message messages module more must ng-message-exp ng-messages ngmessage ngmessageexp ngmessages of on operate or parent partials particular provided purpose show since situated state that the to using value visible when-exp which with",
+    "keywords": "about accepts ae an and any api as attribute be but by click corresponding directive directives element evaluated expression expressionvalue for here html instead is it key learn message module more ng-message-exp ng-messages ngmessage ngmessageexp ngmessages of or partials same static the to using value when-exp",
     "members": ""
   },
   {
