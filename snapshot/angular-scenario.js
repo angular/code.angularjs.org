@@ -10071,7 +10071,7 @@ return jQuery;
 } );
 
 /**
- * @license AngularJS v1.6.1-build.5209+sha.15d07c0
+ * @license AngularJS v1.6.1-build.5210+sha.4e143fc
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -10130,7 +10130,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.6.1-build.5209+sha.15d07c0/' +
+    message += '\nhttp://errors.angularjs.org/1.6.1-build.5210+sha.4e143fc/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -12696,7 +12696,7 @@ function toDebugString(obj) {
 var version = {
   // These placeholder strings will be replaced by grunt's `build` task.
   // They need to be double- or single-quoted.
-  full: '1.6.1-build.5209+sha.15d07c0',
+  full: '1.6.1-build.5210+sha.4e143fc',
   major: 1,
   minor: 6,
   dot: 1,
@@ -39916,17 +39916,17 @@ var ngOptionsDirective = ['$compile', '$document', '$parse', function($compile, 
 
       } else {
 
-        selectCtrl.writeValue = function writeNgOptionsMultiple(value) {
-          options.items.forEach(function(option) {
-            option.element.selected = false;
-          });
+        selectCtrl.writeValue = function writeNgOptionsMultiple(values) {
+          // Only set `<option>.selected` if necessary, in order to prevent some browsers from
+          // scrolling to `<option>` elements that are outside the `<select>` element's viewport.
 
-          if (value) {
-            value.forEach(function(item) {
-              var option = options.getOptionFromViewValue(item);
-              if (option) option.element.selected = true;
-            });
-          }
+          var selectedOptions = values && values.map(getAndUpdateSelectedOption) || [];
+
+          options.items.forEach(function(option) {
+            if (option.element.selected && !includes(selectedOptions, option)) {
+              option.element.selected = false;
+            }
+          });
         };
 
 
@@ -40016,6 +40016,14 @@ var ngOptionsDirective = ['$compile', '$document', '$parse', function($compile, 
         updateOptionElement(option, optionElement);
       }
 
+      function getAndUpdateSelectedOption(viewValue) {
+        var option = options.getOptionFromViewValue(viewValue);
+        var element = option && option.element;
+
+        if (element && !element.selected) element.selected = true;
+
+        return option;
+      }
 
       function updateOptionElement(option, element) {
         option.element = element;
