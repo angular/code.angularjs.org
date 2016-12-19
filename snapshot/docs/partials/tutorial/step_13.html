@@ -130,7 +130,10 @@ RESTful resources. It is also easier now to understand what the code in our cont
 </code></pre>
 <p><br />
 <strong><code>app/phone-detail/phone-detail.module.js</code>:</strong></p>
-<pre><code class="lang-js">angular.module(&#39;phoneDetail&#39;, [&#39;core.phone&#39;]);
+<pre><code class="lang-js">angular.module(&#39;phoneDetail&#39;, [
+  &#39;ngRoute&#39;,
+  &#39;core.phone&#39;
+]);
 </code></pre>
 <p><br />
 <strong><code>app/phone-detail/phone-detail.component.js</code>:</strong></p>
