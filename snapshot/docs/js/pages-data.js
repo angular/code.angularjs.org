@@ -2470,14 +2470,17 @@ angular.module('pagesData', [])
   "examples/example-ng-repeat": {
     "path": "examples/example-ng-repeat"
   },
-  "glyphicons.css": {
-    "path": "glyphicons.css"
+  "examples/example-ng-show-simple": {
+    "path": "examples/example-ng-show-simple"
   },
-  "examples/example-ng-show": {
-    "path": "examples/example-ng-show"
+  "examples/example-ng-show-complex": {
+    "path": "examples/example-ng-show-complex"
   },
-  "examples/example-ng-hide": {
-    "path": "examples/example-ng-hide"
+  "examples/example-ng-hide-simple": {
+    "path": "examples/example-ng-hide-simple"
+  },
+  "examples/example-ng-hide-complex": {
+    "path": "examples/example-ng-hide-complex"
   },
   "examples/example-ng-style": {
     "path": "examples/example-ng-style"
