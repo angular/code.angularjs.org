@@ -189,8 +189,8 @@ it(&#39;should clear messages after alert&#39;, function() {
   notify(&#39;two&#39;);
   notify(&#39;third&#39;);
 
-  expect(mock.alert.callCount).toEqual(2);
-  expect(mock.alert.mostRecentCall.args).toEqual([&quot;more\ntwo\nthird&quot;]);
+  expect(mock.alert.calls.count()).toEqual(2);
+  expect(mock.alert.calls.mostRecent().args).toEqual([&quot;more\ntwo\nthird&quot;]);
 });
 </code></pre>
 <h2 id="related-topics">Related Topics</h2>
