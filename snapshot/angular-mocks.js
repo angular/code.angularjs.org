@@ -1,6 +1,6 @@
 /**
- * @license AngularJS v1.6.2-build.5225+sha.035f1cd
- * (c) 2010-2016 Google, Inc. http://angularjs.org
+ * @license AngularJS v1.6.2-build.5226+sha.296e9f6
+ * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
 (function(window, angular) {
