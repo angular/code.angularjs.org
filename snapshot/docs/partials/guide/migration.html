@@ -358,7 +358,7 @@ it back on, which should help during the migration. Pre-assigning bindings has b
 will be removed in a future version, so we strongly recommend migrating your applications to not
 rely on it as soon as possible.</p>
 <p>Initialization logic that relies on bindings being present should be put in the controller&#39;s
-<code>$onInit()</code> method, which is guarranteed to always be called <em>after</em> the bindings have been
+<code>$onInit()</code> method, which is guaranteed to always be called <em>after</em> the bindings have been
 assigned.</p>
 <p>Before:</p>
 <pre><code class="lang-js">.component(&#39;myComponent&#39;, {
@@ -426,7 +426,7 @@ the <code>RESOURCE_URL</code> context tests from being used in interpolation. Fo
 running at <code>https://docs.angularjs.org</code> then the following will fail:</p>
 <pre><code class="lang-html">&lt;link href=&quot;{{ &#39;http://mydomain.org/unsafe.css&#39; }}&quot; rel=&quot;stylesheet&quot; /&gt;
 </code></pre>
-<p>By default, only URLs with the same domain and prototocl as the application document are considered
+<p>By default, only URLs with the same domain and protocol as the application document are considered
 safe in the <code>RESOURCE_URL</code> context. To use URLs from other domains and/or protocols, you may either
 whitelist them or wrap them into a trusted value by calling <code>$sce.trustAsResourceUrl(url)</code>.</p>
 <p><hr /></p>
@@ -953,7 +953,7 @@ with an unencoded <code>;</code> character.</p>
 <code>$route</code> (and its dependencies; e.g. <code>$location</code>) will - by default - be instantiated early on.
 Previously, in cases where <code>ngView</code> was loaded asynchronously, <code>$route</code> (and its dependencies) might
 also have been instantiated asynchronously.</p>
-<p>Although this is not expected to have unwanted side-effects in normal application bebavior, it may
+<p>Although this is not expected to have unwanted side-effects in normal application behavior, it may
 affect your unit tests: When testing a module that (directly or indirectly) depends on <code>ngRoute</code>, a
 request will be made for the default route&#39;s template. If not properly &quot;trained&quot;, <code>$httpBackend</code>
 will complain about this unexpected request. You can restore the previous behavior (and avoid
@@ -2058,7 +2058,7 @@ scope.getIframeSrc = function() {
 </code></pre>
 <p>See <a href="https://github.com/angular/angular.js/commit/38deedd6e3d806eb8262bb43f26d47245f6c2739">38deedd6</a>.</p>
 <h3 id="interpolations-inside-dom-event-handlers-are-now-disallowed">Interpolations inside DOM event handlers are now disallowed</h3>
-<p>DOM event handlers execute arbitrary Javascript code. Using an interpolation for such handlers
+<p>DOM event handlers execute arbitrary JavaScript code. Using an interpolation for such handlers
 means that the interpolated value is a JS string that is evaluated. Storing or generating such
 strings is error prone and leads to XSS vulnerabilities. On the other hand, <code>ngClick</code> and other
 Angular specific event handlers evaluate Angular expressions in non-window (Scope) context which
