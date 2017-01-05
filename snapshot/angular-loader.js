@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.2-build.5227+sha.e193cda
+ * @license AngularJS v1.6.2-build.5228+sha.3776b2e
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -87,7 +87,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.6.2-build.5227+sha.e193cda/' +
+    message += '\nhttp://errors.angularjs.org/1.6.2-build.5228+sha.3776b2e/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
