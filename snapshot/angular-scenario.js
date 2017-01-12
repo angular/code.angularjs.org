@@ -10071,7 +10071,7 @@ return jQuery;
 } );
 
 /**
- * @license AngularJS v1.6.2-build.5236+sha.74e232d
+ * @license AngularJS v1.6.2-build.5237+sha.3983a66
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -10130,7 +10130,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.6.2-build.5236+sha.74e232d/' +
+    message += '\nhttp://errors.angularjs.org/1.6.2-build.5237+sha.3983a66/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -12700,7 +12700,7 @@ function toDebugString(obj) {
 var version = {
   // These placeholder strings will be replaced by grunt's `build` task.
   // They need to be double- or single-quoted.
-  full: '1.6.2-build.5236+sha.74e232d',
+  full: '1.6.2-build.5237+sha.3983a66',
   major: 1,
   minor: 6,
   dot: 2,
