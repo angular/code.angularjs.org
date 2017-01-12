@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.2-build.5234+sha.2e27df6
+ * @license AngularJS v1.6.2-build.5235+sha.74e232d
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -1320,9 +1320,8 @@ angular.mock.dump = function(object) {
       });
   ```
  */
-angular.mock.$HttpBackendProvider = function() {
-  this.$get = ['$rootScope', '$timeout', createHttpBackendMock];
-};
+angular.mock.$httpBackendDecorator =
+  ['$rootScope', '$timeout', '$delegate', createHttpBackendMock];
 
 /**
  * General factory function for $httpBackend mock.
@@ -1343,7 +1342,10 @@ function createHttpBackendMock($rootScope, $timeout, $delegate, $browser) {
       expectations = [],
       responses = [],
       responsesPush = angular.bind(responses, responses.push),
-      copy = angular.copy;
+      copy = angular.copy,
+      // We cache the original backend so that if both ngMock and ngMockE2E override the
+      // service the ngMockE2E version can pass through to the real backend
+      originalHttpBackend = $delegate.$$originalHttpBackend || $delegate;
 
   function createResponse(status, data, headers, statusText) {
     if (angular.isFunction(status)) return status;
@@ -1428,7 +1430,7 @@ function createHttpBackendMock($rootScope, $timeout, $delegate, $browser) {
           // if $browser specified, we do auto flush all requests
           ($browser ? $browser.defer : responsesPush)(wrapResponse(definition));
         } else if (definition.passThrough) {
-          $delegate(method, url, data, callback, headers, timeout, withCredentials, responseType, eventHandlers, uploadEventHandlers);
+          originalHttpBackend(method, url, data, callback, headers, timeout, withCredentials, responseType, eventHandlers, uploadEventHandlers);
         } else throw new Error('No response defined !');
         return;
       }
@@ -1903,6 +1905,8 @@ function createHttpBackendMock($rootScope, $timeout, $delegate, $browser) {
     expectations.length = 0;
     responses.length = 0;
   };
+
+  $httpBackend.$$originalHttpBackend = originalHttpBackend;
 
   return $httpBackend;
 
@@ -2401,7 +2405,6 @@ angular.module('ngMock', ['ng']).provider({
   $exceptionHandler: angular.mock.$ExceptionHandlerProvider,
   $log: angular.mock.$LogProvider,
   $interval: angular.mock.$IntervalProvider,
-  $httpBackend: angular.mock.$HttpBackendProvider,
   $rootElement: angular.mock.$RootElementProvider,
   $componentController: angular.mock.$ComponentControllerProvider
 }).config(['$provide', '$compileProvider', function($provide, $compileProvider) {
@@ -2409,6 +2412,7 @@ angular.module('ngMock', ['ng']).provider({
   $provide.decorator('$$rAF', angular.mock.$RAFDecorator);
   $provide.decorator('$rootScope', angular.mock.$RootScopeDecorator);
   $provide.decorator('$controller', createControllerDecorator($compileProvider));
+  $provide.decorator('$httpBackend', angular.mock.$httpBackendDecorator);
 }]);
 
 /**
@@ -2423,7 +2427,6 @@ angular.module('ngMock', ['ng']).provider({
  * the {@link ngMockE2E.$httpBackend e2e $httpBackend} mock.
  */
 angular.module('ngMockE2E', ['ng']).config(['$provide', function($provide) {
-  $provide.value('$httpBackend', angular.injector(['ng']).get('$httpBackend'));
   $provide.decorator('$httpBackend', angular.mock.e2e.$httpBackendDecorator);
 }]);
 
