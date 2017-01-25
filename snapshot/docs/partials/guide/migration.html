@@ -25,7 +25,7 @@ which drives many of these changes.</li>
 
 
 <h2 id="migrating-from-1-5-to-1-6">Migrating from 1.5 to 1.6</h2>
-<p>Angular 1.6 fixes numerous bugs and adds new features, both in core and in external modules.
+<p>AngularJS 1.6 fixes numerous bugs and adds new features, both in core and in external modules.
 In addition, it includes several security and performance improvements in commonly used services,
 such as <code>$compile</code>, <code>$injector</code>, <code>$parse</code>, <code>$animate</code>, and directives, such as <code>input</code>, <code>ngModel</code>
 and <code>select</code>.</p>
@@ -511,7 +511,7 @@ You can pass a trusted object instead of a string as a URL to the <code>$http</c
 HTTP requests now update the outstanding request count synchronously. Previously, the request count
 would not have been updated until the request to the server was actually in flight. Now the request
 count is updated before any async interceptor is called.</p>
-<p>The new behavior will also allow end-2-end tests to more correctly detect when Angular is stable,
+<p>The new behavior will also allow end-2-end tests to more correctly detect when AngularJS is stable,
 but there is a chance it may change the observed behaviour in cases where an async request
 interceptor is being used.</p>
 <p><hr /></p>
@@ -682,10 +682,10 @@ elem.data(&#39;foo-bar&#39;); // 2
 <p><major />
 <strong>Due to <a href="https://github.com/angular/angular.js/commit/73050cdda04675bfa6705dc841ddbbb6919eb048">73050c</a></strong>,
 the way jqLite camelCases keys passed to <code>.css()</code> is aligned with jQuery. Previously, when using
-Angular without jQuery, <code>.css()</code> would camelCase keys more aggressively. Now, only a single hyphen
+AngularJS without jQuery, <code>.css()</code> would camelCase keys more aggressively. Now, only a single hyphen
 followed by a lowercase letter is getting transformed. This change also affects other APIs that rely
 on the <code>.css()</code> method, such as <code>ngStyle</code>.</p>
-<p>If you are using Angular with jQuery, your application is not affected by this change. If you are
+<p>If you are using AngularJS with jQuery, your application is not affected by this change. If you are
 not using jQuery, then you need to update your code as shown in the following examples:</p>
 <p>Before:</p>
 <pre><code class="lang-html">&lt;!-- HTML --&gt;
@@ -736,7 +736,7 @@ var bgColor = elem.css(&#39;backgroundColor&#39;);
 getting/setting boolean attributes will no longer take the corresponding properties into account.
 Previously, all boolean attributes were reflected into the corresponding property when calling a
 setter and from the corresponding property when calling a getter, even on elements that don&#39;t treat
-those attributes in a special way. Now Angular doesn&#39;t do it by itself, but relies on browsers to
+those attributes in a special way. Now AngularJS doesn&#39;t do it by itself, but relies on browsers to
 know when to reflect the property. Note that this browser-level conversion differs between browsers;
 if you need to dynamically change the state of an element, you should modify the property, not the
 attribute. See <a href="https://jquery.com/upgrade-guide/1.9/#attr-versus-prop-">https://jquery.com/upgrade-guide/1.9/#attr-versus-prop-</a> for a more detailed
@@ -1002,10 +1002,10 @@ execution would be aborted without firing a <code>$routeChangeError</code> event
 the <code>$route</code> service will no longer instantiate controllers nor call <code>resolve</code> or
 <code>template</code>/<code>templateUrl</code> functions for routes that successfully <code>redirectTo</code> other routes.</p>
 <h2 id="migrating-from-1-4-to-1-5">Migrating from 1.4 to 1.5</h2>
-<p>Angular 1.5 takes a big step towards preparing developers for a smoother transition to Angular 2 in
+<p>AngularJS 1.5 takes a big step towards preparing developers for a smoother transition to Angular in
 the future. Architecting your applications using components, multi-slot transclusion, one-way
 bindings in isolate scopes, using lifecycle hooks in directive controllers and relying on native ES6
-features (such as classes and arrow functions) are now all possible with Angular 1.5.</p>
+features (such as classes and arrow functions) are now all possible with AngularJS 1.5.</p>
 <p>This release includes numerous bug and security fixes, as well as performance improvements to core
 services, directives, filters and helper functions. Existing applications can start enjoying the
 benefits of such changes in <code>$compile</code>, <code>$parse</code>, <code>$animate</code>, <code>$animateCss</code>, <code>$sanitize</code>, <code>ngOptions</code>,
@@ -1014,7 +1014,7 @@ benefits of such changes in <code>$compile</code>, <code>$parse</code>, <code>$a
 Among them, a few stand out:</p>
 <ul>
 <li><code>angular.component()</code>: Introducing &quot;components&quot;, a special sort of directive that are easy to
-configure and promote best practices (plus can bring Angular 1 applications closer to Angular 2&#39;s
+configure and promote best practices (plus can bring AngularJS applications closer to Angular&#39;s
 style of architecture).</li>
 <li>Multi-slot transclusion: Enabling the design of more powerful and complex UI elements with a much
 simpler configuration and reduced boilerplate.</li>
@@ -1146,7 +1146,7 @@ event is fired.</p>
 });
 </code></pre>
 <p>Going forward, we recommend using <a href="https://github.com/ftlabs/fastclick">FastClick</a> or perhaps one of
-the <a href="http://ngmodules.org/tags/touch">Angular 3rd party touch-related modules</a> that provide similar
+the <a href="http://ngmodules.org/tags/touch">AngularJS 3rd party touch-related modules</a> that provide similar
 functionality.</p>
 <p>Also note that modern browsers already remove the 300ms delay under some circumstances:</p>
 <ul>
@@ -1167,7 +1167,7 @@ functionality.</p>
 
 
 <h2 id="migrating-from-1-3-to-1-4">Migrating from 1.3 to 1.4</h2>
-<p>Angular 1.4 fixes major animation issues and introduces a new API for <code>ngCookies</code>. Further, there
+<p>AngularJS 1.4 fixes major animation issues and introduces a new API for <code>ngCookies</code>. Further, there
 are changes to <code>ngMessages</code>, <code>$compile</code>, <code>ngRepeat</code>, <code>ngOptions</code>and some fixes to core filters:
 <code>limitTo</code> and <code>filter</code>.</p>
 <p>The reason for the ngAnimate refactor was to fix timing issues and to expose new APIs to allow
@@ -1193,7 +1193,7 @@ feature has been removed, however, the same effect, with even more
 possibilities, can be achieved by injecting <code>$animateCss</code> into a
 JavaScript-defined animation and creating custom CSS-based animations
 from there.</p>
-<p>By using <code>$animateCss</code> inside of a JavaScript animation in Angular 1.4, we can trigger custom CSS-based animations
+<p>By using <code>$animateCss</code> inside of a JavaScript animation in AngularJS 1.4, we can trigger custom CSS-based animations
 directly from our JavaScript code.</p>
 <pre><code class="lang-js">ngModule.animation(&#39;.slide-animation&#39;, [&#39;$animateCss&#39;, function($animateCss) {
   return {
@@ -1324,13 +1324,13 @@ it is now implemented in the ngOptions directive itself.</p>
 the <code>select</code> directive will now use strict comparison of the <code>ngModel</code> scope value against <code>option</code>
 values to determine which option is selected. This means non-string scope values (such as <code>Number</code> or <code>Boolean</code>)
 will not be matched against equivalent option strings (such as the strings <code>&quot;123&quot;</code>, <code>&quot;true&quot;</code> or <code>&quot;false&quot;</code>).</p>
-<p>In Angular 1.3.x, setting <code>scope.x = 200</code> would select the option with the value 200 in the following <code>select</code>:</p>
+<p>In AngularJS 1.3.x, setting <code>scope.x = 200</code> would select the option with the value 200 in the following <code>select</code>:</p>
 <pre><code>&lt;select ng-model=&quot;x&quot;&gt;
   &lt;option value=&quot;100&quot;&gt;100&lt;/option&gt;
   &lt;option value=&quot;200&quot;&gt;200&lt;/option&gt;
 &lt;/select&gt;
 </code></pre>
-<p>In Angular 1.4.x, the &#39;unknown option&#39; will be selected.</p>
+<p>In AngularJS 1.4.x, the &#39;unknown option&#39; will be selected.</p>
 <p>To remedy this, you can initialize the model as a string: <code>scope.x = &#39;200&#39;</code>, or if you want to
 keep the model as a <code>Number</code>, you can do the conversion via <code>$formatters</code> and <code>$parsers</code> on <code>ngModel</code>:</p>
 <pre><code class="lang-js">ngModelCtrl.$parsers.push(function(value) {
@@ -1344,10 +1344,10 @@ ngModelCtrl.$formatters.push(function(value) {
 <h3 id="form">form</h3>
 <p>Due to <a href="https://github.com/angular/angular.js/commit/94533e570673e6b2eb92073955541fa289aabe02">94533e57</a>,
 the <code>name</code> attribute of <code>form</code> elements can now only contain characters that can be evaluated as part
-of an Angular expression. This is because Angular uses the value of <code>name</code> as an assignable expression
+of an AngularJS expression. This is because AngularJS uses the value of <code>name</code> as an assignable expression
 to set the form on the <code>$scope</code>. For example, <code>name=&quot;myForm&quot;</code> assigns the form to <code>$scope.myForm</code> and
 <code>name=&quot;myObj.myForm&quot;</code> assigns it to <code>$scope.myObj.myForm</code>.</p>
-<p>Previously, it was possible to also use names such <code>name=&quot;my:name&quot;</code>, because Angular used a special setter
+<p>Previously, it was possible to also use names such <code>name=&quot;my:name&quot;</code>, because AngularJS used a special setter
 function for the form name. Now the general, more robust <code>$parse</code> setter is used.</p>
 <p>The easiest way to migrate your code is therefore to remove all special characters from the <code>name</code> attribute.</p>
 <p>If you need to keep the special characters, you can use the following directive, which will replace
@@ -1513,28 +1513,28 @@ as globals:</p>
   $controllerProvider.allowGlobals();
 }]);
 </code></pre>
-<h3 id="angular-expression-parsing-parse-interpolate-">Angular Expression Parsing (<code>$parse</code> + <code>$interpolate</code>)</h3>
+<h3 id="angularjs-expression-parsing-parse-interpolate-">AngularJS Expression Parsing (<code>$parse</code> + <code>$interpolate</code>)</h3>
 <ul>
 <li>due to <a href="https://github.com/angular/angular.js/commit/77ada4c82d6b8fc6d977c26f3cdb48c2f5fbe5a5">77ada4c8</a>,</li>
 </ul>
-<p>You can no longer invoke .bind, .call or .apply on a function in angular expressions.
+<p>You can no longer invoke .bind, .call or .apply on a function in AngularJS expressions.
 This is to disallow changing the behaviour of existing functions
 in an unforeseen fashion.</p>
 <ul>
 <li>due to <a href="https://github.com/angular/angular.js/commit/6081f20769e64a800ee8075c168412b21f026d99">6081f207</a>,</li>
 </ul>
-<p>The (deprecated) <strong>proto</strong> property does not work inside angular expressions
+<p>The (deprecated) <strong>proto</strong> property does not work inside AngularJS expressions
 anymore.</p>
 <ul>
 <li>due to <a href="https://github.com/angular/angular.js/commit/48fa3aadd546036c7e69f71046f659ab1de244c6">48fa3aad</a>,</li>
 </ul>
-<p>This prevents the use of <strong>{define,lookup}{Getter,Setter}</strong> inside angular
+<p>This prevents the use of <strong>{define,lookup}{Getter,Setter}</strong> inside AngularJS
 expressions. If you really need them for some reason, please wrap/bind them to make them
 less dangerous, then make them available through the scope object.</p>
 <ul>
 <li>due to <a href="https://github.com/angular/angular.js/commit/528be29d1662122a34e204dd607e1c0bd9c16bbc">528be29d</a>,</li>
 </ul>
-<p>This prevents the use of <code>Object</code> inside angular expressions.
+<p>This prevents the use of <code>Object</code> inside AngularJS expressions.
 If you need Object.keys, make it accessible in the scope.</p>
 <ul>
 <li>due to <a href="https://github.com/angular/angular.js/commit/bdfc9c02d021e08babfbc966a007c71b4946d69d">bdfc9c02</a>,
@@ -1569,7 +1569,7 @@ This array is <strong>always</strong> 1 item longer than the
 </ul>
 </li>
 </ul>
-<h3 id="miscellaneous-angular-helpers">Miscellaneous Angular helpers</h3>
+<h3 id="miscellaneous-angularjs-helpers">Miscellaneous AngularJS helpers</h3>
 <ul>
 <li><strong>Angular.copy:</strong> due to <a href="https://github.com/angular/angular.js/commit/b59b04f98a0b59eead53f6a53391ce1bbcbe9b57">b59b04f9</a>,</li>
 </ul>
@@ -1609,9 +1609,9 @@ jQuery. We don&#39;t expect that app code actually depends on this accidental fe
 <ul>
 <li><strong>jqLite:</strong> due to <a href="https://github.com/angular/angular.js/commit/d71dbb1ae50f174680533492ce4c7db3ff74df00">d71dbb1a</a>,
 the jQuery <code>detach()</code> method does not trigger the <code>$destroy</code> event.
-If you want to destroy Angular data attached to the element, use <code>remove()</code>.</li>
+If you want to destroy AngularJS data attached to the element, use <code>remove()</code>.</li>
 </ul>
-<h3 id="angular-html-compiler-compile-">Angular HTML Compiler (<code>$compile</code>)</h3>
+<h3 id="angularjs-html-compiler-compile-">AngularJS HTML Compiler (<code>$compile</code>)</h3>
 <ul>
 <li>due to <a href="https://github.com/angular/angular.js/commit/2ee29c5da81ffacdc1cabb438f5d125d5e116cb9">2ee29c5d</a>,</li>
 </ul>
@@ -1633,7 +1633,7 @@ check that you do not have directives on the same element that are trying
 to request both an isolate and a non-isolate scope and fix your code.</p>
 <ul>
 <li>due to <a href="https://github.com/angular/angular.js/commit/eec6394a342fb92fba5270eee11c83f1d895e9fb">eec6394a</a>, The <code>replace</code> flag for defining directives that
-replace the element that they are on will be removed in the next major angular version.
+replace the element that they are on will be removed in the next major AngularJS version.
 This feature has difficult semantics (e.g. how attributes are merged) and leads to more
 problems compared to what it solves. Also, with Web Components it is normal to have
 custom elements in the DOM.</li>
@@ -1821,7 +1821,7 @@ $httpProvider.interceptors.push(&#39;myHttpInterceptor&#39;);
 <a href="api/ng/service/$http#interceptors">interceptors</a></p>
 <ul>
 <li><strong>$httpBackend:</strong> due to <a href="https://github.com/angular/angular.js/commit/6680b7b97c0326a80bdccaf0a35031e4af641e0e">6680b7b9</a>, the JSONP behavior for erroneous and empty responses changed:
-  Previously, a JSONP response was regarded as erroneous if it was empty. Now Angular is listening to the
+  Previously, a JSONP response was regarded as erroneous if it was empty. Now AngularJS is listening to the
   correct events to detect errors, i.e. even empty responses can be successful.</li>
 </ul>
 <ul>
@@ -2035,7 +2035,7 @@ below should still apply, but you may want to consult the
 <h3 id="you-can-only-bind-one-expression-to-src-ng-src-or-action-">You can only bind one expression to <code>*[src]</code>, <code>*[ng-src]</code> or <code>action</code></h3>
 <p>With the exception of <code>&lt;a&gt;</code> and <code>&lt;img&gt;</code> elements, you cannot bind more than one expression to the
 <code>src</code> or <code>action</code> attribute of elements.</p>
-<p>This is one of several improvements to security introduces by Angular 1.2.</p>
+<p>This is one of several improvements to security introduces by AngularJS 1.2.</p>
 <p>Concatenating expressions makes it hard to understand whether some combination of concatenated
 values are unsafe to use and potentially subject to XSS vulnerabilities. To simplify the task of
 auditing for XSS issues, we now require that a single expression be used for <code>*[src/ng-src]</code>
@@ -2094,7 +2094,7 @@ scope.getIframeSrc = function() {
 <p>DOM event handlers execute arbitrary JavaScript code. Using an interpolation for such handlers
 means that the interpolated value is a JS string that is evaluated. Storing or generating such
 strings is error prone and leads to XSS vulnerabilities. On the other hand, <code>ngClick</code> and other
-Angular specific event handlers evaluate Angular expressions in non-window (Scope) context which
+AngularJS specific event handlers evaluate AngularJS expressions in non-window (Scope) context which
 makes them much safer.</p>
 <p>To migrate the code follow the example below:</p>
 <p>Before:</p>
@@ -2327,7 +2327,7 @@ This change shouldn&#39;t impact apps that don&#39;t contain malicious image lin
 <a href="https://github.com/angular/angular.js/commit/3e39ac7e1b10d4812a44dad2f959a93361cd823b">3e39ac7e</a>.</p>
 <h3 id="isolate-scope-only-exposed-to-directives-with-scope-property">Isolate scope only exposed to directives with <code>scope</code> property</h3>
 <p>If you declare a scope option on a directive, that directive will have an
-<a href="https://github.com/angular/angular.js/wiki/Understanding-Scopes">isolate scope</a>. In Angular 1.0, if a
+<a href="https://github.com/angular/angular.js/wiki/Understanding-Scopes">isolate scope</a>. In AngularJS 1.0, if a
 directive with an isolate scope is used on an element, all directives on that same element have access
 to the same isolate scope. For example, say we have the following directives:</p>
 <pre><code>// This directive declares an isolate scope.
@@ -2352,11 +2352,11 @@ to the same isolate scope. For example, say we have the following directives:</p
 <p>Now what happens if we use both directives on the same element?</p>
 <pre><code>&lt;div isolate-scope non-isolate-scope&gt;&lt;/div&gt;
 </code></pre>
-<p>In Angular 1.0, the nonIsolateScope directive will have access to the isolateScope directive’s scope. The
-log statements will print the same id, because the scope is the same. But in Angular 1.2, the nonIsolateScope
+<p>In AngularJS 1.0, the nonIsolateScope directive will have access to the isolateScope directive’s scope. The
+log statements will print the same id, because the scope is the same. But in AngularJS 1.2, the nonIsolateScope
 will not use the same scope as isolateScope. Instead, it will inherit the parent scope. The log statements
 will print different id’s.</p>
-<p>If your code depends on the Angular 1.0 behavior (non-isolate directive needs to access state
+<p>If your code depends on the AngularJS 1.0 behavior (non-isolate directive needs to access state
 from within the isolate scope), change the isolate directive to use scope locals to pass these explicitly:</p>
 <p><strong>Before</strong></p>
 <pre><code>&lt;input ng-model=&quot;$parent.value&quot; ng-isolate&gt;
@@ -2397,11 +2397,11 @@ binding is set up in the pre-linking phase.</p>
 
 <p>This change introduces the notion of &quot;private&quot; properties (properties
 whose names begin and/or end with an underscore) on the scope chain.
-These properties will not be available to Angular expressions (i.e. {{
+These properties will not be available to AngularJS expressions (i.e. {{
 }} interpolation in templates and strings passed to <code>$parse</code>)  They are
 freely available to JavaScript code (as before).</p>
 <p><strong>Motivation</strong></p>
-<p>Angular expressions execute in a limited context. They do not have
+<p>AngularJS expressions execute in a limited context. They do not have
 direct access to the global scope, <code>window</code>, <code>document</code> or the Function
 constructor. However, they have direct access to names/properties on
 the scope chain. It has been a long standing best practice to keep
@@ -2410,17 +2410,17 @@ controller.) That&#39;s easier said than done for two reasons:</p>
 <ol>
 <li>JavaScript does not have a notion of private properties so if you need
 someone on the scope chain for JavaScript use, you also expose it to
-Angular expressions</li>
+AngularJS expressions</li>
 <li>The new <code>controller as</code> syntax that&#39;s now in increased usage exposes the
 entire controller on the scope chain greatly increasing the exposed surface.</li>
 </ol>
-<p>Though Angular expressions are written and controlled by the developer, they:</p>
+<p>Though AngularJS expressions are written and controlled by the developer, they:</p>
 <ol>
 <li>Typically deal with user input</li>
 <li>Don&#39;t get the kind of test coverage that JavaScript code would</li>
 </ol>
 <p>This commit provides a way, via a naming convention, to allow restricting properties from
-controllers/scopes. This means Angular expressions can access only those properties that
+controllers/scopes. This means AngularJS expressions can access only those properties that
 are actually needed by the expressions.</p>
 <p>See <a href="https://github.com/angular/angular.js/commit/3d6a89e8888b14ae5cb5640464e12b7811853c7e">3d6a89e8</a>.</p>
 <h3 id="you-cannot-bind-to-select-multiple-">You cannot bind to select[multiple]</h3>
@@ -2430,7 +2430,7 @@ This feature never worked with two-way data-binding so it&#39;s not expected tha
 <p>See <a href="https://github.com/angular/angular.js/commit/d87fa0042375b025b98c40bff05e5f42c00af114">d87fa004</a>.</p>
 <h3 id="uncommon-region-specific-local-files-were-removed-from-i18n">Uncommon region-specific local files were removed from i18n</h3>
 <p>AngularJS uses the Google Closure library&#39;s locale files. The following locales were removed from
-Closure, so Angular is not able to continue to support them:</p>
+Closure, so AngularJS is not able to continue to support them:</p>
 <p><code>chr</code>, <code>cy</code>, <code>el-polyton</code>, <code>en-zz</code>, <code>fr-rw</code>, <code>fr-sn</code>, <code>fr-td</code>, <code>fr-tg</code>, <code>haw</code>, <code>it-ch</code>, <code>ln-cg</code>,
 <code>mo</code>, <code>ms-bn</code>, <code>nl-aw</code>, <code>nl-be</code>, <code>pt-ao</code>, <code>pt-gw</code>, <code>pt-mz</code>, <code>pt-st</code>, <code>ro-md</code>, <code>ru-md</code>, <code>ru-ua</code>,
 <code>sr-cyrl-ba</code>, <code>sr-cyrl-me</code>, <code>sr-cyrl</code>, <code>sr-latn-ba</code>, <code>sr-latn-me</code>, <code>sr-latn</code>, <code>sr-rs</code>, <code>sv-fi</code>,

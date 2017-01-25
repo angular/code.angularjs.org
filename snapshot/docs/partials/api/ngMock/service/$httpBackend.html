@@ -39,7 +39,7 @@ application make requests, respond with pre-trained responses and assert that th
 what we expect it to be.</p>
 <p>This mock implementation can be used to respond with static or dynamic responses via the
 <code>expect</code> and <code>when</code> apis and their shortcuts (<code>expectGET</code>, <code>whenPOST</code>, etc).</p>
-<p>When an Angular application needs some data from a server, it calls the $http service, which
+<p>When an AngularJS application needs some data from a server, it calls the $http service, which
 sends the request to a real server using $httpBackend service. With dependency injection, it is
 easy to inject $httpBackend mock (which has the same API as $httpBackend) and use it to verify
 the requests and respond with some testing data without sending a request to a real server.</p>

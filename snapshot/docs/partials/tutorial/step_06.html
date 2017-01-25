@@ -59,13 +59,13 @@ the two provided sorting options.</p>
 <li><p>We then chained the <code>filter</code> filter with the <a href="api/ng/filter/orderBy">orderBy</a> filter to further process the
 input for the repeater. <code>orderBy</code> is a filter that takes an input array, copies it and reorders
 the copy which is then returned.</p>
-<p>Angular creates a two way data-binding between the select element and the <code>$ctrl.orderProp</code> model.
+<p>AngularJS creates a two way data-binding between the select element and the <code>$ctrl.orderProp</code> model.
 <code>$ctrl.orderProp</code> is then used as the input for the <code>orderBy</code> filter.</p>
 </li>
 </ul>
 <p>As we discussed in the section about data-binding and the repeater in <a href="tutorial/step_05">step 5</a>,
 whenever the model changes (for example because a user changes the order with the select drop-down
-menu), Angular&#39;s data-binding will cause the view to automatically update. No bloated DOM
+menu), AngularJS&#39;s data-binding will cause the view to automatically update. No bloated DOM
 manipulation code is necessary!</p>
 <h2 id="component-controller">Component Controller</h2>
 <p><br />
@@ -191,7 +191,7 @@ shared by all tests in the parent <code>describe</code> block.</p>
 
 <ul>
 <li><p>In the <code>phoneList</code> component&#39;s controller, remove the statement that sets the <code>orderProp</code> value
-and you&#39;ll see that Angular will temporarily add a new blank (&quot;unknown&quot;) option to the drop-down
+and you&#39;ll see that AngularJS will temporarily add a new blank (&quot;unknown&quot;) option to the drop-down
 list and the ordering will default to unordered/natural order.</p>
 </li>
 <li><p>Add a <code>{{$ctrl.orderProp}}</code> binding into the <code>phone-list.template.html</code> template to display its
@@ -203,7 +203,7 @@ current value as text.</p>
 </ul>
 <h1 id="summary">Summary</h1>
 <p>Now that you have added list sorting and tested the application, go to <a href="tutorial/step_07">step 7</a> to
-learn about Angular services and how Angular uses dependency injection.</p>
+learn about AngularJS services and how AngularJS uses dependency injection.</p>
 <ul doc-tutorial-nav="6"></ul>
 
 

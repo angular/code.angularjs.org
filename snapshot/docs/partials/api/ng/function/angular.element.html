@@ -25,21 +25,21 @@
   <p>Wraps a raw DOM element or HTML string as a <a href="http://jquery.com">jQuery</a> element.</p>
 <p>If jQuery is available, <code>angular.element</code> is an alias for the
 <a href="http://api.jquery.com/jQuery/">jQuery</a> function. If jQuery is not available, <code>angular.element</code>
-delegates to Angular&#39;s built-in subset of jQuery, called &quot;jQuery lite&quot; or <strong>jqLite</strong>.</p>
+delegates to AngularJS&#39;s built-in subset of jQuery, called &quot;jQuery lite&quot; or <strong>jqLite</strong>.</p>
 <p>jqLite is a tiny, API-compatible subset of jQuery that allows
-Angular to manipulate the DOM in a cross-browser compatible way. jqLite implements only the most
+AngularJS to manipulate the DOM in a cross-browser compatible way. jqLite implements only the most
 commonly needed functionality with the goal of having a very small footprint.</p>
 <p>To use <code>jQuery</code>, simply ensure it is loaded before the <code>angular.js</code> file. You can also use the
 <a href="api/ng/directive/ngJq"><code>ngJq</code></a> directive to specify that jqlite should be used over jQuery, or to use a
 specific version of jQuery if multiple versions exist on the page.</p>
-<div class="alert alert-info"><strong>Note:</strong> All element references in Angular are always wrapped with jQuery or
+<div class="alert alert-info"><strong>Note:</strong> All element references in AngularJS are always wrapped with jQuery or
 jqLite (such as the element argument in a directive&#39;s compile / link function). They are never raw DOM references.</div>
 
 <div class="alert alert-warning"><strong>Note:</strong> Keep in mind that this function will not find elements
 by tag name / CSS selector. For lookups by tag name, try instead <code>angular.element(document).find(...)</code>
 or <code>$document.find()</code>, or use the standard DOM APIs, e.g. <code>document.querySelectorAll()</code>.</div>
 
-<h2 id="angular-s-jqlite">Angular&#39;s jqLite</h2>
+<h2 id="angularjs-s-jqlite">AngularJS&#39;s jqLite</h2>
 <p>jqLite provides only the following jQuery methods:</p>
 <ul>
 <li><a href="http://api.jquery.com/addClass/"><code>addClass()</code></a> - Does not support a function as first argument</li>
@@ -80,7 +80,7 @@ As a setter, does not convert numbers to strings or append &#39;px&#39;, and als
 <li><a href="http://api.jquery.com/wrap/"><code>wrap()</code></a></li>
 </ul>
 <h2 id="jquery-jqlite-extras">jQuery/jqLite Extras</h2>
-<p>Angular also provides the following additional methods and events to both jQuery and jqLite:</p>
+<p>AngularJS also provides the following additional methods and events to both jQuery and jqLite:</p>
 <h3 id="events">Events</h3>
 <ul>
 <li><code>$destroy</code> - AngularJS intercepts all jqLite/jQuery&#39;s DOM destruction apis and fires this event

@@ -34,11 +34,11 @@ function customCheckboxDirective() {
       function isEmpty(value) {
         return !value;
       }
-      
+
       function render() {
         elem[ctrl.$viewValue ? 'addClass' : 'removeClass']('checked');
       }
- 
+
       function toggleCheckbox() {
         ctrl.$setViewValue(!ctrl.$viewValue);
         ctrl.$render();

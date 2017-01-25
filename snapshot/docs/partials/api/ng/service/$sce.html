@@ -32,7 +32,7 @@
 contexts to result in a value that is marked as safe to use for that context.  One example of
 such a context is binding arbitrary html controlled by the user via <code>ng-bind-html</code>.  We refer
 to these contexts as privileged or SCE contexts.</p>
-<p>As of version 1.2, Angular ships with SCE enabled by default.</p>
+<p>As of version 1.2, AngularJS ships with SCE enabled by default.</p>
 <p>Note:  When enabled (the default), IE<11 in quirks mode is not supported.  In this mode, IE<11 allow
 one to execute arbitrary javascript by the use of the expression() syntax.  Refer
 <http://blogs.msdn.com/b/ie/archive/2008/10/16/ending-expressions.aspx> to learn more about them.
@@ -81,7 +81,7 @@ simplified):</p>
 <h2 id="impact-on-loading-templates">Impact on loading templates</h2>
 <p>This applies both to the <a href="api/ng/directive/ngInclude"><code>ng-include</code></a> directive as well as
 <code>templateUrl</code>&#39;s specified by <a href="guide/directive">directives</a>.</p>
-<p>By default, Angular only loads templates from the same domain and protocol as the application
+<p>By default, AngularJS only loads templates from the same domain and protocol as the application
 document.  This is done by calling <a href="api/ng/service/$sce#getTrustedResourceUrl">$sce.getTrustedResourceUrl</a> on the template URL.  To load templates from other domains and/or
 protocols, you may either <a href="api/ng/provider/$sceDelegateProvider#resourceUrlWhitelist">whitelist
 them</a> or <a href="api/ng/service/$sce#trustAsResourceUrl">wrap it</a> into a trusted value.</p>
@@ -304,7 +304,7 @@ have to do it at module config time on <a href="api/ng/provider/$sceProvider">$s
     <h3><p><code>parseAs(type, expression);</code></p>
 
 </h3>
-    <div><p>Converts Angular <a href="guide/expression">expression</a> into a function.  This is like <a href="api/ng/service/$parse">$parse</a> and is identical when the expression is a literal constant.  Otherwise, it
+    <div><p>Converts AngularJS <a href="guide/expression">expression</a> into a function.  This is like <a href="api/ng/service/$parse">$parse</a> and is identical when the expression is a literal constant.  Otherwise, it
 wraps the expression in a call to <a href="api/ng/service/$sce#getTrusted">$sce.getTrusted(<em>type</em>,
 <em>result</em>)</a></p>
 </div>
@@ -385,7 +385,7 @@ are evaluated against (typically a scope object).</li>
 
 </h3>
     <div><p>Delegates to <a href="api/ng/service/$sceDelegate#trustAs"><code>$sceDelegate.trustAs</code></a>.  As such,
-returns an object that is trusted by angular for use in specified strict contextual
+returns an object that is trusted by AngularJS for use in specified strict contextual
 escaping contexts (such as ng-bind-html, ng-include, any src attribute
 interpolation, any dom event binding attribute interpolation such as for onclick,  etc.)
 that uses the provided value.  See * <a href="api/ng/service/$sce">$sce</a> for enabling strict contextual
@@ -453,7 +453,7 @@ escaping.</p>
   <tr>
     <td><a href="" class="label type-hint type-hint-object">*</a></td>
     <td><p>A value that can be used to stand in for the provided <code>value</code> in places
-where Angular expects a $sce.trustAs() return value.</p>
+where AngularJS expects a $sce.trustAs() return value.</p>
 </td>
   </tr>
 </table>

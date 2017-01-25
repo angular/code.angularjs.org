@@ -26,7 +26,7 @@
 
 
 <div class="api-profile-description">
-  <p>The <code>$http</code> service is a core Angular service that facilitates communication with the remote
+  <p>The <code>$http</code> service is a core AngularJS service that facilitates communication with the remote
 HTTP servers via the browser&#39;s <a href="https://developer.mozilla.org/en/xmlhttprequest">XMLHttpRequest</a>
 object or via <a href="http://en.wikipedia.org/wiki/JSONP">JSONP</a>.</p>
 <p>For unit testing applications that use <code>$http</code> service, see
@@ -140,7 +140,7 @@ and <code>transformResponse</code>. These properties can be a single function th
 the transformed value (<code>function(data, headersGetter, status)</code>) or an array of such transformation functions,
 which allows you to <code>push</code> or <code>unshift</code> a new transformation function into the transformation chain.</p>
 <div class="alert alert-warning">
-<strong>Note:</strong> Angular does not make a copy of the <code>data</code> parameter before it is passed into the <code>transformRequest</code> pipeline.
+<strong>Note:</strong> AngularJS does not make a copy of the <code>data</code> parameter before it is passed into the <code>transformRequest</code> pipeline.
 That means changes to the properties of <code>data</code> are not local to the transform function (since Javascript passes objects by reference).
 For example, when calling <code>$http.get(url, $scope.myObject)</code>, modifications to the object&#39;s properties in a transformRequest
 function will be reflected on the scope and in any templates where the object is data-bound.
@@ -154,7 +154,7 @@ If you need to modify properties, it is recommended to make a copy of the data, 
 then these will be applied.</p>
 <p>You can augment or replace the default transformations by modifying these properties by adding to or
 replacing the array.</p>
-<p>Angular provides the following default transformations:</p>
+<p>AngularJS provides the following default transformations:</p>
 <p>Request transformations (<code>$httpProvider.defaults.transformRequest</code> and <code>$http.defaults.transformRequest</code>):</p>
 <ul>
 <li>If the <code>data</code> property of the request configuration object contains an object, serialize it
@@ -301,7 +301,7 @@ $httpProvider.interceptors.push(function($q, dependency1, dependency2) {
 <li><a href="http://haacked.com/archive/2008/11/20/anatomy-of-a-subtle-json-vulnerability.aspx">JSON vulnerability</a></li>
 <li><a href="http://en.wikipedia.org/wiki/Cross-site_request_forgery">XSRF</a></li>
 </ul>
-<p>Both server and the client must cooperate in order to eliminate these threats. Angular comes
+<p>Both server and the client must cooperate in order to eliminate these threats. AngularJS comes
 pre-configured with strategies that address these issues, but for this to work backend server
 cooperation is required.</p>
 <h3 id="json-vulnerability-protection">JSON Vulnerability Protection</h3>
@@ -309,7 +309,7 @@ cooperation is required.</p>
 allows third party website to turn your JSON resource URL into
 <a href="http://en.wikipedia.org/wiki/JSONP">JSONP</a> request under some conditions. To
 counter this your server can prefix all JSON requests with following string <code>&quot;)]}&#39;,\n&quot;</code>.
-Angular will automatically strip the prefix before processing it as JSON.</p>
+AngularJS will automatically strip the prefix before processing it as JSON.</p>
 <p>For example if your server needs to return:</p>
 <pre><code class="lang-js">[&#39;one&#39;,&#39;two&#39;]
 </code></pre>
@@ -317,11 +317,11 @@ Angular will automatically strip the prefix before processing it as JSON.</p>
 <pre><code class="lang-js">)]}&#39;,
 [&#39;one&#39;,&#39;two&#39;]
 </code></pre>
-<p>Angular will strip the prefix, before processing the JSON.</p>
+<p>AngularJS will strip the prefix, before processing the JSON.</p>
 <h3 id="cross-site-request-forgery-xsrf-protection">Cross Site Request Forgery (XSRF) Protection</h3>
 <p><a href="http://en.wikipedia.org/wiki/Cross-site_request_forgery">XSRF</a> is an attack technique by
 which the attacker can trick an authenticated user into unknowingly executing actions on your
-website. Angular provides a mechanism to counter XSRF. When performing XHR requests, the
+website. AngularJS provides a mechanism to counter XSRF. When performing XHR requests, the
 $http service reads a token from a cookie (by default, <code>XSRF-TOKEN</code>) and sets it as an HTTP
 header (<code>X-XSRF-TOKEN</code>). Since only JavaScript that runs on your domain could read the
 cookie, your server can be assured that the XHR came from JavaScript running on your domain.
@@ -337,7 +337,7 @@ for added security.</p>
 <p>The name of the headers can be specified using the xsrfHeaderName and xsrfCookieName
 properties of either $httpProvider.defaults at config-time, $http.defaults at run-time,
 or the per-request config object.</p>
-<p>In order to prevent collisions in environments where multiple Angular apps share the
+<p>In order to prevent collisions in environments where multiple AngularJS apps share the
 same domain or subdomain, we recommend that each application uses unique cookie name.</p>
 
 </div>

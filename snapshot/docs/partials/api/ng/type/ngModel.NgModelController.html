@@ -28,7 +28,7 @@ and parsing. It purposefully does not contain any logic which deals with DOM ren
 listening to DOM events.
 Such DOM related logic should be provided by other directives which make use of
 <code>NgModelController</code> for data-binding to control elements.
-Angular provides this DOM logic for most <a href="api/ng/directive/input"><code>input</code></a> elements.
+AngularJS provides this DOM logic for most <a href="api/ng/directive/input"><code>input</code></a> elements.
 At the end of this page you can find a <a href="api/ng/type/ngModel.NgModelController#custom-control-example">custom control example</a> that uses <code>ngModelController</code> to bind to <code>contenteditable</code> elements.</p>
 
 </div>
@@ -220,7 +220,7 @@ sync with the ngModel&#39;s <code>$modelValue</code>.</p>
 <p>In this case, you can use <code>$rollbackViewValue()</code> to manually cancel the debounced / future update
 and reset the input to the last committed view value.</p>
 <p>It is also possible that you run into difficulties if you try to update the ngModel&#39;s <code>$modelValue</code>
-programmatically before these debounced/future events have resolved/occurred, because Angular&#39;s
+programmatically before these debounced/future events have resolved/occurred, because AngularJS&#39;s
 dirty checking mechanism is not able to tell whether the model has actually changed or not.</p>
 <p>The <code>$rollbackViewValue()</code> method should be called before programmatically changing the model of an
 input which may have such events pending. This is important in order to make sure that the
@@ -467,7 +467,7 @@ However, in most cases it should be sufficient to use the <code>ngModel.$validat
       <td>
         <p>Whether the current state is valid (true), invalid (false), pending (undefined),
                          or skipped (null). Pending is used for unfulfilled <code>$asyncValidators</code>.
-                         Skipped is used by Angular when validators do not run because of parse errors and
+                         Skipped is used by AngularJS when validators do not run because of parse errors and
                          when <code>$asyncValidators</code> do not run because any of the <code>$validators</code> failed.</p>
 
         

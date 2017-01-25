@@ -16,15 +16,15 @@ prevent very hard to detect bugs from entering your application. The stack trace
 allows you to trace the origin of the currently executing <code>$apply</code> or <code>$digest</code> call, which caused
 the error.</p>
 <h2 id="background">Background</h2>
-<p>Angular uses a dirty-checking digest mechanism to monitor and update values of the scope during
+<p>AngularJS uses a dirty-checking digest mechanism to monitor and update values of the scope during
 the processing of your application.  The digest works by checking all the values that are being
 watched against their previous value and running any watch handlers that have been defined for those
 values that have changed.</p>
 <p>This digest mechanism is triggered by calling <code>$digest</code> on a scope object.  Normally you do not need
 to trigger a digest manually, because every external action that can trigger changes in your
-application, such as mouse events, timeouts or server responses, wrap the Angular application code
+application, such as mouse events, timeouts or server responses, wrap the AngularJS application code
 in a block of code that will run <code>$digest</code> when the code completes.</p>
-<p>You wrap Angular code in a block that will be followed by a <code>$digest</code> by calling <code>$apply</code> on a scope
+<p>You wrap AngularJS code in a block that will be followed by a <code>$digest</code> by calling <code>$apply</code> on a scope
 object.  So, in pseudo-code, the process looks like this:</p>
 <pre><code>element.on(&#39;mouseup&#39;, function() {
   scope.$apply(function() {
@@ -42,18 +42,18 @@ object.  So, in pseudo-code, the process looks like this:</p>
 }
 </code></pre>
 <h2 id="digest-phases">Digest Phases</h2>
-<p>Angular keeps track of what phase of processing we are in, the relevant ones being <code>$apply</code> and
+<p>AngularJS keeps track of what phase of processing we are in, the relevant ones being <code>$apply</code> and
 <code>$digest</code>.  Trying to reenter a <code>$digest</code> or <code>$apply</code> while one of them is already in progress is
-typically a sign of programming error that needs to be fixed. So Angular will throw this error when
+typically a sign of programming error that needs to be fixed. So AngularJS will throw this error when
 that occurs.</p>
 <p>In most situations it should be well defined whether a piece of code will be run inside an <code>$apply</code>,
 in which case you should not be calling <code>$apply</code> or <code>$digest</code>, or it will be run outside, in which
-case you should wrap any code that will be interacting with Angular scope or services, in a call to
+case you should wrap any code that will be interacting with AngularJS scope or services, in a call to
 <code>$apply</code>.</p>
-<p>As an example, all Controller code should expect to be run within Angular, so it should have no need
+<p>As an example, all Controller code should expect to be run within AngularJS, so it should have no need
 to call <code>$apply</code> or <code>$digest</code>.  Conversely, code that is being trigger directly as a call back to
 some external event, from the DOM or 3rd party library, should expect that it is never called from
-within Angular, and so any Angular application code that it calls should first be wrapped in a call
+within AngularJS, and so any AngularJS application code that it calls should first be wrapped in a call
 to $apply.</p>
 <h2 id="common-causes">Common Causes</h2>
 <p>Apart from simply incorrect calls to <code>$apply</code> or <code>$digest</code> there are some cases when you may get
@@ -71,8 +71,8 @@ when the data arrives.</p>
   });
 }
 </code></pre>
-<p>We expect that our callback will be called asynchronously, and so from outside Angular. Therefore, we
-correctly wrap our application code that interacts with Angular in a call to <code>$apply</code>.</p>
+<p>We expect that our callback will be called asynchronously, and so from outside AngularJS. Therefore, we
+correctly wrap our application code that interacts with AngularJS in a call to <code>$apply</code>.</p>
 <p>The problem comes if <code>getData()</code> decides to call the callback handler synchronously; perhaps it has
 the data already cached in memory and so it immediately calls the callback to return the data,
 synchronously.</p>
@@ -94,7 +94,7 @@ By providing a timeout period of 0ms, this will occur as soon as possible and <c
 that the code will be called in a single <code>$apply</code> block.</p>
 <h3 id="triggering-events-programmatically">Triggering Events Programmatically</h3>
 <p>The other situation that often leads to this error is when you trigger code (such as a DOM event)
-programmatically (from within Angular), which is normally called by an external trigger.</p>
+programmatically (from within AngularJS), which is normally called by an external trigger.</p>
 <p>For example, consider a directive that will set focus on an input control when a value in the scope
 is true:</p>
 <pre><code>myApp.directive(&#39;setFocusIf&#39;, function() {
@@ -131,7 +131,7 @@ work when the element receives focus we will have a problem:</p>
 <p>In this second scenario, we are already inside a <code>$digest</code> when the ngFocus directive makes another
 call to <code>$apply()</code>, causing this error to be thrown.</p>
 <p>It is possible to workaround this problem by moving the call to set the focus outside of the digest,
-by using <code>$timeout(fn, 0, false)</code>, where the <code>false</code> value tells Angular not to wrap this <code>fn</code> in an
+by using <code>$timeout(fn, 0, false)</code>, where the <code>false</code> value tells AngularJS not to wrap this <code>fn</code> in an
 <code>$apply</code> block:</p>
 <pre><code>myApp.directive(&#39;setFocusIf&#39;, function($timeout) {
   return {
@@ -169,7 +169,7 @@ the top of the call stack.</p>
 called from within an <code>$apply</code>/<code>$digest</code>.  It may be a simple oversight or maybe it fits with the
 sync/async scenario described earlier.</p>
 </li>
-<li><p>If the second call was made inside an Angular directive then it is likely that it matches the second
+<li><p>If the second call was made inside an AngularJS directive then it is likely that it matches the second
 programmatic event trigger scenario described earlier.  In this case you may need to look further up
 the tree to what triggered the event in the first place.</p>
 </li>
@@ -237,10 +237,10 @@ $get.g.$apply angular.js:12742                   &lt;--- $apply
 (anonymous function) angular.js:2890
 q angular.js:320
 </code></pre>
-<p>We can see (even though the Angular code is minified) that there were two calls to <code>$apply</code>, first
+<p>We can see (even though the AngularJS code is minified) that there were two calls to <code>$apply</code>, first
 on line <code>19833</code>, then on line <code>12738</code> of <code>angular.js</code>.</p>
 <p>It is this second call that caused the error.  If we look at the angular.js code, we can see that
-this call is made by an Angular directive.</p>
+this call is made by an AngularJS directive.</p>
 <pre><code>var ngEventDirectives = {};
 forEach(
   &#39;click dblclick mousedown mouseup mouseover mouseout mousemove mouseenter mouseleave keydown keyup keypress submit focus blur copy cut paste&#39;.split(&#39; &#39;),
@@ -277,7 +277,7 @@ This is where our problem is:</p>
 (i.e. focus) to occur. We must fix this by moving the code outside of the $apply block using
 <code>$timeout</code> as described above.</p>
 <h2 id="further-reading">Further Reading</h2>
-<p>To learn more about Angular processing model please check out the
+<p>To learn more about AngularJS processing model please check out the
 <a href="guide/concepts">concepts doc</a> as well as the <a href="api/ng/type/$rootScope.Scope">api</a> doc.</p>
 
 </div>

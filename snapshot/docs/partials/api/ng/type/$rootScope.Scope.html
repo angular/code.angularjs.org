@@ -676,7 +676,7 @@ clean up DOM bindings before an element is removed from the DOM.</p>
 
 </h3>
     <div><p>Executes the <code>expression</code> on the current scope and returns the result. Any exceptions in
-the expression are propagated (uncaught). This is useful when evaluating Angular
+the expression are propagated (uncaught). This is useful when evaluating AngularJS
 expressions.</p>
 <h1 id="example">Example</h1>
 <pre><code class="lang-js">var scope = ng.$rootScope.Scope();
@@ -713,7 +713,7 @@ expect(scope.$eval(function(scope){ return scope.a + scope.b; })).toEqual(3);
         <a href="" class="label type-hint type-hint-string">string</a><a href="" class="label type-hint type-hint-function">function()</a>
       </td>
       <td>
-        <p>An angular expression to be executed.</p>
+        <p>An AngularJS expression to be executed.</p>
 <ul>
 <li><code>string</code>: execute using the rules as defined in  <a href="guide/expression">expression</a>.</li>
 <li><code>function(scope)</code>: execute the function with the current <code>scope</code> parameter.</li>
@@ -802,7 +802,7 @@ from within an <code>$apply</code> call. That includes code evaluated via <code>
         <a href="" class="label type-hint type-hint-string">string</a><a href="" class="label type-hint type-hint-function">function()</a>
       </td>
       <td>
-        <p>An angular expression to be executed.</p>
+        <p>An AngularJS expression to be executed.</p>
 <ul>
 <li><code>string</code>: execute using the rules as defined in <a href="guide/expression">expression</a>.</li>
 <li><code>function(scope)</code>: execute the function with the current <code>scope</code> parameter.</li>
@@ -841,9 +841,9 @@ from within an <code>$apply</code> call. That includes code evaluated via <code>
     <h3><p><code>$apply([exp]);</code></p>
 
 </h3>
-    <div><p><code>$apply()</code> is used to execute an expression in angular from outside of the angular
+    <div><p><code>$apply()</code> is used to execute an expression in AngularJS from outside of the AngularJS
 framework. (For example from browser DOM events, setTimeout, XHR or third party libraries).
-Because we are calling into the angular framework we need to perform proper scope life
+Because we are calling into the AngularJS framework we need to perform proper scope life
 cycle of <a href="api/ng/service/$exceptionHandler">exception handling</a>,
 <a href="api/ng/type/$rootScope.Scope#$digest">executing watches</a>.</p>
 <h2 id="life-cycle">Life cycle</h2>
@@ -894,7 +894,7 @@ expression was executed using the <a href="api/ng/type/$rootScope.Scope#$digest"
         <a href="" class="label type-hint type-hint-string">string</a><a href="" class="label type-hint type-hint-function">function()</a>
       </td>
       <td>
-        <p>An angular expression to be executed.</p>
+        <p>An AngularJS expression to be executed.</p>
 <ul>
 <li><code>string</code>: execute using the rules as defined in <a href="guide/expression">expression</a>.</li>
 <li><code>function(scope)</code>: execute the function with current <code>scope</code> parameter.</li>
@@ -957,7 +957,7 @@ digest.</p>
         <a href="" class="label type-hint type-hint-string">string</a><a href="" class="label type-hint type-hint-function">function()</a>
       </td>
       <td>
-        <p>An angular expression to be executed.</p>
+        <p>An AngularJS expression to be executed.</p>
 <ul>
 <li><code>string</code>: execute using the rules as defined in <a href="guide/expression">expression</a>.</li>
 <li><code>function(scope)</code>: execute the function with current <code>scope</code> parameter.</li>

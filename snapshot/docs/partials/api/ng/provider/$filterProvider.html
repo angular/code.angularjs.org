@@ -30,7 +30,7 @@
 Dependency Injected. To achieve this a filter definition consists of a factory function which is
 annotated with dependencies and is responsible for creating a filter function.</p>
 <div class="alert alert-warning">
-<strong>Note:</strong> Filter names must be valid angular <a href="guide/expression"><code>Expressions</code></a> identifiers, such as <code>uppercase</code> or <code>orderBy</code>.
+<strong>Note:</strong> Filter names must be valid AngularJS <a href="guide/expression"><code>Expressions</code></a> identifiers, such as <code>uppercase</code> or <code>orderBy</code>.
 Names with special characters, such as hyphens and dots, are not allowed. If you wish to namespace
 your filters, then you can use capitalization (<code>myappSubsectionFilterx</code>) or underscores
 (<code>myapp_subsection_filterx</code>).
@@ -67,8 +67,8 @@ function MyModule($provide, $filterProvider) {
     expect($filter(&#39;reverse&#39;)).toBe(reverseFilter);
   });
 </code></pre>
-<p>For more information about how angular filters work, and how to create your own filters, see
-<a href="guide/filter">Filters</a> in the Angular Developer Guide.</p>
+<p>For more information about how AngularJS filters work, and how to create your own filters, see
+<a href="guide/filter">Filters</a> in the AngularJS Developer Guide.</p>
 
 </div>
 
@@ -119,7 +119,7 @@ function MyModule($provide, $filterProvider) {
         <p>Name of the filter function, or an object map of filters where
    the keys are the filter names and the values are the filter factories.</p>
    <div class="alert alert-warning">
-   <strong>Note:</strong> Filter names must be valid angular <a href="guide/expression"><code>Expressions</code></a> identifiers, such as <code>uppercase</code> or <code>orderBy</code>.
+   <strong>Note:</strong> Filter names must be valid AngularJS <a href="guide/expression"><code>Expressions</code></a> identifiers, such as <code>uppercase</code> or <code>orderBy</code>.
    Names with special characters, such as hyphens and dots, are not allowed. If you wish to namespace
    your filters, then you can use capitalization (<code>myappSubsectionFilterx</code>) or underscores
    (<code>myapp_subsection_filterx</code>).

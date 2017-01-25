@@ -38,22 +38,22 @@ is used.</li>
 </ul>
 <p>See the <a href="https://www.w3.org/TR/html5/forms.html#range-state-(type=range">HTML Spec on input[type=range]</a>)
 for more info.</p>
-<p>This has the following consequences for Angular:</p>
+<p>This has the following consequences for AngularJS:</p>
 <p>Since the element value should always reflect the current model value, a range input
 will set the bound ngModel expression to the value that the browser has set for the
 input element. For example, in the following input <code>&lt;input type=&quot;range&quot; ng-model=&quot;model.value&quot;&gt;</code>,
 if the application sets <code>model.value = null</code>, the browser will set the input to <code>&#39;50&#39;</code>.
-Angular will then set the model to <code>50</code>, to prevent input and model value being out of sync.</p>
+AngularJS will then set the model to <code>50</code>, to prevent input and model value being out of sync.</p>
 <p>That means the model for range will immediately be set to <code>50</code> after <code>ngModel</code> has been
 initialized. It also means a range input can never have the required error.</p>
 <p>This does not only affect changes to the model value, but also to the values of the <code>min</code>,
 <code>max</code>, and <code>step</code> attributes. When these change in a way that will cause the browser to modify
-the input value, Angular will also update the model value.</p>
+the input value, AngularJS will also update the model value.</p>
 <p>Automatic value adjustment also means that a range input element can never have the <code>required</code>,
 <code>min</code>, or <code>max</code> errors.</p>
 <p>However, <code>step</code> is currently only fully implemented by Firefox. Other browsers have problems
 when the step value changes dynamically - they do not adjust the element value correctly, but
-instead may set the <code>stepMismatch</code> error. If that&#39;s the case, the Angular will set the <code>step</code>
+instead may set the <code>stepMismatch</code> error. If that&#39;s the case, the AngularJS will set the <code>step</code>
 error on the input, and set the model to <code>undefined</code>.</p>
 <p>Note that <code>input[range]</code> is not compatible with<code>ngMax</code>, <code>ngMin</code>, and <code>ngStep</code>, because they do
 not set the <code>min</code> and <code>max</code> attributes, which means that the browser won&#39;t automatically adjust
@@ -102,7 +102,7 @@ the input value based on their values, and will always assume min = 0, max = 100
         <a href="" class="label type-hint type-hint-string">string</a>
       </td>
       <td>
-        <p>Assignable angular expression to data-bind to.</p>
+        <p>Assignable AngularJS expression to data-bind to.</p>
 
         
       </td>
@@ -185,7 +185,7 @@ the input value based on their values, and will always assume min = 0, max = 100
         <a href="" class="label type-hint type-hint-string">string</a>
       </td>
       <td>
-        <p>Angular expression to be executed when the ngModel value changes due
+        <p>AngularJS expression to be executed when the ngModel value changes due
                  to user interaction with the input element.</p>
 
         

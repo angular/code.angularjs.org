@@ -704,7 +704,7 @@ angular.module('pagesData', [])
     "path": "tutorial/step_01"
   },
   "tutorial/step_02": {
-    "name": "2 - Angular Templates",
+    "name": "2 - AngularJS Templates",
     "area": "tutorial",
     "path": "tutorial/step_02"
   },

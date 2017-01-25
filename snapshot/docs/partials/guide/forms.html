@@ -225,7 +225,7 @@ after last change.</p>
 
 </p>
 <h2 id="custom-validation">Custom Validation</h2>
-<p>Angular provides basic implementation for most common HTML5 <a href="api/ng/directive/input">input</a>
+<p>AngularJS provides basic implementation for most common HTML5 <a href="api/ng/directive/input">input</a>
 types: (<a href="api/ng/input/input[text]">text</a>, <a href="api/ng/input/input[number]">number</a>, <a href="api/ng/input/input[url]">url</a>,
 <a href="api/ng/input/input[email]">email</a>, <a href="api/ng/input/input[date]">date</a>, <a href="api/ng/input/input[radio]">radio</a>, <a href="api/ng/input/input[checkbox]">checkbox</a>),
 as well as some directives for validation (<code>required</code>, <code>pattern</code>, <code>minlength</code>, <code>maxlength</code>,
@@ -234,7 +234,7 @@ as well as some directives for validation (<code>required</code>, <code>pattern<
 the <a href="api/ng/type/ngModel.NgModelController"><code>ngModelController</code></a>. To get a hold of the controller,
 you require it in the directive as shown in the example below.</p>
 <p>Each function in the <code>$validators</code> object receives the <code>modelValue</code> and the <code>viewValue</code>
-as parameters. Angular will then call <code>$setValidity</code> internally with the function&#39;s return value
+as parameters. AngularJS will then call <code>$setValidity</code> internally with the function&#39;s return value
 (<code>true</code>: valid, <code>false</code>: invalid). The validation functions are executed every time an input
 is changed (<code>$setViewValue</code> is called) or whenever the bound <code>model</code> changes.
 Validation happens after successfully running <code>$parsers</code> and <code>$formatters</code>, respectively.
@@ -289,7 +289,7 @@ We mock the server request with a <code>$q</code> deferred.</p>
 
 </p>
 <h2 id="modifying-built-in-validators">Modifying built-in validators</h2>
-<p>Since Angular itself uses <code>$validators</code>, you can easily replace or remove built-in validators,
+<p>Since AngularJS itself uses <code>$validators</code>, you can easily replace or remove built-in validators,
 should you find it necessary. The following example shows you how to overwrite the email validator
 in <code>input[email]</code> from a custom directive so that it requires a specific top-level domain,
 <code>example.com</code> to be present.
@@ -316,7 +316,7 @@ Note that you can alternatively use <code>ng-pattern</code> to further restrict 
       name="script.js"
       language="js"
       type="js">
-      <pre><code>var app = angular.module(&#39;form-example-modify-validators&#39;, []);&#10;&#10;app.directive(&#39;overwriteEmail&#39;, function() {&#10;  var EMAIL_REGEXP = /^[a-z0-9!#$%&amp;&#39;*+/=?^_`{|}~.-]+@example\.com$/i;&#10;&#10;  return {&#10;    require: &#39;?ngModel&#39;,&#10;    link: function(scope, elm, attrs, ctrl) {&#10;      // only apply the validator if ngModel is present and Angular has added the email validator&#10;      if (ctrl &amp;&amp; ctrl.$validators.email) {&#10;&#10;        // this will overwrite the default Angular email validator&#10;        ctrl.$validators.email = function(modelValue) {&#10;          return ctrl.$isEmpty(modelValue) || EMAIL_REGEXP.test(modelValue);&#10;        };&#10;      }&#10;    }&#10;  };&#10;});</code></pre>
+      <pre><code>var app = angular.module(&#39;form-example-modify-validators&#39;, []);&#10;&#10;app.directive(&#39;overwriteEmail&#39;, function() {&#10;  var EMAIL_REGEXP = /^[a-z0-9!#$%&amp;&#39;*+/=?^_`{|}~.-]+@example\.com$/i;&#10;&#10;  return {&#10;    require: &#39;?ngModel&#39;,&#10;    link: function(scope, elm, attrs, ctrl) {&#10;      // only apply the validator if ngModel is present and AngularJS has added the email validator&#10;      if (ctrl &amp;&amp; ctrl.$validators.email) {&#10;&#10;        // this will overwrite the default AngularJS email validator&#10;        ctrl.$validators.email = function(modelValue) {&#10;          return ctrl.$isEmpty(modelValue) || EMAIL_REGEXP.test(modelValue);&#10;        };&#10;      }&#10;    }&#10;  };&#10;});</code></pre>
     </div>
   
 
@@ -327,7 +327,7 @@ Note that you can alternatively use <code>ng-pattern</code> to further restrict 
 
 </p>
 <h2 id="implementing-custom-form-controls-using-ngmodel-">Implementing custom form controls (using <code>ngModel</code>)</h2>
-<p>Angular implements all of the basic HTML form controls (<a href="api/ng/directive/input">input</a>,
+<p>AngularJS implements all of the basic HTML form controls (<a href="api/ng/directive/input">input</a>,
 <a href="api/ng/directive/select">select</a>, <a href="api/ng/directive/textarea">textarea</a>),
 which should be sufficient for most cases. However, if you need more flexibility,
 you can write your own form control as a directive.</p>

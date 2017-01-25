@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.2-build.5247+sha.d24617b
+ * @license AngularJS v1.6.2-build.5248+sha.0304383
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -729,7 +729,7 @@ MessageFormatParser.prototype.ruleEndMustache = function ruleEndMustache() {
     // day), then the result *has* to be a string and those rules would have already set
     // this.parsedFn.  If there was no MessageFormat extension, then there is no requirement to
     // stringify the result and parsedFn isn't set.  We set it here.  While we could have set it
-    // unconditionally when exiting the Angular expression, I intend for us to not just replace
+    // unconditionally when exiting the AngularJS expression, I intend for us to not just replace
     // $interpolate, but also to replace $parse in a future version (so ng-bind can work), and in
     // such a case we do not want to unnecessarily stringify something if it's not going to be used
     // in a string context.
@@ -773,7 +773,7 @@ MessageFormatParser.prototype.ruleInAngularExpression = function ruleInAngularEx
   var position;
   if (match == null) {
     if (this.angularOperatorStack.length === 0) {
-      // This is the end of the Angular expression so this is actually a
+      // This is the end of the AngularJS expression so this is actually a
       // success.  Note that when inside an interpolation, this means we even
       // consumed the closing interpolation symbols if they were curlies.  This
       // is NOT an error at this point but will become an error further up the
@@ -789,7 +789,7 @@ MessageFormatParser.prototype.ruleInAngularExpression = function ruleInAngularEx
     }
     var innermostOperator = this.angularOperatorStack[0];
     throw $interpolateMinErr('badexpr',
-        'Unexpected end of Angular expression.  Expecting operator “{0}” at the end of the text “{1}”',
+        'Unexpected end of AngularJS expression.  Expecting operator “{0}” at the end of the text “{1}”',
         this.getEndOperator(innermostOperator), this.text);
   }
   var operator = match[0];
@@ -864,7 +864,7 @@ MessageFormatParser.prototype.ruleInAngularExpression = function ruleInAngularEx
  *
  * ## What is  ngMessageFormat?
  *
- * The ngMessageFormat module extends the Angular {@link ng.$interpolate `$interpolate`} service
+ * The ngMessageFormat module extends the AngularJS {@link ng.$interpolate `$interpolate`} service
  * with a syntax for handling pluralization and gender specific messages, which is based on the
  * [ICU MessageFormat syntax][ICU].
  *

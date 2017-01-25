@@ -26,13 +26,13 @@
 
 
 <div class="api-profile-description">
-  <p>Converts Angular <a href="guide/expression">expression</a> into a function.</p>
+  <p>Converts AngularJS <a href="guide/expression">expression</a> into a function.</p>
 <pre><code class="lang-js">var getter = $parse(&#39;user.name&#39;);
 var setter = getter.assign;
-var context = {user:{name:&#39;angular&#39;}};
+var context = {user:{name:&#39;AngularJS&#39;}};
 var locals = {user:{name:&#39;local&#39;}};
 
-expect(getter(context)).toEqual(&#39;angular&#39;);
+expect(getter(context)).toEqual(&#39;AngularJS&#39;);
 setter(context, &#39;newValue&#39;);
 expect(context.user.name).toEqual(&#39;newValue&#39;);
 expect(getter(context, locals)).toEqual(&#39;local&#39;);

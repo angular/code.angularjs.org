@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.2-build.5247+sha.d24617b
+ * @license AngularJS v1.6.2-build.5248+sha.0304383
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -76,7 +76,7 @@ angular.module('ngCookies', ['ng']).
      * Provides read/write access to browser's cookies.
      *
      * <div class="alert alert-info">
-     * Up until Angular 1.3, `$cookies` exposed properties that represented the
+     * Up until AngularJS 1.3, `$cookies` exposed properties that represented the
      * current browser cookie values. In version 1.4, this behavior has changed, and
      * `$cookies` now provides a standard api of getters, setters etc.
      * </div>
@@ -202,7 +202,7 @@ angular.module('ngCookies').
  * @description
  * Provides a key-value (string-object) storage, that is backed by session cookies.
  * Objects put or retrieved from this storage are automatically serialized or
- * deserialized by angular's toJson/fromJson.
+ * deserialized by AngularJS's `toJson`/`fromJson`.
  *
  * Requires the {@link ngCookies `ngCookies`} module to be installed.
  *

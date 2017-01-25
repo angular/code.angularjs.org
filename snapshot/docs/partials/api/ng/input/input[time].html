@@ -26,7 +26,7 @@
 the HTML5 time input, a text element will be used. In that case, the text must be entered in a valid ISO-8601
 local time format (HH:mm:ss), for example: <code>14:57:00</code>. Model must be a Date object. This binding will always output a
 Date object to the model of January 1, 1970, or local date <code>new Date(1970, 0, 1, HH, mm, ss)</code>.</p>
-<p>The model must always be a Date object, otherwise Angular will throw an error.
+<p>The model must always be a Date object, otherwise AngularJS will throw an error.
 Invalid <code>Date</code> objects (dates whose <code>getTime()</code> is <code>NaN</code>) will be rendered as an empty string.</p>
 <p>The timezone to be used to read/write the <code>Date</code> instance in the model can be defined using
 <a href="api/ng/directive/ngModelOptions">ngModelOptions</a>. By default, this is the timezone of the browser.</p>
@@ -74,7 +74,7 @@ Invalid <code>Date</code> objects (dates whose <code>getTime()</code> is <code>N
         <a href="" class="label type-hint type-hint-string">string</a>
       </td>
       <td>
-        <p>Assignable angular expression to data-bind to.</p>
+        <p>Assignable AngularJS expression to data-bind to.</p>
 
         
       </td>
@@ -212,7 +212,7 @@ Invalid <code>Date</code> objects (dates whose <code>getTime()</code> is <code>N
         <a href="" class="label type-hint type-hint-string">string</a>
       </td>
       <td>
-        <p>Angular expression to be executed when input changes due to user
+        <p>AngularJS expression to be executed when input changes due to user
    interaction with the input element.</p>
 
         

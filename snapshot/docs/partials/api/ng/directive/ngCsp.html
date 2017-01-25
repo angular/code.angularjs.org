@@ -22,28 +22,28 @@
 
 
 <div class="api-profile-description">
-  <p>Angular has some features that can conflict with certain restrictions that are applied when using
+  <p>AngularJS has some features that can conflict with certain restrictions that are applied when using
 <a href="https://developer.mozilla.org/en/Security/CSP">CSP (Content Security Policy)</a> rules.</p>
-<p>If you intend to implement CSP with these rules then you must tell Angular not to use these
+<p>If you intend to implement CSP with these rules then you must tell AngularJS not to use these
 features.</p>
 <p>This is necessary when developing things like Google Chrome Extensions or Universal Windows Apps.</p>
-<p>The following default rules in CSP affect Angular:</p>
+<p>The following default rules in CSP affect AngularJS:</p>
 <ul>
 <li><p>The use of <code>eval()</code>, <code>Function(string)</code> and similar functions to dynamically create and execute
-code from strings is forbidden. Angular makes use of this in the <a href="api/ng/service/$parse"><code>$parse</code></a> service to
-provide a 30% increase in the speed of evaluating Angular expressions. (This CSP rule can be
+code from strings is forbidden. AngularJS makes use of this in the <a href="api/ng/service/$parse"><code>$parse</code></a> service to
+provide a 30% increase in the speed of evaluating AngularJS expressions. (This CSP rule can be
 disabled with the CSP keyword <code>unsafe-eval</code>, but it is generally not recommended as it would
 weaken the protections offered by CSP.)</p>
 </li>
 <li><p>The use of inline resources, such as inline <code>&lt;script&gt;</code> and <code>&lt;style&gt;</code> elements, are forbidden.
-This prevents apps from injecting custom styles directly into the document. Angular makes use of
+This prevents apps from injecting custom styles directly into the document. AngularJS makes use of
 this to include some CSS rules (e.g. <a href="api/ng/directive/ngCloak"><code>ngCloak</code></a> and <a href="api/ng/directive/ngHide"><code>ngHide</code></a>). To make these
 directives work when a CSP rule is blocking inline styles, you must link to the <code>angular-csp.css</code>
 in your HTML manually. (This CSP rule can be disabled with the CSP keyword <code>unsafe-inline</code>, but
 it is generally not recommended as it would weaken the protections offered by CSP.)</p>
 </li>
 </ul>
-<p>If you do not provide <code>ngCsp</code> then Angular tries to autodetect if CSP is blocking dynamic code
+<p>If you do not provide <code>ngCsp</code> then AngularJS tries to autodetect if CSP is blocking dynamic code
 creation from strings (e.g., <code>unsafe-eval</code> not specified in CSP header) and automatically
 deactivates this feature in the <a href="api/ng/service/$parse"><code>$parse</code></a> service. This autodetection, however, triggers a
 CSP error to be logged in the console:</p>
@@ -55,31 +55,31 @@ script in the following Content Security Policy directive: &quot;default-src &#3
 directive on an element of the HTML document that appears before the <code>&lt;script&gt;</code> tag that loads
 the <code>angular.js</code> file.</p>
 <p><em>Note: This directive is only available in the <code>ng-csp</code> and <code>data-ng-csp</code> attribute form.</em></p>
-<p>You can specify which of the CSP related Angular features should be deactivated by providing
+<p>You can specify which of the CSP related AngularJS features should be deactivated by providing
 a value for the <code>ng-csp</code> attribute. The options are as follows:</p>
 <ul>
-<li><p>no-inline-style: this stops Angular from injecting CSS styles into the DOM</p>
+<li><p>no-inline-style: this stops AngularJS from injecting CSS styles into the DOM</p>
 </li>
-<li><p>no-unsafe-eval: this stops Angular from optimizing $parse with unsafe eval of strings</p>
+<li><p>no-unsafe-eval: this stops AngularJS from optimizing $parse with unsafe eval of strings</p>
 </li>
 </ul>
 <p>You can use these values in the following combinations:</p>
 <ul>
-<li><p>No declaration means that Angular will assume that you can do inline styles, but it will do
+<li><p>No declaration means that AngularJS will assume that you can do inline styles, but it will do
 a runtime check for unsafe-eval. E.g. <code>&lt;body&gt;</code>. This is backwardly compatible with previous
-versions of Angular.</p>
+versions of AngularJS.</p>
 </li>
-<li><p>A simple <code>ng-csp</code> (or <code>data-ng-csp</code>) attribute will tell Angular to deactivate both inline
+<li><p>A simple <code>ng-csp</code> (or <code>data-ng-csp</code>) attribute will tell AngularJS to deactivate both inline
 styles and unsafe eval. E.g. <code>&lt;body ng-csp&gt;</code>. This is backwardly compatible with previous
-versions of Angular.</p>
+versions of AngularJS.</p>
 </li>
-<li><p>Specifying only <code>no-unsafe-eval</code> tells Angular that we must not use eval, but that we can
+<li><p>Specifying only <code>no-unsafe-eval</code> tells AngularJS that we must not use eval, but that we can
 inject inline styles. E.g. <code>&lt;body ng-csp=&quot;no-unsafe-eval&quot;&gt;</code>.</p>
 </li>
-<li><p>Specifying only <code>no-inline-style</code> tells Angular that we must not inject styles, but that we can
+<li><p>Specifying only <code>no-inline-style</code> tells AngularJS that we must not inject styles, but that we can
 run eval - no automatic check for unsafe eval will occur. E.g. <code>&lt;body ng-csp=&quot;no-inline-style&quot;&gt;</code></p>
 </li>
-<li><p>Specifying both <code>no-unsafe-eval</code> and <code>no-inline-style</code> tells Angular that we must not inject
+<li><p>Specifying both <code>no-unsafe-eval</code> and <code>no-inline-style</code> tells AngularJS that we must not inject
 styles nor use eval, which is the same as an empty: ng-csp.
 E.g.<code>&lt;body ng-csp=&quot;no-inline-style;no-unsafe-eval&quot;&gt;</code></p>
 </li>

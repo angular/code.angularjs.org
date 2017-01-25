@@ -3,17 +3,16 @@
 
 <h1 id="component-router">Component Router</h1>
 <div class="alert alert-info">
-<strong>Deprecation Notice:</strong> In an effort to keep synchronized with router changes in Angular 2, this implementation of the Component Router (ngComponentRouter module) has been deprecated and will not receive further updates.
-We are investigating backporting the Angular 2 Router to Angular 1, but alternatively, use the <a href="api/ngRoute"><code>ngRoute</code></a> module or community developed projects (e.g. <a href="https://github.com/angular-ui/ui-router">ui-router</a>).
+<strong>Deprecation Notice:</strong> In an effort to keep synchronized with router changes in the new Angular, this implementation of the Component Router (ngComponentRouter module) has been deprecated and will not receive further updates.
+We are investigating backporting the new Angular Router to AngularJS, but alternatively, use the <a href="api/ngRoute"><code>ngRoute</code></a> module or community developed projects (e.g. <a href="https://github.com/angular-ui/ui-router">ui-router</a>).
 </div>
 
-<p>This guide describes the new Component Router for AngularJS 1.5.</p>
+<p>This guide describes the Component Router for AngularJS.</p>
 <div class="alert alert-info">
-  If you are looking for information about the old router for AngularJS 1.4 and
-  earlier have a look at the <a href="api/ngRoute"><code>ngRoute</code></a> module.
+  If you are looking for information about the old router for AngularJS have a look at the <a href="api/ngRoute"><code>ngRoute</code></a> module.
 
-  If you are looking for information about the Component Router for Angular 2 then
-  check out the <a href="https://angular.io/docs/ts/latest/guide/router.html">Angular 2 Router Guide</a>.
+  If you are looking for information about the Component Router for the new Angular then
+  check out the <a href="https://angular.io/docs/ts/latest/guide/router.html">Angular Router Guide</a>.
 </div>
 
 <h2 id="overview">Overview</h2>
@@ -40,7 +39,7 @@ We are investigating backporting the Angular 2 Router to Angular 1, but alternat
 </tr>
 <tr>
 <td>Routing Component</td>
-<td>An Angular component with a RouteConfig and an associated Router.</td>
+<td>An AngularJS component with a RouteConfig and an associated Router.</td>
 </tr>
 <tr>
 <td>RouteDefinition</td>
@@ -200,7 +199,7 @@ to display list and detail views of Heroes and Crises.</p>
 yarn add angular@1.5.x @angular/router@0.2.0
 </code></pre>
 <h2 id="load-the-scripts">Load the scripts</h2>
-<p>Just like any Angular application, we load the JavaScript files into our <code>index.html</code>:</p>
+<p>Just like any AngularJS application, we load the JavaScript files into our <code>index.html</code>:</p>
 <pre><code class="lang-html">&lt;script src=&quot;/node_modules/angular/angular.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;/node_modules/@angular/router/angular1/angular_1_router.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;/app/app.js&quot;&gt;&lt;/script&gt;
@@ -235,7 +234,7 @@ which is true for most modern browsers. See <a href="api/ng/provider/$locationPr
 <pre><code class="lang-js">.value(&#39;$routerRootComponent&#39;, &#39;app&#39;)
 </code></pre>
 <p>Create a very simple App Component to test that the application is working.</p>
-<p>We are using the Angular 1.5 <a href="api/ng/provider/$compileProvider#component"><code>.component()</code></a> helper method to create
+<p>We are using the AngularJS <a href="api/ng/provider/$compileProvider#component"><code>.component()</code></a> helper method to create
 all the <strong>Components</strong> in our application. It is perfectly suited to this task.</p>
 <pre><code class="lang-js">.component(&#39;app&#39;, {
   template: &#39;It worked!&#39;
@@ -249,7 +248,7 @@ must have a base URL.</p>
 ...
 </code></pre>
 <h2 id="bootstrap-angularjs">Bootstrap AngularJS</h2>
-<p>Bootstrap the Angular application and add the top level App Component.</p>
+<p>Bootstrap the AngularJS application and add the top level App Component.</p>
 <pre><code class="lang-html">&lt;body ng-app=&quot;app&quot;&gt;
   &lt;h1 class=&quot;title&quot;&gt;Component Router&lt;/h1&gt;
   &lt;app&gt;&lt;/app&gt;
@@ -302,7 +301,7 @@ stop at the <code>Heroes</code> <strong>Routing Component</strong> and not try t
 directive and a <strong>Route Config</strong> that defines a set of child <strong>Routes</strong> which delegate through to the
 <code>HeroList</code> and <code>HeroDetail</code> <strong>Components</strong>.</p>
 <h2 id="heroescomponent">HeroesComponent</h2>
-<p>Create a new file <code>heroes.js</code>, which defines a new Angular module for the <strong>Components</strong> of this feature
+<p>Create a new file <code>heroes.js</code>, which defines a new AngularJS module for the <strong>Components</strong> of this feature
 and registers the Heroes <strong>Component</strong>.</p>
 <pre><code class="lang-js">angular.module(&#39;heroes&#39;, [])
 .component(&#39;heroes&#39;, {
@@ -440,7 +439,7 @@ by the <strong>Router</strong>. In this code it is used to identify a specific H
 This hero is then attached to the <strong>Component</strong> so that it can be accessed in the template.</p>
 <h2 id="access-to-the-current-router">Access to the Current Router</h2>
 <p><strong>How do I get hold of the current router for my component?</strong></p>
-<p>Each component has its own Router. Unlike in Angular 2, we cannot use the dependency injector to get hold of a component&#39;s Router.
+<p>Each component has its own Router. Unlike in the new Angular, we cannot use the dependency injector to get hold of a component&#39;s Router.
 We can only inject the <code>$rootRouter</code>. Instead we use the fact that the <code>ng-outlet</code> directive binds the current router to a <code>$router</code>
 attribute on our component.</p>
 <pre><code class="lang-html">&lt;ng-outlet&gt;&lt;hero-detail $router=&quot;$$router&quot;&gt;&lt;/hero-detail&gt;&lt;/ng-outlet&gt;

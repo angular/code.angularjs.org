@@ -46,7 +46,7 @@ changes to <code>$location</code> are reflected into the browser address bar.</p
   </tr>
 
   <tr>
-    <td class="head">integration with angular application life-cycle</td>
+    <td class="head">integration with AngularJS application life-cycle</td>
     <td>none</td>
     <td>knows about all internal life-cycle phases, integrates with <a href="api/ng/type/$rootScope.Scope#$watch">$watch</a>, ...</td>
   </tr>
@@ -197,7 +197,7 @@ facilitate the browser URL change and history management.</p>
 
 <h2 id="hashbang-mode-default-mode-">Hashbang mode (default mode)</h2>
 <p>In this mode, <code>$location</code> uses Hashbang URLs in all browsers.
-Angular also does not intercept and rewrite links in this mode. I.e. links work
+AngularJS also does not intercept and rewrite links in this mode. I.e. links work
 as expected and also perform full page reloads when other parts of the url
 than the hash fragment was changed.</p>
 <h3 id="example">Example</h3>
@@ -234,7 +234,7 @@ having to worry about whether the browser displaying your app supports the histo
 <li>Opening a regular URL in a legacy browser -&gt; redirects to a hashbang URL</li>
 <li>Opening hashbang URL in a modern browser -&gt; rewrites to a regular URL</li>
 </ul>
-<p>Note that in this mode, Angular intercepts all links (subject to the &quot;Html link rewriting&quot; rules below)
+<p>Note that in this mode, AngularJS intercepts all links (subject to the &quot;Html link rewriting&quot; rules below)
 and updates the url in a way that never performs a full page reload.</p>
 <h3 id="example">Example</h3>
 <pre><code class="lang-js">it(&#39;should show example&#39;, inject(
@@ -307,7 +307,7 @@ elements that have the given attribute.</p>
 <p>Note that <a href="guide/directive#normalization">attribute name normalization</a> does not apply here, so
 <code>&#39;internalLink&#39;</code> will <strong>not</strong> match <code>&#39;internal-link&#39;</code>.</p>
 <h3 id="relative-links">Relative links</h3>
-<p>Be sure to check all relative links, images, scripts etc. Angular requires you to specify the url
+<p>Be sure to check all relative links, images, scripts etc. AngularJS requires you to specify the url
 base in the head of your main html file (<code>&lt;base href=&quot;/my-base/index.html&quot;&gt;</code>) unless <code>html5Mode.requireBase</code>
 is set to <code>false</code> in the html5Mode definition object passed to <code>$locationProvider.html5Mode()</code>. With
 that, relative urls will always be resolved to this base url, even if the initial url of the
@@ -318,7 +318,7 @@ to anchors on the same page without needing to know on which page the user curre
 <h3 id="server-side">Server side</h3>
 <p>Using this mode requires URL rewriting on server side, basically you have to rewrite all your links
 to entry point of your application (e.g. index.html). Requiring a <code>&lt;base&gt;</code> tag is also important for
-this case, as it allows Angular to differentiate between the part of the url that is the application
+this case, as it allows AngularJS to differentiate between the part of the url that is the application
 base and the path that should be handled by the application.</p>
 <h3 id="base-href-constraints">Base href constraints</h3>
 <p>The <code>$location</code> service is not able to function properly if the current URL is outside the URL given
@@ -458,14 +458,14 @@ redirect to regular / hashbang url, as this conversion happens only during parsi
 page. When you need to change the URL and reload the page or navigate to a different page, please
 use a lower level API, <a href="api/ng/service/$window">$window.location.href</a>.</p>
 <h2 id="using-location-outside-of-the-scope-life-cycle">Using $location outside of the scope life-cycle</h2>
-<p><code>$location</code> knows about Angular&#39;s <a href="api/ng/type/$rootScope.Scope">scope</a> life-cycle. When a URL changes in
+<p><code>$location</code> knows about AngularJS&#39;s <a href="api/ng/type/$rootScope.Scope">scope</a> life-cycle. When a URL changes in
 the browser it updates the <code>$location</code> and calls <code>$apply</code> so that all
 <a href="api/ng/type/$rootScope.Scope#$watch">$watchers</a> /
 <a href="api/ng/type/$compile.directive.Attributes#$observe">$observers</a> are notified.
 When you change the <code>$location</code> inside the <code>$digest</code> phase everything is ok; <code>$location</code> will
 propagate this change into browser and will notify all the <a href="api/ng/type/$rootScope.Scope#$watch">$watchers</a> /
 <a href="api/ng/type/$compile.directive.Attributes#$observe">$observers</a>.
-When you want to change the <code>$location</code> from outside Angular (for example, through a DOM Event or
+When you want to change the <code>$location</code> from outside AngularJS (for example, through a DOM Event or
 during testing) - you must call <code>$apply</code> to propagate the changes.</p>
 <h2 id="-location-path-and-or-prefixes">$location.path() and ! or / prefixes</h2>
 <p>A path should always begin with forward slash (<code>/</code>); the <code>$location.path()</code> setter will add the
@@ -500,7 +500,7 @@ Crawlable</a>.</p>
 });
 </code></pre>
 <h1 id="migrating-from-earlier-angularjs-releases">Migrating from earlier AngularJS releases</h1>
-<p>In earlier releases of Angular, <code>$location</code> used <code>hashPath</code> or <code>hashSearch</code> to process path and
+<p>In earlier releases of AngularJS, <code>$location</code> used <code>hashPath</code> or <code>hashSearch</code> to process path and
 search methods. With this release, the <code>$location</code> service processes path and search methods and
 then uses the information it obtains to compose hashbang URLs (such as
 <code>http://server.com/#!/path?search=a</code>), when necessary.</p>

@@ -27,9 +27,9 @@
 <p>If the <code>name</code> attribute is specified, the form controller is published onto the current scope under
 this name.</p>
 <h1 id="alias-link-ng-directive-ngform-ngform-">Alias: <a href="api/ng/directive/ngForm"><code>ngForm</code></a></h1>
-<p>In Angular, forms can be nested. This means that the outer form is valid when all of the child
+<p>In AngularJS, forms can be nested. This means that the outer form is valid when all of the child
 forms are valid as well. However, browsers do not allow nesting of <code>&lt;form&gt;</code> elements, so
-Angular provides the <a href="api/ng/directive/ngForm"><code>ngForm</code></a> directive, which behaves identically to
+AngularJS provides the <a href="api/ng/directive/ngForm"><code>ngForm</code></a> directive, which behaves identically to
 <code>form</code> but can be nested. Nested forms can be useful, for example, if the validity of a sub-group
 of controls needs to be determined.</p>
 <h1 id="css-classes">CSS classes</h1>
@@ -43,11 +43,11 @@ of controls needs to be determined.</p>
 </ul>
 <p>Keep in mind that ngAnimate can detect each of these classes when added and removed.</p>
 <h1 id="submitting-a-form-and-preventing-the-default-action">Submitting a form and preventing the default action</h1>
-<p>Since the role of forms in client-side Angular applications is different than in classical
+<p>Since the role of forms in client-side AngularJS applications is different than in classical
 roundtrip apps, it is desirable for the browser not to translate the form submission into a full
 page reload that sends the data to the server. Instead some javascript logic should be triggered
 to handle the form submission in an application-specific way.</p>
-<p>For this reason, Angular prevents the default action (form submission to the server) unless the
+<p>For this reason, AngularJS prevents the default action (form submission to the server) unless the
 <code>&lt;form&gt;</code> element has an <code>action</code> attribute specified.</p>
 <p>You can use one of the following two ways to specify what javascript method should be called when
 a form is submitted:</p>

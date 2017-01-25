@@ -22,7 +22,7 @@
 
 
 <div class="api-profile-description">
-  <p>HTML textarea element control with angular data-binding. The data-binding and validation
+  <p>HTML textarea element control with AngularJS data-binding. The data-binding and validation
 properties of this element are exactly the same as those of the
 <a href="api/ng/directive/input">input element</a>.</p>
 
@@ -34,7 +34,7 @@ properties of this element are exactly the same as those of the
 <div class="known-issue">
   <p>When specifying the <code>placeholder</code> attribute of <code>&lt;textarea&gt;</code>, Internet Explorer will temporarily
 insert the placeholder value as the textarea&#39;s content. If the placeholder value contains
-interpolation (<code>{{ ... }}</code>), an error will be logged in the console when Angular tries to update
+interpolation (<code>{{ ... }}</code>), an error will be logged in the console when AngularJS tries to update
 the value of the by-then-removed text node. This doesn&#39;t affect the functionality of the
 textarea, but can be undesirable.</p>
 <p>You can work around this Internet Explorer issue by using <code>ng-attr-placeholder</code> instead of
@@ -93,7 +93,7 @@ Developer Guide.</p>
         <a href="" class="label type-hint type-hint-string">string</a>
       </td>
       <td>
-        <p>Assignable angular expression to data-bind to.</p>
+        <p>Assignable AngularJS expression to data-bind to.</p>
 
         
       </td>
@@ -195,7 +195,7 @@ Developer Guide.</p>
       </td>
       <td>
         <p>Sets <code>pattern</code> validation error key if the ngModel <a href="api/ng/type/ngModel.NgModelController#$viewValue">$viewValue</a>
-   does not match a RegExp found by evaluating the Angular expression given in the attribute value.
+   does not match a RegExp found by evaluating the AngularJS expression given in the attribute value.
    If the expression evaluates to a RegExp object, then this is used directly.
    If the expression evaluates to a string, then it will be converted to a RegExp
    after wrapping it in <code>^</code> and <code>$</code> characters. For instance, <code>&quot;abc&quot;</code> will be converted to
@@ -218,7 +218,7 @@ Developer Guide.</p>
         <a href="" class="label type-hint type-hint-string">string</a>
       </td>
       <td>
-        <p>Angular expression to be executed when input changes due to user
+        <p>AngularJS expression to be executed when input changes due to user
    interaction with the input element.</p>
 
         
@@ -235,7 +235,7 @@ Developer Guide.</p>
         <a href="" class="label type-hint type-hint-boolean">boolean</a>
       </td>
       <td>
-        <p>If set to false Angular will not automatically trim the input.</p>
+        <p>If set to false AngularJS will not automatically trim the input.</p>
 
         <p><em>(default: true)</em></p>
       </td>

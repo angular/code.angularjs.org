@@ -14,8 +14,8 @@ make requests for data to the server in an easier way, without having to deal wi
 
 
 <h2 id="dependencies">Dependencies</h2>
-<p>The RESTful functionality is provided by Angular in the <a href="api/ngResource">ngResource</a> module, which
-is distributed separately from the core Angular framework.</p>
+<p>The RESTful functionality is provided by AngularJS in the <a href="api/ngResource">ngResource</a> module, which
+is distributed separately from the core AngularJS framework.</p>
 <p>Since we are using <a href="http://bower.io/">Bower</a> to install client-side dependencies, this step updates the
 <code>bower.json</code> configuration file to include the new dependency:</p>
 <p><br />
@@ -37,7 +37,7 @@ is distributed separately from the core Angular framework.</p>
 }
 </code></pre>
 <p>The new dependency <code>&quot;angular-resource&quot;: &quot;1.5.x&quot;</code> tells bower to install a version of the
-angular-resource module that is compatible with version 1.5.x of Angular. We must tell bower to
+angular-resource module that is compatible with version 1.5.x of AngularJS. We must tell bower to
 download and install this dependency.</p>
 <pre><code>npm install
 </code></pre>
@@ -47,7 +47,7 @@ download and install this dependency.</p>
 </div>
 
 <div class="alert alert-warning">
-  <strong>Warning:</strong> If a new version of Angular has been released since you last ran <code>npm install</code>, then
+  <strong>Warning:</strong> If a new version of AngularJS has been released since you last ran <code>npm install</code>, then
   you may have a problem with the <code>bower install</code> due to a conflict between the versions of
   angular.js that need to be installed. If you run into this issue, simply delete your
   <code>app/bower_components</code> directory and then run <code>npm install</code>.
@@ -107,7 +107,7 @@ need to load the <code>angular-resource.js</code> file, which contains the <code
 </code></pre>
 <h2 id="component-controllers">Component Controllers</h2>
 <p>We can now simplify our component controllers (<code>PhoneListController</code> and <code>PhoneDetailController</code>) by
-factoring out the lower-level <code>$http</code> service, replacing it with the new <code>Phone</code> service. Angular&#39;s
+factoring out the lower-level <code>$http</code> service, replacing it with the new <code>Phone</code> service. AngularJS&#39;s
 <code>$resource</code> service is easier to use than <code>$http</code> for interacting with data sources exposed as
 RESTful resources. It is also easier now to understand what the code in our controllers is doing.</p>
 <p><br />
@@ -168,7 +168,7 @@ RESTful resources. It is also easier now to understand what the code in our cont
 invoking methods of our <code>Phone</code> service. Although it looks as if the results were returned
 synchronously, that is not the case at all. What is returned synchronously is a &quot;future&quot; — an
 object, which will be filled with data, when the XHR response is received. Because of the
-data-binding in Angular, we can use this future and bind it to our template. Then, when the data
+data-binding in AngularJS, we can use this future and bind it to our template. Then, when the data
 arrives, the view will be updated automatically.</p>
 <p>Sometimes, relying on the future object and data-binding alone is not sufficient to do everything
 we require, so in these cases, we can add a callback to process the server response. The
@@ -188,12 +188,12 @@ Karma configuration file with angular-resource.</p>
 expected &quot;future&quot; objects/arrays.</p>
 <p>The <a href="api/ngResource/service/$resource">$resource</a> service augments the response object with extra methods
 &mdash; e.g. for updating and deleting the resource &mdash; and properties (some of which are only
-meant to be accessed by Angular). If we were to use Jasmine&#39;s standard <code>.toEqual()</code> matcher, our
+meant to be accessed by AngularJS). If we were to use Jasmine&#39;s standard <code>.toEqual()</code> matcher, our
 tests would fail, because the test values would not match the responses exactly.</p>
 <p>To solve the  problem, we instruct Jasmine to use a <a href="https://jasmine.github.io/2.4/custom_equality.html">custom equality tester</a> for
 comparing objects. We specify <a href="api/ng/function/angular.equals">angular.equals</a> as our equality tester, which
 ignores functions and <code>$</code>-prefixed properties, such as those added by the <code>$resource</code> service.<br />
-(Remember that Angular uses the <code>$</code> prefix for its proprietary API.)</p>
+(Remember that AngularJS uses the <code>$</code> prefix for its proprietary API.)</p>
 <p><br />
 <strong><code>app/core/phone/phone.service.spec.js</code>:</strong></p>
 <pre><code class="lang-js">describe(&#39;Phone&#39;, function() {

@@ -8,10 +8,10 @@ describe("", function() {
 it('should auto compile', function() {
   var textarea = $('textarea');
   var output = $('div[compile]');
-  // The initial state reads 'Hello Angular'.
-  expect(output.getText()).toBe('Hello Angular');
+  // The initial state reads 'Hello AngularJS'.
+  expect(output.getText()).toBe('Hello AngularJS');
   textarea.clear();
   textarea.sendKeys('{{name}}!');
-  expect(output.getText()).toBe('Angular!');
+  expect(output.getText()).toBe('AngularJS!');
 });
 });

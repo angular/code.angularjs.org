@@ -10,7 +10,7 @@ addressing issues specific to IE8 or earlier.
 </div>
 
 <p>This document describes the Internet Explorer (IE) idiosyncrasies when dealing with custom HTML
-attributes and tags. Read this document if you are planning on deploying your Angular application
+attributes and tags. Read this document if you are planning on deploying your AngularJS application
 on IE.</p>
 <p>The project currently supports and will attempt to fix bugs for IE9 and above. The continuous
 integration server runs all the tests against IE9, IE10, and IE11. See
@@ -18,16 +18,16 @@ integration server runs all the tests against IE9, IE10, and IE11. See
 <a href="http://ci.angularjs.org">ci.angularjs.org</a>.</p>
 <p>We do not run tests on IE8 and below. A subset of the AngularJS functionality may work on these
 browsers, but it is up to you to test and decide whether it works for your particular app.</p>
-<p>To ensure your Angular application works on IE please consider:</p>
+<p>To ensure your AngularJS application works on IE please consider:</p>
 <ol>
 <li>Use <code>ng-style</code> tags instead of <code>style=&quot;{{ someCss }}&quot;</code>. The latter works in Chrome and Firefox
 but does not work in Internet Explorer &lt;= 11 (the most recent version at time of writing).</li>
 <li>For the <code>type</code> attribute of buttons, use <code>ng-attr-type</code> tags instead of
 <code>type=&quot;{{ someExpression }}&quot;</code>. If using the latter, Internet Explorer overwrites the expression
-with <code>type=&quot;submit&quot;</code> before Angular has a chance to interpolate it.</li>
+with <code>type=&quot;submit&quot;</code> before AngularJS has a chance to interpolate it.</li>
 <li>For the <code>value</code> attribute of progress, use <code>ng-attr-value</code> tags instead of
 <code>value=&quot;{{ someExpression}}&quot;</code>. If using the latter, Internet Explorer overwrites the expression
-with <code>value=&quot;0&quot;</code> before Angular has a chance to interpolate it.</li>
+with <code>value=&quot;0&quot;</code> before AngularJS has a chance to interpolate it.</li>
 <li>For the <code>placeholder</code> attribute of textarea, use <code>ng-attr-placeholder</code> tags instead
 of <code>placeholder=&quot;{{ someExpression }}&quot;</code>. If using the latter, Internet Explorer will error
 on accessing the <code>nodeValue</code> on a parentless <code>TextNode</code> in Internet Explorer 10 &amp; 11

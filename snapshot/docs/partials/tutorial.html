@@ -3,17 +3,17 @@
 
 <h1 id="phonecat-tutorial-app">PhoneCat Tutorial App</h1>
 <p>A great way to get introduced to AngularJS is to work through this tutorial, which walks you through
-the construction of an Angular web app. The app you will build is a catalog that displays a list
+the construction of an AngularJS web app. The app you will build is a catalog that displays a list
 of Android devices, lets you filter the list to see only devices that interest you, and then view
 details for any device.</p>
 <p><img class="diagram" src="img/tutorial/catalog_screen.png" width="488" height="413"
     alt="demo application running in the browser"></p>
-<p>Follow the tutorial to see how Angular makes browsers smarter — without the use of native
+<p>Follow the tutorial to see how AngularJS makes browsers smarter — without the use of native
 extensions or plug-ins:</p>
 <ul>
 <li>See examples of how to use client-side data binding to build dynamic views of data that change
 immediately in response to user actions.</li>
-<li>See how Angular keeps your views in sync with your data without the need for DOM manipulation.</li>
+<li>See how AngularJS keeps your views in sync with your data without the need for DOM manipulation.</li>
 <li>Learn a better, easier way to test your web apps, with Karma and Protractor.</li>
 <li>Learn how to use dependency injection and services to make common web tasks, such as getting data
 into your app, easier.</li>
@@ -25,9 +25,9 @@ into your app, easier.</li>
 <li>Create and run unit tests, with Karma.</li>
 <li>Create and run end-to-end tests, with Protractor.</li>
 <li>Move application logic out of the template and into components and controllers.</li>
-<li>Get data from a server using Angular services.</li>
+<li>Get data from a server using AngularJS services.</li>
 <li>Apply animations to your application, using the <code>ngAnimate</code> module.</li>
-<li>Structure your Angular applications in a modular way that scales well for larger projects.</li>
+<li>Structure your AngularJS applications in a modular way that scales well for larger projects.</li>
 <li>Identify resources for learning more about AngularJS.</li>
 </ul>
 <p>The tutorial guides you through the entire process of building a simple application, including
@@ -42,7 +42,7 @@ If you just want to <em>read</em> the tutorial, you can go straight to the first
 <a href="tutorial/step_00">Step 0 - Bootstrapping</a>.</p>
 <h2 id="working-with-the-code">Working with the Code</h2>
 <p>You can follow along with this tutorial and hack on the code in the comfort of your own computer.
-This way, you can get hands-on practice of really writing Angular code and also on using the
+This way, you can get hands-on practice of really writing AngularJS code and also on using the
 recommended testing tools.</p>
 <p>The tutorial relies on the use of the <a href="http://git-scm.com/">Git</a> versioning system for source code management.
 You don&#39;t need to know anything about Git to follow the tutorial other than how to install and run
@@ -130,7 +130,7 @@ using, <code>sudo npm install -g ...</code>.</p>
 <pre><code>bower install
 </code></pre>
 <h3 id="running-the-development-web-server">Running the Development Web Server</h3>
-<p>While Angular applications are purely client-side code, and it is possible to open them in a web
+<p>While AngularJS applications are purely client-side code, and it is possible to open them in a web
 browser directly from the file system, it is better to serve them from an HTTP web server. In
 particular, for security reasons, most modern browsers will not allow JavaScript to make server
 requests if the page is loaded directly from the file system.</p>
@@ -142,7 +142,7 @@ application during development. Start the web server by running:</p>
 You can now browse to the application at <a href="http://localhost:8000/index.html">http://localhost:8000/index.html</a>.</p>
 <div class="alert alert-info">
   To serve the web app on a different IP address or port, edit the &quot;start&quot; script within
-  <code>package.json</code>. You can use <code>-a</code> to set the address and <code>-p</code> to set the port. You also need to 
+  <code>package.json</code>. You can use <code>-a</code> to set the address and <code>-p</code> to set the port. You also need to
   update the <code>baseUrl</code> configuration property in <code>e2e-test/protractor.conf.js</code>.
 </div>
 
@@ -204,9 +204,9 @@ a new commit of changes to a remote repository.</p>
 <h3 id="common-issues">Common Issues</h3>
 <p><br />
 <strong>Firewall / Proxy issues</strong></p>
-<p>Git and other tools, often use the <code>git:</code> protocol for accessing files in remote repositories. 
-Some firewall configurations are blocking <code>git://</code> URLs, which leads to errors when trying to clone 
-repositories or download dependencies. (For example corporate firewalls are &quot;notorious&quot; for blocking 
+<p>Git and other tools, often use the <code>git:</code> protocol for accessing files in remote repositories.
+Some firewall configurations are blocking <code>git://</code> URLs, which leads to errors when trying to clone
+repositories or download dependencies. (For example corporate firewalls are &quot;notorious&quot; for blocking
 <code>git:</code>.)</p>
 <p>If you run into this issue, you can force the use of <code>https:</code> instead, by running the following
 command: <code>git config --global url.&quot;https://&quot;.insteadOf git://</code></p>
@@ -218,14 +218,14 @@ command: <code>git config --global url.&quot;https://&quot;.insteadOf git://</co
 <p>In that case, you can delete the <code>node_modules/</code> directory and run <code>npm install</code> again.</p>
 <p><br />
 <strong>Protractor dependencies</strong></p>
-<p>Under the hood, Protractor uses the <a href="http://docs.seleniumhq.org/">Selenium Standalone Server</a>, which in turn requires 
-the <a href="https://en.wikipedia.org/wiki/Java_Development_Kit">Java Development Kit (JDK)</a> to be installed on your local machine. Check this by running 
+<p>Under the hood, Protractor uses the <a href="http://docs.seleniumhq.org/">Selenium Standalone Server</a>, which in turn requires
+the <a href="https://en.wikipedia.org/wiki/Java_Development_Kit">Java Development Kit (JDK)</a> to be installed on your local machine. Check this by running
 <code>java -version</code> from the command line.</p>
 <p>If JDK is not already installed, you can download it <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">here</a>.</p>
 <p><br />
 <strong>Error running the web server</strong></p>
-<p>The web server is configured to use port 8000. If the port is already in use (for example by another 
-instance of a running web server) you will get an <code>EADDRINUSE</code> error. Make sure the port is 
+<p>The web server is configured to use port 8000. If the port is already in use (for example by another
+instance of a running web server) you will get an <code>EADDRINUSE</code> error. Make sure the port is
 available, before running <code>npm start</code>.</p>
 <hr />
 

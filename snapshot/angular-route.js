@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.2-build.5247+sha.d24617b
+ * @license AngularJS v1.6.2-build.5248+sha.0304383
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -48,7 +48,7 @@ var noop;
  *
  * # ngRoute
  *
- * The `ngRoute` module provides routing and deeplinking services and directives for angular apps.
+ * The `ngRoute` module provides routing and deeplinking services and directives for AngularJS apps.
  *
  * ## Example
  * See {@link ngRoute.$route#example $route} for an example of configuring and using `ngRoute`.

@@ -49,7 +49,7 @@ now-familiar double-curly brace binding in the <code>href</code> attribute value
 <code>{{phone.name}}</code> binding as the element content. In this step the <code>{{phone.id}}</code> binding is used in
 the element attribute.</p>
 <p>We also added phone images next to each record using an image tag with the <a href="api/ng/directive/ngSrc">ngSrc</a>
-directive. That directive prevents the browser from treating the Angular <code>{{ expression }}</code> markup
+directive. That directive prevents the browser from treating the AngularJS <code>{{ expression }}</code> markup
 literally, and initiating a request to an invalid URL (<code>http://localhost:8000/{{phone.imageUrl}}</code>),
 which it would have done if we had only specified an attribute binding in a regular <code>src</code> attribute
 (<code>&lt;img src=&quot;{{phone.imageUrl}}&quot;&gt;</code>). Using the <code>ngSrc</code> directive, prevents the browser from making an
@@ -80,13 +80,13 @@ views, that we will implement in the upcoming steps.</p>
 developer tools or inspecting the web server access logs, confirm that the application is indeed
 making an extraneous request to <code>%7B%7Bphone.imageUrl%7D%7D</code> (or <code>{{phone.imageUrl}}</code>).</p>
 <p>The issue here is that the browser will fire a request for that invalid image address as soon as
-it hits the <code>&lt;img&gt;</code> tag, which is before Angular has a chance to evaluate the expression and
+it hits the <code>&lt;img&gt;</code> tag, which is before AngularJS has a chance to evaluate the expression and
 inject the valid address.</p>
 </li>
 </ul>
 <h1 id="summary">Summary</h1>
-<p>Now that you have added phone images and links, go to <a href="tutorial/step_09">step 9</a> to learn about Angular
-layout templates and how Angular makes it easy to create applications that have multiple views.</p>
+<p>Now that you have added phone images and links, go to <a href="tutorial/step_09">step 9</a> to learn about AngularJS
+layout templates and how AngularJS makes it easy to create applications that have multiple views.</p>
 <ul doc-tutorial-nav="8"></ul>
 
 

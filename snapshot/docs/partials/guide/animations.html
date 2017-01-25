@@ -260,7 +260,7 @@ making calls to it when needed.</p>
 }]);
 </code></pre>
 <h2 id="animations-on-app-bootstrap-page-load">Animations on app bootstrap / page load</h2>
-<p>By default, animations are disabled when the Angular app <a href="guide/bootstrap">bootstraps</a>. If you are using the <a href="api/ng/directive/ngApp"><code>ngApp</code></a> directive,
+<p>By default, animations are disabled when the AngularJS app <a href="guide/bootstrap">bootstraps</a>. If you are using the <a href="api/ng/directive/ngApp"><code>ngApp</code></a> directive,
 this happens in the <code>DOMContentLoaded</code> event, so immediately after the page has been loaded.
 Animations are disabled, so that UI and content are instantly visible. Otherwise, with many animations on
 the page, the loading process may become too visually overwhelming, and the performance may suffer.</p>
@@ -379,7 +379,7 @@ case of the spinner, this would be:</p>
 <p>If you do have CSS transitions / animations defined for the animation events, make sure they have higher priority
 than any styles that are independent from ngAnimate.</p>
 <p>You can also use one of the two other <a href="guide/animations#how-to-selectively-enable-disable-and-skip-animations">strategies to disable animations</a>.</p>
-<h3 id="enable-animations-for-elements-outside-of-the-angular-application-dom-tree-link-ng-animate-pin-animate-pin-">Enable animations for elements outside of the Angular application DOM tree: <a href="api/ng/service/$animate#pin">$animate.pin()</a></h3>
+<h3 id="enable-animations-for-elements-outside-of-the-angularjs-application-dom-tree-link-ng-animate-pin-animate-pin-">Enable animations for elements outside of the AngularJS application DOM tree: <a href="api/ng/service/$animate#pin">$animate.pin()</a></h3>
 <p>Before animating, <code>ngAnimate</code> checks to see if the element being animated is inside the application DOM tree,
 and if it is not, no animation is run. Usually, this is not a problem as most apps use the <code>ngApp</code>
 attribute / bootstrap the app on the <code>html</code> or <code>body</code> element.</p>

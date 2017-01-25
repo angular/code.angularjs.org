@@ -24,14 +24,14 @@
 <div class="api-profile-description">
   <p><code>ngPluralize</code> is a directive that displays messages according to en-US localization rules.
 These rules are bundled with angular.js, but can be overridden
-(see <a href="guide/i18n">Angular i18n</a> dev guide). You configure ngPluralize directive
+(see <a href="guide/i18n">AngularJS i18n</a> dev guide). You configure ngPluralize directive
 by specifying the mappings between
 <a href="http://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/language_plural_rules.html">plural categories</a>
 and the strings to be displayed.</p>
 <h1 id="plural-categories-and-explicit-number-rules">Plural categories and explicit number rules</h1>
 <p>There are two
 <a href="http://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/language_plural_rules.html">plural categories</a>
-in Angular&#39;s default en-US locale: &quot;one&quot; and &quot;other&quot;.</p>
+in AngularJS&#39;s default en-US locale: &quot;one&quot; and &quot;other&quot;.</p>
 <p>While a plural category may match many numbers (for example, in en-US locale, &quot;other&quot; can match
 any number that is not 1), an explicit number rule can only match one number. For example, the
 explicit number rule for &quot;3&quot; matches the number 3. There are examples of plural categories
@@ -39,7 +39,7 @@ and explicit number rules throughout the rest of this documentation.</p>
 <h1 id="configuring-ngpluralize">Configuring ngPluralize</h1>
 <p>You configure ngPluralize by providing 2 attributes: <code>count</code> and <code>when</code>.
 You can also provide an optional attribute, <code>offset</code>.</p>
-<p>The value of the <code>count</code> attribute can be either a string or an <a href="guide/expression">Angular expression</a>; these are evaluated on the current scope for its bound value.</p>
+<p>The value of the <code>count</code> attribute can be either a string or an <a href="guide/expression">AngularJS expression</a>; these are evaluated on the current scope for its bound value.</p>
 <p>The <code>when</code> attribute specifies the mappings between plural categories and the actual
 string to be displayed. The value of the attribute should be a JSON object.</p>
 <p>The following example shows how to configure ngPluralize:</p>
@@ -55,7 +55,7 @@ would be shown instead of &quot;Nobody is viewing&quot;. You can specify an expl
 other numbers, for example 12, so that instead of showing &quot;12 people are viewing&quot;, you can
 show &quot;a dozen people are viewing&quot;.</p>
 <p>You can use a set of closed braces (<code>{}</code>) as a placeholder for the number that you want substituted
-into pluralized strings. In the previous example, Angular will replace <code>{}</code> with
+into pluralized strings. In the previous example, AngularJS will replace <code>{}</code> with
 <span ng-non-bindable><code>{{personCount}}</code></span>. The closed braces <code>{}</code> is a placeholder
 for <span ng-non-bindable>{{numberExpression}}</span>.</p>
 <p>If no rule is defined for a category, then an empty string is displayed and a warning is generated.
@@ -78,7 +78,7 @@ Let&#39;s take a look at an example:</p>
 three explicit number rules 0, 1 and 2.
 When one person, perhaps John, views the document, &quot;John is viewing&quot; will be shown.
 When three people view the document, no explicit number rule is found, so
-an offset of 2 is taken off 3, and Angular uses 1 to decide the plural category.
+an offset of 2 is taken off 3, and AngularJS uses 1 to decide the plural category.
 In this case, plural category &#39;one&#39; is matched and &quot;John, Mary and one other person are viewing&quot;
 is shown.</p>
 <p>Note that when you specify offsets, you must provide explicit number rules for

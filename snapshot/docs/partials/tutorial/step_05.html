@@ -42,13 +42,13 @@ user types into the search box.</li>
   &lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
-<p>We added a standard HTML <code>&lt;input&gt;</code> tag and used Angular&#39;s <a href="api/ng/filter/filter">filter</a> function
+<p>We added a standard HTML <code>&lt;input&gt;</code> tag and used AngularJS&#39;s <a href="api/ng/filter/filter">filter</a> function
 to process the input for the <a href="api/ng/directive/ngRepeat">ngRepeat</a> directive.</p>
 <p>By virtue of the <a href="api/ng/directive/ngModel">ngModel</a> directive, this lets a user enter search criteria and
 immediately see the effects of their search on the phone list. This new code demonstrates the
 following:</p>
 <ul>
-<li><p>Data-binding: This is one of the core features in Angular. When the page loads, Angular binds the
+<li><p>Data-binding: This is one of the core features in AngularJS. When the page loads, AngularJS binds the
 value of the input box to the data model variable specified with <code>ngModel</code> and keeps the two in
 sync.</p>
 <p>In this code, the data that a user types into the input box (bound to <strong><code>$ctrl.query</code></strong>) is
@@ -100,7 +100,7 @@ E2E test, to verify that the feature works.</p>
 });
 </code></pre>
 <p>This test verifies that the search box and the repeater are correctly wired together. Notice how
-easy it is to write E2E tests in Angular. Although this example is for a simple test, it really is
+easy it is to write E2E tests in AngularJS. Although this example is for a simple test, it really is
 that easy to set up any functional, readable, E2E test.</p>
 <h2 id="running-e2e-tests-with-protractor">Running E2E Tests with Protractor</h2>
 <p>Even though the syntax of this test looks very much like our controller unit test written with

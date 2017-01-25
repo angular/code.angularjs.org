@@ -22,7 +22,7 @@
 
 
 <div class="api-profile-description">
-  <p>The <code>ngCloak</code> directive is used to prevent the Angular html template from being briefly
+  <p>The <code>ngCloak</code> directive is used to prevent the AngularJS html template from being briefly
 displayed by the browser in its raw (uncompiled) form while your application is loading. Use this
 directive to avoid the undesirable flicker effect caused by the html template display.</p>
 <p>The directive can be applied to the <code>&lt;body&gt;</code> element, but the preferred usage is to apply
@@ -36,7 +36,7 @@ For CSP mode please add <code>angular-csp.css</code> to your html file (see <a h
 }
 </code></pre>
 <p>When this css rule is loaded by the browser, all html elements (including their children) that
-are tagged with the <code>ngCloak</code> directive are hidden. When Angular encounters this directive
+are tagged with the <code>ngCloak</code> directive are hidden. When AngularJS encounters this directive
 during the compilation of the template it deletes the <code>ngCloak</code> element attribute, making
 the compiled element visible.</p>
 <p>For the best result, the <code>angular.js</code> script must be loaded in the head section of the html

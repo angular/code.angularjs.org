@@ -7,21 +7,21 @@ keep in mind as you build your application.</p>
 <h2 id="reporting-a-security-issue">Reporting a security issue</h2>
 <p>Email us at <a href="mailto:security@angularjs.org">security@angularjs.org</a> to report any potential
 security issues in AngularJS.</p>
-<p>Please keep in mind the points below about Angular&#39;s expression language.</p>
+<p>Please keep in mind the points below about AngularJS&#39;s expression language.</p>
 <h2 id="use-the-latest-angularjs-possible">Use the latest AngularJS possible</h2>
 <p>Like any software library, it is critical to keep AngularJS up to date. Please track the
 <a href="https://github.com/angular/angular.js/blob/master/CHANGELOG.md">CHANGELOG</a> and make sure you are aware
 of upcoming security patches and other updates.</p>
 <p>Be ready to update rapidly when new security-centric patches are available.</p>
-<p>Those that stray from Angular standards (such as modifying Angular&#39;s core) may have difficulty updating,
+<p>Those that stray from AngularJS standards (such as modifying AngularJS&#39;s core) may have difficulty updating,
 so keeping to AngularJS standards is not just a functionality issue, it&#39;s also critical in order to
 facilitate rapid security updates.</p>
-<h2 id="angular-templates-and-expressions">Angular Templates and Expressions</h2>
-<p><strong>If an attacker has access to control Angular templates or expressions, they can exploit an Angular application
+<h2 id="angularjs-templates-and-expressions">AngularJS Templates and Expressions</h2>
+<p><strong>If an attacker has access to control AngularJS templates or expressions, they can exploit an AngularJS application
 via an XSS attack, regardless of the version.</strong></p>
 <p>There are a number of ways that templates and expressions can be controlled:</p>
 <ul>
-<li><strong>Generating Angular templates on the server containing user-provided content</strong>. This is the most common pitfall
+<li><strong>Generating AngularJS templates on the server containing user-provided content</strong>. This is the most common pitfall
 where you are generating HTML via some server-side engine such as PHP, Java or ASP.NET.</li>
 <li><strong>Passing an expression generated from user-provided content in calls to the following methods on a <a href="guide/scope">scope</a></strong>:<ul>
 <li><code>$watch(userContent, ...)</code></li>
@@ -43,14 +43,14 @@ where you are generating HTML via some server-side engine such as PHP, Java or A
 <code>{{ value | orderBy : userContent }}</code></li>
 </ul>
 <h3 id="sandbox-removal">Sandbox removal</h3>
-<p>Each version of Angular 1 up to, but not including 1.6, contained an expression sandbox, which reduced the surface area of
-the vulnerability but never removed it. <strong>In Angular 1.6 we removed this sandbox as developers kept relying upon it as a security
-feature even though it was always possible to access arbitrary JavaScript code if one could control the Angular templates
+<p>Each version of AngularJS 1 up to, but not including 1.6, contained an expression sandbox, which reduced the surface area of
+the vulnerability but never removed it. <strong>In AngularJS 1.6 we removed this sandbox as developers kept relying upon it as a security
+feature even though it was always possible to access arbitrary JavaScript code if one could control the AngularJS templates
 or expressions of applications.</strong></p>
-<p>Control of the Angular templates makes applications vulnerable even if there was a completely secure sandbox:</p>
+<p>Control of the AngularJS templates makes applications vulnerable even if there was a completely secure sandbox:</p>
 <ul>
 <li><a href="https://ryhanson.com/stealing-session-tokens-on-plunker-with-an-angular-expression-injection/">https://ryhanson.com/stealing-session-tokens-on-plunker-with-an-angular-expression-injection/</a> in this blog post the author shows
-a (now closed) vulnerability in the Plunker application due to server-side rendering inside an Angular template.</li>
+a (now closed) vulnerability in the Plunker application due to server-side rendering inside an AngularJS template.</li>
 <li><a href="https://ryhanson.com/angular-expression-injection-walkthrough/">https://ryhanson.com/angular-expression-injection-walkthrough/</a> in this blog post the author describes an attack, which does not
 rely upon an expression sandbox bypass, that can be made because the sample application is rendering a template on the server that
 contains user entered content.</li>
@@ -63,20 +63,20 @@ contains user entered content.</li>
 <li>Consider using <a href="api/ng/directive/ngCsp">CSP</a> (but don&#39;t rely only on CSP)</li>
 </ul>
 <p><strong>You can use suitably sanitized server-side templating to dynamically generate CSS, URLs, etc, but not for generating templates that are
-bootstrapped/compiled by Angular.</strong></p>
-<p><strong>If you must continue to allow user-provided content in an Angular template then the safest option is to ensure that it is only
+bootstrapped/compiled by AngularJS.</strong></p>
+<p><strong>If you must continue to allow user-provided content in an AngularJS template then the safest option is to ensure that it is only
 present in the part of the template that is made inert via the <a href="api/ng/directive/ngNonBindable"><code>ngNonBindable</code></a> directive.</strong></p>
 <h2 id="http-requests">HTTP Requests</h2>
 <p>Whenever your application makes requests to a server there are potential security issues that need
 to be blocked. Both server and the client must cooperate in order to eliminate these threats.
-Angular comes pre-configured with strategies that address these issues, but for this to work backend
+AngularJS comes pre-configured with strategies that address these issues, but for this to work backend
 server cooperation is required.</p>
 <h3 id="cross-site-request-forgery-xsrf-csrf-">Cross Site Request Forgery (XSRF/CSRF)</h3>
 <p>Protection from XSRF is provided by using the double-submit cookie defense pattern.
 For more information please visit <a href="api/ng/service/$http#cross-site-request-forgery-xsrf-protection">XSRF protection</a>.</p>
 <h3 id="json-hijacking-protection">JSON Hijacking Protection</h3>
 <p>Protection from JSON Hijacking is provided if the server prefixes all JSON requests with following string <code>&quot;)]}&#39;,\n&quot;</code>.
-Angular will automatically strip the prefix before processing it as JSON.
+AngularJS will automatically strip the prefix before processing it as JSON.
 For more information please visit <a href="api/ng/service/$http#json-vulnerability-protection">JSON Hijacking Protection</a>.</p>
 <p>Bear in mind that calling <code>$http.jsonp</code>, like in <a href="https://docs.angularjs.org/guide/concepts#accessing-the-backend">our Yahoo! finance example</a>,
 gives the remote server (and, if the request is not secured, any Man-in-the-Middle attackers)
@@ -94,7 +94,7 @@ user provided content and mark the content as safe.</p>
 dangerous and will lead to Cross Site Scripting exploits.</strong></p>
 <p>For more information please visit <a href="api/ng/service/$sce"><code>$sce</code></a> and <a href="api/ngSanitize/service/$sanitize"><code>$sanitize</code></a>.</p>
 <h2 id="using-local-caches">Using Local Caches</h2>
-<p>There are various places that the browser can store (or cache) data. Within Angular there are objects created by
+<p>There are various places that the browser can store (or cache) data. Within AngularJS there are objects created by
 the <a href="api/ng/service/$cacheFactory"><code>$cacheFactory</code></a>. These objects, such as <a href="api/ng/service/$templateCache"><code>$templateCache</code></a> are used to store and retrieve data,
 primarily used by <a href="api/ng/service/$http"><code>$http</code></a> and the <a href="api/ng/directive/script"><code>script</code></a> directive to cache templates and other data.</p>
 <p>Similarly the browser itself offers <code>localStorage</code> and <code>sessionStorage</code> objects for caching data.</p>

@@ -2,7 +2,7 @@
 
 
 <h1 id="interpolation-and-data-binding">Interpolation and data-binding</h1>
-<p>Interpolation markup with embedded <a href="guide/expression">expressions</a> is used by Angular to
+<p>Interpolation markup with embedded <a href="guide/expression">expressions</a> is used by AngularJS to
 provide data-binding to text nodes and attribute values.</p>
 <p>An example of interpolation is shown below:</p>
 <pre><code class="lang-html">&lt;a ng-href=&quot;img/{{username}}.jpg&quot;&gt;Hello {{username}}!&lt;/a&gt;
@@ -28,14 +28,14 @@ a custom <code>toString()</code> function on the object, and uses that. Custom m
 <p>Attributes such as <code>disabled</code> are called <code>boolean</code> attributes, because their presence means <code>true</code> and
 their absence means <code>false</code>. We cannot use normal attribute bindings with them, because the HTML
 specification does not require browsers to preserve the values of boolean attributes. This means that
-if we put an Angular interpolation expression into such an attribute then the binding information
+if we put an AngularJS interpolation expression into such an attribute then the binding information
 would be lost, because the browser ignores the attribute value.</p>
 <p>In the following example, the interpolation information would be ignored and the browser would simply
 interpret the attribute as present, meaning that the button would always be disabled.</p>
 <pre><code class="lang-html">Disabled: &lt;input type=&quot;checkbox&quot; ng-model=&quot;isDisabled&quot; /&gt;
 &lt;button disabled=&quot;{{isDisabled}}&quot;&gt;Disabled&lt;/button&gt;
 </code></pre>
-<p>For this reason, Angular provides special <code>ng</code>-prefixed directives for the following boolean attributes:
+<p>For this reason, AngularJS provides special <code>ng</code>-prefixed directives for the following boolean attributes:
 <a href="api/ng/directive/ngDisabled"><code>disabled</code></a>, <a href="api/ng/directive/ngRequired"><code>required</code></a>, <a href="api/ng/directive/ngSelected"><code>selected</code></a>,
 <a href="api/ng/directive/ngChecked"><code>checked</code></a>, <a href="api/ng/directive/ngReadonly"><code>readOnly</code></a> , and <a href="api/ng/directive/ngOpen"><code>open</code></a>.</p>
 <p>These directives take an expression inside the attribute, and set the corresponding boolean attribute
@@ -50,7 +50,7 @@ to true when the expression evaluates to truthy.</p>
   &lt;circle cx=&quot;{{cx}}&quot;&gt;&lt;/circle&gt;
 &lt;/svg&gt;
 </code></pre>
-<p>We would expect Angular to be able to bind to this, but when we check the console we see
+<p>We would expect AngularJS to be able to bind to this, but when we check the console we see
 something like <code>Error: Invalid value for attribute cx=&quot;{{cx}}&quot;</code>. Because of the SVG DOM API&#39;s
 restrictions, you cannot simply write <code>cx=&quot;{{cx}}&quot;</code>.</p>
 <p>With <code>ng-attr-cx</code> you can work around this problem.</p>
@@ -91,7 +91,7 @@ directive.</p>
 directive that changes the content of that attribute, such as <code>ngStyle</code>.</p>
 <h3 id="embedding-interpolation-markup-inside-expressions">Embedding interpolation markup inside expressions</h3>
 <div class="alert alert-danger">
-<strong>Note:</strong> Angular directive attributes take either expressions <em>or</em> interpolation markup with embedded expressions.
+<strong>Note:</strong> AngularJS directive attributes take either expressions <em>or</em> interpolation markup with embedded expressions.
 It is considered <strong>bad practice</strong> to embed interpolation markup inside an expression:
 </div>
 
@@ -115,7 +115,7 @@ If another directive accesses attribute data before interpolation has run, it wi
 interpolation markup and not data.</li>
 <li>It impacts performance, as interpolation adds another watcher to the scope.</li>
 <li>Since this is not recommended usage, we do not test for this, and changes to
-Angular core may break your code.</li>
+AngularJS core may break your code.</li>
 </ul>
 
 

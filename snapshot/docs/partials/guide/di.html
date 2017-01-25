@@ -4,10 +4,10 @@
 <h1 id="dependency-injection">Dependency Injection</h1>
 <p>Dependency Injection (DI) is a software design pattern that deals with how components get hold of
 their dependencies.</p>
-<p>The Angular injector subsystem is in charge of creating components, resolving their dependencies,
+<p>The AngularJS injector subsystem is in charge of creating components, resolving their dependencies,
 and providing them to other components as requested.</p>
 <h2 id="using-dependency-injection">Using Dependency Injection</h2>
-<p>DI is pervasive throughout Angular. You can use it when defining components or when providing <code>run</code>
+<p>DI is pervasive throughout AngularJS. You can use it when defining components or when providing <code>run</code>
 and <code>config</code> blocks for a module.</p>
 <ul>
 <li><p>Components such as services, directives, filters, and animations are defined by an injectable
@@ -77,7 +77,7 @@ then any values that are resolved as part of the route are made available for in
 controller.</li>
 </ul>
 <h2 id="dependency-annotation">Dependency Annotation</h2>
-<p>Angular invokes certain functions (like service factories and controllers) via the injector.
+<p>AngularJS invokes certain functions (like service factories and controllers) via the injector.
 You need to annotate these functions so that the injector knows what services to inject into
 the function. There are three ways of annotating your code with service name information:</p>
 <ul>
@@ -151,10 +151,10 @@ If you decide to take this approach, you probably want to use <code>ng-strict-di
   // $rootScope is implicitly injected
 })
 .run([&#39;willBreak&#39;, function(willBreak) {
-  // Angular will throw when this runs
+  // AngularJS will throw when this runs
 }]);
 </code></pre>
-<p>When the <code>willBreak</code> service is instantiated, Angular will throw an error because of strict mode.
+<p>When the <code>willBreak</code> service is instantiated, AngularJS will throw an error because of strict mode.
 This is useful when using a tool like <a href="https://github.com/olov/ng-annotate">ng-annotate</a> to
 ensure that all of your application components have annotations.</p>
 <p>If you&#39;re using manual bootstrapping, you can also use strict DI by providing <code>strictDi: true</code> in
@@ -164,7 +164,7 @@ the optional config argument:</p>
 });
 </code></pre>
 <h2 id="why-dependency-injection-">Why Dependency Injection?</h2>
-<p>This section motivates and explains Angular&#39;s use of DI. For how to use DI, see above.</p>
+<p>This section motivates and explains AngularJS&#39;s use of DI. For how to use DI, see above.</p>
 <p>For in-depth discussion about DI, see
 <a href="http://en.wikipedia.org/wiki/Dependency_injection">Dependency Injection</a> at Wikipedia,
 <a href="http://martinfowler.com/articles/injection.html">Inversion of Control</a> by Martin Fowler,
@@ -194,7 +194,7 @@ dependency, it is simply handed the <code>greeter</code> when it is instantiated
 <p>This is desirable, but it puts the responsibility of getting hold of the dependency on the
 code that constructs <code>SomeClass</code>.</p>
 <p><img class="pull-right" style="padding-left: 3em; padding-bottom: 1em;" src="img/guide/concepts-module-injector.png"></p>
-<p>To manage the responsibility of dependency creation, each Angular application has an <a href="api/ng/function/angular.injector">injector</a>. The injector is a
+<p>To manage the responsibility of dependency creation, each AngularJS application has an <a href="api/ng/function/angular.injector">injector</a>. The injector is a
 <a href="http://en.wikipedia.org/wiki/Service_locator_pattern">service locator</a> that is responsible for
 construction and lookup of dependencies.</p>
 <p>Here is an example of using the injector service:</p>
@@ -212,7 +212,7 @@ var myModule = angular.module(&#39;myModule&#39;, []);
 });
 </code></pre>
 <p>Create a new injector that can provide components defined in our <code>myModule</code> module and request our
-<code>greeter</code> service from the injector. (This is usually done automatically by angular bootstrap).</p>
+<code>greeter</code> service from the injector. (This is usually done automatically by AngularJS bootstrap).</p>
 <pre><code class="lang-js">var injector = angular.injector([&#39;ng&#39;, &#39;myModule&#39;]);
 var greeter = injector.get(&#39;greeter&#39;);
 </code></pre>
@@ -231,7 +231,7 @@ injector, as in this example:</p>
   };
 }
 </code></pre>
-<p>When Angular compiles the HTML, it processes the <code>ng-controller</code> directive, which in turn
+<p>When AngularJS compiles the HTML, it processes the <code>ng-controller</code> directive, which in turn
 asks the injector to create an instance of the controller and its dependencies.</p>
 <pre><code class="lang-js">injector.instantiate(MyController);
 </code></pre>
@@ -241,7 +241,7 @@ controller ever knowing about the injector.</p>
 <p>This is the best outcome. The application code simply declares the dependencies it needs, without
 having to deal with the injector. This setup does not break the Law of Demeter.</p>
 <div class="alert alert-info">
-<strong>Note:</strong> Angular uses
+<strong>Note:</strong> AngularJS uses
 <a href="http://misko.hevery.com/2009/02/19/constructor-injection-vs-setter-injection/"><strong>constructor injection</strong></a>.
 </div>
 

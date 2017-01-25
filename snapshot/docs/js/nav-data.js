@@ -2238,7 +2238,7 @@ angular.module('navData', [])
             "type": "tutorial"
           },
           {
-            "name": "2 - Angular Templates",
+            "name": "2 - AngularJS Templates",
             "step": 2,
             "href": "tutorial/step_02",
             "type": "tutorial"

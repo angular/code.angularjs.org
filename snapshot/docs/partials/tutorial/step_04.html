@@ -19,8 +19,8 @@ relevant to a specific feature or section of the application.</p>
 </ul>
 <div class="alert alert-info">
   We will keep it short, not going into great detail on every good practice and convention. These
-  principles are explained in great detail in the <a href="https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md">Angular Style Guide</a>, which also
-  contains many more techniques for effectively organizing Angular codebases.
+  principles are explained in great detail in the <a href="https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md">AngularJS Style Guide</a>, which also
+  contains many more techniques for effectively organizing AngularJS codebases.
 </div>
 
 
@@ -127,7 +127,7 @@ angular.module(&#39;phonecatApp&#39;, [
   &#39;phoneList&#39;
 ]);
 </code></pre>
-<p>By passing <code>phoneList</code> inside the dependencies array when defining the <code>phonecatApp</code> module, Angular
+<p>By passing <code>phoneList</code> inside the dependencies array when defining the <code>phonecatApp</code> module, AngularJS
 will make all entities registered on <code>phoneList</code> available on <code>phonecatApp</code> as well.</p>
 <div class="alert alert-info">
   <p>
@@ -142,7 +142,7 @@ will make all entities registered on <code>phoneList</code> available on <code>p
 
 <div class="alert alert-warning">
   Note that files defining a module (i.e. <code>.module.js</code>) need to be included before other files that
-  add features (e.g. components, controllers, services, filters) to that module. 
+  add features (e.g. components, controllers, services, filters) to that module.
 </div>
 
 
@@ -172,7 +172,7 @@ component(&#39;phoneList&#39;, {
   controller: ...
 });
 </code></pre>
-<p>At runtime, when Angular needs to create an instance of the <code>phoneList</code> component, it will make an
+<p>At runtime, when AngularJS needs to create an instance of the <code>phoneList</code> component, it will make an
 HTTP request to get the template from <code>app/phone-list/phone-list.template.html</code>.</p>
 <div class="alert alert-info">
   Keeping inline with our convention, we will be using the <code>.template</code> suffix for external
@@ -183,7 +183,7 @@ HTTP request to get the template from <code>app/phone-list/phone-list.template.h
 <div class="alert alert-warning">
   <p>
     Using an external template like this, will result in more HTTP requests to the server (one for
-    each external template). Although Angular takes care not to make extraneous requests (e.g.
+    each external template). Although AngularJS takes care not to make extraneous requests (e.g.
     fetching the templates lazily, caching the results, etc), additional requests do have a cost
     (especially on mobile devices and data-plan connections).
   </p>
@@ -191,7 +191,7 @@ HTTP request to get the template from <code>app/phone-list/phone-list.template.h
     Luckily, there are ways to avoid the extra costs (while still keeping your templates external).
     A detailed discussion of the subject is outside the scope of this tutorial, but you can take a
     look at the <a href="api/ng/service/$templateRequest">$templateRequest</a> and
-    <a href="api/ng/service/$templateCache">$templateCache</a> services for more info on how Angular manages external
+    <a href="api/ng/service/$templateCache">$templateCache</a> services for more info on how AngularJS manages external
     templates.
   </p>
 </div>

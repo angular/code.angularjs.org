@@ -14,7 +14,7 @@ Watchers fired in the last 5 iterations: {1}</pre>
 <h2>Description</h2>
 <div class="description">
   <p>This error occurs when the application&#39;s model becomes unstable and each <code>$digest</code> cycle triggers a state change and subsequent <code>$digest</code> cycle.
-Angular detects this situation and prevents an infinite loop from causing the browser to become unresponsive.</p>
+AngularJS detects this situation and prevents an infinite loop from causing the browser to become unresponsive.</p>
 <p>For example, the situation can occur by setting up a watch on a path and subsequently updating the same path when the value changes.</p>
 <pre><code>$scope.$watch(&#39;foo&#39;, function() {
   $scope.foo = $scope.foo + 1;
@@ -29,7 +29,7 @@ $scope.getUsers = function() {
   return [ { name: &#39;Hank&#39; }, { name: &#39;Francisco&#39; } ];
 };
 </code></pre>
-<p>Since <code>getUsers()</code> returns a new array, Angular determines that the model is different on each <code>$digest</code>
+<p>Since <code>getUsers()</code> returns a new array, AngularJS determines that the model is different on each <code>$digest</code>
 cycle, resulting in the error.  The solution is to return the same array object if the elements have
 not changed:</p>
 <pre><code>var users = [ { name: &#39;Hank&#39; }, { name: &#39;Francisco&#39; } ];

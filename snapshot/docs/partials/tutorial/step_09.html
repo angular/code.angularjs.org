@@ -5,7 +5,7 @@
 
 
 <p>In this step, you will learn how to create a layout template and how to build an application that
-has multiple views by adding routing, using an Angular module called <a href="api/ngRoute">ngRoute</a>.</p>
+has multiple views by adding routing, using an AngularJS module called <a href="api/ngRoute">ngRoute</a>.</p>
 <ul>
 <li>When you now navigate to <code>/index.html</code>, you are redirected to <code>/index.html#!/phones</code> and the phone
 list appears in the browser.</li>
@@ -16,8 +16,8 @@ detail page is displayed.</li>
 
 
 <h2 id="dependencies">Dependencies</h2>
-<p>The routing functionality added in this step is provided by Angular in the <code>ngRoute</code> module, which
-is distributed separately from the core Angular framework.</p>
+<p>The routing functionality added in this step is provided by AngularJS in the <code>ngRoute</code> module, which
+is distributed separately from the core AngularJS framework.</p>
 <p>Since we are using <a href="http://bower.io">Bower</a> to install client-side dependencies, this step updates the
 <code>bower.json</code> configuration file to include the new dependency:</p>
 <p><br />
@@ -38,7 +38,7 @@ is distributed separately from the core Angular framework.</p>
 }
 </code></pre>
 <p>The new dependency <code>&quot;angular-route&quot;: &quot;1.5.x&quot;</code> tells bower to install a version of the angular-route
-module that is compatible with version 1.5.x of Angular. We must tell bower to download and install
+module that is compatible with version 1.5.x of AngularJS. We must tell bower to download and install
 this dependency.</p>
 <pre><code>npm install
 </code></pre>
@@ -48,7 +48,7 @@ this dependency.</p>
 </div>
 
 <div class="alert alert-warning">
-  <strong>Warning:</strong> If a new version of Angular has been released since you last ran <code>npm install</code>, then
+  <strong>Warning:</strong> If a new version of AngularJS has been released since you last ran <code>npm install</code>, then
   you may have a problem with the <code>bower install</code> due to a conflict between the versions of
   angular.js that need to be installed. If you run into this issue, simply delete your
   <code>app/bower_components</code> directory and then run <code>npm install</code>.
@@ -64,7 +64,7 @@ will show detailed information about each of the devices in our list.</p>
 This is a template that is common for all views in our application. Other &quot;partial templates&quot; are
 then included into this layout template depending on the current &quot;route&quot; — the view that is
 currently displayed to the user.</p>
-<p>Application routes in Angular are declared via the <a href="api/ngRoute/provider/$routeProvider">$routeProvider</a>,
+<p>Application routes in AngularJS are declared via the <a href="api/ngRoute/provider/$routeProvider">$routeProvider</a>,
 which is the provider of the <a href="api/ngRoute/service/$route">$route</a> service. This service makes it easy to
 wire together controllers, view templates, and the current URL location in the browser. Using this
 feature, we can implement <a href="https://en.wikipedia.org/wiki/Deep_linking">deep linking</a>, which lets us utilize the browser&#39;s history
@@ -87,7 +87,7 @@ feature, we can implement <a href="https://en.wikipedia.org/wiki/Deep_linking">d
 <h3 id="a-note-about-di-injector-and-providers">A Note about DI, Injector and Providers</h3>
 <p>As you <a href="tutorial/step_07">noticed</a>, <a href="guide/di">dependency injection</a> (DI) is at the core of
 AngularJS, so it&#39;s important for you to understand a thing or two about how it works.</p>
-<p>When the application bootstraps, Angular creates an injector that will be used to find and inject
+<p>When the application bootstraps, AngularJS creates an injector that will be used to find and inject
 all of the services that are required by your application. The injector itself doesn&#39;t know anything
 about what the <code>$http</code> or <code>$route</code> services do. In fact, the injector doesn&#39;t even know about the
 existence of these services, unless it is configured with proper module definitions.</p>
@@ -106,11 +106,11 @@ service, the <code>$routeProvider</code> exposes APIs that allow you to define r
   <code>$routeProvider</code> into <code>PhoneListController</code> at runtime.
 </div>
 
-<p>Angular modules solve the problem of removing global variables from the application and provide a
-way of configuring the injector. As opposed to AMD or require.js modules, Angular modules don&#39;t try
+<p>AngularJS modules solve the problem of removing global variables from the application and provide a
+way of configuring the injector. As opposed to AMD or require.js modules, AngularJS modules don&#39;t try
 to solve the problem of script load ordering or lazy script fetching. These goals are totally
 independent and both module systems can live side-by-side and fulfill their goals.</p>
-<p>To deepen your understanding on Angular&#39;s DI, see <a href="https://github.com/angular/angular.js/wiki/Understanding-Dependency-Injection">Understanding Dependency Injection</a>.</p>
+<p>To deepen your understanding on AngularJS&#39;s DI, see <a href="https://github.com/angular/angular.js/wiki/Understanding-Dependency-Injection">Understanding Dependency Injection</a>.</p>
 <h2 id="template">Template</h2>
 <p>The <code>$route</code> service is usually used in conjunction with the <a href="api/ngRoute/directive/ngView">ngView</a>
 directive. The role of the <code>ngView</code> directive is to include the view template for the current route
@@ -136,7 +136,7 @@ into the layout template. This makes it a perfect fit for our <code>index.html</
 <p>We have added four new <code>&lt;script&gt;</code> tags in our <code>index.html</code> file to load some extra JavaScript files
 into our application:</p>
 <ul>
-<li><code>angular-route.js</code>: Defines the Angular <code>ngRoute</code> module, which provides us with routing.</li>
+<li><code>angular-route.js</code>: Defines the AngularJS <code>ngRoute</code> module, which provides us with routing.</li>
 <li><code>app.config.js</code>: Configures the providers available to our main module (see
 <a href="tutorial/step_09#configuring-a-module">below</a>).</li>
 <li><code>phone-detail.module.js</code>: Defines a new module containing a <code>phoneDetail</code> component.</li>
@@ -200,7 +200,7 @@ application routes.</p>
 <p>Our routes are defined as follows:</p>
 <ul>
 <li><p><code>when(&#39;/phones&#39;)</code>: Determines the view that will be shown, when the URL hash fragment is
-<code>/phones</code>. According to the specified template, Angular will create an instance of the <code>phoneList</code>
+<code>/phones</code>. According to the specified template, AngularJS will create an instance of the <code>phoneList</code>
 component to manage the view. Note that this is the same markup that we used to have in the
 <code>index.html</code> file.</p>
 </li>
@@ -271,7 +271,7 @@ modularity.</p>
 from a parent module (because that parent module might not be there some day).</li>
 </ul>
 <div class="alert alert-success">
-  Declaring the same dependency in multiple modules does not incur extra &quot;cost&quot;, because Angular
+  Declaring the same dependency in multiple modules does not incur extra &quot;cost&quot;, because AngularJS
   will still load each dependency once. For more info on modules and their dependencies take a look
   at the <a href="guide/module">Modules</a> section of the Developer Guide.
 </div>

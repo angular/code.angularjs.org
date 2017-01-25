@@ -26,7 +26,7 @@
 <p>By default, the template URL is restricted to the same domain and protocol as the
 application document. This is done by calling <a href="api/ng/service/$sce#getTrustedResourceUrl">$sce.getTrustedResourceUrl</a> on it. To load templates from other domains or protocols
 you may either <a href="api/ng/provider/$sceDelegateProvider#resourceUrlWhitelist">whitelist them</a> or
-<a href="api/ng/service/$sce#trustAsResourceUrl">wrap them</a> as trusted values. Refer to Angular&#39;s <a href="api/ng/service/$sce">Strict Contextual Escaping</a>.</p>
+<a href="api/ng/service/$sce#trustAsResourceUrl">wrap them</a> as trusted values. Refer to AngularJS&#39;s <a href="api/ng/service/$sce">Strict Contextual Escaping</a>.</p>
 <p>In addition, the browser&#39;s
 <a href="https://code.google.com/p/browsersec/wiki/Part2#Same-origin_policy_for_XMLHttpRequest">Same Origin Policy</a>
 and <a href="http://www.w3.org/TR/cors/">Cross-Origin Resource Sharing (CORS)</a>
@@ -114,7 +114,7 @@ access on some browsers.</p>
         <a href="" class="label type-hint type-hint-string">string</a>
       </td>
       <td>
-        <p>angular expression evaluating to URL. If the source is a string constant,
+        <p>AngularJS expression evaluating to URL. If the source is a string constant,
                 make sure you wrap it in <strong>single</strong> quotes, e.g. <code>src=&quot;&#39;myPartialTemplate.html&#39;&quot;</code>.</p>
 
         
