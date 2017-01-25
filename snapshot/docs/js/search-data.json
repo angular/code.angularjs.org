@@ -1232,7 +1232,7 @@
   {
     "path": "api/ng/directive/ngDisabled",
     "titleWords": "ngDisabled disabled",
-    "keywords": "api attribute be because cannot directive disabled element evaluates example-ng-disabled expression for guide html if info input inside interpolation is module more necessary ng ngattributealiasdirectives ngdisabled on partials see set sets special the then this to truthy use we will",
+    "keywords": "api attribute be because button cannot control directive disabled element etc evaluates example-ng-disabled expression for form guide html if info input inside interpolation is module more necessary ng ngattributealiasdirectives ngdisabled on partials see select set sets special the then this to truthy use we will",
     "members": ""
   },
   {
