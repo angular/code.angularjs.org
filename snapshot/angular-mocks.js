@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.2-build.5249+sha.3c259ce
+ * @license AngularJS v1.6.2-build.5250+sha.641e13a
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -2990,12 +2990,6 @@ angular.mock.$RootScopeDecorator = ['$delegate', function($delegate) {
 
     annotatedFunctions.forEach(function(fn) {
       delete fn.$inject;
-    });
-
-    angular.forEach(currentSpec.$modules, function(module) {
-      if (module && module.$$hashKey) {
-        module.$$hashKey = undefined;
-      }
     });
 
     currentSpec.$injector = null;
