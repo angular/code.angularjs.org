@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.2-build.5253+sha.fd4f011
+ * @license AngularJS v1.6.2-build.5254+sha.39a90a9
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -595,11 +595,12 @@ angular.module('ngResource', ['ng']).
             url = url.replace(/\/+$/, '') || '/';
           }
 
-          // then replace collapse `/.` if found in the last URL path segment before the query
-          // E.g. `http://url.com/id./format?q=x` becomes `http://url.com/id.format?q=x`
+          // Collapse `/.` if found in the last URL path segment before the query.
+          // E.g. `http://url.com/id/.format?q=x` becomes `http://url.com/id.format?q=x`.
           url = url.replace(/\/\.(?=\w+($|\?))/, '.');
-          // replace escaped `/\.` with `/.`
-          config.url = protocolAndIpv6 + url.replace(/\/\\\./, '/.');
+          // Replace escaped `/\.` with `/.`.
+          // (If `\.` comes from a param value, it will be encoded as `%5C.`.)
+          config.url = protocolAndIpv6 + url.replace(/\/(\\|%5C)\./, '/.');
 
 
           // set params - delegate param encoding to $http
