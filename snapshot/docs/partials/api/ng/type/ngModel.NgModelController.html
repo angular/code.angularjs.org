@@ -409,6 +409,58 @@ to update the DOM, and finally call <code>$validate</code> on it.
 
     </li>
   
+  <li id="$overrideModelOptions">
+    <h3><p><code>$overrideModelOptions(options);</code></p>
+
+</h3>
+    <div><p>Override the current model options settings programmatically.</p>
+<p>The previous <code>ModelOptions</code> value will not be modified. Instead, a
+new <code>ModelOptions</code> object will inherit from the previous one overriding
+or inheriting settings that are defined in the given parameter.</p>
+<p>See <a href="api/ng/directive/ngModelOptions"><code>ngModelOptions</code></a> for information about what options can be specified
+and how model option inheritance works.</p>
+</div>
+
+    
+
+    
+    <h4>Parameters</h4>
+    
+<table class="variables-matrix input-arguments">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        options
+        
+        
+      </td>
+      <td>
+        <a href="" class="label type-hint type-hint-object">Object</a>
+      </td>
+      <td>
+        <p>a hash of settings to override the previous options</p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+    
+
+    
+
+    </li>
+  
   <li id="$setValidity">
     <h3><p><code>$setValidity(validationErrorKey, isValid);</code></p>
 
