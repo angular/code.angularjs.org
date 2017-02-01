@@ -201,27 +201,27 @@ AngularJS also does not intercept and rewrite links in this mode. I.e. links wor
 as expected and also perform full page reloads when other parts of the url
 than the hash fragment was changed.</p>
 <h3 id="example">Example</h3>
-<pre><code class="lang-js">it(&#39;should show example&#39;, inject(
-  function($locationProvider) {
+<pre><code class="lang-js">it(&#39;should show example&#39;, function() {
+  module(function($locationProvider) {
     $locationProvider.html5Mode(false);
     $locationProvider.hashPrefix(&#39;!&#39;);
-  },
-  function($location) {
+  });
+  inject(function($location) {
     // open http://example.com/base/index.html#!/a
-    $location.absUrl() === &#39;http://example.com/base/index.html#!/a&#39;
-    $location.path() === &#39;/a&#39;
+    expect($location.absUrl()).toBe(&#39;http://example.com/base/index.html#!/a&#39;);
+    expect($location.path()).toBe(&#39;/a&#39;);
 
-    $location.path(&#39;/foo&#39;)
-    $location.absUrl() === &#39;http://example.com/base/index.html#!/foo&#39;
+    $location.path(&#39;/foo&#39;);
+    expect($location.absUrl()).toBe(&#39;http://example.com/base/index.html#!/foo&#39;);
 
-    $location.search() === {}
+    expect($location.search()).toEqual({});
     $location.search({a: &#39;b&#39;, c: true});
-    $location.absUrl() === &#39;http://example.com/base/index.html#!/foo?a=b&amp;c&#39;
+    expect($location.absUrl()).toBe(&#39;http://example.com/base/index.html#!/foo?a=b&amp;c&#39;);
 
     $location.path(&#39;/new&#39;).search(&#39;x=y&#39;);
-    $location.absUrl() === &#39;http://example.com/base/index.html#!/new?x=y&#39;
-  }
-));
+    expect($location.absUrl()).toBe(&#39;http://example.com/base/index.html#!/new?x=y&#39;);
+  });
+});
 </code></pre>
 <h2 id="html5-mode">HTML5 mode</h2>
 <p>In HTML5 mode, the <code>$location</code> service getters and setters interact with the browser URL address
@@ -237,40 +237,50 @@ having to worry about whether the browser displaying your app supports the histo
 <p>Note that in this mode, AngularJS intercepts all links (subject to the &quot;Html link rewriting&quot; rules below)
 and updates the url in a way that never performs a full page reload.</p>
 <h3 id="example">Example</h3>
-<pre><code class="lang-js">it(&#39;should show example&#39;, inject(
-  function($locationProvider) {
+<pre><code class="lang-js">it(&#39;should show example&#39;, function() {
+  module(function($locationProvider) {
     $locationProvider.html5Mode(true);
     $locationProvider.hashPrefix(&#39;!&#39;);
-  },
-  function($location) {
+  });
+  inject(function($location) {
     // in browser with HTML5 history support:
     // open http://example.com/#!/a -&gt; rewrite to http://example.com/a
     // (replacing the http://example.com/#!/a history record)
-    $location.path() === &#39;/a&#39;
+    expect($location.path()).toBe(&#39;/a&#39;);
 
     $location.path(&#39;/foo&#39;);
-    $location.absUrl() === &#39;http://example.com/foo&#39;
+    expect($location.absUrl()).toBe(&#39;http://example.com/foo&#39;);
 
-    $location.search() === {}
+    expect($location.search()).toEqual({});
     $location.search({a: &#39;b&#39;, c: true});
-    $location.absUrl() === &#39;http://example.com/foo?a=b&amp;c&#39;
+    expect($location.absUrl()).toBe(&#39;http://example.com/foo?a=b&amp;c&#39;);
 
     $location.path(&#39;/new&#39;).search(&#39;x=y&#39;);
-    $location.url() === &#39;new?x=y&#39;
-    $location.absUrl() === &#39;http://example.com/new?x=y&#39;
+    expect($location.url()).toBe(&#39;/new?x=y&#39;);
+    expect($location.absUrl()).toBe(&#39;http://example.com/new?x=y&#39;);
+  });
+});
 
+it(&#39;should show example (when browser doesn\&#39;t support HTML5 mode&#39;, function() {
+  module(function($provide, $locationProvider) {
+    $locationProvider.html5Mode(true);
+    $locationProvider.hashPrefix(&#39;!&#39;);
+    $provide.value(&#39;$sniffer&#39;, {history: false});
+  });
+  inject(initBrowser({ url: &#39;http://example.com/new?x=y&#39;, basePath: &#39;/&#39; }),
+    function($location) {
     // in browser without html5 history support:
     // open http://example.com/new?x=y -&gt; redirect to http://example.com/#!/new?x=y
     // (again replacing the http://example.com/new?x=y history item)
-    $location.path() === &#39;/new&#39;
-    $location.search() === {x: &#39;y&#39;}
+    expect($location.path()).toBe(&#39;/new&#39;);
+    expect($location.search()).toEqual({x: &#39;y&#39;});
 
     $location.path(&#39;/foo/bar&#39;);
-    $location.path() === &#39;/foo/bar&#39;
-    $location.url() === &#39;/foo/bar?x=y&#39;
-    $location.absUrl() === &#39;http://example.com/#!/foo/bar?x=y&#39;
-  }
-));
+    expect($location.path()).toBe(&#39;/foo/bar&#39;);
+    expect($location.url()).toBe(&#39;/foo/bar?x=y&#39;);
+    expect($location.absUrl()).toBe(&#39;http://example.com/#!/foo/bar?x=y&#39;);
+  });
+});
 </code></pre>
 <h3 id="fallback-for-legacy-browsers">Fallback for legacy browsers</h3>
 <p>For browsers that support the HTML5 history API, <code>$location</code> uses the HTML5 history API to write
