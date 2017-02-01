@@ -106,7 +106,7 @@ occur when ngRepeat triggers them:</p>
 <p>The same approach to animation can be used using JavaScript code (<strong>jQuery is used within to perform animations</strong>):</p>
 <pre><code class="lang-js">myModule.animation(&#39;.repeated-item&#39;, function() {
   return {
-    enter : function(element, done) {
+    enter: function(element, done) {
       element.css(&#39;opacity&#39;,0);
       jQuery(element).animate({
         opacity: 1
@@ -121,7 +121,7 @@ occur when ngRepeat triggers them:</p>
         }
       }
     },
-    leave : function(element, done) {
+    leave: function(element, done) {
       element.css(&#39;opacity&#39;, 1);
       jQuery(element).animate({
         opacity: 0
@@ -136,7 +136,7 @@ occur when ngRepeat triggers them:</p>
         }
       }
     },
-    move : function(element, done) {
+    move: function(element, done) {
       element.css(&#39;opacity&#39;, 0);
       jQuery(element).animate({
         opacity: 1
@@ -153,8 +153,8 @@ occur when ngRepeat triggers them:</p>
     },
 
     // you can also capture these animation events
-    addClass : function(element, className, done) {},
-    removeClass : function(element, className, done) {}
+    addClass: function(element, className, done) {},
+    removeClass: function(element, className, done) {}
   }
 });
 </code></pre>
