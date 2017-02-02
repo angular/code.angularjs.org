@@ -10071,7 +10071,7 @@ return jQuery;
 } );
 
 /**
- * @license AngularJS v1.6.2-build.5266+sha.fd76d87
+ * @license AngularJS v1.6.2-build.5267+sha.1558128
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -10130,7 +10130,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.6.2-build.5266+sha.fd76d87/' +
+    message += '\nhttp://errors.angularjs.org/1.6.2-build.5267+sha.1558128/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -12012,7 +12012,7 @@ function bindJQuery() {
     extend(jQuery.fn, {
       scope: JQLitePrototype.scope,
       isolateScope: JQLitePrototype.isolateScope,
-      controller: JQLitePrototype.controller,
+      controller: /** @type {?} */ (JQLitePrototype).controller,
       injector: JQLitePrototype.injector,
       inheritedData: JQLitePrototype.inheritedData
     });
@@ -12700,7 +12700,7 @@ function toDebugString(obj) {
 var version = {
   // These placeholder strings will be replaced by grunt's `build` task.
   // They need to be double- or single-quoted.
-  full: '1.6.2-build.5266+sha.fd76d87',
+  full: '1.6.2-build.5267+sha.1558128',
   major: 1,
   minor: 6,
   dot: 2,
@@ -22215,7 +22215,8 @@ function $HttpProvider() {
       if ((config.cache || defaults.cache) && config.cache !== false &&
           (config.method === 'GET' || config.method === 'JSONP')) {
         cache = isObject(config.cache) ? config.cache
-              : isObject(defaults.cache) ? defaults.cache
+            : isObject(/** @type {?} */ (defaults).cache)
+              ? /** @type {?} */ (defaults).cache
               : defaultCache;
       }
 
@@ -23470,7 +23471,7 @@ function LocationHashbangUrl(appBase, appBaseNoFile, hashPrefix) {
         withoutHashUrl = '';
         if (isUndefined(withoutBaseUrl)) {
           appBase = url;
-          this.replace();
+          /** @type {?} */ (this).replace();
         }
       }
     }
