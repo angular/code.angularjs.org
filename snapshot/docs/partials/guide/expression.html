@@ -232,7 +232,7 @@ result is a non-undefined value (see value stabilization algorithm below).</p>
 
   <div class="runnable-example"
       path="examples/example-expression-one-time"
-      module="oneTimeBidingExampleApp"
+      module="oneTimeBindingExampleApp"
       name="expression-one-time">
 
   
@@ -247,14 +247,14 @@ result is a non-undefined value (see value stabilization algorithm below).</p>
       name="script.js"
       language="js"
       type="js">
-      <pre><code>angular.module(&#39;oneTimeBidingExampleApp&#39;, []).&#10;controller(&#39;EventController&#39;, [&#39;$scope&#39;, function($scope) {&#10;  var counter = 0;&#10;  var names = [&#39;Igor&#39;, &#39;Misko&#39;, &#39;Chirayu&#39;, &#39;Lucas&#39;];&#10;  /*&#10;   * expose the event object to the scope&#10;   */&#10;  $scope.clickMe = function(clickEvent) {&#10;    $scope.name = names[counter % names.length];&#10;    counter++;&#10;  };&#10;}]);</code></pre>
+      <pre><code>angular.module(&#39;oneTimeBindingExampleApp&#39;, []).&#10;controller(&#39;EventController&#39;, [&#39;$scope&#39;, function($scope) {&#10;  var counter = 0;&#10;  var names = [&#39;Igor&#39;, &#39;Misko&#39;, &#39;Chirayu&#39;, &#39;Lucas&#39;];&#10;  /*&#10;   * expose the event object to the scope&#10;   */&#10;  $scope.clickMe = function(clickEvent) {&#10;    $scope.name = names[counter % names.length];&#10;    counter++;&#10;  };&#10;}]);</code></pre>
     </div>
   
     <div class="runnable-example-file" 
       name="protractor.js"
       type="protractor"
       language="js">
-      <pre><code>it(&#39;should freeze binding after its value has stabilized&#39;, function() {&#10;  var oneTimeBiding = element(by.id(&#39;one-time-binding-example&#39;));&#10;  var normalBinding = element(by.id(&#39;normal-binding-example&#39;));&#10;&#10;  expect(oneTimeBiding.getText()).toEqual(&#39;One time binding:&#39;);&#10;  expect(normalBinding.getText()).toEqual(&#39;Normal binding:&#39;);&#10;  element(by.buttonText(&#39;Click Me&#39;)).click();&#10;&#10;  expect(oneTimeBiding.getText()).toEqual(&#39;One time binding: Igor&#39;);&#10;  expect(normalBinding.getText()).toEqual(&#39;Normal binding: Igor&#39;);&#10;  element(by.buttonText(&#39;Click Me&#39;)).click();&#10;&#10;  expect(oneTimeBiding.getText()).toEqual(&#39;One time binding: Igor&#39;);&#10;  expect(normalBinding.getText()).toEqual(&#39;Normal binding: Misko&#39;);&#10;&#10;  element(by.buttonText(&#39;Click Me&#39;)).click();&#10;  element(by.buttonText(&#39;Click Me&#39;)).click();&#10;&#10;  expect(oneTimeBiding.getText()).toEqual(&#39;One time binding: Igor&#39;);&#10;  expect(normalBinding.getText()).toEqual(&#39;Normal binding: Lucas&#39;);&#10;});</code></pre>
+      <pre><code>it(&#39;should freeze binding after its value has stabilized&#39;, function() {&#10;  var oneTimeBinding = element(by.id(&#39;one-time-binding-example&#39;));&#10;  var normalBinding = element(by.id(&#39;normal-binding-example&#39;));&#10;&#10;  expect(oneTimeBinding.getText()).toEqual(&#39;One time binding:&#39;);&#10;  expect(normalBinding.getText()).toEqual(&#39;Normal binding:&#39;);&#10;  element(by.buttonText(&#39;Click Me&#39;)).click();&#10;&#10;  expect(oneTimeBinding.getText()).toEqual(&#39;One time binding: Igor&#39;);&#10;  expect(normalBinding.getText()).toEqual(&#39;Normal binding: Igor&#39;);&#10;  element(by.buttonText(&#39;Click Me&#39;)).click();&#10;&#10;  expect(oneTimeBinding.getText()).toEqual(&#39;One time binding: Igor&#39;);&#10;  expect(normalBinding.getText()).toEqual(&#39;Normal binding: Misko&#39;);&#10;&#10;  element(by.buttonText(&#39;Click Me&#39;)).click();&#10;  element(by.buttonText(&#39;Click Me&#39;)).click();&#10;&#10;  expect(oneTimeBinding.getText()).toEqual(&#39;One time binding: Igor&#39;);&#10;  expect(normalBinding.getText()).toEqual(&#39;Normal binding: Lucas&#39;);&#10;});</code></pre>
     </div>
   
 
