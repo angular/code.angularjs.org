@@ -10071,7 +10071,7 @@ return jQuery;
 } );
 
 /**
- * @license AngularJS v1.6.2-build.5267+sha.1558128
+ * @license AngularJS v1.6.2-build.5268+sha.8162362
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -10130,7 +10130,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.6.2-build.5267+sha.1558128/' +
+    message += '\nhttp://errors.angularjs.org/1.6.2-build.5268+sha.8162362/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -12700,7 +12700,7 @@ function toDebugString(obj) {
 var version = {
   // These placeholder strings will be replaced by grunt's `build` task.
   // They need to be double- or single-quoted.
-  full: '1.6.2-build.5267+sha.1558128',
+  full: '1.6.2-build.5268+sha.8162362',
   major: 1,
   minor: 6,
   dot: 2,
@@ -25163,6 +25163,13 @@ function findConstantAndWatchExpressions(ast, $filter) {
       if (!property.value.constant) {
         argsToWatch.push.apply(argsToWatch, property.value.toWatch);
       }
+      if (property.computed) {
+        findConstantAndWatchExpressions(property.key, $filter);
+        if (!property.key.constant) {
+          argsToWatch.push.apply(argsToWatch, property.key.toWatch);
+        }
+      }
+
     });
     ast.constant = allConstants;
     ast.toWatch = argsToWatch;
