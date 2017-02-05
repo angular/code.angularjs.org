@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.2-build.5269+sha.edfb691
+ * @license AngularJS v1.6.2-build.5270+sha.8c1b4c0
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -360,7 +360,7 @@ ngAriaModule.directive('ngShow', ['$aria', function($aria) {
   return {
     restrict: 'A',
     compile: function(elem, attr) {
-      var fn = $parse(attr.ngClick, /* interceptorFn */ null, /* expensiveChecks */ true);
+      var fn = $parse(attr.ngClick);
       return function(scope, elem, attr) {
 
         if (!isNodeOneOf(elem, nodeBlackList)) {
