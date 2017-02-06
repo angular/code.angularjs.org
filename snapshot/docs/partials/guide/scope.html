@@ -103,11 +103,12 @@ to test the behavior without being distracted by the rendering details.</p>
 </code></pre>
 <h2 id="scope-hierarchies">Scope Hierarchies</h2>
 <p>Each AngularJS application has exactly one <a href="api/ng/service/$rootScope">root scope</a>, but
-may have several child scopes.</p>
-<p>The application can have multiple scopes, because some <a href="guide/directive">directives</a> create
-new child scopes (refer to directive documentation to see which directives create new scopes).
-When new scopes are created, they are added as children of their parent scope. This creates a tree
-structure which parallels the DOM where they&#39;re attached.</p>
+may have any number of child scopes.</p>
+<p>The application can have multiple scopes, because <a href="guide/directive">directives</a> can create new
+child scopes. When new scopes are created, they are added as children of their parent scope. This
+creates a tree structure which parallels the DOM where they&#39;re attached.</p>
+<p>The section <a href="guide/scope#directives-that-create-scopes">Directives that Create Scopes</a> has more
+info about which directives create scopes.</p>
 <p>When AngularJS evaluates <code>{{name}}</code>, it first looks at the scope associated with the given
 element for the <code>name</code> property. If no such property is found, it searches the parent scope
 and so on until the root scope is reached. In JavaScript this behavior is known as prototypical
@@ -178,6 +179,10 @@ variable.</p>
 <li><p>To retrieve the associated scope in console execute: <code>angular.element($0).scope()</code></p>
 </li>
 </ol>
+<div class="alert alert-warning">
+  The <code>scope()</code> function is only available when <a href="api/ng/provider/$compileProvider#debugInfoEnabled"><code>$compileProvider.debugInfoEnabled()</code></a> is true (which is the default).
+</div>
+
 <h2 id="scope-events-propagation">Scope Events Propagation</h2>
 <p>Scopes can propagate events in similar fashion to DOM events. The event can be <a href="api/ng/type/$rootScope.Scope#$broadcast">broadcasted</a> to the scope children or <a href="api/ng/type/$rootScope.Scope#$emit">emitted</a> to scope parents.</p>
 <p>
@@ -274,10 +279,14 @@ executes the associated expression and updates the view using the <a href="api/n
 correctly.</p>
 <h3 id="directives-that-create-scopes">Directives that Create Scopes</h3>
 <p>In most cases, <a href="api/ng/provider/$compileProvider#directive">directives</a> and scopes interact
-but do not create new instances of scope. However, some directives, such as <a href="api/ng/directive/ngController">ng-controller</a> and <a href="api/ng/directive/ngRepeat">ng-repeat</a>, create new child scopes
-and attach the child scope to the corresponding DOM element. You can retrieve a scope for any DOM
-element by using an <code>angular.element(aDomElement).scope()</code> method call.
-See the <a href="guide/directive#isolating-the-scope-of-a-directive">directives guide</a> for more information about isolate scopes.</p>
+but do not create new instances of scope. However, some directives, such as <a href="api/ng/directive/ngController">ng-controller</a> and <a href="api/ng/directive/ngRepeat">ng-repeat</a>,
+create new child scopes and attach the child scope to the corresponding DOM element.</p>
+<p>A special type of scope is the <code>isolate</code> scope, which does not inherit prototypically from the parent scope.
+This type of scope is useful for component directives that should be isolated from their parent scope.
+See the <a href="guide/directive#isolating-the-scope-of-a-directive">directives guide</a> for
+more information about isolate scopes in custom directives.</p>
+<p>Note also that component directives, which are created with the
+<a href="api/ng/type/angular.Module#component">.component()</a> helper always create an isolate scope.</p>
 <h3 id="controllers-and-scopes">Controllers and Scopes</h3>
 <p>Scopes and controllers interact with each other in the following situations:</p>
 <ul>
