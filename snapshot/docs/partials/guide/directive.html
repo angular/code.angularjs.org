@@ -105,15 +105,19 @@ The other forms shown above are accepted for legacy reasons but we advise you to
 </div>
 
 <h3 id="directive-types">Directive types</h3>
-<p><code>$compile</code> can match directives based on element names, attributes, class names, as well as comments.</p>
-<p>All of the AngularJS-provided directives match attribute name, tag name, comments, or class name.
-The following demonstrates the various ways a directive (<code>myDir</code> in this case) can be referenced
-from within a template:</p>
+<p><code>$compile</code> can match directives based on element names (E), attributes (A), class names (C),
+and comments (M).</p>
+<p>The built-in the AngularJS directives show in their documentation page which type of matching they support.</p>
+<p>The following demonstrates the various ways a directive (<code>myDir</code> in this case) that matches all
+4 types can be referenced from within a template.</p>
 <pre><code class="lang-html">&lt;my-dir&gt;&lt;/my-dir&gt;
 &lt;span my-dir=&quot;exp&quot;&gt;&lt;/span&gt;
 &lt;!-- directive: my-dir exp --&gt;
 &lt;span class=&quot;my-dir: exp;&quot;&gt;&lt;/span&gt;
 </code></pre>
+<p>A directive can specify which of the 4 matching types it supports in the
+<a href="api/ng/service/$compile#-restrict-"><code>restrict</code></a> property of the directive definition object.
+The default is <code>EA</code>.</p>
 <div class="alert alert-success">
 <strong>Best Practice:</strong> Prefer using directives via tag name and attributes over comment and class names.
 Doing so generally makes it easier to determine what directives a given element matches.

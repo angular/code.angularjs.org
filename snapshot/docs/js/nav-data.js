@@ -43,6 +43,11 @@ angular.module('navData', [])
             "type": "function"
           },
           {
+            "name": "angular.errorHandlingConfig",
+            "href": "api/ng/function/angular.errorHandlingConfig",
+            "type": "function"
+          },
+          {
             "name": "angular.extend",
             "href": "api/ng/function/angular.extend",
             "type": "function"
@@ -1409,6 +1414,11 @@ angular.module('navData', [])
           {
             "name": "nocb",
             "href": "error/$animate/nocb",
+            "type": "error"
+          },
+          {
+            "name": "nongcls",
+            "href": "error/$animate/nongcls",
             "type": "error"
           },
           {

@@ -323,9 +323,10 @@ directive calls it when the value of the input changes and <a href="api/ng/direc
 calls it when an option is selected.</p>
 <p>When <code>$setViewValue</code> is called, the new <code>value</code> will be staged for committing through the <code>$parsers</code>
 and <code>$validators</code> pipelines. If there are no special <a href="api/ng/directive/ngModelOptions"><code>ngModelOptions</code></a> specified then the staged
-value sent directly for processing, finally to be applied to <code>$modelValue</code> and then the
-<strong>expression</strong> specified in the <code>ng-model</code> attribute. Lastly, all the registered change listeners,
-in the <code>$viewChangeListeners</code> list, are called.</p>
+value is sent directly for processing through the <code>$parsers</code> pipeline. After this, the <code>$validators</code> and
+<code>$asyncValidators</code> are called and the value is applied to <code>$modelValue</code>.
+Finally, the value is set to the <strong>expression</strong> specified in the <code>ng-model</code> attribute and
+all the registered change listeners, in the <code>$viewChangeListeners</code> list are called.</p>
 <p>In case the <a href="api/ng/directive/ngModelOptions">ngModelOptions</a> directive is used with <code>updateOn</code>
 and the <code>default</code> trigger is not listed, all those actions will remain pending until one of the
 <code>updateOn</code> events is triggered on the DOM element.
@@ -571,14 +572,25 @@ is set.</p>
   <tr>
     <td><a href="" class="label type-hint type-hint-array">Array.&lt;Function&gt;</a></td>
     <td><p>Array of functions to execute, as a pipeline, whenever
-       the control reads value from the DOM. The functions are called in array order, each passing
-       its return value through to the next. The last return value is forwarded to the
-       <a href="api/ng/type/ngModel.NgModelController#$validators"><code>$validators</code></a> collection.</p>
-<p>Parsers are used to sanitize / convert the <a href="api/ng/type/ngModel.NgModelController#$viewValue"><code>$viewValue</code></a>.</p>
-<p>Returning <code>undefined</code> from a parser means a parse error occurred. In that case,
-no <a href="api/ng/type/ngModel.NgModelController#$validators"><code>$validators</code></a> will run and the <code>ngModel</code>
-will be set to <code>undefined</code> unless <a href="api/ng/directive/ngModelOptions"><code>ngModelOptions.allowInvalid</code></a>
-is set to <code>true</code>. The parse error is stored in <code>ngModel.$error.parse</code>.</p>
+ the control updates the ngModelController with a new <a href="api/ng/type/ngModel.NgModelController#$viewValue"><code>$viewValue</code></a> from the DOM, usually via user input.
+    See <a href="api/ng/type/ngModel.NgModelController#$setViewValue"><code>$setViewValue()</code></a> for a detailed lifecycle explanation.
+    Note that the <code>$parsers</code> are not called when the bound ngModel expression changes programmatically.</p>
+<p>  The functions are called in array order, each passing
+    its return value through to the next. The last return value is forwarded to the
+    <a href="api/ng/type/ngModel.NgModelController#$validators"><code>$validators</code></a> collection.</p>
+<p>  Parsers are used to sanitize / convert the <a href="api/ng/type/ngModel.NgModelController#$viewValue"><code>$viewValue</code></a>.</p>
+<p>  Returning <code>undefined</code> from a parser means a parse error occurred. In that case,
+    no <a href="api/ng/type/ngModel.NgModelController#$validators"><code>$validators</code></a> will run and the <code>ngModel</code>
+    will be set to <code>undefined</code> unless <a href="api/ng/directive/ngModelOptions"><code>ngModelOptions.allowInvalid</code></a>
+    is set to <code>true</code>. The parse error is stored in <code>ngModel.$error.parse</code>.</p>
+<p>  This simple example shows a parser that would convert text input value to lowercase:</p>
+<pre><code class="lang-js">function parse(value) {
+  if (value) {
+    return value.toLowerCase();
+  }
+}
+ngModelController.$parsers.push(parse);
+</code></pre>
 </td>
   </tr>
 </table>
@@ -591,15 +603,18 @@ is set to <code>true</code>. The parse error is stored in <code>ngModel.$error.p
   <tr>
     <td><a href="" class="label type-hint type-hint-array">Array.&lt;Function&gt;</a></td>
     <td><p>Array of functions to execute, as a pipeline, whenever
-       the model value changes. The functions are called in reverse array order, each passing the value through to the
-       next. The last return value is used as the actual DOM value.
-       Used to format / convert values for display in the control.</p>
-<pre><code class="lang-js">function formatter(value) {
+    the bound ngModel expression changes programmatically. The <code>$formatters</code> are not called when the
+    value of the control is changed by user interaction.</p>
+<p>  Formatters are used to format / convert the <a href="api/ng/type/ngModel.NgModelController#$modelValue"><code>$modelValue</code></a> for display in the control.</p>
+<p>  The functions are called in reverse array order, each passing the value through to the
+    next. The last return value is used as the actual DOM value.</p>
+<p>  This simple example shows a formatter that would convert the model value to uppercase:</p>
+<pre><code class="lang-js">function format(value) {
   if (value) {
     return value.toUpperCase();
   }
 }
-ngModel.$formatters.push(formatter);
+ngModel.$formatters.push(format);
 </code></pre>
 </td>
   </tr>

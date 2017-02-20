@@ -2,28 +2,28 @@
 
 angular.module('currentVersionData', [])
   .value('CURRENT_NG_VERSION', {
-  "raw": "v1.6.1",
+  "raw": "v1.6.2",
   "major": 1,
   "minor": 6,
-  "patch": 2,
+  "patch": 3,
   "prerelease": [
     "build",
-    "5274"
+    "5293"
   ],
-  "build": "sha.79c4a71",
-  "version": "1.6.2-build.5274",
+  "build": "sha.b7ee5ee",
+  "version": "1.6.3-build.5293",
   "codeName": "snapshot",
   "isSnapshot": true,
-  "full": "1.6.2-build.5274+sha.79c4a71",
+  "full": "1.6.3-build.5293+sha.b7ee5ee",
   "branch": "master",
   "cdn": {
-    "raw": "v1.6.1",
+    "raw": "v1.6.2",
     "major": 1,
     "minor": 6,
-    "patch": 1,
+    "patch": 2,
     "prerelease": [],
     "build": [],
-    "version": "1.6.1",
-    "docsUrl": "http://code.angularjs.org/1.6.1/docs"
+    "version": "1.6.2",
+    "docsUrl": "http://code.angularjs.org/1.6.2/docs"
   }
 });

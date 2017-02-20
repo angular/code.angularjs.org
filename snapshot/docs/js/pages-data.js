@@ -13,6 +13,11 @@ angular.module('pagesData', [])
     "area": "error",
     "path": "error/$animate/nocb"
   },
+  "error/$animate/nongcls": {
+    "name": "nongcls",
+    "area": "error",
+    "path": "error/$animate/nongcls"
+  },
   "error/$animate/notcsel": {
     "name": "notcsel",
     "area": "error",
@@ -777,6 +782,11 @@ angular.module('pagesData', [])
     "name": "ng",
     "area": "api",
     "path": "api/ng"
+  },
+  "api/ng/function/angular.errorHandlingConfig": {
+    "name": "angular.errorHandlingConfig",
+    "area": "api",
+    "path": "api/ng/function/angular.errorHandlingConfig"
   },
   "api/ng/function/angular.lowercase": {
     "name": "angular.lowercase",
