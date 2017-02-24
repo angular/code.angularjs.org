@@ -241,10 +241,12 @@ parent&#39;s scope.</p>
 the directive&#39;s element. If multiple directives on the same element request a new scope,
 only one new scope is created.</p>
 </li>
-<li><p><strong><code>{...}</code> (an object hash):</strong> A new &quot;isolate&quot; scope is created for the directive&#39;s element. The
-&#39;isolate&#39; scope differs from normal scope in that it does not prototypically inherit from its parent
-scope. This is useful when creating reusable components, which should not accidentally read or modify
-data in the parent scope.</p>
+<li><p><strong><code>{...}</code> (an object hash):</strong> A new &quot;isolate&quot; scope is created for the directive&#39;s template.
+The &#39;isolate&#39; scope differs from normal scope in that it does not prototypically
+inherit from its parent scope. This is useful when creating reusable components, which should not
+accidentally read or modify data in the parent scope. Note that an isolate scope
+directive without a <code>template</code> or <code>templateUrl</code> will not apply the isolate scope
+to its children elements.</p>
 </li>
 </ul>
 <p>The &#39;isolate&#39; scope object hash defines a set of local scope properties derived from attributes on the
