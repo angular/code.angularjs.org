@@ -328,6 +328,11 @@ angular.module('pagesData', [])
     "area": "error",
     "path": "error/$rootScope/inprog"
   },
+  "error/$sanitize/elclob": {
+    "name": "elclob",
+    "area": "error",
+    "path": "error/$sanitize/elclob"
+  },
   "error/$sanitize/noinert": {
     "name": "noinert",
     "area": "error",

@@ -390,6 +390,12 @@
     "members": ""
   },
   {
+    "path": "error/$sanitize/elclob",
+    "titleWords": "elclob",
+    "keywords": "$sanitize an attack attempting be because been breaks browser cause causes child clobbered clobbering code contains could dos elclob element elements error failed freeze getting have html impossible in infinite is it its loop makes more nextsibling nodes occurs of on one or partials payload points property sanitize sanitizer sign so stuck that the this to traverse tree typically unable walk when which without",
+    "members": ""
+  },
+  {
     "path": "error/$sanitize/noinert",
     "titleWords": "noinert",
     "keywords": "$sanitize all an and angularjs api being browser browsers by can create createhtmldocument current determines document dom error for html ie implementation in including indicates inert input into is it necessary noinert not occurs of on parsing partials platform presence present safe sanitize sanitizer so strings supported that the this trees unsupported used usually when without",

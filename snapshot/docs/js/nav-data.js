@@ -1792,6 +1792,11 @@ angular.module('navData', [])
             "type": "section"
           },
           {
+            "name": "elclob",
+            "href": "error/$sanitize/elclob",
+            "type": "error"
+          },
+          {
             "name": "noinert",
             "href": "error/$sanitize/noinert",
             "type": "error"
