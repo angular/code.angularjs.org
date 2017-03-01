@@ -129,30 +129,17 @@ are reflected in the model.</p>
 
 
 <h1 id="testing">Testing</h1>
-<p>The &quot;AngularJS way&quot; of separating controller from the view, makes it easy to test code as it is being
-developed. If our controller were available on the global namespace, we could simply instantiate it
-with a mock scope object:</p>
-<p><br /></p>
-<pre><code class="lang-js">describe(&#39;PhoneListController&#39;, function() {
-
-  it(&#39;should create a `phones` model with 3 phones&#39;, function() {
-    var scope = {};
-    var ctrl = new PhoneListController(scope);
-
-    expect(scope.phones.length).toBe(3);
-  });
-
-});
-</code></pre>
-<p>The test instantiates <code>PhoneListController</code> and verifies that the phones array property on the
-scope contains three records. This example demonstrates how easy it is to create a unit test for
+<h2 id="testing-controllers">Testing Controllers</h2>
+<p>The &quot;AngularJS way&quot; of separating the controller from the view makes it easy to test code as it is being
+developed. In the section &quot;Model and Controller&quot; we have registered our controller via a constructor
+function on the <code>phonecatApp</code> module.</p>
+<p>In tests, we use an AngularJS service, <code>$controller</code>, which will retrieve a controller by name. It
+also takes a second argument - a map of dependencies that should be injected.</p>
+<p>The following test instantiates <code>PhoneListController</code> with a mock scope object,
+and verifies that the phones array property on the scope contains three records.</p>
+<p>This example demonstrates how easy it is to create a unit test for
 code in AngularJS. Since testing is such a critical part of software development, we make it easy to
 create tests in AngularJS so that developers are encouraged to write them.</p>
-<h2 id="testing-non-global-controllers">Testing non-global Controllers</h2>
-<p>In practice, you will not want to have your controller functions in the global namespace. Instead,
-you can see that we have registered it via a constructor function on the <code>phonecatApp</code> module.</p>
-<p>In this case AngularJS provides a service, <code>$controller</code>, which will retrieve your controller by name.
-Here is the same test using <code>$controller</code>:</p>
 <p><br />
 <strong><code>app/app.spec.js</code>:</strong></p>
 <pre><code class="lang-js">describe(&#39;PhoneListController&#39;, function() {
