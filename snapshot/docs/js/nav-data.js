@@ -1892,6 +1892,11 @@ angular.module('navData', [])
             "type": "section"
           },
           {
+            "name": "aobj",
+            "href": "error/ng/aobj",
+            "type": "error"
+          },
+          {
             "name": "areq",
             "href": "error/ng/areq",
             "type": "error"

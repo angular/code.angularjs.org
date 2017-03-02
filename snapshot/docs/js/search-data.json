@@ -486,6 +486,12 @@
     "members": ""
   },
   {
+    "path": "error/ng/aobj",
+    "titleWords": "aobj",
+    "keywords": "an aobj argument be check error function html invalid must ng ng:aobj object partials passed should that the this thrown to value was where",
+    "members": ""
+  },
+  {
     "path": "error/ng/areq",
     "titleWords": "areq",
     "keywords": "added and angularjs any are areq argument assertion asserts bad be by certain controllers defined error expects fails fix function helper html if in included is loaded make matches mentioned newly ng ng:areq often page partials present problem properly script sure that the this thrown to truthy type undefined using value values will your",
@@ -1119,7 +1125,7 @@
     "path": "api/auto/service/$injector",
     "titleWords": "$injector",
     "keywords": "$inject $injector $provide adding all always an and angular annotated annotating annotation annotations api are argument arguments array as auto be by call calling can change code createinjector defined definition dependency disallowed discovering does equivalent expect explicit extracted following for function get have holds html if in inference inferred injection injector inline instances instantiate invoke is item javascript js last load method methods minification minified mode module modules names needed not obfuscation object of on onto parameters parsed partials property provider retrieve return returns service servicea since specified strict the then these this to tobe tools tostring true types used valid var ways when where with work works",
-    "members": "annotate get has instantiate invoke"
+    "members": "annotate get has instantiate invoke modules"
   },
   {
     "path": "api/auto/service/$provide",
@@ -1137,7 +1143,7 @@
     "path": "api/ng/type/angular.Module",
     "titleWords": "angular.Module",
     "keywords": "angular angularjs api configuring for html interface module modules ng partials setupmoduleloader type",
-    "members": "animation component config constant controller decorator directive factory filter name provider requires run service value"
+    "members": "animation component config constant controller decorator directive factory filter info name provider requires run service value"
   },
   {
     "path": "api/ng/function/angular.module",
@@ -2198,13 +2204,13 @@
   {
     "path": "api/ngMock",
     "titleWords": "ngMock mock",
-    "keywords": "add addition adds after also and angular angular-mocks angularjs api are automatically be bower build can cdn code com config configure controlled core doc-module-components download example extends file files first for github go google googleapis href html http in including inject inspected install into io is js load manner mock module need ngmock npm npmjs org other partials production provides ready runner running services set so such support synchronous test tests that the then they this to unit use uses various version where within yarn you your",
+    "keywords": "add addition adds after also and angular angular-mocks angularjs api are automatically be bower build can cdn code com config configure controlled core doc-module-components download example extends file files first for github go google googleapis href html http in including info inject inspected install into io is js load manner mock module need ngmock npm npmjs org other partials production provides ready runner running services set so such support synchronous test tests that the then they this to unit use uses various version where within yarn you your",
     "members": ""
   },
   {
     "path": "api/ngMockE2E",
     "titleWords": "ngMockE2E mocke2e",
-    "keywords": "$httpbackend an angular-mocks angularjs api config contains currently e2e end-to-end for html in is js mock mocks module ngmocke2e one only partials present suitable testing the there this which",
+    "keywords": "$httpbackend an angular-mocks angularjs api contains currently e2e end-to-end for html in info is js mock mocks module ngmocke2e one only partials present suitable testing the there this which",
     "members": ""
   },
   {

@@ -408,6 +408,11 @@ angular.module('pagesData', [])
     "area": "error",
     "path": "error/linky/notstring"
   },
+  "error/ng/aobj": {
+    "name": "aobj",
+    "area": "error",
+    "path": "error/ng/aobj"
+  },
   "error/ng/areq": {
     "name": "areq",
     "area": "error",
