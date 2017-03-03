@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.3-build.5302+sha.60e294c
+ * @license AngularJS v1.6.3-build.5304+sha.3dc0096
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -29,7 +29,7 @@
 /* global -ngTouch */
 var ngTouch = angular.module('ngTouch', []);
 
-ngTouch.info({ angularVersion: '1.6.3-build.5302+sha.60e294c' });
+ngTouch.info({ angularVersion: '1.6.3-build.5304+sha.3dc0096' });
 
 ngTouch.provider('$touch', $TouchProvider);
 
