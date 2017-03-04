@@ -10071,7 +10071,7 @@ return jQuery;
 } );
 
 /**
- * @license AngularJS v1.6.3-build.5305+sha.cc793a1
+ * @license AngularJS v1.6.3-build.5306+sha.6ccbfa6
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -10129,7 +10129,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.6.3-build.5305+sha.cc793a1/' +
+    message += '\nhttp://errors.angularjs.org/1.6.3-build.5306+sha.6ccbfa6/' +
       (module ? module + '/' : '') + code;
 
     for (i = 0, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -12815,7 +12815,7 @@ function toDebugString(obj, maxDepth) {
 var version = {
   // These placeholder strings will be replaced by grunt's `build` task.
   // They need to be double- or single-quoted.
-  full: '1.6.3-build.5305+sha.cc793a1',
+  full: '1.6.3-build.5306+sha.6ccbfa6',
   major: 1,
   minor: 6,
   dot: 3,
@@ -12965,7 +12965,7 @@ function publishExternalAPI(angular) {
       });
     }
   ])
-  .info({ angularVersion: '1.6.3-build.5305+sha.cc793a1' });
+  .info({ angularVersion: '1.6.3-build.5306+sha.6ccbfa6' });
 }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -18740,9 +18740,10 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
         nodeName = nodeName_(this.$$element);
 
         if ((nodeName === 'a' && (key === 'href' || key === 'xlinkHref')) ||
-            (nodeName === 'img' && key === 'src')) {
+            (nodeName === 'img' && key === 'src') ||
+            (nodeName === 'image' && key === 'xlinkHref')) {
           // sanitize a[href] and img[src] values
-          this[key] = value = $$sanitizeUri(value, key === 'src');
+          this[key] = value = $$sanitizeUri(value, nodeName === 'img' || nodeName === 'image');
         } else if (nodeName === 'img' && key === 'srcset' && isDefined(value)) {
           // sanitize img[srcset] values
           var result = '';
@@ -20323,8 +20324,10 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
         if (['img', 'video', 'audio', 'source', 'track'].indexOf(tag) === -1) {
           return $sce.RESOURCE_URL;
         }
-      // maction[xlink:href] can source SVG.  It's not limited to <maction>.
-      } else if (attrNormalizedName === 'xlinkHref' ||
+      } else if (
+          // Some xlink:href are okay, most aren't
+          (attrNormalizedName === 'xlinkHref' && (tag !== 'image' && tag !== 'a')) ||
+          // Formaction
           (tag === 'form' && attrNormalizedName === 'action') ||
           // If relative URLs can go where they are not expected to, then
           // all sorts of trust issues can arise.
