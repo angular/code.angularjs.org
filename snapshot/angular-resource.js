@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.3-build.5307+sha.b779091
+ * @license AngularJS v1.6.3-build.5308+sha.728ce72
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -434,7 +434,7 @@ function shallowClearAndCopy(src, dst) {
  *
  */
 angular.module('ngResource', ['ng']).
-  info({ angularVersion: '1.6.3-build.5307+sha.b779091' }).
+  info({ angularVersion: '1.6.3-build.5308+sha.728ce72' }).
   provider('$resource', function ResourceProvider() {
     var PROTOCOL_AND_IPV6_REGEX = /^https?:\/\/\[[^\]]*][^/]*/;
 

@@ -220,6 +220,10 @@ the animation. The style property expected within the stagger class can either b
   /* As of 1.4.4, this must always be set: it signals ngAnimate
     to not accidentally inherit a delay property from another CSS class */
   transition-duration: 0s;
+
+  /* if you are using animations instead of transitions you should configure as follows:
+    animation-delay: 0.1s;
+    animation-duration: 0s; */
 }
 .my-animation.ng-enter.ng-enter-active {
   /* standard transition styles */
