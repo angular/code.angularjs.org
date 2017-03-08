@@ -10071,7 +10071,7 @@ return jQuery;
 } );
 
 /**
- * @license AngularJS v1.6.3-build.5310+sha.4d43ee3
+ * @license AngularJS v1.6.4-build.5311+sha.1daa4f2
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -10129,7 +10129,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.6.3-build.5310+sha.4d43ee3/' +
+    message += '\nhttp://errors.angularjs.org/1.6.4-build.5311+sha.1daa4f2/' +
       (module ? module + '/' : '') + code;
 
     for (i = 0, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -10313,15 +10313,7 @@ function isValidObjectMaxDepth(maxDepth) {
 }
 
 /**
- * @ngdoc function
- * @name angular.lowercase
- * @module ng
- * @kind function
- *
- * @deprecated
- * sinceVersion="1.5.0"
- * removeVersion="1.7.0"
- * Use [String.prototype.toLowerCase](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase) instead.
+ * @private
  *
  * @description Converts the specified string to lowercase.
  * @param {string} string String to be converted to lowercase.
@@ -10330,15 +10322,7 @@ function isValidObjectMaxDepth(maxDepth) {
 var lowercase = function(string) {return isString(string) ? string.toLowerCase() : string;};
 
 /**
- * @ngdoc function
- * @name angular.uppercase
- * @module ng
- * @kind function
- *
- * @deprecated
- * sinceVersion="1.5.0"
- * removeVersion="1.7.0"
- * Use [String.prototype.toUpperCase](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase) instead.
+ * @private
  *
  * @description Converts the specified string to uppercase.
  * @param {string} string String to be converted to uppercase.
@@ -12815,10 +12799,10 @@ function toDebugString(obj, maxDepth) {
 var version = {
   // These placeholder strings will be replaced by grunt's `build` task.
   // They need to be double- or single-quoted.
-  full: '1.6.3-build.5310+sha.4d43ee3',
+  full: '1.6.4-build.5311+sha.1daa4f2',
   major: 1,
   minor: 6,
-  dot: 3,
+  dot: 4,
   codeName: 'snapshot'
 };
 
@@ -12849,8 +12833,6 @@ function publishExternalAPI(angular) {
     'isArray': isArray,
     'version': version,
     'isDate': isDate,
-    'lowercase': lowercase,
-    'uppercase': uppercase,
     'callbacks': {$$counter: 0},
     'getTestability': getTestability,
     'reloadWithDebugInfo': reloadWithDebugInfo,
@@ -12858,7 +12840,9 @@ function publishExternalAPI(angular) {
     '$$csp': csp,
     '$$encodeUriSegment': encodeUriSegment,
     '$$encodeUriQuery': encodeUriQuery,
-    '$$stringify': stringify
+    '$$lowercase': lowercase,
+    '$$stringify': stringify,
+    '$$uppercase': uppercase
   });
 
   angularModule = setupModuleLoader(window);
@@ -12965,7 +12949,7 @@ function publishExternalAPI(angular) {
       });
     }
   ])
-  .info({ angularVersion: '1.6.3-build.5310+sha.4d43ee3' });
+  .info({ angularVersion: '1.6.4-build.5311+sha.1daa4f2' });
 }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *

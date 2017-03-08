@@ -954,18 +954,6 @@
     "members": ""
   },
   {
-    "path": "api/ng/function/angular.lowercase",
-    "titleWords": "angular.lowercase",
-    "keywords": "angular api be converted converts function html instead lowercase lowercased module mozilla ng org partials prototype removeversion sinceversion specified string the to tolowercase use",
-    "members": ""
-  },
-  {
-    "path": "api/ng/function/angular.uppercase",
-    "titleWords": "angular.uppercase",
-    "keywords": "angular api be converted converts function html instead module mozilla ng org partials prototype removeversion sinceversion specified string the to touppercase uppercase uppercased use",
-    "members": ""
-  },
-  {
     "path": "api/ng/function/angular.forEach",
     "titleWords": "angular.forEach",
     "keywords": "an and angular api array be because become but can collection context does each ecma-international either element es262 expect filters for foreach function gender hasownproperty html in index inherited invoked invokes is it item iterate iterator itself js just key log male method misko module name ng not noting null obj object of once optional or org over partials properties property prototype provided providing push rather reference return sec-15 specifying that the this throw to toequal typeerror undefined unlike using value values var where which will with worth",

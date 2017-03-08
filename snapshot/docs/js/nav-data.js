@@ -118,11 +118,6 @@ angular.module('navData', [])
             "type": "function"
           },
           {
-            "name": "angular.lowercase",
-            "href": "api/ng/function/angular.lowercase",
-            "type": "function"
-          },
-          {
             "name": "angular.merge",
             "href": "api/ng/function/angular.merge",
             "type": "function"
@@ -145,11 +140,6 @@ angular.module('navData', [])
           {
             "name": "angular.toJson",
             "href": "api/ng/function/angular.toJson",
-            "type": "function"
-          },
-          {
-            "name": "angular.uppercase",
-            "href": "api/ng/function/angular.uppercase",
             "type": "function"
           },
           {

@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.3-build.5310+sha.4d43ee3
+ * @license AngularJS v1.6.4-build.5311+sha.1daa4f2
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -797,7 +797,7 @@ angular.mock.TzDate.prototype = Date.prototype;
  * You need to require the `ngAnimateMock` module in your test suite for instance `beforeEach(module('ngAnimateMock'))`
  */
 angular.mock.animate = angular.module('ngAnimateMock', ['ng'])
-  .info({ angularVersion: '1.6.3-build.5310+sha.4d43ee3' })
+  .info({ angularVersion: '1.6.4-build.5311+sha.1daa4f2' })
 
   .config(['$provide', function($provide) {
 
@@ -2080,13 +2080,13 @@ function MockXhr() {
     var header = this.$$respHeaders[name];
     if (header) return header;
 
-    name = angular.lowercase(name);
+    name = angular.$$lowercase(name);
     header = this.$$respHeaders[name];
     if (header) return header;
 
     header = undefined;
     angular.forEach(this.$$respHeaders, function(headerVal, headerName) {
-      if (!header && angular.lowercase(headerName) === name) header = headerVal;
+      if (!header && angular.$$lowercase(headerName) === name) header = headerVal;
     });
     return header;
   };
@@ -2412,7 +2412,7 @@ angular.module('ngMock', ['ng']).provider({
   $provide.decorator('$rootScope', angular.mock.$RootScopeDecorator);
   $provide.decorator('$controller', createControllerDecorator($compileProvider));
   $provide.decorator('$httpBackend', angular.mock.$httpBackendDecorator);
-}]).info({ angularVersion: '1.6.3-build.5310+sha.4d43ee3' });
+}]).info({ angularVersion: '1.6.4-build.5311+sha.1daa4f2' });
 
 /**
  * @ngdoc module
@@ -2427,7 +2427,7 @@ angular.module('ngMock', ['ng']).provider({
  */
 angular.module('ngMockE2E', ['ng']).config(['$provide', function($provide) {
   $provide.decorator('$httpBackend', angular.mock.e2e.$httpBackendDecorator);
-}]).info({ angularVersion: '1.6.3-build.5310+sha.4d43ee3' });
+}]).info({ angularVersion: '1.6.4-build.5311+sha.1daa4f2' });
 
 /**
  * @ngdoc service

@@ -798,16 +798,6 @@ angular.module('pagesData', [])
     "area": "api",
     "path": "api/ng/function/angular.errorHandlingConfig"
   },
-  "api/ng/function/angular.lowercase": {
-    "name": "angular.lowercase",
-    "area": "api",
-    "path": "api/ng/function/angular.lowercase"
-  },
-  "api/ng/function/angular.uppercase": {
-    "name": "angular.uppercase",
-    "area": "api",
-    "path": "api/ng/function/angular.uppercase"
-  },
   "api/ng/function/angular.forEach": {
     "name": "angular.forEach",
     "area": "api",
