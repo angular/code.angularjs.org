@@ -490,7 +490,7 @@ trust a URL:</p>
 <li><p><strong>Whitelisting with the <code>$sceDelegateProvider.resourceUrlWhitelist()</code> method.</strong>
 You configure this list in a module configuration block:</p>
 <pre><code class="lang-js">appModule.config([&#39;$sceDelegateProvider&#39;, function($sceDelegateProvider) {
-  $sceDelegateProvider.resourceUrlWhiteList([
+  $sceDelegateProvider.resourceUrlWhitelist([
     // Allow same origin resource loads.
     &#39;self&#39;,
     // Allow JSONP calls that match this pattern
