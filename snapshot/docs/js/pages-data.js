@@ -118,6 +118,11 @@ angular.module('pagesData', [])
     "area": "error",
     "path": "error/$controller/noscp"
   },
+  "error/$http/baddata": {
+    "name": "baddata",
+    "area": "error",
+    "path": "error/$http/baddata"
+  },
   "error/$http/badjsonp": {
     "name": "badjsonp",
     "area": "error",

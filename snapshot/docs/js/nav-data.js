@@ -1512,6 +1512,11 @@ angular.module('navData', [])
             "type": "section"
           },
           {
+            "name": "baddata",
+            "href": "error/$http/baddata",
+            "type": "error"
+          },
+          {
             "name": "badjsonp",
             "href": "error/$http/badjsonp",
             "type": "error"

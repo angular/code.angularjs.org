@@ -138,6 +138,12 @@
     "members": ""
   },
   {
+    "path": "error/$http/baddata",
+    "titleWords": "baddata",
+    "keywords": "$http actual additional an application appropriate array as bad baddata be content-type context data default default-transformations error for header html if is json json-stringified like looks make message must ng non-json not object occurs or parse partials pass provide received resolve response should such sure that the this to transformresponse try use valid when will you",
+    "members": ""
+  },
+  {
     "path": "error/$http/badjsonp",
     "titleWords": "badjsonp",
     "keywords": "$http add allowed and angularjs any api as attach bad badjsonp callback configuratio configuration configured contains defaults documentation error for from generated have html illegal in information is it json_callback jsonp jsonpcallbackparam longer method more must name need ng no not object occurs of or own param parameter parameters partials placeholder previous property provide query remove request requests resolve same see specified that the this to url use value versions via when where whose with you your",
