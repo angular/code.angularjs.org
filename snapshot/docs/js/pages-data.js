@@ -1928,11 +1928,6 @@ angular.module('pagesData', [])
     "area": "api",
     "path": "api/ngSanitize/provider/$sanitizeProvider"
   },
-  "api/ngTouch/directive/ngClick": {
-    "name": "ngClick",
-    "area": "api",
-    "path": "api/ngTouch/directive/ngClick"
-  },
   "api/ngTouch/directive/ngSwipeLeft": {
     "name": "ngSwipeLeft",
     "area": "api",
@@ -1952,16 +1947,6 @@ angular.module('pagesData', [])
     "name": "ngTouch",
     "area": "api",
     "path": "api/ngTouch"
-  },
-  "api/ngTouch/provider/$touchProvider": {
-    "name": "$touchProvider",
-    "area": "api",
-    "path": "api/ngTouch/provider/$touchProvider"
-  },
-  "api/ngTouch/service/$touch": {
-    "name": "$touch",
-    "area": "api",
-    "path": "api/ngTouch/service/$touch"
   },
   "app.js": {
     "path": "app.js"
@@ -2651,9 +2636,6 @@ angular.module('pagesData', [])
   "examples/example-sanitize-service": {
     "path": "examples/example-sanitize-service"
   },
-  "examples/example-ng-touch-ng-click": {
-    "path": "examples/example-ng-touch-ng-click"
-  },
   "examples/example-ng-swipe-left": {
     "path": "examples/example-ng-swipe-left"
   },
@@ -2958,10 +2940,5 @@ angular.module('pagesData', [])
     "name": "service components in ngTouch",
     "area": "api",
     "path": "api/ngTouch/service"
-  },
-  "api/ngTouch/provider": {
-    "name": "provider components in ngTouch",
-    "area": "api",
-    "path": "api/ngTouch/provider"
   }
 });

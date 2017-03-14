@@ -1344,11 +1344,6 @@ angular.module('navData', [])
             "href": "api/ngTouch/directive"
           },
           {
-            "name": "ngClick",
-            "href": "api/ngTouch/directive/ngClick",
-            "type": "directive"
-          },
-          {
             "name": "ngSwipeLeft",
             "href": "api/ngTouch/directive/ngSwipeLeft",
             "type": "directive"
@@ -1367,21 +1362,6 @@ angular.module('navData', [])
             "name": "$swipe",
             "href": "api/ngTouch/service/$swipe",
             "type": "service"
-          },
-          {
-            "name": "$touch",
-            "href": "api/ngTouch/service/$touch",
-            "type": "service"
-          },
-          {
-            "name": "provider",
-            "type": "section",
-            "href": "api/ngTouch/provider"
-          },
-          {
-            "name": "$touchProvider",
-            "href": "api/ngTouch/provider/$touchProvider",
-            "type": "provider"
           }
         ]
       }
