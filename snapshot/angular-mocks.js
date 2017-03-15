@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.4-build.5315+sha.c80fa1c
+ * @license AngularJS v1.6.4-build.5316+sha.38f8c97
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -797,7 +797,7 @@ angular.mock.TzDate.prototype = Date.prototype;
  * You need to require the `ngAnimateMock` module in your test suite for instance `beforeEach(module('ngAnimateMock'))`
  */
 angular.mock.animate = angular.module('ngAnimateMock', ['ng'])
-  .info({ angularVersion: '1.6.4-build.5315+sha.c80fa1c' })
+  .info({ angularVersion: '1.6.4-build.5316+sha.38f8c97' })
 
   .config(['$provide', function($provide) {
 
@@ -2214,11 +2214,6 @@ angular.mock.$RootElementProvider = function() {
  * A decorator for {@link ng.$controller} with additional `bindings` parameter, useful when testing
  * controllers of directives that use {@link $compile#-bindtocontroller- `bindToController`}.
  *
- * Depending on the value of
- * {@link ng.$compileProvider#preAssignBindingsEnabled `preAssignBindingsEnabled()`}, the properties
- * will be bound before or after invoking the constructor.
- *
- *
  * ## Example
  *
  * ```js
@@ -2274,22 +2269,13 @@ angular.mock.$RootElementProvider = function() {
  *                           the `bindToController` feature and simplify certain kinds of tests.
  * @return {Object} Instance of given controller.
  */
-function createControllerDecorator(compileProvider) {
+function createControllerDecorator() {
   angular.mock.$ControllerDecorator = ['$delegate', function($delegate) {
     return function(expression, locals, later, ident) {
       if (later && typeof later === 'object') {
-        var preAssignBindingsEnabled = compileProvider.preAssignBindingsEnabled();
-
         var instantiate = $delegate(expression, locals, true, ident);
-        if (preAssignBindingsEnabled) {
-          angular.extend(instantiate.instance, later);
-        }
-
         var instance = instantiate();
-        if (!preAssignBindingsEnabled || instance !== instantiate.instance) {
-          angular.extend(instance, later);
-        }
-
+        angular.extend(instance, later);
         return instance;
       }
       return $delegate(expression, locals, later, ident);
@@ -2412,7 +2398,7 @@ angular.module('ngMock', ['ng']).provider({
   $provide.decorator('$rootScope', angular.mock.$RootScopeDecorator);
   $provide.decorator('$controller', createControllerDecorator($compileProvider));
   $provide.decorator('$httpBackend', angular.mock.$httpBackendDecorator);
-}]).info({ angularVersion: '1.6.4-build.5315+sha.c80fa1c' });
+}]).info({ angularVersion: '1.6.4-build.5316+sha.38f8c97' });
 
 /**
  * @ngdoc module
@@ -2427,7 +2413,7 @@ angular.module('ngMock', ['ng']).provider({
  */
 angular.module('ngMockE2E', ['ng']).config(['$provide', function($provide) {
   $provide.decorator('$httpBackend', angular.mock.e2e.$httpBackendDecorator);
-}]).info({ angularVersion: '1.6.4-build.5315+sha.c80fa1c' });
+}]).info({ angularVersion: '1.6.4-build.5316+sha.38f8c97' });
 
 /**
  * @ngdoc service

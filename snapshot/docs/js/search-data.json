@@ -1203,7 +1203,7 @@
     "path": "api/ng/provider/$compileProvider",
     "titleWords": "$compileProvider",
     "keywords": "$compileprovider $inject api html module ng partials provider",
-    "members": "ahrefsanitizationwhitelist commentdirectivesenabled component cssclassdirectivesenabled debuginfoenabled directive imgsrcsanitizationwhitelist onchangesttl preassignbindingsenabled"
+    "members": "ahrefsanitizationwhitelist commentdirectivesenabled component cssclassdirectivesenabled debuginfoenabled directive imgsrcsanitizationwhitelist onchangesttl"
   },
   {
     "path": "api/ng/type/$compile.directive.Attributes",
@@ -2186,7 +2186,7 @@
   {
     "path": "api/ngMock/service/$controller",
     "titleWords": "$controller",
-    "keywords": "$compile $compileprovider $controller $controllerprovider $log add additional after and api as be before bindings bindtocontroller bound called can certain check clark considered controller controllers correctly createcontrollerdecorator ctrl current decorator definition depending describe directive directives evaluating example expect feature following for function given html if in info inject injected injection instance into invoking is it js kent kinds locals log logs module must mydirective mydirectivecontroller mymod name ng ngmock no of on or otherwise param parameter partials preassignbindingsenabled properties property published registered retrieve returns scope service should simplify simulate specified steps string syntax test testing tests that the then this to toequal use used useful using value var via when where which will with work write",
+    "keywords": "$compile $controller $controllerprovider $log add additional and api as be bindings bindtocontroller bound called can certain check clark considered controller controllers correctly createcontrollerdecorator ctrl current decorator definition describe directive directives evaluating example expect feature following for function given html if in info inject injected injection instance into is it js kent kinds locals log logs module must mydirective mydirectivecontroller mymod name ng ngmock no of on otherwise param parameter partials properties property published registered retrieve returns scope service should simplify simulate specified steps string syntax test testing tests that the then this to toequal use used useful using var via when where which with work write",
     "members": ""
   },
   {
