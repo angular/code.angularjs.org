@@ -119,6 +119,8 @@ function MyController($scope, $http) {
   $http.get(&#39;/auth.py&#39;).then(function(response) {
     authToken = response.headers(&#39;A-Token&#39;);
     $scope.user = response.data;
+  }).catch(function() {
+    $scope.status = &#39;Failed...&#39;;
   });
 
   $scope.saveMessage = function(message) {
