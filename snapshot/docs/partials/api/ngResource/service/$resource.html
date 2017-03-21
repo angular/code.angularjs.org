@@ -120,8 +120,8 @@ this:</p>
 <p>  Given a template <code>/path/:verb</code> and parameter <code>{verb:&#39;greet&#39;, salutation:&#39;Hello&#39;}</code> results in
   URL <code>/path/greet?salutation=Hello</code>.</p>
 <p>  If the parameter value is prefixed with <code>@</code>, then the value for that parameter will be
-  extracted from the corresponding property on the <code>data</code> object (provided when calling a
-  &quot;non-GET&quot; action method).
+  extracted from the corresponding property on the <code>data</code> object (provided when calling actions
+  with a request body).
   For example, if the <code>defaultParam</code> object is <code>{someParam: &#39;@someProp&#39;}</code> then the value of
   <code>someParam</code> will be <code>data.someProp</code>.
   Note that the parameter will be ignored, when calling a &quot;GET&quot; action method (i.e. an action
@@ -200,6 +200,8 @@ for more information.</li>
 <li><strong><code>interceptor</code></strong> - <code>{Object=}</code> - The interceptor object has two optional methods -
 <code>response</code> and <code>responseError</code>. Both <code>response</code> and <code>responseError</code> interceptors get called
 with <code>http response</code> object. See <a href="api/ng/service/$http">$http interceptors</a>.</li>
+<li><strong><code>hasBody</code></strong> - <code>{boolean}</code> - allows to specify if a request body should be included or not.
+If not specified only POST, PUT and PATCH requests will have a body.</li>
 </ul>
 
         
@@ -268,10 +270,14 @@ var user = User.get({userId:123}, function() {
 <p>  The action methods on the class object or instance object can be invoked with the following
   parameters:</p>
 <ul>
-<li>HTTP GET &quot;class&quot; actions: <code>Resource.action([parameters], [success], [error])</code></li>
-<li>non-GET &quot;class&quot; actions: <code>Resource.action([parameters], postData, [success], [error])</code></li>
-<li>non-GET instance actions:  <code>instance.$action([parameters], [success], [error])</code></li>
+<li>&quot;class&quot; actions without a body: <code>Resource.action([parameters], [success], [error])</code></li>
+<li>&quot;class&quot; actions with a body: <code>Resource.action([parameters], postData, [success], [error])</code></li>
+<li>instance actions: <code>instance.$action([parameters], [success], [error])</code></li>
 </ul>
+<p>  When calling instance methods, the instance itself is used as the request body (if the action
+  should have a body). By default, only actions using <code>POST</code>, <code>PUT</code> or <code>PATCH</code> have request
+  bodies, but you can use the <code>hasBody</code> configuration option to specify whether an action
+  should have a body or not (regardless of its HTTP method).</p>
 <p>  Success callback is called with (value (Object|Array), responseHeaders (Function),
   status (number), statusText (string)) arguments, where the value is the populated resource
   instance or collection object. The error callback is called with (httpResponse) argument.</p>
