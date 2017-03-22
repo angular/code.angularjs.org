@@ -40,6 +40,14 @@ generated update contains a highlighted section that contains all the breaking c
 extracted from the commits. We can quickly see in the new changelog exactly what commits contain breaking
 changes and so can application developers when they are deciding whether to update to a new version of
 AngularJS.</p>
+<h4 id="when-are-deprecated-features-removed-from-the-library-">When are deprecated features removed from the library?</h4>
+<p>Most of the time we remove a deprecated feature in a next minor version bump. For example, the
+<code>preAssignBindingsEnabled</code> <code>$compileProvider</code> method was defined in AngularJS <code>1.5.10</code>, deprecated in <code>1.6</code> and
+will be removed in <code>1.7</code>.</p>
+<p>In case of jqLite we apply a different strategy - we deprecate features that have an equivalent in jQuery that
+is also deprecated but we only remove the feature once it&#39;s removed from jQuery to improve compatibility between
+jqLite and jQuery. One such example is the <code>bind</code> method, deprecated in favor of <code>on</code> but unlikely to be removed
+from jqLite any time soon.</p>
 <h3 id="is-angularjs-a-templating-system-">Is AngularJS a templating system?</h3>
 <p>At the highest level, AngularJS does look like just another templating system. But there is one
 important reason why the AngularJS templating system is different, that makes it very good fit for
@@ -100,7 +108,7 @@ The logo design is licensed under a &quot;<a href="http://creativecommons.org/li
 make our schwag will be happy to do a custom run for you, based on our existing template. By using the design they have on file,
 they&#39;ll waive the setup costs, and you can order any quantity you need.</p>
 <p><strong>Stickers</strong>
-For orders of 250 stickers or more within Canada or the United States, contact Tom Witting (or anyone in sales) via email at <a href="&#109;&#97;&#105;&#108;&#116;&#x6f;&#58;&#x74;&#x6f;&#x6d;&#x40;&#x73;&#x74;&#105;&#99;&#107;&#x65;&#114;&#103;&#x69;&#x61;&#x6e;&#x74;&#46;&#x63;&#111;&#109;">&#x74;&#x6f;&#x6d;&#x40;&#x73;&#x74;&#105;&#99;&#107;&#x65;&#114;&#103;&#x69;&#x61;&#x6e;&#x74;&#46;&#x63;&#111;&#109;</a>, and tell him you want to order some AngularJS
+For orders of 250 stickers or more within Canada or the United States, contact Tom Witting (or anyone in sales) via email at <a href="&#x6d;&#x61;&#105;&#108;&#116;&#x6f;&#58;&#116;&#111;&#x6d;&#64;&#x73;&#x74;&#105;&#99;&#x6b;&#x65;&#x72;&#103;&#105;&#x61;&#110;&#116;&#x2e;&#x63;&#111;&#x6d;">&#116;&#111;&#x6d;&#64;&#x73;&#x74;&#105;&#99;&#x6b;&#x65;&#x72;&#103;&#105;&#x61;&#110;&#116;&#x2e;&#x63;&#111;&#x6d;</a>, and tell him you want to order some AngularJS
 stickers just like the ones in job #42711. You&#39;ll have to give them your own info for billing and shipping.</p>
 <p>As long as the design stays exactly the same, <a href="http://www.stickergiant.com">StickerGiant</a> will give you a reorder discount.</p>
 <p>For a smaller order, or for other countries, we suggest downloading the logo artwork and making your own.</p>
