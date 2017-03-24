@@ -8,11 +8,6 @@ angular.module('pagesData', [])
     "area": "api",
     "path": "api"
   },
-  "error/$animate/nocb": {
-    "name": "nocb",
-    "area": "error",
-    "path": "error/$animate/nocb"
-  },
   "error/$animate/nongcls": {
     "name": "nongcls",
     "area": "error",

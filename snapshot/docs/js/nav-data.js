@@ -1382,11 +1382,6 @@ angular.module('navData', [])
             "type": "section"
           },
           {
-            "name": "nocb",
-            "href": "error/$animate/nocb",
-            "type": "error"
-          },
-          {
             "name": "nongcls",
             "href": "error/$animate/nongcls",
             "type": "error"
