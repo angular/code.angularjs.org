@@ -335,12 +335,6 @@ allow a component to have its properties bound to the controller, rather than to
 properties. You can access these bindings once they have been initialized by providing a controller method called
 <code>$onInit</code>, which is called after all the controllers on an element have been constructed and had their bindings
 initialized.</p>
-<div class="alert alert-warning">
-<strong>Deprecation warning:</strong> although bindings for non-ES6 class controllers are currently
-bound to <code>this</code> before the controller constructor is called, this use is now deprecated. Please place initialization
-code that relies upon bindings inside a <code>$onInit</code> method on the controller, instead.
-</div>
-
 <p>It is also possible to set <code>bindToController</code> to an object hash with the same format as the <code>scope</code> property.
 This will set up the scope bindings to the controller directly. Note that <code>scope</code> can still be used
 to define which kind of scope is created. By default, no scope is created. Use <code>scope: {}</code> to create an isolate
