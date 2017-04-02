@@ -163,17 +163,17 @@ syntax element.  The spaces there are optional.</p>
 keyword and corresponding message are <strong>required</strong> but you may have as few or as many of the other
 categories as you need.</p>
 <h4 id="selection-keywords">Selection Keywords</h4>
-<p>The selection keywords can be either exact matches or language dependent <a href="http://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/language_plural_rules.html">plural
+<p>The selection keywords can be either exact matches or language dependent <a href="http://cldr.unicode.org/index/cldr-spec/plural-rules">plural
 categories</a>.</p>
 <p>Exact matches are written as the equal sign followed by the exact value. <code>=0</code>, <code>=1</code>, <code>=2</code> and
 <code>=123</code> are all examples of exact matches.  Note that there should be no space between the equal sign
 and the numeric value.</p>
-<p>Plural category matches are single words corresponding to the <a href="http://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/language_plural_rules.html">plural
-categories</a> of
-the CLDR plural category spec.  These categories vary by locale.  The &quot;en&quot; (English) locale, for
-example, defines just &quot;one&quot; and &quot;other&quot; while the &quot;ga&quot; (Irish) locale defines &quot;one&quot;, &quot;two&quot;, &quot;few&quot;,
-&quot;many&quot; and &quot;other&quot;.  Typically, you would just write the categories for your language.  During
-translation, the translators will add or remove more categories depending on the target locale.</p>
+<p>Plural category matches are single words corresponding to the <a href="http://cldr.unicode.org/index/cldr-spec/plural-rules">plural
+categories</a> of the CLDR plural category spec.
+These categories vary by locale.  The &quot;en&quot; (English) locale, for example, defines just &quot;one&quot; and
+&quot;other&quot; while the &quot;ga&quot; (Irish) locale defines &quot;one&quot;, &quot;two&quot;, &quot;few&quot;, &quot;many&quot; and &quot;other&quot;.  Typically,
+you would just write the categories for your language.  During translation, the translators will add
+or remove more categories depending on the target locale.</p>
 <p>Exact matches always win over keyword matches.  Therefore, if you define both <code>=0</code> and <code>zero</code>, when
 the value of the expression is zero, the <code>=0</code> message is the one that will be selected.  (The
 duplicate keyword categories are helpful when used with the optional <code>offset</code> syntax described
