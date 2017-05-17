@@ -1,8 +1,8 @@
-<a href='https://github.com/angular/angular.js/edit/master/src/ng/directive/select.js?message=docs(select)%3A%20describe%20your%20change...#L309' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/master/src/ng/directive/select.js?message=docs(select)%3A%20describe%20your%20change...#L468' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 
-<a href='https://github.com/angular/angular.js/tree/master/src/ng/directive/select.js#L309' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/master/src/ng/directive/select.js#L468' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -31,6 +31,8 @@ It also handles dynamic <code>&lt;option&gt;</code> elements, which can be added
 to the model identified by the <code>ngModel</code> directive. With static or repeated options, this is
 the content of the <code>value</code> attribute or the textContent of the <code>&lt;option&gt;</code>, if the value attribute is missing.
 Value and textContent can be interpolated.</p>
+<p>The <a href="api/ng/type/select.SelectController">select controller</a> exposes utility functions that can be used
+to manipulate the select&#39;s behavior.</p>
 <h2 id="matching-model-and-option-values">Matching model and option values</h2>
 <p>In general, the match between the model and an option is evaluated by strictly comparing the model
 value against the value of the available options.</p>
@@ -66,6 +68,19 @@ Chrome and Internet Explorer / Edge.</p>
 
 
 
+<h2 id="known-issues">Known Issues</h2>
+<div class="known-issue">
+  <p>In Firefox, the select model is only updated when the select element is blurred. For example,
+when switching between options with the keyboard, the select model is only set to the
+currently selected option when the select is blurred, e.g via tab key or clicking the mouse
+outside the select.</p>
+<p>This is due to an ambiguity in the select element specification. See the
+<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=126379">issue on the Firefox bug tracker</a>
+for more information, and this
+<a href="https://github.com/angular/angular.js/issues/9134#issuecomment-130800488">Github comment for a workaround</a></p>
+
+</div>
+
 
 <div>
   
@@ -85,7 +100,6 @@ Chrome and Internet Explorer / Edge.</p>
     <ul>
     
       <li>as element:
-      
       <pre><code>&lt;select&#10;  ng-model=&quot;string&quot;&#10;  [name=&quot;string&quot;]&#10;  [multiple=&quot;string&quot;]&#10;  [required=&quot;string&quot;]&#10;  [ng-required=&quot;string&quot;]&#10;  [ng-change=&quot;string&quot;]&#10;  [ng-options=&quot;string&quot;]&#10;  [ng-attr-size=&quot;string&quot;]&gt;&#10;...&#10;&lt;/select&gt;</code></pre>
       </li>
     

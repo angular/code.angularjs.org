@@ -1,8 +1,8 @@
-<a href='https://github.com/angular/angular.js/edit/master/src/ng/http.js?message=docs($http)%3A%20describe%20your%20change...#L387' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/master/src/ng/http.js?message=docs($http)%3A%20describe%20your%20change...#L404' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 
-<a href='https://github.com/angular/angular.js/tree/master/src/ng/http.js#L387' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/master/src/ng/http.js#L404' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -155,15 +155,18 @@ then these will be applied.</p>
 <p>You can augment or replace the default transformations by modifying these properties by adding to or
 replacing the array.</p>
 <p>AngularJS provides the following default transformations:</p>
-<p>Request transformations (<code>$httpProvider.defaults.transformRequest</code> and <code>$http.defaults.transformRequest</code>):</p>
+<p>Request transformations (<code>$httpProvider.defaults.transformRequest</code> and <code>$http.defaults.transformRequest</code>) is
+an array with one function that does the following:</p>
 <ul>
 <li>If the <code>data</code> property of the request configuration object contains an object, serialize it
 into JSON format.</li>
 </ul>
-<p>Response transformations (<code>$httpProvider.defaults.transformResponse</code> and <code>$http.defaults.transformResponse</code>):</p>
+<p>Response transformations (<code>$httpProvider.defaults.transformResponse</code> and <code>$http.defaults.transformResponse</code>) is
+an array with one function that does the following:</p>
 <ul>
 <li>If XSRF prefix is detected, strip it (see Security Considerations section below).</li>
-<li>If JSON response is detected, deserialize it using a JSON parser.</li>
+<li>If the <code>Content-Type</code> is <code>application/json</code> or the response looks like JSON,
+  deserialize it using a JSON parser.</li>
 </ul>
 <h3 id="overriding-the-default-transformations-per-request">Overriding the Default Transformations Per Request</h3>
 <p>If you wish to override the request/response transformations only for a single request then provide

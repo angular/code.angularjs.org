@@ -1,8 +1,8 @@
-<a href='https://github.com/angular/angular.js/edit/master/src/ng/filter/filters.js?message=docs(uppercase)%3A%20describe%20your%20change...#L706' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/master/src/ng/filter/filters.js?message=docs(uppercase)%3A%20describe%20your%20change...#L709' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 
-<a href='https://github.com/angular/angular.js/tree/master/src/ng/filter/filters.js#L706' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/master/src/ng/filter/filters.js#L709' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -48,6 +48,32 @@
 
 
   
+  <h2 id="example">Examples</h2><p>
+
+<div>
+  <plnkr-opener example-path="examples/example-filter-uppercase"></plnkr-opener>
+
+  <div class="runnable-example"
+      path="examples/example-filter-uppercase"
+      module="uppercaseFilterExample"
+      name="filter-uppercase">
+
+  
+    <div class="runnable-example-file" 
+      name="index.html"
+      language="html"
+      type="html">
+      <pre><code>&lt;script&gt;&#10;  angular.module(&#39;uppercaseFilterExample&#39;, [])&#10;    .controller(&#39;ExampleController&#39;, [&#39;$scope&#39;, function($scope) {&#10;      $scope.title = &#39;This is a title&#39;;&#10;    }]);&#10;&lt;/script&gt;&#10;&lt;div ng-controller=&quot;ExampleController&quot;&gt;&#10;  &lt;!-- This title should be formatted normally --&gt;&#10;  &lt;h1&gt;{{title}}&lt;/h1&gt;&#10;  &lt;!-- This title should be capitalized --&gt;&#10;  &lt;h1&gt;{{title | uppercase}}&lt;/h1&gt;&#10;&lt;/div&gt;</code></pre>
+    </div>
+  
+
+    <iframe class="runnable-example-frame" src="examples/example-filter-uppercase/index.html" name="example-filter-uppercase"></iframe>
+  </div>
+</div>
+
+
+</p>
+
 </div>
 
 

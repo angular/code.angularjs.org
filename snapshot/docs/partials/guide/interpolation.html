@@ -21,7 +21,7 @@ normal <a href="api/ng/type/$rootScope.Scope#$digest">digest</a> cycle.</p>
 <li><code>undefined</code> and <code>null</code> are converted to <code>&#39;&#39;</code></li>
 <li>if the value is an object that is not a <code>Number</code>, <code>Date</code> or <code>Array</code>, $interpolate looks for
 a custom <code>toString()</code> function on the object, and uses that. Custom means that
-<code>myObject.toString !==</code>Object.prototype.toString`.</li>
+<code>myObject.toString !== Object.prototype.toString</code>.</li>
 <li>if the above doesn&#39;t apply, <code>JSON.stringify</code> is used.</li>
 </ul>
 <h3 id="binding-to-boolean-attributes">Binding to boolean attributes</h3>

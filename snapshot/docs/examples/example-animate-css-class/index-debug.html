@@ -14,8 +14,8 @@
 </head>
 <body ng-app="ngAnimate">
   <p>
-  <input type="button" value="set" ng-click="myCssVar='css-class'">
-  <input type="button" value="clear" ng-click="myCssVar=''">
+  <button ng-click="myCssVar='css-class'">Set</button>
+  <button ng-click="myCssVar=''">Clear</button>
   <br>
   <span ng-class="myCssVar">CSS-Animated Text</span>
 </p>

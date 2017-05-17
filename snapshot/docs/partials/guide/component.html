@@ -450,22 +450,13 @@ advantage of this method is that you do not have to create any DOM elements. The
 shows how to do this for the <code>heroDetail</code> component from above.</p>
 <p>The examples use the <a href="http://jasmine.github.io/">Jasmine</a> testing framework.</p>
 <p><strong>Controller Test:</strong></p>
-<pre><code class="lang-js">describe(&#39;component: heroDetail&#39;, function() {
+<pre><code class="lang-js">describe(&#39;HeroDetailController&#39;, function() {
   var $componentController;
 
   beforeEach(module(&#39;heroApp&#39;));
   beforeEach(inject(function(_$componentController_) {
     $componentController = _$componentController_;
   }));
-
-  it(&#39;should expose a `hero` object&#39;, function() {
-    // Here we are passing actual bindings to the component
-    var bindings = {hero: {name: &#39;Wolverine&#39;}};
-    var ctrl = $componentController(&#39;heroDetail&#39;, null, bindings);
-
-    expect(ctrl.hero).toBeDefined();
-    expect(ctrl.hero.name).toBe(&#39;Wolverine&#39;);
-  });
 
   it(&#39;should call the `onDelete` binding, when deleting the hero&#39;, function() {
     var onDeleteSpy = jasmine.createSpy(&#39;onDelete&#39;);

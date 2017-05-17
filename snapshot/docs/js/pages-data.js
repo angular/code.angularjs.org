@@ -798,11 +798,6 @@ angular.module('pagesData', [])
     "area": "api",
     "path": "api/ng"
   },
-  "api/ng/function/angular.errorHandlingConfig": {
-    "name": "angular.errorHandlingConfig",
-    "area": "api",
-    "path": "api/ng/function/angular.errorHandlingConfig"
-  },
   "api/ng/function/angular.forEach": {
     "name": "angular.forEach",
     "area": "api",
@@ -957,6 +952,11 @@ angular.module('pagesData', [])
     "name": "angular.module",
     "area": "api",
     "path": "api/ng/function/angular.module"
+  },
+  "api/ng/function/angular.errorHandlingConfig": {
+    "name": "angular.errorHandlingConfig",
+    "area": "api",
+    "path": "api/ng/function/angular.errorHandlingConfig"
   },
   "api/ng/provider/$anchorScrollProvider": {
     "name": "$anchorScrollProvider",
@@ -2500,6 +2500,12 @@ angular.module('pagesData', [])
   "examples/example-script-tag": {
     "path": "examples/example-script-tag"
   },
+  "examples/example-select-unknown-value-error": {
+    "path": "examples/example-select-unknown-value-error"
+  },
+  "examples/example-select-unknown-value-required": {
+    "path": "examples/example-select-unknown-value-required"
+  },
   "examples/example-static-select": {
     "path": "examples/example-static-select"
   },
@@ -2547,6 +2553,9 @@ angular.module('pagesData', [])
   },
   "examples/example-filter-json": {
     "path": "examples/example-filter-json"
+  },
+  "examples/example-filter-uppercase": {
+    "path": "examples/example-filter-uppercase"
   },
   "examples/example-limit-to-filter": {
     "path": "examples/example-limit-to-filter"

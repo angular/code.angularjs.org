@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.5-build.5353+sha.136a42a
+ * @license AngularJS v1.6.5-build.5388+sha.a86a319
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -797,7 +797,7 @@ angular.mock.TzDate.prototype = Date.prototype;
  * You need to require the `ngAnimateMock` module in your test suite for instance `beforeEach(module('ngAnimateMock'))`
  */
 angular.mock.animate = angular.module('ngAnimateMock', ['ng'])
-  .info({ angularVersion: '1.6.5-build.5353+sha.136a42a' })
+  .info({ angularVersion: '1.6.5-build.5388+sha.a86a319' })
 
   .config(['$provide', function($provide) {
 
@@ -1385,6 +1385,7 @@ function createHttpBackendMock($rootScope, $timeout, $delegate, $browser) {
         }
       }
 
+      handleResponse.description = method + ' ' + url;
       return handleResponse;
 
       function handleResponse() {
@@ -1891,7 +1892,9 @@ function createHttpBackendMock($rootScope, $timeout, $delegate, $browser) {
   $httpBackend.verifyNoOutstandingRequest = function(digest) {
     if (digest !== false) $rootScope.$digest();
     if (responses.length) {
-      throw new Error('Unflushed requests: ' + responses.length);
+      var unflushedDescriptions = responses.map(function(res) { return res.description; });
+      throw new Error('Unflushed requests: ' + responses.length + '\n  ' +
+                      unflushedDescriptions.join('\n  '));
     }
   };
 
@@ -2400,7 +2403,7 @@ angular.module('ngMock', ['ng']).provider({
   $provide.decorator('$rootScope', angular.mock.$RootScopeDecorator);
   $provide.decorator('$controller', createControllerDecorator($compileProvider));
   $provide.decorator('$httpBackend', angular.mock.$httpBackendDecorator);
-}]).info({ angularVersion: '1.6.5-build.5353+sha.136a42a' });
+}]).info({ angularVersion: '1.6.5-build.5388+sha.a86a319' });
 
 /**
  * @ngdoc module
@@ -2415,7 +2418,7 @@ angular.module('ngMock', ['ng']).provider({
  */
 angular.module('ngMockE2E', ['ng']).config(['$provide', function($provide) {
   $provide.decorator('$httpBackend', angular.mock.e2e.$httpBackendDecorator);
-}]).info({ angularVersion: '1.6.5-build.5353+sha.136a42a' });
+}]).info({ angularVersion: '1.6.5-build.5388+sha.a86a319' });
 
 /**
  * @ngdoc service

@@ -34,13 +34,13 @@
       addTag('link', {rel: 'stylesheet', href: 'css/animations.css', type: 'text/css'});
       
 
-      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js' }, sync);
-      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-resource.min.js' }, sync);
-      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-route.min.js' }, sync);
-      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-cookies.min.js' }, sync);
-      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-sanitize.min.js' }, sync);
-      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-touch.min.js' }, sync);
-      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-animate.min.js' }, sync);
+      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js' }, sync);
+      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-resource.min.js' }, sync);
+      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.min.js' }, sync);
+      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-cookies.min.js' }, sync);
+      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-sanitize.min.js' }, sync);
+      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-touch.min.js' }, sync);
+      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.min.js' }, sync);
       addTag('script', {src: 'components/marked-0.3.6/lib/marked.js' }, sync);
       addTag('script', {src: 'js/angular-bootstrap/dropdown-toggle.min.js' }, sync);
       addTag('script', {src: 'components/lunr-0.7.2/lunr.min.js' }, sync);
@@ -91,7 +91,7 @@
 </head>
 <body class="homepage">
   <div id="wrapper">
-    <header class="header" scroll-y-offset-element>
+    <header class="header">
       <nav id="navbar-main" class="navbar navbar-fixed-top">
         <div class="navbar-inner" ng-controller="DocsSearchCtrl">
           <div class="container">
@@ -177,7 +177,7 @@
           </div>
         </div>
       </nav>
-      <nav id="navbar-sub" class="sup-header navbar navbar-fixed-top">
+      <nav id="navbar-sub" class="sup-header navbar navbar-fixed-top" scroll-y-offset-element>
         <div class="container main-grid main-header-grid">
           <div class="grid-left">
             <version-picker></version-picker>

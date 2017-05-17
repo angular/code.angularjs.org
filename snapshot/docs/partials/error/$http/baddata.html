@@ -11,13 +11,14 @@
 
 <h2>Description</h2>
 <div class="description">
-  <p>The default @{link ng.$http#default-transformations <code>transformResponse</code>} will try to parse the
-response as JSON if the <code>Content-Type</code> header is <code>application/json</code> or the response looks like a
+  <p>The default <a href="api/ng/service/$http#default-transformations"><code>transformResponse</code></a> will try to parse the
+response as JSON if the <code>Content-Type</code> header is <code>application/json</code>, or the response looks like a
 valid JSON-stringified object or array.
 This error occurs when that data is not a valid JSON object.</p>
-<p>The error message should provide additional context such as the actual response.</p>
-<p>To resolve this error, make sure you pass valid JSON data to <code>transformResponse</code> or use an
-appropriate <code>Content-Type</code> header for non-JSON data.</p>
+<p>To resolve this error, make sure you pass valid JSON data to <code>transformResponse</code>. If the response
+data looks like JSON, but has a different <code>Content-Type</code> header, you must
+<a href="api/ng/service/$http#overriding-the-default-transformations-per-request">implement your own response
+transformer on a per request basis</a>, or <a href="api/ng/service/$http#default-transformations">modify the default <code>$http</code> responseTransform</a>.</p>
 
 </div>
 

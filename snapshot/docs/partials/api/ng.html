@@ -99,6 +99,20 @@ See <a href="guide/interpolation#known-issues">here</a> for more info.</p>
     </td>
   </tr>
   <tr>
+    <td><a href="api/ng/directive/select">select</a></td>
+    <td>
+    <p>In Firefox, the select model is only updated when the select element is blurred. For example,
+when switching between options with the keyboard, the select model is only set to the
+currently selected option when the select is blurred, e.g via tab key or clicking the mouse
+outside the select.</p>
+<p>This is due to an ambiguity in the select element specification. See the
+<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=126379">issue on the Firefox bug tracker</a>
+for more information, and this
+<a href="https://github.com/angular/angular.js/issues/9134#issuecomment-130800488">Github comment for a workaround</a></p>
+ 
+    </td>
+  </tr>
+  <tr>
     <td><a href="api/ng/service/$interpolate">$interpolate</a></td>
     <td>
     <p>It is currently not possible for an interpolated expression to contain the interpolation end
@@ -135,13 +149,6 @@ code snippet the closing braces of the literal object will get incorrectly denor
       <tr>
         <th>Name</th>
         <th>Description</th>
-      </tr>
-      
-      <tr>
-        <td><a href="api/ng/function/angular.errorHandlingConfig">angular.errorHandlingConfig</a></td>
-        <td><p>Configure several aspects of error handling in AngularJS if used as a setter or return the
-current configuration if used as a getter. The following options are supported:</p>
-</td>
       </tr>
       
       <tr>
@@ -310,6 +317,13 @@ dependency injection (see <a href="guide/di">dependency injection</a>).</p>
 modules.
 All modules (AngularJS core or 3rd party) that should be available to an application must be
 registered using this mechanism.</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><a href="api/ng/function/angular.errorHandlingConfig">angular.errorHandlingConfig</a></td>
+        <td><p>Configure several aspects of error handling in AngularJS if used as a setter or return the
+current configuration if used as a getter. The following options are supported:</p>
 </td>
       </tr>
       
@@ -871,9 +885,9 @@ At the end of this page you can find a <a href="api/ng/type/ngModel.NgModelContr
       
       <tr>
         <td><a href="api/ng/type/select.SelectController">select.SelectController</a></td>
-        <td><p>The controller for the <code>&lt;select&gt;</code> directive. This provides support for reading
-and writing the selected value(s) of the control and also coordinates dynamically
-added <code>&lt;option&gt;</code> elements, perhaps by an <code>ngRepeat</code> directive.</p>
+        <td><p>The controller for the <a href="api/ng/directive/select">select</a> directive. The controller exposes
+a few utility methods that can be used to augment the behavior of a regular or an
+<a href="api/ng/directive/ngOptions">ngOptions</a> select element.</p>
 </td>
       </tr>
       
