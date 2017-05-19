@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.5-build.5390+sha.a86a319
+ * @license AngularJS v1.6.5-build.5391+sha.762580f
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -106,7 +106,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.6.5-build.5390+sha.a86a319/' +
+    message += '\nhttp://errors.angularjs.org/1.6.5-build.5391+sha.762580f/' +
       (module ? module + '/' : '') + code;
 
     for (i = 0, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -2735,7 +2735,7 @@ function toDebugString(obj, maxDepth) {
 var version = {
   // These placeholder strings will be replaced by grunt's `build` task.
   // They need to be double- or single-quoted.
-  full: '1.6.5-build.5390+sha.a86a319',
+  full: '1.6.5-build.5391+sha.762580f',
   major: 1,
   minor: 6,
   dot: 5,
@@ -2885,7 +2885,7 @@ function publishExternalAPI(angular) {
       });
     }
   ])
-  .info({ angularVersion: '1.6.5-build.5390+sha.a86a319' });
+  .info({ angularVersion: '1.6.5-build.5391+sha.762580f' });
 }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -21801,6 +21801,9 @@ function sliceFn(input, begin, end) {
  * dummy predicate that returns the item's index as `value`.
  * (If you are using a custom comparator, make sure it can handle this predicate as well.)
  *
+ * If a custom comparator still can't distinguish between two items, then they will be sorted based
+ * on their index using the built-in comparator.
+ *
  * Finally, in an attempt to simplify things, if a predicate returns an object as the extracted
  * value for an item, `orderBy` will try to convert that object to a primitive value, before passing
  * it to the comparator. The following rules govern the conversion:
@@ -22347,7 +22350,7 @@ function orderByFilter($parse) {
         }
       }
 
-      return compare(v1.tieBreaker, v2.tieBreaker) * descending;
+      return (compare(v1.tieBreaker, v2.tieBreaker) || defaultCompare(v1.tieBreaker, v2.tieBreaker)) * descending;
     }
   };
 

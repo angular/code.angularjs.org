@@ -59,6 +59,8 @@ second, or <code>1</code> otherwise.</p>
 specified predicates can distinguish between two items, <code>orderBy</code> will automatically introduce a
 dummy predicate that returns the item&#39;s index as <code>value</code>.
 (If you are using a custom comparator, make sure it can handle this predicate as well.)</p>
+<p>If a custom comparator still can&#39;t distinguish between two items, then they will be sorted based
+on their index using the built-in comparator.</p>
 <p>Finally, in an attempt to simplify things, if a predicate returns an object as the extracted
 value for an item, <code>orderBy</code> will try to convert that object to a primitive value, before passing
 it to the comparator. The following rules govern the conversion:</p>
