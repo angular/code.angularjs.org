@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.5-build.5391+sha.762580f
+ * @license AngularJS v1.6.5-build.5392+sha.63b6d64
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -106,7 +106,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.6.5-build.5391+sha.762580f/' +
+    message += '\nhttp://errors.angularjs.org/1.6.5-build.5392+sha.63b6d64/' +
       (module ? module + '/' : '') + code;
 
     for (i = 0, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -2735,7 +2735,7 @@ function toDebugString(obj, maxDepth) {
 var version = {
   // These placeholder strings will be replaced by grunt's `build` task.
   // They need to be double- or single-quoted.
-  full: '1.6.5-build.5391+sha.762580f',
+  full: '1.6.5-build.5392+sha.63b6d64',
   major: 1,
   minor: 6,
   dot: 5,
@@ -2885,7 +2885,7 @@ function publishExternalAPI(angular) {
       });
     }
   ])
-  .info({ angularVersion: '1.6.5-build.5391+sha.762580f' });
+  .info({ angularVersion: '1.6.5-build.5392+sha.63b6d64' });
 }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
