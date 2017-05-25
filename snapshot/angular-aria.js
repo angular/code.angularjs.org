@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.5-build.5395+sha.33cd29b
+ * @license AngularJS v1.6.5-build.5396+sha.aef3ef7
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -59,7 +59,7 @@
  * {@link guide/accessibility Developer Guide}.
  */
 var ngAriaModule = angular.module('ngAria', ['ng']).
-                        info({ angularVersion: '1.6.5-build.5395+sha.33cd29b' }).
+                        info({ angularVersion: '1.6.5-build.5396+sha.aef3ef7' }).
                         provider('$aria', $AriaProvider);
 
 /**

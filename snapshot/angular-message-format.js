@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.5-build.5395+sha.33cd29b
+ * @license AngularJS v1.6.5-build.5396+sha.aef3ef7
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -1060,7 +1060,7 @@ var toJson;
 var $$stringify;
 
 var module = window['angular']['module']('ngMessageFormat', ['ng']);
-module['info']({ 'angularVersion': '1.6.5-build.5395+sha.33cd29b' });
+module['info']({ 'angularVersion': '1.6.5-build.5396+sha.aef3ef7' });
 module['factory']('$$messageFormat', $$MessageFormatFactory);
 module['config'](['$provide', function($provide) {
   $interpolateMinErr = window['angular']['$interpolateMinErr'];
