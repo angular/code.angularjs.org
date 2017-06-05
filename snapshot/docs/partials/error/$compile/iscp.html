@@ -16,13 +16,15 @@
   return {
     ...
     scope: {
-      &#39;attrName&#39;: &#39;@&#39;, // OK
-      &#39;attrName2&#39;: &#39;=localName&#39;, // OK
-      &#39;attrName3&#39;: &#39;&lt;?localName&#39;, // OK
-      &#39;attrName4&#39;: &#39; = name&#39;, // OK
-      &#39;attrName5&#39;: &#39;name&#39;,    // ERROR: missing mode @&amp;=
-      &#39;attrName6&#39;: &#39;name=&#39;,   // ERROR: must be prefixed with @&amp;=
-      &#39;attrName7&#39;: &#39;=name?&#39;,  // ERROR: ? must come directly after the mode
+      &#39;localName&#39;: &#39;@&#39;, // OK
+      &#39;localName2&#39;: &#39;&amp;attr&#39;, // OK
+      &#39;localName3&#39;: &#39;&lt;?attr&#39;, // OK
+      &#39;localName4&#39;: &#39; = attr&#39;, // OK
+      &#39;localName5&#39;: &#39; =*attr&#39;, // OK      
+      &#39;localName6&#39;: &#39;attr&#39;,    // ERROR: missing mode @&amp;=&lt;
+      &#39;localName7&#39;: &#39;attr=&#39;,   // ERROR: must be prefixed with @&amp;=&lt;
+      &#39;localName8&#39;: &#39;=attr?&#39;,  // ERROR: ? must come directly after the mode
+      &#39;localName9&#39;: &#39;&lt;*&#39;  // ERROR: * is only valid with =
     }
     ...
   }

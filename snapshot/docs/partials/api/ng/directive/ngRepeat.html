@@ -268,7 +268,10 @@ which can be used to associate the objects in the collection with the DOM elemen
 is specified, ng-repeat associates elements by identity. It is an error to have
 more than one tracking expression value resolve to the same key. (This would mean that two distinct objects are
 mapped to the same DOM element, which is not possible.)</p>
-<p>Note that the tracking expression must come last, after any filters, and the alias expression.</p>
+<div class="alert alert-warning">
+  <strong>Note:</strong> the <code>tracky by</code> expression must come last - after any filters, and the alias expression.
+</div>
+
 <p>For example: <code>item in items</code> is equivalent to <code>item in items track by $id(item)</code>. This implies that the DOM elements
 will be associated by item identity in the array.</p>
 <p>For example: <code>item in items track by $id(item)</code>. A built in <code>$id()</code> function can be used to assign a unique

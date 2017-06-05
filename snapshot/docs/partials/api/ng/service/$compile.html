@@ -268,20 +268,20 @@ If no <code>attr</code> name is specified then the attribute name is assumed to 
 name. Given <code>&lt;my-component my-attr=&quot;parentModel&quot;&gt;</code> and the isolate scope definition <code>scope: {
 localModel: &#39;=myAttr&#39; }</code>, the property <code>localModel</code> on the directive&#39;s scope will reflect the
 value of <code>parentModel</code> on the parent scope. Changes to <code>parentModel</code> will be reflected in
-<code>localModel</code> and vice versa. Optional attributes should be marked as such with a question mark:
-<code>=?</code> or <code>=?attr</code>. If the binding expression is non-assignable, or if the attribute isn&#39;t
-optional and doesn&#39;t exist, an exception (<a href="error/$compile/nonassign"><code>$compile:nonassign</code></a>)
-will be thrown upon discovering changes to the local value, since it will be impossible to sync
-them back to the parent scope. By default, the <a href="api/ng/type/$rootScope.Scope#$watch"><code>$watch</code></a>
+<code>localModel</code> and vice versa. If the binding expression is non-assignable, or if the attribute
+isn&#39;t  optional and doesn&#39;t exist, an exception
+(<a href="error/$compile/nonassign"><code>$compile:nonassign</code></a>) will be thrown upon discovering changes
+to the local value, since it will be impossible to sync them back to the parent scope.</p>
+<p>By default, the <a href="api/ng/type/$rootScope.Scope#$watch"><code>$watch</code></a>
 method is used for tracking changes, and the equality check is based on object identity.
 However, if an object literal or an array literal is passed as the binding expression, the
 equality check is done by value (using the <a href="api/ng/function/angular.equals"><code>angular.equals</code></a> function). It&#39;s also possible
-to watch the evaluated value shallowly with <a href="api/ng/type/$rootScope.Scope#$watchCollection"><code>$watchCollection</code></a>: use <code>=*</code> or <code>=*attr</code> (<code>=*?</code> or <code>=*?attr</code> if the attribute is optional).</p>
+to watch the evaluated value shallowly with <a href="api/ng/type/$rootScope.Scope#$watchCollection"><code>$watchCollection</code></a>: use <code>=*</code> or <code>=*attr</code></p>
 </li>
 <li><p><code>&lt;</code> or <code>&lt;attr</code> - set up a one-way (one-directional) binding between a local scope property and an
 expression passed via the attribute <code>attr</code>. The expression is evaluated in the context of the
 parent scope. If no <code>attr</code> name is specified then the attribute name is assumed to be the same as the
-local name. You can also make the binding optional by adding <code>?</code>: <code>&lt;?</code> or <code>&lt;?attr</code>.</p>
+local name.</p>
 <p>For example, given <code>&lt;my-component my-attr=&quot;parentModel&quot;&gt;</code> and directive definition of
 <code>scope: { localModel:&#39;&lt;myAttr&#39; }</code>, then the isolated scope property <code>localModel</code> will reflect the
 value of <code>parentModel</code> on the parent scope. Any changes to <code>parentModel</code> will be reflected
@@ -312,6 +312,33 @@ and values into the expression wrapper fn. For example, if the expression is <co
 then we can specify the amount value by calling the <code>localFn</code> as <code>localFn({amount: 22})</code>.</p>
 </li>
 </ul>
+<p>All 4 kinds of bindings (<code>@</code>, <code>=</code>, <code>&lt;</code>, and <code>&amp;</code>) can be made optional by adding <code>?</code> to the expression.
+The marker must come after the mode and before the attribute name.
+See the <a href="error/$compile/iscp">Invalid Isolate Scope Definition error</a> for definition examples.
+This is useful to refine the interface directives provide.
+One subtle difference between optional and non-optional happens <strong>when the binding attribute is not
+set</strong>:</p>
+<ul>
+<li>the binding is optional: the property will not be defined</li>
+<li>the binding is not optional: the property is defined</li>
+</ul>
+<pre><code class="lang-js">app.directive(&#39;testDir&#39;, function() {
+  return {
+    scope: {
+      notoptional: &#39;=&#39;,
+      optional: &#39;=?&#39;,
+    },
+    bindToController: true,
+    controller: function() {
+      this.$onInit = function() {
+        console.log(this.hasOwnProperty(&#39;notoptional&#39;)) // true
+        console.log(this.hasOwnProperty(&#39;optional&#39;)) // false
+      }
+    }
+  }
+})
+</code></pre>
+<h5 id="combining-directives-with-different-scope-defintions">Combining directives with different scope defintions</h5>
 <p>In general it&#39;s possible to apply more than one directive to one element, but there might be limitations
 depending on the type of scope required by the directives. The following points will help explain these limitations.
 For simplicity only two directives are taken into account, but it is also applicable for several directives:</p>

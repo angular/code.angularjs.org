@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.5-build.5397+sha.b4651e5
+ * @license AngularJS v1.6.5-build.5399+sha.e65928e
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -106,7 +106,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.6.5-build.5397+sha.b4651e5/' +
+    message += '\nhttp://errors.angularjs.org/1.6.5-build.5399+sha.e65928e/' +
       (module ? module + '/' : '') + code;
 
     for (i = 0, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -2754,7 +2754,7 @@ function toDebugString(obj, maxDepth) {
 var version = {
   // These placeholder strings will be replaced by grunt's `build` task.
   // They need to be double- or single-quoted.
-  full: '1.6.5-build.5397+sha.b4651e5',
+  full: '1.6.5-build.5399+sha.e65928e',
   major: 1,
   minor: 6,
   dot: 5,
@@ -2904,7 +2904,7 @@ function publishExternalAPI(angular) {
       });
     }
   ])
-  .info({ angularVersion: '1.6.5-build.5397+sha.b4651e5' });
+  .info({ angularVersion: '1.6.5-build.5399+sha.e65928e' });
 }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -7353,21 +7353,22 @@ function $TemplateCacheProvider() {
  *   name. Given `<my-component my-attr="parentModel">` and the isolate scope definition `scope: {
  *   localModel: '=myAttr' }`, the property `localModel` on the directive's scope will reflect the
  *   value of `parentModel` on the parent scope. Changes to `parentModel` will be reflected in
- *   `localModel` and vice versa. Optional attributes should be marked as such with a question mark:
- *   `=?` or `=?attr`. If the binding expression is non-assignable, or if the attribute isn't
- *   optional and doesn't exist, an exception ({@link error/$compile/nonassign `$compile:nonassign`})
- *   will be thrown upon discovering changes to the local value, since it will be impossible to sync
- *   them back to the parent scope. By default, the {@link ng.$rootScope.Scope#$watch `$watch`}
+ *   `localModel` and vice versa. If the binding expression is non-assignable, or if the attribute
+ *   isn't  optional and doesn't exist, an exception
+ *   ({@link error/$compile/nonassign `$compile:nonassign`}) will be thrown upon discovering changes
+ *   to the local value, since it will be impossible to sync them back to the parent scope.
+ *
+ *   By default, the {@link ng.$rootScope.Scope#$watch `$watch`}
  *   method is used for tracking changes, and the equality check is based on object identity.
  *   However, if an object literal or an array literal is passed as the binding expression, the
  *   equality check is done by value (using the {@link angular.equals} function). It's also possible
  *   to watch the evaluated value shallowly with {@link ng.$rootScope.Scope#$watchCollection
- *   `$watchCollection`}: use `=*` or `=*attr` (`=*?` or `=*?attr` if the attribute is optional).
+ *   `$watchCollection`}: use `=*` or `=*attr`
  *
   * * `<` or `<attr` - set up a one-way (one-directional) binding between a local scope property and an
  *   expression passed via the attribute `attr`. The expression is evaluated in the context of the
  *   parent scope. If no `attr` name is specified then the attribute name is assumed to be the same as the
- *   local name. You can also make the binding optional by adding `?`: `<?` or `<?attr`.
+ *   local name.
  *
  *   For example, given `<my-component my-attr="parentModel">` and directive definition of
  *   `scope: { localModel:'<myAttr' }`, then the isolated scope property `localModel` will reflect the
@@ -7396,6 +7397,36 @@ function $TemplateCacheProvider() {
  *   via an expression to the parent scope. This can be done by passing a map of local variable names
  *   and values into the expression wrapper fn. For example, if the expression is `increment(amount)`
  *   then we can specify the amount value by calling the `localFn` as `localFn({amount: 22})`.
+ *
+ * All 4 kinds of bindings (`@`, `=`, `<`, and `&`) can be made optional by adding `?` to the expression.
+ * The marker must come after the mode and before the attribute name.
+ * See the {@link error/$compile/iscp Invalid Isolate Scope Definition error} for definition examples.
+ * This is useful to refine the interface directives provide.
+ * One subtle difference between optional and non-optional happens **when the binding attribute is not
+ * set**:
+ * - the binding is optional: the property will not be defined
+ * - the binding is not optional: the property is defined
+ *
+ * ```js
+ *app.directive('testDir', function() {
+    return {
+      scope: {
+        notoptional: '=',
+        optional: '=?',
+      },
+      bindToController: true,
+      controller: function() {
+        this.$onInit = function() {
+          console.log(this.hasOwnProperty('notoptional')) // true
+          console.log(this.hasOwnProperty('optional')) // false
+        }
+      }
+    }
+  })
+ *```
+ *
+ *
+ * ##### Combining directives with different scope defintions
  *
  * In general it's possible to apply more than one directive to one element, but there might be limitations
  * depending on the type of scope required by the directives. The following points will help explain these limitations.
@@ -30929,7 +30960,9 @@ var ngPluralizeDirective = ['$locale', '$interpolate', '$log', function($locale,
  *     more than one tracking expression value resolve to the same key. (This would mean that two distinct objects are
  *     mapped to the same DOM element, which is not possible.)
  *
- *     Note that the tracking expression must come last, after any filters, and the alias expression.
+ *     <div class="alert alert-warning">
+ *       <strong>Note:</strong> the `tracky by` expression must come last - after any filters, and the alias expression.
+ *     </div>
  *
  *     For example: `item in items` is equivalent to `item in items track by $id(item)`. This implies that the DOM elements
  *     will be associated by item identity in the array.
