@@ -10250,7 +10250,7 @@ return jQuery;
 } );
 
 /**
- * @license AngularJS v1.6.5-build.5399+sha.e65928e
+ * @license AngularJS v1.6.5-build.5400+sha.7673ca7
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -10358,7 +10358,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.6.5-build.5399+sha.e65928e/' +
+    message += '\nhttp://errors.angularjs.org/1.6.5-build.5400+sha.7673ca7/' +
       (module ? module + '/' : '') + code;
 
     for (i = 0, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -13006,7 +13006,7 @@ function toDebugString(obj, maxDepth) {
 var version = {
   // These placeholder strings will be replaced by grunt's `build` task.
   // They need to be double- or single-quoted.
-  full: '1.6.5-build.5399+sha.e65928e',
+  full: '1.6.5-build.5400+sha.7673ca7',
   major: 1,
   minor: 6,
   dot: 5,
@@ -13156,7 +13156,7 @@ function publishExternalAPI(angular) {
       });
     }
   ])
-  .info({ angularVersion: '1.6.5-build.5399+sha.e65928e' });
+  .info({ angularVersion: '1.6.5-build.5400+sha.7673ca7' });
 }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
