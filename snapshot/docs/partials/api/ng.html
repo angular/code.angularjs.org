@@ -25,6 +25,19 @@ components available within this core module.</p>
   <table class="definition-table">
   <tr><th>Name</th><th>Description</th></tr>
   <tr>
+    <td><a href="api/ng/function/angular.merge">angular.merge</a></td>
+    <td>
+    <p>This is a list of (known) object types that are not handled correctly by this function:</p>
+<ul>
+<li><a href="https://developer.mozilla.org/docs/Web/API/Blob"><code>Blob</code></a></li>
+<li><a href="https://developer.mozilla.org/docs/Web/API/MediaStream"><code>MediaStream</code></a></li>
+<li><a href="https://developer.mozilla.org/docs/Web/API/CanvasGradient"><code>CanvasGradient</code></a></li>
+<li>AngularJS <a href="api/ng/type/$rootScope.Scope">scopes</a>;</li>
+</ul>
+ 
+    </td>
+  </tr>
+  <tr>
     <td><a href="api/ng/function/angular.toJson">angular.toJson</a></td>
     <td>
     <p>The Safari browser throws a <code>RangeError</code> instead of returning <code>null</code> when it tries to stringify a <code>Date</code>

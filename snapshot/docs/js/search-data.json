@@ -968,7 +968,7 @@
   {
     "path": "api/ng/function/angular.merge",
     "titleWords": "angular.merge",
-    "keywords": "an angular api as by can copy copying deep deeply descends destination do dst empty enumerable extend extends from function html if into merge module multiple ng object object1 object2 objects of original own partials passing performing preserve properties recursively reference so source specify src target the to unlike var want you",
+    "keywords": "$rootscope an angular angularjs api are as be blob but by can canvasgradient cases com copy copying correctly deep deeply deprecated descends destination do dst edge empty enumerable extend extends from function handled html if in instead into is issues known known-issues lifecycle list mediastream merge module mozilla multiple ng not object object1 object2 objects of org original own partials passing performing preserve properties recursively reference removed scope scopes sinceversion so source specify src suggest supported target that the there this to types unlike using var want we will you",
     "members": ""
   },
   {
