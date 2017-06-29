@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.5-build.5411+sha.a772b94
+ * @license AngularJS v1.6.5-build.5412+sha.8deff89
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -4135,7 +4135,7 @@ angular.module('ngAnimate', [], function initAngularHelpers() {
   isFunction  = angular.isFunction;
   isElement   = angular.isElement;
 })
-  .info({ angularVersion: '1.6.5-build.5411+sha.a772b94' })
+  .info({ angularVersion: '1.6.5-build.5412+sha.8deff89' })
   .directive('ngAnimateSwap', ngAnimateSwapDirective)
 
   .directive('ngAnimateChildren', $$AnimateChildrenDirective)
