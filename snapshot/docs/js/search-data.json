@@ -1850,7 +1850,7 @@
   {
     "path": "api/ng/service/$log",
     "titleWords": "$log",
-    "keywords": "$log $logprovider $window and api browser can change console debug debugenabled debugging default example-log-service for html implementation into is log logging main message messages module ng of partials present purpose safely service simple simplify the this to troubleshooting use writes you",
+    "keywords": "$log $logprovider $window all and angularjs api blackbox blackboxing browser browsers calls can change chrome com console debug debugenabled debugging default description example-log-service for html implementation in into is javascript location log logging main message messages module mozilla ng not note of org partials present purpose reveal safely service simple simplify source support the this to troubleshooting use writes you your",
     "members": "debug error info log warn"
   },
   {

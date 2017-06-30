@@ -29,6 +29,11 @@
   <p>Simple service for logging. Default implementation safely writes the message
 into the browser&#39;s console (if present).</p>
 <p>The main purpose of this service is to simplify debugging and troubleshooting.</p>
+<p>To reveal the location of the calls to <code>$log</code> in the JavaScript console,
+you can &quot;blackbox&quot; the AngularJS source in your browser:</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Tools/Debugger/How_to/Black_box_a_source">Mozilla description of blackboxing</a>.
+<a href="https://developer.chrome.com/devtools/docs/blackboxing">Chrome description of blackboxing</a>.</p>
+<p>Note: Not all browsers support blackboxing.</p>
 <p>The default is to log <code>debug</code> messages. You can use
 <a href="api/ng/provider/$logProvider">ng.$logProvider#debugEnabled</a> to change this.</p>
 
