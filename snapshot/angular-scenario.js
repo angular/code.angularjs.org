@@ -10250,7 +10250,7 @@ return jQuery;
 } );
 
 /**
- * @license AngularJS v1.6.5-build.5414+sha.bf0af6d
+ * @license AngularJS v1.6.5-build.5415+sha.cdaa6a9
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -10358,7 +10358,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.6.5-build.5414+sha.bf0af6d/' +
+    message += '\nhttp://errors.angularjs.org/1.6.5-build.5415+sha.cdaa6a9/' +
       (module ? module + '/' : '') + code;
 
     for (i = 0, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -13020,7 +13020,7 @@ function toDebugString(obj, maxDepth) {
 var version = {
   // These placeholder strings will be replaced by grunt's `build` task.
   // They need to be double- or single-quoted.
-  full: '1.6.5-build.5414+sha.bf0af6d',
+  full: '1.6.5-build.5415+sha.cdaa6a9',
   major: 1,
   minor: 6,
   dot: 5,
@@ -13170,7 +13170,7 @@ function publishExternalAPI(angular) {
       });
     }
   ])
-  .info({ angularVersion: '1.6.5-build.5414+sha.bf0af6d' });
+  .info({ angularVersion: '1.6.5-build.5415+sha.cdaa6a9' });
 }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -23522,7 +23522,7 @@ function $IntervalProvider() {
     interval.cancel = function(promise) {
       if (promise && promise.$$intervalId in intervals) {
         // Interval cancels should not report as unhandled promise.
-        intervals[promise.$$intervalId].promise.catch(noop);
+        markQExceptionHandled(intervals[promise.$$intervalId].promise);
         intervals[promise.$$intervalId].reject('canceled');
         $window.clearInterval(promise.$$intervalId);
         delete intervals[promise.$$intervalId];
@@ -27154,7 +27154,7 @@ function qFactory(nextTick, exceptionHandler, errorOnUnhandledRejections) {
     state.pending = undefined;
     try {
       for (var i = 0, ii = pending.length; i < ii; ++i) {
-        state.pur = true;
+        markQStateExceptionHandled(state);
         promise = pending[i][0];
         fn = pending[i][state.status];
         try {
@@ -27181,8 +27181,8 @@ function qFactory(nextTick, exceptionHandler, errorOnUnhandledRejections) {
     // eslint-disable-next-line no-unmodified-loop-condition
     while (!queueSize && checkQueue.length) {
       var toCheck = checkQueue.shift();
-      if (!toCheck.pur) {
-        toCheck.pur = true;
+      if (!isStateExceptionHandled(toCheck)) {
+        markQStateExceptionHandled(toCheck);
         var errorMessage = 'Possibly unhandled rejection: ' + toDebugString(toCheck.value);
         if (isError(toCheck.value)) {
           exceptionHandler(toCheck.value, errorMessage);
@@ -27194,7 +27194,7 @@ function qFactory(nextTick, exceptionHandler, errorOnUnhandledRejections) {
   }
 
   function scheduleProcessQueue(state) {
-    if (errorOnUnhandledRejections && !state.pending && state.status === 2 && !state.pur) {
+    if (errorOnUnhandledRejections && !state.pending && state.status === 2 && !isStateExceptionHandled(state)) {
       if (queueSize === 0 && checkQueue.length === 0) {
         nextTick(processChecks);
       }
@@ -27473,6 +27473,16 @@ function qFactory(nextTick, exceptionHandler, errorOnUnhandledRejections) {
   $Q.race = race;
 
   return $Q;
+}
+
+function isStateExceptionHandled(state) {
+  return !!state.pur;
+}
+function markQStateExceptionHandled(state) {
+  state.pur = true;
+}
+function markQExceptionHandled(q) {
+  markQStateExceptionHandled(q.$$state);
 }
 
 /** @this */
@@ -30543,7 +30553,7 @@ function $TimeoutProvider() {
     timeout.cancel = function(promise) {
       if (promise && promise.$$timeoutId in deferreds) {
         // Timeout cancels should not report an unhandled promise.
-        deferreds[promise.$$timeoutId].promise.catch(noop);
+        markQExceptionHandled(deferreds[promise.$$timeoutId].promise);
         deferreds[promise.$$timeoutId].reject('canceled');
         delete deferreds[promise.$$timeoutId];
         return $browser.defer.cancel(promise.$$timeoutId);
