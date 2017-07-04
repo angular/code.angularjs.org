@@ -58,6 +58,7 @@ functions.</li>
 <li><strong>headers</strong> – <code>{function([headerName])}</code> – Header getter function.</li>
 <li><strong>config</strong> – <code>{Object}</code> – The configuration object that was used to generate the request.</li>
 <li><strong>statusText</strong> – <code>{string}</code> – HTTP status text of the response.</li>
+<li><strong>xhrStatus</strong> – <code>{string}</code> – Status of the XMLHttpRequest (<code>complete</code>, <code>error</code>, <code>timeout</code> or <code>abort</code>).</li>
 </ul>
 <p>A response status code between 200 and 299 is considered a success status and will result in
 the success callback being called. Any response status code outside of that range is

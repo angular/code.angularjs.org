@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.6-build.5418+sha.122d89b
+ * @license AngularJS v1.6.6-build.5419+sha.e872f0e
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -803,7 +803,7 @@ angular.mock.TzDate.prototype = Date.prototype;
  * You need to require the `ngAnimateMock` module in your test suite for instance `beforeEach(module('ngAnimateMock'))`
  */
 angular.mock.animate = angular.module('ngAnimateMock', ['ng'])
-  .info({ angularVersion: '1.6.6-build.5418+sha.122d89b' })
+  .info({ angularVersion: '1.6.6-build.5419+sha.e872f0e' })
 
   .config(['$provide', function($provide) {
 
@@ -1361,8 +1361,8 @@ function createHttpBackendMock($rootScope, $timeout, $delegate, $browser) {
 
     return function() {
       return angular.isNumber(status)
-          ? [status, data, headers, statusText]
-          : [200, status, data, headers];
+          ? [status, data, headers, statusText, 'complete']
+          : [200, status, data, headers, 'complete'];
     };
   }
 
@@ -1398,14 +1398,14 @@ function createHttpBackendMock($rootScope, $timeout, $delegate, $browser) {
         var response = wrapped.response(method, url, data, headers, wrapped.params(url));
         xhr.$$respHeaders = response[2];
         callback(copy(response[0]), copy(response[1]), xhr.getAllResponseHeaders(),
-                 copy(response[3] || ''));
+                 copy(response[3] || ''), copy(response[4]));
       }
 
       function handleTimeout() {
         for (var i = 0, ii = responses.length; i < ii; i++) {
           if (responses[i] === handleResponse) {
             responses.splice(i, 1);
-            callback(-1, undefined, '');
+            callback(-1, undefined, '', undefined, 'timeout');
             break;
           }
         }
@@ -2409,7 +2409,7 @@ angular.module('ngMock', ['ng']).provider({
   $provide.decorator('$rootScope', angular.mock.$RootScopeDecorator);
   $provide.decorator('$controller', createControllerDecorator($compileProvider));
   $provide.decorator('$httpBackend', angular.mock.$httpBackendDecorator);
-}]).info({ angularVersion: '1.6.6-build.5418+sha.122d89b' });
+}]).info({ angularVersion: '1.6.6-build.5419+sha.e872f0e' });
 
 /**
  * @ngdoc module
@@ -2424,7 +2424,7 @@ angular.module('ngMock', ['ng']).provider({
  */
 angular.module('ngMockE2E', ['ng']).config(['$provide', function($provide) {
   $provide.decorator('$httpBackend', angular.mock.e2e.$httpBackendDecorator);
-}]).info({ angularVersion: '1.6.6-build.5418+sha.122d89b' });
+}]).info({ angularVersion: '1.6.6-build.5419+sha.e872f0e' });
 
 /**
  * @ngdoc service
