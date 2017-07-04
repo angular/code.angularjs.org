@@ -26,7 +26,7 @@
 <p>A special directive is necessary because we cannot use interpolation inside the <code>open</code>
 attribute. See the <a href="guide/interpolation">interpolation guide</a> for more info.</p>
 <h2 id="a-note-about-browser-compatibility">A note about browser compatibility</h2>
-<p>Edge, Firefox, and Internet Explorer do not support the <code>details</code> element, it is
+<p>Internet Explorer and Edge do not support the <code>details</code> element, it is
 recommended to use <a href="api/ng/directive/ngShow"><code>ngShow</code></a> and <a href="api/ng/directive/ngHide"><code>ngHide</code></a> instead.</p>
 
 </div>
@@ -107,7 +107,7 @@ recommended to use <a href="api/ng/directive/ngShow"><code>ngShow</code></a> and
       name="index.html"
       language="html"
       type="html">
-      <pre><code>&lt;label&gt;Check me check multiple: &lt;input type=&quot;checkbox&quot; ng-model=&quot;open&quot;&gt;&lt;/label&gt;&lt;br/&gt;&#10;&lt;details id=&quot;details&quot; ng-open=&quot;open&quot;&gt;&#10;   &lt;summary&gt;Show/Hide me&lt;/summary&gt;&#10;&lt;/details&gt;</code></pre>
+      <pre><code>&lt;label&gt;Toggle details: &lt;input type=&quot;checkbox&quot; ng-model=&quot;open&quot;&gt;&lt;/label&gt;&lt;br/&gt;&#10;&lt;details id=&quot;details&quot; ng-open=&quot;open&quot;&gt;&#10;   &lt;summary&gt;List&lt;/summary&gt;&#10;   &lt;ul&gt;&#10;     &lt;li&gt;Apple&lt;/li&gt;&#10;     &lt;li&gt;Orange&lt;/li&gt;&#10;     &lt;li&gt;Durian&lt;/li&gt;&#10;   &lt;/ul&gt;&#10;&lt;/details&gt;</code></pre>
     </div>
   
     <div class="runnable-example-file" 

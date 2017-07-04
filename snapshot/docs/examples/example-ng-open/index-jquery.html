@@ -12,9 +12,14 @@
   
 </head>
 <body ng-app="">
-  <label>Check me check multiple: <input type="checkbox" ng-model="open"></label><br/>
+  <label>Toggle details: <input type="checkbox" ng-model="open"></label><br/>
 <details id="details" ng-open="open">
-   <summary>Show/Hide me</summary>
+   <summary>List</summary>
+   <ul>
+     <li>Apple</li>
+     <li>Orange</li>
+     <li>Durian</li>
+   </ul>
 </details>
 </body>
 </html>
