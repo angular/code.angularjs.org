@@ -269,7 +269,7 @@ is specified, ng-repeat associates elements by identity. It is an error to have
 more than one tracking expression value resolve to the same key. (This would mean that two distinct objects are
 mapped to the same DOM element, which is not possible.)</p>
 <div class="alert alert-warning">
-  <strong>Note:</strong> the <code>tracky by</code> expression must come last - after any filters, and the alias expression.
+  <strong>Note:</strong> the <code>track by</code> expression must come last - after any filters, and the alias expression.
 </div>
 
 <p>For example: <code>item in items</code> is equivalent to <code>item in items track by $id(item)</code>. This implies that the DOM elements
