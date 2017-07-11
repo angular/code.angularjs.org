@@ -231,8 +231,8 @@ see below). Inequality is determined according to reference inequality,
 according to the <a href="api/ng/function/angular.equals"><code>angular.equals</code></a> function. To save the value of the object for
 later comparison, the <a href="api/ng/function/angular.copy"><code>angular.copy</code></a> function is used. This therefore means that
 watching complex objects will have adverse memory and performance implications.</li>
-<li>This should not be used to watch for changes in objects that are
-or contain <a href="https://developer.mozilla.org/docs/Web/API/File">File</a> objects due to limitations with <a href="api/ng/function/angular.copy"><code>angular.copy</code></a>.</li>
+<li>This should not be used to watch for changes in objects that are (or contain)
+<a href="https://developer.mozilla.org/docs/Web/API/File">File</a> objects due to limitations with <a href="api/ng/function/angular.copy"><code>angular.copy</code></a>.</li>
 <li>The watch <code>listener</code> may change the model, which may trigger other <code>listener</code>s to fire.
 This is achieved by rerunning the watchers until no changes are detected. The rerun
 iteration limit is 10 to prevent an infinite loop deadlock.</li>
