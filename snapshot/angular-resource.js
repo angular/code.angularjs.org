@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.6-build.5420+sha.af83c15
+ * @license AngularJS v1.6.6-build.5421+sha.77b302a
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -442,7 +442,7 @@ function shallowClearAndCopy(src, dst) {
  *
  */
 angular.module('ngResource', ['ng']).
-  info({ angularVersion: '1.6.6-build.5420+sha.af83c15' }).
+  info({ angularVersion: '1.6.6-build.5421+sha.77b302a' }).
   provider('$resource', function ResourceProvider() {
     var PROTOCOL_AND_IPV6_REGEX = /^https?:\/\/\[[^\]]*][^/]*/;
 
@@ -493,7 +493,7 @@ angular.module('ngResource', ['ng']).
      *       $resourceProvider.defaults.actions.update = {
      *         method: 'PUT'
      *       };
-     *     });
+     *     }]);
      * ```
      *
      * Or you can even overwrite the whole `actions` list and specify your own:
