@@ -27,6 +27,9 @@ the HTML5 week input, a text element will be used. In that case, the text must b
 week format (yyyy-W##), for example: <code>2013-W02</code>.</p>
 <p>The model must always be a Date object, otherwise AngularJS will throw an error.
 Invalid <code>Date</code> objects (dates whose <code>getTime()</code> is <code>NaN</code>) will be rendered as an empty string.</p>
+<p>The value of the resulting Date object will be set to Thursday at 00:00:00 of the requested week,
+due to ISO-8601 week numbering standards. Information on ISO&#39;s system for numbering the weeks of the
+year can be found at: <a href="https://en.wikipedia.org/wiki/ISO_8601#Week_dates">https://en.wikipedia.org/wiki/ISO_8601#Week_dates</a></p>
 <p>The timezone to be used to read/write the <code>Date</code> instance in the model can be defined using
 <a href="api/ng/directive/ngModelOptions">ngModelOptions</a>. By default, this is the timezone of the browser.</p>
 
