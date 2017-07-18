@@ -10250,7 +10250,7 @@ return jQuery;
 } );
 
 /**
- * @license AngularJS v1.6.6-build.5430+sha.2fb2d09
+ * @license AngularJS v1.6.6-build.5431+sha.8de9794
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -10358,7 +10358,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.6.6-build.5430+sha.2fb2d09/' +
+    message += '\nhttp://errors.angularjs.org/1.6.6-build.5431+sha.8de9794/' +
       (module ? module + '/' : '') + code;
 
     for (i = 0, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -13020,7 +13020,7 @@ function toDebugString(obj, maxDepth) {
 var version = {
   // These placeholder strings will be replaced by grunt's `build` task.
   // They need to be double- or single-quoted.
-  full: '1.6.6-build.5430+sha.2fb2d09',
+  full: '1.6.6-build.5431+sha.8de9794',
   major: 1,
   minor: 6,
   dot: 6,
@@ -13170,7 +13170,7 @@ function publishExternalAPI(angular) {
       });
     }
   ])
-  .info({ angularVersion: '1.6.6-build.5430+sha.2fb2d09' });
+  .info({ angularVersion: '1.6.6-build.5431+sha.8de9794' });
 }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -25592,12 +25592,13 @@ function findConstantAndWatchExpressions(ast, $filter, parentIsPure) {
     argsToWatch = [];
     forEach(ast.properties, function(property) {
       findConstantAndWatchExpressions(property.value, $filter, astIsPure);
-      allConstants = allConstants && property.value.constant && !property.computed;
+      allConstants = allConstants && property.value.constant;
       if (!property.value.constant) {
         argsToWatch.push.apply(argsToWatch, property.value.toWatch);
       }
       if (property.computed) {
         findConstantAndWatchExpressions(property.key, $filter, astIsPure);
+        allConstants = allConstants && property.key.constant;
         if (!property.key.constant) {
           argsToWatch.push.apply(argsToWatch, property.key.toWatch);
         }
