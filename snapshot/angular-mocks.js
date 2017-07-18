@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.6-build.5433+sha.631076a
+ * @license AngularJS v1.6.6-build.5434+sha.823c7ed
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -803,7 +803,7 @@ angular.mock.TzDate.prototype = Date.prototype;
  * You need to require the `ngAnimateMock` module in your test suite for instance `beforeEach(module('ngAnimateMock'))`
  */
 angular.mock.animate = angular.module('ngAnimateMock', ['ng'])
-  .info({ angularVersion: '1.6.6-build.5433+sha.631076a' })
+  .info({ angularVersion: '1.6.6-build.5434+sha.823c7ed' })
 
   .config(['$provide', function($provide) {
 
@@ -2409,7 +2409,7 @@ angular.module('ngMock', ['ng']).provider({
   $provide.decorator('$rootScope', angular.mock.$RootScopeDecorator);
   $provide.decorator('$controller', createControllerDecorator($compileProvider));
   $provide.decorator('$httpBackend', angular.mock.$httpBackendDecorator);
-}]).info({ angularVersion: '1.6.6-build.5433+sha.631076a' });
+}]).info({ angularVersion: '1.6.6-build.5434+sha.823c7ed' });
 
 /**
  * @ngdoc module
@@ -2424,7 +2424,7 @@ angular.module('ngMock', ['ng']).provider({
  */
 angular.module('ngMockE2E', ['ng']).config(['$provide', function($provide) {
   $provide.decorator('$httpBackend', angular.mock.e2e.$httpBackendDecorator);
-}]).info({ angularVersion: '1.6.6-build.5433+sha.631076a' });
+}]).info({ angularVersion: '1.6.6-build.5434+sha.823c7ed' });
 
 /**
  * @ngdoc service

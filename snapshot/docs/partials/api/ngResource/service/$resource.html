@@ -199,7 +199,12 @@ for more information.</li>
 <a href="https://developer.mozilla.org/en-US/docs/DOM/XMLHttpRequest#responseType">requestType</a>.</li>
 <li><strong><code>interceptor</code></strong> - <code>{Object=}</code> - The interceptor object has two optional methods -
 <code>response</code> and <code>responseError</code>. Both <code>response</code> and <code>responseError</code> interceptors get called
-with <code>http response</code> object. See <a href="api/ng/service/$http">$http interceptors</a>.</li>
+with <code>http response</code> object. See <a href="api/ng/service/$http">$http interceptors</a>. In addition, the
+resource instance or array object is accessible by the <code>resource</code> property of the
+<code>http response</code> object.
+Keep in mind that the associated promise will be resolved with the value returned by the
+response interceptor, if one is specified. The default response interceptor returns
+<code>response.resource</code> (i.e. the resource instance or array).</li>
 <li><strong><code>hasBody</code></strong> - <code>{boolean}</code> - allows to specify if a request body should be included or not.
 If not specified only POST, PUT and PATCH requests will have a body.</li>
 </ul>
@@ -291,8 +296,7 @@ instance or collection.</p>
 updated with data from server. This makes it easy to use in
 <a href="api/ngRoute/provider/$routeProvider">resolve section of $routeProvider.when()</a> to defer view
 rendering until the resource(s) are loaded.</p>
-<p>On failure, the promise is rejected with the <a href="api/ng/service/$http">http response</a> object, without
-the <code>resource</code> property.</p>
+<p>On failure, the promise is rejected with the <a href="api/ng/service/$http">http response</a> object.</p>
 <p>If an interceptor object was provided, the promise will instead be resolved with the value
 returned by the interceptor.</p>
 </li>
