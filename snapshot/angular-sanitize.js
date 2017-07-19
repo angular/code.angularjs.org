@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.6-build.5434+sha.823c7ed
+ * @license AngularJS v1.6.6-build.5435+sha.e6d5fe7
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -604,7 +604,7 @@ function sanitizeText(chars) {
 // define ngSanitize module and register $sanitize service
 angular.module('ngSanitize', [])
   .provider('$sanitize', $SanitizeProvider)
-  .info({ angularVersion: '1.6.6-build.5434+sha.823c7ed' });
+  .info({ angularVersion: '1.6.6-build.5435+sha.e6d5fe7' });
 
 /**
  * @ngdoc filter
