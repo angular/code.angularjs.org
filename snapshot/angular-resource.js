@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.6-build.5437+sha.ac57a25
+ * @license AngularJS v1.6.6-build.5438+sha.01d6a47
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -446,7 +446,7 @@ function shallowClearAndCopy(src, dst) {
  *
  */
 angular.module('ngResource', ['ng']).
-  info({ angularVersion: '1.6.6-build.5437+sha.ac57a25' }).
+  info({ angularVersion: '1.6.6-build.5438+sha.01d6a47' }).
   provider('$resource', function ResourceProvider() {
     var PROTOCOL_AND_IPV6_REGEX = /^https?:\/\/\[[^\]]*][^/]*/;
 
@@ -835,7 +835,9 @@ angular.module('ngResource', ['ng']).
 
             function cancelRequest(value) {
               promise.catch(noop);
-              timeoutDeferred.resolve(value);
+              if (timeoutDeferred !== null) {
+                timeoutDeferred.resolve(value);
+              }
             }
           };
 
