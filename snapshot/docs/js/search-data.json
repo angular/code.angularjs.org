@@ -54,6 +54,12 @@
     "members": ""
   },
   {
+    "path": "error/$compile/missingattr",
+    "titleWords": "missingattr",
+    "keywords": "$compile $compileprovider all an and aren attribute attributes be bindings error first html if in is may mentioned missing missingattr more must non-optional occur of one only or partials required set strictcomponentbindingsenabled the then this throw to true when will without",
+    "members": ""
+  },
+  {
     "path": "error/$compile/multidir",
     "titleWords": "multidir",
     "keywords": "$compile an and applied are asking attempting causing collision configuration contention controller declared define directive directives dom element error example for html in include incompatible is isolated issue multidir multiple name occurs of on one option or partials processing publishing remove requesting resolve resource result same scenarios scope template templateurl the them this to transclusion under unsupported when which with would",
@@ -1203,7 +1209,7 @@
     "path": "api/ng/provider/$compileProvider",
     "titleWords": "$compileProvider",
     "keywords": "$compileprovider $inject api html module ng partials provider",
-    "members": "ahrefsanitizationwhitelist commentdirectivesenabled component cssclassdirectivesenabled debuginfoenabled directive imgsrcsanitizationwhitelist onchangesttl"
+    "members": "ahrefsanitizationwhitelist commentdirectivesenabled component cssclassdirectivesenabled debuginfoenabled directive imgsrcsanitizationwhitelist onchangesttl strictcomponentbindingsenabled"
   },
   {
     "path": "api/ng/type/$compile.directive.Attributes",

@@ -48,6 +48,11 @@ angular.module('pagesData', [])
     "area": "error",
     "path": "error/$compile/iscp"
   },
+  "error/$compile/missingattr": {
+    "name": "missingattr",
+    "area": "error",
+    "path": "error/$compile/missingattr"
+  },
   "error/$compile/multidir": {
     "name": "multidir",
     "area": "error",
