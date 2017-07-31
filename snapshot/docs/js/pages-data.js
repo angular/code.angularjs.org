@@ -2782,7 +2782,6 @@ angular.module('pagesData', [])
     "path": "error/orderBy"
   },
   ".": {
-    "name": "production",
     "path": "."
   },
   "api/ng/function": {

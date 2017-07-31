@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.6-build.5440+sha.394dbcc
+ * @license AngularJS v1.6.6-build.5441+sha.0179c70
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -22,7 +22,7 @@
 
 
 angular.module('ngCookies', ['ng']).
-  info({ angularVersion: '1.6.6-build.5440+sha.394dbcc' }).
+  info({ angularVersion: '1.6.6-build.5441+sha.0179c70' }).
   /**
    * @ngdoc provider
    * @name $cookiesProvider
