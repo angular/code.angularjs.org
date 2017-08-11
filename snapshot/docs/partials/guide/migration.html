@@ -62,8 +62,8 @@ commits for more info.</p>
 <li><p><strong>$location</strong> now uses <code>&#39;!&#39;</code> as the default hash-prefix for hash-bang URLs, instead of the empty
 string. (<a href="guide/migration#commit-aa077e8">Details</a>)</p>
 </li>
-<li><p><strong>$compile</strong> will (by default) not pre-assign bindings on controller instances.
-(<a href="guide/migration#commit-bcd0d4">Details</a>)</p>
+<li><p><strong>$compile</strong> will (by default) not pre-assign bindings on component/directive controller
+instances. (<a href="guide/migration#commit-bcd0d4">Details</a>)</p>
 </li>
 <li><p><strong>http</strong> imposes additional restrictions to <strong>JSONP</strong> requests for security reasons
 (see <a href="guide/migration#migrate1.5to1.6-ng-services-$http">details</a> below):</p>
@@ -354,13 +354,13 @@ if the option does not provide a value attribute.</p>
 <p><major />
 <a name="commit-bcd0d4"></a>
 <strong>Due to <a href="https://github.com/angular/angular.js/commit/bcd0d4d896d0dfdd988ff4f849c1d40366125858">bcd0d4</a></strong>,
-pre-assigning bindings on controller instances is disabled by default. It is still possible to turn
-it back on, which should help during the migration. Pre-assigning bindings has been deprecated and
-will be removed in a future version, so we strongly recommend migrating your applications to not
-rely on it as soon as possible.</p>
+pre-assigning bindings on component/directive controller instances is disabled by default, which
+means that they will no longer be available inside the constructors. It is still possible to turn it
+back on, which should help during the migration. Pre-assigning bindings has been deprecated and will
+be removed in a future version, so we strongly recommend migrating your applications to not rely on
+it as soon as possible.</p>
 <p>Initialization logic that relies on bindings being present should be put in the controller&#39;s
-<code>$onInit()</code> method, which is guaranteed to always be called <em>after</em> the bindings have been
-assigned.</p>
+<code>$onInit()</code> method, which is guaranteed to always be called <em>after</em> the bindings have been assigned.</p>
 <p>Before:</p>
 <pre><code class="lang-js">.component(&#39;myComponent&#39;, {
   bindings: {value: &#39;&lt;&#39;},
