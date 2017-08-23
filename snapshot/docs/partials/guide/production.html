@@ -14,6 +14,9 @@ and adds CSS classes to data-bound elements:</p>
 CSS class are attached to the corresponding element. These scope references can then be accessed via
 <code>element.scope()</code> and <code>element.isolateScope()</code>.</p>
 </li>
+<li><p>Placeholder comments for structural directives will contain information about what directive
+and binding caused the placeholder. E.g. <code>&lt;!-- ngIf: shouldShow() --&gt;</code>.</p>
+</li>
 </ul>
 <p>Tools like <a href="https://github.com/angular/protractor">Protractor</a> and
 <a href="https://github.com/angular/angularjs-batarang">Batarang</a> need this information to run,
