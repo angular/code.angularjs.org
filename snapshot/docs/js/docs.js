@@ -14,7 +14,6 @@ angular.module('docsApp', [
   'search',
   'tutorials',
   'versions',
-  'deployment',
   'ui.bootstrap.dropdown'
 ])
 
@@ -237,13 +236,7 @@ angular.module('examples', [])
   return {
     restrict: 'C',
     scope : true,
-    controller : ['$scope', 'DEPLOYMENT', function($scope, DEPLOYMENT) {
-      var exampleIndexFile = (DEPLOYMENT === 'default' ? 'index' : 'index-' + DEPLOYMENT) + '.html';
-
-      $scope.getExampleIndex = function(basePath) {
-        return basePath + '/' + exampleIndexFile;
-      };
-
+    controller : ['$scope', function($scope) {
       $scope.setTab = function(index) {
         var tab = $scope.tabs[index];
         $scope.activeTabIndex = index;
