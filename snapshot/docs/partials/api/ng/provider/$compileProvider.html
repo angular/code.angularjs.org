@@ -394,7 +394,12 @@ binding information and a reference to the current scope on to DOM elements.
 If enabled, the compiler will add the following to DOM elements that have been bound to the scope</p>
 <ul>
 <li><code>ng-binding</code> CSS class</li>
+<li><code>ng-scope</code> and <code>ng-isolated-scope</code> CSS classes</li>
 <li><code>$binding</code> data property containing an array of the binding expressions</li>
+<li>Data properties used by the <a href="api/ng/function/angular.element#methods"><code>scope()</code>/<code>isolateScope()</code> methods</a> to return
+the element&#39;s scope.</li>
+<li>Placeholder comments will contain information about what directive and binding caused the placeholder.
+E.g. <code>&lt;!-- ngIf: shouldShow() --&gt;</code>.</li>
 </ul>
 <p>You may want to disable this in production for a significant performance boost. See
 <a href="guide/production#disabling-debug-data">Disabling Debug Data</a> for more.</p>
