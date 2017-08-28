@@ -106,14 +106,14 @@ attribute. See the <a href="guide/interpolation">interpolation guide</a> for mor
       name="index.html"
       language="html"
       type="html">
-      <pre><code>&lt;label&gt;Check me to check both: &lt;input type=&quot;checkbox&quot; ng-model=&quot;master&quot;&gt;&lt;/label&gt;&lt;br/&gt;&#10;&lt;input id=&quot;checkSlave&quot; type=&quot;checkbox&quot; ng-checked=&quot;master&quot; aria-label=&quot;Slave input&quot;&gt;</code></pre>
+      <pre><code>&lt;label&gt;Check me to check both: &lt;input type=&quot;checkbox&quot; ng-model=&quot;leader&quot;&gt;&lt;/label&gt;&lt;br/&gt;&#10;&lt;input id=&quot;checkFollower&quot; type=&quot;checkbox&quot; ng-checked=&quot;leader&quot; aria-label=&quot;Follower input&quot;&gt;</code></pre>
     </div>
   
     <div class="runnable-example-file" 
       name="protractor.js"
       type="protractor"
       language="js">
-      <pre><code>it(&#39;should check both checkBoxes&#39;, function() {&#10;  expect(element(by.id(&#39;checkSlave&#39;)).getAttribute(&#39;checked&#39;)).toBeFalsy();&#10;  element(by.model(&#39;master&#39;)).click();&#10;  expect(element(by.id(&#39;checkSlave&#39;)).getAttribute(&#39;checked&#39;)).toBeTruthy();&#10;});</code></pre>
+      <pre><code>it(&#39;should check both checkBoxes&#39;, function() {&#10;  expect(element(by.id(&#39;checkFollower&#39;)).getAttribute(&#39;checked&#39;)).toBeFalsy();&#10;  element(by.model(&#39;leader&#39;)).click();&#10;  expect(element(by.id(&#39;checkFollower&#39;)).getAttribute(&#39;checked&#39;)).toBeTruthy();&#10;});</code></pre>
     </div>
   
 
