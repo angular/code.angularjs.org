@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.7-build.5457+sha.ecc09a4
+ * @license AngularJS v1.6.7-build.5458+sha.20590c0
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -803,7 +803,7 @@ angular.mock.TzDate.prototype = Date.prototype;
  * You need to require the `ngAnimateMock` module in your test suite for instance `beforeEach(module('ngAnimateMock'))`
  */
 angular.mock.animate = angular.module('ngAnimateMock', ['ng'])
-  .info({ angularVersion: '1.6.7-build.5457+sha.ecc09a4' })
+  .info({ angularVersion: '1.6.7-build.5458+sha.20590c0' })
 
   .config(['$provide', function($provide) {
 
@@ -2409,7 +2409,7 @@ angular.module('ngMock', ['ng']).provider({
   $provide.decorator('$rootScope', angular.mock.$RootScopeDecorator);
   $provide.decorator('$controller', createControllerDecorator($compileProvider));
   $provide.decorator('$httpBackend', angular.mock.$httpBackendDecorator);
-}]).info({ angularVersion: '1.6.7-build.5457+sha.ecc09a4' });
+}]).info({ angularVersion: '1.6.7-build.5458+sha.20590c0' });
 
 /**
  * @ngdoc module
@@ -2424,7 +2424,7 @@ angular.module('ngMock', ['ng']).provider({
  */
 angular.module('ngMockE2E', ['ng']).config(['$provide', function($provide) {
   $provide.decorator('$httpBackend', angular.mock.e2e.$httpBackendDecorator);
-}]).info({ angularVersion: '1.6.7-build.5457+sha.ecc09a4' });
+}]).info({ angularVersion: '1.6.7-build.5458+sha.20590c0' });
 
 /**
  * @ngdoc service
@@ -3259,25 +3259,25 @@ angular.mock.$RootScopeDecorator = ['$delegate', function($delegate) {
     if (/transitionend/.test(eventType)) {
       if (window.WebKitTransitionEvent) {
         evnt = new window.WebKitTransitionEvent(eventType, eventData);
-        evnt.initEvent(eventType, false, true);
+        evnt.initEvent(eventType, eventData.bubbles, true);
       } else {
         try {
           evnt = new window.TransitionEvent(eventType, eventData);
         } catch (e) {
           evnt = window.document.createEvent('TransitionEvent');
-          evnt.initTransitionEvent(eventType, null, null, null, eventData.elapsedTime || 0);
+          evnt.initTransitionEvent(eventType, eventData.bubbles, null, null, eventData.elapsedTime || 0);
         }
       }
     } else if (/animationend/.test(eventType)) {
       if (window.WebKitAnimationEvent) {
         evnt = new window.WebKitAnimationEvent(eventType, eventData);
-        evnt.initEvent(eventType, false, true);
+        evnt.initEvent(eventType, eventData.bubbles, true);
       } else {
         try {
           evnt = new window.AnimationEvent(eventType, eventData);
         } catch (e) {
           evnt = window.document.createEvent('AnimationEvent');
-          evnt.initAnimationEvent(eventType, null, null, null, eventData.elapsedTime || 0);
+          evnt.initAnimationEvent(eventType, eventData.bubbles, null, null, eventData.elapsedTime || 0);
         }
       }
     } else if (/touch/.test(eventType) && supportsTouchEvents()) {

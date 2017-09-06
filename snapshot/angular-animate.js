@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.7-build.5457+sha.ecc09a4
+ * @license AngularJS v1.6.7-build.5458+sha.20590c0
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -1314,6 +1314,12 @@ var $AnimateCssProvider = ['$animateProvider', /** @this */ function($animatePro
       function onAnimationProgress(event) {
         event.stopPropagation();
         var ev = event.originalEvent || event;
+
+        if (ev.target !== node) {
+          // Since TransitionEvent / AnimationEvent bubble up,
+          // we have to ignore events by finished child animations
+          return;
+        }
 
         // we now always use `Date.now()` due to the recent changes with
         // event.timeStamp in Firefox, Webkit and Chrome (see #13494 for more info)
@@ -4135,7 +4141,7 @@ angular.module('ngAnimate', [], function initAngularHelpers() {
   isFunction  = angular.isFunction;
   isElement   = angular.isElement;
 })
-  .info({ angularVersion: '1.6.7-build.5457+sha.ecc09a4' })
+  .info({ angularVersion: '1.6.7-build.5458+sha.20590c0' })
   .directive('ngAnimateSwap', ngAnimateSwapDirective)
 
   .directive('ngAnimateChildren', $$AnimateChildrenDirective)
