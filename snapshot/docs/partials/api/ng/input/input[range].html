@@ -77,7 +77,7 @@ the input value based on their values, and will always assume min = 0, max = 100
 
   
   <h2>Usage</h2>
-  <pre><code>&lt;input type=&quot;range&quot;&#10;       ng-model=&quot;string&quot;&#10;       [name=&quot;string&quot;]&#10;       [min=&quot;string&quot;]&#10;       [max=&quot;string&quot;]&#10;       [step=&quot;string&quot;]&#10;       [ng-change=&quot;string&quot;]&#10;       [ng-checked=&quot;expression&quot;]&gt;</code></pre>
+  <pre><code>&lt;input type=&quot;range&quot;&#10;       ng-model=&quot;string&quot;&#10;       [name=&quot;string&quot;]&#10;       [min=&quot;string&quot;]&#10;       [max=&quot;string&quot;]&#10;       [step=&quot;string&quot;]&#10;       [ng-change=&quot;expression&quot;]&#10;       [ng-checked=&quot;expression&quot;]&gt;</code></pre>
 
 <section class="api-section">
   <h3>Arguments</h3>
@@ -182,11 +182,11 @@ the input value based on their values, and will always assume min = 0, max = 100
         <div><em>(optional)</em></div>
       </td>
       <td>
-        <a href="" class="label type-hint type-hint-string">string</a>
+        <a href="" class="label type-hint type-hint-expression">expression</a>
       </td>
       <td>
         <p>AngularJS expression to be executed when the ngModel value changes due
-                 to user interaction with the input element.</p>
+                     to user interaction with the input element.</p>
 
         
       </td>
