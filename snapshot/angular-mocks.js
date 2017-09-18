@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.7-build.5462+sha.97b00ca
+ * @license AngularJS v1.6.7-build.5463+sha.f18dd29
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -803,7 +803,7 @@ angular.mock.TzDate.prototype = Date.prototype;
  * You need to require the `ngAnimateMock` module in your test suite for instance `beforeEach(module('ngAnimateMock'))`
  */
 angular.mock.animate = angular.module('ngAnimateMock', ['ng'])
-  .info({ angularVersion: '1.6.7-build.5462+sha.97b00ca' })
+  .info({ angularVersion: '1.6.7-build.5463+sha.f18dd29' })
 
   .config(['$provide', function($provide) {
 
@@ -1445,10 +1445,16 @@ function createHttpBackendMock($rootScope, $timeout, $delegate, $browser) {
         return;
       }
     }
-    throw wasExpected ?
+    var error = wasExpected ?
         new Error('No response defined !') :
         new Error('Unexpected request: ' + method + ' ' + url + '\n' +
                   (expectation ? 'Expected ' + expectation : 'No more request expected'));
+
+    // In addition to be being converted to a rejection, this error also needs to be passed to
+    // the $exceptionHandler and be rethrown (so that the test fails).
+    error.$$passToExceptionHandler = true;
+
+    throw error;
   }
 
   /**
@@ -2409,7 +2415,7 @@ angular.module('ngMock', ['ng']).provider({
   $provide.decorator('$rootScope', angular.mock.$RootScopeDecorator);
   $provide.decorator('$controller', createControllerDecorator($compileProvider));
   $provide.decorator('$httpBackend', angular.mock.$httpBackendDecorator);
-}]).info({ angularVersion: '1.6.7-build.5462+sha.97b00ca' });
+}]).info({ angularVersion: '1.6.7-build.5463+sha.f18dd29' });
 
 /**
  * @ngdoc module
@@ -2424,7 +2430,7 @@ angular.module('ngMock', ['ng']).provider({
  */
 angular.module('ngMockE2E', ['ng']).config(['$provide', function($provide) {
   $provide.decorator('$httpBackend', angular.mock.e2e.$httpBackendDecorator);
-}]).info({ angularVersion: '1.6.7-build.5462+sha.97b00ca' });
+}]).info({ angularVersion: '1.6.7-build.5463+sha.f18dd29' });
 
 /**
  * @ngdoc service
