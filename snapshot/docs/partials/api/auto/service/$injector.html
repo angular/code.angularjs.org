@@ -496,6 +496,76 @@ be retrieved as described above.</p>
   </tr>
 </table>
     </li>
+  
+  <li id="loadNewModules">
+    <h3><p><code>loadNewModules([mods]);</code></p>
+
+</h3>
+    <div><p><strong>This is a dangerous API, which you use at your own risk!</strong></p>
+<p>Add the specified modules to the current injector.</p>
+<p>This method will add each of the injectables to the injector and execute all of the config and run
+blocks for each module passed to the method.</p>
+<p>If a module has already been loaded into the injector then it will not be loaded again.</p>
+<ul>
+<li>The application developer is responsible for loading the code containing the modules; and for
+ensuring that lazy scripts are not downloaded and executed more often that desired.</li>
+<li>Previously compiled HTML will not be affected by newly loaded directives, filters and components.</li>
+<li>Modules cannot be unloaded.</li>
+</ul>
+<p>You can use <a href="api/auto/service/$injector#modules"><code>$injector.modules</code></a> to check whether a module has been loaded
+into the injector, which may indicate whether the script has been executed already.</p>
+<h2 id="example">Example</h2>
+<p>Here is an example of loading a bundle of modules, with a utility method called <code>getScript</code>:</p>
+<pre><code class="lang-javascript">app.factory(&#39;loadModule&#39;, function($injector) {
+  return function loadModule(moduleName, bundleUrl) {
+    return getScript(bundleUrl).then(function() { $injector.loadNewModules([moduleName]); });
+  };
+})
+</code></pre>
+</div>
+
+    
+
+    
+    <h4>Parameters</h4>
+    
+<table class="variables-matrix input-arguments">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        mods
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        <a href="" class="label type-hint type-hint-array">Array&lt;String|Function|Array&gt;=</a>
+      </td>
+      <td>
+        <p>an array of modules to load into the application.
+    Each item in the array should be the name of a predefined module or a (DI annotated)
+    function that will be invoked by the injector as a <code>config</code> block.
+    See: <a href="api/ng/function/angular.module">modules</a></p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+    
+
+    
+
+    </li>
   </ul>
   
   

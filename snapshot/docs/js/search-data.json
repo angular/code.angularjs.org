@@ -1119,7 +1119,7 @@
     "path": "api/auto/service/$injector",
     "titleWords": "$injector",
     "keywords": "$inject $injector $provide adding all always an and angular annotated annotating annotation annotations api are argument arguments array as auto be by call calling can change code createinjector defined definition dependency disallowed discovering does equivalent expect explicit extracted following for function get have holds html if in inference inferred injection injector inline instances instantiate invoke is item javascript js last load method methods minification minified mode module modules names needed not obfuscation object of on onto parameters parsed partials property provider retrieve return returns service servicea since specified strict the then these this to tobe tools tostring true types used valid var ways when where with work works",
-    "members": "annotate get has instantiate invoke modules"
+    "members": "annotate get has instantiate invoke loadnewmodules modules"
   },
   {
     "path": "api/auto/service/$provide",
