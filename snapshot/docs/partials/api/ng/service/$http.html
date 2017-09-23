@@ -510,7 +510,7 @@ for more information.</li>
         <a href="" class="label type-hint type-hint-object">Object</a>
       </td>
       <td>
-        <p>Optional configuration object</p>
+        <p>Optional configuration object. See <a href="https://docs.angularjs.org/api/ng/service/$http#usage">https://docs.angularjs.org/api/ng/service/$http#usage</a></p>
 
         
       </td>
@@ -583,7 +583,7 @@ for more information.</li>
         <a href="" class="label type-hint type-hint-object">Object</a>
       </td>
       <td>
-        <p>Optional configuration object</p>
+        <p>Optional configuration object. See <a href="https://docs.angularjs.org/api/ng/service/$http#usage">https://docs.angularjs.org/api/ng/service/$http#usage</a></p>
 
         
       </td>
@@ -656,7 +656,7 @@ for more information.</li>
         <a href="" class="label type-hint type-hint-object">Object</a>
       </td>
       <td>
-        <p>Optional configuration object</p>
+        <p>Optional configuration object. See <a href="https://docs.angularjs.org/api/ng/service/$http#usage">https://docs.angularjs.org/api/ng/service/$http#usage</a></p>
 
         
       </td>
@@ -690,6 +690,9 @@ the url must be declared, via <a href="api/ng/service/$sce"><code>$sce</code></a
 You can trust a URL by adding it to the whitelist via
 <a href="api/ng/provider/$sceDelegateProvider#resourceUrlWhitelist"><code>$sceDelegateProvider.resourceUrlWhitelist</code></a> or
 by explicitly trusting the URL via <a href="api/ng/service/$sce#trustAsResourceUrl"><code>$sce.trustAsResourceUrl(url)</code></a>.</p>
+<p>You should avoid generating the URL for the JSONP request from user provided data.
+Provide additional query parameters via <code>params</code> property of the <code>config</code> parameter, rather than
+modifying the URL itself.</p>
 <p>JSONP requests must specify a callback to be used in the response from the server. This callback
 is passed as a query parameter in the request. You must specify the name of this parameter by
 setting the <code>jsonpCallbackParam</code> property on the request config object.</p>
@@ -748,7 +751,7 @@ or decorating the <a href="api/ng/service/$jsonpCallbacks"><code>$jsonpCallbacks
         <a href="" class="label type-hint type-hint-object">Object</a>
       </td>
       <td>
-        <p>Optional configuration object</p>
+        <p>Optional configuration object. See <a href="https://docs.angularjs.org/api/ng/service/$http#usage">https://docs.angularjs.org/api/ng/service/$http#usage</a></p>
 
         
       </td>
@@ -836,7 +839,7 @@ or decorating the <a href="api/ng/service/$jsonpCallbacks"><code>$jsonpCallbacks
         <a href="" class="label type-hint type-hint-object">Object</a>
       </td>
       <td>
-        <p>Optional configuration object</p>
+        <p>Optional configuration object. See <a href="https://docs.angularjs.org/api/ng/service/$http#usage">https://docs.angularjs.org/api/ng/service/$http#usage</a></p>
 
         
       </td>
@@ -924,7 +927,7 @@ or decorating the <a href="api/ng/service/$jsonpCallbacks"><code>$jsonpCallbacks
         <a href="" class="label type-hint type-hint-object">Object</a>
       </td>
       <td>
-        <p>Optional configuration object</p>
+        <p>Optional configuration object. See <a href="https://docs.angularjs.org/api/ng/service/$http#usage">https://docs.angularjs.org/api/ng/service/$http#usage</a></p>
 
         
       </td>
@@ -1012,7 +1015,7 @@ or decorating the <a href="api/ng/service/$jsonpCallbacks"><code>$jsonpCallbacks
         <a href="" class="label type-hint type-hint-object">Object</a>
       </td>
       <td>
-        <p>Optional configuration object</p>
+        <p>Optional configuration object. See <a href="https://docs.angularjs.org/api/ng/service/$http#usage">https://docs.angularjs.org/api/ng/service/$http#usage</a></p>
 
         
       </td>
