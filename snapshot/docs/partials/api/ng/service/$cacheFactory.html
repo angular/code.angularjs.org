@@ -24,6 +24,7 @@
 
 
 <div class="api-profile-description">
+  <h2 id="overview">Overview</h2>
   <p>Factory that constructs <a href="api/ng/type/$cacheFactory.Cache">Cache</a> objects and gives access to
 them.</p>
 <pre><code class="lang-js">var cache = $cacheFactory(&#39;cacheId&#39;);
@@ -56,7 +57,7 @@ expect(cache.info()).toEqual({id: &#39;cacheId&#39;, size: 2});
 
     
 <section class="api-section">
-  <h3>Arguments</h3>
+  <h3 id="$cacheFactory-arguments">Arguments</h3>
 
 <table class="variables-matrix input-arguments">
   <thead>
@@ -108,7 +109,7 @@ expect(cache.info()).toEqual({id: &#39;cacheId&#39;, size: 2});
 
 </section>
     
-    <h3>Returns</h3>
+    <h3 id="$cacheFactory-returns">Returns</h3>
 <table class="variables-matrix return-arguments">
   <tr>
     <td><a href="" class="label type-hint type-hint-object">object</a></td>
@@ -127,10 +128,10 @@ it.</li>
 </table>
 
   
-<h2>Methods</h2>
+<h2 id="$cacheFactory-methods">Methods</h2>
 <ul class="methods">
-  <li id="info">
-    <h3><p><code>info();</code></p>
+  <li>
+    <h3 id="info"><p><code>info();</code></p>
 
 </h3>
     <div><p>Get information about all the caches that have been created</p>
@@ -155,8 +156,8 @@ it.</li>
 </table>
     </li>
   
-  <li id="get">
-    <h3><p><code>get(cacheId);</code></p>
+  <li>
+    <h3 id="get"><p><code>get(cacheId);</code></p>
 
 </h3>
     <div><p>Get access to a cache object by the <code>cacheId</code> used when it was created.</p>

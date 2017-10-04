@@ -9,7 +9,7 @@
     <pre class="minerr-errmsg" error-display="Binding to the 'multiple' attribute is not supported. Element: {0}">Binding to the 'multiple' attribute is not supported. Element: {0}</pre>
 </div>
 
-<h2>Description</h2>
+<h2 id="description">Description</h2>
 <div class="description">
   <p>Binding to the <code>multiple</code> attribute of <code>select</code> element is not supported since switching between multiple and single mode changes the <a href="api/ng/directive/ngModel"><code>ngModel</code></a> object type from instance to array of instances which breaks the model semantics.</p>
 <p>If you need to use different types of <code>select</code> elements in your template based on some variable, please use <a href="api/ng/directive/ngIf">ngIf</a> or <a href="api/ng/directive/ngSwitch">ngSwitch</a> directives to select one of them to be used at runtime.</p>

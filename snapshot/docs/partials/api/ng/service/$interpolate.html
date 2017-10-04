@@ -26,6 +26,7 @@
 
 
 <div class="api-profile-description">
+  <h2 id="overview">Overview</h2>
   <p>Compiles a string with markup into an interpolation function. This service is used by the
 HTML <a href="api/ng/service/$compile">$compile</a> service for data binding. See
 <a href="api/ng/provider/$interpolateProvider">$interpolateProvider</a> for configuring the
@@ -140,7 +141,7 @@ code snippet the closing braces of the literal object will get incorrectly denor
 
     
 <section class="api-section">
-  <h3>Arguments</h3>
+  <h3 id="$interpolate-arguments">Arguments</h3>
 
 <table class="variables-matrix input-arguments">
   <thead>
@@ -227,7 +228,7 @@ code snippet the closing braces of the literal object will get incorrectly denor
 
 </section>
     
-    <h3>Returns</h3>
+    <h3 id="$interpolate-returns">Returns</h3>
 <table class="variables-matrix return-arguments">
   <tr>
     <td><a href="" class="label type-hint type-hint-function">function(context)</a></td>
@@ -241,10 +242,10 @@ code snippet the closing braces of the literal object will get incorrectly denor
 </table>
 
   
-<h2>Methods</h2>
+<h2 id="$interpolate-methods">Methods</h2>
 <ul class="methods">
-  <li id="startSymbol">
-    <h3><p><code>startSymbol();</code></p>
+  <li>
+    <h3 id="startSymbol"><p><code>startSymbol();</code></p>
 
 </h3>
     <div><p>Symbol to denote the start of expression in the interpolated string. Defaults to <code>{{</code>.</p>
@@ -269,8 +270,8 @@ the symbol.</p>
 </table>
     </li>
   
-  <li id="endSymbol">
-    <h3><p><code>endSymbol();</code></p>
+  <li>
+    <h3 id="endSymbol"><p><code>endSymbol();</code></p>
 
 </h3>
     <div><p>Symbol to denote the end of expression in the interpolated string. Defaults to <code>}}</code>.</p>

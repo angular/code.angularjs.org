@@ -22,6 +22,7 @@
 
 
 <div class="api-profile-description">
+  <h2 id="overview">Overview</h2>
   <p>The <code>ngModel</code> directive binds an <code>input</code>,<code>select</code>, <code>textarea</code> (or custom form control) to a
 property on the scope using <a href="api/ng/type/ngModel.NgModelController">NgModelController</a>,
 which is created and exposed by this directive.</p>
@@ -61,7 +62,7 @@ implicitly and added to the scope.</p>
 <li><a href="api/ng/directive/select">select</a></li>
 <li><a href="api/ng/directive/textarea">textarea</a></li>
 </ul>
-<h1 id="complex-models-objects-or-collections-">Complex Models (objects or collections)</h1>
+<h2 id="complex-models-objects-or-collections-">Complex Models (objects or collections)</h2>
 <p>By default, <code>ngModel</code> watches the model by reference, not value. This is important to know when
 binding inputs to models that are objects (e.g. <code>Date</code>) or collections (e.g. arrays). If only properties of the
 object or collection change, <code>ngModel</code> will not be notified and so the input will not be  re-rendered.</p>
@@ -74,7 +75,7 @@ if the select is given the <code>multiple</code> attribute.</li>
 <p>The <code>$watchCollection()</code> method only does a shallow comparison, meaning that changing properties deeper than the
 first level of the object (or only changing the properties of an item in the collection if it&#39;s an array) will still
 not trigger a re-rendering of the model.</p>
-<h1 id="css-classes">CSS classes</h1>
+<h2 id="css-classes">CSS classes</h2>
 <p>The following CSS classes are added and removed on the associated input/select/textarea element
 depending on the validity of the model.</p>
 <ul>
@@ -92,7 +93,7 @@ depending on the validity of the model.</p>
 <li><code>ng-not-empty</code>: the view contains a non-empty value</li>
 </ul>
 <p>Keep in mind that ngAnimate can detect each of these classes when added and removed.</p>
-<h2 id="animation-hooks">Animation Hooks</h2>
+<h3 id="animation-hooks">Animation Hooks</h3>
 <p>Animations within models are triggered when any of the associated CSS classes are added and removed
 on the input element which is attached to the model. These classes include: <code>.ng-pristine</code>, <code>.ng-dirty</code>,
 <code>.ng-invalid</code> and <code>.ng-valid</code> as well as any other validations that are performed on the model itself.
@@ -121,7 +122,7 @@ that has been rendered as invalid after it has been validated:</p>
   
 
   
-  <h2>Directive Info</h2>
+  <h2 id="ngModel-info">Directive Info</h2>
   <ul>
     
     <li>This directive executes at priority level 1.</li>

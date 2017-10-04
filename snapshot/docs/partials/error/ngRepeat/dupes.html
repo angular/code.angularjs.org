@@ -9,7 +9,7 @@
     <pre class="minerr-errmsg" error-display="Duplicates in a repeater are not allowed. Use 'track by' expression to specify unique keys. Repeater: {0}, Duplicate key: {1}, Duplicate value: {2}">Duplicates in a repeater are not allowed. Use 'track by' expression to specify unique keys. Repeater: {0}, Duplicate key: {1}, Duplicate value: {2}</pre>
 </div>
 
-<h2>Description</h2>
+<h2 id="description">Description</h2>
 <div class="description">
   <p>Occurs if there are duplicate keys in an <a href="api/ng/directive/ngRepeat">ngRepeat</a> expression.  Duplicate keys are banned because AngularJS uses keys to associate DOM nodes with items.</p>
 <p>By default, collections are keyed by reference which is desirable for most common models but can be problematic for primitive types that are interned (share references).</p>

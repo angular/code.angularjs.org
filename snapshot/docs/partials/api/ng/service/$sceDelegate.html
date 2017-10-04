@@ -26,6 +26,7 @@
 
 
 <div class="api-profile-description">
+  <h2 id="overview">Overview</h2>
   <p><code>$sceDelegate</code> is a service that is used by the <code>$sce</code> service to provide <a href="api/ng/service/$sce">Strict
 Contextual Escaping (SCE)</a> services to AngularJS.</p>
 <p>For an overview of this service and the functionnality it provides in AngularJS, see the main
@@ -71,10 +72,10 @@ templates.  Refer <a href="api/ng/provider/$sceDelegateProvider#resourceUrlWhite
     
 
   
-<h2>Methods</h2>
+<h2 id="$sceDelegate-methods">Methods</h2>
 <ul class="methods">
-  <li id="trustAs">
-    <h3><p><code>trustAs(type, value);</code></p>
+  <li>
+    <h3 id="trustAs"><p><code>trustAs(type, value);</code></p>
 
 </h3>
     <div><p>Returns a trusted representation of the parameter for the specified context. This trusted
@@ -156,8 +157,8 @@ escaping.</p>
 </table>
     </li>
   
-  <li id="valueOf">
-    <h3><p><code>valueOf(value);</code></p>
+  <li>
+    <h3 id="valueOf"><p><code>valueOf(value);</code></p>
 
 </h3>
     <div><p>If the passed parameter had been returned by a prior call to <a href="api/ng/service/$sceDelegate#trustAs"><code>$sceDelegate.trustAs</code></a>, returns the value that had been passed to <a href="api/ng/service/$sceDelegate#trustAs"><code>$sceDelegate.trustAs</code></a>.</p>
@@ -215,8 +216,8 @@ escaping.</p>
 </table>
     </li>
   
-  <li id="getTrusted">
-    <h3><p><code>getTrusted(type, maybeTrusted);</code></p>
+  <li>
+    <h3 id="getTrusted"><p><code>getTrusted(type, maybeTrusted);</code></p>
 
 </h3>
     <div><p>Takes any input, and either returns a value that&#39;s safe to use in the specified context, or

@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.7-build.5472+sha.05fdf91
+ * @license AngularJS v1.6.7-build.5473+sha.0822d34
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -46,20 +46,16 @@ var noop;
  * @name ngRoute
  * @description
  *
- * # ngRoute
- *
  * The `ngRoute` module provides routing and deeplinking services and directives for AngularJS apps.
  *
  * ## Example
  * See {@link ngRoute.$route#example $route} for an example of configuring and using `ngRoute`.
  *
- *
- * <div doc-module-components="ngRoute"></div>
  */
 /* global -ngRouteModule */
 var ngRouteModule = angular.
   module('ngRoute', []).
-  info({ angularVersion: '1.6.7-build.5472+sha.05fdf91' }).
+  info({ angularVersion: '1.6.7-build.5473+sha.0822d34' }).
   provider('$route', $RouteProvider).
   // Ensure `$route` will be instantiated in time to capture the initial `$locationChangeSuccess`
   // event (unless explicitly disabled). This is necessary in case `ngView` is included in an
@@ -951,7 +947,6 @@ ngRouteModule.directive('ngView', ngViewFillContentFactory);
  * @restrict ECA
  *
  * @description
- * # Overview
  * `ngView` is a directive that complements the {@link ngRoute.$route $route} service by
  * including the rendered template of the current route into the main layout (`index.html`) file.
  * Every time the current route changes, the included view changes with it according to the

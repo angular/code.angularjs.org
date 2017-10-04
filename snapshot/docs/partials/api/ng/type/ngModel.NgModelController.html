@@ -22,6 +22,7 @@
 
 
 <div class="api-profile-description">
+  <h2 id="overview">Overview</h2>
   <p><code>NgModelController</code> provides API for the <a href="api/ng/directive/ngModel"><code>ngModel</code></a> directive.
 The controller contains services for data-binding, validation, CSS updates, and value formatting
 and parsing. It purposefully does not contain any logic which deals with DOM rendering or
@@ -44,10 +45,10 @@ At the end of this page you can find a <a href="api/ng/type/ngModel.NgModelContr
   
 
   
-<h2>Methods</h2>
+<h2 id="ngModel.NgModelController-methods">Methods</h2>
 <ul class="methods">
-  <li id="$render">
-    <h3><p><code>$render();</code></p>
+  <li>
+    <h3 id="$render"><p><code>$render();</code></p>
 
 </h3>
     <div><p>Called when the view needs to be updated. It is expected that the user of the ng-model
@@ -73,8 +74,8 @@ invoked if you only change a property on the objects.</p>
 
     </li>
   
-  <li id="$isEmpty">
-    <h3><p><code>$isEmpty(value);</code></p>
+  <li>
+    <h3 id="$isEmpty"><p><code>$isEmpty(value);</code></p>
 
 </h3>
     <div><p>This is called when we need to determine if the value of an input is empty.</p>
@@ -134,8 +135,8 @@ implies empty.</p>
 </table>
     </li>
   
-  <li id="$setPristine">
-    <h3><p><code>$setPristine();</code></p>
+  <li>
+    <h3 id="$setPristine"><p><code>$setPristine();</code></p>
 
 </h3>
     <div><p>Sets the control to its pristine state.</p>
@@ -152,8 +153,8 @@ has not been changed from when first compiled.</p>
 
     </li>
   
-  <li id="$setDirty">
-    <h3><p><code>$setDirty();</code></p>
+  <li>
+    <h3 id="$setDirty"><p><code>$setDirty();</code></p>
 
 </h3>
     <div><p>Sets the control to its dirty state.</p>
@@ -170,8 +171,8 @@ from when first compiled.</p>
 
     </li>
   
-  <li id="$setUntouched">
-    <h3><p><code>$setUntouched();</code></p>
+  <li>
+    <h3 id="$setUntouched"><p><code>$setUntouched();</code></p>
 
 </h3>
     <div><p>Sets the control to its untouched state.</p>
@@ -189,8 +190,8 @@ already been touched by the user.</p>
 
     </li>
   
-  <li id="$setTouched">
-    <h3><p><code>$setTouched();</code></p>
+  <li>
+    <h3 id="$setTouched"><p><code>$setTouched();</code></p>
 
 </h3>
     <div><p>Sets the control to its touched state.</p>
@@ -207,8 +208,8 @@ first focused the control element and then shifted focus away from the control (
 
     </li>
   
-  <li id="$rollbackViewValue">
-    <h3><p><code>$rollbackViewValue();</code></p>
+  <li>
+    <h3 id="$rollbackViewValue"><p><code>$rollbackViewValue();</code></p>
 
 </h3>
     <div><p>Cancel an update and reset the input element&#39;s value to prevent an update to the <code>$modelValue</code>,
@@ -274,8 +275,8 @@ input field will be updated with the new model value and any pending operations 
 
     </li>
   
-  <li id="$validate">
-    <h3><p><code>$validate();</code></p>
+  <li>
+    <h3 id="$validate"><p><code>$validate();</code></p>
 
 </h3>
     <div><p>Runs each of the registered validators (first synchronous validators and then
@@ -294,8 +295,8 @@ If the validity changes to valid, it will set the model to the last available va
 
     </li>
   
-  <li id="$commitViewValue">
-    <h3><p><code>$commitViewValue();</code></p>
+  <li>
+    <h3 id="$commitViewValue"><p><code>$commitViewValue();</code></p>
 
 </h3>
     <div><p>Commit a pending update to the <code>$modelValue</code>.</p>
@@ -312,8 +313,8 @@ usually handles calling this in response to input events.</p>
 
     </li>
   
-  <li id="$setViewValue">
-    <h3><p><code>$setViewValue(value, trigger);</code></p>
+  <li>
+    <h3 id="$setViewValue"><p><code>$setViewValue(value, trigger);</code></p>
 
 </h3>
     <div><p>Update the view value.</p>
@@ -410,8 +411,8 @@ to update the DOM, and finally call <code>$validate</code> on it.
 
     </li>
   
-  <li id="$overrideModelOptions">
-    <h3><p><code>$overrideModelOptions(options);</code></p>
+  <li>
+    <h3 id="$overrideModelOptions"><p><code>$overrideModelOptions(options);</code></p>
 
 </h3>
     <div><p>Override the current model options settings programmatically.</p>
@@ -462,8 +463,8 @@ and how model option inheritance works.</p>
 
     </li>
   
-  <li id="$processModelValue">
-    <h3><p><code>$processModelValue();</code></p>
+  <li>
+    <h3 id="$processModelValue"><p><code>$processModelValue();</code></p>
 
 </h3>
     <div><p>Runs the model -&gt; view pipeline on the current
@@ -542,8 +543,8 @@ then updates the <code>$viewValue</code>, and finally renders it in the DOM.</p>
 
     </li>
   
-  <li id="$setValidity">
-    <h3><p><code>$setValidity(validationErrorKey, isValid);</code></p>
+  <li>
+    <h3 id="$setValidity"><p><code>$setValidity(validationErrorKey, isValid);</code></p>
 
 </h3>
     <div><p>Change the validity state, and notify the form.</p>
@@ -618,10 +619,10 @@ However, in most cases it should be sufficient to use the <code>ngModel.$validat
   </ul>
   
   
-<h2>Properties</h2>
+<h2 id="ngModel.NgModelController-properties">Properties</h2>
 <ul class="properties">
-  <li id="$viewValue">
-    <h3><code>$viewValue</code></h3>
+  <li>
+    <h3 id="$viewValue"><code>$viewValue</code></h3>
     <table class="variables-matrix return-arguments">
   <tr>
     <td><a href="" class="label type-hint type-hint-object">*</a></td>
@@ -634,8 +635,8 @@ is set.</p>
     
   </li>
   
-  <li id="$modelValue">
-    <h3><code>$modelValue</code></h3>
+  <li>
+    <h3 id="$modelValue"><code>$modelValue</code></h3>
     <table class="variables-matrix return-arguments">
   <tr>
     <td><a href="" class="label type-hint type-hint-object">*</a></td>
@@ -646,8 +647,8 @@ is set.</p>
     
   </li>
   
-  <li id="$parsers">
-    <h3><code>$parsers</code></h3>
+  <li>
+    <h3 id="$parsers"><code>$parsers</code></h3>
     <table class="variables-matrix return-arguments">
   <tr>
     <td><a href="" class="label type-hint type-hint-array">Array.&lt;Function&gt;</a></td>
@@ -677,8 +678,8 @@ ngModelController.$parsers.push(parse);
     
   </li>
   
-  <li id="$formatters">
-    <h3><code>$formatters</code></h3>
+  <li>
+    <h3 id="$formatters"><code>$formatters</code></h3>
     <table class="variables-matrix return-arguments">
   <tr>
     <td><a href="" class="label type-hint type-hint-array">Array.&lt;Function&gt;</a></td>
@@ -702,8 +703,8 @@ ngModel.$formatters.push(format);
     
   </li>
   
-  <li id="$validators">
-    <h3><code>$validators</code></h3>
+  <li>
+    <h3 id="$validators"><code>$validators</code></h3>
     <table class="variables-matrix return-arguments">
   <tr>
     <td><a href="" class="label type-hint type-hint-object">Object.&lt;string, function&gt;</a></td>
@@ -726,8 +727,8 @@ ngModel.$formatters.push(format);
     
   </li>
   
-  <li id="$asyncValidators">
-    <h3><code>$asyncValidators</code></h3>
+  <li>
+    <h3 id="$asyncValidators"><code>$asyncValidators</code></h3>
     <table class="variables-matrix return-arguments">
   <tr>
     <td><a href="" class="label type-hint type-hint-object">Object.&lt;string, function&gt;</a></td>
@@ -761,8 +762,8 @@ in order to fulfill the validation and a status level of <code>4xx</code> in ord
     
   </li>
   
-  <li id="$viewChangeListeners">
-    <h3><code>$viewChangeListeners</code></h3>
+  <li>
+    <h3 id="$viewChangeListeners"><code>$viewChangeListeners</code></h3>
     <table class="variables-matrix return-arguments">
   <tr>
     <td><a href="" class="label type-hint type-hint-array">Array.&lt;Function&gt;</a></td>
@@ -775,8 +776,8 @@ in order to fulfill the validation and a status level of <code>4xx</code> in ord
     
   </li>
   
-  <li id="$error">
-    <h3><code>$error</code></h3>
+  <li>
+    <h3 id="$error"><code>$error</code></h3>
     <table class="variables-matrix return-arguments">
   <tr>
     <td><a href="" class="label type-hint type-hint-object">Object</a></td>
@@ -787,8 +788,8 @@ in order to fulfill the validation and a status level of <code>4xx</code> in ord
     
   </li>
   
-  <li id="$pending">
-    <h3><code>$pending</code></h3>
+  <li>
+    <h3 id="$pending"><code>$pending</code></h3>
     <table class="variables-matrix return-arguments">
   <tr>
     <td><a href="" class="label type-hint type-hint-object">Object</a></td>
@@ -799,8 +800,8 @@ in order to fulfill the validation and a status level of <code>4xx</code> in ord
     
   </li>
   
-  <li id="$untouched">
-    <h3><code>$untouched</code></h3>
+  <li>
+    <h3 id="$untouched"><code>$untouched</code></h3>
     <table class="variables-matrix return-arguments">
   <tr>
     <td><a href="" class="label type-hint type-hint-boolean">boolean</a></td>
@@ -811,8 +812,8 @@ in order to fulfill the validation and a status level of <code>4xx</code> in ord
     
   </li>
   
-  <li id="$touched">
-    <h3><code>$touched</code></h3>
+  <li>
+    <h3 id="$touched"><code>$touched</code></h3>
     <table class="variables-matrix return-arguments">
   <tr>
     <td><a href="" class="label type-hint type-hint-boolean">boolean</a></td>
@@ -823,8 +824,8 @@ in order to fulfill the validation and a status level of <code>4xx</code> in ord
     
   </li>
   
-  <li id="$pristine">
-    <h3><code>$pristine</code></h3>
+  <li>
+    <h3 id="$pristine"><code>$pristine</code></h3>
     <table class="variables-matrix return-arguments">
   <tr>
     <td><a href="" class="label type-hint type-hint-boolean">boolean</a></td>
@@ -835,8 +836,8 @@ in order to fulfill the validation and a status level of <code>4xx</code> in ord
     
   </li>
   
-  <li id="$dirty">
-    <h3><code>$dirty</code></h3>
+  <li>
+    <h3 id="$dirty"><code>$dirty</code></h3>
     <table class="variables-matrix return-arguments">
   <tr>
     <td><a href="" class="label type-hint type-hint-boolean">boolean</a></td>
@@ -847,8 +848,8 @@ in order to fulfill the validation and a status level of <code>4xx</code> in ord
     
   </li>
   
-  <li id="$valid">
-    <h3><code>$valid</code></h3>
+  <li>
+    <h3 id="$valid"><code>$valid</code></h3>
     <table class="variables-matrix return-arguments">
   <tr>
     <td><a href="" class="label type-hint type-hint-boolean">boolean</a></td>
@@ -859,8 +860,8 @@ in order to fulfill the validation and a status level of <code>4xx</code> in ord
     
   </li>
   
-  <li id="$invalid">
-    <h3><code>$invalid</code></h3>
+  <li>
+    <h3 id="$invalid"><code>$invalid</code></h3>
     <table class="variables-matrix return-arguments">
   <tr>
     <td><a href="" class="label type-hint type-hint-boolean">boolean</a></td>
@@ -871,8 +872,8 @@ in order to fulfill the validation and a status level of <code>4xx</code> in ord
     
   </li>
   
-  <li id="$name">
-    <h3><code>$name</code></h3>
+  <li>
+    <h3 id="$name"><code>$name</code></h3>
     <table class="variables-matrix return-arguments">
   <tr>
     <td><a href="" class="label type-hint type-hint-string">string</a></td>

@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.7-build.5472+sha.05fdf91
+ * @license AngularJS v1.6.7-build.5473+sha.0822d34
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -32,12 +32,7 @@ var htmlSanitizeWriter;
  * @name ngSanitize
  * @description
  *
- * # ngSanitize
- *
  * The `ngSanitize` module provides functionality to sanitize HTML.
- *
- *
- * <div doc-module-components="ngSanitize"></div>
  *
  * See {@link ngSanitize.$sanitize `$sanitize`} for usage.
  */
@@ -604,7 +599,7 @@ function sanitizeText(chars) {
 // define ngSanitize module and register $sanitize service
 angular.module('ngSanitize', [])
   .provider('$sanitize', $SanitizeProvider)
-  .info({ angularVersion: '1.6.7-build.5472+sha.05fdf91' });
+  .info({ angularVersion: '1.6.7-build.5473+sha.0822d34' });
 
 /**
  * @ngdoc filter

@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.7-build.5472+sha.05fdf91
+ * @license AngularJS v1.6.7-build.5473+sha.0822d34
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -10,16 +10,11 @@
  * @name ngTouch
  * @description
  *
- * # ngTouch
- *
  * The `ngTouch` module provides helpers for touch-enabled devices.
  * The implementation is based on jQuery Mobile touch event handling
- * ([jquerymobile.com](http://jquerymobile.com/)).
- *
+ * ([jquerymobile.com](http://jquerymobile.com/)). *
  *
  * See {@link ngTouch.$swipe `$swipe`} for usage.
- *
- * <div doc-module-components="ngTouch"></div>
  *
  */
 
@@ -27,7 +22,7 @@
 /* global ngTouch */
 var ngTouch = angular.module('ngTouch', []);
 
-ngTouch.info({ angularVersion: '1.6.7-build.5472+sha.05fdf91' });
+ngTouch.info({ angularVersion: '1.6.7-build.5473+sha.0822d34' });
 
 function nodeName_(element) {
   return angular.$$lowercase(element.nodeName || (element[0] && element[0].nodeName));

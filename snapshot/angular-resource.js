@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.7-build.5472+sha.05fdf91
+ * @license AngularJS v1.6.7-build.5473+sha.0822d34
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -53,13 +53,8 @@ function shallowClearAndCopy(src, dst) {
  * @name ngResource
  * @description
  *
- * # ngResource
- *
  * The `ngResource` module provides interaction support with RESTful services
  * via the $resource service.
- *
- *
- * <div doc-module-components="ngResource"></div>
  *
  * See {@link ngResource.$resourceProvider} and {@link ngResource.$resource} for usage.
  */
@@ -446,7 +441,7 @@ function shallowClearAndCopy(src, dst) {
  *
  */
 angular.module('ngResource', ['ng']).
-  info({ angularVersion: '1.6.7-build.5472+sha.05fdf91' }).
+  info({ angularVersion: '1.6.7-build.5473+sha.0822d34' }).
   provider('$resource', function ResourceProvider() {
     var PROTOCOL_AND_IPV6_REGEX = /^https?:\/\/\[[^\]]*][^/]*/;
 

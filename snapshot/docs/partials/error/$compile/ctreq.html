@@ -9,7 +9,7 @@
     <pre class="minerr-errmsg" error-display="Controller '{0}', required by directive '{1}', can't be found!">Controller '{0}', required by directive '{1}', can't be found!</pre>
 </div>
 
-<h2>Description</h2>
+<h2 id="description">Description</h2>
 <div class="description">
   <p>This error occurs when <a href="api/ng/service/$compile">HTML compiler</a> tries to process a directive that specifies the <a href="api/ng/service/$compile#directive-definition-object"><code>require</code> option</a> in a <a href="api/ng/service/$compile#comprehensive-directive-api">directive definition</a>,
 but the required directive controller is not present on the current DOM element (or its ancestor element, if <code>^</code> was specified).</p>

@@ -24,6 +24,7 @@
 
 
 <div class="api-profile-description">
+  <h2 id="overview">Overview</h2>
   <p><code>$injector</code> is used to retrieve object instances as defined by
 <a href="api/auto/service/$provide">provider</a>, instantiate types, invoke methods,
 and load modules.</p>
@@ -34,7 +35,7 @@ expect($injector.invoke(function($injector) {
   return $injector;
 })).toBe($injector);
 </code></pre>
-<h1 id="injection-function-annotation">Injection Function Annotation</h1>
+<h2 id="injection-function-annotation">Injection Function Annotation</h2>
 <p>JavaScript does not have annotations, and annotations are needed for dependency injection. The
 following are all valid ways of annotating function with injection arguments and are equivalent.</p>
 <pre><code class="lang-js">// inferred (only works if code not minified/obfuscated)
@@ -48,15 +49,15 @@ $injector.invoke(explicit);
 // inline
 $injector.invoke([&#39;serviceA&#39;, function(serviceA){}]);
 </code></pre>
-<h2 id="inference">Inference</h2>
+<h3 id="inference">Inference</h3>
 <p>In JavaScript calling <code>toString()</code> on a function returns the function definition. The definition
 can then be parsed and the function arguments can be extracted. This method of discovering
 annotations is disallowed when the injector is in strict mode.
 <em>NOTE:</em> This does not work with minification, and obfuscation tools since these tools change the
 argument names.</p>
-<h2 id="-inject-annotation"><code>$inject</code> Annotation</h2>
+<h3 id="-inject-annotation"><code>$inject</code> Annotation</h3>
 <p>By adding an <code>$inject</code> property onto a function the injection parameters can be specified.</p>
-<h2 id="inline">Inline</h2>
+<h3 id="inline">Inline</h3>
 <p>As an array of injection names, where the last item in the array is the function to call.</p>
 
 </div>
@@ -72,10 +73,10 @@ argument names.</p>
   
 
   
-<h2>Methods</h2>
+<h2 id="$injector-methods">Methods</h2>
 <ul class="methods">
-  <li id="get">
-    <h3><p><code>get(name, [caller]);</code></p>
+  <li>
+    <h3 id="get"><p><code>get(name, [caller]);</code></p>
 
 </h3>
     <div><p>Return an instance of the service.</p>
@@ -146,8 +147,8 @@ argument names.</p>
 </table>
     </li>
   
-  <li id="invoke">
-    <h3><p><code>invoke(fn, [self], [locals]);</code></p>
+  <li>
+    <h3 id="invoke"><p><code>invoke(fn, [self], [locals]);</code></p>
 
 </h3>
     <div><p>Invoke the method and supply the method arguments from the <code>$injector</code>.</p>
@@ -236,8 +237,8 @@ argument names.</p>
 </table>
     </li>
   
-  <li id="has">
-    <h3><p><code>has(name);</code></p>
+  <li>
+    <h3 id="has"><p><code>has(name);</code></p>
 
 </h3>
     <div><p>Allows the user to query if the particular service exists.</p>
@@ -292,8 +293,8 @@ argument names.</p>
 </table>
     </li>
   
-  <li id="instantiate">
-    <h3><p><code>instantiate(Type, [locals]);</code></p>
+  <li>
+    <h3 id="instantiate"><p><code>instantiate(Type, [locals]);</code></p>
 
 </h3>
     <div><p>Create a new instance of JS type. The method takes a constructor function, invokes the new
@@ -367,15 +368,15 @@ object first, before the <code>$injector</code> is consulted.</p>
 </table>
     </li>
   
-  <li id="annotate">
-    <h3><p><code>annotate(fn, [strictDi]);</code></p>
+  <li>
+    <h3 id="annotate"><p><code>annotate(fn, [strictDi]);</code></p>
 
 </h3>
     <div><p>Returns an array of service names which the function is requesting for injection. This API is
 used by the injector to determine which services need to be injected into the function when the
 function is invoked. There are three ways in which the function can be annotated with the needed
 dependencies.</p>
-<h1 id="argument-names">Argument names</h1>
+<h2 id="argument-names">Argument names</h2>
 <p>The simplest form is to extract the dependencies from the arguments of the function. This is done
 by converting the function into a string using <code>toString()</code> method and extracting the argument
 names.</p>
@@ -390,7 +391,7 @@ expect(injector.annotate(MyController)).toEqual([&#39;$scope&#39;, &#39;$route&#
 <p>You can disallow this method by using strict injection mode.</p>
 <p>This method does not work with code minification / obfuscation. For this reason the following
 annotation strategies are supported.</p>
-<h1 id="the-inject-property">The <code>$inject</code> property</h1>
+<h2 id="the-inject-property">The <code>$inject</code> property</h2>
 <p>If a function has an <code>$inject</code> property and its value is an array of strings, then the strings
 represent names of services to be injected into the function.</p>
 <pre><code class="lang-js">// Given
@@ -403,7 +404,7 @@ MyController[&#39;$inject&#39;] = [&#39;$scope&#39;, &#39;$route&#39;];
 // Then
 expect(injector.annotate(MyController)).toEqual([&#39;$scope&#39;, &#39;$route&#39;]);
 </code></pre>
-<h1 id="the-array-notation">The array notation</h1>
+<h2 id="the-array-notation">The array notation</h2>
 <p>It is often desirable to inline Injected functions and that&#39;s when setting the <code>$inject</code> property
 is very inconvenient. In these situations using the array notation to specify the dependencies in
 a way that survives minification is a better choice:</p>
@@ -497,8 +498,8 @@ be retrieved as described above.</p>
 </table>
     </li>
   
-  <li id="loadNewModules">
-    <h3><p><code>loadNewModules([mods]);</code></p>
+  <li>
+    <h3 id="loadNewModules"><p><code>loadNewModules([mods]);</code></p>
 
 </h3>
     <div><p><strong>This is a dangerous API, which you use at your own risk!</strong></p>
@@ -569,10 +570,10 @@ into the injector, which may indicate whether the script has been executed alrea
   </ul>
   
   
-<h2>Properties</h2>
+<h2 id="$injector-properties">Properties</h2>
 <ul class="properties">
-  <li id="modules">
-    <h3><code>modules</code></h3>
+  <li>
+    <h3 id="modules"><code>modules</code></h3>
     <table class="variables-matrix return-arguments">
   <tr>
     <td></td>

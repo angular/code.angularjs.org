@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.7-build.5472+sha.05fdf91
+ * @license AngularJS v1.6.7-build.5473+sha.0822d34
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -10,19 +10,14 @@
  * @name ngCookies
  * @description
  *
- * # ngCookies
- *
  * The `ngCookies` module provides a convenient wrapper for reading and writing browser cookies.
- *
- *
- * <div doc-module-components="ngCookies"></div>
  *
  * See {@link ngCookies.$cookies `$cookies`} for usage.
  */
 
 
 angular.module('ngCookies', ['ng']).
-  info({ angularVersion: '1.6.7-build.5472+sha.05fdf91' }).
+  info({ angularVersion: '1.6.7-build.5473+sha.0822d34' }).
   /**
    * @ngdoc provider
    * @name $cookiesProvider

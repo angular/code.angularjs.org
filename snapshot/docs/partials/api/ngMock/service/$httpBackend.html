@@ -24,6 +24,7 @@
 
 
 <div class="api-profile-description">
+  <h2 id="overview">Overview</h2>
   <p>Fake HTTP backend implementation suitable for unit testing applications that use the
 <a href="api/ng/service/$http">$http service</a>.</p>
 <div class="alert alert-info">
@@ -296,10 +297,10 @@ $httpBackend.whenRoute(&#39;GET&#39;, &#39;/users&#39;)
   
 
   
-<h2>Methods</h2>
+<h2 id="$httpBackend-methods">Methods</h2>
 <ul class="methods">
-  <li id="when">
-    <h3><p><code>when(method, url, [data], [headers], [keys]);</code></p>
+  <li>
+    <h3 id="when"><p><code>when(method, url, [data], [headers], [keys]);</code></p>
 
 </h3>
     <div><p>Creates a new backend definition.</p>
@@ -432,8 +433,8 @@ the <code>requestHandler</code> object for possible overrides.</li>
 </table>
     </li>
   
-  <li id="whenGET">
-    <h3><p><code>whenGET(url, [headers], [keys]);</code></p>
+  <li>
+    <h3 id="whenGET"><p><code>whenGET(url, [headers], [keys]);</code></p>
 
 </h3>
     <div><p>Creates a new backend definition for GET requests. For more info see <code>when()</code>.</p>
@@ -523,8 +524,8 @@ order to change how a matched request is handled.</p>
 </table>
     </li>
   
-  <li id="whenHEAD">
-    <h3><p><code>whenHEAD(url, [headers], [keys]);</code></p>
+  <li>
+    <h3 id="whenHEAD"><p><code>whenHEAD(url, [headers], [keys]);</code></p>
 
 </h3>
     <div><p>Creates a new backend definition for HEAD requests. For more info see <code>when()</code>.</p>
@@ -614,8 +615,8 @@ order to change how a matched request is handled.</p>
 </table>
     </li>
   
-  <li id="whenDELETE">
-    <h3><p><code>whenDELETE(url, [headers], [keys]);</code></p>
+  <li>
+    <h3 id="whenDELETE"><p><code>whenDELETE(url, [headers], [keys]);</code></p>
 
 </h3>
     <div><p>Creates a new backend definition for DELETE requests. For more info see <code>when()</code>.</p>
@@ -705,8 +706,8 @@ order to change how a matched request is handled.</p>
 </table>
     </li>
   
-  <li id="whenPOST">
-    <h3><p><code>whenPOST(url, [data], [headers], [keys]);</code></p>
+  <li>
+    <h3 id="whenPOST"><p><code>whenPOST(url, [data], [headers], [keys]);</code></p>
 
 </h3>
     <div><p>Creates a new backend definition for POST requests. For more info see <code>when()</code>.</p>
@@ -813,8 +814,8 @@ order to change how a matched request is handled.</p>
 </table>
     </li>
   
-  <li id="whenPUT">
-    <h3><p><code>whenPUT(url, [data], [headers], [keys]);</code></p>
+  <li>
+    <h3 id="whenPUT"><p><code>whenPUT(url, [data], [headers], [keys]);</code></p>
 
 </h3>
     <div><p>Creates a new backend definition for PUT requests.  For more info see <code>when()</code>.</p>
@@ -921,8 +922,8 @@ order to change how a matched request is handled.</p>
 </table>
     </li>
   
-  <li id="whenJSONP">
-    <h3><p><code>whenJSONP(url, [keys]);</code></p>
+  <li>
+    <h3 id="whenJSONP"><p><code>whenJSONP(url, [keys]);</code></p>
 
 </h3>
     <div><p>Creates a new backend definition for JSONP requests. For more info see <code>when()</code>.</p>
@@ -996,8 +997,8 @@ order to change how a matched request is handled.</p>
 </table>
     </li>
   
-  <li id="whenRoute">
-    <h3><p><code>whenRoute(method, url);</code></p>
+  <li>
+    <h3 id="whenRoute"><p><code>whenRoute(method, url);</code></p>
 
 </h3>
     <div><p>Creates a new backend definition that compares only with the requested route.</p>
@@ -1070,8 +1071,8 @@ order to change how a matched request is handled. See #when for more info.</p>
 </table>
     </li>
   
-  <li id="expect">
-    <h3><p><code>expect(method, url, [data], [headers], [keys]);</code></p>
+  <li>
+    <h3 id="expect"><p><code>expect(method, url, [data], [headers], [keys]);</code></p>
 
 </h3>
     <div><p>Creates a new request expectation.</p>
@@ -1205,8 +1206,8 @@ the <code>requestHandler</code> object for possible overrides.</li>
 </table>
     </li>
   
-  <li id="expectGET">
-    <h3><p><code>expectGET(url, [headers], [keys]);</code></p>
+  <li>
+    <h3 id="expectGET"><p><code>expectGET(url, [headers], [keys]);</code></p>
 
 </h3>
     <div><p>Creates a new request expectation for GET requests. For more info see <code>expect()</code>.</p>
@@ -1296,8 +1297,8 @@ order to change how a matched request is handled. See #expect for more info.</p>
 </table>
     </li>
   
-  <li id="expectHEAD">
-    <h3><p><code>expectHEAD(url, [headers], [keys]);</code></p>
+  <li>
+    <h3 id="expectHEAD"><p><code>expectHEAD(url, [headers], [keys]);</code></p>
 
 </h3>
     <div><p>Creates a new request expectation for HEAD requests. For more info see <code>expect()</code>.</p>
@@ -1387,8 +1388,8 @@ order to change how a matched request is handled. See #expect for more info.</p>
 </table>
     </li>
   
-  <li id="expectDELETE">
-    <h3><p><code>expectDELETE(url, [headers], [keys]);</code></p>
+  <li>
+    <h3 id="expectDELETE"><p><code>expectDELETE(url, [headers], [keys]);</code></p>
 
 </h3>
     <div><p>Creates a new request expectation for DELETE requests. For more info see <code>expect()</code>.</p>
@@ -1478,8 +1479,8 @@ order to change how a matched request is handled. See #expect for more info.</p>
 </table>
     </li>
   
-  <li id="expectPOST">
-    <h3><p><code>expectPOST(url, [data], [headers], [keys]);</code></p>
+  <li>
+    <h3 id="expectPOST"><p><code>expectPOST(url, [data], [headers], [keys]);</code></p>
 
 </h3>
     <div><p>Creates a new request expectation for POST requests. For more info see <code>expect()</code>.</p>
@@ -1587,8 +1588,8 @@ order to change how a matched request is handled. See #expect for more info.</p>
 </table>
     </li>
   
-  <li id="expectPUT">
-    <h3><p><code>expectPUT(url, [data], [headers], [keys]);</code></p>
+  <li>
+    <h3 id="expectPUT"><p><code>expectPUT(url, [data], [headers], [keys]);</code></p>
 
 </h3>
     <div><p>Creates a new request expectation for PUT requests. For more info see <code>expect()</code>.</p>
@@ -1696,8 +1697,8 @@ order to change how a matched request is handled. See #expect for more info.</p>
 </table>
     </li>
   
-  <li id="expectPATCH">
-    <h3><p><code>expectPATCH(url, [data], [headers], [keys]);</code></p>
+  <li>
+    <h3 id="expectPATCH"><p><code>expectPATCH(url, [data], [headers], [keys]);</code></p>
 
 </h3>
     <div><p>Creates a new request expectation for PATCH requests. For more info see <code>expect()</code>.</p>
@@ -1805,8 +1806,8 @@ order to change how a matched request is handled. See #expect for more info.</p>
 </table>
     </li>
   
-  <li id="expectJSONP">
-    <h3><p><code>expectJSONP(url, [keys]);</code></p>
+  <li>
+    <h3 id="expectJSONP"><p><code>expectJSONP(url, [keys]);</code></p>
 
 </h3>
     <div><p>Creates a new request expectation for JSONP requests. For more info see <code>expect()</code>.</p>
@@ -1880,8 +1881,8 @@ order to change how a matched request is handled. See #expect for more info.</p>
 </table>
     </li>
   
-  <li id="expectRoute">
-    <h3><p><code>expectRoute(method, url);</code></p>
+  <li>
+    <h3 id="expectRoute"><p><code>expectRoute(method, url);</code></p>
 
 </h3>
     <div><p>Creates a new request expectation that compares only with the requested route.</p>
@@ -1954,8 +1955,8 @@ order to change how a matched request is handled. See #expect for more info.</p>
 </table>
     </li>
   
-  <li id="flush">
-    <h3><p><code>flush([count], [skip]);</code></p>
+  <li>
+    <h3 id="flush"><p><code>flush([count], [skip]);</code></p>
 
 </h3>
     <div><p>Flushes pending requests using the trained responses. Requests are flushed in the order they
@@ -2024,8 +2025,8 @@ this is typically a sign of programming error).</p>
 
     </li>
   
-  <li id="verifyNoOutstandingExpectation">
-    <h3><p><code>verifyNoOutstandingExpectation();</code></p>
+  <li>
+    <h3 id="verifyNoOutstandingExpectation"><p><code>verifyNoOutstandingExpectation();</code></p>
 
 </h3>
     <div><p>Verifies that all of the requests defined via the <code>expect</code> api were made. If any of the
@@ -2044,8 +2045,8 @@ requests were not made, verifyNoOutstandingExpectation throws an exception.</p>
 
     </li>
   
-  <li id="verifyNoOutstandingRequest">
-    <h3><p><code>verifyNoOutstandingRequest();</code></p>
+  <li>
+    <h3 id="verifyNoOutstandingRequest"><p><code>verifyNoOutstandingRequest();</code></p>
 
 </h3>
     <div><p>Verifies that there are no outstanding requests that need to be flushed.</p>
@@ -2063,8 +2064,8 @@ requests were not made, verifyNoOutstandingExpectation throws an exception.</p>
 
     </li>
   
-  <li id="resetExpectations">
-    <h3><p><code>resetExpectations();</code></p>
+  <li>
+    <h3 id="resetExpectations"><p><code>resetExpectations();</code></p>
 
 </h3>
     <div><p>Resets all request expectations, but preserves all backend definitions. Typically, you would

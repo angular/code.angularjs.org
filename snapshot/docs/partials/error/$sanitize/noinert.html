@@ -9,7 +9,7 @@
     <pre class="minerr-errmsg" error-display="Can't create an inert html document">Can't create an inert html document</pre>
 </div>
 
-<h2>Description</h2>
+<h2 id="description">Description</h2>
 <div class="description">
   <p>This error occurs when <code>$sanitize</code> sanitizer determines that <code>document.implementation.createHTMLDocument</code> api is not supported by the current browser.</p>
 <p>This api is necessary for safe parsing of HTML strings into DOM trees and without it the sanitizer can&#39;t sanitize the input.</p>

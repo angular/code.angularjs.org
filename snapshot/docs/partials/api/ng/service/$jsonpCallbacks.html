@@ -24,6 +24,7 @@
 
 
 <div class="api-profile-description">
+  <h2 id="overview">Overview</h2>
   <p>This service handles the lifecycle of callbacks to handle JSONP requests.
 Override this service if you wish to customise where the callbacks are stored and
 how they vary compared to the requested url.</p>
@@ -46,10 +47,10 @@ how they vary compared to the requested url.</p>
   
 
   
-<h2>Methods</h2>
+<h2 id="$jsonpCallbacks-methods">Methods</h2>
 <ul class="methods">
-  <li id="createCallback">
-    <h3><p><code>createCallback(url);</code></p>
+  <li>
+    <h3 id="createCallback"><p><code>createCallback(url);</code></p>
 
 </h3>
     <div><p><a href="api/ng/service/$httpBackend"><code>$httpBackend</code></a> calls this method to create a callback and get hold of the path to the callback
@@ -105,8 +106,8 @@ to pass to the server, which will be used to call the callback with its payload 
 </table>
     </li>
   
-  <li id="wasCalled">
-    <h3><p><code>wasCalled(callbackPath);</code></p>
+  <li>
+    <h3 id="wasCalled"><p><code>wasCalled(callbackPath);</code></p>
 
 </h3>
     <div><p><a href="api/ng/service/$httpBackend"><code>$httpBackend</code></a> calls this method to find out whether the JSONP response actually called the
@@ -162,8 +163,8 @@ callback that was passed in the request.</p>
 </table>
     </li>
   
-  <li id="getResponse">
-    <h3><p><code>getResponse(callbackPath);</code></p>
+  <li>
+    <h3 id="getResponse"><p><code>getResponse(callbackPath);</code></p>
 
 </h3>
     <div><p><a href="api/ng/service/$httpBackend"><code>$httpBackend</code></a> calls this method to get hold of the data that was provided to the callback
@@ -219,8 +220,8 @@ in the JSONP response.</p>
 </table>
     </li>
   
-  <li id="removeCallback">
-    <h3><p><code>removeCallback(callbackPath);</code></p>
+  <li>
+    <h3 id="removeCallback"><p><code>removeCallback(callbackPath);</code></p>
 
 </h3>
     <div><p><a href="api/ng/service/$httpBackend"><code>$httpBackend</code></a> calls this method to remove the callback after the JSONP request has

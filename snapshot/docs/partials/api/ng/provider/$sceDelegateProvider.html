@@ -26,6 +26,7 @@
 
 
 <div class="api-profile-description">
+  <h2 id="overview">Overview</h2>
   <p>The <code>$sceDelegateProvider</code> provider allows developers to configure the <a href="api/ng/service/$sceDelegate">$sceDelegate service</a>, used as a delegate for <a href="api/ng/service/$sce">Strict Contextual Escaping (SCE)</a>.</p>
 <p>The <code>$sceDelegateProvider</code> allows one to get/set the whitelists and blacklists used to ensure
 that the URLs used for sourcing AngularJS templates and other script-running URLs are safe (all
@@ -77,10 +78,10 @@ for instance attacker-controlled <code>ng-includes</code>.</p>
   
 
   
-<h2>Methods</h2>
+<h2 id="$sceDelegateProvider-methods">Methods</h2>
 <ul class="methods">
-  <li id="resourceUrlWhitelist">
-    <h3><p><code>resourceUrlWhitelist([whitelist]);</code></p>
+  <li>
+    <h3 id="resourceUrlWhitelist"><p><code>resourceUrlWhitelist([whitelist]);</code></p>
 
 </h3>
     <div><p>Sets/Gets the whitelist of trusted resource URLs.</p>
@@ -144,8 +145,8 @@ with other apps! It is a good idea to limit it to only your application&#39;s di
 </table>
     </li>
   
-  <li id="resourceUrlBlacklist">
-    <h3><p><code>resourceUrlBlacklist([blacklist]);</code></p>
+  <li>
+    <h3 id="resourceUrlBlacklist"><p><code>resourceUrlBlacklist([blacklist]);</code></p>
 
 </h3>
     <div><p>Sets/Gets the blacklist of trusted resource URLs.</p>

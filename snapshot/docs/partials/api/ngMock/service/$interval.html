@@ -24,6 +24,7 @@
 
 
 <div class="api-profile-description">
+  <h2 id="overview">Overview</h2>
   <p>Mock implementation of the $interval service.</p>
 <p>Use <a href="api/ngMock/service/$interval#flush"><code>$interval.flush(millis)</code></a> to
 move forward by <code>millis</code> milliseconds and trigger any functions scheduled to run in that
@@ -48,7 +49,7 @@ time.</p>
 
     
 <section class="api-section">
-  <h3>Arguments</h3>
+  <h3 id="$interval-arguments">Arguments</h3>
 
 <table class="variables-matrix input-arguments">
   <thead>
@@ -147,7 +148,7 @@ time.</p>
 
 </section>
     
-    <h3>Returns</h3>
+    <h3 id="$interval-returns">Returns</h3>
 <table class="variables-matrix return-arguments">
   <tr>
     <td><a href="" class="label type-hint type-hint-promise">promise</a></td>
@@ -157,10 +158,10 @@ time.</p>
 </table>
 
   
-<h2>Methods</h2>
+<h2 id="$interval-methods">Methods</h2>
 <ul class="methods">
-  <li id="cancel">
-    <h3><p><code>cancel(promise);</code></p>
+  <li>
+    <h3 id="cancel"><p><code>cancel(promise);</code></p>
 
 </h3>
     <div><p>Cancels a task associated with the <code>promise</code>.</p>
@@ -215,8 +216,8 @@ time.</p>
 </table>
     </li>
   
-  <li id="flush">
-    <h3><p><code>flush([millis]);</code></p>
+  <li>
+    <h3 id="flush"><p><code>flush([millis]);</code></p>
 
 </h3>
     <div><p>Runs interval tasks scheduled to be run in the next <code>millis</code> milliseconds.</p>

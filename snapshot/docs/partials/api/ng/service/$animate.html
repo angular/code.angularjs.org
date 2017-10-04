@@ -26,6 +26,7 @@
 
 
 <div class="api-profile-description">
+  <h2 id="overview">Overview</h2>
   <p>The $animate service exposes a series of DOM utility methods that provide support
 for animation hooks. The default behavior is the application of DOM operations, however,
 when an animation is detected (and animations are enabled), $animate will do the heavy lifting
@@ -52,10 +53,10 @@ their DOM-related operations (enter, leave and move). Other directives such as <
   
 
   
-<h2>Methods</h2>
+<h2 id="$animate-methods">Methods</h2>
 <ul class="methods">
-  <li id="on">
-    <h3><p><code>on(event, container, callback);</code></p>
+  <li>
+    <h3 id="on"><p><code>on(event, container, callback);</code></p>
 
 </h3>
     <div><p>Sets up an event listener to fire whenever the animation event (enter, leave, move, etc...)
@@ -147,8 +148,8 @@ their DOM-related operations (enter, leave and move). Other directives such as <
 
     </li>
   
-  <li id="off">
-    <h3><p><code>off(event, [container], [callback]);</code></p>
+  <li>
+    <h3 id="off"><p><code>off(event, [container], [callback]);</code></p>
 
 </h3>
     <div><p>Deregisters an event listener based on the event which has been associated with the provided element. This method
@@ -242,8 +243,8 @@ arguments are ignored.</p>
 
     </li>
   
-  <li id="pin">
-    <h3><p><code>pin(element, parentElement);</code></p>
+  <li>
+    <h3 id="pin"><p><code>pin(element, parentElement);</code></p>
 
 </h3>
     <div><p>Associates the provided element with a host parent element to allow the element to be animated even if it exists
@@ -311,8 +312,8 @@ arguments are ignored.</p>
 
     </li>
   
-  <li id="enabled">
-    <h3><p><code>enabled([element], [enabled]);</code></p>
+  <li>
+    <h3 id="enabled"><p><code>enabled([element], [enabled]);</code></p>
 
 </h3>
     <div><p>Used to get and set whether animations are enabled or not on the entire application or on an element and its children. This
@@ -398,8 +399,8 @@ $animate.enabled(element, false);
 </table>
     </li>
   
-  <li id="cancel">
-    <h3><p><code>cancel(animationPromise);</code></p>
+  <li>
+    <h3 id="cancel"><p><code>cancel(animationPromise);</code></p>
 
 </h3>
     <div><p>Cancels the provided animation.</p>
@@ -445,8 +446,8 @@ $animate.enabled(element, false);
 
     </li>
   
-  <li id="enter">
-    <h3><p><code>enter(element, parent, [after], [options]);</code></p>
+  <li>
+    <h3 id="enter"><p><code>enter(element, parent, [after], [options]);</code></p>
 
 </h3>
     <div><p>Inserts the element into the DOM either after the <code>after</code> element (if provided) or
@@ -560,8 +561,8 @@ $animate.enabled(element, false);
 </table>
     </li>
   
-  <li id="move">
-    <h3><p><code>move(element, parent, [after], [options]);</code></p>
+  <li>
+    <h3 id="move"><p><code>move(element, parent, [after], [options]);</code></p>
 
 </h3>
     <div><p>Inserts (moves) the element into its new position in the DOM either after
@@ -675,8 +676,8 @@ $animate.enabled(element, false);
 </table>
     </li>
   
-  <li id="leave">
-    <h3><p><code>leave(element, [options]);</code></p>
+  <li>
+    <h3 id="leave"><p><code>leave(element, [options]);</code></p>
 
 </h3>
     <div><p>Triggers an animation and then removes the element from the DOM.
@@ -756,8 +757,8 @@ digest once the animation has completed.</p>
 </table>
     </li>
   
-  <li id="addClass">
-    <h3><p><code>addClass(element, className, [options]);</code></p>
+  <li>
+    <h3 id="addClass"><p><code>addClass(element, className, [options]);</code></p>
 
 </h3>
     <div><p>Triggers an addClass animation surrounding the addition of the provided CSS class(es). Upon
@@ -856,8 +857,8 @@ digest once the animation has completed.</p>
 </table>
     </li>
   
-  <li id="removeClass">
-    <h3><p><code>removeClass(element, className, [options]);</code></p>
+  <li>
+    <h3 id="removeClass"><p><code>removeClass(element, className, [options]);</code></p>
 
 </h3>
     <div><p>Triggers a removeClass animation surrounding the removal of the provided CSS class(es). Upon
@@ -956,8 +957,8 @@ digest once the animation has completed.</p>
 </table>
     </li>
   
-  <li id="setClass">
-    <h3><p><code>setClass(element, add, remove, [options]);</code></p>
+  <li>
+    <h3 id="setClass"><p><code>setClass(element, add, remove, [options]);</code></p>
 
 </h3>
     <div><p>Performs both the addition and removal of a CSS classes on an element and (during the process)
@@ -1072,8 +1073,8 @@ digest once the animation has completed.</p>
 </table>
     </li>
   
-  <li id="animate">
-    <h3><p><code>animate(element, from, to, [className], [options]);</code></p>
+  <li>
+    <h3 id="animate"><p><code>animate(element, from, to, [className], [options]);</code></p>
 
 </h3>
     <div><p>Performs an inline animation on the element which applies the provided to and from CSS styles to the element.

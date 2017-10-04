@@ -26,12 +26,13 @@
 
 
 <div class="api-profile-description">
+  <h2 id="overview">Overview</h2>
   <p><code>$sce</code> is a service that provides Strict Contextual Escaping services to AngularJS.</p>
-<h1 id="strict-contextual-escaping">Strict Contextual Escaping</h1>
+<h2 id="strict-contextual-escaping">Strict Contextual Escaping</h2>
 <p>Strict Contextual Escaping (SCE) is a mode in which AngularJS constrains bindings to only render
 trusted values. Its goal is to assist in writing code in a way that (a) is secure by default, and
 (b) makes auditing for security vulnerabilities such as XSS, clickjacking, etc. a lot easier.</p>
-<h2 id="overview">Overview</h2>
+<h3 id="overview">Overview</h3>
 <p>To systematically block XSS security bugs, AngularJS treats all values as untrusted by default in
 HTML or sensitive URL bindings. When binding untrusted values, AngularJS will automatically
 run security checks on them (sanitizations, whitelists, depending on context), or throw when it
@@ -43,7 +44,7 @@ before rendering if a sanitizer is available, and throw otherwise. To bypass san
 render the input as-is, you will need to mark it as trusted for that context before attempting
 to bind it.</p>
 <p>As of version 1.2, AngularJS ships with SCE enabled by default.</p>
-<h2 id="in-practice">In practice</h2>
+<h3 id="in-practice">In practice</h3>
 <p>Here&#39;s an example of a binding in a privileged context:</p>
 <pre><code>&lt;input ng-model=&quot;userHtml&quot; aria-label=&quot;User input&quot;&gt;
 &lt;div ng-bind-html=&quot;userHtml&quot;&gt;&lt;/div&gt;
@@ -71,7 +72,7 @@ becomes a more manageable task.</p>
 <p>In the case of AngularJS&#39; SCE service, one uses <a href="api/ng/service/$sce#trustAs">$sce.trustAs</a>
 (and shorthand methods such as <a href="api/ng/service/$sce#trustAsHtml">$sce.trustAsHtml</a>, etc.) to
 build the trusted versions of your values.</p>
-<h2 id="how-does-it-work-">How does it work?</h2>
+<h3 id="how-does-it-work-">How does it work?</h3>
 <p>In privileged contexts, directives and code will bind to the result of <a href="api/ng/service/$sce#getTrusted">$sce.getTrusted(context, value)</a> rather than to the value directly.  Think of this function as
 a way to enforce the required security context in your data sink. Directives use <a href="api/ng/service/$sce#parseAs">$sce.parseAs</a> rather than <code>$parse</code> to watch attribute bindings, which performs
 the <a href="api/ng/service/$sce#getTrusted">$sce.getTrusted</a> behind the scenes on non-constant literals. Also,
@@ -87,7 +88,7 @@ simplified):</p>
   };
 }];
 </code></pre>
-<h2 id="impact-on-loading-templates">Impact on loading templates</h2>
+<h3 id="impact-on-loading-templates">Impact on loading templates</h3>
 <p>This applies both to the <a href="api/ng/directive/ngInclude"><code>ng-include</code></a> directive as well as
 <code>templateUrl</code>&#39;s specified by <a href="guide/directive">directives</a>.</p>
 <p>By default, AngularJS only loads templates from the same domain and protocol as the application
@@ -102,7 +103,7 @@ policy apply in addition to this and may further restrict whether the template i
 loaded.  This means that without the right CORS policy, loading templates from a different domain
 won&#39;t work on all browsers.  Also, loading templates from <code>file://</code> URL does not work on some
 browsers.</p>
-<h2 id="this-feels-like-too-much-overhead">This feels like too much overhead</h2>
+<h3 id="this-feels-like-too-much-overhead">This feels like too much overhead</h3>
 <p>It&#39;s important to remember that SCE only applies to interpolation expressions.</p>
 <p>If your expressions are constant literals, they&#39;re automatically trusted and you don&#39;t need to
 call <code>$sce.trustAs</code> on them (e.g.
@@ -119,7 +120,7 @@ served document.  You can change these by setting your own custom <a href="api/n
 application that&#39;s secure and can be audited to verify that with much more ease than bolting
 security onto an application later.</p>
 <p><a name="contexts"></a></p>
-<h2 id="what-trusted-context-types-are-supported-">What trusted context types are supported?</h2>
+<h3 id="what-trusted-context-types-are-supported-">What trusted context types are supported?</h3>
 <table>
 <thead>
 <tr>
@@ -154,7 +155,7 @@ security onto an application later.</p>
 through <a href="api/ng/service/$sce#getTrusted">$sce.getTrusted</a>. There&#39;s no CSS-, URL-, or JS-context bindings
 in AngularJS currently, so their corresponding <code>$sce.trustAs</code> functions aren&#39;t useful yet. This
 might evolve.</p>
-<h2 id="format-of-items-in-link-ng-scedelegateprovider-resourceurlwhitelist-resourceurlwhitelist-link-ng-scedelegateprovider-resourceurlblacklist-blacklist-a-name-resourceurlpatternitem-a-">Format of items in <a href="api/ng/provider/$sceDelegateProvider#resourceUrlWhitelist">resourceUrlWhitelist</a>/<a href="api/ng/provider/$sceDelegateProvider#resourceUrlBlacklist">Blacklist</a> <a name="resourceUrlPatternItem"></a></h2>
+<h3 id="format-of-items-in-link-ng-scedelegateprovider-resourceurlwhitelist-resourceurlwhitelist-link-ng-scedelegateprovider-resourceurlblacklist-blacklist-a-name-resourceurlpatternitem-a-">Format of items in <a href="api/ng/provider/$sceDelegateProvider#resourceUrlWhitelist">resourceUrlWhitelist</a>/<a href="api/ng/provider/$sceDelegateProvider#resourceUrlBlacklist">Blacklist</a> <a name="resourceUrlPatternItem"></a></h3>
 <p> Each element in these arrays must be one of the following:</p>
 <ul>
 <li><strong>&#39;self&#39;</strong><ul>
@@ -204,7 +205,7 @@ Closure library&#39;s <a href="http://docs.closure-library.googlecode.com/git/cl
 </li>
 </ul>
 <p>Refer <a href="api/ng/provider/$sceDelegateProvider">$sceDelegateProvider</a> for an example.</p>
-<h2 id="show-me-an-example-using-sce-">Show me an example using SCE.</h2>
+<h3 id="show-me-an-example-using-sce-">Show me an example using SCE.</h3>
 <p>
 
 <div>
@@ -289,10 +290,10 @@ you are writing a library, you will cause security bugs applications using it.</
     
 
   
-<h2>Methods</h2>
+<h2 id="$sce-methods">Methods</h2>
 <ul class="methods">
-  <li id="isEnabled">
-    <h3><p><code>isEnabled();</code></p>
+  <li>
+    <h3 id="isEnabled"><p><code>isEnabled();</code></p>
 
 </h3>
     <div><p>Returns a boolean indicating if SCE is enabled.</p>
@@ -316,8 +317,8 @@ you are writing a library, you will cause security bugs applications using it.</
 </table>
     </li>
   
-  <li id="parseAs">
-    <h3><p><code>parseAs(type, expression);</code></p>
+  <li>
+    <h3 id="parseAs"><p><code>parseAs(type, expression);</code></p>
 
 </h3>
     <div><p>Converts AngularJS <a href="guide/expression">expression</a> into a function.  This is like <a href="api/ng/service/$parse">$parse</a> and is identical when the expression is a literal constant.  Otherwise, it
@@ -396,8 +397,8 @@ in <code>context</code>.</li>
 </table>
     </li>
   
-  <li id="trustAs">
-    <h3><p><code>trustAs(type, value);</code></p>
+  <li>
+    <h3 id="trustAs"><p><code>trustAs(type, value);</code></p>
 
 </h3>
     <div><p>Delegates to <a href="api/ng/service/$sceDelegate#trustAs"><code>$sceDelegate.trustAs</code></a>. As such, returns a
@@ -474,8 +475,8 @@ interpolations. See <a href="api/ng/service/$sce">$sce</a> for strict contextual
 </table>
     </li>
   
-  <li id="trustAsHtml">
-    <h3><p><code>trustAsHtml(value);</code></p>
+  <li>
+    <h3 id="trustAsHtml"><p><code>trustAsHtml(value);</code></p>
 
 </h3>
     <div><p>Shorthand method.  <code>$sce.trustAsHtml(value)</code> →
@@ -532,8 +533,8 @@ interpolations. See <a href="api/ng/service/$sce">$sce</a> for strict contextual
 </table>
     </li>
   
-  <li id="trustAsCss">
-    <h3><p><code>trustAsCss(value);</code></p>
+  <li>
+    <h3 id="trustAsCss"><p><code>trustAsCss(value);</code></p>
 
 </h3>
     <div><p>Shorthand method.  <code>$sce.trustAsCss(value)</code> →
@@ -591,8 +592,8 @@ interpolations. See <a href="api/ng/service/$sce">$sce</a> for strict contextual
 </table>
     </li>
   
-  <li id="trustAsUrl">
-    <h3><p><code>trustAsUrl(value);</code></p>
+  <li>
+    <h3 id="trustAsUrl"><p><code>trustAsUrl(value);</code></p>
 
 </h3>
     <div><p>Shorthand method.  <code>$sce.trustAsUrl(value)</code> →
@@ -650,8 +651,8 @@ interpolations. See <a href="api/ng/service/$sce">$sce</a> for strict contextual
 </table>
     </li>
   
-  <li id="trustAsResourceUrl">
-    <h3><p><code>trustAsResourceUrl(value);</code></p>
+  <li>
+    <h3 id="trustAsResourceUrl"><p><code>trustAsResourceUrl(value);</code></p>
 
 </h3>
     <div><p>Shorthand method.  <code>$sce.trustAsResourceUrl(value)</code> →
@@ -709,8 +710,8 @@ interpolations. See <a href="api/ng/service/$sce">$sce</a> for strict contextual
 </table>
     </li>
   
-  <li id="trustAsJs">
-    <h3><p><code>trustAsJs(value);</code></p>
+  <li>
+    <h3 id="trustAsJs"><p><code>trustAsJs(value);</code></p>
 
 </h3>
     <div><p>Shorthand method.  <code>$sce.trustAsJs(value)</code> →
@@ -768,8 +769,8 @@ interpolations. See <a href="api/ng/service/$sce">$sce</a> for strict contextual
 </table>
     </li>
   
-  <li id="getTrusted">
-    <h3><p><code>getTrusted(type, maybeTrusted);</code></p>
+  <li>
+    <h3 id="getTrusted"><p><code>getTrusted(type, maybeTrusted);</code></p>
 
 </h3>
     <div><p>Delegates to <a href="api/ng/service/$sceDelegate#getTrusted"><code>$sceDelegate.getTrusted</code></a>.  As such,
@@ -846,8 +847,8 @@ safe value (e.g., no sanitization is available or possible.)</p>
 </table>
     </li>
   
-  <li id="getTrustedHtml">
-    <h3><p><code>getTrustedHtml(value);</code></p>
+  <li>
+    <h3 id="getTrustedHtml"><p><code>getTrustedHtml(value);</code></p>
 
 </h3>
     <div><p>Shorthand method.  <code>$sce.getTrustedHtml(value)</code> →
@@ -903,8 +904,8 @@ safe value (e.g., no sanitization is available or possible.)</p>
 </table>
     </li>
   
-  <li id="getTrustedCss">
-    <h3><p><code>getTrustedCss(value);</code></p>
+  <li>
+    <h3 id="getTrustedCss"><p><code>getTrustedCss(value);</code></p>
 
 </h3>
     <div><p>Shorthand method.  <code>$sce.getTrustedCss(value)</code> →
@@ -960,8 +961,8 @@ safe value (e.g., no sanitization is available or possible.)</p>
 </table>
     </li>
   
-  <li id="getTrustedUrl">
-    <h3><p><code>getTrustedUrl(value);</code></p>
+  <li>
+    <h3 id="getTrustedUrl"><p><code>getTrustedUrl(value);</code></p>
 
 </h3>
     <div><p>Shorthand method.  <code>$sce.getTrustedUrl(value)</code> →
@@ -1017,8 +1018,8 @@ safe value (e.g., no sanitization is available or possible.)</p>
 </table>
     </li>
   
-  <li id="getTrustedResourceUrl">
-    <h3><p><code>getTrustedResourceUrl(value);</code></p>
+  <li>
+    <h3 id="getTrustedResourceUrl"><p><code>getTrustedResourceUrl(value);</code></p>
 
 </h3>
     <div><p>Shorthand method.  <code>$sce.getTrustedResourceUrl(value)</code> →
@@ -1074,8 +1075,8 @@ safe value (e.g., no sanitization is available or possible.)</p>
 </table>
     </li>
   
-  <li id="getTrustedJs">
-    <h3><p><code>getTrustedJs(value);</code></p>
+  <li>
+    <h3 id="getTrustedJs"><p><code>getTrustedJs(value);</code></p>
 
 </h3>
     <div><p>Shorthand method.  <code>$sce.getTrustedJs(value)</code> →
@@ -1131,8 +1132,8 @@ safe value (e.g., no sanitization is available or possible.)</p>
 </table>
     </li>
   
-  <li id="parseAsHtml">
-    <h3><p><code>parseAsHtml(expression);</code></p>
+  <li>
+    <h3 id="parseAsHtml"><p><code>parseAsHtml(expression);</code></p>
 
 </h3>
     <div><p>Shorthand method.  <code>$sce.parseAsHtml(expression string)</code> →
@@ -1194,8 +1195,8 @@ in <code>context</code>.</li>
 </table>
     </li>
   
-  <li id="parseAsCss">
-    <h3><p><code>parseAsCss(expression);</code></p>
+  <li>
+    <h3 id="parseAsCss"><p><code>parseAsCss(expression);</code></p>
 
 </h3>
     <div><p>Shorthand method.  <code>$sce.parseAsCss(value)</code> →
@@ -1257,8 +1258,8 @@ in <code>context</code>.</li>
 </table>
     </li>
   
-  <li id="parseAsUrl">
-    <h3><p><code>parseAsUrl(expression);</code></p>
+  <li>
+    <h3 id="parseAsUrl"><p><code>parseAsUrl(expression);</code></p>
 
 </h3>
     <div><p>Shorthand method.  <code>$sce.parseAsUrl(value)</code> →
@@ -1320,8 +1321,8 @@ in <code>context</code>.</li>
 </table>
     </li>
   
-  <li id="parseAsResourceUrl">
-    <h3><p><code>parseAsResourceUrl(expression);</code></p>
+  <li>
+    <h3 id="parseAsResourceUrl"><p><code>parseAsResourceUrl(expression);</code></p>
 
 </h3>
     <div><p>Shorthand method.  <code>$sce.parseAsResourceUrl(value)</code> →
@@ -1383,8 +1384,8 @@ in <code>context</code>.</li>
 </table>
     </li>
   
-  <li id="parseAsJs">
-    <h3><p><code>parseAsJs(expression);</code></p>
+  <li>
+    <h3 id="parseAsJs"><p><code>parseAsJs(expression);</code></p>
 
 </h3>
     <div><p>Shorthand method.  <code>$sce.parseAsJs(value)</code> →

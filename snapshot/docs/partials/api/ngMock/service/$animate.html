@@ -24,6 +24,7 @@
 
 
 <div class="api-profile-description">
+  <h2 id="overview">Overview</h2>
   <p>Mock implementation of the <a href="api/ng/service/$animate"><code>$animate</code></a> service. Exposes two additional methods
 for testing animations.</p>
 <p>You need to require the <code>ngAnimateMock</code> module in your test suite for instance <code>beforeEach(module(&#39;ngAnimateMock&#39;))</code></p>
@@ -41,10 +42,10 @@ for testing animations.</p>
   
 
   
-<h2>Methods</h2>
+<h2 id="$animate-methods">Methods</h2>
 <ul class="methods">
-  <li id="closeAndFlush">
-    <h3><p><code>closeAndFlush();</code></p>
+  <li>
+    <h3 id="closeAndFlush"><p><code>closeAndFlush();</code></p>
 
 </h3>
     <div><p>This method will close all pending animations (both <a href="api/ngAnimate#javascript-based-animations">Javascript</a>
@@ -59,8 +60,8 @@ and <a href="api/ngAnimate/service/$animateCss">CSS</a>) and it will also flush 
 
     </li>
   
-  <li id="flush">
-    <h3><p><code>flush();</code></p>
+  <li>
+    <h3 id="flush"><p><code>flush();</code></p>
 
 </h3>
     <div><p>This method is used to flush the pending callbacks and animation frames to either start

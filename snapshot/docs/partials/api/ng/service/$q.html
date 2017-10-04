@@ -26,13 +26,14 @@
 
 
 <div class="api-profile-description">
+  <h2 id="overview">Overview</h2>
   <p>A service that helps you run functions asynchronously, and use their return values (or exceptions)
 when they are done processing.</p>
 <p>This is a <a href="https://promisesaplus.com/">Promises/A+</a>-compliant implementation of promises/deferred
 objects inspired by <a href="https://github.com/kriskowal/q">Kris Kowal&#39;s Q</a>.</p>
 <p>$q can be used in two fashions --- one which is more similar to Kris Kowal&#39;s Q or jQuery&#39;s Deferred
 implementations, and the other which resembles ES6 (ES2015) promises to some degree.</p>
-<h1 id="-q-constructor">$q constructor</h1>
+<h2 id="-q-constructor">$q constructor</h2>
 <p>The streamlined ES6 style promise is essentially just using $q as a constructor which takes a <code>resolver</code>
 function as the first argument. This is similar to the native Promise implementation from ES6,
 see <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">MDN</a>.</p>
@@ -105,7 +106,7 @@ comes in the way of guarantees that promise and deferred APIs make, see
 traditional callback (<a href="http://en.wikipedia.org/wiki/Continuation-passing_style">CPS</a>) approach.
 For more on this please see the <a href="https://github.com/kriskowal/q">Q documentation</a> especially the
 section on serial or parallel joining of promises.</p>
-<h1 id="the-deferred-api">The Deferred API</h1>
+<h2 id="the-deferred-api">The Deferred API</h2>
 <p>A new instance of deferred is constructed by calling <code>$q.defer()</code>.</p>
 <p>The purpose of the deferred object is to expose the associated Promise instance as well as APIs
 that can be used for signaling the successful or unsuccessful completion, as well as the status
@@ -123,7 +124,7 @@ multiple times before the promise is either resolved or rejected.</li>
 <ul>
 <li>promise – <code>{Promise}</code> – promise object associated with this deferred.</li>
 </ul>
-<h1 id="the-promise-api">The Promise API</h1>
+<h2 id="the-promise-api">The Promise API</h2>
 <p>A new promise instance is created when a deferred instance is created and can be retrieved by
 calling <code>deferred.promise</code>.</p>
 <p>The purpose of the promise object is to allow for interested parties to get access to the result
@@ -152,7 +153,7 @@ specification</a> for
 more information.</p>
 </li>
 </ul>
-<h1 id="chaining-promises">Chaining promises</h1>
+<h2 id="chaining-promises">Chaining promises</h2>
 <p>Because calling the <code>then</code> method of a promise returns a new derived promise, it is easily
 possible to create a chain of promises:</p>
 <pre><code class="lang-js">promiseB = promiseA.then(function(result) {
@@ -166,7 +167,7 @@ possible to create a chain of promises:</p>
 promise (which will defer its resolution further), it is possible to pause/defer resolution of
 the promises at any point in the chain. This makes it possible to implement powerful APIs like
 $http&#39;s response interceptors.</p>
-<h1 id="differences-between-kris-kowal-s-q-and-q">Differences between Kris Kowal&#39;s Q and $q</h1>
+<h2 id="differences-between-kris-kowal-s-q-and-q">Differences between Kris Kowal&#39;s Q and $q</h2>
 <p> There are two main differences:</p>
 <ul>
 <li>$q is integrated with the <a href="api/ng/type/$rootScope.Scope"><code>$rootScope.Scope</code></a> Scope model observation
@@ -175,7 +176,7 @@ models and avoiding unnecessary browser repaints, which would result in flickeri
 <li>Q has many more features than $q, but that comes at a cost of bytes. $q is tiny, but contains
 all the important functionality needed for common async tasks.</li>
 </ul>
-<h1 id="testing">Testing</h1>
+<h2 id="testing">Testing</h2>
 <pre><code class="lang-js">it(&#39;should simulate promise&#39;, inject(function($q, $rootScope) {
   var deferred = $q.defer();
   var promise = deferred.promise;
@@ -221,7 +222,7 @@ all the important functionality needed for common async tasks.</li>
 
     
 <section class="api-section">
-  <h3>Arguments</h3>
+  <h3 id="$q-arguments">Arguments</h3>
 
 <table class="variables-matrix input-arguments">
   <thead>
@@ -256,7 +257,7 @@ all the important functionality needed for common async tasks.</li>
 
 </section>
     
-    <h3>Returns</h3>
+    <h3 id="$q-returns">Returns</h3>
 <table class="variables-matrix return-arguments">
   <tr>
     <td><a href="" class="label type-hint type-hint-promise">Promise</a></td>
@@ -266,10 +267,10 @@ all the important functionality needed for common async tasks.</li>
 </table>
 
   
-<h2>Methods</h2>
+<h2 id="$q-methods">Methods</h2>
 <ul class="methods">
-  <li id="defer">
-    <h3><p><code>defer();</code></p>
+  <li>
+    <h3 id="defer"><p><code>defer();</code></p>
 
 </h3>
     <div><p>Creates a <code>Deferred</code> object which represents a task which will finish in the future.</p>
@@ -292,8 +293,8 @@ all the important functionality needed for common async tasks.</li>
 </table>
     </li>
   
-  <li id="reject">
-    <h3><p><code>reject(reason);</code></p>
+  <li>
+    <h3 id="reject"><p><code>reject(reason);</code></p>
 
 </h3>
     <div><p>Creates a promise that is resolved as rejected with the specified <code>reason</code>. This api should be
@@ -370,8 +371,8 @@ current promise, you have to &quot;rethrow&quot; the error by returning a reject
 </table>
     </li>
   
-  <li id="when">
-    <h3><p><code>when(value, [successCallback], [errorCallback], [progressCallback]);</code></p>
+  <li>
+    <h3 id="when"><p><code>when(value, [successCallback], [errorCallback], [progressCallback]);</code></p>
 
 </h3>
     <div><p>Wraps an object that might be a value or a (3rd party) then-able promise into a $q promise.
@@ -473,8 +474,8 @@ the promise comes from a source that can&#39;t be trusted.</p>
 </table>
     </li>
   
-  <li id="resolve">
-    <h3><p><code>resolve(value, [successCallback], [errorCallback], [progressCallback]);</code></p>
+  <li>
+    <h3 id="resolve"><p><code>resolve(value, [successCallback], [errorCallback], [progressCallback]);</code></p>
 
 </h3>
     <div><p>Alias of <a href="api/ng/service/$q#when">when</a> to maintain naming consistency with ES6.</p>
@@ -574,8 +575,8 @@ the promise comes from a source that can&#39;t be trusted.</p>
 </table>
     </li>
   
-  <li id="all">
-    <h3><p><code>all(promises);</code></p>
+  <li>
+    <h3 id="all"><p><code>all(promises);</code></p>
 
 </h3>
     <div><p>Combines multiple promises into a single promise that is resolved when all of the input
@@ -634,8 +635,8 @@ promises are resolved.</p>
 </table>
     </li>
   
-  <li id="race">
-    <h3><p><code>race(promises);</code></p>
+  <li>
+    <h3 id="race"><p><code>race(promises);</code></p>
 
 </h3>
     <div><p>Returns a promise that resolves or rejects as soon as one of those promises

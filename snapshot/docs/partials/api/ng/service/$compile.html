@@ -26,6 +26,7 @@
 
 
 <div class="api-profile-description">
+  <h2 id="overview">Overview</h2>
   <p>Compiles an HTML string or DOM into a template and produces a template function, which
 can then be used to link <a href="api/ng/type/$rootScope.Scope"><code>scope</code></a> and the template together.</p>
 <p>The compilation is a process of walking the DOM tree and matching DOM elements to
@@ -478,8 +479,9 @@ case when only one deeply nested directive has <code>templateUrl</code>.</p>
 <p>You can specify <code>templateUrl</code> as a string representing the URL or as a function which takes two
 arguments <code>tElement</code> and <code>tAttrs</code> (described in the <code>compile</code> function api below) and returns
 a string value representing the url.  In either case, the template URL is passed through <a href="api/ng/service/$sce#getTrustedResourceUrl">$sce.getTrustedResourceUrl</a>.</p>
-<h4 id="-replace-deprecated-will-be-removed-in-next-major-release-i-e-v2-0-"><code>replace</code> ([<em>DEPRECATED</em>!], will be removed in next major release - i.e. v2.0)</h4>
-<p>specify what the template should replace. Defaults to <code>false</code>.</p>
+<h4 id="-replace-deprecated-"><code>replace</code> (<em>DEPRECATED</em>)</h4>
+<p><code>replace</code> will be removed in next major release - i.e. v2.0).</p>
+<p>Specifies what the template should replace. Defaults to <code>false</code>.</p>
 <ul>
 <li><code>true</code> - the template will replace the directive&#39;s element.</li>
 <li><code>false</code> - the template will replace the contents of the directive&#39;s element.</li>
@@ -795,7 +797,7 @@ to illustrate how <code>$compile</code> works.
 
     
 <section class="api-section">
-  <h3>Arguments</h3>
+  <h3 id="$compile-arguments">Arguments</h3>
 
 <table class="variables-matrix input-arguments">
   <thead>
@@ -865,7 +867,7 @@ to illustrate how <code>$compile</code> works.
 
 </section>
     
-    <h3>Returns</h3>
+    <h3 id="$compile-returns">Returns</h3>
 <table class="variables-matrix return-arguments">
   <tr>
     <td><a href="" class="label type-hint type-hint-function">function(scope, cloneAttachFn=, options=)</a></td>

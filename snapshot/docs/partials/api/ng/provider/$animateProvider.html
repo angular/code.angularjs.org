@@ -26,6 +26,7 @@
 
 
 <div class="api-profile-description">
+  <h2 id="overview">Overview</h2>
   <p>Default implementation of $animate that doesn&#39;t perform any animations, instead just
 synchronously performs DOM updates and resolves the returned runner promise.</p>
 <p>In order to enable animations the <code>ngAnimate</code> module has to be loaded.</p>
@@ -44,10 +45,10 @@ synchronously performs DOM updates and resolves the returned runner promise.</p>
   
 
   
-<h2>Methods</h2>
+<h2 id="$animateProvider-methods">Methods</h2>
 <ul class="methods">
-  <li id="register">
-    <h3><p><code>register(name, factory);</code></p>
+  <li>
+    <h3 id="register"><p><code>register(name, factory);</code></p>
 
 </h3>
     <div><p>Registers a new injectable animation factory function. The factory function produces the
@@ -138,8 +139,8 @@ list below explains the function signatures for the different animation methods:
 
     </li>
   
-  <li id="customFilter">
-    <h3><p><code>customFilter([filterFn]);</code></p>
+  <li>
+    <h3 id="customFilter"><p><code>customFilter([filterFn]);</code></p>
 
 </h3>
     <div><p>Sets and/or returns the custom filter function that is used to &quot;filter&quot; animations, i.e.
@@ -221,8 +222,8 @@ etc).</li>
 </table>
     </li>
   
-  <li id="classNameFilter">
-    <h3><p><code>classNameFilter([expression]);</code></p>
+  <li>
+    <h3 id="classNameFilter"><p><code>classNameFilter([expression]);</code></p>
 
 </h3>
     <div><p>Sets and/or returns the CSS class regular expression that is checked when performing

@@ -22,17 +22,18 @@
 
 
 <div class="api-profile-description">
+  <h2 id="overview">Overview</h2>
   <p>Directive that instantiates
 <a href="api/ng/type/form.FormController">FormController</a>.</p>
 <p>If the <code>name</code> attribute is specified, the form controller is published onto the current scope under
 this name.</p>
-<h1 id="alias-link-ng-directive-ngform-ngform-">Alias: <a href="api/ng/directive/ngForm"><code>ngForm</code></a></h1>
+<h2 id="alias-link-ng-directive-ngform-ngform-">Alias: <a href="api/ng/directive/ngForm"><code>ngForm</code></a></h2>
 <p>In AngularJS, forms can be nested. This means that the outer form is valid when all of the child
 forms are valid as well. However, browsers do not allow nesting of <code>&lt;form&gt;</code> elements, so
 AngularJS provides the <a href="api/ng/directive/ngForm"><code>ngForm</code></a> directive, which behaves identically to
 <code>form</code> but can be nested. Nested forms can be useful, for example, if the validity of a sub-group
 of controls needs to be determined.</p>
-<h1 id="css-classes">CSS classes</h1>
+<h2 id="css-classes">CSS classes</h2>
 <ul>
 <li><code>ng-valid</code> is set if the form is valid.</li>
 <li><code>ng-invalid</code> is set if the form is invalid.</li>
@@ -42,7 +43,7 @@ of controls needs to be determined.</p>
 <li><code>ng-submitted</code> is set if the form was submitted.</li>
 </ul>
 <p>Keep in mind that ngAnimate can detect each of these classes when added and removed.</p>
-<h1 id="submitting-a-form-and-preventing-the-default-action">Submitting a form and preventing the default action</h1>
+<h2 id="submitting-a-form-and-preventing-the-default-action">Submitting a form and preventing the default action</h2>
 <p>Since the role of forms in client-side AngularJS applications is different than in classical
 roundtrip apps, it is desirable for the browser not to translate the form submission into a full
 page reload that sends the data to the server. Instead some javascript logic should be triggered
@@ -100,7 +101,7 @@ that has been rendered as invalid after it has been validated:</p>
   
 
   
-  <h2>Directive Info</h2>
+  <h2 id="form-info">Directive Info</h2>
   <ul>
     
     <li>This directive executes at priority level 0.</li>
@@ -120,7 +121,7 @@ that has been rendered as invalid after it has been validated:</p>
   </div>
   
 <section class="api-section">
-  <h3>Arguments</h3>
+  <h3 id="form-arguments">Arguments</h3>
 
 <table class="variables-matrix input-arguments">
   <thead>
