@@ -226,7 +226,16 @@ dirty checking mechanism is not able to tell whether the model has actually chan
 <p>The <code>$rollbackViewValue()</code> method should be called before programmatically changing the model of an
 input which may have such events pending. This is important in order to make sure that the
 input field will be updated with the new model value and any pending operations are cancelled.</p>
-<p>
+</div>
+
+    
+
+    
+
+    
+
+    
+    <h4 id="ngModel.NgModelController.$rollbackViewValue-examples">Example</h4><p>
 
 <div>
   <plnkr-opener example-path="examples/example-ng-model-cancel-update"></plnkr-opener>
@@ -265,15 +274,7 @@ input field will be updated with the new model value and any pending operations 
 
 
 </p>
-</div>
-
-    
-
-    
-
-    
-
-    </li>
+</li>
   
   <li>
     <h3 id="$validate"><p><code>$validate();</code></p>
@@ -485,8 +486,16 @@ the validation status is set.</li>
 Application developers usually do not have to call this function themselves.</p>
 <p>This function can be used when the <code>$viewValue</code> or the rendered DOM value are not correctly
 formatted and the <code>$modelValue</code> must be run through the <code>$formatters</code> again.</p>
-<h4 id="example">Example</h4>
-<p>Consider a text input with an autocomplete list (for fruit), where the items are
+</div>
+
+    
+
+    
+
+    
+
+    
+    <h4 id="ngModel.NgModelController.$processModelValue-examples">Example</h4><p>Consider a text input with an autocomplete list (for fruit), where the items are
 objects with a name and an id.
 A user enters <code>ap</code> and then selects <code>Apricot</code> from the list.
 Based on this, the autocomplete widget will call <code>$setViewValue({name: &#39;Apricot&#39;, id: 443})</code>,
@@ -533,15 +542,7 @@ then updates the <code>$viewValue</code>, and finally renders it in the DOM.</p>
 
 
 </p>
-</div>
-
-    
-
-    
-
-    
-
-    </li>
+</li>
   
   <li>
     <h3 id="$setValidity"><p><code>$setValidity(validationErrorKey, isValid);</code></p>
@@ -888,7 +889,7 @@ in order to fulfill the validation and a status level of <code>4xx</code> in ord
 
 
   
-  <h2 id="example">Examples</h2><h3 id="custom-control-example">Custom Control Example</h3>
+  <h2 id="examples">Example</h2><h3 id="custom-control-example">Custom Control Example</h3>
 <p>This example shows how to use <code>NgModelController</code> with a custom control to achieve
 data-binding. Notice how different directives (<code>contenteditable</code>, <code>ng-model</code>, and <code>required</code>)
 collaborate together to achieve the desired result.</p>

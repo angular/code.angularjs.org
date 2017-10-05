@@ -74,7 +74,7 @@ and <code>$index</code> is set to the item index or key.</p>
 </div>
 
 
-<h1 id="iterating-over-object-properties">Iterating over object properties</h1>
+<h2 id="iterating-over-object-properties">Iterating over object properties</h2>
 <p>It is possible to get <code>ngRepeat</code> to iterate over the properties of an object using the following
 syntax:</p>
 <pre><code class="lang-js">&lt;div ng-repeat=&quot;(key, value) in myObj&quot;&gt; ... &lt;/div&gt;
@@ -99,7 +99,7 @@ objects, and will throw an error if used with one.</p>
 that is sorted into the order that you prefer before providing it to <code>ngRepeat</code>. You could
 do this with a filter such as <a href="http://ngmodules.org/modules/angular-toArrayFilter">toArrayFilter</a>
 or implement a <code>$watch</code> on the object yourself.</p>
-<h1 id="tracking-and-duplicates">Tracking and Duplicates</h1>
+<h2 id="tracking-and-duplicates">Tracking and Duplicates</h2>
 <p><code>ngRepeat</code> uses <a href="api/ng/type/$rootScope.Scope#$watchCollection">$watchCollection</a> to detect changes in
 the collection. When a change happens, <code>ngRepeat</code> then makes the corresponding changes to the DOM:</p>
 <ul>
@@ -164,7 +164,7 @@ out-of-sync with the underlying data.
   {{model.name}}
 &lt;/div&gt;
 </code></pre>
-<h1 id="special-repeat-start-and-end-points">Special repeat start and end points</h1>
+<h2 id="special-repeat-start-and-end-points">Special repeat start and end points</h2>
 <p>To repeat a series of elements instead of just one parent element, ngRepeat (as well as other ng directives) supports extending
 the range of the repeater by defining explicit start and end points by using <strong>ng-repeat-start</strong> and <strong>ng-repeat-end</strong> respectively.
 The <strong>ng-repeat-start</strong> directive works the same as <strong>ng-repeat</strong>, but will repeat all the HTML code (including the tag it&#39;s defined on)
@@ -333,17 +333,17 @@ the items have been processed through the filter.</p>
   <a href="api/ngAnimate/service/$animate">Click here</a> to learn more about the steps involved in the animation.
 
   
-  <h2 id="example">Examples</h2><p>This example uses <code>ngRepeat</code> to display a list of people. A filter is used to restrict the displayed
+  <h2 id="examples">Example</h2><p>This example uses <code>ngRepeat</code> to display a list of people. A filter is used to restrict the displayed
 results by name or by age. New (entering) and removed (leaving) items are animated.
   
 
 <div>
-  <plnkr-opener example-path="examples/example-ng-repeat"></plnkr-opener>
+  <plnkr-opener example-path="examples/example-ngRepeat"></plnkr-opener>
 
   <div class="runnable-example"
-      path="examples/example-ng-repeat"
+      path="examples/example-ngRepeat"
       module="ngRepeat"
-      name="ng-repeat"
+      name="ngRepeat"
       deps="angular-animate.js"
       animations="true">
 
@@ -377,7 +377,7 @@ results by name or by age. New (entering) and removed (leaving) items are animat
     </div>
   
 
-    <iframe class="runnable-example-frame" src="examples/example-ng-repeat/index.html" name="example-ng-repeat"></iframe>
+    <iframe class="runnable-example-frame" src="examples/example-ngRepeat/index.html" name="example-ngRepeat"></iframe>
   </div>
 </div>
 

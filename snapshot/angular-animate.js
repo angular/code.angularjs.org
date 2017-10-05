@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.7-build.5474+sha.8166dd4
+ * @license AngularJS v1.6.7-build.5475+sha.e5c6174
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -528,7 +528,7 @@ var ANIMATE_TIMER_KEY = '$$animateCss';
  * Note that only browsers that support CSS transitions and/or keyframe animations are capable of
  * rendering animations triggered via `$animateCss` (bad news for IE9 and lower).
  *
- * ## Usage
+ * ## General Use
  * Once again, `$animateCss` is designed to be used inside of a registered JavaScript animation that
  * is powered by ngAnimate. It is possible to use `$animateCss` directly inside of a directive, however,
  * any automatic control over cancelling animations and/or preventing animations from being run on
@@ -4139,7 +4139,7 @@ angular.module('ngAnimate', [], function initAngularHelpers() {
   isFunction  = angular.isFunction;
   isElement   = angular.isElement;
 })
-  .info({ angularVersion: '1.6.7-build.5474+sha.8166dd4' })
+  .info({ angularVersion: '1.6.7-build.5475+sha.e5c6174' })
   .directive('ngAnimateSwap', ngAnimateSwapDirective)
 
   .directive('ngAnimateChildren', $$AnimateChildrenDirective)

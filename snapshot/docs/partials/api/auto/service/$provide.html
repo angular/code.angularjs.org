@@ -1,8 +1,8 @@
-<a href='https://github.com/angular/angular.js/edit/master/src/auto/injector.js?message=docs($provide)%3A%20describe%20your%20change...#L382' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/master/src/auto/injector.js?message=docs($provide)%3A%20describe%20your%20change...#L381' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 
-<a href='https://github.com/angular/angular.js/tree/master/src/auto/injector.js#L382' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/master/src/auto/injector.js#L381' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -161,7 +161,7 @@ console or not.</p>
   </tr>
 </table>
     
-    <h4 id="$provide.provider-examples">Examples</h4><p>The following example shows how to create a simple event tracking service and register it using
+    <h4 id="$provide.provider-examples">Example</h4><p>The following example shows how to create a simple event tracking service and register it using
 <a href="api/auto/service/$provide#provider">$provide.provider()</a>.</p>
 <pre><code class="lang-js">// Define the eventTracker provider
 function EventTrackerProvider() {
@@ -298,7 +298,7 @@ configure your service in a provider.</p>
   </tr>
 </table>
     
-    <h4 id="$provide.factory-examples">Examples</h4><p>Here is an example of registering a service</p>
+    <h4 id="$provide.factory-examples">Example</h4><p>Here is an example of registering a service</p>
 <pre><code class="lang-js">$provide.factory(&#39;ping&#39;, [&#39;$http&#39;, function($http) {
   return function ping() {
     return $http.send(&#39;/ping&#39;);
@@ -397,7 +397,7 @@ as a type/class.</p>
   </tr>
 </table>
     
-    <h4 id="$provide.service-examples">Examples</h4><p>Here is an example of registering a service using
+    <h4 id="$provide.service-examples">Example</h4><p>Here is an example of registering a service using
 <a href="api/auto/service/$provide#service">$provide.service(class)</a>.</p>
 <pre><code class="lang-js">var Ping = function($http) {
   this.$http = $http;
@@ -494,7 +494,7 @@ an AngularJS <a href="api/auto/service/$provide#decorator">decorator</a>.</p>
   </tr>
 </table>
     
-    <h4 id="$provide.value-examples">Examples</h4><p>Here are some examples of creating value services.</p>
+    <h4 id="$provide.value-examples">Example</h4><p>Here are some examples of creating value services.</p>
 <pre><code class="lang-js">$provide.value(&#39;ADMIN_USER&#39;, &#39;admin&#39;);
 
 $provide.value(&#39;RoleLookup&#39;, { admin: 0, writer: 1, reader: 2 });
@@ -581,7 +581,7 @@ be overridden by an AngularJS <a href="api/auto/service/$provide#decorator">deco
   </tr>
 </table>
     
-    <h4 id="$provide.constant-examples">Examples</h4><p>Here a some examples of creating constants:</p>
+    <h4 id="$provide.constant-examples">Example</h4><p>Here a some examples of creating constants:</p>
 <pre><code class="lang-js">$provide.constant(&#39;SHARD_HEIGHT&#39;, 306);
 
 $provide.constant(&#39;MY_COLOURS&#39;, [&#39;red&#39;, &#39;blue&#39;, &#39;grey&#39;]);
@@ -665,7 +665,7 @@ decorated or delegated to.</li>
     
 
     
-    <h4 id="$provide.decorator-examples">Examples</h4><p>Here we decorate the <a href="api/ng/service/$log">$log</a> service to convert warnings to errors by intercepting
+    <h4 id="$provide.decorator-examples">Example</h4><p>Here we decorate the <a href="api/ng/service/$log">$log</a> service to convert warnings to errors by intercepting
 calls to <a href="api/ng/service/$log#error">$log.warn()</a>.</p>
 <pre><code class="lang-js">$provide.decorator(&#39;$log&#39;, [&#39;$delegate&#39;, function($delegate) {
   $delegate.warn = $delegate.error;

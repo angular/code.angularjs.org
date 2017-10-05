@@ -376,7 +376,7 @@ object first, before the <code>$injector</code> is consulted.</p>
 used by the injector to determine which services need to be injected into the function when the
 function is invoked. There are three ways in which the function can be annotated with the needed
 dependencies.</p>
-<h2 id="argument-names">Argument names</h2>
+<h4 id="argument-names">Argument names</h4>
 <p>The simplest form is to extract the dependencies from the arguments of the function. This is done
 by converting the function into a string using <code>toString()</code> method and extracting the argument
 names.</p>
@@ -391,7 +391,7 @@ expect(injector.annotate(MyController)).toEqual([&#39;$scope&#39;, &#39;$route&#
 <p>You can disallow this method by using strict injection mode.</p>
 <p>This method does not work with code minification / obfuscation. For this reason the following
 annotation strategies are supported.</p>
-<h2 id="the-inject-property">The <code>$inject</code> property</h2>
+<h4 id="the-inject-property">The <code>$inject</code> property</h4>
 <p>If a function has an <code>$inject</code> property and its value is an array of strings, then the strings
 represent names of services to be injected into the function.</p>
 <pre><code class="lang-js">// Given
@@ -404,7 +404,7 @@ MyController[&#39;$inject&#39;] = [&#39;$scope&#39;, &#39;$route&#39;];
 // Then
 expect(injector.annotate(MyController)).toEqual([&#39;$scope&#39;, &#39;$route&#39;]);
 </code></pre>
-<h2 id="the-array-notation">The array notation</h2>
+<h4 id="the-array-notation">The array notation</h4>
 <p>It is often desirable to inline Injected functions and that&#39;s when setting the <code>$inject</code> property
 is very inconvenient. In these situations using the array notation to specify the dependencies in
 a way that survives minification is a better choice:</p>
@@ -515,14 +515,6 @@ ensuring that lazy scripts are not downloaded and executed more often that desir
 </ul>
 <p>You can use <a href="api/auto/service/$injector#modules"><code>$injector.modules</code></a> to check whether a module has been loaded
 into the injector, which may indicate whether the script has been executed already.</p>
-<h2 id="example">Example</h2>
-<p>Here is an example of loading a bundle of modules, with a utility method called <code>getScript</code>:</p>
-<pre><code class="lang-javascript">app.factory(&#39;loadModule&#39;, function($injector) {
-  return function loadModule(moduleName, bundleUrl) {
-    return getScript(bundleUrl).then(function() { $injector.loadNewModules([moduleName]); });
-  };
-})
-</code></pre>
 </div>
 
     
@@ -566,7 +558,15 @@ into the injector, which may indicate whether the script has been executed alrea
 
     
 
-    </li>
+    
+    <h4 id="$injector.loadNewModules-examples">Example</h4><p>Here is an example of loading a bundle of modules, with a utility method called <code>getScript</code>:</p>
+<pre><code class="lang-javascript">app.factory(&#39;loadModule&#39;, function($injector) {
+  return function loadModule(moduleName, bundleUrl) {
+    return getScript(bundleUrl).then(function() { $injector.loadNewModules([moduleName]); });
+  };
+})
+</code></pre>
+</li>
   </ul>
   
   

@@ -2478,8 +2478,8 @@ angular.module('pagesData', [])
   "examples/example-ng-pluralize": {
     "path": "examples/example-ng-pluralize"
   },
-  "examples/example-ng-repeat": {
-    "path": "examples/example-ng-repeat"
+  "examples/example-ngRepeat": {
+    "path": "examples/example-ngRepeat"
   },
   "examples/example-ng-show-simple": {
     "path": "examples/example-ng-show-simple"

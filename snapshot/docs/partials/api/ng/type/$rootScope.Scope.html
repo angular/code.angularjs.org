@@ -248,59 +248,6 @@ watcher. In rare cases, this is undesirable because the listener is called when 
 of <code>watchExpression</code> didn&#39;t change. To detect this scenario within the <code>listener</code> fn, you
 can compare the <code>newVal</code> and <code>oldVal</code>. If these two values are identical (<code>===</code>) then the
 listener was called due to initialization.</p>
-<h4 id="example">Example</h4>
-<pre><code class="lang-js">// let&#39;s assume that scope was dependency injected as the $rootScope
-var scope = $rootScope;
-scope.name = &#39;misko&#39;;
-scope.counter = 0;
-
-expect(scope.counter).toEqual(0);
-scope.$watch(&#39;name&#39;, function(newValue, oldValue) {
-  scope.counter = scope.counter + 1;
-});
-expect(scope.counter).toEqual(0);
-
-scope.$digest();
-// the listener is always called during the first $digest loop after it was registered
-expect(scope.counter).toEqual(1);
-
-scope.$digest();
-// but now it will not be called unless the value changes
-expect(scope.counter).toEqual(1);
-
-scope.name = &#39;adam&#39;;
-scope.$digest();
-expect(scope.counter).toEqual(2);
-
-
-
-// Using a function as a watchExpression
-var food;
-scope.foodCounter = 0;
-expect(scope.foodCounter).toEqual(0);
-scope.$watch(
-  // This function returns the value being watched. It is called for each turn of the $digest loop
-  function() { return food; },
-  // This is the change listener, called when the value returned from the above function changes
-  function(newValue, oldValue) {
-    if ( newValue !== oldValue ) {
-      // Only increment the counter if the value changed
-      scope.foodCounter = scope.foodCounter + 1;
-    }
-  }
-);
-// No digest has been run so the counter will be zero
-expect(scope.foodCounter).toEqual(0);
-
-// Run the digest but since food has not changed count will still be zero
-scope.$digest();
-expect(scope.foodCounter).toEqual(0);
-
-// Update food and run digest.  Now the counter will increment
-food = &#39;cheeseburger&#39;;
-scope.$digest();
-expect(scope.foodCounter).toEqual(1);
-</code></pre>
 </div>
 
     
@@ -395,7 +342,60 @@ expect(scope.foodCounter).toEqual(1);
 </td>
   </tr>
 </table>
-    </li>
+    
+    <h4 id="$rootScope.Scope.$watch-examples">Example</h4><pre><code class="lang-js">// let&#39;s assume that scope was dependency injected as the $rootScope
+var scope = $rootScope;
+scope.name = &#39;misko&#39;;
+scope.counter = 0;
+
+expect(scope.counter).toEqual(0);
+scope.$watch(&#39;name&#39;, function(newValue, oldValue) {
+  scope.counter = scope.counter + 1;
+});
+expect(scope.counter).toEqual(0);
+
+scope.$digest();
+// the listener is always called during the first $digest loop after it was registered
+expect(scope.counter).toEqual(1);
+
+scope.$digest();
+// but now it will not be called unless the value changes
+expect(scope.counter).toEqual(1);
+
+scope.name = &#39;adam&#39;;
+scope.$digest();
+expect(scope.counter).toEqual(2);
+
+
+
+// Using a function as a watchExpression
+var food;
+scope.foodCounter = 0;
+expect(scope.foodCounter).toEqual(0);
+scope.$watch(
+  // This function returns the value being watched. It is called for each turn of the $digest loop
+  function() { return food; },
+  // This is the change listener, called when the value returned from the above function changes
+  function(newValue, oldValue) {
+    if ( newValue !== oldValue ) {
+      // Only increment the counter if the value changed
+      scope.foodCounter = scope.foodCounter + 1;
+    }
+  }
+);
+// No digest has been run so the counter will be zero
+expect(scope.foodCounter).toEqual(0);
+
+// Run the digest but since food has not changed count will still be zero
+scope.$digest();
+expect(scope.foodCounter).toEqual(0);
+
+// Update food and run digest.  Now the counter will increment
+food = &#39;cheeseburger&#39;;
+scope.$digest();
+expect(scope.foodCounter).toEqual(1);
+</code></pre>
+</li>
   
   <li>
     <h3 id="$watchGroup"><p><code>$watchGroup(watchExpressions, listener);</code></p>
@@ -495,26 +495,6 @@ call to $digest() to see if any items have been added, removed, or moved.</li>
 <li>The <code>listener</code> is called whenever anything within the <code>obj</code> has changed. Examples include
 adding, removing, and moving items belonging to an object or array.</li>
 </ul>
-<h4 id="example">Example</h4>
-<pre><code class="lang-js">$scope.names = [&#39;igor&#39;, &#39;matias&#39;, &#39;misko&#39;, &#39;james&#39;];
-$scope.dataCount = 4;
-
-$scope.$watchCollection(&#39;names&#39;, function(newNames, oldNames) {
-  $scope.dataCount = newNames.length;
-});
-
-expect($scope.dataCount).toEqual(4);
-$scope.$digest();
-
-//still at 4 ... no changes
-expect($scope.dataCount).toEqual(4);
-
-$scope.names.pop();
-$scope.$digest();
-
-//now there&#39;s been a change
-expect($scope.dataCount).toEqual(3);
-</code></pre>
 </div>
 
     
@@ -592,7 +572,27 @@ Due to performance considerations, the<code>oldCollection</code> value is comput
 </td>
   </tr>
 </table>
-    </li>
+    
+    <h4 id="$rootScope.Scope.$watchCollection-examples">Example</h4><pre><code class="lang-js">$scope.names = [&#39;igor&#39;, &#39;matias&#39;, &#39;misko&#39;, &#39;james&#39;];
+$scope.dataCount = 4;
+
+$scope.$watchCollection(&#39;names&#39;, function(newNames, oldNames) {
+  $scope.dataCount = newNames.length;
+});
+
+expect($scope.dataCount).toEqual(4);
+$scope.$digest();
+
+//still at 4 ... no changes
+expect($scope.dataCount).toEqual(4);
+
+$scope.names.pop();
+$scope.$digest();
+
+//now there&#39;s been a change
+expect($scope.dataCount).toEqual(3);
+</code></pre>
+</li>
   
   <li>
     <h3 id="$digest"><p><code>$digest();</code></p>
@@ -613,8 +613,16 @@ a <a href="api/ng/provider/$compileProvider#directive">directive</a>), which wil
 you can register a <code>watchExpression</code> function with
 <a href="api/ng/type/$rootScope.Scope#$watch">$watch()</a> with no <code>listener</code>.</p>
 <p>In unit tests, you may need to call <code>$digest()</code> to simulate the scope life cycle.</p>
-<h4 id="example">Example</h4>
-<pre><code class="lang-js">var scope = ...;
+</div>
+
+    
+
+    
+
+    
+
+    
+    <h4 id="$rootScope.Scope.$digest-examples">Example</h4><pre><code class="lang-js">var scope = ...;
 scope.name = &#39;misko&#39;;
 scope.counter = 0;
 
@@ -636,15 +644,7 @@ scope.name = &#39;adam&#39;;
 scope.$digest();
 expect(scope.counter).toEqual(2);
 </code></pre>
-</div>
-
-    
-
-    
-
-    
-
-    </li>
+</li>
   
   <li>
     <h3 id="$destroy"><p><code>$destroy();</code></p>
@@ -679,14 +679,6 @@ clean up DOM bindings before an element is removed from the DOM.</p>
     <div><p>Executes the <code>expression</code> on the current scope and returns the result. Any exceptions in
 the expression are propagated (uncaught). This is useful when evaluating AngularJS
 expressions.</p>
-<h4 id="example">Example</h4>
-<pre><code class="lang-js">var scope = ng.$rootScope.Scope();
-scope.a = 1;
-scope.b = 2;
-
-expect(scope.$eval(&#39;a+b&#39;)).toEqual(3);
-expect(scope.$eval(function(scope){ return scope.a + scope.b; })).toEqual(3);
-</code></pre>
 </div>
 
     
@@ -756,7 +748,15 @@ expect(scope.$eval(function(scope){ return scope.a + scope.b; })).toEqual(3);
 </td>
   </tr>
 </table>
-    </li>
+    
+    <h4 id="$rootScope.Scope.$eval-examples">Example</h4><pre><code class="lang-js">var scope = ng.$rootScope.Scope();
+scope.a = 1;
+scope.b = 2;
+
+expect(scope.$eval(&#39;a+b&#39;)).toEqual(3);
+expect(scope.$eval(function(scope){ return scope.a + scope.b; })).toEqual(3);
+</code></pre>
+</li>
   
   <li>
     <h3 id="$evalAsync"><p><code>$evalAsync([expression], [locals]);</code></p>
@@ -1223,10 +1223,10 @@ onto the <a href="api/ng/service/$exceptionHandler">$exceptionHandler</a> servic
     </li>
   </ul>
   
-<h2>Events</h2>
+<h2 id="events">Events</h2>
 <ul class="events">
   <li id="$destroy">
-    <h3>$destroy</h3>
+    <h3 id="event-$destroy">$destroy</h3>
     <div><p>Broadcasted when a scope and its children are being destroyed.</p>
 <p>Note that, in AngularJS, there is also a <code>$destroy</code> jQuery event, which can be used to
 clean up DOM bindings before an element is removed from the DOM.</p>

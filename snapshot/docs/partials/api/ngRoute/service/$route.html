@@ -125,10 +125,10 @@ remaining properties will be treated as query params.</p>
     </li>
   </ul>
   
-<h2>Events</h2>
+<h2 id="events">Events</h2>
 <ul class="events">
   <li id="$routeChangeStart">
-    <h3>$routeChangeStart</h3>
+    <h3 id="event-$routeChangeStart">$routeChangeStart</h3>
     <div><p>Broadcasted before a route change. At this  point the route services starts
 resolving all of the dependencies needed for the route change to occur.
 Typically this involves fetching the view template as well as any dependencies
@@ -150,7 +150,7 @@ for more details about event object.</p>
     </div>
     
     <section class="api-section">
-      <h3>Parameters</h3>
+      <h4>Parameters</h4>
       
 <table class="variables-matrix input-arguments">
   <thead>
@@ -216,7 +216,7 @@ for more details about event object.</p>
     </section></li>
   
   <li id="$routeChangeSuccess">
-    <h3>$routeChangeSuccess</h3>
+    <h3 id="event-$routeChangeSuccess">$routeChangeSuccess</h3>
     <div><p>Broadcasted after a route change has happened successfully.
 The <code>resolve</code> dependencies are now available in the <code>current.locals</code> property.</p>
 <p><a href="api/ngRoute/directive/ngView">ngView</a> listens for the directive
@@ -234,7 +234,7 @@ to instantiate the controller and render the view.</p>
     </div>
     
     <section class="api-section">
-      <h3>Parameters</h3>
+      <h4>Parameters</h4>
       
 <table class="variables-matrix input-arguments">
   <thead>
@@ -301,7 +301,7 @@ first route entered.</p>
     </section></li>
   
   <li id="$routeChangeError">
-    <h3>$routeChangeError</h3>
+    <h3 id="event-$routeChangeError">$routeChangeError</h3>
     <div><p>Broadcasted if a redirection function fails or any redirection or resolve promises are
 rejected.</p>
 </div>
@@ -317,7 +317,7 @@ rejected.</p>
     </div>
     
     <section class="api-section">
-      <h3>Parameters</h3>
+      <h4>Parameters</h4>
       
 <table class="variables-matrix input-arguments">
   <thead>
@@ -400,7 +400,7 @@ the rejection reason is the error that caused the promise to get rejected.</p>
     </section></li>
   
   <li id="$routeUpdate">
-    <h3>$routeUpdate</h3>
+    <h3 id="event-$routeUpdate">$routeUpdate</h3>
     <div><p>The <code>reloadOnSearch</code> property has been set to false, and we are reusing the same
 instance of the Controller.</p>
 </div>
@@ -416,7 +416,7 @@ instance of the Controller.</p>
     </div>
     
     <section class="api-section">
-      <h3>Parameters</h3>
+      <h4>Parameters</h4>
       
 <table class="variables-matrix input-arguments">
   <thead>
@@ -512,7 +512,7 @@ the property name, using <code>resolveAs</code> in the route definition. See
 
 
   
-  <h2 id="example">Examples</h2><p>This example shows how changing the URL hash causes the <code>$route</code> to match a route against the
+  <h2 id="examples">Example</h2><p>This example shows how changing the URL hash causes the <code>$route</code> to match a route against the
 URL, and the <code>ngView</code> pulls in the partial.</p>
 <p>
 
