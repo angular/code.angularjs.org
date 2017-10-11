@@ -35,6 +35,10 @@ contents of <code>$templateCache</code> are trusted, so the call to <code>$sce.g
 when <code>tpl</code> is of type string and <code>$templateCache</code> has the matching entry.</p>
 <p>If you want to pass custom options to the <code>$http</code> service, such as setting the Accept header you
 can configure this via <a href="api/ng/provider/$templateRequestProvider#httpOptions"><code>$templateRequestProvider</code></a>.</p>
+<p><code>$templateRequest</code> is used internally by <a href="api/ng/service/$compile"><code>$compile</code></a>, <a href="api/ngRoute/service/$route"><code>$route</code></a>, and directives such
+as <a href="api/ng/directive/ngInclude"><code>ngInclude</code></a> to download and cache templates.</p>
+<p>3rd party modules should use <code>$templateRequest</code> if their services or directives are loading
+templates.</p>
 
 </div>
 

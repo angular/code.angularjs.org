@@ -29,7 +29,7 @@ These rules are bundled with angular.js, but can be overridden
 by specifying the mappings between
 <a href="http://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/language_plural_rules.html">plural categories</a>
 and the strings to be displayed.</p>
-<h1 id="plural-categories-and-explicit-number-rules">Plural categories and explicit number rules</h1>
+<h2 id="plural-categories-and-explicit-number-rules">Plural categories and explicit number rules</h2>
 <p>There are two
 <a href="http://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/language_plural_rules.html">plural categories</a>
 in AngularJS&#39;s default en-US locale: &quot;one&quot; and &quot;other&quot;.</p>
@@ -37,7 +37,7 @@ in AngularJS&#39;s default en-US locale: &quot;one&quot; and &quot;other&quot;.<
 any number that is not 1), an explicit number rule can only match one number. For example, the
 explicit number rule for &quot;3&quot; matches the number 3. There are examples of plural categories
 and explicit number rules throughout the rest of this documentation.</p>
-<h1 id="configuring-ngpluralize">Configuring ngPluralize</h1>
+<h2 id="configuring-ngpluralize">Configuring ngPluralize</h2>
 <p>You configure ngPluralize by providing 2 attributes: <code>count</code> and <code>when</code>.
 You can also provide an optional attribute, <code>offset</code>.</p>
 <p>The value of the <code>count</code> attribute can be either a string or an <a href="guide/expression">AngularJS expression</a>; these are evaluated on the current scope for its bound value.</p>
@@ -61,7 +61,7 @@ into pluralized strings. In the previous example, AngularJS will replace <code>{
 for <span ng-non-bindable>{{numberExpression}}</span>.</p>
 <p>If no rule is defined for a category, then an empty string is displayed and a warning is generated.
 Note that some locales define more categories than <code>one</code> and <code>other</code>. For example, fr-fr defines <code>few</code> and <code>many</code>.</p>
-<h1 id="configuring-ngpluralize-with-offset">Configuring ngPluralize with offset</h1>
+<h2 id="configuring-ngpluralize-with-offset">Configuring ngPluralize with offset</h2>
 <p>The <code>offset</code> attribute allows further customization of pluralized text, which can result in
 a better user experience. For example, instead of the message &quot;4 people are viewing this document&quot;,
 you might display &quot;John, Kate and 2 others are viewing this document&quot;.

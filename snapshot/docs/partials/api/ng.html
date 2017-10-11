@@ -856,8 +856,8 @@ It is most often used for text-based <a href="api/ng/directive/input"><code>inpu
       <tr>
         <td><a href="api/ng/type/$cacheFactory.Cache">$cacheFactory.Cache</a></td>
         <td><p>A cache object used to store and retrieve data, primarily used by
-<a href="api/ng/service/$http">$http</a> and the <a href="api/ng/directive/script">script</a> directive to cache
-templates and other data.</p>
+<a href="api/ng/service/$templateRequest">$templateRequest</a> and the <a href="api/ng/directive/script">script</a>
+directive to cache templates and other data.</p>
 </td>
       </tr>
       
@@ -1067,9 +1067,8 @@ them.</p>
       
       <tr>
         <td><a href="api/ng/service/$templateCache">$templateCache</a></td>
-        <td><p>The first time a template is used, it is loaded in the template cache for quick retrieval. You
-can load templates directly into the cache in a <code>script</code> tag, or by consuming the
-<code>$templateCache</code> service directly.</p>
+        <td><p><code>$templateCache</code> is a <a href="api/ng/type/$cacheFactory.Cache">Cache object</a> created by the
+<a href="api/ng/service/$cacheFactory">$cacheFactory</a>.</p>
 </td>
       </tr>
       

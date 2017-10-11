@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.7-build.5475+sha.e5c6174
+ * @license AngularJS v1.6.7-build.5476+sha.c8d3498
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -3407,7 +3407,7 @@ var ngAnimateSwapDirective = ['$animate', '$rootScope', function($animate, $root
  * | {@link ng.directive:ngIf#animations ngIf}                                                                | enter and leave                                                          |
  * | {@link ng.directive:ngClass#animations ngClass}                                                          | add and remove (the CSS class(es) present)                               |
  * | {@link ng.directive:ngShow#animations ngShow} & {@link ng.directive:ngHide#animations ngHide}            | add and remove (the ng-hide class value)                                 |
- * | {@link ng.directive:form#animation-hooks form} & {@link ng.directive:ngModel#animation-hooks ngModel}    | add and remove (dirty, pristine, valid, invalid & all other validations) |
+ * | {@link ng.directive:form#animations form} & {@link ng.directive:ngModel#animations ngModel}    | add and remove (dirty, pristine, valid, invalid & all other validations) |
  * | {@link module:ngMessages#animations ngMessages}                                                          | add and remove (ng-active & ng-inactive)                                 |
  * | {@link module:ngMessages#animations ngMessage}                                                           | enter and leave                                                          |
  *
@@ -4139,7 +4139,7 @@ angular.module('ngAnimate', [], function initAngularHelpers() {
   isFunction  = angular.isFunction;
   isElement   = angular.isElement;
 })
-  .info({ angularVersion: '1.6.7-build.5475+sha.e5c6174' })
+  .info({ angularVersion: '1.6.7-build.5476+sha.c8d3498' })
   .directive('ngAnimateSwap', ngAnimateSwapDirective)
 
   .directive('ngAnimateChildren', $$AnimateChildrenDirective)

@@ -72,26 +72,7 @@ input[type=submit] (<code>ngClick</code>) <em>and</em> a submit handler on the e
 <p>Any pending <code>ngModelOptions</code> changes will take place immediately when an enclosing form is
 submitted. Note that <code>ngClick</code> events will occur before the model is updated. Use <code>ngSubmit</code>
 to have access to the updated model.</p>
-<h2 id="animation-hooks">Animation Hooks</h2>
-<p>Animations in ngForm are triggered when any of the associated CSS classes are added and removed.
-These classes are: <code>.ng-pristine</code>, <code>.ng-dirty</code>, <code>.ng-invalid</code> and <code>.ng-valid</code> as well as any
-other validations that are performed within the form. Animations in ngForm are similar to how
-they work in ngClass and animations can be hooked into using CSS transitions, keyframes as well
-as JS animations.</p>
-<p>The following example shows a simple way to utilize CSS transitions to style a form element
-that has been rendered as invalid after it has been validated:</p>
-<pre>
-//be sure to include ngAnimate as a module to hook into more
-//advanced animations
-.my-form {
-  transition:0.5s linear all;
-  background: white;
-}
-.my-form.ng-invalid {
-  background: red;
-  color:white;
-}
-</pre>
+
 </div>
 
 
@@ -155,6 +136,27 @@ that has been rendered as invalid after it has been validated:</p>
 
 </section>
   
+  <h2 id="animations">Animations</h2>
+  <p>Animations in ngForm are triggered when any of the associated CSS classes are added and removed.
+These classes are: <code>.ng-pristine</code>, <code>.ng-dirty</code>, <code>.ng-invalid</code> and <code>.ng-valid</code> as well as any
+other validations that are performed within the form. Animations in ngForm are similar to how
+they work in ngClass and animations can be hooked into using CSS transitions, keyframes as well
+as JS animations.</p>
+<p>The following example shows a simple way to utilize CSS transitions to style a form element
+that has been rendered as invalid after it has been validated:</p>
+<pre>
+//be sure to include ngAnimate as a module to hook into more
+//advanced animations
+.my-form {
+  transition:0.5s linear all;
+  background: white;
+}
+.my-form.ng-invalid {
+  background: red;
+  color:white;
+}
+</pre>
+  <a href="api/ngAnimate/service/$animate">Click here</a> to learn more about the steps involved in the animation.
 
   
   <h2 id="examples">Example</h2><p>

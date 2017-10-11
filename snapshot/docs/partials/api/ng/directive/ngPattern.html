@@ -1,8 +1,8 @@
-<a href='https://github.com/angular/angular.js/edit/master/src/ng/directive/validators.js?message=docs(ngPattern)%3A%20describe%20your%20change...#L80' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/master/src/ng/directive/validators.js?message=docs(ngPattern)%3A%20describe%20your%20change...#L84' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 
-<a href='https://github.com/angular/angular.js/tree/master/src/ng/directive/validators.js#L80' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/master/src/ng/directive/validators.js#L84' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -26,12 +26,15 @@
   <p>ngPattern adds the pattern <a href="api/ng/type/ngModel.NgModelController#$validators"><code>validator</code></a> to <a href="api/ng/directive/ngModel"><code>ngModel</code></a>.
 It is most often used for text-based <a href="api/ng/directive/input"><code>input</code></a> controls, but can also be applied to custom text-based controls.</p>
 <p>The validator sets the <code>pattern</code> error key if the <a href="api/ng/type/ngModel.NgModelController#$viewValue"><code>ngModel.$viewValue</code></a>
-does not match a RegExp which is obtained by evaluating the AngularJS expression given in the
-<code>ngPattern</code> attribute value:</p>
+does not match a RegExp which is obtained from the <code>ngPattern</code> attribute value:</p>
 <ul>
+<li>the value is an AngularJS expression:<ul>
 <li>If the expression evaluates to a RegExp object, then this is used directly.</li>
 <li>If the expression evaluates to a string, then it will be converted to a RegExp after wrapping it
 in <code>^</code> and <code>$</code> characters. For instance, <code>&quot;abc&quot;</code> will be converted to <code>new RegExp(&#39;^abc$&#39;)</code>.</li>
+</ul>
+</li>
+<li>If the value is a RegExp literal, e.g. <code>ngPattern=&quot;/^\d+$/&quot;</code>, it is used directly.</li>
 </ul>
 <div class="alert alert-info">
 <strong>Note:</strong> Avoid using the <code>g</code> flag on the RegExp, as it will cause each successive search to
@@ -74,16 +77,47 @@ differences:
   <div class="usage">
   
     <ul>
-    
-      <li>as element:
-      <pre><code>&lt;ng-pattern&gt;&#10;...&#10;&lt;/ng-pattern&gt;</code></pre>
-      </li>
     <li>as attribute:
-        <pre><code>&lt;ANY&gt;&#10;...&#10;&lt;/ANY&gt;</code></pre>
+        <pre><code>&lt;ANY&#10;  ng-pattern=&quot;&quot;&gt;&#10;...&#10;&lt;/ANY&gt;</code></pre>
       </li>
     
   </div>
   
+<section class="api-section">
+  <h3 id="ngPattern-arguments">Arguments</h3>
+
+<table class="variables-matrix input-arguments">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        ngPattern
+        
+        
+      </td>
+      <td>
+        <a href="" class="label type-hint type-hint-expression">expression</a><a href="" class="label type-hint type-hint-regexp">RegExp</a>
+      </td>
+      <td>
+        <p>AngularJS expression that must evaluate to a <code>RegExp</code> or a <code>String</code>
+                                     parsable into a <code>RegExp</code>, or a <code>RegExp</code> literal. See above for
+                                     more details.</p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+</section>
   
 
   

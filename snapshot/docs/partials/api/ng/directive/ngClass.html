@@ -138,12 +138,18 @@ See <a href="guide/interpolation#known-issues">here</a> for more info.</p>
 </tr>
 </tbody>
 </table>
+<h3 id="ngclass-and-pre-existing-css3-transitions-animations">ngClass and pre-existing CSS3 Transitions/Animations</h3>
+<p>   The ngClass directive still supports CSS3 Transitions/Animations even if they do not follow the ngAnimate CSS naming structure.
+   Upon animation ngAnimate will apply supplementary CSS classes to track the start and end of an animation, but this will not hinder
+   any pre-existing CSS transitions already on the element. To get an idea of what happens during a class-based animation, be sure
+   to view the step by step details of <a href="api/ng/service/$animate#addClass">$animate.addClass</a> and
+   <a href="api/ng/service/$animate#removeClass">$animate.removeClass</a>.</p>
 
   <a href="api/ngAnimate/service/$animate">Click here</a> to learn more about the steps involved in the animation.
 
   
-  <h2 id="examples">Example</h2><p>Example that demonstrates basic bindings via ngClass directive.
-   
+  <h2 id="examples">Examples</h2><h3 id="basic">Basic</h3>
+<p>   
 
 <div>
   <plnkr-opener example-path="examples/example-ng-class"></plnkr-opener>
@@ -181,7 +187,7 @@ See <a href="guide/interpolation#known-issues">here</a> for more info.</p>
 
 
 </p>
-<h2 id="animations">Animations</h2>
+<h3 id="animations">Animations</h3>
 <p>   The example below demonstrates how to perform animations using ngClass.</p>
 <p>   
 
@@ -224,12 +230,6 @@ See <a href="guide/interpolation#known-issues">here</a> for more info.</p>
 
 
 </p>
-<h2 id="ngclass-and-pre-existing-css3-transitions-animations">ngClass and pre-existing CSS3 Transitions/Animations</h2>
-<p>   The ngClass directive still supports CSS3 Transitions/Animations even if they do not follow the ngAnimate CSS naming structure.
-   Upon animation ngAnimate will apply supplementary CSS classes to track the start and end of an animation, but this will not hinder
-   any pre-existing CSS transitions already on the element. To get an idea of what happens during a class-based animation, be sure
-   to view the step by step details of <a href="api/ng/service/$animate#addClass">$animate.addClass</a> and
-   <a href="api/ng/service/$animate#removeClass">$animate.removeClass</a>.</p>
 
 </div>
 

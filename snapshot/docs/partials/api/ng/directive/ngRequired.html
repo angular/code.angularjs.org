@@ -58,11 +58,46 @@ custom controls, <code>$isEmpty()</code> can be overwritten to account for a $vi
   
     <ul>
     <li>as attribute:
-        <pre><code>&lt;ANY&gt;&#10;...&#10;&lt;/ANY&gt;</code></pre>
+        <pre><code>&lt;ANY&#10;  ng-required=&quot;expression&quot;&gt;&#10;...&#10;&lt;/ANY&gt;</code></pre>
       </li>
     
   </div>
   
+<section class="api-section">
+  <h3 id="ngRequired-arguments">Arguments</h3>
+
+<table class="variables-matrix input-arguments">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        ngRequired
+        
+        
+      </td>
+      <td>
+        <a href="" class="label type-hint type-hint-expression">expression</a>
+      </td>
+      <td>
+        <p>AngularJS expression. If it evaluates to <code>true</code>, it sets the
+                               <code>required</code> attribute to the element and adds the <code>required</code>
+                               <a href="api/ng/type/ngModel.NgModelController#$validators"><code>validator</code></a>.</p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+</section>
   
 
   

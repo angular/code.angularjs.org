@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.7-build.5475+sha.e5c6174
+ * @license AngularJS v1.6.7-build.5476+sha.c8d3498
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -272,7 +272,7 @@ angular.module('ngMessages', [], function initAngularHelpers() {
   isString = angular.isString;
   jqLite = angular.element;
 })
-  .info({ angularVersion: '1.6.7-build.5475+sha.e5c6174' })
+  .info({ angularVersion: '1.6.7-build.5476+sha.c8d3498' })
 
   /**
    * @ngdoc directive
@@ -597,6 +597,7 @@ angular.module('ngMessages', [], function initAngularHelpers() {
    * @name ngMessage
    * @restrict AE
    * @scope
+   * @priority 1
    *
    * @description
    * `ngMessage` is a directive with the purpose to show and hide a particular message.
