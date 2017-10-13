@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.7-build.5477+sha.5f76bc6
+ * @license AngularJS v1.6.7-build.5478+sha.5462373
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -441,7 +441,7 @@ function shallowClearAndCopy(src, dst) {
  *
  */
 angular.module('ngResource', ['ng']).
-  info({ angularVersion: '1.6.7-build.5477+sha.5f76bc6' }).
+  info({ angularVersion: '1.6.7-build.5478+sha.5462373' }).
   provider('$resource', function ResourceProvider() {
     var PROTOCOL_AND_IPV6_REGEX = /^https?:\/\/\[[^\]]*][^/]*/;
 
@@ -845,11 +845,6 @@ angular.module('ngResource', ['ng']).
             return result.$promise || result;
           };
         });
-
-        Resource.bind = function(additionalParamDefaults) {
-          var extendedParamDefaults = extend({}, paramDefaults, additionalParamDefaults);
-          return resourceFactory(url, extendedParamDefaults, actions, options);
-        };
 
         return Resource;
       }
