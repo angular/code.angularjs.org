@@ -2,6 +2,7 @@
   "name": "example-select-unknown-value-required",
   "files": [
     "index-production.html",
-    "app.js"
+    "app.js",
+    "protractor.js"
   ]
 }

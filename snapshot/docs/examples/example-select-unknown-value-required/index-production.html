@@ -15,11 +15,11 @@
   <div ng-controller="ExampleController">
   <form name="myForm">
     <label for="testSelect"> Select: </label><br>
-    <select name="testSelect" ng-model="selected" unknown-value-required>
+    <select name="testSelect" ng-model="selected" required unknown-value-required>
       <option value="option-1">Option 1</option>
       <option value="option-2">Option 2</option>
     </select><br>
-    <span ng-if="myForm.testSelect.$error.required">Error: Please select a value</span><br>
+    <span class="error" ng-if="myForm.testSelect.$error.required">Error: Please select a value</span><br>
 
     <button ng-click="forceUnknownOption()">Force unknown option</button><br>
   </form>

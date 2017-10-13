@@ -20,7 +20,8 @@
       <option value="option-1">Option 1</option>
       <option value="option-2">Option 2</option>
     </select><br>
-    <span ng-if="myForm.testSelect.$error.unknownValue">Error: The current model doesn't match any option</span>
+    <span class="error" ng-if="myForm.testSelect.$error.unknownValue">
+      Error: The current model doesn't match any option</span><br>
 
     <button ng-click="forceUnknownOption()">Force unknown option</button><br>
   </form>
