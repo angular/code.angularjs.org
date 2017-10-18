@@ -54,11 +54,15 @@ configuration of the <code>$route</code> service.</p>
       <li>as element:
       <pre><code>&lt;ng-view&#10;  [onload=&quot;string&quot;]&#10;  [autoscroll=&quot;string&quot;]&gt;&#10;...&#10;&lt;/ng-view&gt;</code></pre>
       </li>
+    
+
+    
+    
     <li>as attribute:
-        <pre><code>&lt;ANY&#10;  [onload=&quot;string&quot;]&#10;  [autoscroll=&quot;string&quot;]&gt;&#10;...&#10;&lt;/ANY&gt;</code></pre>
+        <pre><code>&lt;ANY&#10;  ng-view&#10;  [onload=&quot;string&quot;]&#10;  [autoscroll=&quot;string&quot;]&gt;&#10;...&#10;&lt;/ANY&gt;</code></pre>
       </li>
     <li>as CSS class:
-        <pre><code>&lt;ANY class=&quot;[onload: string;] [autoscroll: string;]&quot;&gt; ... &lt;/ANY&gt;</code></pre>
+        <pre><code>&lt;ANY class=&quot;ng-view [onload: string;] [autoscroll: string;]&quot;&gt; ... &lt;/ANY&gt;</code></pre>
       </li>
     
   </div>
