@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.7-build.5484+sha.0f0a16e
+ * @license AngularJS v1.6.7-build.5485+sha.dfcb5ac
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -55,7 +55,7 @@ var noop;
 /* global -ngRouteModule */
 var ngRouteModule = angular.
   module('ngRoute', []).
-  info({ angularVersion: '1.6.7-build.5484+sha.0f0a16e' }).
+  info({ angularVersion: '1.6.7-build.5485+sha.dfcb5ac' }).
   provider('$route', $RouteProvider).
   // Ensure `$route` will be instantiated in time to capture the initial `$locationChangeSuccess`
   // event (unless explicitly disabled). This is necessary in case `ngView` is included in an
