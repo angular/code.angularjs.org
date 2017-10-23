@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.7-build.5486+sha.9ba07e9
+ * @license AngularJS v1.6.7-build.5487+sha.32fbb2e
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -1263,7 +1263,7 @@ angular.module('ngParseExt', [])
   .config(['$parseProvider', function($parseProvider) {
     $parseProvider.setIdentifierFns(isValidIdentifierStart, isValidIdentifierContinue);
   }])
-  .info({ angularVersion: '1.6.7-build.5486+sha.9ba07e9' });
+  .info({ angularVersion: '1.6.7-build.5487+sha.32fbb2e' });
 
 
 })(window, window.angular);
