@@ -461,9 +461,12 @@ current debugInfoEnabled state</p>
     <h3 id="strictComponentBindingsEnabled"><p><code>strictComponentBindingsEnabled([enabled]);</code></p>
 
 </h3>
-    <div><p>Call this method to enable/disable strict component bindings check. If enabled, the compiler will enforce that
-for all bindings of a component that are not set as optional with <code>?</code>, an attribute needs to be provided
-on the component&#39;s HTML tag.</p>
+    <div><p>Call this method to enable / disable the strict component bindings check. If enabled, the
+compiler will enforce that all scope / controller bindings of a
+<a href="api/ng/provider/$compileProvider#directive">directive</a> / <a href="api/ng/provider/$compileProvider#component">component</a>
+that are not set as optional with <code>?</code>, must be provided when the directive is instantiated.
+If not provided, the compiler will throw the
+<a href="error/$compile/missingattr">$compile:missingattr error</a>.</p>
 <p>The default value is false.</p>
 </div>
 
@@ -492,8 +495,8 @@ on the component&#39;s HTML tag.</p>
         <a href="" class="label type-hint type-hint-boolean">boolean</a>
       </td>
       <td>
-        <p>update the strictComponentBindingsEnabled state if provided, otherwise just return the
-current strictComponentBindingsEnabled state</p>
+        <p>update the strictComponentBindingsEnabled state if provided,
+otherwise return the current strictComponentBindingsEnabled state.</p>
 
         
       </td>

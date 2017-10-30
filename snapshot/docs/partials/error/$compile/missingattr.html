@@ -11,9 +11,26 @@
 
 <h2 id="description">Description</h2>
 <div class="description">
-  <p>This error may occur only when <code>$compileProvider.strictComponentBindingsEnabled</code> is set to <code>true</code>.
-Then all attributes mentioned in <code>bindings</code> without <code>?</code> must be set. If one or more aren&#39;t set,
-the first one will throw an error.</p>
+  <p>This error may occur only when <a href="api/ng/provider/$compileProvider#strictComponentBindingsEnabled"><code>$compileProvider.strictComponentBindingsEnabled</code></a> is set to <code>true</code>.</p>
+<p>If that is the case, then all <a href="api/ng/provider/$compileProvider#component">component</a> controller bindings and
+<a href="api/ng/provider/$compileProvider#directive">directive</a> scope / controller bindings that are non-optional,
+must be provided when the directive is instantiated.</p>
+<p>To make a binding optional, add &#39;?&#39; to the definition.</p>
+<h2 id="example-">Example:</h2>
+<pre><code class="lang-js">app.component(&#39;myTest&#39;, {
+  bindings: {
+    first: &#39;=?&#39;, // optional
+    second: &#39;=&#39;
+  },
+  controller: function() {
+    ...
+  },
+  template: &#39;...&#39;
+});
+</code></pre>
+<p>This component will throw <code>missingattr</code> for the <code>second</code> binding when used as follows:</p>
+<pre><code class="lang-html">&lt;my-test&gt;&lt;/my-test&gt;
+</code></pre>
 
 </div>
 

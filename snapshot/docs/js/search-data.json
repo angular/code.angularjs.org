@@ -56,7 +56,7 @@
   {
     "path": "error/$compile/missingattr",
     "titleWords": "missingattr",
-    "keywords": "$compile $compileprovider all an and aren attribute attributes be bindings error first html if in is may mentioned missing missingattr more must non-optional occur of one only or partials required set strictcomponentbindingsenabled the then this throw to true when will without",
+    "keywords": "$compile $compileprovider add all and app are as attribute be binding bindings case component controller definition directive error example first follows for function html if instantiated is js make may missing missingattr must mytest non-optional occur of only optional partials provided required scope second set strictcomponentbindingsenabled template that the then this throw to true used when will",
     "members": ""
   },
   {
