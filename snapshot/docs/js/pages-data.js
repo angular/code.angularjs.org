@@ -328,6 +328,11 @@ angular.module('pagesData', [])
     "area": "error",
     "path": "error/$resource/badname"
   },
+  "error/$rootScope/inevt": {
+    "name": "inevt",
+    "area": "error",
+    "path": "error/$rootScope/inevt"
+  },
   "error/$rootScope/infdig": {
     "name": "infdig",
     "area": "error",

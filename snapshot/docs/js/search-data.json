@@ -390,6 +390,12 @@
     "members": ""
   },
   {
+    "path": "error/$rootScope/inevt",
+    "titleWords": "inevt",
+    "keywords": "$broadcast $emit $on $rootscope $scope already an being causes ed element error event example fires foo for function html indirect inevt is listened listener occurs on or parent partials recursion recursive recursively same scope the this to when",
+    "members": ""
+  },
+  {
     "path": "error/$rootScope/infdig",
     "titleWords": "infdig",
     "keywords": "$digest $rootscope $rootscopeprovider $scope $watch aborting allowed an and angularjs application array be become becomes binding browser by called can causing change changed changes common configured controlled cycle detects determines different each elements error every example fired foo for francisco from function generates getusers hank have html if in infdig infinite is it iterations last loop maximum mistake model name new ng ng-repeat not number object occur occurs of on one partials path prevents reached resulting return returns same setting since situation solution state subsequent subsequently that the this time to triggers ttl unresponsive unstable up updating user users value var via watch watchers when which",

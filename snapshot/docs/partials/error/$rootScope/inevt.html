@@ -1,0 +1,28 @@
+<a href='https://github.com/angular/angular.js/edit/master/docs/content/error/$rootScope/inevt.ngdoc?message=docs(error%2Finevt)%3A%20describe%20your%20change...' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+
+
+<h1>Error: $rootScope:inevt
+  <div><span class='hint'>Recursive $emit/$broadcast event</span></div>
+</h1>
+
+<div>
+    <pre class="minerr-errmsg" error-display="{0} already $emit/$broadcast-ing on scope ({1})">{0} already $emit/$broadcast-ing on scope ({1})</pre>
+</div>
+
+<h2 id="description">Description</h2>
+<div class="description">
+  <p>This error occurs when the an event is <code>$emit</code>ed or <code>$broadcast</code>ed recursively on a scope.</p>
+<p>For example, when an event listener fires the same event being listened to.</p>
+<pre><code>$scope.$on(&#39;foo&#39;, function() {
+    $scope.$emit(&#39;foo&#39;);
+});
+</code></pre>
+<p>Or when a parent element causes indirect recursion.</p>
+<pre><code>$scope.$on(&#39;foo&#39;, function() {
+    $rootScope.$broadcast(&#39;foo&#39;);
+});
+</code></pre>
+
+</div>
+
+

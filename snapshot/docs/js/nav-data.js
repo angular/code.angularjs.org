@@ -1757,6 +1757,11 @@ angular.module('navData', [])
             "type": "section"
           },
           {
+            "name": "inevt",
+            "href": "error/$rootScope/inevt",
+            "type": "error"
+          },
+          {
             "name": "infdig",
             "href": "error/$rootScope/infdig",
             "type": "error"
