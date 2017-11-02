@@ -108,16 +108,17 @@ for instantiating controllers.</p>
 <pre><code class="lang-js">describe(&#39;PasswordController&#39;, function() {
   beforeEach(module(&#39;app&#39;));
 
-  var $controller;
+  var $controller, $rootScope;
 
-  beforeEach(inject(function(_$controller_){
+  beforeEach(inject(function(_$controller_, _$rootScope_){
     // The injector unwraps the underscores (_) from around the parameter names when matching
     $controller = _$controller_;
+    $rootScope = _$rootScope_;
   }));
 
   describe(&#39;$scope.grade&#39;, function() {
     it(&#39;sets the strength to &quot;strong&quot; if the password length is &gt;8 chars&#39;, function() {
-      var $scope = {};
+      var $scope = $rootScope.$new();
       var controller = $controller(&#39;PasswordController&#39;, { $scope: $scope });
       $scope.password = &#39;longerthaneightchars&#39;;
       $scope.grade();
