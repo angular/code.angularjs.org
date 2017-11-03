@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.7-build.5495+sha.0cbc505
+ * @license AngularJS v1.6.7-build.5496+sha.181ac0b
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -272,7 +272,7 @@ angular.module('ngMessages', [], function initAngularHelpers() {
   isString = angular.isString;
   jqLite = angular.element;
 })
-  .info({ angularVersion: '1.6.7-build.5495+sha.0cbc505' })
+  .info({ angularVersion: '1.6.7-build.5496+sha.181ac0b' })
 
   /**
    * @ngdoc directive
