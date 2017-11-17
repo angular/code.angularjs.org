@@ -10250,7 +10250,7 @@ return jQuery;
 } );
 
 /**
- * @license AngularJS v1.6.7-build.5499+sha.12cf994
+ * @license AngularJS v1.6.7-build.5500+sha.aa3f951
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -10358,7 +10358,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.6.7-build.5499+sha.12cf994/' +
+    message += '\nhttp://errors.angularjs.org/1.6.7-build.5500+sha.aa3f951/' +
       (module ? module + '/' : '') + code;
 
     for (i = 0, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -13026,7 +13026,7 @@ function toDebugString(obj, maxDepth) {
 var version = {
   // These placeholder strings will be replaced by grunt's `build` task.
   // They need to be double- or single-quoted.
-  full: '1.6.7-build.5499+sha.12cf994',
+  full: '1.6.7-build.5500+sha.aa3f951',
   major: 1,
   minor: 6,
   dot: 7,
@@ -13176,7 +13176,7 @@ function publishExternalAPI(angular) {
       });
     }
   ])
-  .info({ angularVersion: '1.6.7-build.5499+sha.12cf994' });
+  .info({ angularVersion: '1.6.7-build.5500+sha.aa3f951' });
 }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -35779,8 +35779,8 @@ function numberInputType(scope, element, attr, ctrl, $sniffer, $browser) {
   var maxVal;
 
   if (isDefined(attr.min) || attr.ngMin) {
-    ctrl.$validators.min = function(value) {
-      return ctrl.$isEmpty(value) || isUndefined(minVal) || value >= minVal;
+    ctrl.$validators.min = function(modelValue, viewValue) {
+      return ctrl.$isEmpty(viewValue) || isUndefined(minVal) || viewValue >= minVal;
     };
 
     attr.$observe('min', function(val) {
@@ -35791,8 +35791,8 @@ function numberInputType(scope, element, attr, ctrl, $sniffer, $browser) {
   }
 
   if (isDefined(attr.max) || attr.ngMax) {
-    ctrl.$validators.max = function(value) {
-      return ctrl.$isEmpty(value) || isUndefined(maxVal) || value <= maxVal;
+    ctrl.$validators.max = function(modelValue, viewValue) {
+      return ctrl.$isEmpty(viewValue) || isUndefined(maxVal) || viewValue <= maxVal;
     };
 
     attr.$observe('max', function(val) {
