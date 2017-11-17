@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.7-build.5497+sha.f876ab7
+ * @license AngularJS v1.6.7-build.5498+sha.873e263
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -599,7 +599,7 @@ function sanitizeText(chars) {
 // define ngSanitize module and register $sanitize service
 angular.module('ngSanitize', [])
   .provider('$sanitize', $SanitizeProvider)
-  .info({ angularVersion: '1.6.7-build.5497+sha.f876ab7' });
+  .info({ angularVersion: '1.6.7-build.5498+sha.873e263' });
 
 /**
  * @ngdoc filter
@@ -613,7 +613,7 @@ angular.module('ngSanitize', [])
  * Requires the {@link ngSanitize `ngSanitize`} module to be installed.
  *
  * @param {string} text Input text.
- * @param {string} target Window (`_blank|_self|_parent|_top`) or named frame to open links in.
+ * @param {string} [target] Window (`_blank|_self|_parent|_top`) or named frame to open links in.
  * @param {object|function(url)} [attributes] Add custom attributes to the link element.
  *
  *    Can be one of:
