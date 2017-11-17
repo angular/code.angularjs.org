@@ -10250,7 +10250,7 @@ return jQuery;
 } );
 
 /**
- * @license AngularJS v1.6.7-build.5498+sha.873e263
+ * @license AngularJS v1.6.7-build.5499+sha.12cf994
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -10358,7 +10358,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.6.7-build.5498+sha.873e263/' +
+    message += '\nhttp://errors.angularjs.org/1.6.7-build.5499+sha.12cf994/' +
       (module ? module + '/' : '') + code;
 
     for (i = 0, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -13026,7 +13026,7 @@ function toDebugString(obj, maxDepth) {
 var version = {
   // These placeholder strings will be replaced by grunt's `build` task.
   // They need to be double- or single-quoted.
-  full: '1.6.7-build.5498+sha.873e263',
+  full: '1.6.7-build.5499+sha.12cf994',
   major: 1,
   minor: 6,
   dot: 7,
@@ -13176,7 +13176,7 @@ function publishExternalAPI(angular) {
       });
     }
   ])
-  .info({ angularVersion: '1.6.7-build.5498+sha.873e263' });
+  .info({ angularVersion: '1.6.7-build.5499+sha.12cf994' });
 }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -21020,7 +21020,9 @@ var SPECIAL_CHARS_REGEXP = /[:\-_]+(.)/g;
 function directiveNormalize(name) {
   return name
     .replace(PREFIX_REGEXP, '')
-    .replace(SPECIAL_CHARS_REGEXP, fnCamelCaseReplace);
+    .replace(SPECIAL_CHARS_REGEXP, function(_, letter, offset) {
+      return offset ? letter.toUpperCase() : letter;
+    });
 }
 
 /**
