@@ -262,6 +262,12 @@ custom value for each event. For example:<pre><code>ng-model-options=&quot;{
   debounce: { &#39;default&#39;: 500, &#39;blur&#39;: 0 }
 }&quot;
 </code></pre>
+You can use the <code>*</code> key to specify a debounce value that applies to all events that are not
+specifically listed. In the following example, <code>mouseup</code> would have a debounce delay of 1000:<pre><code>ng-model-options=&quot;{
+  updateOn: &#39;default blur mouseup&#39;,
+  debounce: { &#39;default&#39;: 500, &#39;blur&#39;: 0, &#39;*&#39;: 1000 }
+}&quot;
+</code></pre>
 </li>
 <li><code>allowInvalid</code>: boolean value which indicates that the model can be set with values that did
 not validate correctly instead of the default behavior of setting the model to undefined.</li>
