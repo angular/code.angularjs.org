@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.7-build.5504+sha.07e4751
+ * @license AngularJS v1.6.8-build.5505+sha.0fa5a37
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -106,7 +106,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.6.7-build.5504+sha.07e4751/' +
+    message += '\nhttp://errors.angularjs.org/1.6.8-build.5505+sha.0fa5a37/' +
       (module ? module + '/' : '') + code;
 
     for (i = 0, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -2774,10 +2774,10 @@ function toDebugString(obj, maxDepth) {
 var version = {
   // These placeholder strings will be replaced by grunt's `build` task.
   // They need to be double- or single-quoted.
-  full: '1.6.7-build.5504+sha.07e4751',
+  full: '1.6.8-build.5505+sha.0fa5a37',
   major: 1,
   minor: 6,
-  dot: 7,
+  dot: 8,
   codeName: 'snapshot'
 };
 
@@ -2924,7 +2924,7 @@ function publishExternalAPI(angular) {
       });
     }
   ])
-  .info({ angularVersion: '1.6.7-build.5504+sha.07e4751' });
+  .info({ angularVersion: '1.6.8-build.5505+sha.0fa5a37' });
 }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -30170,9 +30170,10 @@ function defaults(dst, src) {
  *
  * @description
  * The `ngNonBindable` directive tells AngularJS not to compile or bind the contents of the current
- * DOM element. This is useful if the element contains what appears to be AngularJS directives and
- * bindings but which should be ignored by AngularJS. This could be the case if you have a site that
- * displays snippets of code, for instance.
+ * DOM element, including directives on the element itself that have a lower priority than
+ * `ngNonBindable`. This is useful if the element contains what appears to be AngularJS directives
+ * and bindings but which should be ignored by AngularJS. This could be the case if you have a site
+ * that displays snippets of code, for instance.
  *
  * @example
  * In this example there are two locations where a simple interpolation binding (`{{}}`) is present,

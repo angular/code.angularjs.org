@@ -1610,7 +1610,7 @@
   {
     "path": "api/ng/directive/ngNonBindable",
     "titleWords": "ngNonBindable nonbindable",
-    "keywords": "ac alone and angularjs any api appears are be bind binding bindings but by case code compile contains contents could current directive directives displays dom element example example-ng-non-bindable for have html if ignored in instance interpolation is left locations module ng ngnonbindable ngnonbindabledirective not of one or partials present should simple site snippets tells that the there this to two useful what where which wrapped you",
+    "keywords": "ac alone and angularjs any api appears are be bind binding bindings but by case code compile contains contents could current directive directives displays dom element example example-ng-non-bindable for have html if ignored in including instance interpolation is itself left locations lower module ng ngnonbindable ngnonbindabledirective not of on one or partials present priority should simple site snippets tells than that the there this to two useful what where which wrapped you",
     "members": ""
   },
   {
