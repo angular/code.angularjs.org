@@ -10250,7 +10250,7 @@ return jQuery;
 } );
 
 /**
- * @license AngularJS v1.6.8-build.5507+sha.199d888
+ * @license AngularJS v1.6.8-build.5508+sha.2e03aed
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -10358,7 +10358,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.6.8-build.5507+sha.199d888/' +
+    message += '\nhttp://errors.angularjs.org/1.6.8-build.5508+sha.2e03aed/' +
       (module ? module + '/' : '') + code;
 
     for (i = 0, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -13026,7 +13026,7 @@ function toDebugString(obj, maxDepth) {
 var version = {
   // These placeholder strings will be replaced by grunt's `build` task.
   // They need to be double- or single-quoted.
-  full: '1.6.8-build.5507+sha.199d888',
+  full: '1.6.8-build.5508+sha.2e03aed',
   major: 1,
   minor: 6,
   dot: 8,
@@ -13176,7 +13176,7 @@ function publishExternalAPI(angular) {
       });
     }
   ])
-  .info({ angularVersion: '1.6.8-build.5507+sha.199d888' });
+  .info({ angularVersion: '1.6.8-build.5508+sha.2e03aed' });
 }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -26632,11 +26632,26 @@ Parser.prototype = {
   constructor: Parser,
 
   parse: function(text) {
-    var ast = this.ast.ast(text);
-    var fn = this.astCompiler.compile(ast);
-    fn.literal = isLiteral(ast);
-    fn.constant = isConstant(ast);
+    var ast = this.getAst(text);
+    var fn = this.astCompiler.compile(ast.ast);
+    fn.literal = isLiteral(ast.ast);
+    fn.constant = isConstant(ast.ast);
+    fn.oneTime = ast.oneTime;
     return fn;
+  },
+
+  getAst: function(exp) {
+    var oneTime = false;
+    exp = exp.trim();
+
+    if (exp.charAt(0) === ':' && exp.charAt(1) === ':') {
+      oneTime = true;
+      exp = exp.substring(2);
+    }
+    return {
+      ast: this.ast.ast(exp),
+      oneTime: oneTime
+    };
   }
 };
 
@@ -26759,10 +26774,11 @@ function $ParseProvider() {
           isIdentifierStart: isFunction(identStart) && identStart,
           isIdentifierContinue: isFunction(identContinue) && identContinue
         };
+    $parse.$$getAst = $$getAst;
     return $parse;
 
     function $parse(exp, interceptorFn) {
-      var parsedExpression, oneTime, cacheKey;
+      var parsedExpression, cacheKey;
 
       switch (typeof exp) {
         case 'string':
@@ -26772,14 +26788,9 @@ function $ParseProvider() {
           parsedExpression = cache[cacheKey];
 
           if (!parsedExpression) {
-            if (exp.charAt(0) === ':' && exp.charAt(1) === ':') {
-              oneTime = true;
-              exp = exp.substring(2);
-            }
             var lexer = new Lexer($parseOptions);
             var parser = new Parser(lexer, $filter, $parseOptions);
             parsedExpression = parser.parse(exp);
-            parsedExpression.oneTime = !!oneTime;
 
             cache[cacheKey] = addWatchDelegate(parsedExpression);
           }
@@ -26791,6 +26802,12 @@ function $ParseProvider() {
         default:
           return addInterceptor(noop, interceptorFn);
       }
+    }
+
+    function $$getAst(exp) {
+      var lexer = new Lexer($parseOptions);
+      var parser = new Parser(lexer, $filter, $parseOptions);
+      return parser.getAst(exp).ast;
     }
 
     function expressionInputDirtyCheck(newValue, oldValueOfValue, compareObjectIdentity) {
