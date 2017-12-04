@@ -10250,7 +10250,7 @@ return jQuery;
 } );
 
 /**
- * @license AngularJS v1.6.8-build.5508+sha.2e03aed
+ * @license AngularJS v1.6.8-build.5509+sha.74b04c9
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -10358,7 +10358,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.6.8-build.5508+sha.2e03aed/' +
+    message += '\nhttp://errors.angularjs.org/1.6.8-build.5509+sha.74b04c9/' +
       (module ? module + '/' : '') + code;
 
     for (i = 0, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -13026,7 +13026,7 @@ function toDebugString(obj, maxDepth) {
 var version = {
   // These placeholder strings will be replaced by grunt's `build` task.
   // They need to be double- or single-quoted.
-  full: '1.6.8-build.5508+sha.2e03aed',
+  full: '1.6.8-build.5509+sha.74b04c9',
   major: 1,
   minor: 6,
   dot: 8,
@@ -13176,7 +13176,7 @@ function publishExternalAPI(angular) {
       });
     }
   ])
-  .info({ angularVersion: '1.6.8-build.5508+sha.2e03aed' });
+  .info({ angularVersion: '1.6.8-build.5509+sha.74b04c9' });
 }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -35620,12 +35620,11 @@ function createDateParser(regexp, mapping) {
 
 function createDateInputType(type, regexp, parseDate, format) {
   return function dynamicDateInputType(scope, element, attr, ctrl, $sniffer, $browser, $filter) {
-    badInputChecker(scope, element, attr, ctrl);
+    badInputChecker(scope, element, attr, ctrl, type);
     baseInputType(scope, element, attr, ctrl, $sniffer, $browser);
     var timezone = ctrl && ctrl.$options.getOption('timezone');
     var previousDate;
 
-    ctrl.$$parserName = type;
     ctrl.$parsers.push(function(value) {
       if (ctrl.$isEmpty(value)) return null;
       if (regexp.test(value)) {
@@ -35638,6 +35637,7 @@ function createDateInputType(type, regexp, parseDate, format) {
         }
         return parsedDate;
       }
+      ctrl.$$parserName = type;
       return undefined;
     });
 
@@ -35690,22 +35690,28 @@ function createDateInputType(type, regexp, parseDate, format) {
   };
 }
 
-function badInputChecker(scope, element, attr, ctrl) {
+function badInputChecker(scope, element, attr, ctrl, parserName) {
   var node = element[0];
   var nativeValidation = ctrl.$$hasNativeValidators = isObject(node.validity);
   if (nativeValidation) {
     ctrl.$parsers.push(function(value) {
       var validity = element.prop(VALIDITY_STATE_PROPERTY) || {};
-      return validity.badInput || validity.typeMismatch ? undefined : value;
+      if (validity.badInput || validity.typeMismatch) {
+        ctrl.$$parserName = parserName;
+        return undefined;
+      }
+
+      return value;
     });
   }
 }
 
 function numberFormatterParser(ctrl) {
-  ctrl.$$parserName = 'number';
   ctrl.$parsers.push(function(value) {
     if (ctrl.$isEmpty(value))      return null;
     if (NUMBER_REGEXP.test(value)) return parseFloat(value);
+
+    ctrl.$$parserName = 'number';
     return undefined;
   });
 
@@ -35787,7 +35793,7 @@ function isValidForStep(viewValue, stepBase, step) {
 }
 
 function numberInputType(scope, element, attr, ctrl, $sniffer, $browser) {
-  badInputChecker(scope, element, attr, ctrl);
+  badInputChecker(scope, element, attr, ctrl, 'number');
   numberFormatterParser(ctrl);
   baseInputType(scope, element, attr, ctrl, $sniffer, $browser);
 
@@ -35834,7 +35840,7 @@ function numberInputType(scope, element, attr, ctrl, $sniffer, $browser) {
 }
 
 function rangeInputType(scope, element, attr, ctrl, $sniffer, $browser) {
-  badInputChecker(scope, element, attr, ctrl);
+  badInputChecker(scope, element, attr, ctrl, 'range');
   numberFormatterParser(ctrl);
   baseInputType(scope, element, attr, ctrl, $sniffer, $browser);
 
@@ -35973,7 +35979,6 @@ function urlInputType(scope, element, attr, ctrl, $sniffer, $browser) {
   baseInputType(scope, element, attr, ctrl, $sniffer, $browser);
   stringBasedInputType(ctrl);
 
-  ctrl.$$parserName = 'url';
   ctrl.$validators.url = function(modelValue, viewValue) {
     var value = modelValue || viewValue;
     return ctrl.$isEmpty(value) || URL_REGEXP.test(value);
@@ -35986,7 +35991,6 @@ function emailInputType(scope, element, attr, ctrl, $sniffer, $browser) {
   baseInputType(scope, element, attr, ctrl, $sniffer, $browser);
   stringBasedInputType(ctrl);
 
-  ctrl.$$parserName = 'email';
   ctrl.$validators.email = function(modelValue, viewValue) {
     var value = modelValue || viewValue;
     return ctrl.$isEmpty(value) || EMAIL_REGEXP.test(value);
@@ -38987,6 +38991,7 @@ function NgModelController($scope, $exceptionHandler, $attr, $element, $parse, $
   this.$$ngModelSet = this.$$parsedNgModelAssign;
   this.$$pendingDebounce = null;
   this.$$parserValid = undefined;
+  this.$$parserName = 'parse';
 
   this.$$currentValidationRunId = 0;
 
@@ -39317,7 +39322,8 @@ NgModelController.prototype = {
     processAsyncValidators();
 
     function processParseErrors() {
-      var errorKey = that.$$parserName || 'parse';
+      var errorKey = that.$$parserName;
+
       if (isUndefined(that.$$parserValid)) {
         setValidity(errorKey, null);
       } else {
@@ -39329,6 +39335,7 @@ NgModelController.prototype = {
             setValidity(name, null);
           });
         }
+
         // Set the parse error last, to prevent unsetting it, should a $validators key == parserName
         setValidity(errorKey, that.$$parserValid);
         return that.$$parserValid;
@@ -39430,6 +39437,10 @@ NgModelController.prototype = {
     var that = this;
 
     this.$$parserValid = isUndefined(modelValue) ? undefined : true;
+
+    // Reset any previous parse error
+    this.$setValidity(this.$$parserName, null);
+    this.$$parserName = 'parse';
 
     if (this.$$parserValid) {
       for (var i = 0; i < this.$parsers.length; i++) {
