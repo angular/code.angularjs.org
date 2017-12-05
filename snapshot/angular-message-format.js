@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.8-build.5510+sha.da72477
+ * @license AngularJS v1.6.8-build.5511+sha.394b185
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -39,7 +39,7 @@ function parseTextLiteral(text) {
   parsedFn['$$watchDelegate'] = function watchDelegate(scope, listener, objectEquality) {
     var unwatch = scope['$watch'](noop,
         function textLiteralWatcher() {
-          if (isFunction(listener)) { listener(text, text, scope); }
+          listener(text, text, scope);
           unwatch();
         },
         objectEquality);
@@ -63,7 +63,7 @@ function subtractOffset(expressionFn, offset) {
   parsedFn['$$watchDelegate'] = function watchDelegate(scope, listener, objectEquality) {
     unwatch = scope['$watch'](expressionFn,
         function pluralExpressionWatchListener(newValue, oldValue) {
-          if (isFunction(listener)) { listener(minusOffset(newValue), minusOffset(oldValue), scope); }
+          listener(minusOffset(newValue), minusOffset(oldValue), scope);
         },
         objectEquality);
     return unwatch;
@@ -137,9 +137,7 @@ MessageSelectorWatchers.prototype.expressionFnListener = function expressionFnLi
 };
 
 MessageSelectorWatchers.prototype.messageFnListener = function messageFnListener(newMessage, oldMessage) {
-  if (isFunction(this.listener)) {
-    this.listener.call(null, newMessage, newMessage === oldMessage ? newMessage : this.lastMessage, this.scope);
-  }
+  this.listener.call(null, newMessage, newMessage === oldMessage ? newMessage : this.lastMessage, this.scope);
   this.lastMessage = newMessage;
 };
 
@@ -313,9 +311,7 @@ function InterpolationPartsWatcher(interpolationParts, scope, listener, objectEq
 
 InterpolationPartsWatcher.prototype.watchListener = function watchListener(newExpressionValues, oldExpressionValues) {
   var result = this.interpolationParts.getResult(newExpressionValues);
-  if (isFunction(this.listener)) {
-    this.listener.call(null, result, newExpressionValues === oldExpressionValues ? result : this.previousResult, this.scope);
-  }
+  this.listener.call(null, result, newExpressionValues === oldExpressionValues ? result : this.previousResult, this.scope);
   this.previousResult = result;
 };
 
@@ -1060,7 +1056,7 @@ var toJson;
 var $$stringify;
 
 var module = window['angular']['module']('ngMessageFormat', ['ng']);
-module['info']({ 'angularVersion': '1.6.8-build.5510+sha.da72477' });
+module['info']({ 'angularVersion': '1.6.8-build.5511+sha.394b185' });
 module['factory']('$$messageFormat', $$MessageFormatFactory);
 module['config'](['$provide', function($provide) {
   $interpolateMinErr = window['angular']['$interpolateMinErr'];
