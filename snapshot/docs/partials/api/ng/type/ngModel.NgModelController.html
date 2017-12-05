@@ -422,7 +422,15 @@ new <code>ModelOptions</code> object will inherit from the previous one overridi
 or inheriting settings that are defined in the given parameter.</p>
 <p>See <a href="api/ng/directive/ngModelOptions"><code>ngModelOptions</code></a> for information about what options can be specified
 and how model option inheritance works.</p>
+<div class="alert alert-warning">
+<strong>Note:</strong> this function only affects the options set on the <code>ngModelController</code>,
+and not the options on the <a href="api/ng/directive/ngModelOptions"><code>ngModelOptions</code></a> directive from which they might have been
+obtained initially.
 </div>
+
+<div class="alert alert-danger">
+<strong>Note:</strong> it is not possible to override the <code>getterSetter</code> option.
+</div></div>
 
     
 

@@ -2471,6 +2471,12 @@ angular.module('pagesData', [])
   "examples/example-ngModelOptions-directive-debounce": {
     "path": "examples/example-ngModelOptions-directive-debounce"
   },
+  "template.html": {
+    "path": "template.html"
+  },
+  "examples/example-ngModelOptions-advanced": {
+    "path": "examples/example-ngModelOptions-advanced"
+  },
   "examples/example-ngModelOptions-directive-getter-setter": {
     "path": "examples/example-ngModelOptions-directive-getter-setter"
   },

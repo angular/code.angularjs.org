@@ -76,6 +76,7 @@ important because <code>form</code> controllers are published to the related sco
 <p>Any pending changes will take place immediately when an enclosing form is submitted via the
 <code>submit</code> event. Note that <code>ngClick</code> events will occur before the model is updated. Use <code>ngSubmit</code>
 to have access to the updated model.</p>
+<h3 id="overriding-immediate-updates">Overriding immediate updates</h3>
 <p>The following example shows how to override immediate updates. Changes on the inputs within the
 form will update the model only when the control loses focus (blur event). If <code>escape</code> key is
 pressed while the input field is focused, the value is reset to the value in the current model.</p>
@@ -118,6 +119,7 @@ pressed while the input field is focused, the value is reset to the value in the
 
 
 </p>
+<h3 id="debouncing-updates">Debouncing updates</h3>
 <p>The next example shows how to debounce model changes. Model will be updated only 1 sec after last change.
 If the <code>Clear</code> button is pressed, any debounced action is canceled and the value becomes empty.</p>
 <p>
@@ -147,6 +149,62 @@ If the <code>Clear</code> button is pressed, any debounced action is canceled an
   
 
     <iframe class="runnable-example-frame" src="examples/example-ngModelOptions-directive-debounce/index.html" name="example-ngModelOptions-directive-debounce"></iframe>
+  </div>
+</div>
+
+
+</p>
+<h3 id="default-events-extra-triggers-and-catch-all-debounce-values">Default events, extra triggers, and catch-all debounce values</h3>
+<p>This example shows the relationship between &quot;default&quot; update events and
+additional <code>updateOn</code> triggers.</p>
+<p><code>default</code> events are those that are bound to the control, and when fired, update the <code>$viewValue</code>
+via <a href="api/ng/type/ngModel.NgModelController#$setViewValue">$setViewValue</a>. Every event that is not listed
+in <code>updateOn</code> is considered a &quot;default&quot; event, since different control types have different
+default events.</p>
+<p>The control in this example updates by &quot;default&quot;, &quot;click&quot;, and &quot;blur&quot;, with different <code>debounce</code>
+values. You can see that &quot;click&quot; doesn&#39;t have an individual <code>debounce</code> value -
+therefore it uses the <code>*</code> debounce value.</p>
+<p>There is also a button that calls <a href="api/ng/type/ngModel.NgModelController#$setViewValue">$setViewValue</a>
+directly with a &quot;custom&quot; event. Since &quot;custom&quot; is not defined in the <code>updateOn</code> list,
+it is considered a &quot;default&quot; event and will update the
+control if &quot;default&quot; is defined in <code>updateOn</code>, and will receive the &quot;default&quot; debounce value.
+Note that this is just to illustrate how custom controls would possibly call <code>$setViewValue</code>.</p>
+<p>You can change the <code>updateOn</code> and <code>debounce</code> configuration to test different scenarios. This
+is done with <a href="api/ng/type/ngModel.NgModelController#$overrideModelOptions">$overrideModelOptions</a>.</p>
+<p>  
+
+<div>
+  <plnkr-opener example-path="examples/example-ngModelOptions-advanced"></plnkr-opener>
+
+  <div class="runnable-example"
+      path="examples/example-ngModelOptions-advanced"
+      name="ngModelOptions-advanced"
+      module="optionsExample">
+
+  
+    <div class="runnable-example-file" 
+      name="index.html"
+      language="html"
+      type="html">
+      <pre><code>&lt;model-update-demo&gt;&lt;/model-update-demo&gt;</code></pre>
+    </div>
+  
+    <div class="runnable-example-file" 
+      name="app.js"
+      language="js"
+      type="js">
+      <pre><code>angular.module(&#39;optionsExample&#39;, [])&#10;.component(&#39;modelUpdateDemo&#39;, {&#10;  templateUrl: &#39;template.html&#39;,&#10;  controller: function() {&#10;    this.name = &#39;Chinua&#39;;&#10;&#10;    this.options = {&#10;      updateOn: &#39;default blur click&#39;,&#10;      debounce: {&#10;        default: 2000,&#10;        blur: 0,&#10;        &#39;*&#39;: 1000&#10;      }&#10;    };&#10;&#10;    this.updateEvents = function() {&#10;      var eventList = this.options.updateOn.split(&#39; &#39;);&#10;      eventList.push(&#39;*&#39;);&#10;      var events = {};&#10;&#10;      for (var i = 0; i &lt; eventList.length; i++) {&#10;        events[eventList[i]] = this.options.debounce[eventList[i]];&#10;      }&#10;&#10;      this.events = events;&#10;    };&#10;&#10;    this.updateOptions = function() {&#10;      var options = angular.extend(this.options, {&#10;        updateOn: Object.keys(this.events).join(&#39; &#39;).replace(&#39;*&#39;, &#39;&#39;),&#10;        debounce: this.events&#10;      });&#10;&#10;      this.form.input.$overrideModelOptions(options);&#10;    };&#10;&#10;    // Initialize the event form&#10;    this.updateEvents();&#10;  }&#10;});</code></pre>
+    </div>
+  
+    <div class="runnable-example-file" 
+      name="template.html"
+      language="html"
+      type="html">
+      <pre><code>&lt;form name=&quot;$ctrl.form&quot;&gt;&#10;  Input: &lt;input type=&quot;text&quot; name=&quot;input&quot; ng-model=&quot;$ctrl.name&quot; ng-model-options=&quot;$ctrl.options&quot; /&gt;&#10;&lt;/form&gt;&#10;Model: &lt;tt&gt;{{$ctrl.name}}&lt;/tt&gt;&#10;&lt;hr&gt;&#10;&lt;button ng-click=&quot;$ctrl.form.input.$setViewValue(&#39;some value&#39;, &#39;custom&#39;)&quot;&gt;Trigger setViewValue with &#39;some value&#39; and &#39;custom&#39; event&lt;/button&gt;&#10;&#10;&lt;hr&gt;&#10;&lt;form ng-submit=&quot;$ctrl.updateOptions()&quot;&gt;&#10;  &lt;b&gt;updateOn&lt;/b&gt;&lt;br&gt;&#10;  &lt;input type=&quot;text&quot; ng-model=&quot;$ctrl.options.updateOn&quot; ng-change=&quot;$ctrl.updateEvents()&quot; ng-model-options=&quot;{debounce: 500}&quot;&gt;&#10;&#10;  &lt;table&gt;&#10;    &lt;tr&gt;&#10;      &lt;th&gt;Option&lt;/th&gt;&#10;      &lt;th&gt;Debounce value&lt;/th&gt;&#10;    &lt;/tr&gt;&#10;    &lt;tr ng-repeat=&quot;(key, value) in $ctrl.events&quot;&gt;&#10;      &lt;td&gt;{{key}}&lt;/td&gt;&#10;      &lt;td&gt;&lt;input type=&quot;number&quot; ng-model=&quot;$ctrl.events[key]&quot; /&gt;&lt;/td&gt;&#10;    &lt;/tr&gt;&#10;  &lt;/table&gt;&#10;&#10;  &lt;br&gt;&#10;  &lt;input type=&quot;submit&quot; value=&quot;Update options&quot;&gt;&#10;&lt;/form&gt;</code></pre>
+    </div>
+  
+
+    <iframe class="runnable-example-frame" src="examples/example-ngModelOptions-advanced/index.html" name="example-ngModelOptions-advanced"></iframe>
   </div>
 </div>
 
@@ -195,6 +253,12 @@ on the scope refers to a &quot;getter/setter&quot; function rather than the valu
 <h2 id="specifying-timezones">Specifying timezones</h2>
 <p>You can specify the timezone that date/time input directives expect by providing its name in the
 <code>timezone</code> property.</p>
+<h2 id="programmatically-changing-options">Programmatically changing options</h2>
+<p>The <code>ngModelOptions</code> expression is only evaluated once when the directive is linked; it is not
+watched for changes. However, it is possible to override the options on a single
+<a href="api/ng/type/ngModel.NgModelController"><code>ngModel.NgModelController</code></a> instance with
+<a href="api/ng/type/ngModel.NgModelController#$overrideModelOptions"><code>ngModel.NgModelController</code></a>. See also the example for
+<a href="api/ng/directive/ngModelOptions#default-events-extra-triggers-and-catch-all-debounce-values">Default events, extra triggers, and catch-all debounce values</a>.</p>
 
 </div>
 
@@ -252,18 +316,25 @@ on the scope refers to a &quot;getter/setter&quot; function rather than the valu
         <p>options to apply to <a href="api/ng/directive/ngModel"><code>ngModel</code></a> directives on this element and
   and its descendents. Valid keys are:</p>
 <ul>
-<li><code>updateOn</code>: string specifying which event should the input be bound to. You can set several
+<li><p><code>updateOn</code>: string specifying which event should the input be bound to. You can set several
 events using an space delimited list. There is a special event called <code>default</code> that
-matches the default events belonging to the control.</li>
-<li><code>debounce</code>: integer value which contains the debounce model update value in milliseconds. A
+matches the default events belonging to the control. These are the events that are bound to
+the control, and when fired, update the <code>$viewValue</code> via <code>$setViewValue</code>.</p>
+<p><code>ngModelOptions</code> considers every event that is not listed in <code>updateOn</code> a &quot;default&quot; event,
+since different control types use different default events.</p>
+<p>See also the section <a href="api/ng/directive/ngModelOptions#triggering-and-debouncing-model-updates">Triggering and debouncing model updates</a>.</p>
+</li>
+<li><p><code>debounce</code>: integer value which contains the debounce model update value in milliseconds. A
 value of 0 triggers an immediate update. If an object is supplied instead, you can specify a
-custom value for each event. For example:<pre><code>ng-model-options=&quot;{
+custom value for each event. For example:</p>
+<pre><code>ng-model-options=&quot;{
   updateOn: &#39;default blur&#39;,
   debounce: { &#39;default&#39;: 500, &#39;blur&#39;: 0 }
 }&quot;
 </code></pre>
-You can use the <code>*</code> key to specify a debounce value that applies to all events that are not
-specifically listed. In the following example, <code>mouseup</code> would have a debounce delay of 1000:<pre><code>ng-model-options=&quot;{
+<p>You can use the <code>*</code> key to specify a debounce value that applies to all events that are not
+specifically listed. In the following example, <code>mouseup</code> would have a debounce delay of 1000:</p>
+<pre><code>ng-model-options=&quot;{
   updateOn: &#39;default blur mouseup&#39;,
   debounce: { &#39;default&#39;: 500, &#39;blur&#39;: 0, &#39;*&#39;: 1000 }
 }&quot;
