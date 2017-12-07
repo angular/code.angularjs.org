@@ -10250,7 +10250,7 @@ return jQuery;
 } );
 
 /**
- * @license AngularJS v1.6.8-build.5511+sha.394b185
+ * @license AngularJS v1.6.8-build.5512+sha.dde520e
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -10358,7 +10358,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.6.8-build.5511+sha.394b185/' +
+    message += '\nhttp://errors.angularjs.org/1.6.8-build.5512+sha.dde520e/' +
       (module ? module + '/' : '') + code;
 
     for (i = 0, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -13026,7 +13026,7 @@ function toDebugString(obj, maxDepth) {
 var version = {
   // These placeholder strings will be replaced by grunt's `build` task.
   // They need to be double- or single-quoted.
-  full: '1.6.8-build.5511+sha.394b185',
+  full: '1.6.8-build.5512+sha.dde520e',
   major: 1,
   minor: 6,
   dot: 8,
@@ -13176,7 +13176,7 @@ function publishExternalAPI(angular) {
       });
     }
   ])
-  .info({ angularVersion: '1.6.8-build.5511+sha.394b185' });
+  .info({ angularVersion: '1.6.8-build.5512+sha.dde520e' });
 }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -40503,7 +40503,8 @@ defaultModelOptions = new ModelOptions({
  * The `ngModelOptions` expression is only evaluated once when the directive is linked; it is not
  * watched for changes. However, it is possible to override the options on a single
  * {@link ngModel.NgModelController} instance with
- * {@link ngModel.NgModelController#$overrideModelOptions}. See also the example for
+ * {@link ngModel.NgModelController#$overrideModelOptions `NgModelController#$overrideModelOptions()`}.
+ * See also the example for
  * {@link ngModelOptions#default-events-extra-triggers-and-catch-all-debounce-values
  * Default events, extra triggers, and catch-all debounce values}.
  *
