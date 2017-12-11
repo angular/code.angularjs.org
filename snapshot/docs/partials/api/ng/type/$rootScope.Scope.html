@@ -1,8 +1,8 @@
-<a href='https://github.com/angular/angular.js/edit/master/src/ng/rootScope.js?message=docs($rootScope.Scope)%3A%20describe%20your%20change...#L134' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/master/src/ng/rootScope.js?message=docs($rootScope.Scope)%3A%20describe%20your%20change...#L135' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 
-<a href='https://github.com/angular/angular.js/tree/master/src/ng/rootScope.js#L134' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/master/src/ng/rootScope.js#L135' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -645,6 +645,107 @@ scope.$digest();
 expect(scope.counter).toEqual(2);
 </code></pre>
 </li>
+  
+  <li>
+    <h3 id="$suspend"><p><code>$suspend();</code></p>
+
+</h3>
+    <div><p>Suspend watchers of this scope subtree so that they will not be invoked during digest.</p>
+<p>This can be used to optimize your application when you know that running those watchers
+is redundant.</p>
+<p><strong>Warning</strong></p>
+<p>Suspending scopes from the digest cycle can have unwanted and difficult to debug results.
+Only use this approach if you are confident that you know what you are doing and have
+ample tests to ensure that bindings get updated as you expect.</p>
+<p>Some of the things to consider are:</p>
+<ul>
+<li>Any external event on a directive/component will not trigger a digest while the hosting
+scope is suspended - even if the event handler calls <code>$apply()</code> or <code>$rootScope.$digest()</code>.</li>
+<li>Transcluded content exists on a scope that inherits from outside a directive but exists
+as a child of the directive&#39;s containing scope. If the containing scope is suspended the
+transcluded scope will also be suspended, even if the scope from which the transcluded
+scope inherits is not suspended.</li>
+<li>Multiple directives trying to manage the suspended status of a scope can confuse each other:<ul>
+<li>A call to <code>$suspend()</code> on an already suspended scope is a no-op.</li>
+<li>A call to <code>$resume()</code> on a non-suspended scope is a no-op.</li>
+<li>If two directives suspend a scope, then one of them resumes the scope, the scope will no
+longer be suspended. This could result in the other directive believing a scope to be
+suspended when it is not.</li>
+</ul>
+</li>
+<li>If a parent scope is suspended then all its descendants will be also excluded from future
+digests whether or not they have been suspended themselves. Note that this also applies to
+isolate child scopes.</li>
+<li>Calling <code>$digest()</code> directly on a descendant of a suspended scope will still run the watchers
+for that scope and its descendants. When digesting we only check whether the current scope is
+locally suspended, rather than checking whether it has a suspended ancestor.</li>
+<li>Calling <code>$resume()</code> on a scope that has a suspended ancestor will not cause the scope to be
+included in future digests until all its ancestors have been resumed.</li>
+<li>Resolved promises, e.g. from explicit <code>$q</code> deferreds and <code>$http</code> calls, trigger <code>$apply()</code>
+against the <code>$rootScope</code> and so will still trigger a global digest even if the promise was
+initiated by a component that lives on a suspended scope.</li>
+</ul>
+</div>
+
+    
+
+    
+
+    
+
+    </li>
+  
+  <li>
+    <h3 id="$isSuspended"><p><code>$isSuspended();</code></p>
+
+</h3>
+    <div><p>Call this method to determine if this scope has been explicitly suspended. It will not
+tell you whether an ancestor has been suspended.
+To determine if this scope will be excluded from a digest triggered at the $rootScope,
+for example, you must check all its ancestors:</p>
+<pre><code>function isExcludedFromDigest(scope) {
+while(scope) {
+  if (scope.$isSuspended()) return true;
+  scope = scope.$parent;
+}
+return false;
+</code></pre>
+<p>Be aware that a scope may not be included in digests if it has a suspended ancestor,
+even if <code>$isSuspended()</code> returns false.</p>
+</div>
+
+    
+
+    
+
+    
+
+    
+    <h4>Returns</h4>
+    <table class="variables-matrix return-arguments">
+  <tr>
+    <td></td>
+    <td><p>true if the current scope has been suspended.</p>
+</td>
+  </tr>
+</table>
+    </li>
+  
+  <li>
+    <h3 id="$resume"><p><code>$resume();</code></p>
+
+</h3>
+    <div><p>Resume watchers of this scope subtree in case it was suspended.</p>
+<p>See <a href="api/ng/type/$rootScope.Scope#$suspend"><code>$rootScope.Scope</code></a> for information about the dangers of using this approach.</p>
+</div>
+
+    
+
+    
+
+    
+
+    </li>
   
   <li>
     <h3 id="$destroy"><p><code>$destroy();</code></p>
