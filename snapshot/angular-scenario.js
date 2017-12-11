@@ -10250,7 +10250,7 @@ return jQuery;
 } );
 
 /**
- * @license AngularJS v1.6.8-build.5516+sha.6d5ef34
+ * @license AngularJS v1.6.8-build.5517+sha.2c1e589
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -10358,7 +10358,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.6.8-build.5516+sha.6d5ef34/' +
+    message += '\nhttp://errors.angularjs.org/1.6.8-build.5517+sha.2c1e589/' +
       (module ? module + '/' : '') + code;
 
     for (i = 0, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -13026,7 +13026,7 @@ function toDebugString(obj, maxDepth) {
 var version = {
   // These placeholder strings will be replaced by grunt's `build` task.
   // They need to be double- or single-quoted.
-  full: '1.6.8-build.5516+sha.6d5ef34',
+  full: '1.6.8-build.5517+sha.2c1e589',
   major: 1,
   minor: 6,
   dot: 8,
@@ -13176,7 +13176,7 @@ function publishExternalAPI(angular) {
       });
     }
   ])
-  .info({ angularVersion: '1.6.8-build.5516+sha.6d5ef34' });
+  .info({ angularVersion: '1.6.8-build.5517+sha.2c1e589' });
 }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -24196,7 +24196,7 @@ var locationPrototype = {
     }
 
     var match = PATH_MATCH.exec(url);
-    if (match[1] || url === '') this.path((this.$$html5 ? decodeURI : decodeURIComponent)(match[1]));
+    if (match[1] || url === '') this.path(decodeURIComponent(match[1]));
     if (match[2] || match[1] || url === '') this.search(match[3] || '');
     this.hash(match[5] || '');
 
