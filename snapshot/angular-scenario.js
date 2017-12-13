@@ -10250,7 +10250,7 @@ return jQuery;
 } );
 
 /**
- * @license AngularJS v1.6.8-build.5518+sha.41d5c90
+ * @license AngularJS v1.6.8-build.5519+sha.5c38fb7
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -10358,7 +10358,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.6.8-build.5518+sha.41d5c90/' +
+    message += '\nhttp://errors.angularjs.org/1.6.8-build.5519+sha.5c38fb7/' +
       (module ? module + '/' : '') + code;
 
     for (i = 0, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -13026,7 +13026,7 @@ function toDebugString(obj, maxDepth) {
 var version = {
   // These placeholder strings will be replaced by grunt's `build` task.
   // They need to be double- or single-quoted.
-  full: '1.6.8-build.5518+sha.41d5c90',
+  full: '1.6.8-build.5519+sha.5c38fb7',
   major: 1,
   minor: 6,
   dot: 8,
@@ -13176,7 +13176,7 @@ function publishExternalAPI(angular) {
       });
     }
   ])
-  .info({ angularVersion: '1.6.8-build.5518+sha.41d5c90' });
+  .info({ angularVersion: '1.6.8-build.5519+sha.5c38fb7' });
 }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -28990,14 +28990,13 @@ function $RootScopeProvider() {
 
         var self = this;
         return function() {
-          var index = arrayRemove(namedListeners, listener);
-          if (index >= 0) {
+          var indexOfListener = namedListeners.indexOf(listener);
+          if (indexOfListener !== -1) {
+            // Use delete in the hope of the browser deallocating the memory for the array entry,
+            // while not shifting the array indexes of other listeners.
+            // See issue https://github.com/angular/angular.js/issues/16135
+            delete namedListeners[indexOfListener];
             decrementListenerCount(self, 1, name);
-            // We are removing a listener while iterating over the list of listeners.
-            // Update the current $$index if necessary to ensure no listener is skipped.
-            if (index <= namedListeners.$$index) {
-              namedListeners.$$index--;
-            }
           }
         };
       },
@@ -29026,7 +29025,9 @@ function $RootScopeProvider() {
        * @return {Object} Event object (see {@link ng.$rootScope.Scope#$on}).
        */
       $emit: function(name, args) {
-        var scope = this,
+        var empty = [],
+            namedListeners,
+            scope = this,
             stopPropagation = false,
             event = {
               name: name,
@@ -29037,11 +29038,28 @@ function $RootScopeProvider() {
               },
               defaultPrevented: false
             },
-            listenerArgs = concat([event], arguments, 1);
+            listenerArgs = concat([event], arguments, 1),
+            i, length;
 
         do {
-          invokeListeners(scope, event, listenerArgs, name);
+          namedListeners = scope.$$listeners[name] || empty;
+          event.currentScope = scope;
+          for (i = 0, length = namedListeners.length; i < length; i++) {
 
+            // if listeners were deregistered, defragment the array
+            if (!namedListeners[i]) {
+              namedListeners.splice(i, 1);
+              i--;
+              length--;
+              continue;
+            }
+            try {
+              //allow all listeners attached to the current scope to run
+              namedListeners[i].apply(null, listenerArgs);
+            } catch (e) {
+              $exceptionHandler(e);
+            }
+          }
           //if any listener on the current scope stops propagation, prevent bubbling
           if (stopPropagation) {
             break;
@@ -29092,11 +29110,28 @@ function $RootScopeProvider() {
 
         if (!target.$$listenerCount[name]) return event;
 
-        var listenerArgs = concat([event], arguments, 1);
+        var listenerArgs = concat([event], arguments, 1),
+            listeners, i, length;
 
         //down while you can, then up and next sibling or up and next sibling until back at root
         while ((current = next)) {
-          invokeListeners(current, event, listenerArgs, name);
+          event.currentScope = current;
+          listeners = current.$$listeners[name] || [];
+          for (i = 0, length = listeners.length; i < length; i++) {
+            // if listeners were deregistered, defragment the array
+            if (!listeners[i]) {
+              listeners.splice(i, 1);
+              i--;
+              length--;
+              continue;
+            }
+
+            try {
+              listeners[i].apply(null, listenerArgs);
+            } catch (e) {
+              $exceptionHandler(e);
+            }
+          }
 
           // Insanity Warning: scope depth-first traversal
           // yes, this code is a bit crazy, but it works and we have tests to prove it!
@@ -29127,27 +29162,6 @@ function $RootScopeProvider() {
 
     return $rootScope;
 
-    function invokeListeners(scope, event, listenerArgs, name) {
-      var listeners = scope.$$listeners[name];
-      if (listeners) {
-        if (listeners.$$index !== undefined) {
-          throw $rootScopeMinErr('inevt', '{0} already $emit/$broadcast-ing on scope ({1})', name, scope.$id);
-        }
-        event.currentScope = scope;
-        try {
-          for (listeners.$$index = 0; listeners.$$index < listeners.length; listeners.$$index++) {
-            try {
-              //allow all listeners attached to the current scope to run
-              listeners[listeners.$$index].apply(null, listenerArgs);
-            } catch (e) {
-              $exceptionHandler(e);
-            }
-          }
-        } finally {
-          listeners.$$index = undefined;
-        }
-      }
-    }
 
     function beginPhase(phase) {
       if ($rootScope.$$phase) {
