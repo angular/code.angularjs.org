@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.8-build.5520+sha.f6e60c1
+ * @license AngularJS v1.6.8-build.5521+sha.7df2952
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -803,7 +803,7 @@ angular.mock.TzDate.prototype = Date.prototype;
  * You need to require the `ngAnimateMock` module in your test suite for instance `beforeEach(module('ngAnimateMock'))`
  */
 angular.mock.animate = angular.module('ngAnimateMock', ['ng'])
-  .info({ angularVersion: '1.6.8-build.5520+sha.f6e60c1' })
+  .info({ angularVersion: '1.6.8-build.5521+sha.7df2952' })
 
   .config(['$provide', function($provide) {
 
@@ -2410,7 +2410,7 @@ angular.module('ngMock', ['ng']).provider({
   $provide.decorator('$rootScope', angular.mock.$RootScopeDecorator);
   $provide.decorator('$controller', createControllerDecorator($compileProvider));
   $provide.decorator('$httpBackend', angular.mock.$httpBackendDecorator);
-}]).info({ angularVersion: '1.6.8-build.5520+sha.f6e60c1' });
+}]).info({ angularVersion: '1.6.8-build.5521+sha.7df2952' });
 
 /**
  * @ngdoc module
@@ -2425,7 +2425,7 @@ angular.module('ngMock', ['ng']).provider({
  */
 angular.module('ngMockE2E', ['ng']).config(['$provide', function($provide) {
   $provide.decorator('$httpBackend', angular.mock.e2e.$httpBackendDecorator);
-}]).info({ angularVersion: '1.6.8-build.5520+sha.f6e60c1' });
+}]).info({ angularVersion: '1.6.8-build.5521+sha.7df2952' });
 
 /**
  * @ngdoc service
@@ -3207,13 +3207,56 @@ angular.mock.$RootScopeDecorator = ['$delegate', function($delegate) {
 
 (function() {
   /**
-   * Triggers a browser event. Attempts to choose the right event if one is
-   * not specified.
+   * @ngdoc function
+   * @name browserTrigger
+   * @description
+   *
+   * This is a global (window) function that is only available when the {@link ngMock} module is
+   * included.
+   *
+   * It can be used to trigger a native browser event on an element, which is useful for unit testing.
+   *
    *
    * @param {Object} element Either a wrapped jQuery/jqLite node or a DOMElement
-   * @param {string} eventType Optional event type
-   * @param {Object=} eventData An optional object which contains additional event data (such as x,y
-   * coordinates, keys, etc...) that are passed into the event when triggered
+   * @param {string=} eventType Optional event type. If none is specified, the function tries
+   *                            to determine the right event type for the element, e.g. `change` for
+   *                            `input[text]`.
+   * @param {Object=} eventData An optional object which contains additional event data that is used
+   *                            when creating the event:
+   *
+   *  - `bubbles`: [Event.bubbles](https://developer.mozilla.org/docs/Web/API/Event/bubbles).
+   *    Not applicable to all events.
+   *
+   *  - `cancelable`: [Event.cancelable](https://developer.mozilla.org/docs/Web/API/Event/cancelable).
+   *    Not applicable to all events.
+   *
+   *  - `charcode`: [charCode](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/charcode)
+   *    for keyboard events (keydown, keypress, and keyup).
+   *
+   *  - `elapsedTime`: the elapsedTime for
+   *    [TransitionEvent](https://developer.mozilla.org/docs/Web/API/TransitionEvent)
+   *    and [AnimationEvent](https://developer.mozilla.org/docs/Web/API/AnimationEvent).
+   *
+   *  - `keycode`: [keyCode](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/keycode)
+   *    for keyboard events (keydown, keypress, and keyup).
+   *
+   *  - `keys`: an array of possible modifier keys (ctrl, alt, shift, meta) for
+   *    [MouseEvent](https://developer.mozilla.org/docs/Web/API/MouseEvent) and
+   *    keyboard events (keydown, keypress, and keyup).
+   *
+   *  - `relatedTarget`: the
+   *    [relatedTarget](https://developer.mozilla.org/docs/Web/API/MouseEvent/relatedTarget)
+   *    for [MouseEvent](https://developer.mozilla.org/docs/Web/API/MouseEvent).
+   *
+   *  - `which`: [which](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/which)
+   *    for keyboard events (keydown, keypress, and keyup).
+   *
+   *  - `x`: x-coordinates for [MouseEvent](https://developer.mozilla.org/docs/Web/API/MouseEvent)
+   *    and [TouchEvent](https://developer.mozilla.org/docs/Web/API/TouchEvent).
+   *
+   *  - `y`: y-coordinates for [MouseEvent](https://developer.mozilla.org/docs/Web/API/MouseEvent)
+   *    and [TouchEvent](https://developer.mozilla.org/docs/Web/API/TouchEvent).
+   *
    */
   window.browserTrigger = function browserTrigger(element, eventType, eventData) {
     if (element && !element.nodeName) element = element[0];
@@ -3309,30 +3352,11 @@ angular.mock.$RootScopeDecorator = ['$delegate', function($delegate) {
 
     if (!evnt) return;
 
-    var originalPreventDefault = evnt.preventDefault,
-        appWindow = element.ownerDocument.defaultView,
-        fakeProcessDefault = true,
-        finalProcessDefault,
-        angular = appWindow.angular || {};
-
-    // igor: temporary fix for https://bugzilla.mozilla.org/show_bug.cgi?id=684208
-    angular['ff-684208-preventDefault'] = false;
-    evnt.preventDefault = function() {
-      fakeProcessDefault = false;
-      return originalPreventDefault.apply(evnt, arguments);
-    };
-
     if (!eventData.bubbles || supportsEventBubblingInDetachedTree() || isAttachedToDocument(element)) {
-      element.dispatchEvent(evnt);
+      return element.dispatchEvent(evnt);
     } else {
       triggerForPath(element, evnt);
     }
-
-    finalProcessDefault = !(angular['ff-684208-preventDefault'] || !fakeProcessDefault);
-
-    delete angular['ff-684208-preventDefault'];
-
-    return finalProcessDefault;
   };
 
   function supportsTouchEvents() {

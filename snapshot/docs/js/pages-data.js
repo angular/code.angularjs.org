@@ -1873,6 +1873,11 @@ angular.module('pagesData', [])
     "area": "api",
     "path": "api/ngMock/function/angular.mock.inject"
   },
+  "api/ngMock/function/browserTrigger": {
+    "name": "browserTrigger",
+    "area": "api",
+    "path": "api/ngMock/function/browserTrigger"
+  },
   "api/ngParseExt": {
     "name": "ngParseExt",
     "area": "api",
