@@ -198,11 +198,12 @@ XHR object. See
 for more information.</li>
 <li><strong><code>responseType</code></strong> - <code>{string}</code> - see
 <a href="https://developer.mozilla.org/en-US/docs/DOM/XMLHttpRequest#responseType">requestType</a>.</li>
-<li><strong><code>interceptor</code></strong> - <code>{Object=}</code> - The interceptor object has two optional methods -
-<code>response</code> and <code>responseError</code>. Both <code>response</code> and <code>responseError</code> interceptors get called
-with <code>http response</code> object. See <a href="api/ng/service/$http">$http interceptors</a>. In addition, the
-resource instance or array object is accessible by the <code>resource</code> property of the
-<code>http response</code> object.
+<li><strong><code>interceptor</code></strong> - <code>{Object=}</code> - The interceptor object has four optional methods -
+<code>request</code>, <code>requestError</code>, <code>response</code>, and <code>responseError</code>. See
+<a href="api/ng/service/$http">$http interceptors</a> for details. Note that <code>request</code>/<code>requestError</code>
+interceptors are applied before calling <code>$http</code>, thus before any global <code>$http</code> interceptors.
+The resource instance or array object is accessible by the <code>resource</code> property of the
+<code>http response</code> object passed to response interceptors.
 Keep in mind that the associated promise will be resolved with the value returned by the
 response interceptor, if one is specified. The default response interceptor returns
 <code>response.resource</code> (i.e. the resource instance or array).</li>

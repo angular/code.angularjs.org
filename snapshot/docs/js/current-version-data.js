@@ -8,23 +8,23 @@ angular.module('currentVersionData', [])
   "patch": 8,
   "prerelease": [
     "build",
-    "5521"
+    "5522"
   ],
-  "build": "sha.7df2952",
-  "version": "1.6.8-build.5521",
+  "build": "sha.240a3dd",
+  "version": "1.6.8-build.5522",
   "codeName": "snapshot",
   "isSnapshot": true,
-  "full": "1.6.8-build.5521+sha.7df2952",
+  "full": "1.6.8-build.5522+sha.240a3dd",
   "branch": "master",
   "distTag": "next",
   "cdn": {
-    "raw": "v1.6.6",
+    "raw": "v1.6.7",
     "major": 1,
     "minor": 6,
-    "patch": 6,
+    "patch": 7,
     "prerelease": [],
     "build": [],
-    "version": "1.6.6",
-    "docsUrl": "http://code.angularjs.org/1.6.6/docs"
+    "version": "1.6.7",
+    "docsUrl": "http://code.angularjs.org/1.6.7/docs"
   }
 });
