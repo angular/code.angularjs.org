@@ -776,8 +776,10 @@ in order to fulfill the validation and a status level of <code>4xx</code> in ord
     <table class="variables-matrix return-arguments">
   <tr>
     <td><a href="" class="label type-hint type-hint-array">Array.&lt;Function&gt;</a></td>
-    <td><p>Array of functions to execute whenever the
-    view value has changed. It is called with no arguments, and its return value is ignored.
+    <td><p>Array of functions to execute whenever
+    a change to <a href="api/ng/type/ngModel.NgModelController#$viewValue"><code>$viewValue</code></a> has caused a change
+    to <a href="api/ng/type/ngModel.NgModelController#$modelValue"><code>$modelValue</code></a>.
+    It is called with no arguments, and its return value is ignored.
     This can be used in place of additional $watches against the model value.</p>
 </td>
   </tr>
