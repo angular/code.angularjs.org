@@ -111,59 +111,71 @@ the collection. When a change happens, <code>ngRepeat</code> then makes the corr
 to &quot;keep track&quot; of all items in the collection and their corresponding DOM elements.
 For example, if an item is added to the collection, <code>ngRepeat</code> will know that all other items
 already have DOM elements, and will not re-render them.</p>
-<p>The default tracking function (which tracks items by their identity) does not allow
-duplicate items in arrays. This is because when there are duplicates, it is not possible
-to maintain a one-to-one mapping between collection items and DOM elements.</p>
-<p>If you do need to repeat duplicate items, you can substitute the default tracking behavior
-with your own using the <code>track by</code> expression.</p>
-<p>For example, you may track items by the index of each item in the collection, using the
-special scope property <code>$index</code>:</p>
-<pre><code class="lang-html">&lt;div ng-repeat=&quot;n in [42, 42, 43, 43] track by $index&quot;&gt;
-  {{n}}
-&lt;/div&gt;
-</code></pre>
-<p>You may also use arbitrary expressions in <code>track by</code>, including references to custom functions
-on the scope:</p>
-<pre><code class="lang-html">&lt;div ng-repeat=&quot;n in [42, 42, 43, 43] track by myTrackingFunction(n)&quot;&gt;
-  {{n}}
-&lt;/div&gt;
-</code></pre>
+<p>All different types of tracking functions, their syntax, and and their support for duplicate
+items in collections can be found in the
+<a href="api/ng/directive/ngRepeat#ngRepeat-arguments">ngRepeat expression description</a>.</p>
 <div class="alert alert-success">
-If you are working with objects that have a unique identifier property, you should track
-by this identifier instead of the object instance. Should you reload your data later, <code>ngRepeat</code>
-will not have to rebuild the DOM elements for items it has already rendered, even if the
-JavaScript objects in the collection have been substituted for new ones. For large collections,
-this significantly improves rendering performance. If you don&#39;t have a unique identifier,
-<code>track by $index</code> can also provide a performance boost.
+<strong>Best Practice:</strong> If you are working with objects that have a unique identifier property, you
+should track by this identifier instead of the object instance,
+e.g. <code>item in items track by item.id</code>.
+Should you reload your data later, <code>ngRepeat</code> will not have to rebuild the DOM elements for items
+it has already rendered, even if the JavaScript objects in the collection have been substituted
+for new ones. For large collections, this significantly improves rendering performance.
 </div>
 
-<pre><code class="lang-html">&lt;div ng-repeat=&quot;model in collection track by model.id&quot;&gt;
-  {{model.name}}
-&lt;/div&gt;
-</code></pre>
-<p><br /></p>
-<div class="alert alert-warning">
-Avoid using <code>track by $index</code> when the repeated template contains
-<a href="guide/expression#one-time-binding">one-time bindings</a>. In such cases, the <code>nth</code> DOM
-element will always be matched with the <code>nth</code> item of the array, so the bindings on that element
-will not be updated even when the corresponding item changes, essentially causing the view to get
-out-of-sync with the underlying data.
+<h3 id="effects-of-dom-element-re-use">Effects of DOM Element re-use</h3>
+<p>When DOM elements are re-used, ngRepeat updates the scope for the element, which will
+automatically update any active bindings on the template. However, other
+functionality will not be updated, because the element is not re-created:</p>
+<ul>
+<li>Directives are not re-compiled</li>
+<li><a href="guide/expression#one-time-binding">one-time expressions</a> on the repeated template are not
+updated if they have stabilized.</li>
+</ul>
+<p>The above affects all kinds of element re-use due to tracking, but may be especially visible
+when tracking by <code>$index</code> due to the way ngRepeat re-uses elements.</p>
+<p>The following example shows the effects of different actions with tracking:</p>
+<p>  
+
+<div>
+  <plnkr-opener example-path="examples/example-ngRepeat-tracking"></plnkr-opener>
+
+  <div class="runnable-example"
+      path="examples/example-ngRepeat-tracking"
+      module="ngRepeat"
+      name="ngRepeat-tracking"
+      deps="angular-animate.js"
+      animations="true">
+
+  
+    <div class="runnable-example-file" 
+      name="script.js"
+      language="js"
+      type="js">
+      <pre><code>angular.module(&#39;ngRepeat&#39;, [&#39;ngAnimate&#39;]).controller(&#39;repeatController&#39;, function($scope) {&#10;  var friends = [&#10;    {name:&#39;John&#39;, age:25},&#10;    {name:&#39;Mary&#39;, age:40},&#10;    {name:&#39;Peter&#39;, age:85}&#10;  ];&#10;&#10;  $scope.removeFirst = function() {&#10;    $scope.friends.shift();&#10;  };&#10;&#10;  $scope.updateAge = function() {&#10;    $scope.friends.forEach(function(el) {&#10;      el.age = el.age + 5;&#10;    });&#10;  };&#10;&#10;  $scope.copy = function() {&#10;    $scope.friends = angular.copy($scope.friends);&#10;  };&#10;&#10;  $scope.reset = function() {&#10;    $scope.friends = angular.copy(friends);&#10;  };&#10;&#10;  $scope.reset();&#10;});</code></pre>
+    </div>
+  
+    <div class="runnable-example-file" 
+      name="index.html"
+      language="html"
+      type="html">
+      <pre><code>&lt;div ng-controller=&quot;repeatController&quot;&gt;&#10;  &lt;ol&gt;&#10;    &lt;li&gt;When you click &quot;Update Age&quot;, only the first list updates the age, because all others have&#10;    a one-time binding on the age property. If you then click &quot;Copy&quot;, the current friend list&#10;    is copied, and now the second list updates the age, because the identity of the collection items&#10;    has changed and the list must be re-rendered. The 3rd and 4th list stay the same, because all the&#10;    items are already known according to their tracking functions.&#10;    &lt;/li&gt;&#10;    &lt;li&gt;When you click &quot;Remove First&quot;, the 4th list has the wrong age on both remaining items. This is&#10;    due to tracking by $index: when the first collection item is removed, ngRepeat reuses the first&#10;    DOM element for the new first collection item, and so on. Since the age property is one-time&#10;    bound, the value remains from the collection item which was previously at this index.&#10;    &lt;/li&gt;&#10;  &lt;/ol&gt;&#10;&#10;  &lt;button ng-click=&quot;removeFirst()&quot;&gt;Remove First&lt;/button&gt;&#10;  &lt;button ng-click=&quot;updateAge()&quot;&gt;Update Age&lt;/button&gt;&#10;  &lt;button ng-click=&quot;copy()&quot;&gt;Copy&lt;/button&gt;&#10;  &lt;br&gt;&lt;button ng-click=&quot;reset()&quot;&gt;Reset List&lt;/button&gt;&#10;  &lt;br&gt;&#10;  &lt;code&gt;track by $id(friend)&lt;/code&gt; (default):&#10;  &lt;ul class=&quot;example-animate-container&quot;&gt;&#10;    &lt;li class=&quot;animate-repeat&quot; ng-repeat=&quot;friend in friends&quot;&gt;&#10;      {{friend.name}} is {{friend.age}} years old.&#10;    &lt;/li&gt;&#10;  &lt;/ul&gt;&#10;  &lt;code&gt;track by $id(friend)&lt;/code&gt; (default), with age one-time binding:&#10;  &lt;ul class=&quot;example-animate-container&quot;&gt;&#10;    &lt;li class=&quot;animate-repeat&quot; ng-repeat=&quot;friend in friends&quot;&gt;&#10;      {{friend.name}} is {{::friend.age}} years old.&#10;    &lt;/li&gt;&#10;  &lt;/ul&gt;&#10;  &lt;code&gt;track by friend.name&lt;/code&gt;, with age one-time binding:&#10;  &lt;ul class=&quot;example-animate-container&quot;&gt;&#10;    &lt;li class=&quot;animate-repeat&quot; ng-repeat=&quot;friend in friends track by friend.name&quot;&gt;&#10;      {{friend.name}}  is {{::friend.age}} years old.&#10;    &lt;/li&gt;&#10;  &lt;/ul&gt;&#10;  &lt;code&gt;track by $index&lt;/code&gt;, with age one-time binding:&#10;  &lt;ul class=&quot;example-animate-container&quot;&gt;&#10;    &lt;li class=&quot;animate-repeat&quot; ng-repeat=&quot;friend in friends track by $index&quot;&gt;&#10;      {{friend.name}} is {{::friend.age}} years old.&#10;    &lt;/li&gt;&#10;  &lt;/ul&gt;&#10;&lt;/div&gt;</code></pre>
+    </div>
+  
+    <div class="runnable-example-file" 
+      name="animations.css"
+      language="css"
+      type="css">
+      <pre><code>.example-animate-container {&#10;  background:white;&#10;  border:1px solid black;&#10;  list-style:none;&#10;  margin:0;&#10;  padding:0 10px;&#10;}&#10;&#10;.animate-repeat {&#10;  line-height:30px;&#10;  list-style:none;&#10;  box-sizing:border-box;&#10;}&#10;&#10;.animate-repeat.ng-move,&#10;.animate-repeat.ng-enter,&#10;.animate-repeat.ng-leave {&#10;  transition:all linear 0.5s;&#10;}&#10;&#10;.animate-repeat.ng-leave.ng-leave-active,&#10;.animate-repeat.ng-move,&#10;.animate-repeat.ng-enter {&#10;  opacity:0;&#10;  max-height:0;&#10;}&#10;&#10;.animate-repeat.ng-leave,&#10;.animate-repeat.ng-move.ng-move-active,&#10;.animate-repeat.ng-enter.ng-enter-active {&#10;  opacity:1;&#10;  max-height:30px;&#10;}</code></pre>
+    </div>
+  
+
+    <iframe class="runnable-example-frame" src="examples/example-ngRepeat-tracking/index.html" name="example-ngRepeat-tracking"></iframe>
+  </div>
 </div>
 
-<p>When no <code>track by</code> expression is provided, it is equivalent to tracking by the built-in
-<code>$id</code> function, which tracks items by their identity:</p>
-<pre><code class="lang-html">&lt;div ng-repeat=&quot;obj in collection track by $id(obj)&quot;&gt;
-  {{obj.prop}}
-&lt;/div&gt;
-</code></pre>
-<p><br /></p>
-<p><div class="alert alert-warning">
-<strong>Note:</strong> <code>track by</code> must always be the last expression:
-</div></p>
-<pre><code>&lt;div ng-repeat=&quot;model in collection | orderBy: &#39;id&#39; as filtered_result track by model.id&quot;&gt;
-  {{model.name}}
-&lt;/div&gt;
-</code></pre>
+
+</p>
 <h2 id="special-repeat-start-and-end-points">Special repeat start and end points</h2>
 <p>To repeat a series of elements instead of just one parent element, ngRepeat (as well as other ng directives) supports extending
 the range of the repeater by defining explicit start and end points by using <strong>ng-repeat-start</strong> and <strong>ng-repeat-end</strong> respectively.
@@ -272,30 +284,43 @@ which can be used to associate the objects in the collection with the DOM elemen
 is specified, ng-repeat associates elements by identity. It is an error to have
 more than one tracking expression value resolve to the same key. (This would mean that two distinct objects are
 mapped to the same DOM element, which is not possible.)</p>
+<p><em>Default tracking: $id()</em>: <code>item in items</code> is equivalent to <code>item in items track by $id(item)</code>.
+This implies that the DOM elements will be associated by item identity in the collection.</p>
+<p>The built-in <code>$id()</code> function can be used to assign a unique
+<code>$$hashKey</code> property to each item in the collection. This property is then used as a key to associated DOM elements
+with the corresponding item in the collection by identity. Moving the same object would move
+the DOM element in the same way in the DOM.
+Note that the default id function does not support duplicate primitive values (<code>number</code>, <code>string</code>),
+but supports duplictae non-primitive values (<code>object</code>) that are <em>equal</em> in shape.</p>
+<p><em>Custom Expression</em>: It is possible to use any AngularJS expression to compute the tracking
+id, for example with a function, or using a property on the collection items.
+<code>item in items track by item.id</code> is a typical pattern when the items have a unique identifier,
+e.g. database id. In this case the object identity does not matter. Two objects are considered
+equivalent as long as their <code>id</code> property is same.
+Tracking by unique identifier is the most performant way and should be used whenever possible.</p>
+<p><em>$index</em>: This special property tracks the collection items by their index, and
+re-uses the DOM elements that match that index, e.g. <code>item in items track by $index</code>. This can
+be used for a performance improvement if no unique identfier is available and the identity of
+the collection items cannot be easily computed. It also allows duplicates.</p>
 <div class="alert alert-warning">
-  <strong>Note:</strong> the <code>track by</code> expression must come last - after any filters, and the alias expression.
+  <strong>Note:</strong> Re-using DOM elements can have unforeseen effects. Read the
+  <a href="api/ng/directive/ngRepeat#tracking-and-duplicates">section on tracking and duplicates</a> for
+  more info.
 </div>
 
-<p>For example: <code>item in items</code> is equivalent to <code>item in items track by $id(item)</code>. This implies that the DOM elements
-will be associated by item identity in the array.</p>
-<p>For example: <code>item in items track by $id(item)</code>. A built in <code>$id()</code> function can be used to assign a unique
-<code>$$hashKey</code> property to each item in the array. This property is then used as a key to associated DOM elements
-with the corresponding item in the array by identity. Moving the same object in array would move the DOM
-element in the same way in the DOM.</p>
-<p>For example: <code>item in items track by item.id</code> is a typical pattern when the items come from the database. In this
-case the object identity does not matter. Two objects are considered equivalent as long as their <code>id</code>
-property is same.</p>
-<p>For example: <code>item in items | filter:searchText track by item.id</code> is a pattern that might be used to apply a filter
-to items in conjunction with a tracking expression.</p>
+<div class="alert alert-warning">
+  <strong>Note:</strong> the <code>track by</code> expression must come last - after any filters, and the alias expression:
+  <code>item in items | filter:searchText as results  track by item.id</code>
+</div>
 </li>
 <li><p><code>variable in expression as alias_expression</code> – You can also provide an optional alias expression which will then store the
 intermediate results of the repeater after the filters have been applied. Typically this is used to render a special message
 when a filter is active on the repeater, but the filtered result set is empty.</p>
 <p>For example: <code>item in items | filter:x as results</code> will store the fragment of the repeated items as <code>results</code>, but only after
 the items have been processed through the filter.</p>
-<p>Please note that `as [variable name] is not an operator but rather a part of ngRepeat micro-syntax so it can be used only at the end
-(and not as operator, inside an expression).</p>
-<p>For example: <code>item in items | filter : x | orderBy : order | limitTo : limit as results</code> .</p>
+<p>Please note that `as [variable name] is not an operator but rather a part of ngRepeat
+micro-syntax so it can be used only after all filters (and not as operator, inside an expression).</p>
+<p>For example: <code>item in items | filter : x | orderBy : order | limitTo : limit as results track by item.id</code> .</p>
 </li>
 </ul>
 
@@ -355,7 +380,7 @@ results by name or by age. New (entering) and removed (leaving) items are animat
       name="index.html"
       language="html"
       type="html">
-      <pre><code>&lt;div ng-controller=&quot;repeatController&quot;&gt;&#10;  I have {{friends.length}} friends. They are:&#10;  &lt;input type=&quot;search&quot; ng-model=&quot;q&quot; placeholder=&quot;filter friends...&quot; aria-label=&quot;filter friends&quot; /&gt;&#10;  &lt;ul class=&quot;example-animate-container&quot;&gt;&#10;    &lt;li class=&quot;animate-repeat&quot; ng-repeat=&quot;friend in friends | filter:q as results&quot;&gt;&#10;      [{{$index + 1}}] {{friend.name}} who is {{friend.age}} years old.&#10;    &lt;/li&gt;&#10;    &lt;li class=&quot;animate-repeat&quot; ng-if=&quot;results.length === 0&quot;&gt;&#10;      &lt;strong&gt;No results found...&lt;/strong&gt;&#10;    &lt;/li&gt;&#10;  &lt;/ul&gt;&#10;&lt;/div&gt;</code></pre>
+      <pre><code>&lt;div ng-controller=&quot;repeatController&quot;&gt;&#10;  I have {{friends.length}} friends. They are:&#10;  &lt;input type=&quot;search&quot; ng-model=&quot;q&quot; placeholder=&quot;filter friends...&quot; aria-label=&quot;filter friends&quot; /&gt;&#10;  &lt;ul class=&quot;example-animate-container&quot;&gt;&#10;    &lt;li class=&quot;animate-repeat&quot; ng-repeat=&quot;friend in friends | filter:q as results track by friend.name&quot;&gt;&#10;      [{{$index + 1}}] {{friend.name}} who is {{friend.age}} years old.&#10;    &lt;/li&gt;&#10;    &lt;li class=&quot;animate-repeat&quot; ng-if=&quot;results.length === 0&quot;&gt;&#10;      &lt;strong&gt;No results found...&lt;/strong&gt;&#10;    &lt;/li&gt;&#10;  &lt;/ul&gt;&#10;&lt;/div&gt;</code></pre>
     </div>
   
     <div class="runnable-example-file" 

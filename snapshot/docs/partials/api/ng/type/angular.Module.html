@@ -833,8 +833,12 @@ directives.</p>
     <h3 id="config"><p><code>config(configFn);</code></p>
 
 </h3>
-    <div><p>Use this method to register work which needs to be performed on module loading.
-For more about how to configure services, see
+    <div><p>Use this method to configure services by injecting their
+<a href="api/ng/type/angular.Module#provider"><code>providers</code></a>, e.g. for adding routes to the
+<a href="api/ngRoute/provider/$routeProvider">$routeProvider</a>.</p>
+<p>Note that you can only inject <a href="api/ng/type/angular.Module#provider"><code>providers</code></a> and
+<a href="api/ng/type/angular.Module#constant"><code>constants</code></a> into this function.</p>
+<p>For more about how to configure services, see
 <a href="guide/providers#provider-recipe">Provider Recipe</a>.</p>
 </div>
 

@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.9-build.5530+sha.07d84dd
+ * @license AngularJS v1.6.9-build.5546+sha.ab386cd
  * (c) 2010-2018 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -274,7 +274,7 @@ function $SanitizeProvider() {
                                      optionalEndTagElements);
 
   //Attributes that have href and hence need to be sanitized
-  var uriAttrs = toMap('background,cite,href,longdesc,src,xlink:href');
+  var uriAttrs = toMap('background,cite,href,longdesc,src,xlink:href,xml:base');
 
   var htmlAttrs = toMap('abbr,align,alt,axis,bgcolor,border,cellpadding,cellspacing,class,clear,' +
       'color,cols,colspan,compact,coords,dir,face,headers,height,hreflang,hspace,' +
@@ -599,7 +599,7 @@ function sanitizeText(chars) {
 // define ngSanitize module and register $sanitize service
 angular.module('ngSanitize', [])
   .provider('$sanitize', $SanitizeProvider)
-  .info({ angularVersion: '1.6.9-build.5530+sha.07d84dd' });
+  .info({ angularVersion: '1.6.9-build.5546+sha.ab386cd' });
 
 /**
  * @ngdoc filter

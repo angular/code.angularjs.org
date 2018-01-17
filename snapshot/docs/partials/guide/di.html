@@ -7,27 +7,35 @@ their dependencies.</p>
 <p>The AngularJS injector subsystem is in charge of creating components, resolving their dependencies,
 and providing them to other components as requested.</p>
 <h2 id="using-dependency-injection">Using Dependency Injection</h2>
-<p>DI is pervasive throughout AngularJS. You can use it when defining components or when providing <code>run</code>
-and <code>config</code> blocks for a module.</p>
+<p>Dependency Injection is pervasive throughout AngularJS. You can use it when defining components
+or when providing <code>run</code> and <code>config</code> blocks for a module.</p>
 <ul>
-<li><p>Components such as services, directives, filters, and animations are defined by an injectable
-factory method or constructor function. These components can be injected with &quot;service&quot; and &quot;value&quot;
-components as dependencies.</p>
+<li><p><a href="api/ng/type/angular.Module#service">Services</a>, <a href="api/ng/type/angular.Module#directive">directives</a>,
+<a href="api/ng/type/angular.Module#filter">filters</a>, and <a href="api/ng/type/angular.Module#animation">animations</a> are
+defined by an injectable factory method or constructor function, and can be injected with
+&quot;services&quot;, &quot;values&quot;, and &quot;constants&quot; as dependencies.</p>
 </li>
-<li><p>Controllers are defined by a constructor function, which can be injected with any of the &quot;service&quot;
-and &quot;value&quot; components as dependencies, but they can also be provided with special dependencies. See
-<a href="guide/di#controllers">Controllers</a> below for a list of these special dependencies.</p>
+<li><p><a href="api/ng/service/$controller">Controllers</a> are defined by a constructor function, which can be injected
+with any of the &quot;service&quot; and &quot;value&quot; as dependencies, but they can also be provided with
+&quot;special dependencies&quot;. See <a href="guide/di#controllers">Controllers</a> below for a list of these
+special dependencies.</p>
 </li>
-<li><p>The <code>run</code> method accepts a function, which can be injected with &quot;service&quot;, &quot;value&quot; and &quot;constant&quot;
-components as dependencies. Note that you cannot inject &quot;providers&quot; into <code>run</code> blocks.</p>
+<li><p>The <a href="api/ng/type/angular.Module#run"><code>run</code></a> method accepts a function, which can be injected with
+&quot;services&quot;, &quot;values&quot; and, &quot;constants&quot; as dependencies. Note that you cannot inject &quot;providers&quot;
+into <code>run</code> blocks.</p>
 </li>
-<li><p>The <code>config</code> method accepts a function, which can be injected with &quot;provider&quot; and &quot;constant&quot;
-components as dependencies. Note that you cannot inject &quot;service&quot; or &quot;value&quot; components into
-configuration.</p>
+<li><p>The <a href="api/ng/type/angular.Module#config"><code>config</code></a> method accepts a function, which can be injected with
+&quot;providers&quot; and &quot;constants&quot; as dependencies. Note that you cannot inject &quot;services&quot; or
+&quot;values&quot; into configuration.</p>
+</li>
+<li><p>The <a href="api/ng/type/angular.Module#provider"><code>provider</code></a> method can only be injected with other &quot;providers&quot;.
+However, only those that have been <strong>registered beforehand</strong> can be injected. This is different
+from services, where the order of registration does not matter.</p>
 </li>
 </ul>
 <p>See <a href="guide/module#module-loading-dependencies">Modules</a> for more details about <code>run</code> and <code>config</code>
-blocks.</p>
+blocks and <a href="guide/providers">Providers</a> for more information about the different provider
+types.</p>
 <h3 id="factory-methods">Factory Methods</h3>
 <p>The way you define a directive, service, or filter is with a factory function.
 The factory methods are registered with modules. The recommended way of declaring factories is:</p>

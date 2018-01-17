@@ -19,7 +19,7 @@
   I have {{friends.length}} friends. They are:
   <input type="search" ng-model="q" placeholder="filter friends..." aria-label="filter friends" />
   <ul class="example-animate-container">
-    <li class="animate-repeat" ng-repeat="friend in friends | filter:q as results">
+    <li class="animate-repeat" ng-repeat="friend in friends | filter:q as results track by friend.name">
       [{{$index + 1}}] {{friend.name}} who is {{friend.age}} years old.
     </li>
     <li class="animate-repeat" ng-if="results.length === 0">

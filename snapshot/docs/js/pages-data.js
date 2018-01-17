@@ -2489,6 +2489,9 @@ angular.module('pagesData', [])
   "examples/example-ng-pluralize": {
     "path": "examples/example-ng-pluralize"
   },
+  "examples/example-ngRepeat-tracking": {
+    "path": "examples/example-ngRepeat-tracking"
+  },
   "examples/example-ngRepeat": {
     "path": "examples/example-ngRepeat"
   },
