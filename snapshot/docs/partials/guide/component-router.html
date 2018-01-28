@@ -119,7 +119,7 @@ of the URL: &quot;/&quot;, &quot;/heroes&quot; and &quot;/4&quot; respectively.<
 <p>The result is that we end up with a hierarchy of <strong>Routing Components</strong> rendered in <strong>Outlets</strong>, via the
 <a href="api/ngComponentRouter/directive/ngOutlet"><code>ngOutlet</code></a> directive, in each <strong>Routing Component&#39;s</strong> template, as you can see in the following diagram.</p>
 <p><img src="img/guide/component-hierarchy.svg" alt="Component Hierarchy"></p>
-<h1 id="example-heroes-app">Example Heroes App</h1>
+<h2 id="example-heroes-app">Example Heroes App</h2>
 <p>You can see the complete application running below.</p>
 <p>
 
@@ -189,16 +189,16 @@ of the URL: &quot;/&quot;, &quot;/heroes&quot; and &quot;/4&quot; respectively.<
 
 
 </p>
-<h1 id="getting-started">Getting Started</h1>
+<h3 id="getting-started">Getting Started</h3>
 <p>In the following sections we will step through building this application. The finished application has views
 to display list and detail views of Heroes and Crises.</p>
-<h2 id="install-the-libraries">Install the libraries</h2>
+<h4 id="install-the-libraries">Install the libraries</h4>
 <p>It is easier to use <a href="https://yarnpkg.com">Yarn</a> or <a href="https://www.npmjs.com">npm</a> to install the
 <strong>Component Router</strong> module. For this guide we will also install AngularJS itself via Yarn:</p>
 <pre><code class="lang-bash">yarn init
 yarn add angular@1.5.x @angular/router@0.2.0
 </code></pre>
-<h2 id="load-the-scripts">Load the scripts</h2>
+<h4 id="load-the-scripts">Load the scripts</h4>
 <p>Just like any AngularJS application, we load the JavaScript files into our <code>index.html</code>:</p>
 <pre><code class="lang-html">&lt;script src=&quot;/node_modules/angular/angular.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;/node_modules/@angular/router/angular1/angular_1_router.js&quot;&gt;&lt;/script&gt;
@@ -211,7 +211,7 @@ yarn add angular@1.5.x @angular/router@0.2.0
 &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.20/system-polyfills.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;https://unpkg.com/angular2/es6/dev/src/testing/shims_for_IE.js&quot;&gt;&lt;/script&gt;
 </code></pre>
-<h2 id="create-the-app-module">Create the <code>app</code> module</h2>
+<h4 id="create-the-app-module">Create the <code>app</code> module</h4>
 <p>In the app.js file, create the main application module <code>app</code> which depends on the <code>ngComponentRouter</code>
 module, which is provided by the <strong>Component Router</strong> script.</p>
 <pre><code class="lang-js">angular.module(&#39;app&#39;, [&#39;ngComponentRouter&#39;])
@@ -247,14 +247,14 @@ must have a base URL.</p>
 &lt;base href=&quot;/&quot;&gt;
 ...
 </code></pre>
-<h2 id="bootstrap-angularjs">Bootstrap AngularJS</h2>
+<h4 id="bootstrap-angularjs">Bootstrap AngularJS</h4>
 <p>Bootstrap the AngularJS application and add the top level App Component.</p>
 <pre><code class="lang-html">&lt;body ng-app=&quot;app&quot;&gt;
   &lt;h1 class=&quot;title&quot;&gt;Component Router&lt;/h1&gt;
   &lt;app&gt;&lt;/app&gt;
 &lt;/body&gt;
 </code></pre>
-<h1 id="implementing-the-appcomponent">Implementing the AppComponent</h1>
+<h3 id="implementing-the-appcomponent">Implementing the AppComponent</h3>
 <p>In the previous section we have created a single top level <strong>App Component</strong>. Let&#39;s now create some more
 <strong>Routing Components</strong> and wire up <strong>Route Config</strong> for those. We start with a Heroes Feature, which
 will display one of two views.</p>
@@ -268,7 +268,7 @@ will display one of two views.</p>
 <p><img src="img/guide/hero-detail.png" alt="Heroes List View"></p>
 <p>We are going to have a <code>Heroes</code> Component for the Heroes feature of our application, and then <code>HeroList</code>
 and <code>HeroDetail</code> <strong>Components</strong> that will actually display the two different views.</p>
-<h2 id="app-component">App Component</h2>
+<h4 id="app-component">App Component</h4>
 <p>Configure the <strong>App Component</strong> with a template and <strong>Route Config</strong>:</p>
 <pre><code class="lang-js">.component(&#39;app&#39;, {
   template:
@@ -284,23 +284,23 @@ and <code>HeroDetail</code> <strong>Components</strong> that will actually displ
 </code></pre>
 <p>The <strong>App Component</strong> has an <code>&lt;ng-outlet&gt;</code> directive in its template. This is where the child <strong>Components</strong>
 of this view will be rendered.</p>
-<h3 id="nglink">ngLink</h3>
+<h4 id="nglink">ngLink</h4>
 <p>We have used the <code>ng-link</code> directive to create a link to navigate to the Heroes Component. By using this
 directive we don&#39;t need to know what the actual URL will be. We can let the Router generate that for us.</p>
 <p>We have included a link to the Crisis Center but have not included the <code>ng-link</code> directive as we have not yet
 implemented the CrisisCenter component.</p>
-<h3 id="non-terminal-routes">Non-terminal Routes</h3>
+<h4 id="non-terminal-routes">Non-terminal Routes</h4>
 <p>We need to tell the <strong>Router</strong> that the <code>Heroes</code> <strong>Route Definition</strong> is <strong>non-terminal</strong>, that it should
 continue to match <strong>Routes</strong> in its child <strong>Components</strong>. We do this by adding a <strong>continuation ellipsis
 (<code>...</code>)</strong> to the path of the Heroes Route, <code>/heroes/...</code>.
 Without the <strong>continuation ellipsis</strong> the <code>HeroList</code> <strong>Route</strong> will never be matched because the Router will
 stop at the <code>Heroes</code> <strong>Routing Component</strong> and not try to match the rest of the URL.</p>
-<h2 id="heroes-feature">Heroes Feature</h2>
+<h3 id="heroes-feature">Heroes Feature</h3>
 <p>Now we can implement our Heroes Feature which consists of three <strong>Components</strong>: <code>Heroes</code>, <code>HeroList</code> and
 <code>HeroDetail</code>. The <code>Heroes</code> <strong>Routing Component</strong> simply provides a template containing the <a href="api/ngComponentRouter/directive/ngOutlet"><code>ngOutlet</code></a>
 directive and a <strong>Route Config</strong> that defines a set of child <strong>Routes</strong> which delegate through to the
 <code>HeroList</code> and <code>HeroDetail</code> <strong>Components</strong>.</p>
-<h2 id="heroescomponent">HeroesComponent</h2>
+<h3 id="heroescomponent">HeroesComponent</h3>
 <p>Create a new file <code>heroes.js</code>, which defines a new AngularJS module for the <strong>Components</strong> of this feature
 and registers the Heroes <strong>Component</strong>.</p>
 <pre><code class="lang-js">angular.module(&#39;heroes&#39;, [])
@@ -318,17 +318,17 @@ and registers the Heroes <strong>Component</strong>.</p>
 <p>and also to add the module as a dependency of the <code>app</code> module:</p>
 <pre><code class="lang-js">angular.module(&#39;app&#39;, [&#39;ngComponentRouter&#39;, &#39;heroes&#39;])
 </code></pre>
-<h3 id="use-as-default">Use As Default</h3>
+<h4 id="use-as-default">Use As Default</h4>
 <p>The <code>useAsDefault</code> property on the <code>HeroList</code> <strong>Route Definition</strong>, indicates that if no other <strong>Route
 Definition</strong> matches the URL, then this <strong>Route Definition</strong> should be used by default.</p>
-<h3 id="route-parameters">Route Parameters</h3>
+<h4 id="route-parameters">Route Parameters</h4>
 <p>The <code>HeroDetail</code> Route has a named parameter (<code>id</code>), indicated by prefixing the URL segment with a colon,
 as part of its <code>path</code> property. The <strong>Router</strong> will match anything in this segment and make that value
 available to the HeroDetail <strong>Component</strong>.</p>
-<h3 id="terminal-routes">Terminal Routes</h3>
+<h4 id="terminal-routes">Terminal Routes</h4>
 <p>Both the Routes in the <code>HeroesComponent</code> are terminal, i.e. their routes do not end with <code>...</code>. This is
 because the <code>HeroList</code> and <code>HeroDetail</code> will not contain any child routes.</p>
-<h3 id="route-names">Route Names</h3>
+<h4 id="route-names">Route Names</h4>
 <p><strong>What is the difference between the <code>name</code> and <code>component</code> properties on a Route Definition?</strong></p>
 <p>The <code>component</code> property in a <strong>Route Definition</strong> defines the <strong>Component</strong> directive that will be rendered
 into the DOM via the <strong>Outlet</strong>. For example the <code>heroDetail</code> <strong>Component</strong> will be rendered into the page
@@ -336,7 +336,7 @@ where the <code>&lt;ng-outlet&gt;&lt;/ng-outlet&gt;</code> lives as <code>&lt;he
 <p>The <code>name</code> property is used to reference the <strong>Route Definition</strong> when generating URLs or navigating to
 <strong>Routes</strong>. For example this link will <code>&lt;a ng-link=&quot;[&#39;Heroes&#39;]&quot;&gt;Heroes&lt;/a&gt;</code> navigate the <strong>Route Definition</strong>
 that has the <code>name</code> property of <code>&quot;Heroes&quot;</code>.</p>
-<h2 id="herolist-component">HeroList Component</h2>
+<h3 id="herolist-component">HeroList Component</h3>
 <p>The HeroList <strong>Component</strong> is the first component in the application that actually contains significant
 functionality. It loads up a list of heroes from a <code>heroService</code> and displays them using <code>ng-repeat</code>.
 Add it to the <code>heroes.js</code> file:</p>
@@ -356,7 +356,7 @@ object that will be available to the HeroDetail <strong>Component</strong>.</p>
 <p>The template iterates through each <code>hero</code> object of the array in the <code>$ctrl.heroes</code> property.</p>
 <p><em>Remember that the <code>module.component()</code> helper automatically provides the <strong>Component&#39;s Controller</strong> as
 the <code>$ctrl</code> property on the scope of the template.</em></p>
-<h2 id="heroservice">HeroService</h2>
+<h3 id="heroservice">HeroService</h3>
 <p>Our HeroService simulates requesting a list of heroes from a server. In a real application this would be
 making an actual server request, perhaps over HTTP.</p>
 <pre><code class="lang-js">function HeroService($q) {
@@ -380,7 +380,7 @@ making an actual server request, perhaps over HTTP.</p>
 </code></pre>
 <p>Note that both the <code>getHeroes()</code> and <code>getHero(id)</code> methods return a promise for the data. This is because
 in real-life we would have to wait for the server to respond with the data.</p>
-<h2 id="router-lifecycle-hooks">Router Lifecycle Hooks</h2>
+<h3 id="router-lifecycle-hooks">Router Lifecycle Hooks</h3>
 <p><strong>How do I know when my Component is active?</strong></p>
 <p>To deal with initialization and tidy up of <strong>Components</strong> that are rendered by a <strong>Router</strong>, we can implement
 one or more <strong>Lifecycle Hooks</strong> on the <strong>Component</strong>. These will be called at well defined points in the
@@ -415,7 +415,7 @@ So we implement the <code>$routerOnActivate()</code> instance method.</p>
 returned from the <code>heroService</code>.</p>
 <p>By returning a promise for the list of heroes from <code>$routerOnActivate()</code> we can delay the activation of the
 Route until the heroes have arrived successfully. This is similar to how a <code>resolve</code> works in <a href="api/ngRoute"><code>ngRoute</code></a>.</p>
-<h2 id="route-parameters">Route Parameters</h2>
+<h3 id="route-parameters">Route Parameters</h3>
 <p><strong>How do I access parameters for the current route?</strong></p>
 <p>The HeroDetailComponent displays details of an individual hero. The <code>id</code> of the hero to display is passed
 as part of the URL, for example <strong>/heroes/12</strong>.</p>
@@ -437,7 +437,7 @@ this.$routerOnActivate = function(next, previous) {
 <p>These parameters have a property called <code>params</code> which will hold the <code>id</code> parameter extracted from the URL
 by the <strong>Router</strong>. In this code it is used to identify a specific Hero to retrieve from the <code>heroService</code>.
 This hero is then attached to the <strong>Component</strong> so that it can be accessed in the template.</p>
-<h2 id="access-to-the-current-router">Access to the Current Router</h2>
+<h3 id="access-to-the-current-router">Access to the Current Router</h3>
 <p><strong>How do I get hold of the current router for my component?</strong></p>
 <p>Each component has its own Router. Unlike in the new Angular, we cannot use the dependency injector to get hold of a component&#39;s Router.
 We can only inject the <code>$rootRouter</code>. Instead we use the fact that the <code>ng-outlet</code> directive binds the current router to a <code>$router</code>
@@ -489,14 +489,14 @@ this.$router.navigateByInstruction(instruction);
 </code></pre>
 this form gives you the possibility of caching the instruction, but is more verbose.</li>
 </ul>
-<h3 id="absolute-vs-relative-navigation">Absolute vs Relative Navigation</h3>
+<h4 id="absolute-vs-relative-navigation">Absolute vs Relative Navigation</h4>
 <p><strong>Why not use <code>$rootRouter</code> to do the navigation?</strong></p>
 <p>Instead of binding to the current <strong>Router</strong>, we can inject the <code>$rootRouter</code> into our <strong>Component</strong> and
 use that: <code>$rootRouter.navigate(...)</code>.</p>
 <p>The trouble with doing this is that navigation is always relative to the <strong>Router</strong>. So in order to navigate
 to the <code>HeroListComponent</code> with the <code>$rootRouter</code>, we would have to provide a complete path of Routes:
 <code>[&#39;App&#39;,&#39;Heroes&#39;,&#39;HeroList&#39;]</code>.</p>
-<h2 id="extra-parameters">Extra Parameters</h2>
+<h3 id="extra-parameters">Extra Parameters</h3>
 <p>We can also pass additional optional parameters to routes, which get encoded into the URL and are again
 available to the <code>$routerOnActivate(next, previous)</code> hook. If we pass the current <code>id</code> from the
 HeroDetailComponent back to the HeroListComponent we can use it to highlight the previously selected hero.</p>
@@ -528,7 +528,7 @@ HeroDetailComponent back to the HeroListComponent we can use it to highlight the
   &lt;a ng-link=&quot;[&#39;HeroDetail&#39;, {id: hero.id}]&quot;&gt;{{hero.name}}&lt;/a&gt;
 &lt;/div&gt;
 </code></pre>
-<h2 id="crisis-center">Crisis Center</h2>
+<h3 id="crisis-center">Crisis Center</h3>
 <p>Let&#39;s implement the Crisis Center feature, which displays a list if crises that need to be dealt with by a hero.
 The detailed crisis view has an additional feature where it blocks you from navigating if you have not saved
 changes to the crisis being edited.</p>
@@ -540,7 +540,7 @@ changes to the crisis being edited.</p>
 <li>A detailed view of a single Crisis:</li>
 </ul>
 <p><img src="img/guide/crisis-detail.png" alt="Crisis Detail View"></p>
-<h2 id="crisis-feature">Crisis Feature</h2>
+<h3 id="crisis-feature">Crisis Feature</h3>
 <p>This feature is very similar to the Heroes feature. It contains the following <strong>Components</strong>:</p>
 <ul>
 <li>CrisisService: contains method for getting a list of crises and an individual crisis.</li>
@@ -549,7 +549,7 @@ changes to the crisis being edited.</p>
 </ul>
 <p>CrisisService and CrisisListComponent are basically the same as HeroService and HeroListComponent
 respectively.</p>
-<h2 id="navigation-control-hooks">Navigation Control Hooks</h2>
+<h3 id="navigation-control-hooks">Navigation Control Hooks</h3>
 <p><strong>How do I prevent navigation from occurring?</strong></p>
 <p>Each <strong>Component</strong> can provide the <code>$canActivate</code> and <code>$routerCanDeactivate</code> <strong>Lifecycle Hooks</strong>. The
 <code>$routerCanDeactivate</code> hook is an instance method on the <strong>Component</strong>. The <code>$canActivate</code> hook is used as a
@@ -560,7 +560,7 @@ return a <code>boolean</code> or a Promise that will resolve to a <code>boolean<
 can complete, all the <strong>Components</strong> must agree that they can be deactivated or activated, respectively.</p>
 <p>The <strong>Router</strong> will call the <code>$routerCanDeactivate</code> and <code>$canActivate</code> hooks, if they are provided. If any
 of the hooks resolve to <code>false</code> then the navigation is cancelled.</p>
-<h3 id="dialog-box-service">Dialog Box Service</h3>
+<h4 id="dialog-box-service">Dialog Box Service</h4>
 <p>We can implement a very simple dialog box that will prompt the user whether they are happy to lose changes they
 have made. The result of the prompt is a promise that can be used in a <code>$routerCanDeactivate</code> hook.</p>
 <pre><code class="lang-js">.service(&#39;dialogService&#39;, DialogService);

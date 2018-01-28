@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.9-build.5548+sha.4c97df5
+ * @license AngularJS v1.6.9-build.5549+sha.a8830d2
  * (c) 2010-2018 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -22,7 +22,7 @@
 /* global ngTouch */
 var ngTouch = angular.module('ngTouch', []);
 
-ngTouch.info({ angularVersion: '1.6.9-build.5548+sha.4c97df5' });
+ngTouch.info({ angularVersion: '1.6.9-build.5549+sha.a8830d2' });
 
 function nodeName_(element) {
   return angular.$$lowercase(element.nodeName || (element[0] && element[0].nodeName));

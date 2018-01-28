@@ -48,7 +48,7 @@ through a predicate that extracts the value of the <code>label</code> property, 
   index: ...
 }
 </code></pre>
-</li>
+<strong>Note:</strong> <code>null</code> values use <code>&#39;null&#39;</code> as their type.</li>
 <li>The comparator function is used to sort the items, based on the derived values, types and
 indices.</li>
 </ol>
@@ -79,10 +79,16 @@ will be used in subsequent steps.)</li>
 <h3 id="the-default-comparator">The default comparator</h3>
 <p>The default, built-in comparator should be sufficient for most usecases. In short, it compares
 numbers numerically, strings alphabetically (and case-insensitively), for objects falls back to
-using their index in the original collection, and sorts values of different types by type.</p>
+using their index in the original collection, sorts values of different types by type and puts
+<code>undefined</code> and <code>null</code> values at the end of the sorted list.</p>
 <p>More specifically, it follows these steps to determine the relative order of items:</p>
 <ol>
-<li>If the compared values are of different types, compare the types themselves alphabetically.</li>
+<li>If the compared values are of different types:<ul>
+<li>If one of the values is undefined, consider it &quot;greater than&quot; the other.</li>
+<li>Else if one of the values is null, consider it &quot;greater than&quot; the other.</li>
+<li>Else compare the types themselves alphabetically.</li>
+</ul>
+</li>
 <li>If both values are of type <code>string</code>, compare them alphabetically in a case- and
 locale-insensitive way.</li>
 <li>If both values are objects, compare their indices instead.</li>
@@ -95,9 +101,10 @@ locale-insensitive way.</li>
 </ol>
 <p><strong>Note:</strong> If you notice numbers not being sorted as expected, make sure they are actually being
           saved as numbers and not strings.
-<strong>Note:</strong> For the purpose of sorting, <code>null</code> values are treated as the string <code>&#39;null&#39;</code> (i.e.
-          <code>type: &#39;string&#39;</code>, <code>value: &#39;null&#39;</code>). This may cause unexpected sort order relative to
-          other values.</p>
+<strong>Note:</strong> For the purpose of sorting, <code>null</code> and <code>undefined</code> are considered &quot;greater than&quot;
+          any other value (with undefined &quot;greater than&quot; null). This effectively means that <code>null</code>
+          and <code>undefined</code> values end up at the end of a list sorted in ascending order.
+<strong>Note:</strong> <code>null</code> values use <code>&#39;null&#39;</code> as their type to be able to distinguish them from objects.</p>
 
 </div>
 
