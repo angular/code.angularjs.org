@@ -29,7 +29,7 @@
   <h2 id="overview">Overview</h2>
   <p>Sanitizes an html string by stripping all potentially dangerous tokens.</p>
 <p>  The input is sanitized by parsing the HTML into tokens. All safe tokens (from a whitelist) are
-  then serialized back to properly escaped html string. This means that no unsafe input can make
+  then serialized back to a properly escaped HTML string. This means that no unsafe input can make
   it into the returned string.</p>
 <p>  The whitelist for URL sanitization of attribute values is configured using the functions
   <code>aHrefSanitizationWhitelist</code> and <code>imgSrcSanitizationWhitelist</code> of <a href="api/ng/provider/$compileProvider"><code>$compileProvider</code></a>.</p>

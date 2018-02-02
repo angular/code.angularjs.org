@@ -93,6 +93,11 @@ angular.module('pagesData', [])
     "area": "error",
     "path": "error/$compile/selmulti"
   },
+  "error/$compile/srcset": {
+    "name": "srcset",
+    "area": "error",
+    "path": "error/$compile/srcset"
+  },
   "error/$compile/tpload": {
     "name": "tpload",
     "area": "error",
@@ -2267,6 +2272,12 @@ angular.module('pagesData', [])
   "examples/example-anchor-scroll-offset": {
     "path": "examples/example-anchor-scroll-offset"
   },
+  "template.html": {
+    "path": "template.html"
+  },
+  "examples/example-animate-cancel": {
+    "path": "examples/example-animate-cancel"
+  },
   "examples/example-cache-factory": {
     "path": "examples/example-cache-factory"
   },
@@ -2470,9 +2481,6 @@ angular.module('pagesData', [])
   },
   "examples/example-ngModelOptions-directive-debounce": {
     "path": "examples/example-ngModelOptions-directive-debounce"
-  },
-  "template.html": {
-    "path": "template.html"
   },
   "examples/example-ngModelOptions-advanced": {
     "path": "examples/example-ngModelOptions-advanced"

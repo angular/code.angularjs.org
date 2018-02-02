@@ -1,8 +1,8 @@
-<a href='https://github.com/angular/angular.js/edit/master/src/ng/sce.js?message=docs($sce)%3A%20describe%20your%20change...#L457' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/master/src/ng/sce.js?message=docs($sce)%3A%20describe%20your%20change...#L481' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 
-<a href='https://github.com/angular/angular.js/tree/master/src/ng/sce.js#L457' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/master/src/ng/sce.js#L481' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -107,9 +107,10 @@ browsers.</p>
 <p>It&#39;s important to remember that SCE only applies to interpolation expressions.</p>
 <p>If your expressions are constant literals, they&#39;re automatically trusted and you don&#39;t need to
 call <code>$sce.trustAs</code> on them (e.g.
-<code>&lt;div ng-bind-html=&quot;&#39;&lt;b&gt;implicitly trusted&lt;/b&gt;&#39;&quot;&gt;&lt;/div&gt;</code>) just works. The <code>$sceDelegate</code> will
-also use the <code>$sanitize</code> service if it is available when binding untrusted values to
-<code>$sce.HTML</code> context. AngularJS provides an implementation in <code>angular-sanitize.js</code>, and if you
+<code>&lt;div ng-bind-html=&quot;&#39;&lt;b&gt;implicitly trusted&lt;/b&gt;&#39;&quot;&gt;&lt;/div&gt;</code>) just works (remember to include the
+<code>ngSanitize</code> module). The <code>$sceDelegate</code> will also use the <code>$sanitize</code> service if it is available
+when binding untrusted values to <code>$sce.HTML</code> context.
+AngularJS provides an implementation in <code>angular-sanitize.js</code>, and if you
 wish to use it, you will also need to depend on the <a href="api/ngSanitize"><code>ngSanitize</code></a> module in
 your application.</p>
 <p>The included <a href="api/ng/service/$sceDelegate">$sceDelegate</a> comes with sane defaults to allow you to load
@@ -131,30 +132,43 @@ security onto an application later.</p>
 <tbody>
 <tr>
 <td><code>$sce.HTML</code></td>
-<td>For HTML that&#39;s safe to source into the application.  The <a href="api/ng/directive/ngBindHtml">ngBindHtml</a> directive uses this context for bindings. If an unsafe value is encountered, and the <a href="api/ngSanitize/service/$sanitize">$sanitize</a> service is available (implemented by the <a href="api/ngSanitize">ngSanitize</a> module) this will sanitize the value instead of throwing an error.</td>
+<td>For HTML that&#39;s safe to source into the application.  The <a href="api/ng/directive/ngBindHtml">ngBindHtml</a> directive uses this context for bindings. If an unsafe value is encountered and the <a href="api/ngSanitize">$sanitize</a> module is present this will sanitize the value instead of throwing an error.</td>
 </tr>
 <tr>
 <td><code>$sce.CSS</code></td>
-<td>For CSS that&#39;s safe to source into the application.  Currently, no bindings require this context. Feel free to use it in your own directives.</td>
+<td>For CSS that&#39;s safe to source into the application.  Currently unused.  Feel free to use it in your own directives.</td>
+</tr>
+<tr>
+<td><code>$sce.MEDIA_URL</code></td>
+<td>For URLs that are safe to render as media. Is automatically converted from string by sanitizing when needed.</td>
 </tr>
 <tr>
 <td><code>$sce.URL</code></td>
-<td>For URLs that are safe to follow as links.  Currently unused (<code>&lt;a href=</code>, <code>&lt;img src=</code>, and some others sanitize their urls and don&#39;t constitute an SCE context.)</td>
+<td>For URLs that are safe to follow as links. Is automatically converted from string by sanitizing when needed. Note that <code>$sce.URL</code> makes a stronger statement about the URL than <code>$sce.MEDIA_URL</code> does and therefore contexts requiring values trusted for <code>$sce.URL</code> can be used anywhere that values trusted for <code>$sce.MEDIA_URL</code> are required.</td>
 </tr>
 <tr>
 <td><code>$sce.RESOURCE_URL</code></td>
-<td>For URLs that are not only safe to follow as links, but whose contents are also safe to include in your application.  Examples include <code>ng-include</code>, <code>src</code> / <code>ngSrc</code> bindings for tags other than <code>IMG</code>, <code>VIDEO</code>, <code>AUDIO</code>, <code>SOURCE</code>, and <code>TRACK</code> (e.g. <code>IFRAME</code>, <code>OBJECT</code>, etc.)  <br><br>Note that <code>$sce.RESOURCE_URL</code> makes a stronger statement about the URL than <code>$sce.URL</code> does (it&#39;s not just the URL that matters, but also what is at the end of it), and therefore contexts requiring values trusted for <code>$sce.RESOURCE_URL</code> can be used anywhere that values trusted for <code>$sce.URL</code> are required.</td>
+<td>For URLs that are not only safe to follow as links, but whose contents are also safe to include in your application.  Examples include <code>ng-include</code>, <code>src</code> / <code>ngSrc</code> bindings for tags other than <code>IMG</code> (e.g. <code>IFRAME</code>, <code>OBJECT</code>, etc.)  <br><br>Note that <code>$sce.RESOURCE_URL</code> makes a stronger statement about the URL than <code>$sce.URL</code> or <code>$sce.MEDIA_URL</code> do and therefore contexts requiring values trusted for <code>$sce.RESOURCE_URL</code> can be used anywhere that values trusted for <code>$sce.URL</code> or <code>$sce.MEDIA_URL</code> are required.</td>
 </tr>
 <tr>
 <td><code>$sce.JS</code></td>
-<td>For JavaScript that is safe to execute in your application&#39;s context.  Currently, no bindings require this context.  Feel free to use it in your own directives.</td>
+<td>For JavaScript that is safe to execute in your application&#39;s context.  Currently unused.  Feel free to use it in your own directives.</td>
 </tr>
 </tbody>
 </table>
-<p>Be aware that <code>a[href]</code> and <code>img[src]</code> automatically sanitize their URLs and do not pass them
-through <a href="api/ng/service/$sce#getTrusted">$sce.getTrusted</a>. There&#39;s no CSS-, URL-, or JS-context bindings
-in AngularJS currently, so their corresponding <code>$sce.trustAs</code> functions aren&#39;t useful yet. This
-might evolve.</p>
+<div class="alert alert-warning">
+Be aware that, before AngularJS 1.7.0, <code>a[href]</code> and <code>img[src]</code> used to sanitize their
+interpolated values directly rather than rely upon <a href="api/ng/service/$sce#getTrusted"><code>$sce.getTrusted</code></a>.
+
+<strong>As of 1.7.0, this is no longer the case.</strong>
+
+Now such interpolations are marked as requiring <code>$sce.URL</code> (for <code>a[href]</code>) or <code>$sce.MEDIA_URL</code>
+(for <code>img[src]</code>), so that the sanitization happens (via <code>$sce.getTrusted...</code>) when the <code>$interpolate</code>
+service evaluates the expressions.
+</div>
+
+<p>There are no CSS or JS context bindings in AngularJS currently, so their corresponding <code>$sce.trustAs</code>
+functions aren&#39;t useful yet. This might evolve.</p>
 <h3 id="format-of-items-in-link-ng-scedelegateprovider-resourceurlwhitelist-resourceurlwhitelist-link-ng-scedelegateprovider-resourceurlblacklist-blacklist-a-name-resourceurlpatternitem-a-">Format of items in <a href="api/ng/provider/$sceDelegateProvider#resourceUrlWhitelist">resourceUrlWhitelist</a>/<a href="api/ng/provider/$sceDelegateProvider#resourceUrlBlacklist">Blacklist</a> <a name="resourceUrlPatternItem"></a></h3>
 <p> Each element in these arrays must be one of the following:</p>
 <ul>

@@ -400,10 +400,12 @@ $animate.enabled(element, false);
     </li>
   
   <li>
-    <h3 id="cancel"><p><code>cancel(animationPromise);</code></p>
+    <h3 id="cancel"><p><code>cancel(animationRunner);</code></p>
 
 </h3>
-    <div><p>Cancels the provided animation.</p>
+    <div><p>Cancels the provided animation and applies the end state of the animation.
+Note that this does not cancel the underlying operation, e.g. the setting of classes or
+adding the element to the DOM.</p>
 </div>
 
     
@@ -423,15 +425,15 @@ $animate.enabled(element, false);
     
     <tr>
       <td>
-        animationPromise
+        animationRunner
         
         
       </td>
       <td>
-        <a href="" class="label type-hint type-hint-promise">Promise</a>
+        <a href="" class="label type-hint type-hint-animationrunner">animationRunner</a>
       </td>
       <td>
-        <p>The animation promise that is returned when an animation is started.</p>
+        <p>An animation runner returned by an $animate function.</p>
 
         
       </td>
@@ -444,7 +446,56 @@ $animate.enabled(element, false);
 
     
 
-    </li>
+    
+    <h4 id="$animate.cancel-examples">Example</h4><p>
+
+<div>
+  <plnkr-opener example-path="examples/example-animate-cancel"></plnkr-opener>
+
+  <div class="runnable-example"
+      path="examples/example-animate-cancel"
+      module="animationExample"
+      deps="angular-animate.js"
+      animations="true"
+      name="animate-cancel">
+
+  
+    <div class="runnable-example-file" 
+      name="app.js"
+      language="js"
+      type="js">
+      <pre><code>angular.module(&#39;animationExample&#39;, [&#39;ngAnimate&#39;]).component(&#39;cancelExample&#39;, {&#10;  templateUrl: &#39;template.html&#39;,&#10;  controller: function($element, $animate) {&#10;    this.runner = null;&#10;&#10;    this.addClass = function() {&#10;      this.runner = $animate.addClass($element.find(&#39;div&#39;), &#39;red&#39;);&#10;      var ctrl = this;&#10;      this.runner.finally(function() {&#10;        ctrl.runner = null;&#10;      });&#10;    };&#10;&#10;    this.removeClass = function() {&#10;      this.runner = $animate.removeClass($element.find(&#39;div&#39;), &#39;red&#39;);&#10;      var ctrl = this;&#10;      this.runner.finally(function() {&#10;        ctrl.runner = null;&#10;      });&#10;    };&#10;&#10;    this.cancel = function() {&#10;      $animate.cancel(this.runner);&#10;    };&#10;  }&#10;});</code></pre>
+    </div>
+  
+    <div class="runnable-example-file" 
+      name="template.html"
+      language="html"
+      type="html">
+      <pre><code>&lt;p&gt;&#10;  &lt;button id=&quot;add&quot; ng-click=&quot;$ctrl.addClass()&quot;&gt;Add&lt;/button&gt;&#10;  &lt;button ng-click=&quot;$ctrl.removeClass()&quot;&gt;Remove&lt;/button&gt;&#10;  &lt;br&gt;&#10;  &lt;button id=&quot;cancel&quot; ng-click=&quot;$ctrl.cancel()&quot; ng-disabled=&quot;!$ctrl.runner&quot;&gt;Cancel&lt;/button&gt;&#10;  &lt;br&gt;&#10;  &lt;div id=&quot;target&quot;&gt;CSS-Animated Text&lt;/div&gt;&#10;&lt;/p&gt;</code></pre>
+    </div>
+  
+    <div class="runnable-example-file" 
+      name="index.html"
+      language="html"
+      type="html">
+      <pre><code>&lt;cancel-example&gt;&lt;/cancel-example&gt;</code></pre>
+    </div>
+  
+    <div class="runnable-example-file" 
+      name="style.css"
+      language="css"
+      type="css">
+      <pre><code>.red-add, .red-remove {&#10;  transition: all 4s cubic-bezier(0.250, 0.460, 0.450, 0.940);&#10;}&#10;&#10;.red,&#10;.red-add.red-add-active {&#10;  color: #FF0000;&#10;  font-size: 40px;&#10;}&#10;&#10;.red-remove.red-remove-active {&#10;  font-size: 10px;&#10;  color: black;&#10;}</code></pre>
+    </div>
+  
+
+    <iframe class="runnable-example-frame" src="examples/example-animate-cancel/index.html" name="example-animate-cancel"></iframe>
+  </div>
+</div>
+
+
+</p>
+</li>
   
   <li>
     <h3 id="enter"><p><code>enter(element, parent, [after], [options]);</code></p>
@@ -554,8 +605,8 @@ $animate.enabled(element, false);
     <h4>Returns</h4>
     <table class="variables-matrix return-arguments">
   <tr>
-    <td><a href="" class="label type-hint type-hint-promise">Promise</a></td>
-    <td><p>the animation callback promise</p>
+    <td><a href="" class="label type-hint type-hint-runner">Runner</a></td>
+    <td><p>the animation runner</p>
 </td>
   </tr>
 </table>
@@ -669,8 +720,8 @@ $animate.enabled(element, false);
     <h4>Returns</h4>
     <table class="variables-matrix return-arguments">
   <tr>
-    <td><a href="" class="label type-hint type-hint-promise">Promise</a></td>
-    <td><p>the animation callback promise</p>
+    <td><a href="" class="label type-hint type-hint-runner">Runner</a></td>
+    <td><p>the animation runner</p>
 </td>
   </tr>
 </table>
@@ -750,8 +801,8 @@ digest once the animation has completed.</p>
     <h4>Returns</h4>
     <table class="variables-matrix return-arguments">
   <tr>
-    <td><a href="" class="label type-hint type-hint-promise">Promise</a></td>
-    <td><p>the animation callback promise</p>
+    <td><a href="" class="label type-hint type-hint-runner">Runner</a></td>
+    <td><p>the animation runner</p>
 </td>
   </tr>
 </table>
@@ -850,8 +901,8 @@ digest once the animation has completed.</p>
     <h4>Returns</h4>
     <table class="variables-matrix return-arguments">
   <tr>
-    <td><a href="" class="label type-hint type-hint-promise">Promise</a></td>
-    <td><p>the animation callback promise</p>
+    <td><a href="" class="label type-hint type-hint-runner">Runner</a></td>
+    <td><p>animationRunner the animation runner</p>
 </td>
   </tr>
 </table>
@@ -950,8 +1001,8 @@ digest once the animation has completed.</p>
     <h4>Returns</h4>
     <table class="variables-matrix return-arguments">
   <tr>
-    <td><a href="" class="label type-hint type-hint-promise">Promise</a></td>
-    <td><p>the animation callback promise</p>
+    <td><a href="" class="label type-hint type-hint-runner">Runner</a></td>
+    <td><p>the animation runner</p>
 </td>
   </tr>
 </table>
@@ -1066,8 +1117,8 @@ digest once the animation has completed.</p>
     <h4>Returns</h4>
     <table class="variables-matrix return-arguments">
   <tr>
-    <td><a href="" class="label type-hint type-hint-promise">Promise</a></td>
-    <td><p>the animation callback promise</p>
+    <td><a href="" class="label type-hint type-hint-runner">Runner</a></td>
+    <td><p>the animation runner</p>
 </td>
   </tr>
 </table>
@@ -1210,8 +1261,8 @@ method (or as part of the <code>options</code> parameter):</p>
     <h4>Returns</h4>
     <table class="variables-matrix return-arguments">
   <tr>
-    <td><a href="" class="label type-hint type-hint-promise">Promise</a></td>
-    <td><p>the animation callback promise</p>
+    <td><a href="" class="label type-hint type-hint-runner">Runner</a></td>
+    <td><p>the animation runner</p>
 </td>
   </tr>
 </table>

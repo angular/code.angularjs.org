@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.9-build.5549+sha.a8830d2
+ * @license AngularJS v1.6.9-build.5550+sha.16b82c6
  * (c) 2010-2018 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -16,13 +16,20 @@
  *
  * See {@link ngTouch.$swipe `$swipe`} for usage.
  *
+ * @deprecated
+ * sinceVersion="1.7.0"
+ * The ngTouch module with the {@link ngTouch.$swipe `$swipe`} service and
+ * the {@link ngTouch.ngSwipeLeft} and {@link ngTouch.ngSwipeRight} directives are
+ * deprecated. Instead, stand-alone libraries for touch handling and gesture interaction
+ * should be used, for example [HammerJS](https://hammerjs.github.io/) (which is also used by
+ * Angular).
  */
 
 // define ngTouch module
 /* global ngTouch */
 var ngTouch = angular.module('ngTouch', []);
 
-ngTouch.info({ angularVersion: '1.6.9-build.5549+sha.a8830d2' });
+ngTouch.info({ angularVersion: '1.6.9-build.5550+sha.16b82c6' });
 
 function nodeName_(element) {
   return angular.$$lowercase(element.nodeName || (element[0] && element[0].nodeName));
@@ -33,6 +40,11 @@ function nodeName_(element) {
     /**
      * @ngdoc service
      * @name $swipe
+     *
+     * @deprecated
+     * sinceVersion="1.7.0"
+     *
+     * See the {@link ngTouch module} documentation for more information.
      *
      * @description
      * The `$swipe` service is a service that abstracts the messier details of hold-and-drag swipe
@@ -214,6 +226,11 @@ ngTouch.factory('$swipe', [function() {
  * @ngdoc directive
  * @name ngSwipeLeft
  *
+ * @deprecated
+ * sinceVersion="1.7.0"
+ *
+ * See the {@link ngTouch module} documentation for more information.
+ *
  * @description
  * Specify custom behavior when an element is swiped to the left on a touchscreen device.
  * A leftward swipe is a quick, right-to-left slide of the finger.
@@ -249,6 +266,11 @@ ngTouch.factory('$swipe', [function() {
 /**
  * @ngdoc directive
  * @name ngSwipeRight
+ *
+ * @deprecated
+ * sinceVersion="1.7.0"
+ *
+ * See the {@link ngTouch module} documentation for more information.
  *
  * @description
  * Specify custom behavior when an element is swiped to the right on a touchscreen device.

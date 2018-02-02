@@ -1482,6 +1482,11 @@ angular.module('navData', [])
             "type": "error"
           },
           {
+            "name": "srcset",
+            "href": "error/$compile/srcset",
+            "type": "error"
+          },
+          {
             "name": "tpload",
             "href": "error/$compile/tpload",
             "type": "error"
