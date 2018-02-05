@@ -35,8 +35,8 @@ Here are the steps to do a manual upload of folders to Firebase Storage:
 
 * Run the grunt task to upload the chosen files. For example to upload all the partials for v1.0.5:
 
- ```bash
- node_modules/.bin/grunt --target=1.0.5 --filter=docs*/**
- ```
+  ```bash
+  node_modules/.bin/grunt --target=1.0.5 --filter=docs*/**
+  ```
 
 * Remember to delete the keyfile from you local system when done, as this gives unlimited access to the Storage.
