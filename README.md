@@ -13,7 +13,7 @@ If you are looking for a CDN link to AngularJS visit [angularjs.org](https://www
 
 ## Project Maintainers Note
 
-Here are the stesp to do a manual upload of folders to Firebase Storage:
+Here are the steps to do a manual upload of folders to Firebase Storage:
 
 **Be aware that some file paths contain colons `:`, which are not valid on Windows, so you must upload from a Unix-based OS.**
 
