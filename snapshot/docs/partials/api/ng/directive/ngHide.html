@@ -1,8 +1,8 @@
-<a href='https://github.com/angular/angular.js/edit/master/src/ng/directive/ngShowHide.js?message=docs(ngHide)%3A%20describe%20your%20change...#L205' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/master/src/ng/directive/ngShowHide.js?message=docs(ngHide)%3A%20describe%20your%20change...#L224' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 
-<a href='https://github.com/angular/angular.js/tree/master/src/ng/directive/ngShowHide.js#L205' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/master/src/ng/directive/ngShowHide.js#L224' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -66,6 +66,25 @@ display style.</p>
 </div>
 
 
+
+<h2 id="known-issues">Known Issues</h2>
+<div class="known-issue">
+  <h3 id="flickering-when-using-nghide-to-toggle-between-elements">Flickering when using ngHide to toggle between elements</h3>
+<p>When using <a href="api/ng/directive/ngShow"><code>ngShow</code></a> and / or <a href="api/ng/directive/ngHide"><code>ngHide</code></a> to toggle between elements, it can
+happen that both the element to show and the element to hide are visible for a very short time.</p>
+<p>This usually happens when the <a href="api/ngAnimate">ngAnimate module</a> is included, but no actual animations
+are defined for <a href="api/ng/directive/ngShow"><code>ngShow</code></a> / <a href="api/ng/directive/ngHide"><code>ngHide</code></a>. Internet Explorer is affected more often than
+other browsers.</p>
+<p>There are several way to mitigate this problem:</p>
+<ul>
+<li><a href="guide/animations#how-to-selectively-enable-disable-and-skip-animations">Disable animations on the affected elements</a>.</li>
+<li>Use <a href="api/ng/directive/ngIf"><code>ngIf</code></a> or <a href="api/ng/directive/ngSwitch"><code>ngSwitch</code></a> instead of <a href="api/ng/directive/ngShow"><code>ngShow</code></a> / <a href="api/ng/directive/ngHide"><code>ngHide</code></a>.</li>
+<li>Use the special CSS selector <code>ng-hide.ng-hide-animate</code> to set <code>{display: none}</code> or similar on the affected elements.</li>
+<li>Use <code>ng-class=&quot;{&#39;ng-hide&#39;: expression}</code> instead of instead of <a href="api/ng/directive/ngShow"><code>ngShow</code></a> / <a href="api/ng/directive/ngHide"><code>ngHide</code></a>.</li>
+<li>Define an animation on the affected elements.</li>
+</ul>
+
+</div>
 
 
 <div>

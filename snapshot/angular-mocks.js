@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.9-build.5550+sha.16b82c6
+ * @license AngularJS v1.6.10-build.5552+sha.5b7e4b4
  * (c) 2010-2018 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -803,7 +803,7 @@ angular.mock.TzDate.prototype = Date.prototype;
  * You need to require the `ngAnimateMock` module in your test suite for instance `beforeEach(module('ngAnimateMock'))`
  */
 angular.mock.animate = angular.module('ngAnimateMock', ['ng'])
-  .info({ angularVersion: '1.6.9-build.5550+sha.16b82c6' })
+  .info({ angularVersion: '1.6.10-build.5552+sha.5b7e4b4' })
 
   .config(['$provide', function($provide) {
 
@@ -1385,9 +1385,13 @@ function createHttpBackendMock($rootScope, $timeout, $delegate, $browser) {
     function wrapResponse(wrapped) {
       if (!$browser && timeout) {
         if (timeout.then) {
-          timeout.then(handleTimeout);
+          timeout.then(function() {
+            handlePrematureEnd(angular.isDefined(timeout.$$timeoutId) ? 'timeout' : 'abort');
+          });
         } else {
-          $timeout(handleTimeout, timeout);
+          $timeout(function() {
+            handlePrematureEnd('timeout');
+          }, timeout);
         }
       }
 
@@ -1401,11 +1405,11 @@ function createHttpBackendMock($rootScope, $timeout, $delegate, $browser) {
                  copy(response[3] || ''), copy(response[4]));
       }
 
-      function handleTimeout() {
+      function handlePrematureEnd(reason) {
         for (var i = 0, ii = responses.length; i < ii; i++) {
           if (responses[i] === handleResponse) {
             responses.splice(i, 1);
-            callback(-1, undefined, '', undefined, 'timeout');
+            callback(-1, undefined, '', undefined, reason);
             break;
           }
         }
@@ -2117,7 +2121,11 @@ function MockXhr() {
     return lines.join('\n');
   };
 
-  this.abort = angular.noop;
+  this.abort = function() {
+    if (isFunction(this.onabort)) {
+      this.onabort();
+    }
+  };
 
   // This section simulates the events on a real XHR object (and the upload object)
   // When we are testing $httpBackend (inside the AngularJS project) we make partial use of this
@@ -2410,7 +2418,7 @@ angular.module('ngMock', ['ng']).provider({
   $provide.decorator('$rootScope', angular.mock.$RootScopeDecorator);
   $provide.decorator('$controller', createControllerDecorator($compileProvider));
   $provide.decorator('$httpBackend', angular.mock.$httpBackendDecorator);
-}]).info({ angularVersion: '1.6.9-build.5550+sha.16b82c6' });
+}]).info({ angularVersion: '1.6.10-build.5552+sha.5b7e4b4' });
 
 /**
  * @ngdoc module
@@ -2425,7 +2433,7 @@ angular.module('ngMock', ['ng']).provider({
  */
 angular.module('ngMockE2E', ['ng']).config(['$provide', function($provide) {
   $provide.decorator('$httpBackend', angular.mock.e2e.$httpBackendDecorator);
-}]).info({ angularVersion: '1.6.9-build.5550+sha.16b82c6' });
+}]).info({ angularVersion: '1.6.10-build.5552+sha.5b7e4b4' });
 
 /**
  * @ngdoc service
@@ -3337,6 +3345,24 @@ angular.mock.$RootScopeDecorator = ['$delegate', function($delegate) {
       evnt.keyCode = eventData.keyCode;
       evnt.charCode = eventData.charCode;
       evnt.which = eventData.which;
+    } else if (/composition/.test(eventType)) {
+      try {
+        evnt = new window.CompositionEvent(eventType, {
+          data: eventData.data
+        });
+      } catch (e) {
+        // Support: IE9+
+        evnt = window.document.createEvent('CompositionEvent', {});
+        evnt.initCompositionEvent(
+          eventType,
+          eventData.bubbles,
+          eventData.cancelable,
+          window,
+          eventData.data,
+          null
+        );
+      }
+
     } else {
       evnt = window.document.createEvent('MouseEvents');
       x = x || 0;

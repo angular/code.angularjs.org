@@ -54,7 +54,7 @@ literally, and initiating a request to an invalid URL (<code>http://localhost:80
 which it would have done if we had only specified an attribute binding in a regular <code>src</code> attribute
 (<code>&lt;img src=&quot;{{phone.imageUrl}}&quot;&gt;</code>). Using the <code>ngSrc</code> directive, prevents the browser from making an
 HTTP request to an invalid location.</p>
-<h1 id="testing">Testing</h1>
+<h2 id="testing">Testing</h2>
 <p><br />
 <strong><code>e2e-tests/scenarios.js</code></strong>:</p>
 <pre><code class="lang-js">...
@@ -72,7 +72,7 @@ it(&#39;should render phone specific links&#39;, function() {
 <p>We added a new E2E test to verify that the application is generating correct links to the phone
 views, that we will implement in the upcoming steps.</p>
 <p>You can now rerun <code>npm run protractor</code> to see the tests run.</p>
-<h1 id="experiments">Experiments</h1>
+<h2 id="experiments">Experiments</h2>
 <div></div>
 
 <ul>
@@ -84,7 +84,7 @@ it hits the <code>&lt;img&gt;</code> tag, which is before AngularJS has a chance
 inject the valid address.</p>
 </li>
 </ul>
-<h1 id="summary">Summary</h1>
+<h2 id="summary">Summary</h2>
 <p>Now that you have added phone images and links, go to <a href="tutorial/step_09">step 9</a> to learn about AngularJS
 layout templates and how AngularJS makes it easy to create applications that have multiple views.</p>
 <ul doc-tutorial-nav="8"></ul>

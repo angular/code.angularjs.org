@@ -349,7 +349,9 @@ not validate correctly instead of the default behavior of setting the model to u
 <code>&lt;input type=&quot;date&quot; /&gt;</code>, <code>&lt;input type=&quot;time&quot; /&gt;</code>, ... . It understands UTC/GMT and the
 continental US time zone abbreviations, but for general use, use a time zone offset, for
 example, <code>&#39;+0430&#39;</code> (4 hours, 30 minutes east of the Greenwich meridian)
-If not specified, the timezone of the browser will be used.</li>
+If not specified, the timezone of the browser will be used.
+Note that changing the timezone will have no effect on the current date, and is only applied after
+the next input / model change.</li>
 </ul>
 
         

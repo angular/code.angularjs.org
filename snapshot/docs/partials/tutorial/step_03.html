@@ -3,7 +3,6 @@
 
 <ul doc-tutorial-nav="3"></ul>
 
-
 <p>In the previous step, we saw how a controller and a template worked together to convert a static
 HTML page into a dynamic view. This is a very common pattern in Single-Page Applications in general
 (and AngularJS applications in particular):</p>
@@ -167,7 +166,7 @@ inside our component, stays inside our component.</li>
 </div>
 
 
-<h1 id="testing">Testing</h1>
+<h2 id="testing">Testing</h2>
 <p>Although we have combined our controller with a template into a component, we still can (and should)
 unit test the controller separately, since this is where our application logic and data reside.</p>
 <p>In order to retrieve and instantiate a component&#39;s controller, AngularJS provides the
@@ -202,9 +201,9 @@ unit test the controller separately, since this is where our application logic a
 <p>The test retrieves the controller associated with the <code>phoneList</code> component, instantiates it and
 verifies that the phones array property on it contains three records. Note that the data is now on
 the controller instance itself, not on a <code>scope</code>.</p>
-<h2 id="running-tests">Running Tests</h2>
+<h3 id="running-tests">Running Tests</h3>
 <p>Same as before, execute <code>npm test</code> to run the tests and then watch the files for changes.</p>
-<h1 id="experiments">Experiments</h1>
+<h2 id="experiments">Experiments</h2>
 <div></div>
 
 <ul>
@@ -223,7 +222,7 @@ or add something in one place (e.g. a component&#39;s template) and have that ch
 throughout the application, is a big win.</p>
 </li>
 </ul>
-<h1 id="summary">Summary</h1>
+<h2 id="summary">Summary</h2>
 <p>You have learned how to organize your application and presentation logic into isolated, reusable
 components. Let&#39;s go to <a href="tutorial/step_04">step 4</a> to learn how to organize our code in directories and
 files, so it remains easy to locate as our application grows.</p>

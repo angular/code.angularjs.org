@@ -45,7 +45,8 @@ or <code>$document.find()</code>, or use the standard DOM APIs, e.g. <code>docum
 <ul>
 <li><a href="http://api.jquery.com/addClass/"><code>addClass()</code></a> - Does not support a function as first argument</li>
 <li><a href="http://api.jquery.com/after/"><code>after()</code></a></li>
-<li><a href="http://api.jquery.com/append/"><code>append()</code></a></li>
+<li><a href="http://api.jquery.com/append/"><code>append()</code></a> - Contrary to jQuery, this doesn&#39;t clone elements
+so will not work correctly when invoked on a jqLite object containing more than one DOM node</li>
 <li><a href="http://api.jquery.com/attr/"><code>attr()</code></a> - Does not support functions as parameters</li>
 <li><a href="http://api.jquery.com/bind/"><code>bind()</code></a> (<em>deprecated</em>, use <a href="http://api.jquery.com/on/"><code>on()</code></a>) - Does not support namespaces, selectors or eventData</li>
 <li><a href="http://api.jquery.com/children/"><code>children()</code></a> - Does not support selectors</li>

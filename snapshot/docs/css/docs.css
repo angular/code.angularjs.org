@@ -713,14 +713,14 @@ ul.events > li {
   margin-right: 5px;
 }
 
-@media only screen and (min-width: 769px) {
+@media only screen and (min-width: 768px) {
   [ng-include="partialPath"].ng-hide {
     display: block !important;
     visibility: hidden;
   }
 }
 
-@media only screen and (min-width: 769px) and (max-width: 991px) {
+@media only screen and (min-width: 768px) and (max-width: 991px) {
   .main-body-grid {
     margin-top: 160px;
   }
@@ -729,7 +729,7 @@ ul.events > li {
   }
 }
 
-@media only screen and (max-width : 768px) {
+@media only screen and (max-width: 767px) {
   .picker, .picker select {
     width: auto;
     display: block;
@@ -933,6 +933,14 @@ toc-container > div > toc-tree > ul {
 toc-container > div > toc-tree > ul > li > toc-tree > ul > li toc-tree > ul li {
   font-size: 13px;
 }
+
+.dev-status span {
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+.security span { background-color: orange; }
+.stable span { background-color: green; color: white; }
+.current span { background-color: blue; color: white; }
 
 @media handheld and (max-width:800px), screen and (max-device-width:800px), screen and (max-width:800px) {
   .navbar {

@@ -24,7 +24,31 @@
 <div class="api-profile-description">
   <h2 id="overview">Overview</h2>
   <p>HTML radio button.</p>
+<p><strong>Note:</strong><br>
+All inputs controlled by <a href="api/ng/directive/ngModel">ngModel</a> (including those of type <code>radio</code>) will use the
+value of their <code>name</code> attribute to determine the property under which their
+<a href="api/ng/type/ngModel.NgModelController">NgModelController</a> will be published on the parent
+<a href="api/ng/type/form.FormController">FormController</a>. Thus, if you use the same <code>name</code> for multiple
+inputs of a form (e.g. a group of radio inputs), only <em>one</em> <code>NgModelController</code> will be
+published on the parent <code>FormController</code> under that name. The rest of the controllers will
+continue to work as expected, but you won&#39;t be able to access them as properties on the parent
+<code>FormController</code>.</p>
+<div class="alert alert-info">
+  <p>
+    In plain HTML forms, the <code>name</code> attribute is used to identify groups of radio inputs, so
+    that the browser can manage their state (checked/unchecked) based on the state of other
+    inputs in the same group.
+  </p>
+  <p>
+    In AngularJS forms, this is not necessary. The input&#39;s state will be updated based on the
+    value of the underlying model data.
+  </p>
+</div>
 
+<div class="alert alert-success">
+  If you omit the <code>name</code> attribute on a radio input, <code>ngModel</code> will automatically assign it a
+  unique name.
+</div>
 </div>
 
 

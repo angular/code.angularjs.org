@@ -12,6 +12,18 @@
   <title ng-bind-template="AngularJS: {{ currentArea.name }}: {{ currentPage.name || 'Error: Page not found'}}">AngularJS</title>
 
   <script type="text/javascript">
+    (function() {
+      // Dynamically, pre-emptively, add `noindex`, which will be removed when the doc is ready and valid
+      ['googlebot', 'robots'].forEach(function(bot) {
+        var tag = document.createElement('meta');
+        tag.name = bot;
+        tag.content = 'noindex';
+        tag.setAttribute('ng-if', 'hasError()');
+        document.head.appendChild(tag);
+      });
+    })();
+  </script>
+  <script type="text/javascript">
     // dynamically add base tag as well as css and javascript files.
     // we can't add css/js the usual way, because some browsers (FF) eagerly prefetch resources
     // before the base attribute is added, causing 404 and terribly slow loading of the docs app.
@@ -33,13 +45,13 @@
       addTag('link', {rel: 'stylesheet', href: 'css/animations.css', type: 'text/css'});
       
 
-      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js' }, sync);
-      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular-resource.min.js' }, sync);
-      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular-route.min.js' }, sync);
-      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular-cookies.min.js' }, sync);
-      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular-sanitize.min.js' }, sync);
-      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular-touch.min.js' }, sync);
-      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular-animate.min.js' }, sync);
+      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js' }, sync);
+      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-resource.min.js' }, sync);
+      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.min.js' }, sync);
+      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-cookies.min.js' }, sync);
+      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-sanitize.min.js' }, sync);
+      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-touch.min.js' }, sync);
+      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.min.js' }, sync);
       addTag('script', {src: 'components/marked-0.3.6/marked.min.js' }, sync);
       addTag('script', {src: 'js/angular-bootstrap/dropdown-toggle.min.js' }, sync);
       addTag('script', {src: 'components/lunr-0.7.2/lunr.min.js' }, sync);
@@ -147,7 +159,7 @@
             </ul>
 
           </div>
-          <div class="search-results-container" ng-show="hasResults">
+          <div class="search-results-container" ng-show="hasResults" ng-cloak>
             <div class="container">
               <div class="search-results-frame">
                 <div ng-repeat="(key, value) in results track by key" class="search-results-group" ng-class="colClassName + ' col-group-' + key" ng-show="value.length > 0">
@@ -177,7 +189,7 @@
           </div>
         </div>
       </nav>
-      <nav id="navbar-sub" class="sup-header navbar navbar-fixed-top" scroll-y-offset-element>
+      <nav id="navbar-sub" class="sup-header navbar navbar-fixed-top" scroll-y-offset-element ng-cloak>
         <div class="container main-grid main-header-grid">
           <div class="grid-left">
             <version-picker></version-picker>
@@ -194,7 +206,7 @@
       </nav>
     </header>
 
-    <section role="main" class="container main-body">
+    <section role="main" class="container main-body" ng-cloak>
       <div class="main-grid main-body-grid">
         <div class="grid-left">
           <a class="btn toc-toggle visible-xs" ng-click="toc=!toc">Show / Hide Table of Contents</a>
@@ -218,7 +230,8 @@
           </div>
         </div>
         <div class="grid-right">
-          <div id="loading" ng-show="loading">Loading...</div>
+          <div ng-show="loading">Loading &hellip;</div>
+          <div ng-show="loadingError">There was an error loading this resource. Please try again later.</div>
           <div ng-hide="loading" ng-include="partialPath" toc-collector autoscroll></div>
         </div>
       </div>

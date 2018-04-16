@@ -98,11 +98,6 @@ angular.module('pagesData', [])
     "area": "error",
     "path": "error/$compile/srcset"
   },
-  "error/$compile/tpload": {
-    "name": "tpload",
-    "area": "error",
-    "path": "error/$compile/tpload"
-  },
   "error/$compile/tplrt": {
     "name": "tplrt",
     "area": "error",
@@ -263,6 +258,11 @@ angular.module('pagesData', [])
     "area": "error",
     "path": "error/$interpolate/wantstring"
   },
+  "error/$interval/badprom": {
+    "name": "badprom",
+    "area": "error",
+    "path": "error/$interval/badprom"
+  },
   "error/$location/badpath": {
     "name": "badpath",
     "area": "error",
@@ -288,10 +288,20 @@ angular.module('pagesData', [])
     "area": "error",
     "path": "error/$location/nostate"
   },
+  "error/$parse/esc": {
+    "name": "esc",
+    "area": "error",
+    "path": "error/$parse/esc"
+  },
   "error/$parse/lexerr": {
     "name": "lexerr",
     "area": "error",
     "path": "error/$parse/lexerr"
+  },
+  "error/$parse/lval": {
+    "name": "lval",
+    "area": "error",
+    "path": "error/$parse/lval"
   },
   "error/$parse/syntax": {
     "name": "syntax",
@@ -343,6 +353,11 @@ angular.module('pagesData', [])
     "area": "error",
     "path": "error/$rootScope/inprog"
   },
+  "error/$route/norout": {
+    "name": "norout",
+    "area": "error",
+    "path": "error/$route/norout"
+  },
   "error/$sanitize/elclob": {
     "name": "elclob",
     "area": "error",
@@ -392,6 +407,16 @@ angular.module('pagesData', [])
     "name": "unsafe",
     "area": "error",
     "path": "error/$sce/unsafe"
+  },
+  "error/$templateRequest/tpload": {
+    "name": "tpload",
+    "area": "error",
+    "path": "error/$templateRequest/tpload"
+  },
+  "error/$timeout/badprom": {
+    "name": "badprom",
+    "area": "error",
+    "path": "error/$timeout/badprom"
   },
   "error/filter/notarray": {
     "name": "notarray",
@@ -717,6 +742,11 @@ angular.module('pagesData', [])
     "name": "Getting Started",
     "area": "misc",
     "path": "misc/started"
+  },
+  "misc/version-support-status": {
+    "name": "Version Support Status",
+    "area": "misc",
+    "path": "misc/version-support-status"
   },
   "tutorial": {
     "name": "Tutorial",
@@ -1748,11 +1778,6 @@ angular.module('pagesData', [])
     "area": "api",
     "path": "api/ngCookies/service/$cookies"
   },
-  "api/ngCookies/service/$cookieStore": {
-    "name": "$cookieStore",
-    "area": "api",
-    "path": "api/ngCookies/service/$cookieStore"
-  },
   "api/ngMessageFormat": {
     "name": "ngMessageFormat",
     "area": "api",
@@ -2377,8 +2402,14 @@ angular.module('pagesData', [])
   "examples/example-ng-class-odd": {
     "path": "examples/example-ng-class-odd"
   },
+  "examples/example-ng-class-odd-animate": {
+    "path": "examples/example-ng-class-odd-animate"
+  },
   "examples/example-ng-class-even": {
     "path": "examples/example-ng-class-even"
+  },
+  "examples/example-ng-class-even-animate": {
+    "path": "examples/example-ng-class-even-animate"
   },
   "examples/example-ng-cloak": {
     "path": "examples/example-ng-cloak"
@@ -2724,6 +2755,11 @@ angular.module('pagesData', [])
     "area": "error",
     "path": "error/$interpolate"
   },
+  "error/$interval": {
+    "name": "$interval",
+    "area": "error",
+    "path": "error/$interval"
+  },
   "error/$location": {
     "name": "$location",
     "area": "error",
@@ -2749,6 +2785,11 @@ angular.module('pagesData', [])
     "area": "error",
     "path": "error/$rootScope"
   },
+  "error/$route": {
+    "name": "$route",
+    "area": "error",
+    "path": "error/$route"
+  },
   "error/$sanitize": {
     "name": "$sanitize",
     "area": "error",
@@ -2758,6 +2799,16 @@ angular.module('pagesData', [])
     "name": "$sce",
     "area": "error",
     "path": "error/$sce"
+  },
+  "error/$templateRequest": {
+    "name": "$templateRequest",
+    "area": "error",
+    "path": "error/$templateRequest"
+  },
+  "error/$timeout": {
+    "name": "$timeout",
+    "area": "error",
+    "path": "error/$timeout"
   },
   "error/filter": {
     "name": "filter",

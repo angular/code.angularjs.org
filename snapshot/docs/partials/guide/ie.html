@@ -32,6 +32,15 @@ with <code>value=&quot;0&quot;</code> before AngularJS has a chance to interpola
 of <code>placeholder=&quot;{{ someExpression }}&quot;</code>. If using the latter, Internet Explorer will error
 on accessing the <code>nodeValue</code> on a parentless <code>TextNode</code> in Internet Explorer 10 &amp; 11
 (see <a href="https://github.com/angular/angular.js/issues/5025">issue 5025</a>).</li>
+<li>Using the <code>disabled</code> attribute on an element that has
+descendant form controls can result in unexpected behavior in Internet Explorer 11.
+For example, the value of descendant input elements with <code>ng-model</code> will not reflect
+the model (or changes to the model), and the value of the <code>placeholder</code> attribute will be
+inserted as the input&#39;s value. Descendant select elements will also be inoperable, as if they
+had the <code>disabled</code> attribute applied to them, which may not be the intended effect.
+To work around this unexpected behavior, 1) avoid using the identifier <code>disabled</code> for custom attribute
+directives that are on elements with descendant form controls, and 2) avoid using <code>disabled</code> as an identifier
+for an attribute passed to a custom directive that has descendant form controls.</li>
 </ol>
 
 

@@ -1043,11 +1043,6 @@ angular.module('navData', [])
             "href": "api/ngCookies/service"
           },
           {
-            "name": "$cookieStore",
-            "href": "api/ngCookies/service/$cookieStore",
-            "type": "service"
-          },
-          {
             "name": "$cookies",
             "href": "api/ngCookies/service/$cookies",
             "type": "service"
@@ -1487,11 +1482,6 @@ angular.module('navData', [])
             "type": "error"
           },
           {
-            "name": "tpload",
-            "href": "error/$compile/tpload",
-            "type": "error"
-          },
-          {
             "name": "tplrt",
             "href": "error/$compile/tplrt",
             "type": "error"
@@ -1672,6 +1662,16 @@ angular.module('navData', [])
             "type": "error"
           },
           {
+            "name": "$interval",
+            "href": "error/$interval",
+            "type": "section"
+          },
+          {
+            "name": "badprom",
+            "href": "error/$interval/badprom",
+            "type": "error"
+          },
+          {
             "name": "$location",
             "href": "error/$location",
             "type": "section"
@@ -1707,8 +1707,18 @@ angular.module('navData', [])
             "type": "section"
           },
           {
+            "name": "esc",
+            "href": "error/$parse/esc",
+            "type": "error"
+          },
+          {
             "name": "lexerr",
             "href": "error/$parse/lexerr",
+            "type": "error"
+          },
+          {
+            "name": "lval",
+            "href": "error/$parse/lval",
             "type": "error"
           },
           {
@@ -1777,6 +1787,16 @@ angular.module('navData', [])
             "type": "error"
           },
           {
+            "name": "$route",
+            "href": "error/$route",
+            "type": "section"
+          },
+          {
+            "name": "norout",
+            "href": "error/$route/norout",
+            "type": "error"
+          },
+          {
             "name": "$sanitize",
             "href": "error/$sanitize",
             "type": "section"
@@ -1834,6 +1854,26 @@ angular.module('navData', [])
           {
             "name": "unsafe",
             "href": "error/$sce/unsafe",
+            "type": "error"
+          },
+          {
+            "name": "$templateRequest",
+            "href": "error/$templateRequest",
+            "type": "section"
+          },
+          {
+            "name": "tpload",
+            "href": "error/$templateRequest/tpload",
+            "type": "error"
+          },
+          {
+            "name": "$timeout",
+            "href": "error/$timeout",
+            "type": "section"
+          },
+          {
+            "name": "badprom",
+            "href": "error/$timeout/badprom",
             "type": "error"
           },
           {
@@ -2220,6 +2260,11 @@ angular.module('navData', [])
           {
             "name": "Getting Started",
             "href": "misc/started",
+            "type": "page"
+          },
+          {
+            "name": "Version Support Status",
+            "href": "misc/version-support-status",
             "type": "page"
           }
         ]
