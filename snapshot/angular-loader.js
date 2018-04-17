@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.10-build.5552+sha.5b7e4b4
+ * @license AngularJS v1.6.10-build.5553+sha.b2ed68d
  * (c) 2010-2018 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -152,7 +152,7 @@ function isValidObjectMaxDepth(maxDepth) {
 function minErr(module, ErrorConstructor) {
   ErrorConstructor = ErrorConstructor || Error;
 
-  var url = 'https://errors.angularjs.org/1.6.10-build.5552+sha.5b7e4b4/';
+  var url = 'https://errors.angularjs.org/1.6.10-build.5553+sha.b2ed68d/';
   var regex = url.replace('.', '\\.') + '[\\s\\S]*';
   var errRegExp = new RegExp(regex, 'g');
 
