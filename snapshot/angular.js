@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.10-build.5553+sha.b2ed68d
+ * @license AngularJS v1.6.11-build.5554+sha.841feb0
  * (c) 2010-2018 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -88,7 +88,7 @@ function isValidObjectMaxDepth(maxDepth) {
 function minErr(module, ErrorConstructor) {
   ErrorConstructor = ErrorConstructor || Error;
 
-  var url = 'https://errors.angularjs.org/1.6.10-build.5553+sha.b2ed68d/';
+  var url = 'https://errors.angularjs.org/1.6.11-build.5554+sha.841feb0/';
   var regex = url.replace('.', '\\.') + '[\\s\\S]*';
   var errRegExp = new RegExp(regex, 'g');
 
@@ -2764,10 +2764,10 @@ function toDebugString(obj, maxDepth) {
 var version = {
   // These placeholder strings will be replaced by grunt's `build` task.
   // They need to be double- or single-quoted.
-  full: '1.6.10-build.5553+sha.b2ed68d',
+  full: '1.6.11-build.5554+sha.841feb0',
   major: 1,
   minor: 6,
-  dot: 10,
+  dot: 11,
   codeName: 'snapshot'
 };
 
@@ -2914,7 +2914,7 @@ function publishExternalAPI(angular) {
       });
     }
   ])
-  .info({ angularVersion: '1.6.10-build.5553+sha.b2ed68d' });
+  .info({ angularVersion: '1.6.11-build.5554+sha.841feb0' });
 }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
