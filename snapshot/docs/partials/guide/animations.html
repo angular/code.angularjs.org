@@ -213,27 +213,11 @@ triggered:</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="api/ng/directive/ngRepeat#animations">ngRepeat</a></td>
-<td>enter, leave, and move</td>
+<td><a href="api/ng/directive/form#animations">form / ngForm</a></td>
+<td>add and remove (<a href="api/ng/directive/form#css-classes">various classes</a>)</td>
 </tr>
 <tr>
-<td><a href="api/ng/directive/ngIf#animations">ngIf</a></td>
-<td>enter and leave</td>
-</tr>
-<tr>
-<td><a href="api/ng/directive/ngSwitch#animations">ngSwitch</a></td>
-<td>enter and leave</td>
-</tr>
-<tr>
-<td><a href="api/ng/directive/ngInclude#animations">ngInclude</a></td>
-<td>enter and leave</td>
-</tr>
-<tr>
-<td><a href="api/ngRoute/directive/ngView#animations">ngView</a></td>
-<td>enter and leave</td>
-</tr>
-<tr>
-<td><a href="api/ngMessages#animations">ngMessage / ngMessageExp</a></td>
+<td><a href="api/ngAnimate/directive/ngAnimateSwap#animations">ngAnimateSwap</a></td>
 <td>enter and leave</td>
 </tr>
 <tr>
@@ -253,25 +237,46 @@ triggered:</p>
 <td>add and remove (the <code>ng-hide</code> class)</td>
 </tr>
 <tr>
-<td><a href="api/ng/directive/ngShow#animations">ngShow</a></td>
-<td>add and remove (the <code>ng-hide</code> class)</td>
+<td><a href="api/ng/directive/ngIf#animations">ngIf</a></td>
+<td>enter and leave</td>
+</tr>
+<tr>
+<td><a href="api/ng/directive/ngInclude#animations">ngInclude</a></td>
+<td>enter and leave</td>
+</tr>
+<tr>
+<td><a href="api/ngMessages#animations">ngMessage / ngMessageExp</a></td>
+<td>enter and leave</td>
+</tr>
+<tr>
+<td><a href="api/ngMessages#animations">ngMessages</a></td>
+<td>add and remove (the <code>ng-active</code>/<code>ng-inactive</code> classes)</td>
 </tr>
 <tr>
 <td><a href="api/ng/directive/ngModel#animations">ngModel</a></td>
 <td>add and remove (<a href="api/ng/directive/ngModel#css-classes">various classes</a>)</td>
 </tr>
 <tr>
-<td><a href="api/ng/directive/form#animations">form / ngForm</a></td>
-<td>add and remove (<a href="api/ng/directive/form#css-classes">various classes</a>)</td>
+<td><a href="api/ng/directive/ngRepeat#animations">ngRepeat</a></td>
+<td>enter, leave, and move</td>
 </tr>
 <tr>
-<td><a href="api/ngMessages#animations">ngMessages</a></td>
-<td>add and remove (the <code>ng-active</code>/<code>ng-inactive</code> classes)</td>
+<td><a href="api/ng/directive/ngShow#animations">ngShow</a></td>
+<td>add and remove (the <code>ng-hide</code> class)</td>
+</tr>
+<tr>
+<td><a href="api/ng/directive/ngSwitch#animations">ngSwitch</a></td>
+<td>enter and leave</td>
+</tr>
+<tr>
+<td><a href="api/ngRoute/directive/ngView#animations">ngView</a></td>
+<td>enter and leave</td>
 </tr>
 </tbody>
 </table>
+<p>(More information can be found by visiting the documentation associated with each directive.)</p>
 <p>For a full breakdown of the steps involved during each animation event, refer to the
-<a href="api/ng/service/$animate">API docs</a>.</p>
+<a href="api/ng/service/$animate"><code>$animate</code> API docs</a>.</p>
 <h2 id="how-do-i-use-animations-in-my-own-directives-">How do I use animations in my own directives?</h2>
 <p>Animations within custom directives can also be established by injecting <code>$animate</code> directly into
 your directive and making calls to it when needed.</p>

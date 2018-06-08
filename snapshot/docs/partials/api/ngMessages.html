@@ -51,7 +51,7 @@ show and hide error messages specific to the state of an input field, the <code>
 <code>ngMessage</code> directives are designed to handle the complexity, inheritance and priority
 sequencing based on the order of how the messages are defined in the template.</p>
 <p>Currently, the ngMessages module only contains the code for the <code>ngMessages</code>, <code>ngMessagesInclude</code>
-<code>ngMessage</code> and <code>ngMessageExp</code> directives.</p>
+<code>ngMessage</code>, <code>ngMessageExp</code> and <code>ngMessageDefault</code> directives.</p>
 <h2 id="usage">Usage</h2>
 <p>The <code>ngMessages</code> directive allows keys in a key/value collection to be associated with a child element
 (or &#39;message&#39;) that will show or hide based on the truthiness of that key&#39;s value in the collection. A common use
@@ -244,7 +244,21 @@ and leave animation is triggered for each particular element bound to the <code>
 .some-message.ng-leave {}
 .some-message.ng-leave.ng-leave-active {}
 </code></pre>
-<p><a href="api/ngAnimate">Click here</a> to learn how to use JavaScript animations or to learn more about ngAnimate.</p>
+<p><a href="api/ngAnimate">See the ngAnimate docs</a> to learn how to use JavaScript animations or to learn
+more about ngAnimate.</p>
+<h2 id="displaying-a-default-message">Displaying a default message</h2>
+<p>If the ngMessages renders no inner ngMessage directive (i.e. when none of the truthy
+keys are matched by a defined message), then it will render a default message
+using the <a href="api/ngMessages/directive/ngMessageDefault"><code>ngMessageDefault</code></a> directive.
+Note that matched messages will always take precedence over unmatched messages. That means
+the default message will not be displayed when another message is matched. This is also
+true for <code>ng-messages-multiple</code>.</p>
+<pre><code class="lang-html">&lt;div ng-messages=&quot;myForm.myField.$error&quot; role=&quot;alert&quot;&gt;
+  &lt;div ng-message=&quot;required&quot;&gt;This field is required&lt;/div&gt;
+  &lt;div ng-message=&quot;minlength&quot;&gt;This field is too short&lt;/div&gt;
+  &lt;div ng-message-default&gt;This field has an input error&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
 
 
 
@@ -293,6 +307,13 @@ of the provided key/value map that <code>ngMessages</code> listens on.</p>
         <td><a href="api/ngMessages/directive/ngMessageExp">ngMessageExp</a></td>
         <td><p><code>ngMessageExp</code> is the same as <a href="api/ngMessages/directive/ngMessage"><code>ngMessage</code></a>, but instead of a static
 value, it accepts an expression to be evaluated for the message key.</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><a href="api/ngMessages/directive/ngMessageDefault">ngMessageDefault</a></td>
+        <td><p><code>ngMessageDefault</code> is a directive with the purpose to show and hide a default message for
+<a href="ngMessages">ngMessages</a>, when none of provided messages matches.</p>
 </td>
       </tr>
       

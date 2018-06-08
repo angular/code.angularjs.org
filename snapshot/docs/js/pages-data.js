@@ -523,6 +523,16 @@ angular.module('pagesData', [])
     "area": "error",
     "path": "error/ngPattern/noregexp"
   },
+  "error/ngRef/noctrl": {
+    "name": "noctrl",
+    "area": "error",
+    "path": "error/ngRef/noctrl"
+  },
+  "error/ngRef/nonassign": {
+    "name": "nonassign",
+    "area": "error",
+    "path": "error/ngRef/nonassign"
+  },
   "error/ngRepeat/badident": {
     "name": "badident",
     "area": "error",
@@ -1388,6 +1398,11 @@ angular.module('pagesData', [])
     "area": "api",
     "path": "api/ng/directive/ngPluralize"
   },
+  "api/ng/directive/ngRef": {
+    "name": "ngRef",
+    "area": "api",
+    "path": "api/ng/directive/ngRef"
+  },
   "api/ng/directive/ngRepeat": {
     "name": "ngRepeat",
     "area": "api",
@@ -1807,6 +1822,11 @@ angular.module('pagesData', [])
     "name": "ngMessageExp",
     "area": "api",
     "path": "api/ngMessages/directive/ngMessageExp"
+  },
+  "api/ngMessages/directive/ngMessageDefault": {
+    "name": "ngMessageDefault",
+    "area": "api",
+    "path": "api/ngMessages/directive/ngMessageDefault"
   },
   "api/ngMock/object/angular.mock": {
     "name": "angular.mock",
@@ -2528,6 +2548,15 @@ angular.module('pagesData', [])
   "examples/example-ng-pluralize": {
     "path": "examples/example-ng-pluralize"
   },
+  "examples/example-ng-ref-component": {
+    "path": "examples/example-ng-ref-component"
+  },
+  "root.html": {
+    "path": "root.html"
+  },
+  "examples/example-ng-ref-scopes": {
+    "path": "examples/example-ng-ref-scopes"
+  },
   "examples/example-ngRepeat-tracking": {
     "path": "examples/example-ngRepeat-tracking"
   },
@@ -2844,6 +2873,11 @@ angular.module('pagesData', [])
     "name": "ngPattern",
     "area": "error",
     "path": "error/ngPattern"
+  },
+  "error/ngRef": {
+    "name": "ngRef",
+    "area": "error",
+    "path": "error/ngRef"
   },
   "error/ngRepeat": {
     "name": "ngRepeat",

@@ -117,6 +117,28 @@ See the following issues:</p>
     </td>
   </tr>
   <tr>
+    <td><a href="api/ng/input/input[number]">input[number]</a></td>
+    <td>
+    <h3 id="html5-constraint-validation-and-allowinvalid-">HTML5 constraint validation and <code>allowInvalid</code></h3>
+<p>In browsers that follow the
+<a href="https://html.spec.whatwg.org/multipage/forms.html#number-state-%28type=number%29">HTML5 specification</a>,
+<code>input[number]</code> does not work as expected with <a href="api/ng/directive/ngModelOptions"><code>ngModelOptions.allowInvalid</code></a>.
+If a non-number is entered in the input, the browser will report the value as an empty string,
+which means the view / model values in <code>ngModel</code> and subsequently the scope value
+will also be an empty string.</p>
+ <hr>
+    <h3 id="large-numbers-and-step-validation">Large numbers and <code>step</code> validation</h3>
+<p>The <code>step</code> validation will not work correctly for very large numbers (e.g. 9999999999) due to
+Javascript&#39;s arithmetic limitations. If you need to handle large numbers, purpose-built
+libraries (e.g. <a href="https://github.com/MikeMcl/big.js/">https://github.com/MikeMcl/big.js/</a>), can be included into AngularJS by
+<a href="guide/forms#modifying-built-in-validators">overwriting the validators</a>
+for <code>number</code> and / or <code>step</code>, or by <a href="guide/forms#custom-validation">applying custom validators</a>
+to an <code>input[text]</code> element. The source for <code>input[number]</code> type can be used as a starting
+point for both implementations.</p>
+ 
+    </td>
+  </tr>
+  <tr>
     <td><a href="api/ng/directive/textarea">textarea</a></td>
     <td>
     <p>When specifying the <code>placeholder</code> attribute of <code>&lt;textarea&gt;</code>, Internet Explorer will temporarily
@@ -811,6 +833,14 @@ These rules are bundled with angular.js, but can be overridden
 by specifying the mappings between
 <a href="http://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/language_plural_rules.html">plural categories</a>
 and the strings to be displayed.</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><a href="api/ng/directive/ngRef">ngRef</a></td>
+        <td><p>The <code>ngRef</code> attribute tells AngularJS to assign the controller of a component (or a directive)
+to the given property in the current scope. It is also possible to add the jqlite-wrapped DOM
+element to the scope.</p>
 </td>
       </tr>
       

@@ -302,6 +302,10 @@ has not changed. Instead you must assign a new object.</li>
 </ol>
 <p>One-way binding is useful if you do not plan to propagate changes to your isolated scope bindings
 back to the parent. However, it does not make this completely impossible.</p>
+<p>By default, the <a href="api/ng/type/$rootScope.Scope#$watch"><code>$watch</code></a>
+method is used for tracking changes, and the equality check is based on object identity.
+It&#39;s also possible to watch the evaluated value shallowly with
+<a href="api/ng/type/$rootScope.Scope#$watchCollection"><code>$watchCollection</code></a>: use <code>&lt;*</code> or <code>&lt;*attr</code></p>
 </li>
 <li><p><code>&amp;</code> or <code>&amp;attr</code> - provides a way to execute an expression in the context of the parent scope. If
 no <code>attr</code> name is specified then the attribute name is assumed to be the same as the local name.

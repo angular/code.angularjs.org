@@ -205,10 +205,19 @@ processing will take place and the
 <p><code>redirectTo</code> takes precedence over <code>resolveRedirectTo</code>, so specifying both on the same
 route definition, will cause the latter to be ignored.</p>
 </li>
+<li><p><code>[reloadOnUrl=true]</code> - <code>{boolean=}</code> - reload route when any part of the URL changes
+(inluding the path) even if the new URL maps to the same route.</p>
+<p>If the option is set to <code>false</code> and the URL in the browser changes, but the new URL maps
+to the same route, then a <code>$routeUpdate</code> event is broadcasted on the root scope (without
+reloading the route).</p>
+</li>
 <li><p><code>[reloadOnSearch=true]</code> - <code>{boolean=}</code> - reload route when only <code>$location.search()</code>
 or <code>$location.hash()</code> changes.</p>
-<p>If the option is set to <code>false</code> and url in the browser changes, then
-<code>$routeUpdate</code> event is broadcasted on the root scope.</p>
+<p>If the option is set to <code>false</code> and the URL in the browser changes, then a <code>$routeUpdate</code>
+event is broadcasted on the root scope (without reloading the route).</p>
+<div class="alert alert-warning">
+  <strong>Note:</strong> This option has no effect if <code>reloadOnUrl</code> is set to <code>false</code>.
+</div>
 </li>
 <li><p><code>[caseInsensitiveMatch=false]</code> - <code>{boolean=}</code> - match routes without being case sensitive</p>
 <p>If the option is set to <code>true</code>, then the particular route can be matched without being

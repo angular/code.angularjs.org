@@ -1,8 +1,8 @@
-<a href='https://github.com/angular/angular.js/edit/master/src/ngMessages/messages.js?message=docs(ngMessages)%3A%20describe%20your%20change...#L272' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/master/src/ngMessages/messages.js?message=docs(ngMessages)%3A%20describe%20your%20change...#L291' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 
-<a href='https://github.com/angular/angular.js/tree/master/src/ngMessages/messages.js#L272' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/master/src/ngMessages/messages.js#L291' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -31,8 +31,10 @@ messages use the <code>ngMessage</code> directive and will be inserted/removed f
 on if they&#39;re present within the key/value object. By default, only one message will be displayed
 at a time and this depends on the prioritization of the messages within the template. (This can
 be changed by using the <code>ng-messages-multiple</code> or <code>multiple</code> attribute on the directive container.)</p>
-<p>A remote template can also be used to promote message reusability and messages can also be
-overridden.</p>
+<p>A remote template can also be used (With <a href="api/ngMessages/directive/ngMessagesInclude"><code>ngMessagesInclude</code></a>) to promote message
+reusability and messages can also be overridden.</p>
+<p>A default message can also be displayed when no <code>ngMessage</code> directive is inserted, using the
+<a href="api/ngMessages/directive/ngMessageDefault"><code>ngMessageDefault</code></a> directive.</p>
 <p><a href="api/ngMessages">Click here</a> to learn more about <code>ngMessages</code> and <code>ngMessage</code>.</p>
 
 </div>
@@ -60,6 +62,7 @@ overridden.</p>
   &lt;ANY ng-message=&quot;stringValue&quot;&gt;...&lt;/ANY&gt;
   &lt;ANY ng-message=&quot;stringValue1, stringValue2, ...&quot;&gt;...&lt;/ANY&gt;
   &lt;ANY ng-message-exp=&quot;expressionValue&quot;&gt;...&lt;/ANY&gt;
+  &lt;ANY ng-message-default&gt;...&lt;/ANY&gt;
 &lt;/ANY&gt;
 
 &lt;!-- or by using element directives --&gt;
@@ -67,6 +70,7 @@ overridden.</p>
   &lt;ng-message when=&quot;stringValue&quot;&gt;...&lt;/ng-message&gt;
   &lt;ng-message when=&quot;stringValue1, stringValue2, ...&quot;&gt;...&lt;/ng-message&gt;
   &lt;ng-message when-exp=&quot;expressionValue&quot;&gt;...&lt;/ng-message&gt;
+  &lt;ng-message-default&gt;...&lt;/ng-message-default&gt;
 &lt;/ng-messages&gt;
 </code></pre>
 
@@ -144,7 +148,7 @@ overridden.</p>
       name="index.html"
       language="html"
       type="html">
-      <pre><code>&lt;form name=&quot;myForm&quot;&gt;&#10;  &lt;label&gt;&#10;    Enter your name:&#10;    &lt;input type=&quot;text&quot;&#10;           name=&quot;myName&quot;&#10;           ng-model=&quot;name&quot;&#10;           ng-minlength=&quot;5&quot;&#10;           ng-maxlength=&quot;20&quot;&#10;           required /&gt;&#10;  &lt;/label&gt;&#10;  &lt;pre&gt;myForm.myName.$error = {{ myForm.myName.$error | json }}&lt;/pre&gt;&#10;&#10;  &lt;div ng-messages=&quot;myForm.myName.$error&quot; style=&quot;color:maroon&quot; role=&quot;alert&quot;&gt;&#10;    &lt;div ng-message=&quot;required&quot;&gt;You did not enter a field&lt;/div&gt;&#10;    &lt;div ng-message=&quot;minlength&quot;&gt;Your field is too short&lt;/div&gt;&#10;    &lt;div ng-message=&quot;maxlength&quot;&gt;Your field is too long&lt;/div&gt;&#10;  &lt;/div&gt;&#10;&lt;/form&gt;</code></pre>
+      <pre><code>&lt;form name=&quot;myForm&quot;&gt;&#10;  &lt;label&gt;&#10;    Enter your name:&#10;    &lt;input type=&quot;text&quot;&#10;           name=&quot;myName&quot;&#10;           ng-model=&quot;name&quot;&#10;           ng-minlength=&quot;5&quot;&#10;           ng-maxlength=&quot;20&quot;&#10;           required /&gt;&#10;  &lt;/label&gt;&#10;  &lt;pre&gt;myForm.myName.$error = {{ myForm.myName.$error | json }}&lt;/pre&gt;&#10;&#10;  &lt;div ng-messages=&quot;myForm.myName.$error&quot; style=&quot;color:maroon&quot; role=&quot;alert&quot;&gt;&#10;    &lt;div ng-message=&quot;required&quot;&gt;You did not enter a field&lt;/div&gt;&#10;    &lt;div ng-message=&quot;minlength&quot;&gt;Your field is too short&lt;/div&gt;&#10;    &lt;div ng-message=&quot;maxlength&quot;&gt;Your field is too long&lt;/div&gt;&#10;    &lt;div ng-message-default&gt;This field has an input error&lt;/div&gt;&#10;  &lt;/div&gt;&#10;&lt;/form&gt;</code></pre>
     </div>
   
     <div class="runnable-example-file" 

@@ -63,6 +63,10 @@ if the current domain is not a sub-domain of this domain or equal to it.</li>
 or a Date object indicating the exact date/time this cookie will expire.</li>
 <li><strong>secure</strong> - <code>{boolean}</code> - If <code>true</code>, then the cookie will only be available through a
 secured connection.</li>
+<li><strong>samesite</strong> - <code>{string}</code> - prevents the browser from sending the cookie along with cross-site requests.
+Accepts the values <code>lax</code> and <code>strict</code>. See the <a href="https://www.owasp.org/index.php/SameSite">OWASP Wiki</a>
+for more info. Note that as of May 2018, not all browsers support <code>SameSite</code>,
+so it cannot be used as a single measure against Cross-Site-Request-Forgery (CSRF) attacks.</li>
 </ul>
 <p>Note: By default, the address that appears in your <code>&lt;base&gt;</code> tag will be used as the path.
 This is important so that cookies will be visible for all routes when html5mode is enabled.</p>

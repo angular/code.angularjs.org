@@ -51,8 +51,8 @@ of assistive technologies, such as screen readers.</p>
 <h2 id="usage">Usage</h2>
 <p>For ngAria to do its magic, simply include the module <code>ngAria</code> as a dependency. The following
 directives are supported:
-<code>ngModel</code>, <code>ngChecked</code>, <code>ngReadonly</code>, <code>ngRequired</code>, <code>ngValue</code>, <code>ngDisabled</code>, <code>ngShow</code>, <code>ngHide</code>, <code>ngClick</code>,
-<code>ngDblClick</code>, and <code>ngMessages</code>.</p>
+<code>ngModel</code>, <code>ngChecked</code>, <code>ngReadonly</code>, <code>ngRequired</code>, <code>ngValue</code>, <code>ngDisabled</code>, <code>ngShow</code>, <code>ngHide</code>,
+<code>ngClick</code>, <code>ngDblClick</code>, and <code>ngMessages</code>.</p>
 <p>Below is a more detailed breakdown of the attributes handled by ngAria:</p>
 <table>
 <thead>
@@ -117,10 +117,13 @@ directives are supported:
 <p>Becomes:</p>
 <pre><code class="lang-html">&lt;md-checkbox ng-disabled=&quot;disabled&quot; aria-disabled=&quot;true&quot;&gt;
 </code></pre>
-<h2 id="disabling-attributes">Disabling Attributes</h2>
-<p>It&#39;s possible to disable individual attributes added by ngAria with the
+<h2 id="disabling-specific-attributes">Disabling Specific Attributes</h2>
+<p>It is possible to disable individual attributes added by ngAria with the
 <a href="api/ngAria/provider/$ariaProvider#config">config</a> method. For more details, see the
 <a href="guide/accessibility">Developer Guide</a>.</p>
+<h2 id="disabling-ngaria-on-specific-elements">Disabling <code>ngAria</code> on Specific Elements</h2>
+<p>It is possible to make <code>ngAria</code> ignore a specific element, by adding the <code>ng-aria-disable</code>
+attribute on it. Note that only the element itself (and not its child elements) will be ignored.</p>
 
 
 

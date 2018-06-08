@@ -62,11 +62,31 @@ the HTML element that the animation will be triggered on.</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="api/ng/directive/ngRepeat#animations">ngRepeat</a></td>
-<td>enter, leave and move</td>
+<td><a href="api/ng/directive/form#animations">form / ngForm</a></td>
+<td>add and remove (<a href="api/ng/directive/form#css-classes">various classes</a>)</td>
 </tr>
 <tr>
-<td><a href="api/ngRoute/directive/ngView#animations">ngView</a></td>
+<td><a href="api/ngAnimate/directive/ngAnimateSwap#animations">ngAnimateSwap</a></td>
+<td>enter and leave</td>
+</tr>
+<tr>
+<td><a href="api/ng/directive/ngClass#animations">ngClass / {{class&#125;&#8203;&#125;</a></td>
+<td>add and remove</td>
+</tr>
+<tr>
+<td><a href="api/ng/directive/ngClassEven#animations">ngClassEven</a></td>
+<td>add and remove</td>
+</tr>
+<tr>
+<td><a href="api/ng/directive/ngClassOdd#animations">ngClassOdd</a></td>
+<td>add and remove</td>
+</tr>
+<tr>
+<td><a href="api/ng/directive/ngHide#animations">ngHide</a></td>
+<td>add and remove (the <code>ng-hide</code> class)</td>
+</tr>
+<tr>
+<td><a href="api/ng/directive/ngIf#animations">ngIf</a></td>
 <td>enter and leave</td>
 </tr>
 <tr>
@@ -74,36 +94,38 @@ the HTML element that the animation will be triggered on.</p>
 <td>enter and leave</td>
 </tr>
 <tr>
+<td><a href="api/ngMessages#animations">ngMessage / ngMessageExp</a></td>
+<td>enter and leave</td>
+</tr>
+<tr>
+<td><a href="api/ngMessages#animations">ngMessages</a></td>
+<td>add and remove (the <code>ng-active</code>/<code>ng-inactive</code> classes)</td>
+</tr>
+<tr>
+<td><a href="api/ng/directive/ngModel#animations">ngModel</a></td>
+<td>add and remove (<a href="api/ng/directive/ngModel#css-classes">various classes</a>)</td>
+</tr>
+<tr>
+<td><a href="api/ng/directive/ngRepeat#animations">ngRepeat</a></td>
+<td>enter, leave, and move</td>
+</tr>
+<tr>
+<td><a href="api/ng/directive/ngShow#animations">ngShow</a></td>
+<td>add and remove (the <code>ng-hide</code> class)</td>
+</tr>
+<tr>
 <td><a href="api/ng/directive/ngSwitch#animations">ngSwitch</a></td>
 <td>enter and leave</td>
 </tr>
 <tr>
-<td><a href="api/ng/directive/ngIf#animations">ngIf</a></td>
-<td>enter and leave</td>
-</tr>
-<tr>
-<td><a href="api/ng/directive/ngClass#animations">ngClass</a></td>
-<td>add and remove (the CSS class(es) present)</td>
-</tr>
-<tr>
-<td><a href="api/ng/directive/ngShow#animations">ngShow</a> &amp; <a href="api/ng/directive/ngHide#animations">ngHide</a></td>
-<td>add and remove (the ng-hide class value)</td>
-</tr>
-<tr>
-<td><a href="api/ng/directive/form#animations">form</a> &amp; <a href="api/ng/directive/ngModel#animations">ngModel</a></td>
-<td>add and remove (dirty, pristine, valid, invalid &amp; all other validations)</td>
-</tr>
-<tr>
-<td><a href="api/ngMessages#animations">ngMessages</a></td>
-<td>add and remove (ng-active &amp; ng-inactive)</td>
-</tr>
-<tr>
-<td><a href="api/ngMessages#animations">ngMessage</a></td>
+<td><a href="api/ngRoute/directive/ngView#animations">ngView</a></td>
 <td>enter and leave</td>
 </tr>
 </tbody>
 </table>
-<p>(More information can be found by visiting each the documentation associated with each directive.)</p>
+<p>(More information can be found by visiting the documentation associated with each directive.)</p>
+<p>For a full breakdown of the steps involved during each animation event, refer to the
+<a href="api/ng/service/$animate"><code>$animate</code> API docs</a>.</p>
 <h2 id="css-based-animations">CSS-based Animations</h2>
 <p>CSS-based animations with ngAnimate are unique since they require no JavaScript code at all. By using a CSS class that we reference between our HTML
 and CSS code we can create an animation that will be picked up by AngularJS when an underlying directive performs an operation.</p>
@@ -291,6 +313,17 @@ In that case, you can add styles to the CSS that make sure the element stays hid
   opacity: 0;
 }
 </code></pre>
+<h3 id="animating-between-value-changes">Animating between value changes</h3>
+<p>Sometimes you need to animate between different expression states, whose values
+don&#39;t necessary need to be known or referenced in CSS styles.
+Unless possible with another <a href="#directive-support">&quot;animation aware&quot; directive</a>, that specific
+use case can always be covered with <a href="api/ngAnimate/directive/ngAnimateSwap"><code>ngAnimateSwap</code></a> as can be seen in
+<a href="api/ngAnimate/directive/ngAnimateSwap#examples">this example</a>.</p>
+<p>Note that <a href="api/ngAnimate/directive/ngAnimateSwap"><code>ngAnimateSwap</code></a> is a <em>structural directive</em>, which means it
+creates a new instance of the element (including any other/child directives it may have) and
+links it to a new scope every time <em>swap</em> happens. In some cases this might not be desirable
+(e.g. for performance reasons, or when you wish to retain internal state on the original
+element instance).</p>
 <h2 id="javascript-based-animations">JavaScript-based Animations</h2>
 <p>ngAnimate also allows for animations to be consumed by JavaScript code. The approach is similar to CSS-based animations (where there is a shared
 CSS class that is referenced in our HTML code) but in addition we need to register the JavaScript animation on the module. By making use of the

@@ -313,6 +313,12 @@
     <loc>https://docs.angularjs.org/error/ngPattern/noregexp</loc>
   </url>
   <url>
+    <loc>https://docs.angularjs.org/error/ngRef/noctrl</loc>
+  </url>
+  <url>
+    <loc>https://docs.angularjs.org/error/ngRef/nonassign</loc>
+  </url>
+  <url>
     <loc>https://docs.angularjs.org/error/ngRepeat/badident</loc>
   </url>
   <url>
@@ -832,6 +838,9 @@
     <loc>https://docs.angularjs.org/api/ng/directive/ngPluralize</loc>
   </url>
   <url>
+    <loc>https://docs.angularjs.org/api/ng/directive/ngRef</loc>
+  </url>
+  <url>
     <loc>https://docs.angularjs.org/api/ng/directive/ngRepeat</loc>
   </url>
   <url>
@@ -1084,6 +1093,9 @@
     <loc>https://docs.angularjs.org/api/ngMessages/directive/ngMessageExp</loc>
   </url>
   <url>
+    <loc>https://docs.angularjs.org/api/ngMessages/directive/ngMessageDefault</loc>
+  </url>
+  <url>
     <loc>https://docs.angularjs.org/api/ngMock/object/angular.mock</loc>
   </url>
   <url>
@@ -1268,6 +1280,9 @@
   </url>
   <url>
     <loc>https://docs.angularjs.org/error/ngPattern</loc>
+  </url>
+  <url>
+    <loc>https://docs.angularjs.org/error/ngRef</loc>
   </url>
   <url>
     <loc>https://docs.angularjs.org/error/ngRepeat</loc>

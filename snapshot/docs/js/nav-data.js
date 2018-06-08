@@ -458,6 +458,11 @@ angular.module('navData', [])
             "type": "directive"
           },
           {
+            "name": "ngRef",
+            "href": "api/ng/directive/ngRef",
+            "type": "directive"
+          },
+          {
             "name": "ngRepeat",
             "href": "api/ng/directive/ngRepeat",
             "type": "directive"
@@ -1068,6 +1073,11 @@ angular.module('navData', [])
           {
             "name": "ngMessage",
             "href": "api/ngMessages/directive/ngMessage",
+            "type": "directive"
+          },
+          {
+            "name": "ngMessageDefault",
+            "href": "api/ngMessages/directive/ngMessageDefault",
             "type": "directive"
           },
           {
@@ -2009,6 +2019,21 @@ angular.module('navData', [])
           {
             "name": "noregexp",
             "href": "error/ngPattern/noregexp",
+            "type": "error"
+          },
+          {
+            "name": "ngRef",
+            "href": "error/ngRef",
+            "type": "section"
+          },
+          {
+            "name": "noctrl",
+            "href": "error/ngRef/noctrl",
+            "type": "error"
+          },
+          {
+            "name": "nonassign",
+            "href": "error/ngRef/nonassign",
             "type": "error"
           },
           {

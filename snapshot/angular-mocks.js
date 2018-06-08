@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.11-build.5555+sha.45879a8
+ * @license AngularJS v1.7.1-build.5556+sha.05170bf
  * (c) 2010-2018 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -803,7 +803,7 @@ angular.mock.TzDate.prototype = Date.prototype;
  * You need to require the `ngAnimateMock` module in your test suite for instance `beforeEach(module('ngAnimateMock'))`
  */
 angular.mock.animate = angular.module('ngAnimateMock', ['ng'])
-  .info({ angularVersion: '1.6.11-build.5555+sha.45879a8' })
+  .info({ angularVersion: '1.7.1-build.5556+sha.05170bf' })
 
   .config(['$provide', function($provide) {
 
@@ -1349,6 +1349,7 @@ angular.mock.$httpBackendDecorator =
 function createHttpBackendMock($rootScope, $timeout, $delegate, $browser) {
   var definitions = [],
       expectations = [],
+      matchLatestDefinition = false,
       responses = [],
       responsesPush = angular.bind(responses, responses.push),
       copy = angular.copy,
@@ -1437,8 +1438,9 @@ function createHttpBackendMock($rootScope, $timeout, $delegate, $browser) {
       wasExpected = true;
     }
 
-    var i = -1, definition;
-    while ((definition = definitions[++i])) {
+    var i = matchLatestDefinition ? definitions.length : -1, definition;
+
+    while ((definition = definitions[matchLatestDefinition ? --i : ++i])) {
       if (definition.match(method, url, data, headers || {})) {
         if (definition.response) {
           // if $browser specified, we do auto flush all requests
@@ -1516,13 +1518,55 @@ function createHttpBackendMock($rootScope, $timeout, $delegate, $browser) {
 
   /**
    * @ngdoc method
+   * @name  $httpBackend#matchLatestDefinition
+   * @description
+   * This method can be used to change which mocked responses `$httpBackend` returns, when defining
+   * them with {@link ngMock.$httpBackend#when $httpBackend.when()} (and shortcut methods).
+   * By default, `$httpBackend` returns the first definition that matches. When setting
+   * `$http.matchLatestDefinition(true)`, it will use the last response that matches, i.e. the
+   * one that was added last.
+   *
+   * ```js
+   * hb.when('GET', '/url1').respond(200, 'content', {});
+   * hb.when('GET', '/url1').respond(201, 'another', {});
+   * hb('GET', '/url1'); // receives "content"
+   *
+   * $http.matchLatestDefinition(true)
+   * hb('GET', '/url1'); // receives "another"
+   *
+   * hb.when('GET', '/url1').respond(201, 'onemore', {});
+   * hb('GET', '/url1'); // receives "onemore"
+   * ```
+   *
+   * This is useful if a you have a default response that is overriden inside specific tests.
+   *
+   * Note that different from config methods on providers, `matchLatestDefinition()` can be changed
+   * even when the application is already running.
+   *
+   * @param  {Boolean=} value value to set, either `true` or `false`. Default is `false`.
+   *                          If omitted, it will return the current value.
+   * @return {$httpBackend|Boolean} self when used as a setter, and the current value when used
+   *                                as a getter
+   */
+  $httpBackend.matchLatestDefinitionEnabled = function(value) {
+    if (isDefined(value)) {
+      matchLatestDefinition = value;
+      return this;
+    } else {
+      return matchLatestDefinition;
+    }
+  };
+
+  /**
+   * @ngdoc method
    * @name $httpBackend#whenGET
    * @description
    * Creates a new backend definition for GET requests. For more info see `when()`.
    *
    * @param {string|RegExp|function(string)=} url HTTP url or function that receives a url
    *   and returns true if the url matches the current definition.
-   * @param {(Object|function(Object))=} headers HTTP headers.
+   * @param {(Object|function(Object))=} headers HTTP headers or function that receives http header
+   *   object and returns true if the headers match the current definition.
    * @param {(Array)=} keys Array of keys to assign to regex matches in request url described above.
    * @returns {requestHandler} Returns an object with `respond` method that controls how a matched
    * request is handled. You can save this object for later use and invoke `respond` again in
@@ -1537,7 +1581,8 @@ function createHttpBackendMock($rootScope, $timeout, $delegate, $browser) {
    *
    * @param {string|RegExp|function(string)=} url HTTP url or function that receives a url
    *   and returns true if the url matches the current definition.
-   * @param {(Object|function(Object))=} headers HTTP headers.
+   * @param {(Object|function(Object))=} headers HTTP headers or function that receives http header
+   *   object and returns true if the headers match the current definition.
    * @param {(Array)=} keys Array of keys to assign to regex matches in request url described above.
    * @returns {requestHandler} Returns an object with `respond` method that controls how a matched
    * request is handled. You can save this object for later use and invoke `respond` again in
@@ -1552,7 +1597,8 @@ function createHttpBackendMock($rootScope, $timeout, $delegate, $browser) {
    *
    * @param {string|RegExp|function(string)=} url HTTP url or function that receives a url
    *   and returns true if the url matches the current definition.
-   * @param {(Object|function(Object))=} headers HTTP headers.
+   * @param {(Object|function(Object))=} headers HTTP headers or function that receives http header
+   *   object and returns true if the headers match the current definition.
    * @param {(Array)=} keys Array of keys to assign to regex matches in request url described above.
    * @returns {requestHandler} Returns an object with `respond` method that controls how a matched
    * request is handled. You can save this object for later use and invoke `respond` again in
@@ -1569,7 +1615,8 @@ function createHttpBackendMock($rootScope, $timeout, $delegate, $browser) {
    *   and returns true if the url matches the current definition.
    * @param {(string|RegExp|function(string))=} data HTTP request body or function that receives
    *   data string and returns true if the data is as expected.
-   * @param {(Object|function(Object))=} headers HTTP headers.
+   * @param {(Object|function(Object))=} headers HTTP headers or function that receives http header
+   *   object and returns true if the headers match the current definition.
    * @param {(Array)=} keys Array of keys to assign to regex matches in request url described above.
    * @returns {requestHandler} Returns an object with `respond` method that controls how a matched
    * request is handled. You can save this object for later use and invoke `respond` again in
@@ -1586,7 +1633,8 @@ function createHttpBackendMock($rootScope, $timeout, $delegate, $browser) {
    *   and returns true if the url matches the current definition.
    * @param {(string|RegExp|function(string))=} data HTTP request body or function that receives
    *   data string and returns true if the data is as expected.
-   * @param {(Object|function(Object))=} headers HTTP headers.
+   * @param {(Object|function(Object))=} headers HTTP headers or function that receives http header
+   *   object and returns true if the headers match the current definition.
    * @param {(Array)=} keys Array of keys to assign to regex matches in request url described above.
    * @returns {requestHandler} Returns an object with `respond` method that controls how a matched
    * request is handled. You can save this object for later use and invoke `respond` again in
@@ -1618,7 +1666,8 @@ function createHttpBackendMock($rootScope, $timeout, $delegate, $browser) {
    * @param {string} url HTTP url string that supports colon param matching.
    * @returns {requestHandler} Returns an object with `respond` method that controls how a matched
    * request is handled. You can save this object for later use and invoke `respond` again in
-   * order to change how a matched request is handled. See #when for more info.
+   * order to change how a matched request is handled.
+   * See {@link ngMock.$httpBackend#when `when`} for more info.
    */
   $httpBackend.whenRoute = function(method, url) {
     var pathObj = parseRoute(url);
@@ -1707,8 +1756,9 @@ function createHttpBackendMock($rootScope, $timeout, $delegate, $browser) {
    * Creates a new request expectation for GET requests. For more info see `expect()`.
    *
    * @param {string|RegExp|function(string)=} url HTTP url or function that receives a url
-   *   and returns true if the url matches the current definition.
-   * @param {Object=} headers HTTP headers.
+   *   and returns true if the url matches the current expectation.
+   * @param {(Object|function(Object))=} headers HTTP headers or function that receives http header
+   *   object and returns true if the headers match the current expectation.
    * @param {(Array)=} keys Array of keys to assign to regex matches in request url described above.
    * @returns {requestHandler} Returns an object with `respond` method that controls how a matched
    * request is handled. You can save this object for later use and invoke `respond` again in
@@ -1722,8 +1772,9 @@ function createHttpBackendMock($rootScope, $timeout, $delegate, $browser) {
    * Creates a new request expectation for HEAD requests. For more info see `expect()`.
    *
    * @param {string|RegExp|function(string)=} url HTTP url or function that receives a url
-   *   and returns true if the url matches the current definition.
-   * @param {Object=} headers HTTP headers.
+   *   and returns true if the url matches the current expectation.
+   * @param {(Object|function(Object))=} headers HTTP headers or function that receives http header
+   *   object and returns true if the headers match the current expectation.
    * @param {(Array)=} keys Array of keys to assign to regex matches in request url described above.
    * @returns {requestHandler} Returns an object with `respond` method that controls how a matched
    *   request is handled. You can save this object for later use and invoke `respond` again in
@@ -1737,8 +1788,9 @@ function createHttpBackendMock($rootScope, $timeout, $delegate, $browser) {
    * Creates a new request expectation for DELETE requests. For more info see `expect()`.
    *
    * @param {string|RegExp|function(string)=} url HTTP url or function that receives a url
-   *   and returns true if the url matches the current definition.
-   * @param {Object=} headers HTTP headers.
+   *   and returns true if the url matches the current expectation.
+   * @param {(Object|function(Object))=} headers HTTP headers or function that receives http header
+   *   object and returns true if the headers match the current expectation.
    * @param {(Array)=} keys Array of keys to assign to regex matches in request url described above.
    * @returns {requestHandler} Returns an object with `respond` method that controls how a matched
    *   request is handled. You can save this object for later use and invoke `respond` again in
@@ -1752,11 +1804,12 @@ function createHttpBackendMock($rootScope, $timeout, $delegate, $browser) {
    * Creates a new request expectation for POST requests. For more info see `expect()`.
    *
    * @param {string|RegExp|function(string)=} url HTTP url or function that receives a url
-   *   and returns true if the url matches the current definition.
+   *   and returns true if the url matches the current expectation.
    * @param {(string|RegExp|function(string)|Object)=} data HTTP request body or function that
    *  receives data string and returns true if the data is as expected, or Object if request body
    *  is in JSON format.
-   * @param {Object=} headers HTTP headers.
+   * @param {(Object|function(Object))=} headers HTTP headers or function that receives http header
+   *   object and returns true if the headers match the current expectation.
    * @param {(Array)=} keys Array of keys to assign to regex matches in request url described above.
    * @returns {requestHandler} Returns an object with `respond` method that controls how a matched
    *   request is handled. You can save this object for later use and invoke `respond` again in
@@ -1770,11 +1823,12 @@ function createHttpBackendMock($rootScope, $timeout, $delegate, $browser) {
    * Creates a new request expectation for PUT requests. For more info see `expect()`.
    *
    * @param {string|RegExp|function(string)=} url HTTP url or function that receives a url
-   *   and returns true if the url matches the current definition.
+   *   and returns true if the url matches the current expectation.
    * @param {(string|RegExp|function(string)|Object)=} data HTTP request body or function that
    *  receives data string and returns true if the data is as expected, or Object if request body
    *  is in JSON format.
-   * @param {Object=} headers HTTP headers.
+   * @param {(Object|function(Object))=} headers HTTP headers or function that receives http header
+   *   object and returns true if the headers match the current expectation.
    * @param {(Array)=} keys Array of keys to assign to regex matches in request url described above.
    * @returns {requestHandler} Returns an object with `respond` method that controls how a matched
    *   request is handled. You can save this object for later use and invoke `respond` again in
@@ -1788,11 +1842,12 @@ function createHttpBackendMock($rootScope, $timeout, $delegate, $browser) {
    * Creates a new request expectation for PATCH requests. For more info see `expect()`.
    *
    * @param {string|RegExp|function(string)=} url HTTP url or function that receives a url
-   *   and returns true if the url matches the current definition.
+   *   and returns true if the url matches the current expectation.
    * @param {(string|RegExp|function(string)|Object)=} data HTTP request body or function that
    *  receives data string and returns true if the data is as expected, or Object if request body
    *  is in JSON format.
-   * @param {Object=} headers HTTP headers.
+   * @param {(Object|function(Object))=} headers HTTP headers or function that receives http header
+   *   object and returns true if the headers match the current expectation.
    * @param {(Array)=} keys Array of keys to assign to regex matches in request url described above.
    * @returns {requestHandler} Returns an object with `respond` method that controls how a matched
    *   request is handled. You can save this object for later use and invoke `respond` again in
@@ -1806,7 +1861,7 @@ function createHttpBackendMock($rootScope, $timeout, $delegate, $browser) {
    * Creates a new request expectation for JSONP requests. For more info see `expect()`.
    *
    * @param {string|RegExp|function(string)=} url HTTP url or function that receives an url
-   *   and returns true if the url matches the current definition.
+   *   and returns true if the url matches the current expectation.
    * @param {(Array)=} keys Array of keys to assign to regex matches in request url described above.
    * @returns {requestHandler} Returns an object with `respond` method that controls how a matched
    *   request is handled. You can save this object for later use and invoke `respond` again in
@@ -1824,7 +1879,8 @@ function createHttpBackendMock($rootScope, $timeout, $delegate, $browser) {
    * @param {string} url HTTP url string that supports colon param matching.
    * @returns {requestHandler} Returns an object with `respond` method that controls how a matched
    * request is handled. You can save this object for later use and invoke `respond` again in
-   * order to change how a matched request is handled. See #expect for more info.
+   * order to change how a matched request is handled.
+   * See {@link ngMock.$httpBackend#expect `expect`} for more info.
    */
   $httpBackend.expectRoute = function(method, url) {
     var pathObj = parseRoute(url);
@@ -2296,14 +2352,11 @@ angular.mock.$RootElementProvider = function() {
  */
 function createControllerDecorator() {
   angular.mock.$ControllerDecorator = ['$delegate', function($delegate) {
-    return function(expression, locals, later, ident) {
-      if (later && typeof later === 'object') {
-        var instantiate = $delegate(expression, locals, true, ident);
-        var instance = instantiate();
-        angular.extend(instance, later);
-        return instance;
-      }
-      return $delegate(expression, locals, later, ident);
+    return function(expression, locals, bindings, ident) {
+      if (angular.isString(bindings)) ident = bindings;
+      var instance = $delegate(expression, locals, ident);
+      angular.extend(instance, bindings);
+      return instance;
     };
   }];
 
@@ -2418,7 +2471,7 @@ angular.module('ngMock', ['ng']).provider({
   $provide.decorator('$rootScope', angular.mock.$RootScopeDecorator);
   $provide.decorator('$controller', createControllerDecorator($compileProvider));
   $provide.decorator('$httpBackend', angular.mock.$httpBackendDecorator);
-}]).info({ angularVersion: '1.6.11-build.5555+sha.45879a8' });
+}]).info({ angularVersion: '1.7.1-build.5556+sha.05170bf' });
 
 /**
  * @ngdoc module
@@ -2433,7 +2486,7 @@ angular.module('ngMock', ['ng']).provider({
  */
 angular.module('ngMockE2E', ['ng']).config(['$provide', function($provide) {
   $provide.decorator('$httpBackend', angular.mock.e2e.$httpBackendDecorator);
-}]).info({ angularVersion: '1.6.11-build.5555+sha.45879a8' });
+}]).info({ angularVersion: '1.7.1-build.5556+sha.05170bf' });
 
 /**
  * @ngdoc service
@@ -2719,6 +2772,39 @@ angular.module('ngMockE2E', ['ng']).config(['$provide', function($provide) {
  * @returns {requestHandler} Returns an object with `respond` and `passThrough` methods that
  *   control how a matched request is handled. You can save this object for later use and invoke
  *   `respond` or `passThrough` again in order to change how a matched request is handled.
+ */
+/**
+ * @ngdoc method
+ * @name  $httpBackend#matchLatestDefinition
+ * @module ngMockE2E
+ * @description
+ * This method can be used to change which mocked responses `$httpBackend` returns, when defining
+ * them with {@link ngMock.$httpBackend#when $httpBackend.when()} (and shortcut methods).
+ * By default, `$httpBackend` returns the first definition that matches. When setting
+ * `$http.matchLatestDefinition(true)`, it will use the last response that matches, i.e. the
+ * one that was added last.
+ *
+ * ```js
+ * hb.when('GET', '/url1').respond(200, 'content', {});
+ * hb.when('GET', '/url1').respond(201, 'another', {});
+ * hb('GET', '/url1'); // receives "content"
+ *
+ * $http.matchLatestDefinition(true)
+ * hb('GET', '/url1'); // receives "another"
+ *
+ * hb.when('GET', '/url1').respond(201, 'onemore', {});
+ * hb('GET', '/url1'); // receives "onemore"
+ * ```
+ *
+ * This is useful if a you have a default response that is overriden inside specific tests.
+ *
+ * Note that different from config methods on providers, `matchLatestDefinition()` can be changed
+ * even when the application is already running.
+ *
+ * @param  {Boolean=} value value to set, either `true` or `false`. Default is `false`.
+ *                          If omitted, it will return the current value.
+ * @return {$httpBackend|Boolean} self when used as a setter, and the current value when used
+ *                                as a getter
  */
 angular.mock.e2e = {};
 angular.mock.e2e.$httpBackendDecorator =
