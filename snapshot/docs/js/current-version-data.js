@@ -2,19 +2,19 @@
 
 angular.module('currentVersionData', [])
   .value('CURRENT_NG_VERSION', {
-  "raw": "v1.7.0",
+  "raw": "v1.7.1",
   "major": 1,
   "minor": 7,
-  "patch": 1,
+  "patch": 2,
   "prerelease": [
     "build",
-    "5556"
+    "5557"
   ],
-  "build": "sha.05170bf",
-  "version": "1.7.1-build.5556",
+  "build": "sha.ad0ba99",
+  "version": "1.7.2-build.5557",
   "codeName": "snapshot",
   "isSnapshot": true,
-  "full": "1.7.1-build.5556+sha.05170bf",
+  "full": "1.7.2-build.5557+sha.ad0ba99",
   "branch": "master",
   "distTag": "next",
   "cdn": {
