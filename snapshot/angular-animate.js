@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.7.2-build.5557+sha.ad0ba99
+ * @license AngularJS v1.7.2-build.5558+sha.c9a92fc
  * (c) 2010-2018 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -3662,9 +3662,9 @@ var ngAnimateSwapDirective = ['$animate', function($animate) {
  *
  * Sometimes you need to animate between different expression states, whose values
  * don't necessary need to be known or referenced in CSS styles.
- * Unless possible with another ["animation aware" directive](#directive-support), that specific
- * use case can always be covered with {@link ngAnimate.directive:ngAnimateSwap} as can be seen in
- * {@link ngAnimate.directive:ngAnimateSwap#examples this example}.
+ * Unless possible with another {@link ngAnimate#directive-support "animation aware" directive},
+ * that specific use case can always be covered with {@link ngAnimate.directive:ngAnimateSwap} as
+ * can be seen in {@link ngAnimate.directive:ngAnimateSwap#examples this example}.
  *
  * Note that {@link ngAnimate.directive:ngAnimateSwap} is a *structural directive*, which means it
  * creates a new instance of the element (including any other/child directives it may have) and
@@ -4160,7 +4160,7 @@ angular.module('ngAnimate', [], function initAngularHelpers() {
   isFunction  = angular.isFunction;
   isElement   = angular.isElement;
 })
-  .info({ angularVersion: '1.7.2-build.5557+sha.ad0ba99' })
+  .info({ angularVersion: '1.7.2-build.5558+sha.c9a92fc' })
   .directive('ngAnimateSwap', ngAnimateSwapDirective)
 
   .directive('ngAnimateChildren', $$AnimateChildrenDirective)

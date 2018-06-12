@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.7.2-build.5557+sha.ad0ba99
+ * @license AngularJS v1.7.2-build.5558+sha.c9a92fc
  * (c) 2010-2018 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -803,7 +803,7 @@ angular.mock.TzDate.prototype = Date.prototype;
  * You need to require the `ngAnimateMock` module in your test suite for instance `beforeEach(module('ngAnimateMock'))`
  */
 angular.mock.animate = angular.module('ngAnimateMock', ['ng'])
-  .info({ angularVersion: '1.7.2-build.5557+sha.ad0ba99' })
+  .info({ angularVersion: '1.7.2-build.5558+sha.c9a92fc' })
 
   .config(['$provide', function($provide) {
 
@@ -2352,11 +2352,14 @@ angular.mock.$RootElementProvider = function() {
  */
 function createControllerDecorator() {
   angular.mock.$ControllerDecorator = ['$delegate', function($delegate) {
-    return function(expression, locals, bindings, ident) {
-      if (angular.isString(bindings)) ident = bindings;
-      var instance = $delegate(expression, locals, ident);
-      angular.extend(instance, bindings);
-      return instance;
+    return function(expression, locals, later, ident) {
+      if (later && typeof later === 'object') {
+        var instantiate = $delegate(expression, locals, true, ident);
+        var instance = instantiate();
+        angular.extend(instance, later);
+        return instance;
+      }
+      return $delegate(expression, locals, later, ident);
     };
   }];
 
@@ -2471,7 +2474,7 @@ angular.module('ngMock', ['ng']).provider({
   $provide.decorator('$rootScope', angular.mock.$RootScopeDecorator);
   $provide.decorator('$controller', createControllerDecorator($compileProvider));
   $provide.decorator('$httpBackend', angular.mock.$httpBackendDecorator);
-}]).info({ angularVersion: '1.7.2-build.5557+sha.ad0ba99' });
+}]).info({ angularVersion: '1.7.2-build.5558+sha.c9a92fc' });
 
 /**
  * @ngdoc module
@@ -2486,7 +2489,7 @@ angular.module('ngMock', ['ng']).provider({
  */
 angular.module('ngMockE2E', ['ng']).config(['$provide', function($provide) {
   $provide.decorator('$httpBackend', angular.mock.e2e.$httpBackendDecorator);
-}]).info({ angularVersion: '1.7.2-build.5557+sha.ad0ba99' });
+}]).info({ angularVersion: '1.7.2-build.5558+sha.c9a92fc' });
 
 /**
  * @ngdoc service
