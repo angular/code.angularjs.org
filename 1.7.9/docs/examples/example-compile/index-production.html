@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Example - example-compile-production</title>
+  
+
+  <script src="//code.angularjs.org/1.7.9/angular.min.js"></script>
+  
+
+  
+</head>
+<body ng-app="compileExample">
+  <script>
+  angular.module('compileExample', [], function($compileProvider) {
+    // Configure new 'compile' directive by passing a directive
+    // factory function. The factory function injects '$compile'.
+    $compileProvider.directive('compile', function($compile) {
+      // The directive factory creates a link function.
+      return function(scope, element, attrs) {
+        scope.$watch(
+          function(scope) {
+            // Watch the 'compile' expression for changes.
+            return scope.$eval(attrs.compile);
+          },
+          function(value) {
+            // When the 'compile' expression changes
+            // assign it into the current DOM.
+            element.html(value);
+
+            // Compile the new DOM and link it to the current scope.
+            // NOTE: we only compile '.childNodes' so that we
+            // don't get into an infinite loop compiling ourselves.
+            $compile(element.contents())(scope);
+          }
+        );
+      };
+    });
+  })
+  .controller('GreeterController', ['$scope', function($scope) {
+    $scope.name = 'AngularJS';
+    $scope.html = 'Hello {{name}}';
+  }]);
+</script>
+<div ng-controller="GreeterController">
+  <input ng-model="name"> <br/>
+  <textarea ng-model="html"></textarea> <br/>
+  <div compile="html"></div>
+</div>
+</body>
+</html>
