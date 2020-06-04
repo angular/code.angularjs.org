@@ -1,0 +1,65 @@
+<a href='https://github.com/angular/angular.js/edit/v1.8.x/src/Angular.js?message=docs(angular.UNSAFE_restoreLegacyJqLiteXHTMLReplacement)%3A%20describe%20your%20change...#L1953' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+
+
+
+<a href='https://github.com/angular/angular.js/tree/v1.8.0/src/Angular.js#L1953' class='view-source pull-right btn btn-primary'>
+  <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
+</a>
+
+
+<header class="api-profile-header">
+  <h1 class="api-profile-header-heading">angular.UNSAFE_restoreLegacyJqLiteXHTMLReplacement</h1>
+  <ol class="api-profile-header-structure naked-list step-list">
+    
+    <li>
+      - function in module <a href="api/ng">ng</a>
+    </li>
+  </ol>
+</header>
+
+
+
+
+
+<div class="api-profile-description">
+  <h2 id="overview">Overview</h2>
+  <p>Restores the pre-1.8 behavior of jqLite that turns XHTML-like strings like
+<code>&lt;div /&gt;&lt;span /&gt;</code> to <code>&lt;div&gt;&lt;/div&gt;&lt;span&gt;&lt;/span&gt;</code> instead of <code>&lt;div&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;</code>.
+The new behavior is a security fix. Thus, if you need to call this function, please try to adjust
+your code for this change and remove your use of this function as soon as possible.</p>
+<p>Note that this only patches jqLite. If you use jQuery 3.5.0 or newer, please read the
+<a href="https://jquery.com/upgrade-guide/3.5/">jQuery 3.5 upgrade guide</a> for more details
+about the workarounds.</p>
+
+</div>
+
+
+
+
+<div>
+  
+
+  
+
+  <h2 id="usage">Usage</h2>
+    
+      <p><code>angular.UNSAFE_restoreLegacyJqLiteXHTMLReplacement();</code></p>
+
+
+    
+
+    
+    
+
+    
+
+  
+  
+  
+
+
+
+  
+</div>
+
+
