@@ -49,9 +49,6 @@ methods) does not delegate exceptions to the <a href="api/ng/service/$exceptionH
 (unless executed during a digest).</p>
 <p>If you wish, you can manually delegate exceptions, e.g.
 <code>try { ... } catch(e) { $exceptionHandler(e); }</code></p>
-<p>@param {Error} exception Exception associated with the error.
-@param {string=} cause Optional information about the context in which
-      the error was thrown.</p>
 
 </div>
 
@@ -68,7 +65,67 @@ methods) does not delegate exceptions to the <a href="api/ng/service/$exceptionH
 
   
 
-  
+  <h2 id="usage">Usage</h2>
+    
+      <p><code>$exceptionHandler(exception, [cause]);</code></p>
+
+
+    
+
+    
+<section class="api-section">
+  <h3 id="$exceptionHandler-arguments">Arguments</h3>
+
+<table class="variables-matrix input-arguments">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        exception
+        
+        
+      </td>
+      <td>
+        <a href="" class="label type-hint type-hint-error">Error</a>
+      </td>
+      <td>
+        <p>Exception associated with the error.</p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        cause
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        <a href="" class="label type-hint type-hint-string">string</a>
+      </td>
+      <td>
+        <p>Optional information about the context in which
+      the error was thrown.</p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+</section>
+    
+
+    
 
   
   

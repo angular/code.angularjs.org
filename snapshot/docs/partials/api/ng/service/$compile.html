@@ -179,7 +179,7 @@ has not changed.</p>
 </p>
 <p>This example show how you might use <code>$doCheck</code> to trigger changes in your component&#39;s inputs even if the
 actual identity of the component doesn&#39;t change. (Be aware that cloning and deep equality checks on large
-arrays or objects can have a negative impact on your application performance)</p>
+arrays or objects can have a negative impact on your application performance.)</p>
 <p>
 
 <div>
@@ -479,7 +479,7 @@ sibling and parent elements as though this element had not contained any directi
 <p>The compiler does not suspend the entire compilation to wait for templates to be loaded because this
 would result in the whole app &quot;stalling&quot; until all templates are loaded asynchronously - even in the
 case when only one deeply nested directive has <code>templateUrl</code>.</p>
-<p>Template loading is asynchronous even if the template has been preloaded into the <a href="api/ng/service/$templateCache"><code>$templateCache</code></a></p>
+<p>Template loading is asynchronous even if the template has been preloaded into the <a href="api/ng/service/$templateCache"><code>$templateCache</code></a>.</p>
 <p>You can specify <code>templateUrl</code> as a string representing the URL or as a function which takes two
 arguments <code>tElement</code> and <code>tAttrs</code> (described in the <code>compile</code> function api below) and returns
 a string value representing the url.  In either case, the template URL is passed through <a href="api/ng/service/$sce#getTrustedResourceUrl">$sce.getTrustedResourceUrl</a>.</p>
@@ -529,7 +529,7 @@ should be done in a linking function rather than in a compile function.
 own templates or compile functions. Compiling these directives results in an infinite loop and
 stack overflow errors.
 
-This can be avoided by manually using $compile in the postLink function to imperatively compile
+This can be avoided by manually using <code>$compile</code> in the postLink function to imperatively compile
 a directive&#39;s template instead of relying on automatic template compilation via <code>template</code> or
 <code>templateUrl</code> declaration or manual compilation inside the compile function.
 </div>
@@ -619,15 +619,15 @@ directive&#39;s element, the entire element or multiple parts of the element con
 <ul>
 <li><code>true</code> - transclude the content (i.e. the child nodes) of the directive&#39;s element.</li>
 <li><code>&#39;element&#39;</code> - transclude the whole of the directive&#39;s element including any directives on this
-element that defined at a lower priority than this directive. When used, the <code>template</code>
+element that are defined at a lower priority than this directive. When used, the <code>template</code>
 property is ignored.</li>
 <li><strong><code>{...}</code> (an object hash):</strong> - map elements of the content onto transclusion &quot;slots&quot; in the template.</li>
 </ul>
-<p><strong>Mult-slot transclusion</strong> is declared by providing an object for the <code>transclude</code> property.</p>
+<p><strong>Multi-slot transclusion</strong> is declared by providing an object for the <code>transclude</code> property.</p>
 <p>This object is a map where the keys are the name of the slot to fill and the value is an element selector
 used to match the HTML to the slot. The element selector should be in normalized form (e.g. <code>myElement</code>)
 and will match the standard element variants (e.g. <code>my-element</code>, <code>my:element</code>, <code>data-my-element</code>, etc).</p>
-<p>For further information check out the guide on <a href="guide/directive#matching-directives">Matching Directives</a></p>
+<p>For further information check out the guide on <a href="guide/directive#matching-directives">Matching Directives</a>.</p>
 <p>If the element selector is prefixed with a <code>?</code> then that slot is optional.</p>
 <p>For example, the transclude object <code>{ slotA: &#39;?myCustomElement&#39; }</code> maps <code>&lt;my-custom-element&gt;</code> elements to
 the <code>slotA</code> slot, which can be accessed via the <code>$transclude</code> function or via the <a href="api/ng/directive/ngTransclude"><code>ngTransclude</code></a> directive.</p>
@@ -645,7 +645,7 @@ ngTransclude will deal with it for us.
 </div>
 
 <p>If you want to manually control the insertion and removal of the transcluded content in your directive
-then you must use this transclude function. When you call a transclude function it returns a a jqLite/JQuery
+then you must use this transclude function. When you call a transclude function it returns a jqLite/JQuery
 object that contains the compiled DOM, which is linked to the correct transclusion scope.</p>
 <p>When you call a transclusion function you can pass in a <strong>clone attach function</strong>. This function accepts
 two parameters, <code>function(clone, scope) { ... }</code>, where the <code>clone</code> is a fresh compiled copy of your transcluded
@@ -707,8 +707,8 @@ like this:</p>
 <p>The <a href="api/ng/type/$compile.directive.Attributes">Attributes</a> object - passed as a parameter in the
 <code>link()</code> or <code>compile()</code> functions. It has a variety of uses.</p>
 <ul>
-<li><p><em>Accessing normalized attribute names:</em> Directives like &#39;ngBind&#39; can be expressed in many ways:
-&#39;ng:bind&#39;, <code>data-ng-bind</code>, or &#39;x-ng-bind&#39;. The attributes object allows for normalized access
+<li><p><em>Accessing normalized attribute names:</em> Directives like <code>ngBind</code> can be expressed in many ways:
+<code>ng:bind</code>, <code>data-ng-bind</code>, or <code>x-ng-bind</code>. The attributes object allows for normalized access
 to the attributes.</p>
 </li>
 <li><p><em>Directive inter-communication:</em> All directives share the same instance of the attributes
@@ -758,7 +758,7 @@ to illustrate how <code>$compile</code> works.
       name="index.html"
       language="html"
       type="html">
-      <pre><code>&lt;script&gt;&#10;  angular.module(&#39;compileExample&#39;, [], function($compileProvider) {&#10;    // configure new &#39;compile&#39; directive by passing a directive&#10;    // factory function. The factory function injects the &#39;$compile&#39;&#10;    $compileProvider.directive(&#39;compile&#39;, function($compile) {&#10;      // directive factory creates a link function&#10;      return function(scope, element, attrs) {&#10;        scope.$watch(&#10;          function(scope) {&#10;             // watch the &#39;compile&#39; expression for changes&#10;            return scope.$eval(attrs.compile);&#10;          },&#10;          function(value) {&#10;            // when the &#39;compile&#39; expression changes&#10;            // assign it into the current DOM&#10;            element.html(value);&#10;&#10;            // compile the new DOM and link it to the current&#10;            // scope.&#10;            // NOTE: we only compile .childNodes so that&#10;            // we don&#39;t get into infinite loop compiling ourselves&#10;            $compile(element.contents())(scope);&#10;          }&#10;        );&#10;      };&#10;    });&#10;  })&#10;  .controller(&#39;GreeterController&#39;, [&#39;$scope&#39;, function($scope) {&#10;    $scope.name = &#39;AngularJS&#39;;&#10;    $scope.html = &#39;Hello {{name}}&#39;;&#10;  }]);&#10;&lt;/script&gt;&#10;&lt;div ng-controller=&quot;GreeterController&quot;&gt;&#10;  &lt;input ng-model=&quot;name&quot;&gt; &lt;br/&gt;&#10;  &lt;textarea ng-model=&quot;html&quot;&gt;&lt;/textarea&gt; &lt;br/&gt;&#10;  &lt;div compile=&quot;html&quot;&gt;&lt;/div&gt;&#10;&lt;/div&gt;</code></pre>
+      <pre><code>&lt;script&gt;&#10;  angular.module(&#39;compileExample&#39;, [], function($compileProvider) {&#10;    // Configure new &#39;compile&#39; directive by passing a directive&#10;    // factory function. The factory function injects &#39;$compile&#39;.&#10;    $compileProvider.directive(&#39;compile&#39;, function($compile) {&#10;      // The directive factory creates a link function.&#10;      return function(scope, element, attrs) {&#10;        scope.$watch(&#10;          function(scope) {&#10;            // Watch the &#39;compile&#39; expression for changes.&#10;            return scope.$eval(attrs.compile);&#10;          },&#10;          function(value) {&#10;            // When the &#39;compile&#39; expression changes&#10;            // assign it into the current DOM.&#10;            element.html(value);&#10;&#10;            // Compile the new DOM and link it to the current scope.&#10;            // NOTE: we only compile &#39;.childNodes&#39; so that we&#10;            // don&#39;t get into an infinite loop compiling ourselves.&#10;            $compile(element.contents())(scope);&#10;          }&#10;        );&#10;      };&#10;    });&#10;  })&#10;  .controller(&#39;GreeterController&#39;, [&#39;$scope&#39;, function($scope) {&#10;    $scope.name = &#39;AngularJS&#39;;&#10;    $scope.html = &#39;Hello {{name}}&#39;;&#10;  }]);&#10;&lt;/script&gt;&#10;&lt;div ng-controller=&quot;GreeterController&quot;&gt;&#10;  &lt;input ng-model=&quot;name&quot;&gt; &lt;br/&gt;&#10;  &lt;textarea ng-model=&quot;html&quot;&gt;&lt;/textarea&gt; &lt;br/&gt;&#10;  &lt;div compile=&quot;html&quot;&gt;&lt;/div&gt;&#10;&lt;/div&gt;</code></pre>
     </div>
   
     <div class="runnable-example-file" 
@@ -813,11 +813,10 @@ Result: &lt;span ng-class=&quot;{&#39;something&#39;: something} {&#39;else&#39;
 <h4 id="directives-are-not-deduplicated-before-compilation">Directives are not deduplicated before compilation</h4>
 <p>When the original node and the replace template declare the same directive(s), they will be
 <a href="guide/compiler#double-compilation-and-how-to-avoid-it">compiled twice</a> because the compiler
-does not deduplicate them. In many cases, this is not noticable, but e.g. <a href="api/ng/directive/ngModel"><code>ngModel</code></a> will
+does not deduplicate them. In many cases, this is not noticeable, but e.g. <a href="api/ng/directive/ngModel"><code>ngModel</code></a> will
 attach <code>$formatters</code> and <code>$parsers</code> twice.</p>
 <p>See issue <a href="https://github.com/angular/angular.js/issues/2573">#2573</a>.</p>
-<h4 id="-transclude-element-in-the-replace-template-root-can-have"><code>transclude: element</code> in the replace template root can have</h4>
-<p>unexpected effects</p>
+<h4 id="-transclude-element-in-the-replace-template-root-can-have-unexpected-effects"><code>transclude: element</code> in the replace template root can have unexpected effects</h4>
 <p>When the replace template has a directive at the root node that uses
 <a href="api/ng/service/$compile#-transclude-"><code>transclude: element</code></a>, e.g.
 <a href="api/ng/directive/ngIf"><code>ngIf</code></a> or <a href="api/ng/directive/ngRepeat"><code>ngRepeat</code></a>, the DOM structure or scope inheritance can be incorrect.
@@ -916,6 +915,7 @@ See the following issues:</p>
 
 </section>
     
+
     <h3 id="$compile-returns">Returns</h3>
 <table class="variables-matrix return-arguments">
   <tr>
@@ -949,33 +949,35 @@ if given, it will make the controllers available to directives on the compileNod
 </code></pre>
 </li>
 <li><code>futureParentElement</code> - defines the parent to which the <code>cloneAttachFn</code> will add
-the cloned elements; only needed for transcludes that are allowed to contain non html
-elements (e.g. SVG elements). See also the directive.controller property.</li>
+the cloned elements; only needed for transcludes that are allowed to contain non HTML
+elements (e.g. SVG elements). See also the <code>directive.controller</code> property.</li>
 </ul>
 </li>
 </ul>
 <p>Calling the linking function returns the element of the template. It is either the original
 element passed in, or the clone of the element if the <code>cloneAttachFn</code> is provided.</p>
-<p>After linking the view is not updated until after a call to $digest which typically is done by
+<p>After linking the view is not updated until after a call to <code>$digest</code>, which typically is done by
 AngularJS automatically.</p>
 <p>If you need access to the bound view, there are two ways to do it:</p>
 <ul>
 <li><p>If you are not asking the linking function to clone the template, create the DOM element(s)
 before you send them to the compiler and keep this reference around.</p>
-<pre><code class="lang-js">var element = $compile(&#39;&lt;p&gt;{{total}}&lt;/p&gt;&#39;)(scope);
+<pre><code class="lang-js">var element = angular.element(&#39;&lt;p&gt;{{total}}&lt;/p&gt;&#39;);
+$compile(element)(scope);
 </code></pre>
 </li>
 <li><p>if on the other hand, you need the element to be cloned, the view reference from the original
 example would not point to the clone, but rather to the original template that was cloned. In
-this case, you can access the clone via the cloneAttachFn:</p>
-<pre><code class="lang-js">var templateElement = angular.element(&#39;&lt;p&gt;{{total}}&lt;/p&gt;&#39;),
-    scope = ....;
-
+this case, you can access the clone either via the <code>cloneAttachFn</code> or the value returned by the
+linking function:</p>
+<pre><code class="lang-js">var templateElement = angular.element(&#39;&lt;p&gt;{{total}}&lt;/p&gt;&#39;);
 var clonedElement = $compile(templateElement)(scope, function(clonedElement, scope) {
-  //attach the clone to DOM document at the right place
+  // Attach the clone to DOM document at the right place.
 });
 
-//now we have reference to the cloned DOM via `clonedElement`
+// Now we have reference to the cloned DOM via `clonedElement`.
+// NOTE: The `clonedElement` returned by the linking function is the same as the
+//       `clonedElement` passed to `cloneAttachFn`.
 </code></pre>
 </li>
 </ul>

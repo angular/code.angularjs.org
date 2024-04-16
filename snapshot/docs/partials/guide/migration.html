@@ -11,6 +11,22 @@ which drives many of these changes.</li>
 <li>Several new features, especially animations, would not be possible without a few changes.</li>
 <li>Finally, some outstanding bugs were best fixed by changing an existing API.</li>
 </ul>
+<h2 id="migrating-from-1-7-to-1-8">Migrating from 1.7 to 1.8</h2>
+<p>Generally updating to 1.8.0 from 1.7.x should be a straightforward process and is highly recommended.
+AngularJS 1.8 is a breaking change release from 1.7 to mitigate a security issue.</p>
+<p>JqLite no longer turns XHTML-like strings like <code>&lt;div /&gt;&lt;span /&gt;</code> to sibling elements when not in XHTML
+mode: <code>&lt;div&gt;&lt;/div&gt;&lt;span&gt;&lt;/span&gt;</code>.
+Instead it will leave the elements alone. In non-XHTML mode the browser will convert these to nested
+elements: <code>&lt;div&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;</code>.</p>
+<p>This is a security fix to avoid an XSS vulnerability if a new jqLite element is created from a
+user-controlled HTML string. If you must have this functionality and understand the risk involved
+then it is posible to restore the original behavior by calling</p>
+<pre><code class="lang-js">angular.UNSAFE_restoreLegacyJqLiteXHTMLReplacement();
+</code></pre>
+<p>But you should adjust your code for this change and remove your use of this function as soon as
+possible.</p>
+<p>Note that this only patches jqLite. If you use jQuery 3.5.0 or newer, please read the
+<a href="https://jquery.com/upgrade-guide/3.5/">jQuery 3.5 upgrade guide</a> for more details about the workarounds.</p>
 <h2 id="migrating-from-1-6-to-1-7">Migrating from 1.6 to 1.7</h2>
 <p>AngularJS 1.7 contains bug fixes and features to AngularJS core and its external modules, some of
 which contain breaking changes. However, most of these address internal behavior and not APIs, and
@@ -18,7 +34,7 @@ should not affect many applications.
 Additionally, we have removed some long-deprecated modules and APIs.</p>
 <p>The most notable changes are:</p>
 <ul>
-<li><p>$resource has now support for request and requestError interceptors</p>
+<li><p><code>$resource</code> has now support for request and requestError interceptors</p>
 </li>
 <li><p>Several deprecated features have been removed:</p>
 <ul>
@@ -32,17 +48,16 @@ Additionally, we have removed some long-deprecated modules and APIs.</p>
 </li>
 </ul>
 <p>Please note that feature development (without breaking changes) has happened in parallel on the
-1.6.x branch, so 1.7 doesn&#39;t contain many new features, but you may still benefit from those features
-that were added (with possible BCs), bugfixes, and a few smaller performance improvements.</p>
+1.6.x branch, so 1.7 doesn&#39;t contain many new features, but you may still benefit from those
+features that were added (with possible BCs), bugfixes, and a few smaller performance improvements.</p>
 <p><br />
 Below is the full list of breaking changes:</p>
 <p><br />
 <a name="migrate1.6to1.7-ng-directives"></a></p>
 <h3 id="core-_directives_">Core: <em>Directives</em></h3>
-<p><a name="migrate1.6to1.7-ng-directives-form"></a></p>
 <h4 id="-form-"><strong>form</strong></h4>
 <p><strong>Due to <a href="https://github.com/angular/angular.js/commit/223de59e988dc0cc8b4ec3a045b7c0735eba1c77">223de5</a></strong>,
-forms will now set $submitted on child forms when they are submitted.
+forms will now set <code>$submitted</code> on child forms when they are submitted.
 For example:</p>
 <pre><code>&lt;form name=&quot;parentform&quot; ng-submit=&quot;$ctrl.submit()&quot;&gt;
   &lt;ng-form name=&quot;childform&quot;&gt;
@@ -51,9 +66,9 @@ For example:</p>
   &lt;input type=&quot;submit&quot; /&gt;
 &lt;/form&gt;
 </code></pre>
-<p>Submitting this form will set $submitted on &quot;parentform&quot; and &quot;childform&quot;.
+<p>Submitting this form will set <code>$submitted</code> on &quot;parentform&quot; and &quot;childform&quot;.
 Previously, it was only set on &quot;parentform&quot;.</p>
-<p>This change was introduced because mixing form and ngForm does not create
+<p>This change was introduced because mixing <code>form</code> and <code>ngForm</code> does not create
 logically separate forms, but rather something like input groups.
 Therefore, child forms should inherit the submission state from their parent form.</p>
 <h4 id="-input-radio-and-input-checkbox-"><strong>input[radio]</strong> and <strong>input[checkbox]</strong></h4>
@@ -68,18 +83,18 @@ happens.</p>
 <p>Before this change, custom click event listeners on radio / checkbox would be called after the
 input element and <code>ngModel</code> had been updated, unless they were specifically registered before
 the built-in click handlers.
-After this change, they are called before the input is updated, and can call event.preventDefault()
-to prevent the input from updating.</p>
-<p>If an app uses a click event listener that expects ngModel to be updated when it is called, it now
+After this change, they are called before the input is updated, and can call
+<code>event.preventDefault()</code> to prevent the input from updating.</p>
+<p>If an app uses a click event listener that expects <code>ngModel</code> to be updated when it is called, it now
 needs to register a change event listener instead.</p>
 <ul>
 <li>Triggering click events:</li>
 </ul>
 <p>Conventional trigger functions:</p>
 <p>The change event might not be fired when the input element is not attached to the document. This
-can happen in <strong>tests</strong> that compile input elements and
-trigger click events on them. Depending on the browser (Chrome and Safari) and the trigger method,
-the change event will not be fired when the input isn&#39;t attached to the document.</p>
+can happen in <strong>tests</strong> that compile input elements and trigger click events on them. Depending on
+the browser (Chrome and Safari) and the trigger method, the change event will not be fired when the
+input isn&#39;t attached to the document.</p>
 <p>Before:</p>
 <pre><code class="lang-js">it(&#39;should update the model&#39;, inject(function($compile, $rootScope) {
   var inputElm = $compile(&#39;&lt;input type=&quot;checkbox&quot; ng-model=&quot;checkbox&quot; /&gt;&#39;)($rootScope);
@@ -88,9 +103,9 @@ the change event will not be fired when the input isn&#39;t attached to the docu
   expect($rootScope.checkbox).toBe(true);
 });
 </code></pre>
-<p>With this patch, <code>$rootScope.checkbox</code> might not be true, because the click event
-hasn&#39;t triggered the change event. To make the test, work append the inputElm to the app&#39;s
-<code>$rootElement</code>, and the <code>$rootElement</code> to the <code>$document</code>.</p>
+<p>With this patch, <code>$rootScope.checkbox</code> might not be true, because the click event hasn&#39;t triggered
+the change event. To make the test, work append <code>inputElm</code> to the app&#39;s <code>$rootElement</code>, and the
+<code>$rootElement</code> to the <code>$document</code>.</p>
 <p>After:</p>
 <pre><code class="lang-js">it(&#39;should update the model&#39;, inject(function($compile, $rootScope, $rootElement, $document) {
   var inputElm = $compile(&#39;&lt;input type=&quot;checkbox&quot; ng-model=&quot;checkbox&quot; /&gt;&#39;)($rootScope);
@@ -107,14 +122,15 @@ hasn&#39;t triggered the change event. To make the test, work append the inputEl
 <code>input[type=number]</code> with <code>ngModel</code> now validates the input for the <code>max</code>/<code>min</code> restriction against
 the <code>ngModelController.$viewValue</code> instead of against the <code>ngModelController.$modelValue</code>.</p>
 <p>This affects apps that use <code>$parsers</code> or <code>$formatters</code> to transform the input / model value.</p>
-<p>If you rely on the $modelValue validation, you can overwrite the <code>min</code>/<code>max</code> validator from a custom directive, as seen in the following example directive definition object:</p>
-<pre><code>{
+<p>If you rely on the <code>$modelValue</code> validation, you can overwrite the <code>min</code>/<code>max</code> validator from a
+custom directive, as seen in the following example directive definition object:</p>
+<pre><code class="lang-js">{
   restrict: &#39;A&#39;,
   require: &#39;ngModel&#39;,
   link: function(scope, element, attrs, ctrl) {
     var maxValidator = ctrl.$validators.max;
 
-    ctrk.$validators.max = function(modelValue, viewValue) {
+    ctrl.$validators.max = function(modelValue, viewValue) {
       return maxValidator(modelValue, modelValue);
     };
   }
@@ -124,8 +140,7 @@ the <code>ngModelController.$viewValue</code> instead of against the <code>ngMod
 <p><strong>Due to <a href="https://github.com/angular/angular.js/commit/74b04c9403af4fc7df5b6420f22c9f45a3e84140">74b04c</a></strong>,
 <em>Custom</em> parsers that fail to parse on input types &quot;email&quot;, &quot;url&quot;, &quot;number&quot;, &quot;date&quot;, &quot;month&quot;,
 &quot;time&quot;, &quot;datetime-local&quot;, &quot;week&quot;, no longer set <code>ngModelController.$error[inputType]</code>, and
-the <code>ng-invalid-[inputType]</code> class. Also, custom parsers on input type &quot;range&quot; do no
-longer set <code>ngModelController.$error.number</code> and the <code>ng-invalid-number</code> class.</p>
+the <code>ng-invalid-[inputType]</code> class. Also, custom parsers on input type &quot;range&quot; no longer set <code>ngModelController.$error.number</code> and the <code>ng-invalid-number</code> class.</p>
 <p>Instead, any custom parsers on these inputs set <code>ngModelController.$error.parse</code> and
 <code>ng-invalid-parse</code>. This change was made to make distinguishing errors from built-in parsers
 and custom parsers easier.</p>
@@ -139,29 +154,29 @@ did not have a corresponding key in the &#39;debounce&#39;.</p>
 <p>See the following example:</p>
 <p>Pre-1.7:
 &#39;mouseup&#39; is also debounced by 500 milliseconds because &#39;default&#39; is applied:</p>
-<pre><code>ng-model-options=&quot;{
+<pre><code class="lang-html">ng-model-options=&quot;{
   updateOn: &#39;default blur mouseup&#39;,
   debounce: { &#39;default&#39;: 500, &#39;blur&#39;: 0 }
-}
+}&quot;
 </code></pre>
 <p>1.7:
 The pre-1.7 behavior can be re-created by setting &#39;*&#39; as a catch-all debounce value:</p>
-<pre><code>ng-model-options=&quot;{
+<pre><code class="lang-html">ng-model-options=&quot;{
   updateOn: &#39;default blur mouseup&#39;,
   debounce: { &#39;*&#39;: 500, &#39;blur&#39;: 0 }
-}
+}&quot;
 </code></pre>
 <p>In contrast, when only &#39;default&#39; is used, &#39;blur&#39; and &#39;mouseup&#39; are not debounced:</p>
-<pre><code>ng-model-options=&quot;{
+<pre><code class="lang-html">ng-model-options=&quot;{
   updateOn: &#39;default blur mouseup&#39;,
   debounce: { &#39;default&#39;: 500 }
 }
 </code></pre>
 <h4 id="-ngstyle-"><strong>ngStyle</strong></h4>
 <p><strong>Due to <a href="https://github.com/angular/angular.js/commit/15bbd3e18cd89b91f7206a06c73d40e54a8a48a0">15bbd3</a></strong>,
-previously the use of deep watch by ng-style would trigger styles to be
-re-applied when nested state changed. Now only changes to direct
-properties of the watched object will trigger changes.</p>
+the use of deep-watching in <code>ngStyle</code> has changed. Previously, <code>ngStyle</code> would trigger styles to be
+re-applied whenever nested state changed. Now, only changes to direct properties of the watched
+object will trigger changes.</p>
 <p><a name="migrate1.6to1.7-ng-services"></a></p>
 <h3 id="core-_services_">Core: <em>Services</em></h3>
 <h4 id="-compile-"><strong>$compile</strong></h4>
@@ -184,48 +199,51 @@ migrating to AngularJS 1.7.0 shouldn&#39;t require any further action.</p>
 <li><p>If you specified <code>$compileProvider.preAssignBindingsEnabled(true)</code> you need
 to first migrate your code so that the flag can be flipped to <code>false</code>. The
 instructions on how to do that are available in the &quot;Migrating from 1.5 to 1.6&quot;
-guide:
-<a href="https://docs.angularjs.org/guide/migration#migrating-from-1-5-to-1-6">https://docs.angularjs.org/guide/migration#migrating-from-1-5-to-1-6</a>
+guide: <a href="https://docs.angularjs.org/guide/migration#migrating-from-1-5-to-1-6">https://docs.angularjs.org/guide/migration#migrating-from-1-5-to-1-6</a>
 Afterwards, remove the <code>$compileProvider.preAssignBindingsEnabled(true)</code>
 statement.</p>
 </li>
 </ol>
-<p><hr />
-<strong>Due to <a href="https://github.com/angular/angular.js/commit/6ccbfa65d60a3dc396d0cf6da21b993ad74653fd">6ccbfa</a></strong>,
+<hr />
+
+<p><strong>Due to <a href="https://github.com/angular/angular.js/commit/6ccbfa65d60a3dc396d0cf6da21b993ad74653fd">6ccbfa</a></strong>,
 the <code>xlink:href</code> security context for SVG&#39;s <code>a</code> and <code>image</code> elements has been lowered.</p>
-<p>In the unlikely case that an app relied on RESOURCE_URL whitelisting for the
+<p>In the unlikely case that an app relied on <code>RESOURCE_URL</code> trusted list for the
 purpose of binding to the <code>xlink:href</code> property of SVG&#39;s <code>&lt;a&gt;</code> or <code>&lt;image&gt;</code>
 elements and if the values do not pass the regular URL sanitization, they will
 break.</p>
 <p>To fix this you need to ensure that the values used for binding to the affected
-<code>xlink:href</code> contexts are considered safe URLs, e.g. by whitelisting them in
-<code>$compileProvider</code>&#39;s <code>aHrefSanitizationWhitelist</code> (for <code>&lt;a&gt;</code> elements) or
-<code>imgSrcSanitizationWhitelist</code> (for <code>&lt;image&gt;</code> elements).</p>
-<p><hr />
-<strong>Due to <a href="https://github.com/angular/angular.js/commit/fd4f0111188b62773b99ab6eab38b4d2b5d8d727">fd4f01</a></strong>,
-deepWatch is no longer used in in literal one-way bindings.</p>
-<p>Previously when a literal value was passed into a directive/component via
+<code>xlink:href</code> contexts are considered safe URLs, e.g. by trusting them in
+<code>$compileProvider</code>&#39;s <code>aHrefSanitizationWhitelist</code> (called <code>aHrefSanitizationTrustedUrlList</code> form
+1.8.1 onwards) (for <code>&lt;a&gt;</code> elements) or <code>imgSrcSanitizationWhitelist</code> (called
+<code>imgSrcSanitizationTrustedUrlList</code> from 1.8.1 onwards) (for <code>&lt;image&gt;</code> elements).</p>
+<hr />
+
+<p><strong>Due to <a href="https://github.com/angular/angular.js/commit/fd4f0111188b62773b99ab6eab38b4d2b5d8d727">fd4f01</a></strong>,
+deep-watching is no longer used in literal one-way bindings.</p>
+<p>Previously, when a literal value was passed into a directive/component via
 one-way binding it would be watched with a deep watcher.</p>
 <p>For example, for <code>&lt;my-component input=&quot;[a]&quot;&gt;</code>, a new instance of the array
-would be passed into the directive/component (and trigger $onChanges) not
+would be passed into the directive/component (and trigger <code>$onChanges</code>) not
 only if <code>a</code> changed but also if any sub property of <code>a</code> changed such as
 <code>a.b</code> or <code>a.b.c.d.e</code> etc.</p>
 <p>This also means a new but equal value for <code>a</code> would NOT trigger such a
 change.</p>
-<p>Now literal values use an input-based watch similar to other directive/component
+<p>Now, literal values use an input-based watch similar to other directive/component
 one-way bindings. In this context inputs are the non-constant parts of the
-literal. In the example above the input would be <code>a</code>. Changes are only
-triggered when the inputs to the literal change.</p>
-<p><hr />
-<strong>Due to <a href="https://github.com/angular/angular.js/commit/1cf728e209a9e0016068fac2769827e8f747760e">1cf728</a></strong>,
-<code>base[href]</code> was added to the list of RESOURCE_URL context attributes.</p>
+literal. In the example above, the input would be <code>a</code>. Changes are only
+triggered, when the inputs to the literal change.</p>
+<hr />
+
+<p><strong>Due to <a href="https://github.com/angular/angular.js/commit/1cf728e209a9e0016068fac2769827e8f747760e">1cf728</a></strong>,
+<code>base[href]</code> was added to the list of <code>RESOURCE_URL</code> context attributes.</p>
 <p>Previously, <code>&lt;base href=&quot;{{ $ctrl.baseUrl }}&quot; /&gt;</code> would not require <code>baseUrl</code> to
-be trusted as a RESOURCE_URL. Now, <code>baseUrl</code> will be sent to <code>$sce</code>&#39;s
-RESOURCE_URL checks. By default, it will break unless <code>baseUrl</code> is of the same
+be trusted as a <code>RESOURCE_URL</code>. Now, <code>baseUrl</code> will be sent to <code>$sce</code>&#39;s
+<code>RESOURCE_URL</code> checks. By default, it will break unless <code>baseUrl</code> is of the same
 origin as the application document.</p>
 <p>Refer to the
 <a href="https://code.angularjs.org/snapshot/docs/api/ng/service/$sce"><code>$sce</code> API docs</a>
-for more info on how to trust a value in a RESOURCE_URL context.</p>
+for more info on how to trust a value in a <code>RESOURCE_URL</code> context.</p>
 <p>Also, concatenation in trusted contexts is not allowed, which means that the
 following won&#39;t work: <code>&lt;base href=&quot;/something/{{ $ctrl.partialPath }}&quot; /&gt;</code>.</p>
 <p>Either construct complex values in a controller (recommended):</p>
@@ -240,9 +258,9 @@ except for the simplest of cases):</p>
 <h4 id="-rootscope-"><strong>$rootScope</strong></h4>
 <p><strong>Due to (<a href="https://github.com/angular/angular.js/commit/c2b8fab0a480204374d561d6b9b3d47347ac5570">c2b8fa</a>)</strong>,
 the arguments of <code>$watchGroup</code> callbacks have changed.</p>
-<p>Previously when using <code>$watchGroup</code> the entries in <code>newValues</code> and
+<p>Previously, when using <code>$watchGroup</code>, the entries in <code>newValues</code> and
 <code>oldValues</code> represented the <em>most recent change of each entry</em>.</p>
-<p>Now the entries in <code>oldValues</code> will always equal the <code>newValues</code> of the previous
+<p>Now, the entries in <code>oldValues</code> will always equal the <code>newValues</code> of the previous
 call of the listener. This means comparing the entries in <code>newValues</code> and
 <code>oldValues</code> can be used to determine which individual expressions changed.</p>
 <p>For example <code>$scope.$watchGroup([&#39;a&#39;, &#39;b&#39;], fn)</code> would previously:</p>
@@ -310,7 +328,7 @@ call of the listener. This means comparing the entries in <code>newValues</code>
 </tbody>
 </table>
 <p>Note the last call now shows <code>a === 2</code> in the <code>oldValues</code> array.</p>
-<p>This also makes the <code>oldValue</code> of one-time watchers more clear. Previously
+<p>This also makes the <code>oldValue</code> of one-time watchers more clear. Previously,
 the <code>oldValue</code> of a one-time watcher would remain <code>undefined</code> forever. For
 example <code>$scope.$watchGroup([&#39;a&#39;, &#39;::b&#39;], fn)</code> would previously:</p>
 <table>
@@ -378,7 +396,8 @@ example <code>$scope.$watchGroup([&#39;a&#39;, &#39;::b&#39;], fn)</code> would 
 </table>
 <h4 id="-interval-"><strong>$interval</strong></h4>
 <p><strong>Due to <a href="https://github.com/angular/angular.js/commit/a8bef95127775d83d80daa4617c33227c4b443d4">a8bef9</a></strong>,
-<code>$interval.cancel() will throw an error if called with a promise that was not generated by</code>$interval()`. Previously, it would silently do nothing.</p>
+<code>$interval.cancel()</code> will throw an error if called with a promise that was not generated by
+<code>$interval()</code>. Previously, it would silently do nothing.</p>
 <p>Before:</p>
 <pre><code class="lang-js">var promise = $interval(doSomething, 1000, 5).then(doSomethingElse);
 $interval.cancel(promise);  // No error; interval NOT canceled.
@@ -394,7 +413,8 @@ $interval.cancel(promise);  // Interval canceled.
 </code></pre>
 <h4 id="-timeout-"><strong>$timeout</strong></h4>
 <p><strong>Due to <a href="https://github.com/angular/angular.js/commit/3365256502344970f86355d3ace1cb4251ae9828">336525</a></strong>,
-<code>$timeout.cancel() will throw an error if called with a promise that was not generated by</code>$timeout()`. Previously, it would silently do nothing.</p>
+<code>$timeout.cancel()</code> will throw an error if called with a promise that was not generated by
+<code>$timeout()</code>. Previously, it would silently do nothing.</p>
 <p>Before:</p>
 <pre><code class="lang-js">var promise = $timeout(doSomething, 1000).then(doSomethingElse);
 $timeout.cancel(promise);  // No error; timeout NOT canceled.
@@ -410,9 +430,9 @@ $timeout.cancel(promise);  // Timeout canceled.
 </code></pre>
 <h4 id="-cookies-"><strong>$cookies</strong></h4>
 <p><strong>Due to <a href="https://github.com/angular/angular.js/commit/73c6467f1468353215dc689c019ed83aa4993c77">73c646</a></strong>,
-the <code>$cookieStore</code>service has been removed. Migrate to the $cookies service. Note that
-for object values you need to use the <code>putObject</code> &amp; <code>getObject</code> methods as
-<code>get</code>/<code>put</code> will not correctly save/retrieve them.</p>
+the <code>$cookieStore</code>service has been removed. Migrate to the <code>$cookies</code> service. Note that
+for object values you need to use the <code>putObject</code> &amp; <code>getObject</code> methods, as
+<code>get</code>/<code>put</code> will not correctly save/retrieve the object values.</p>
 <p>Before:</p>
 <pre><code class="lang-js">$cookieStore.put(&#39;name&#39;, {key: &#39;value&#39;});
 $cookieStore.get(&#39;name&#39;); // {key: &#39;value&#39;}
@@ -420,27 +440,25 @@ $cookieStore.remove(&#39;name&#39;);
 </code></pre>
 <h4 id="-templaterequest-"><strong>$templateRequest</strong></h4>
 <p><strong>Due to <a href="https://github.com/angular/angular.js/commit/c617d6dceee5b000bfceda44ced22fc16b48b18b">c617d6</a></strong>,
-give tpload error namespace has changed. Previously the <code>tpload</code> error was namespaced to <code>$compile</code>.
-If you have code that matches errors of the form <code>[$compile:tpload]</code> it will no
-longer run. You should change the code to match
-<code>[$templateRequest:tpload]</code>.</p>
-<p><hr />
-<strong>Due to (<a href="https://github.com/angular/angular.js/commit/fb00991460cf69ae8bc7f1f826363d09c73c0d5e">fb0099</a></strong>,
-the service now returns the result of <code>$templateCache.put()</code> when making a server request to the
-template. Previously it would return the content of the response directly.
-This now means if you are decorating <code>$templateCache.put()</code> to manipulate the template, you will
-now get this manipulated result also on the first <code>$templateRequest</code> rather than only on subsequent
-calls (when the template is retrived from the cache).
-In practice this should not affect any apps, as it is unlikely that they rely on the template being
+the <code>tpload</code> error namespace has changed. Previously, the <code>tpload</code> error was namespaced to
+<code>$compile</code>. If you have code that matches errors of the form <code>[$compile:tpload]</code> it will no longer
+run. You should change the code to match <code>[$templateRequest:tpload]</code>.</p>
+<hr />
+
+<p><strong>Due to (<a href="https://github.com/angular/angular.js/commit/fb00991460cf69ae8bc7f1f826363d09c73c0d5e">fb0099</a></strong>,
+<code>$templateRequest()</code> now returns the result of <code>$templateCache.put()</code> when making a server request
+for a template. Previously, it would return the content of the response directly.</p>
+<p>This means that if you are decorating <code>$templateCache.put()</code> to manipulate the template, you will
+now get this manipulated result also on the first <code>$templateRequest()</code> call rather than only on
+subsequent calls (when the template is retrieved from the cache).</p>
+<p>In practice, this should not affect any apps, as it is unlikely that they rely on the template being
 different in the first and subsequent calls.</p>
 <h4 id="-animate-"><strong>$animate</strong></h4>
 <p><strong>Due to <a href="https://github.com/angular/angular.js/commit/16b82c6afe0ab916fef1d6ca78053b00bf5ada83">16b82c</a></strong>,
-$animate.cancel(runner) now rejects the underlying
-promise and calls the catch() handler on the runner
-returned by $animate functions (enter, leave, move,
-addClass, removeClass, setClass, animate).
-Previously it would resolve the promise as if the animation
-had ended successfully.</p>
+<code>$animate.cancel(runner)</code> now rejects the underlying promise and calls the <code>catch()</code> handler on the
+runner returned by <code>$animate</code> functions (<code>enter</code>, <code>leave</code>, <code>move</code>, <code>addClass</code>, <code>removeClass</code>,
+<code>setClass</code>, <code>animate</code>).
+Previously, it would resolve the promise as if the animation had ended successfully.</p>
 <p>Example:</p>
 <pre><code class="lang-js">var runner = $animate.addClass(&#39;red&#39;);
 runner.then(function() { console.log(&#39;success&#39;)});
@@ -449,16 +467,18 @@ runner.catch(function() { console.log(&#39;cancelled&#39;)});
 runner.cancel();
 </code></pre>
 <p>Pre-1.7.0, this logs &#39;success&#39;, 1.7.0 and later it logs &#39;cancelled&#39;.
-To migrate, add a catch() handler to your animation runners.</p>
+To migrate, add a <code>catch()</code> handler to your animation runners.</p>
 <h4 id="-controller-"><strong>$controller</strong></h4>
 <p><strong>Due to <a href="https://github.com/angular/angular.js/commit/e269c14425a3209040f65c022658770e00a36f16">e269c1</a></strong>,
 the option to instantiate controllers from constructors on the global <code>window</code> object
 has been removed. Likewise, the deprecated <code>$controllerProvider.allowGlobals()</code>
 method that could enable this behavior, has been removed.</p>
 <p>This behavior had been deprecated since AngularJS v1.3.0, because polluting the global scope
-is bad. To migrate, remove the call to $controllerProvider.allowGlobals() in the config, and
-register your controller via the Module API or the $controllerProvider, e.g.</p>
-<pre><code>angular.module(&#39;myModule&#39;, []).controller(&#39;myController&#39;, function() {...});
+is considered bad practice. To migrate, remove the call to <code>$controllerProvider.allowGlobals()</code> in
+the config, and register your controller via the Module API or the <code>$controllerProvider</code>, e.g.:</p>
+<pre><code class="lang-js">angular.module(&#39;myModule&#39;, []).controller(&#39;myController&#39;, function() {...});
+
+// or
 
 angular.module(&#39;myModule&#39;, []).config(function($controllerProvider) {
   $controllerProvider.register(&#39;myController&#39;, function() {...});
@@ -466,15 +486,37 @@ angular.module(&#39;myModule&#39;, []).config(function($controllerProvider) {
 </code></pre>
 <h4 id="-sce-"><strong>$sce</strong></h4>
 <p><strong>Due to <a href="https://github.com/angular/angular.js/commit/1e9eadcd72dbbd5c67dae8328a63e535cfa91ff9">1e9ead</a></strong>,
-if you use <code>attrs.$set</code> for URL attributes (a[href] and img[src]) there will no
+if you use <code>attrs.$set</code> for URL attributes (<code>a[href]</code> and <code>img[src]</code>) there will no
 longer be any automated sanitization of the value. This is in line with other
-programmatic operations, such as writing to the innerHTML of an element.</p>
+programmatic operations, such as writing to the <code>innerHTML</code> of an element.</p>
 <p>If you are programmatically writing URL values to attributes from untrusted
-input then you must sanitize it yourself. You could write your own sanitizer or copy
+input, then you must sanitize it yourself. You could write your own sanitizer or copy
 the private <code>$$sanitizeUri</code> service.</p>
 <p>Note that values that have been passed through the <code>$interpolate</code> service within the
 <code>URL</code> or <code>MEDIA_URL</code> will have already been sanitized, so you would not need to sanitize
 these values again.</p>
+<hr/>
+
+<p><strong>Due to <a href="https://github.com/angular/angular.js/commit/1e9eadcd72dbbd5c67dae8328a63e535cfa91ff9">1e9ead</a></strong>,
+binding <a href="api/ng/service/$sce#trustAs">trustAs()</a> and the short versions
+(<a href="api/ng/service/$sce#trustAsResourceUrl">trustAsResourceUrl()</a> et al.) to <a href="api/ng/directive/ngSrc"><code>ngSrc</code></a>,
+<a href="api/ng/directive/ngSrcset"><code>ngSrcset</code></a>, and <a href="api/ng/directive/ngHref"><code>ngHref</code></a> will now raise an infinite digest error:</p>
+<pre><code class="lang-js">$scope.imgThumbFn = function(id) {
+  return $sce.trustAsResourceUrl(someService.someUrl(id));
+};
+</code></pre>
+<pre><code class="lang-html">&lt;img ng-src=&quot;{{ imgThumbFn(imgId) }}&quot; /&gt;
+</code></pre>
+<p>This is because <a href="api/ng/service/$interpolate"><code>$interpolate</code></a> is now responsible for sanitizing
+the attribute value, and its watcher receives a new object from <code>trustAs()</code>
+on every digest.
+To migrate, compute the trusted value only when the input value changes:</p>
+<pre><code class="lang-js">$scope.$watch(&#39;imgId&#39;, function(id) {
+  $scope.imgThumb = $sce.trustAsResourceUrl(someService.someUrl(id));
+});
+</code></pre>
+<pre><code class="lang-html">&lt;img ng-src=&quot;{{ imgThumb }}&quot; /&gt;
+</code></pre>
 <p><a name="migrate1.6to1.7-ng-filters"></a></p>
 <h3 id="core-_filters_">Core: <em>Filters</em></h3>
 <h4 id="-orderby-"><strong>orderBy</strong></h4>
@@ -492,10 +534,10 @@ intuitive) sorting order.</p>
 //--&gt; &#39;a&#39;, &#39;o&#39;, &#39;z&#39;, null, undefined
 </code></pre>
 <p><a name="migrate1.6to1.7-ng-misc"></a></p>
-<h3 id="core-_misceallenous_">Core: <em>Misceallenous</em></h3>
+<h3 id="core-_miscellaneous_">Core: <em>Miscellaneous</em></h3>
 <h4 id="-jqlite-"><strong>jqLite</strong></h4>
 <p><strong>Due to <a href="https://github.com/angular/angular.js/commit/b7d396b8b6e8f27a1f4556d58fc903321e8d532a">b7d396</a></strong>,
-removeData() no longer removes event handlers.</p>
+<code>removeData()</code> no longer removes event handlers.</p>
 <p>Before this commit <code>removeData()</code> invoked on an element removed its event
 handlers as well. If you want to trigger a full cleanup of an element, change:</p>
 <pre><code class="lang-js">elem.removeData();
@@ -508,17 +550,17 @@ only when it&#39;s removed from the DOM as well; in such cases the following:</p
 <pre><code class="lang-js">elem.remove();
 </code></pre>
 <p>will remove event handlers as well.</p>
-<h4 id="-angular-"><strong>Angular</strong></h4>
+<h4 id="-helpers-"><strong>Helpers</strong></h4>
 <p><strong>Due to <a href="https://github.com/angular/angular.js/commit/1daa4f2231a89ee88345689f001805ffffa9e7de">1daa4f</a></strong>,
-the helper functions <code>angular.lowercase</code> <code>and angular.uppercase</code> have been removed.</p>
+the helper functions <code>angular.lowercase</code> and <code>angular.uppercase</code> have been removed.</p>
 <p>These functions have been deprecated since 1.5.0. They are internally
 used, but should not be exposed as they contain special locale handling
 (for Turkish) to maintain internal consistency regardless of user-set locale.</p>
-<p>Developers should generally use the built-ins <code>toLowerCase</code> and <code>toUpperCase</code>
+<p>Developers should generally use the built-in methods <code>toLowerCase</code> and <code>toUpperCase</code>
 or <code>toLocaleLowerCase</code> and <code>toLocaleUpperCase</code> for special cases.</p>
-<p>Further, we generally discourage using the angular.x helpers in application code.</p>
-<p><hr />
-<strong>Due to <a href="https://github.com/angular/angular.js/commit/e3ece2fad9e1e6d47b5f06815ff186d7e6f44948">e3ece2</a></strong>,
+<hr />
+
+<p><strong>Due to <a href="https://github.com/angular/angular.js/commit/e3ece2fad9e1e6d47b5f06815ff186d7e6f44948">e3ece2</a></strong>,
 <code>angular.isArray()</code> now supports Array subclasses.</p>
 <p>Previously, <code>angular.isArray()</code> was an alias for <code>Array.isArray()</code>.
 Therefore, objects that prototypally inherit from <code>Array</code> where not
@@ -532,8 +574,8 @@ be able to handle these objects better when copying or watching.</p>
 <p><a name="migrate1.6to1.7-ngAria"></a></p>
 <h3 id="ngaria">ngAria</h3>
 <p><strong>Due to <a href="https://github.com/angular/angular.js/commit/6d5ef34fc6a974cde73157ba94f9706723dd8f5b">6d5ef3</a></strong>,
-the ngAria directive no longer sets aria-* attributes on input[type=&quot;hidden&quot;] with ngModel.
-This can affect apps that test for the presence of aria attributes on hidden inputs.
+<code>ngAria</code> no longer sets <code>aria-*</code> attributes on <code>input[type=&quot;hidden&quot;]</code> with <code>ngModel</code>.
+This can affect apps that test for the presence of ARIA attributes on hidden inputs.
 To migrate, remove these assertions.
 In actual apps, this should not have a user-facing effect, as the previous behavior
 was incorrect, and the new behavior is correct for accessibility.</p>
@@ -612,8 +654,9 @@ User.get({id: 2}, onSuccess, onError);
   //   responseErrorInterceptor-2
   //   errorCallback, Ooops!
 </code></pre>
-<p><hr />
-<strong>Due to <a href="https://github.com/angular/angular.js/commit/240a3ddbf12a9bb79754031be95dae4b6bd2dded">240a3d</a></strong>,
+<hr />
+
+<p><strong>Due to <a href="https://github.com/angular/angular.js/commit/240a3ddbf12a9bb79754031be95dae4b6bd2dded">240a3d</a></strong>,
 <code>$http</code> will be called asynchronously from <code>$resource</code> methods
 (regardless if a <code>request</code>/<code>requestError</code> interceptor has been defined).</p>
 <p>Previously, calling a <code>$resource</code> method would synchronously call
@@ -649,7 +692,7 @@ interceptor promise has been resolved.</p>
 the angular scenario runner end-to-end test framework has been
 removed from the project and will no longer be available on npm
 or bower starting with 1.7.0.
-It was deprecated and removed from the documentation in 2014.
+It has been deprecated and removed from the documentation since 2014.
 Applications that still use it should migrate to
 <a href="http://www.protractortest.org">Protractor</a>.
 Technically, it should also be possible to continue using an
@@ -658,9 +701,9 @@ not changed. However, we do not guarantee future compatibility.</p>
 <p><a name="migrate1.6to1.7-ngTouch"></a></p>
 <h3 id="ngtouch">ngTouch</h3>
 <p><strong>Due to <a href="https://github.com/angular/angular.js/commit/11d9ad1eb25eaf5967195e424108207427835d50">11d9ad</a></strong>,
-the <code>ngClick</code> directive from the ngTouch module has been removed, and with it the
+the <code>ngClick</code> directive of the <code>ngTouch</code> module has been removed, and with it the
 corresponding <code>$touchProvider</code> and <code>$touch</code> service.</p>
-<p>If you have included ngTouch v1.5.0 or higher in your application, and have not
+<p>If you have included <code>ngTouch</code> v1.5.0 or higher in your application, and have not
 changed the value of <code>$touchProvider.ngClickOverrideEnabled()</code>, or injected and used the <code>$touch</code>
 service, then there are no migration steps for your code. Otherwise you must remove references to
 the provider and service.</p>
@@ -1076,7 +1119,7 @@ running at <code>https://docs.angularjs.org</code> then the following will fail:
 </code></pre>
 <p>By default, only URLs with the same domain and protocol as the application document are considered
 safe in the <code>RESOURCE_URL</code> context. To use URLs from other domains and/or protocols, you may either
-whitelist them or wrap them into a trusted value by calling <code>$sce.trustAsResourceUrl(url)</code>.</p>
+add them to the trusted source URL list or wrap them into a trusted value by calling <code>$sce.trustAsResourceUrl(url)</code>.</p>
 <p><hr /></p>
 <p><minor />
 <strong>Due to <a href="https://github.com/angular/angular.js/commit/97bbf86a1979d099802f0d631c17c54b87563b40">97bbf8</a></strong>,
@@ -1134,7 +1177,7 @@ $http.json(&#39;other/trusted/url&#39;, {jsonpCallbackParam: &#39;cb&#39;});
 all JSONP requests now require the URL to be trusted as a resource URL. There are two approaches to
 trust a URL:</p>
 <ol>
-<li><p><strong>Whitelisting with the <code>$sceDelegateProvider.resourceUrlWhitelist()</code> method.</strong>
+<li><p><strong>Setting trusted resource URLs with the <code>$sceDelegateProvider.resourceUrlWhitelist()</code> (called <code>trustedResourceUrlList()</code> from 1.8.1 onwards) method.</strong>
 You configure this list in a module configuration block:</p>
 <pre><code class="lang-js">appModule.config([&#39;$sceDelegateProvider&#39;, function($sceDelegateProvider) {
   $sceDelegateProvider.resourceUrlWhitelist([
@@ -1774,7 +1817,7 @@ service does not have access to the resource in order to sanitize it.</p>
 <p>Similarly, due to <a href="https://github.com/angular/angular.js/commit/234053fc9ad90e0d05be7e8359c6af66be94c094">234053fc</a>,
 the <code>$sanitize</code> service will now also remove instances of the <code>usemap</code> attribute from any elements
 passed to it. This attribute is used to reference another element by <code>name</code> or <code>id</code>. Since the
-<code>name</code> and <code>id</code> attributes are already blacklisted, a sanitized <code>usemap</code> attribute could only
+<code>name</code> and <code>id</code> attributes are already banned, a sanitized <code>usemap</code> attribute could only
 reference unsanitized content, which is a security risk.</p>
 <p>Due to <a href="https://github.com/angular/angular.js/commit/98c2db7f9c2d078a408576e722407d518c7ee10a">98c2db7f</a>,
 passing a non-string value (other than <code>undefined</code> or <code>null</code>) through the <code>linky</code> filter will throw
@@ -2118,8 +2161,8 @@ expression that returns the result of <code>$sce.trustAsResourceUrl</code>. This
   return $sce.trustAsResourceUrl(templateName);
 };
 </code></pre>
-<p>To migrate, either cache the result of <code>trustAsResourceUrl()</code>, or put the template url in the resource
-whitelist in the <code>config()</code> function:</p>
+<p>To migrate, either cache the result of <code>trustAsResourceUrl()</code>, or put the template url in the trusted resource
+URL list in the <code>config()</code> function:</p>
 <p>After:</p>
 <pre><code class="lang-js">var templateCache = {};
 $scope.findTemplate = function(templateName) {
@@ -2130,7 +2173,8 @@ $scope.findTemplate = function(templateName) {
   return templateCache[templateName];
 };
 
-// Alternatively, use `$sceDelegateProvider.resourceUrlWhitelist()`, which means you don&#39;t
+// Alternatively, use `$sceDelegateProvider.resourceUrlWhitelist()` (called
+// `trustedResourceUrlList()` from 1.8.1 onwards), which means you don&#39;t
 // have to use `$sce.trustAsResourceUrl()` at all:
 
 angular.module(&#39;myApp&#39;, []).config(function($sceDelegateProvider) {
@@ -2689,7 +2733,7 @@ below should still apply, but you may want to consult the
   <li><a href="guide/migration#directive-priority">Directive priority</a></li>
   <li><a href="guide/migration#ngscenario">ngScenario</a></li>
   <li><a href="guide/migration#nginclude-and-ngview-replace-its-entire-element-on-update">ngInclude and ngView replace its entire element on update</a></li>
-  <li><a href="guide/migration#urls-are-now-sanitized-against-a-whitelist">URLs are now sanitized against a whitelist</a></li>
+  <li><a href="guide/migration#urls-are-now-sanitized-against-a-trusted-uri-matcher">URLs are now sanitized against a trusted URI matcher</a></li>
   <li><a href="guide/migration#isolate-scope-only-exposed-to-directives-with-scope-property">Isolate scope only exposed to directives with <code>scope</code> property</a></li>
   <li><a href="guide/migration#change-to-interpolation-priority">Change to interpolation priority</a></li>
   <li><a href="guide/migration#underscore-prefixed-suffixed-properties-are-non-bindable">Underscore-prefixed/suffixed properties are non-bindable</a></li>
@@ -3032,9 +3076,9 @@ recreate the element every time a new content is included.</p>
 definition of css styles for animations much easier.</p>
 <p>See <a href="https://github.com/angular/angular.js/commit/7d69d52acff8578e0f7d6fe57a6c45561a05b182">7d69d52a</a>,
 <a href="https://github.com/angular/angular.js/commit/aa2133ad818d2e5c27cbd3933061797096356c8a">aa2133ad</a>.</p>
-<h3 id="urls-are-now-sanitized-against-a-whitelist">URLs are now sanitized against a whitelist</h3>
-<p>A whitelist configured via <code>$compileProvider</code> can be used to configure what URLs are considered safe.
-By default all common protocol prefixes are whitelisted including <code>data:</code> URIs with mime types <code>image/*</code>.
+<h3 id="urls-are-now-sanitized-against-a-trusted-uri-matcher">URLs are now sanitized against a trusted URI matcher</h3>
+<p>A trusted URI matcher configured via <code>$compileProvider</code> can be used to configure what URLs are considered safe.
+By default all common protocol prefixes are trusted including <code>data:</code> URIs with mime types <code>image/*</code>.
 This change shouldn&#39;t impact apps that don&#39;t contain malicious image links.</p>
 <p>See <a href="https://github.com/angular/angular.js/commit/1adf29af13890d61286840177607edd552a9df97">1adf29af</a>,
 <a href="https://github.com/angular/angular.js/commit/3e39ac7e1b10d4812a44dad2f959a93361cd823b">3e39ac7e</a>.</p>

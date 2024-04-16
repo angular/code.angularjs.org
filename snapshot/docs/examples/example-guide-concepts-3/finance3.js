@@ -10,7 +10,7 @@ angular.module('finance3', [])
     };
 
     var refresh = function() {
-      var url = 'https://api.fixer.io/latest?base=USD&symbols=' + currencies.join(",");
+      var url = 'https://api.exchangeratesapi.io/latest?base=USD&symbols=' + currencies.join(",");
       return $http.get(url).then(function(response) {
         usdToForeignRates = response.data.rates;
         usdToForeignRates['USD'] = 1;

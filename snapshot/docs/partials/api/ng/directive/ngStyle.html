@@ -134,7 +134,7 @@ See the &#39;background-color&#39; style in the example below.</p>
       name="protractor.js"
       type="protractor"
       language="js">
-      <pre><code>var colorSpan = element(by.css(&#39;span&#39;));&#10;&#10;it(&#39;should check ng-style&#39;, function() {&#10;  expect(colorSpan.getCssValue(&#39;color&#39;)).toBe(&#39;rgba(0, 0, 0, 1)&#39;);&#10;  element(by.css(&#39;input[value=\&#39;set color\&#39;]&#39;)).click();&#10;  expect(colorSpan.getCssValue(&#39;color&#39;)).toBe(&#39;rgba(255, 0, 0, 1)&#39;);&#10;  element(by.css(&#39;input[value=clear]&#39;)).click();&#10;  expect(colorSpan.getCssValue(&#39;color&#39;)).toBe(&#39;rgba(0, 0, 0, 1)&#39;);&#10;});</code></pre>
+      <pre><code>var colorSpan = element(by.css(&#39;span&#39;));&#10;&#10;it(&#39;should check ng-style&#39;, function() {&#10;  expect(colorSpan.getCssValue(&#39;color&#39;)).toMatch(/rgba\(0, 0, 0, 1\)|rgb\(0, 0, 0\)/);&#10;  element(by.css(&#39;input[value=\&#39;set color\&#39;]&#39;)).click();&#10;  expect(colorSpan.getCssValue(&#39;color&#39;)).toMatch(/rgba\(255, 0, 0, 1\)|rgb\(255, 0, 0\)/);&#10;  element(by.css(&#39;input[value=clear]&#39;)).click();&#10;  expect(colorSpan.getCssValue(&#39;color&#39;)).toMatch(/rgba\(0, 0, 0, 1\)|rgb\(0, 0, 0\)/);&#10;});</code></pre>
     </div>
   
 

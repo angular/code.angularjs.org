@@ -1,6 +1,6 @@
 /**
- * @license AngularJS v1.7.2-build.5558+sha.c9a92fc
- * (c) 2010-2018 Google, Inc. http://angularjs.org
+ * @license AngularJS v1.8.4-local+sha.d8f77817e
+ * (c) 2010-2020 Google LLC. http://angularjs.org
  * License: MIT
  */
 (function(window, angular) {'use strict';
@@ -1229,6 +1229,7 @@ function IDC_Y(cp) {
  * @ngdoc module
  * @name ngParseExt
  * @packageName angular-parse-ext
+ *
  * @description
  *
  * The `ngParseExt` module provides functionality to allow Unicode characters in
@@ -1238,6 +1239,11 @@ function IDC_Y(cp) {
  * to be used as an identifier in an AngularJS expression. ES6 delegates some of the identifier
  * rules definition to Unicode, this module uses ES6 and Unicode 8.0 identifiers convention.
  *
+ * <div class="alert alert-warning">
+ * You cannot use Unicode characters for variable names in the {@link ngRepeat} or {@link ngOptions}
+ * expressions (e.g. `ng-repeat="f in поля"`), because even with `ngParseExt` included, these
+ * special expressions are not parsed by the {@link $parse} service.
+ * </div>
  */
 
 /* global angularParseExtModule: true,
@@ -1263,7 +1269,7 @@ angular.module('ngParseExt', [])
   .config(['$parseProvider', function($parseProvider) {
     $parseProvider.setIdentifierFns(isValidIdentifierStart, isValidIdentifierContinue);
   }])
-  .info({ angularVersion: '1.7.2-build.5558+sha.c9a92fc' });
+  .info({ angularVersion: '1.8.4-local+sha.d8f77817e' });
 
 
 })(window, window.angular);

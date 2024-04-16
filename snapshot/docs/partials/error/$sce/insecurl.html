@@ -17,7 +17,7 @@ It&#39;s also possible that a custom directive threw this error for a similar re
 <p>AngularJS only loads templates from trusted URLs (by calling <a href="api/ng/service/$sce#getTrustedResourceUrl">$sce.getTrustedResourceUrl</a> on the template URL).</p>
 <p>By default, only URLs that belong to the same origin are trusted. These are urls with the same domain, protocol and port as the application document.</p>
 <p>The <a href="api/ng/directive/ngInclude">ngInclude</a> directive and <a href="guide/directive">directives</a> that specify a <code>templateUrl</code> require a trusted resource URL.</p>
-<p>To load templates from other domains and/or protocols, either adjust the <a href="api/ng/provider/$sceDelegateProvider#resourceUrlWhitelist">whitelist</a>/ <a href="api/ng/provider/$sceDelegateProvider#resourceUrlBlacklist">blacklist</a> or wrap the URL with a call to <a href="api/ng/service/$sce#trustAsResourceUrl">$sce.trustAsResourceUrl</a>.</p>
+<p>To load templates from other domains and/or protocols, either adjust the <a href="api/ng/provider/$sceDelegateProvider#trustedResourceUrlList">trusted resource URL list</a>/ <a href="api/ng/provider/$sceDelegateProvider#bannedResourceUrlList">banned resource URL list</a> or wrap the URL with a call to <a href="api/ng/service/$sce#trustAsResourceUrl">$sce.trustAsResourceUrl</a>.</p>
 <p><strong>Note</strong>: The browser&#39;s <a href="https://code.google.com/p/browsersec/wiki/Part2#Same-origin_policy_for_XMLHttpRequest">Same Origin
 Policy</a> and
 <a href="http://www.w3.org/TR/cors/">Cross-Origin Resource Sharing (CORS)</a> policy apply

@@ -111,7 +111,7 @@ the collection. When a change happens, <code>ngRepeat</code> then makes the corr
 to &quot;keep track&quot; of all items in the collection and their corresponding DOM elements.
 For example, if an item is added to the collection, <code>ngRepeat</code> will know that all other items
 already have DOM elements, and will not re-render them.</p>
-<p>All different types of tracking functions, their syntax, and and their support for duplicate
+<p>All different types of tracking functions, their syntax, and their support for duplicate
 items in collections can be found in the
 <a href="api/ng/directive/ngRepeat#ngRepeat-arguments">ngRepeat expression description</a>.</p>
 <div class="alert alert-success">
@@ -318,7 +318,7 @@ intermediate results of the repeater after the filters have been applied. Typica
 when a filter is active on the repeater, but the filtered result set is empty.</p>
 <p>For example: <code>item in items | filter:x as results</code> will store the fragment of the repeated items as <code>results</code>, but only after
 the items have been processed through the filter.</p>
-<p>Please note that `as [variable name] is not an operator but rather a part of ngRepeat
+<p>Please note that <code>as [variable name]</code> is not an operator but rather a part of ngRepeat
 micro-syntax so it can be used only after all filters (and not as operator, inside an expression).</p>
 <p>For example: <code>item in items | filter : x | orderBy : order | limitTo : limit as results track by item.id</code> .</p>
 </li>

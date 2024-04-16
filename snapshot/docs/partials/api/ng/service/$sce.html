@@ -1,8 +1,8 @@
-<a href='https://github.com/angular/angular.js/edit/master/src/ng/sce.js?message=docs($sce)%3A%20describe%20your%20change...#L481' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/master/src/ng/sce.js?message=docs($sce)%3A%20describe%20your%20change...#L522' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 
-<a href='https://github.com/angular/angular.js/tree/master/src/ng/sce.js#L481' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/master/src/ng/sce.js#L522' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -35,9 +35,9 @@ trusted values. Its goal is to assist in writing code in a way that (a) is secur
 <h3 id="overview">Overview</h3>
 <p>To systematically block XSS security bugs, AngularJS treats all values as untrusted by default in
 HTML or sensitive URL bindings. When binding untrusted values, AngularJS will automatically
-run security checks on them (sanitizations, whitelists, depending on context), or throw when it
-cannot guarantee the security of the result. That behavior depends strongly on contexts: HTML
-can be sanitized, but template URLs cannot, for instance.</p>
+run security checks on them (sanitizations, trusted URL resource, depending on context), or throw
+when it cannot guarantee the security of the result. That behavior depends strongly on contexts:
+HTML can be sanitized, but template URLs cannot, for instance.</p>
 <p>To illustrate this, consider the <code>ng-bind-html</code> directive. It renders its value directly as HTML:
 we call that the <em>context</em>. When given an untrusted input, AngularJS will attempt to sanitize it
 before rendering if a sanitizer is available, and throw otherwise. To bypass sanitization and
@@ -93,8 +93,7 @@ simplified):</p>
 <code>templateUrl</code>&#39;s specified by <a href="guide/directive">directives</a>.</p>
 <p>By default, AngularJS only loads templates from the same domain and protocol as the application
 document.  This is done by calling <a href="api/ng/service/$sce#getTrustedResourceUrl">$sce.getTrustedResourceUrl</a> on the template URL.  To load templates from other domains and/or
-protocols, you may either <a href="api/ng/provider/$sceDelegateProvider#resourceUrlWhitelist">whitelist
-them</a> or <a href="api/ng/service/$sce#trustAsResourceUrl">wrap it</a> into a trusted value.</p>
+protocols, you may either add them to the <a href="api/ng/provider/$sceDelegateProvider#trustedResourceUrlList">trustedResourceUrlList</a> or <a href="api/ng/service/$sce#trustAsResourceUrl">wrap them</a> into trusted values.</p>
 <p><em>Please note</em>:
 The browser&#39;s
 <a href="https://code.google.com/p/browsersec/wiki/Part2#Same-origin_policy_for_XMLHttpRequest">Same Origin Policy</a>
@@ -116,7 +115,7 @@ your application.</p>
 <p>The included <a href="api/ng/service/$sceDelegate">$sceDelegate</a> comes with sane defaults to allow you to load
 templates in <code>ng-include</code> from your application&#39;s domain without having to even know about SCE.
 It blocks loading templates from other domains or loading templates over http from an https
-served document.  You can change these by setting your own custom <a href="api/ng/provider/$sceDelegateProvider#resourceUrlWhitelist">whitelists</a> and <a href="api/ng/provider/$sceDelegateProvider#resourceUrlBlacklist">blacklists</a> for matching such URLs.</p>
+served document.  You can change these by setting your own custom <a href="api/ng/provider/$sceDelegateProvider#trustedResourceUrlList">trusted resource URL list</a> and <a href="api/ng/provider/$sceDelegateProvider#bannedResourceUrlList">banned resource URL list</a> for matching such URLs.</p>
 <p>This significantly reduces the overhead.  It is far easier to pay the small overhead and have an
 application that&#39;s secure and can be audited to verify that with much more ease than bolting
 security onto an application later.</p>
@@ -148,7 +147,7 @@ security onto an application later.</p>
 </tr>
 <tr>
 <td><code>$sce.RESOURCE_URL</code></td>
-<td>For URLs that are not only safe to follow as links, but whose contents are also safe to include in your application.  Examples include <code>ng-include</code>, <code>src</code> / <code>ngSrc</code> bindings for tags other than <code>IMG</code> (e.g. <code>IFRAME</code>, <code>OBJECT</code>, etc.)  <br><br>Note that <code>$sce.RESOURCE_URL</code> makes a stronger statement about the URL than <code>$sce.URL</code> or <code>$sce.MEDIA_URL</code> do and therefore contexts requiring values trusted for <code>$sce.RESOURCE_URL</code> can be used anywhere that values trusted for <code>$sce.URL</code> or <code>$sce.MEDIA_URL</code> are required.</td>
+<td>For URLs that are not only safe to follow as links, but whose contents are also safe to include in your application.  Examples include <code>ng-include</code>, <code>src</code> / <code>ngSrc</code> bindings for tags other than <code>IMG</code> (e.g. <code>IFRAME</code>, <code>OBJECT</code>, etc.)  <br><br>Note that <code>$sce.RESOURCE_URL</code> makes a stronger statement about the URL than <code>$sce.URL</code> or <code>$sce.MEDIA_URL</code> do and therefore contexts requiring values trusted for <code>$sce.RESOURCE_URL</code> can be used anywhere that values trusted for <code>$sce.URL</code> or <code>$sce.MEDIA_URL</code> are required. <br><br> The <a href="api/ng/provider/$sceDelegateProvider#trustedResourceUrlList">$sceDelegateProvider#trustedResourceUrlList()</a> and <a href="api/ng/provider/$sceDelegateProvider#bannedResourceUrlList">$sceDelegateProvider#bannedResourceUrlList()</a> can be used to restrict trusted origins for <code>RESOURCE_URL</code></td>
 </tr>
 <tr>
 <td><code>$sce.JS</code></td>
@@ -169,7 +168,7 @@ service evaluates the expressions.
 
 <p>There are no CSS or JS context bindings in AngularJS currently, so their corresponding <code>$sce.trustAs</code>
 functions aren&#39;t useful yet. This might evolve.</p>
-<h3 id="format-of-items-in-link-ng-scedelegateprovider-resourceurlwhitelist-resourceurlwhitelist-link-ng-scedelegateprovider-resourceurlblacklist-blacklist-a-name-resourceurlpatternitem-a-">Format of items in <a href="api/ng/provider/$sceDelegateProvider#resourceUrlWhitelist">resourceUrlWhitelist</a>/<a href="api/ng/provider/$sceDelegateProvider#resourceUrlBlacklist">Blacklist</a> <a name="resourceUrlPatternItem"></a></h3>
+<h3 id="format-of-items-in-link-ng-scedelegateprovider-trustedresourceurllist-trustedresourceurllist-link-ng-scedelegateprovider-bannedresourceurllist-bannedresourceurllist-a-name-resourceurlpatternitem-a-">Format of items in <a href="api/ng/provider/$sceDelegateProvider#trustedResourceUrlList">trustedResourceUrlList</a>/<a href="api/ng/provider/$sceDelegateProvider#bannedResourceUrlList">bannedResourceUrlList</a> <a name="resourceUrlPatternItem"></a></h3>
 <p> Each element in these arrays must be one of the following:</p>
 <ul>
 <li><strong>&#39;self&#39;</strong><ul>
@@ -184,7 +183,7 @@ being tested (substring matches are not good enough.)</li>
 match themselves.</li>
 <li><code>*</code>: matches zero or more occurrences of any character other than one of the following 6
 characters: &#39;<code>:</code>&#39;, &#39;<code>/</code>&#39;, &#39;<code>.</code>&#39;, &#39;<code>?</code>&#39;, &#39;<code>&amp;</code>&#39; and &#39;<code>;</code>&#39;.  It&#39;s a useful wildcard for use
-in a whitelist.</li>
+for matching resource URL lists.</li>
 <li><code>**</code>: matches zero or more occurrences of <em>any</em> character.  As such, it&#39;s not
 appropriate for use in a scheme, domain, etc. as it would match too much.  (e.g.
 <a href="http://**.example.com/">http://**.example.com/</a> would match <a href="http://evil.com/?ignore=.example.com/">http://evil.com/?ignore=.example.com/</a> and that might
@@ -301,6 +300,7 @@ you are writing a library, you will cause security bugs applications using it.</
 
     
     
+
     
 
   

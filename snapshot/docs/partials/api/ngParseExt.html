@@ -49,7 +49,11 @@ identifiers inside AngularJS expressions.</p>
 <p>This module allows the usage of any identifier that follows ES6 identifier naming convention
 to be used as an identifier in an AngularJS expression. ES6 delegates some of the identifier
 rules definition to Unicode, this module uses ES6 and Unicode 8.0 identifiers convention.</p>
-
+<div class="alert alert-warning">
+You cannot use Unicode characters for variable names in the <a href="api/ng/directive/ngRepeat"><code>ngRepeat</code></a> or <a href="api/ng/directive/ngOptions"><code>ngOptions</code></a>
+expressions (e.g. <code>ng-repeat=&quot;f in поля&quot;</code>), because even with <code>ngParseExt</code> included, these
+special expressions are not parsed by the <a href="api/ng/service/$parse"><code>$parse</code></a> service.
+</div>
 
 
 

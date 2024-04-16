@@ -38,6 +38,11 @@ angular.module('pagesData', [])
     "area": "error",
     "path": "error/$compile/ctreq"
   },
+  "error/$compile/ctxoverride": {
+    "name": "ctxoverride",
+    "area": "error",
+    "path": "error/$compile/ctxoverride"
+  },
   "error/$compile/infchng": {
     "name": "infchng",
     "area": "error",
@@ -963,6 +968,11 @@ angular.module('pagesData', [])
     "area": "api",
     "path": "api/ng/function/angular.reloadWithDebugInfo"
   },
+  "api/ng/function/angular.UNSAFE_restoreLegacyJqLiteXHTMLReplacement": {
+    "name": "angular.UNSAFE_restoreLegacyJqLiteXHTMLReplacement",
+    "area": "api",
+    "path": "api/ng/function/angular.UNSAFE_restoreLegacyJqLiteXHTMLReplacement"
+  },
   "api/ng/object/angular.version": {
     "name": "angular.version",
     "area": "api",
@@ -1052,6 +1062,16 @@ angular.module('pagesData', [])
     "name": "$compile",
     "area": "api",
     "path": "api/ng/service/$compile"
+  },
+  "api/ng/directive/ngProp": {
+    "name": "ngProp",
+    "area": "api",
+    "path": "api/ng/directive/ngProp"
+  },
+  "api/ng/directive/ngOn": {
+    "name": "ngOn",
+    "area": "api",
+    "path": "api/ng/directive/ngOn"
   },
   "api/ng/provider/$compileProvider": {
     "name": "$compileProvider",
@@ -1833,6 +1853,16 @@ angular.module('pagesData', [])
     "area": "api",
     "path": "api/ngMock/object/angular.mock"
   },
+  "api/ngMock/service/$flushPendingTasks": {
+    "name": "$flushPendingTasks",
+    "area": "api",
+    "path": "api/ngMock/service/$flushPendingTasks"
+  },
+  "api/ngMock/service/$verifyNoPendingTasks": {
+    "name": "$verifyNoPendingTasks",
+    "area": "api",
+    "path": "api/ngMock/service/$verifyNoPendingTasks"
+  },
   "api/ngMock/provider/$exceptionHandlerProvider": {
     "name": "$exceptionHandlerProvider",
     "area": "api",
@@ -2335,6 +2365,24 @@ angular.module('pagesData', [])
   "examples/example-compile": {
     "path": "examples/example-compile"
   },
+  "main.html": {
+    "path": "main.html"
+  },
+  "examples/example-ngProp": {
+    "path": "examples/example-ngProp"
+  },
+  "examples/example-ngProp1": {
+    "path": "examples/example-ngProp1"
+  },
+  "examples/example-ngOn": {
+    "path": "examples/example-ngOn"
+  },
+  "child.html": {
+    "path": "child.html"
+  },
+  "examples/example-ngOnCustom": {
+    "path": "examples/example-ngOnCustom"
+  },
   "examples/example-ng-href": {
     "path": "examples/example-ng-href"
   },
@@ -2538,6 +2586,12 @@ angular.module('pagesData', [])
   },
   "examples/example-ngModelOptions-directive-getter-setter": {
     "path": "examples/example-ngModelOptions-directive-getter-setter"
+  },
+  "timeExample.html": {
+    "path": "timeExample.html"
+  },
+  "examples/example-ngModelOptions-time-format": {
+    "path": "examples/example-ngModelOptions-time-format"
   },
   "examples/example-ng-non-bindable": {
     "path": "examples/example-ng-non-bindable"
@@ -2998,15 +3052,15 @@ angular.module('pagesData', [])
     "area": "api",
     "path": "api/ngMock/object"
   },
-  "api/ngMock/provider": {
-    "name": "provider components in ngMock",
-    "area": "api",
-    "path": "api/ngMock/provider"
-  },
   "api/ngMock/service": {
     "name": "service components in ngMock",
     "area": "api",
     "path": "api/ngMock/service"
+  },
+  "api/ngMock/provider": {
+    "name": "provider components in ngMock",
+    "area": "api",
+    "path": "api/ngMock/provider"
   },
   "api/ngMock/type": {
     "name": "type components in ngMock",

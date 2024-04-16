@@ -14,23 +14,37 @@ angular.module('allVersionsData', [])
     "version": {
       "version": "snapshot-stable"
     },
-    "label": "v1.7.x-snapshot",
+    "label": "v1.8.x-snapshot",
     "group": "Latest",
     "docsUrl": "https://code.angularjs.org/snapshot-stable/docs"
   },
   {
     "version": {
-      "raw": "1.7.1",
+      "raw": "1.8.3",
       "major": 1,
-      "minor": 7,
-      "patch": 1,
+      "minor": 8,
+      "patch": 3,
       "prerelease": [],
       "build": [],
-      "version": "1.7.1"
+      "version": "1.8.3"
     },
-    "label": "v1.7.1",
+    "label": "v1.8.3",
     "group": "Latest",
-    "docsUrl": "https://code.angularjs.org/1.7.1/docs"
+    "docsUrl": "https://code.angularjs.org/1.8.3/docs"
+  },
+  {
+    "version": {
+      "raw": "1.7.9",
+      "major": 1,
+      "minor": 7,
+      "patch": 9,
+      "prerelease": [],
+      "build": [],
+      "version": "1.7.9"
+    },
+    "label": "v1.7.9",
+    "group": "Latest",
+    "docsUrl": "https://code.angularjs.org/1.7.9/docs"
   },
   {
     "version": {
@@ -129,6 +143,174 @@ angular.module('allVersionsData', [])
     "label": "v1.0.8",
     "group": "Latest",
     "docsUrl": "https://code.angularjs.org/1.0.8/docs"
+  },
+  {
+    "version": {
+      "raw": "1.8.3",
+      "major": 1,
+      "minor": 8,
+      "patch": 3,
+      "prerelease": [],
+      "build": [],
+      "version": "1.8.3"
+    },
+    "label": "v1.8.3",
+    "group": "v1.8",
+    "docsUrl": "https://code.angularjs.org/1.8.3/docs"
+  },
+  {
+    "version": {
+      "raw": "1.8.2",
+      "major": 1,
+      "minor": 8,
+      "patch": 2,
+      "prerelease": [],
+      "build": [],
+      "version": "1.8.2"
+    },
+    "label": "v1.8.2",
+    "group": "v1.8",
+    "docsUrl": "https://code.angularjs.org/1.8.2/docs"
+  },
+  {
+    "version": {
+      "raw": "1.8.1",
+      "major": 1,
+      "minor": 8,
+      "patch": 1,
+      "prerelease": [],
+      "build": [],
+      "version": "1.8.1"
+    },
+    "label": "v1.8.1",
+    "group": "v1.8",
+    "docsUrl": "https://code.angularjs.org/1.8.1/docs"
+  },
+  {
+    "version": {
+      "raw": "1.8.0",
+      "major": 1,
+      "minor": 8,
+      "patch": 0,
+      "prerelease": [],
+      "build": [],
+      "version": "1.8.0"
+    },
+    "label": "v1.8.0",
+    "group": "v1.8",
+    "docsUrl": "https://code.angularjs.org/1.8.0/docs"
+  },
+  {
+    "version": {
+      "raw": "1.7.9",
+      "major": 1,
+      "minor": 7,
+      "patch": 9,
+      "prerelease": [],
+      "build": [],
+      "version": "1.7.9"
+    },
+    "label": "v1.7.9",
+    "group": "v1.7",
+    "docsUrl": "https://code.angularjs.org/1.7.9/docs"
+  },
+  {
+    "version": {
+      "raw": "1.7.8",
+      "major": 1,
+      "minor": 7,
+      "patch": 8,
+      "prerelease": [],
+      "build": [],
+      "version": "1.7.8"
+    },
+    "label": "v1.7.8",
+    "group": "v1.7",
+    "docsUrl": "https://code.angularjs.org/1.7.8/docs"
+  },
+  {
+    "version": {
+      "raw": "1.7.7",
+      "major": 1,
+      "minor": 7,
+      "patch": 7,
+      "prerelease": [],
+      "build": [],
+      "version": "1.7.7"
+    },
+    "label": "v1.7.7",
+    "group": "v1.7",
+    "docsUrl": "https://code.angularjs.org/1.7.7/docs"
+  },
+  {
+    "version": {
+      "raw": "1.7.6",
+      "major": 1,
+      "minor": 7,
+      "patch": 6,
+      "prerelease": [],
+      "build": [],
+      "version": "1.7.6"
+    },
+    "label": "v1.7.6",
+    "group": "v1.7",
+    "docsUrl": "https://code.angularjs.org/1.7.6/docs"
+  },
+  {
+    "version": {
+      "raw": "1.7.5",
+      "major": 1,
+      "minor": 7,
+      "patch": 5,
+      "prerelease": [],
+      "build": [],
+      "version": "1.7.5"
+    },
+    "label": "v1.7.5",
+    "group": "v1.7",
+    "docsUrl": "https://code.angularjs.org/1.7.5/docs"
+  },
+  {
+    "version": {
+      "raw": "1.7.4",
+      "major": 1,
+      "minor": 7,
+      "patch": 4,
+      "prerelease": [],
+      "build": [],
+      "version": "1.7.4"
+    },
+    "label": "v1.7.4",
+    "group": "v1.7",
+    "docsUrl": "https://code.angularjs.org/1.7.4/docs"
+  },
+  {
+    "version": {
+      "raw": "1.7.3",
+      "major": 1,
+      "minor": 7,
+      "patch": 3,
+      "prerelease": [],
+      "build": [],
+      "version": "1.7.3"
+    },
+    "label": "v1.7.3",
+    "group": "v1.7",
+    "docsUrl": "https://code.angularjs.org/1.7.3/docs"
+  },
+  {
+    "version": {
+      "raw": "1.7.2",
+      "major": 1,
+      "minor": 7,
+      "patch": 2,
+      "prerelease": [],
+      "build": [],
+      "version": "1.7.2"
+    },
+    "label": "v1.7.2",
+    "group": "v1.7",
+    "docsUrl": "https://code.angularjs.org/1.7.2/docs"
   },
   {
     "version": {

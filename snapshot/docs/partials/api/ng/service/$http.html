@@ -1,8 +1,8 @@
-<a href='https://github.com/angular/angular.js/edit/master/src/ng/http.js?message=docs($http)%3A%20describe%20your%20change...#L459' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/master/src/ng/http.js?message=docs($http)%3A%20describe%20your%20change...#L479' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 
-<a href='https://github.com/angular/angular.js/tree/master/src/ng/http.js#L459' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/master/src/ng/http.js#L479' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -327,15 +327,15 @@ for added security.</p>
 <p>The header will &mdash; by default &mdash; <strong>not</strong> be set for cross-domain requests. This
 prevents unauthorized servers (e.g. malicious or compromised 3rd-party APIs) from gaining
 access to your users&#39; XSRF tokens and exposing them to Cross Site Request Forgery. If you
-want to, you can whitelist additional origins to also receive the XSRF token, by adding them
-to <a href="api/ng/provider/$httpProvider#xsrfWhitelistedOrigins">xsrfWhitelistedOrigins</a>. This might be
+want to, you can trust additional origins to also receive the XSRF token, by adding them
+to <a href="api/ng/provider/$httpProvider#xsrfTrustedOrigins">xsrfTrustedOrigins</a>. This might be
 useful, for example, if your application, served from <code>example.com</code>, needs to access your API
 at <code>api.example.com</code>.
-See <a href="api/ng/provider/$httpProvider#xsrfWhitelistedOrigins">$httpProvider.xsrfWhitelistedOrigins</a> for
+See <a href="api/ng/provider/$httpProvider#xsrfTrustedOrigins">$httpProvider.xsrfTrustedOrigins</a> for
 more details.</p>
 <div class="alert alert-danger">
   <strong>Warning</strong><br />
-  Only whitelist origins that you have control over and make sure you understand the
+  Only trusted origins that you have control over and make sure you understand the
   implications of doing so.
 </div>
 
@@ -454,6 +454,7 @@ for more information.</p>
 
 </section>
     
+
     <h3 id="$http-returns">Returns</h3>
 <table class="variables-matrix return-arguments">
   <tr>
@@ -718,8 +719,8 @@ See <a href="api/ng/service/$http#$http-returns"><code>$http()</code> return val
     <div><p>Shortcut method to perform <code>JSONP</code> request.</p>
 <p>Note that, since JSONP requests are sensitive because the response is given full access to the browser,
 the url must be declared, via <a href="api/ng/service/$sce"><code>$sce</code></a> as a trusted resource URL.
-You can trust a URL by adding it to the whitelist via
-<a href="api/ng/provider/$sceDelegateProvider#resourceUrlWhitelist"><code>$sceDelegateProvider.resourceUrlWhitelist</code></a> or
+You can trust a URL by adding it to the trusted resource URL list via
+<a href="api/ng/provider/$sceDelegateProvider#trustedResourceUrlList"><code>$sceDelegateProvider.trustedResourceUrlList</code></a> or
 by explicitly trusting the URL via <a href="api/ng/service/$sce#trustAsResourceUrl"><code>$sce.trustAsResourceUrl(url)</code></a>.</p>
 <p>You should avoid generating the URL for the JSONP request from user provided data.
 Provide additional query parameters via <code>params</code> property of the <code>config</code> parameter, rather than
@@ -1131,7 +1132,7 @@ default headers, withCredentials as well as request and response transformations
       name="script.js"
       language="js"
       type="js">
-      <pre><code>angular.module(&#39;httpExample&#39;, [])&#10;.config([&#39;$sceDelegateProvider&#39;, function($sceDelegateProvider) {&#10;  // We must whitelist the JSONP endpoint that we are using to show that we trust it&#10;  $sceDelegateProvider.resourceUrlWhitelist([&#10;    &#39;self&#39;,&#10;    &#39;https://angularjs.org/**&#39;&#10;  ]);&#10;}])&#10;.controller(&#39;FetchController&#39;, [&#39;$scope&#39;, &#39;$http&#39;, &#39;$templateCache&#39;,&#10;  function($scope, $http, $templateCache) {&#10;    $scope.method = &#39;GET&#39;;&#10;    $scope.url = &#39;http-hello.html&#39;;&#10;&#10;    $scope.fetch = function() {&#10;      $scope.code = null;&#10;      $scope.response = null;&#10;&#10;      $http({method: $scope.method, url: $scope.url, cache: $templateCache}).&#10;        then(function(response) {&#10;          $scope.status = response.status;&#10;          $scope.data = response.data;&#10;        }, function(response) {&#10;          $scope.data = response.data || &#39;Request failed&#39;;&#10;          $scope.status = response.status;&#10;      });&#10;    };&#10;&#10;    $scope.updateModel = function(method, url) {&#10;      $scope.method = method;&#10;      $scope.url = url;&#10;    };&#10;  }]);</code></pre>
+      <pre><code>angular.module(&#39;httpExample&#39;, [])&#10;.config([&#39;$sceDelegateProvider&#39;, function($sceDelegateProvider) {&#10;  // We must add the JSONP endpoint that we are using to the trusted list to show that we trust it&#10;  $sceDelegateProvider.trustedResourceUrlList([&#10;    &#39;self&#39;,&#10;    &#39;https://angularjs.org/**&#39;&#10;  ]);&#10;}])&#10;.controller(&#39;FetchController&#39;, [&#39;$scope&#39;, &#39;$http&#39;, &#39;$templateCache&#39;,&#10;  function($scope, $http, $templateCache) {&#10;    $scope.method = &#39;GET&#39;;&#10;    $scope.url = &#39;http-hello.html&#39;;&#10;&#10;    $scope.fetch = function() {&#10;      $scope.code = null;&#10;      $scope.response = null;&#10;&#10;      $http({method: $scope.method, url: $scope.url, cache: $templateCache}).&#10;        then(function(response) {&#10;          $scope.status = response.status;&#10;          $scope.data = response.data;&#10;        }, function(response) {&#10;          $scope.data = response.data || &#39;Request failed&#39;;&#10;          $scope.status = response.status;&#10;      });&#10;    };&#10;&#10;    $scope.updateModel = function(method, url) {&#10;      $scope.method = method;&#10;      $scope.url = url;&#10;    };&#10;  }]);</code></pre>
     </div>
   
     <div class="runnable-example-file" 

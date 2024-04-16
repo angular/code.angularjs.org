@@ -112,7 +112,9 @@ considered to be objects. Note that JavaScript arrays are objects.</p>
       
       <tr>
         <td><a href="api/ng/function/angular.copy">angular.copy</a></td>
-        <td><p>Creates a deep copy of <code>source</code>, which should be an object or an array.</p>
+        <td><p>Creates a deep copy of <code>source</code>, which should be an object or an array. This functions is used
+internally, mostly in the change-detection code. It is not intended as an all-purpose copy
+function, and has several limitations (see below).</p>
 </td>
       </tr>
       
@@ -155,6 +157,15 @@ stripped since AngularJS uses this notation internally.</p>
         <td><a href="api/ng/function/angular.reloadWithDebugInfo">angular.reloadWithDebugInfo</a></td>
         <td><p>Use this function to reload the current application with debug information turned on.
 This takes precedence over a call to <code>$compileProvider.debugInfoEnabled(false)</code>.</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><a href="api/ng/function/angular.UNSAFE_restoreLegacyJqLiteXHTMLReplacement">angular.UNSAFE_restoreLegacyJqLiteXHTMLReplacement</a></td>
+        <td><p>Restores the pre-1.8 behavior of jqLite that turns XHTML-like strings like
+<code>&lt;div /&gt;&lt;span /&gt;</code> to <code>&lt;div&gt;&lt;/div&gt;&lt;span&gt;&lt;/span&gt;</code> instead of <code>&lt;div&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;</code>.
+The new behavior is a security fix. Thus, if you need to call this function, please try to adjust
+your code for this change and remove your use of this function as soon as possible.</p>
 </td>
       </tr>
       

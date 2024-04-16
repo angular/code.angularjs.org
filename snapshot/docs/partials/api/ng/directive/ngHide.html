@@ -67,6 +67,25 @@ display style.</p>
 
 
 
+<h2 id="known-issues">Known Issues</h2>
+<div class="known-issue">
+  <h3 id="flickering-when-using-nghide-to-toggle-between-elements">Flickering when using ngHide to toggle between elements</h3>
+<p>When using <a href="api/ng/directive/ngShow"><code>ngShow</code></a> and / or <a href="api/ng/directive/ngHide"><code>ngHide</code></a> to toggle between elements, it can
+happen that both the element to show and the element to hide are visible for a very short time.</p>
+<p>This usually happens when the <a href="api/ngAnimate">ngAnimate module</a> is included, but no actual animations
+are defined for <a href="api/ng/directive/ngShow"><code>ngShow</code></a> / <a href="api/ng/directive/ngHide"><code>ngHide</code></a>. Internet Explorer is affected more often than
+other browsers.</p>
+<p>There are several way to mitigate this problem:</p>
+<ul>
+<li><a href="guide/animations#how-to-selectively-enable-disable-and-skip-animations">Disable animations on the affected elements</a>.</li>
+<li>Use <a href="api/ng/directive/ngIf"><code>ngIf</code></a> or <a href="api/ng/directive/ngSwitch"><code>ngSwitch</code></a> instead of <a href="api/ng/directive/ngShow"><code>ngShow</code></a> / <a href="api/ng/directive/ngHide"><code>ngHide</code></a>.</li>
+<li>Use the special CSS selector <code>ng-hide.ng-hide-animate</code> to set <code>{display: none}</code> or similar on the affected elements.</li>
+<li>Use <code>ng-class=&quot;{&#39;ng-hide&#39;: expression}</code> instead of instead of <a href="api/ng/directive/ngShow"><code>ngShow</code></a> / <a href="api/ng/directive/ngHide"><code>ngHide</code></a>.</li>
+<li>Define an animation on the affected elements.</li>
+</ul>
+
+</div>
+
 
 <div>
   
@@ -171,7 +190,7 @@ to block during animation states - ngAnimate will automatically handle the style
   <a href="api/ngAnimate/service/$animate">Click here</a> to learn more about the steps involved in the animation.
 
   
-  <h2 id="examples">Example</h2><p>A simple example, animating the element&#39;s opacity:</p>
+  <h2 id="examples">Examples</h2><p>A simple example, animating the element&#39;s opacity:</p>
 <p>  
 
 <div>
@@ -213,9 +232,7 @@ to block during animation states - ngAnimate will automatically handle the style
 
 
 </p>
-<p><hr />
-@example
-A more complex example, featuring different show/hide animations:</p>
+<hr /><p>A more complex example, featuring different show/hide animations:</p>
 <p>  
 
 <div>
@@ -257,21 +274,6 @@ A more complex example, featuring different show/hide animations:</p>
 
 
 </p>
-<p>@knownIssue</p>
-<h3 id="flickering-when-using-nghide-to-toggle-between-elements">Flickering when using ngHide to toggle between elements</h3>
-<p>When using <a href="api/ng/directive/ngShow"><code>ngShow</code></a> and / or <a href="api/ng/directive/ngHide"><code>ngHide</code></a> to toggle between elements, it can
-happen that both the element to show and the element to hide are visible for a very short time.</p>
-<p>This usually happens when the <a href="api/ngAnimate">ngAnimate module</a> is included, but no actual animations
-are defined for <a href="api/ng/directive/ngShow"><code>ngShow</code></a> / <a href="api/ng/directive/ngHide"><code>ngHide</code></a>. Internet Explorer is affected more often than
-other browsers.</p>
-<p>There are several way to mitigate this problem:</p>
-<ul>
-<li><a href="guide/animations#how-to-selectively-enable-disable-and-skip-animations">Disable animations on the affected elements</a>.</li>
-<li>Use <a href="api/ng/directive/ngIf"><code>ngIf</code></a> or <a href="api/ng/directive/ngSwitch"><code>ngSwitch</code></a> instead of <a href="api/ng/directive/ngShow"><code>ngShow</code></a> / <a href="api/ng/directive/ngHide"><code>ngHide</code></a>.</li>
-<li>Use the special CSS selector <code>ng-hide.ng-hide-animate</code> to set <code>{display: none}</code> or similar on the affected elements.</li>
-<li>Use <code>ng-class=&quot;{&#39;ng-hide&#39;: expression}</code> instead of instead of <a href="api/ng/directive/ngShow"><code>ngShow</code></a> / <a href="api/ng/directive/ngHide"><code>ngHide</code></a>.</li>
-<li>Define an animation on the affected elements.</li>
-</ul>
 
 </div>
 

@@ -1,8 +1,8 @@
-<a href='https://github.com/angular/angular.js/edit/master/src/ng/directive/input.js?message=docs(input[time])%3A%20describe%20your%20change...#L345' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/master/src/ng/directive/input.js?message=docs(input[time])%3A%20describe%20your%20change...#L349' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 
-<a href='https://github.com/angular/angular.js/tree/master/src/ng/directive/input.js#L345' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/master/src/ng/directive/input.js#L349' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -30,7 +30,11 @@ Date object to the model of January 1, 1970, or local date <code>new Date(1970, 
 <p>The model must always be a Date object, otherwise AngularJS will throw an error.
 Invalid <code>Date</code> objects (dates whose <code>getTime()</code> is <code>NaN</code>) will be rendered as an empty string.</p>
 <p>The timezone to be used to read/write the <code>Date</code> instance in the model can be defined using
-<a href="api/ng/directive/ngModelOptions">ngModelOptions</a>. By default, this is the timezone of the browser.</p>
+<a href="api/ng/directive/ngModelOptions#ngModelOptions-arguments">ngModelOptions</a>. By default,
+this is the timezone of the browser.</p>
+<p>The format of the displayed time can be adjusted with the
+<a href="api/ng/directive/ngModelOptions#ngModelOptions-arguments">ngModelOptions</a> <code>timeSecondsFormat</code>
+and <code>timeStripZeroSeconds</code>.</p>
 
 </div>
 

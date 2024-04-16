@@ -28,11 +28,11 @@
 <div class="api-profile-description">
   <h2 id="overview">Overview</h2>
   <p>Sanitizes an html string by stripping all potentially dangerous tokens.</p>
-<p>  The input is sanitized by parsing the HTML into tokens. All safe tokens (from a whitelist) are
+<p>  The input is sanitized by parsing the HTML into tokens. All safe tokens (from a trusted URI list) are
   then serialized back to a properly escaped HTML string. This means that no unsafe input can make
   it into the returned string.</p>
-<p>  The whitelist for URL sanitization of attribute values is configured using the functions
-  <code>aHrefSanitizationWhitelist</code> and <code>imgSrcSanitizationWhitelist</code> of <a href="api/ng/provider/$compileProvider"><code>$compileProvider</code></a>.</p>
+<p>  The trusted URIs for URL sanitization of attribute values is configured using the functions
+  <code>aHrefSanitizationTrustedUrlList</code> and <code>imgSrcSanitizationTrustedUrlList</code> of <a href="api/ng/provider/$compileProvider"><code>$compileProvider</code></a>.</p>
 <p>  The input may also contain SVG markup if this is enabled via <a href="api/ngSanitize/provider/$sanitizeProvider"><code>$sanitizeProvider</code></a>.</p>
 
 </div>
@@ -87,6 +87,7 @@
 
 </section>
     
+
     <h3 id="$sanitize-returns">Returns</h3>
 <table class="variables-matrix return-arguments">
   <tr>

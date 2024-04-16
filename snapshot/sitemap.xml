@@ -22,6 +22,9 @@
     <loc>https://docs.angularjs.org/error/$compile/ctreq</loc>
   </url>
   <url>
+    <loc>https://docs.angularjs.org/error/$compile/ctxoverride</loc>
+  </url>
+  <url>
     <loc>https://docs.angularjs.org/error/$compile/infchng</loc>
   </url>
   <url>
@@ -577,6 +580,9 @@
     <loc>https://docs.angularjs.org/api/ng/function/angular.reloadWithDebugInfo</loc>
   </url>
   <url>
+    <loc>https://docs.angularjs.org/api/ng/function/angular.UNSAFE_restoreLegacyJqLiteXHTMLReplacement</loc>
+  </url>
+  <url>
     <loc>https://docs.angularjs.org/api/ng/object/angular.version</loc>
   </url>
   <url>
@@ -629,6 +635,12 @@
   </url>
   <url>
     <loc>https://docs.angularjs.org/api/ng/service/$compile</loc>
+  </url>
+  <url>
+    <loc>https://docs.angularjs.org/api/ng/directive/ngProp</loc>
+  </url>
+  <url>
+    <loc>https://docs.angularjs.org/api/ng/directive/ngOn</loc>
   </url>
   <url>
     <loc>https://docs.angularjs.org/api/ng/provider/$compileProvider</loc>
@@ -1099,6 +1111,12 @@
     <loc>https://docs.angularjs.org/api/ngMock/object/angular.mock</loc>
   </url>
   <url>
+    <loc>https://docs.angularjs.org/api/ngMock/service/$flushPendingTasks</loc>
+  </url>
+  <url>
+    <loc>https://docs.angularjs.org/api/ngMock/service/$verifyNoPendingTasks</loc>
+  </url>
+  <url>
     <loc>https://docs.angularjs.org/api/ngMock/provider/$exceptionHandlerProvider</loc>
   </url>
   <url>
@@ -1354,10 +1372,10 @@
     <loc>https://docs.angularjs.org/api/ngMock/object</loc>
   </url>
   <url>
-    <loc>https://docs.angularjs.org/api/ngMock/provider</loc>
+    <loc>https://docs.angularjs.org/api/ngMock/service</loc>
   </url>
   <url>
-    <loc>https://docs.angularjs.org/api/ngMock/service</loc>
+    <loc>https://docs.angularjs.org/api/ngMock/provider</loc>
   </url>
   <url>
     <loc>https://docs.angularjs.org/api/ngMock/type</loc>

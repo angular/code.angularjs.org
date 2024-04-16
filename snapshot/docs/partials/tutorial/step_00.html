@@ -33,8 +33,8 @@ The code contains some key AngularJS elements that we will need as we progress.<
   &lt;head&gt;
     &lt;meta charset=&quot;utf-8&quot;&gt;
     &lt;title&gt;My HTML File&lt;/title&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;bower_components/bootstrap/dist/css/bootstrap.css&quot; /&gt;
-    &lt;script src=&quot;bower_components/angular/angular.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;lib/bootstrap/dist/css/bootstrap.css&quot; /&gt;
+    &lt;script src=&quot;lib/angular/angular.js&quot;&gt;&lt;/script&gt;
   &lt;/head&gt;
   &lt;body&gt;
 
@@ -56,7 +56,7 @@ page or only a portion of it should be treated as the AngularJS application.</p>
 <p>For more info on <code>ngApp</code>, check out the <a href="api/ng/directive/ngApp">API Reference</a>.</p>
 <p><br />
 <strong><code>angular.js</code> script tag:</strong></p>
-<pre><code class="lang-html">&lt;script src=&quot;bower_components/angular/angular.js&quot;&gt;&lt;/script&gt;
+<pre><code class="lang-html">&lt;script src=&quot;lib/angular/angular.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 <p>This code downloads the <code>angular.js</code> script which registers a callback that will be executed by the
 browser when the containing HTML page is fully downloaded. When the callback is executed, AngularJS
@@ -109,15 +109,15 @@ and one static binding, and our model is empty. That will soon change!</p>
 <h2 id="what-are-all-these-files-in-my-working-directory-">What are all these files in my working directory?</h2>
 <p>Most of the files in your working directory come from the <a href="https://github.com/angular/angular-seed">angular-seed project</a>,
 which is typically used to bootstrap new AngularJS projects. The seed project is pre-configured to
-install the AngularJS framework (via <code>bower</code> into the <code>app/bower_components/</code> directory) and tools
-for developing and testing a typical web application (via <code>npm</code>).</p>
+install the AngularJS framework (via <code>npm</code> into the <code>app/lib/</code> directory) and tools for developing
+and testing a typical web application (via <code>npm</code>).</p>
 <p>For the purposes of this tutorial, we modified the angular-seed with the following changes:</p>
 <ul>
 <li>Removed the example app.</li>
 <li>Removed unused dependencies.</li>
 <li>Added phone images to <code>app/img/phones/</code>.</li>
 <li>Added phone data files (JSON) to <code>app/phones/</code>.</li>
-<li>Added a dependency on <a href="http://getbootstrap.com">Bootstrap</a> in the <code>bower.json</code> file.</li>
+<li>Added a dependency on <a href="https://getbootstrap.com/docs/3.3">Bootstrap</a> in the <code>package.json</code> file.</li>
 </ul>
 <h2 id="experiments">Experiments</h2>
 <div></div>

@@ -1,8 +1,8 @@
-<a href='https://github.com/angular/angular.js/edit/master/src/ngMock/angular-mocks.js?message=docs($httpBackend)%3A%20describe%20your%20change...#L1025' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/master/src/ngMock/angular-mocks.js?message=docs($httpBackend)%3A%20describe%20your%20change...#L1126' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 
-<a href='https://github.com/angular/angular.js/tree/master/src/ngMock/angular-mocks.js#L1025' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/master/src/ngMock/angular-mocks.js#L1126' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -246,7 +246,7 @@ $httpBackend.whenPATCH(/\/user\/(.+)\/article\/(.+)/, undefined, undefined, [&#3
 </code></pre>
 <h2 id="matching-route-requests">Matching route requests</h2>
 <p>For extra convenience, <code>whenRoute</code> and <code>expectRoute</code> shortcuts are available. These methods offer colon
-delimited matching of the url path, ignoring the query string. This allows declarations
+delimited matching of the url path, ignoring the query string and trailing slashes. This allows declarations
 similar to how application routes are configured with <code>$routeProvider</code>. Because these methods convert
 the definition url to regex, declaration order is important. Combined with query parameter parsing,
 the following is possible:</p>
@@ -425,8 +425,9 @@ $httpBackend.whenRoute(&#39;GET&#39;, &#39;/users&#39;)
 </code></pre>
 – The respond method takes a set of static data to be returned or a function that can
 return an array containing response status (number), response data (Array|Object|string),
-response headers (Object), and the text for the status (string). The respond method returns
-the <code>requestHandler</code> object for possible overrides.</li>
+response headers (Object), HTTP status text (string), and XMLHttpRequest status (string:
+<code>complete</code>, <code>error</code>, <code>timeout</code> or <code>abort</code>). The respond method returns the <code>requestHandler</code>
+object for possible overrides.</li>
 </ul>
 </td>
   </tr>
@@ -434,26 +435,26 @@ the <code>requestHandler</code> object for possible overrides.</li>
     </li>
   
   <li>
-    <h3 id="matchLatestDefinition"><p><code>matchLatestDefinition([value]);</code></p>
+    <h3 id="matchLatestDefinitionEnabled"><p><code>matchLatestDefinitionEnabled([value]);</code></p>
 
 </h3>
     <div><p>This method can be used to change which mocked responses <code>$httpBackend</code> returns, when defining
 them with <a href="api/ngMock/service/$httpBackend#when">$httpBackend.when()</a> (and shortcut methods).
 By default, <code>$httpBackend</code> returns the first definition that matches. When setting
-<code>$http.matchLatestDefinition(true)</code>, it will use the last response that matches, i.e. the
+<code>$http.matchLatestDefinitionEnabled(true)</code>, it will use the last response that matches, i.e. the
 one that was added last.</p>
 <pre><code class="lang-js">hb.when(&#39;GET&#39;, &#39;/url1&#39;).respond(200, &#39;content&#39;, {});
 hb.when(&#39;GET&#39;, &#39;/url1&#39;).respond(201, &#39;another&#39;, {});
 hb(&#39;GET&#39;, &#39;/url1&#39;); // receives &quot;content&quot;
 
-$http.matchLatestDefinition(true)
+$http.matchLatestDefinitionEnabled(true)
 hb(&#39;GET&#39;, &#39;/url1&#39;); // receives &quot;another&quot;
 
 hb.when(&#39;GET&#39;, &#39;/url1&#39;).respond(201, &#39;onemore&#39;, {});
 hb(&#39;GET&#39;, &#39;/url1&#39;); // receives &quot;onemore&quot;
 </code></pre>
 <p>This is useful if a you have a default response that is overriden inside specific tests.</p>
-<p>Note that different from config methods on providers, <code>matchLatestDefinition()</code> can be changed
+<p>Note that different from config methods on providers, <code>matchLatestDefinitionEnabled()</code> can be changed
 even when the application is already running.</p>
 </div>
 
@@ -1274,13 +1275,14 @@ See <a href="api/ngMock/service/$httpBackend#when"><code>when</code></a> for mor
  request is handled. You can save this object for later use and invoke <code>respond</code> again in
  order to change how a matched request is handled.</p>
 <ul>
-<li>respond –<pre><code>{ function([status,] data[, headers, statusText])
+<li>respond –<pre><code class="lang-js">{function([status,] data[, headers, statusText])
 | function(function(method, url, data, headers, params)}
 </code></pre>
 – The respond method takes a set of static data to be returned or a function that can
 return an array containing response status (number), response data (Array|Object|string),
-response headers (Object), and the text for the status (string). The respond method returns
-the <code>requestHandler</code> object for possible overrides.</li>
+response headers (Object), HTTP status text (string), and XMLHttpRequest status (string:
+<code>complete</code>, <code>error</code>, <code>timeout</code> or <code>abort</code>). The respond method returns the <code>requestHandler</code>
+object for possible overrides.</li>
 </ul>
 </td>
   </tr>

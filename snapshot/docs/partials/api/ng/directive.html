@@ -28,6 +28,26 @@ of the page - e.g. on the <code>&lt;body&gt;</code> or <code>&lt;html&gt;</code>
       </tr>
       
       <tr>
+        <td><a href="api/ng/directive/ngProp">ngProp</a></td>
+        <td><p>The <code>ngProp</code> directive binds an expression to a DOM element property.
+<code>ngProp</code> allows writing to arbitrary properties by including
+the property name in the attribute, e.g. <code>ng-prop-value=&quot;&#39;my value&#39;&quot;</code> binds &#39;my value&#39; to
+the <code>value</code> property.</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><a href="api/ng/directive/ngOn">ngOn</a></td>
+        <td><p>The <code>ngOn</code> directive adds an event listener to a DOM element via
+<a href="api/ng/function/angular.element">angular.element().on()</a>, and evaluates an expression when the event is
+fired.
+<code>ngOn</code> allows adding listeners for arbitrary events by including
+the event name in the attribute, e.g. <code>ng-on-drop=&quot;onDrop()&quot;</code> executes the &#39;onDrop()&#39; expression
+when the <code>drop</code> event is fired.</p>
+</td>
+      </tr>
+      
+      <tr>
         <td><a href="api/ng/directive/a">a</a></td>
         <td><p>Modifies the default behavior of the html a tag so that the default action is prevented when
 the href attribute is empty.</p>

@@ -2,8 +2,8 @@
   'use strict';
 angular.module('httpExample', [])
   .config(['$sceDelegateProvider', function($sceDelegateProvider) {
-    // We must whitelist the JSONP endpoint that we are using to show that we trust it
-    $sceDelegateProvider.resourceUrlWhitelist([
+    // We must add the JSONP endpoint that we are using to the trusted list to show that we trust it
+    $sceDelegateProvider.trustedResourceUrlList([
       'self',
       'https://angularjs.org/**'
     ]);

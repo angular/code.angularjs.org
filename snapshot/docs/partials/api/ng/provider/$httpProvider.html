@@ -191,7 +191,7 @@ array, on request, but reverse order, on response.</p>
   </li>
   
   <li>
-    <h3 id="xsrfWhitelistedOrigins"><code>xsrfWhitelistedOrigins</code></h3>
+    <h3 id="xsrfTrustedOrigins"><code>xsrfTrustedOrigins</code></h3>
     <table class="variables-matrix return-arguments">
   <tr>
     <td></td>
@@ -204,7 +204,7 @@ the <a href="https://en.wikipedia.org/wiki/Hostname">hostname</a> and the
 <code>https:</code>, the port number can be omitted if using th default ports (80 and 443 respectively).
 Examples: <code>http://example.com</code>, <code>https://api.example.com:9876</code></p>
 <div class="alert alert-warning">
-  It is not possible to whitelist specific URLs/paths. The <code>path</code>, <code>query</code> and <code>fragment</code> parts
+  It is not possible to trust specific URLs/paths. The <code>path</code>, <code>query</code> and <code>fragment</code> parts
   of a URL will be ignored. For example, <code>https://foo.com/path/bar?query=baz#fragment</code> will be
   treated as <code>https://foo.com</code>, meaning that <strong>all</strong> requests to URLs starting with
   <code>https://foo.com/</code> will include the XSRF token.
@@ -212,6 +212,27 @@ Examples: <code>http://example.com</code>, <code>https://api.example.com:9876</c
   </tr>
 </table>
     
+  </li>
+  
+  <li>
+    <h3 id="xsrfWhitelistedOrigins"><code>xsrfWhitelistedOrigins</code></h3>
+    <table class="variables-matrix return-arguments">
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+    
+<div class="alert alert-danger deprecation">
+  <div class="title"><strong>Deprecated:</strong>
+    <span class="since">(since 1.8.1) </span>
+    
+  </div>
+  <p>This property is deprecated. Use <a href="api/ng/provider/$httpProvider#xsrfTrustedOrigins">xsrfTrustedOrigins</a>
+instead.</p>
+
+</div>
+
   </li>
   </ul>
 

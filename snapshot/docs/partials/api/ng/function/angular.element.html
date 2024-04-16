@@ -81,6 +81,14 @@ As a setter, does not convert numbers to strings or append &#39;px&#39;, and als
 <li><a href="http://api.jquery.com/val/"><code>val()</code></a></li>
 <li><a href="http://api.jquery.com/wrap/"><code>wrap()</code></a></li>
 </ul>
+<p>jqLite also provides a method restoring pre-1.8 insecure treatment of XHTML-like tags.
+This legacy behavior turns input like <code>&lt;div /&gt;&lt;span /&gt;</code> to <code>&lt;div&gt;&lt;/div&gt;&lt;span&gt;&lt;/span&gt;</code>
+instead of <code>&lt;div&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;</code> like version 1.8 &amp; newer do. To restore it, invoke:</p>
+<pre><code class="lang-js">angular.UNSAFE_restoreLegacyJqLiteXHTMLReplacement();
+</code></pre>
+<p>Note that this only patches jqLite. If you use jQuery 3.5.0 or newer, please read the
+<a href="https://jquery.com/upgrade-guide/3.5/">jQuery 3.5 upgrade guide</a> for more details
+about the workarounds.</p>
 <h2 id="jquery-jqlite-extras">jQuery/jqLite Extras</h2>
 <p>AngularJS also provides the following additional methods and events to both jQuery and jqLite:</p>
 <h3 id="events">Events</h3>
@@ -166,6 +174,7 @@ parent element is reached.</li>
 
 </section>
     
+
     <h3 id="angular.element-returns">Returns</h3>
 <table class="variables-matrix return-arguments">
   <tr>

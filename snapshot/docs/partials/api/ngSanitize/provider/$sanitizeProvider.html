@@ -217,8 +217,8 @@ not stripped off during sanitization.</p>
 <p><strong>Note</strong>:
 The new attributes will not be treated as URI attributes, which means their values will not be
 sanitized as URIs using <code>$compileProvider</code>&#39;s
-<a href="api/ng/provider/$compileProvider#aHrefSanitizationWhitelist">aHrefSanitizationWhitelist</a> and
-<a href="api/ng/provider/$compileProvider#imgSrcSanitizationWhitelist">imgSrcSanitizationWhitelist</a>.</p>
+<a href="api/ng/provider/$compileProvider#aHrefSanitizationTrustedUrlList">aHrefSanitizationTrustedUrlList</a> and
+<a href="api/ng/provider/$compileProvider#imgSrcSanitizationTrustedUrlList">imgSrcSanitizationTrustedUrlList</a>.</p>
 <div class="alert alert-info">
   This method must be called during the <a href="api/ng/type/angular.Module#config">config</a> phase. Once the
   <code>$sanitize</code> service has been instantiated, this method has no effect.

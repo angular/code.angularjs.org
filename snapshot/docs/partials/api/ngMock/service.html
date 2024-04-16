@@ -12,6 +12,19 @@
       </tr>
       
       <tr>
+        <td><a href="api/ngMock/service/$flushPendingTasks">$flushPendingTasks</a></td>
+        <td><p>Flushes all currently pending tasks and executes the corresponding callbacks.</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><a href="api/ngMock/service/$verifyNoPendingTasks">$verifyNoPendingTasks</a></td>
+        <td><p>Verifies that there are no pending tasks that need to be flushed. It throws an error if there are
+still pending tasks.</p>
+</td>
+      </tr>
+      
+      <tr>
         <td><a href="api/ngMock/service/$exceptionHandler">$exceptionHandler</a></td>
         <td><p>Mock implementation of <a href="api/ng/service/$exceptionHandler"><code>$exceptionHandler</code></a> that rethrows or logs errors passed
 to it. See <a href="api/ngMock/provider/$exceptionHandlerProvider">$exceptionHandlerProvider</a> for configuration

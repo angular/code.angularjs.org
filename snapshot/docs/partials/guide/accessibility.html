@@ -198,7 +198,7 @@ shown or hidden by removing or adding the <code>.ng-hide</code> CSS class onto t
 <code>display: none</code>. See explanation for <a href="guide/accessibility#ngshow">ngShow</a> when overriding the default CSS.</p>
 <h2><span id="ngclick">ngClick</span> and <span id="ngdblclick">ngDblclick</span></h2>
 If <code>ng-click</code> or <code>ng-dblclick</code> is encountered, ngAria will add <code>tabindex=&quot;0&quot;</code> to any element not in
-a node blacklist:
+the list of built in aria nodes:
 
  <em> Button
  </em> Anchor
@@ -208,7 +208,8 @@ a node blacklist:
  </em> Details/Summary
 
 To fix widespread accessibility problems with <code>ng-click</code> on <code>div</code> elements, ngAria will
-dynamically bind a keypress event by default as long as the element isn&#39;t in the node blacklist.
+dynamically bind a keypress event by default as long as the element isn&#39;t in a node from the list of
+built in aria nodes.
 You can turn this functionality on or off with the <code>bindKeypress</code> configuration option.
 
 ngAria will also add the <code>button</code> role to communicate to users of assistive technologies. This can

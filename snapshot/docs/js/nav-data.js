@@ -18,6 +18,11 @@ angular.module('navData', [])
             "href": "api/ng/function"
           },
           {
+            "name": "angular.UNSAFE_restoreLegacyJqLiteXHTMLReplacement",
+            "href": "api/ng/function/angular.UNSAFE_restoreLegacyJqLiteXHTMLReplacement",
+            "type": "function"
+          },
+          {
             "name": "angular.bind",
             "href": "api/ng/function/angular.bind",
             "type": "function"
@@ -428,6 +433,11 @@ angular.module('navData', [])
             "type": "directive"
           },
           {
+            "name": "ngOn",
+            "href": "api/ng/directive/ngOn",
+            "type": "directive"
+          },
+          {
             "name": "ngOpen",
             "href": "api/ng/directive/ngOpen",
             "type": "directive"
@@ -450,6 +460,11 @@ angular.module('navData', [])
           {
             "name": "ngPluralize",
             "href": "api/ng/directive/ngPluralize",
+            "type": "directive"
+          },
+          {
+            "name": "ngProp",
+            "href": "api/ng/directive/ngProp",
             "type": "directive"
           },
           {
@@ -1113,16 +1128,6 @@ angular.module('navData', [])
             "type": "object"
           },
           {
-            "name": "provider",
-            "type": "section",
-            "href": "api/ngMock/provider"
-          },
-          {
-            "name": "$exceptionHandlerProvider",
-            "href": "api/ngMock/provider/$exceptionHandlerProvider",
-            "type": "provider"
-          },
-          {
             "name": "service",
             "type": "section",
             "href": "api/ngMock/service"
@@ -1148,6 +1153,11 @@ angular.module('navData', [])
             "type": "service"
           },
           {
+            "name": "$flushPendingTasks",
+            "href": "api/ngMock/service/$flushPendingTasks",
+            "type": "service"
+          },
+          {
             "name": "$httpBackend",
             "href": "api/ngMock/service/$httpBackend",
             "type": "service"
@@ -1166,6 +1176,21 @@ angular.module('navData', [])
             "name": "$timeout",
             "href": "api/ngMock/service/$timeout",
             "type": "service"
+          },
+          {
+            "name": "$verifyNoPendingTasks",
+            "href": "api/ngMock/service/$verifyNoPendingTasks",
+            "type": "service"
+          },
+          {
+            "name": "provider",
+            "type": "section",
+            "href": "api/ngMock/provider"
+          },
+          {
+            "name": "$exceptionHandlerProvider",
+            "href": "api/ngMock/provider/$exceptionHandlerProvider",
+            "type": "provider"
           },
           {
             "name": "type",
@@ -1387,6 +1412,11 @@ angular.module('navData', [])
         "href": "error",
         "navItems": [
           {
+            "name": "Error Reference",
+            "href": "error",
+            "type": "error"
+          },
+          {
             "name": "$animate",
             "href": "error/$animate",
             "type": "section"
@@ -1429,6 +1459,11 @@ angular.module('navData', [])
           {
             "name": "ctreq",
             "href": "error/$compile/ctreq",
+            "type": "error"
+          },
+          {
+            "name": "ctxoverride",
+            "href": "error/$compile/ctxoverride",
             "type": "error"
           },
           {
@@ -2230,11 +2265,6 @@ angular.module('navData', [])
             "type": "page"
           },
           {
-            "name": "Security",
-            "href": "guide/security",
-            "type": "page"
-          },
-          {
             "name": "Accessibility",
             "href": "guide/accessibility",
             "type": "page"
@@ -2242,6 +2272,16 @@ angular.module('navData', [])
           {
             "name": "Internet Explorer Compatibility",
             "href": "guide/ie",
+            "type": "page"
+          },
+          {
+            "name": "Developer Guide",
+            "href": "guide",
+            "type": "page"
+          },
+          {
+            "name": "Security",
+            "href": "guide/security",
             "type": "page"
           },
           {
@@ -2267,6 +2307,11 @@ angular.module('navData', [])
         "type": "group",
         "href": "misc",
         "navItems": [
+          {
+            "name": "Miscellaneous",
+            "href": "misc",
+            "type": "page"
+          },
           {
             "name": "Develop",
             "href": "misc/contribute",
@@ -2305,6 +2350,12 @@ angular.module('navData', [])
         "type": "group",
         "href": "tutorial",
         "navItems": [
+          {
+            "name": "Tutorial",
+            "step": -1,
+            "href": "tutorial",
+            "type": "tutorial"
+          },
           {
             "name": "0 - Bootstrapping",
             "step": 0,

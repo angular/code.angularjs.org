@@ -68,7 +68,22 @@ their DOM-related operations (enter, leave and move). Other directives such as <
    }
 );
 </code></pre>
-</div>
+<div class="alert alert-warning">
+<strong>Note</strong>: Generally, the events that are fired correspond 1:1 to <code>$animate</code> method names,
+e.g. <a href="api/ng/service/$animate#addClass">addClass()</a> will fire <code>addClass</code>, and <a href="api/ng/directive/ngClass"><code>ngClass</code></a>
+will fire <code>addClass</code> if classes are added, and <code>removeClass</code> if classes are removed.
+However, there are two exceptions:
+
+<ul>
+  <li>if both an <a href="api/ng/service/$animate#addClass">addClass()</a> and a
+  <a href="api/ng/service/$animate#removeClass">removeClass()</a> action are performed during the same
+  animation, the event fired will be <code>setClass</code>. This is true even for <code>ngClass</code>.</li>
+  <li>an <a href="api/ng/service/$animate#animate">animate()</a> call that adds and removes classes will fire
+  the <code>setClass</code> event, but if it either removes or adds classes,
+  it will fire <code>animate</code> instead.</li>
+</ul>
+
+</div></div>
 
     
 
@@ -128,12 +143,21 @@ their DOM-related operations (enter, leave and move). Other directives such as <
         <a href="" class="label type-hint type-hint-function">Function</a>
       </td>
       <td>
-        <p>the callback function that will be fired when the listener is triggered</p>
+        <p>the callback function that will be fired when the listener is triggered.</p>
 <p>The arguments present in the callback function are:</p>
 <ul>
 <li><code>element</code> - The captured DOM element that the animation was fired on.</li>
 <li><code>phase</code> - The phase of the animation. The two possible phases are <strong>start</strong> (when the animation starts) and <strong>close</strong> (when it ends).</li>
+<li><code>data</code> - an object with these properties:<ul>
+<li>addClass - <code>{string|null}</code> - space-separated CSS classes to add to the element</li>
+<li>removeClass - <code>{string|null}</code> - space-separated CSS classes to remove from the element</li>
+<li>from - <code>{Object|null}</code> - CSS properties &amp; values at the beginning of the animation</li>
+<li>to - <code>{Object|null}</code> - CSS properties &amp; values at the end of the animation</li>
 </ul>
+</li>
+</ul>
+<p>Note that the callback does not trigger a scope digest. Wrap your call into a
+<a href="api/ng/type/$rootScope.Scope#$apply">scope.$apply</a> to propagate changes to the scope.</p>
 
         
       </td>
@@ -880,9 +904,8 @@ digest once the animation has completed.</p>
         <p>an optional collection of options/styles that will be applied to the element.
   The object can have the following properties:</p>
 <ul>
-<li><strong>addClass</strong> - <code>{string}</code> - space-separated CSS classes to add to element</li>
-<li><strong>from</strong> - <code>{Object}</code> - CSS properties &amp; values at the beginning of animation. Must have matching <code>to</code></li>
 <li><strong>removeClass</strong> - <code>{string}</code> - space-separated CSS classes to remove from element</li>
+<li><strong>from</strong> - <code>{Object}</code> - CSS properties &amp; values at the beginning of animation. Must have matching <code>to</code></li>
 <li><strong>to</strong> - <code>{Object}</code> - CSS properties &amp; values at end of animation. Must have matching <code>from</code></li>
 </ul>
 
@@ -982,7 +1005,6 @@ digest once the animation has completed.</p>
 <ul>
 <li><strong>addClass</strong> - <code>{string}</code> - space-separated CSS classes to add to element</li>
 <li><strong>from</strong> - <code>{Object}</code> - CSS properties &amp; values at the beginning of animation. Must have matching <code>to</code></li>
-<li><strong>removeClass</strong> - <code>{string}</code> - space-separated CSS classes to remove from element</li>
 <li><strong>to</strong> - <code>{Object}</code> - CSS properties &amp; values at end of animation. Must have matching <code>from</code></li>
 </ul>
 
@@ -1097,8 +1119,8 @@ digest once the animation has completed.</p>
   The object can have the following properties:</p>
 <ul>
 <li><strong>addClass</strong> - <code>{string}</code> - space-separated CSS classes to add to element</li>
-<li><strong>from</strong> - <code>{Object}</code> - CSS properties &amp; values at the beginning of animation. Must have matching <code>to</code></li>
 <li><strong>removeClass</strong> - <code>{string}</code> - space-separated CSS classes to remove from element</li>
+<li><strong>from</strong> - <code>{Object}</code> - CSS properties &amp; values at the beginning of animation. Must have matching <code>to</code></li>
 <li><strong>to</strong> - <code>{Object}</code> - CSS properties &amp; values at end of animation. Must have matching <code>from</code></li>
 </ul>
 

@@ -24,70 +24,45 @@
     })();
   </script>
   <script type="text/javascript">
-    // dynamically add base tag as well as css and javascript files.
-    // we can't add css/js the usual way, because some browsers (FF) eagerly prefetch resources
-    // before the base attribute is added, causing 404 and terribly slow loading of the docs app.
+    // Dynamically add `<base>` tag.
     (function() {
-      var indexFile = (location.pathname.match(/\/(index[^\.]*\.html)/) || ['', ''])[1],
-          rUrl = /(#!\/|api|guide|misc|tutorial|error|index[^\.]*\.html).*$/,
+      var indexFile = (location.pathname.match(/\/(index[^.]*\.html)/) || ['', ''])[1],
+          rUrl = /(#!\/|api|guide|misc|tutorial|error|index[^.]*\.html).*$/,
           baseUrl = location.href.replace(rUrl, indexFile),
-          production = location.hostname === 'docs.angularjs.org',
           headEl = document.getElementsByTagName('head')[0],
-          sync = true;
+          baseEl = document.createElement('base');
 
-      addTag('base', {href: baseUrl});
-
-
-      addTag('link', {rel: 'stylesheet', href: 'components/bootstrap-3.1.1/css/bootstrap.min.css', type: 'text/css'});
-      addTag('link', {rel: 'stylesheet', href: 'css/prettify-theme.css', type: 'text/css'});
-      addTag('link', {rel: 'stylesheet', href: 'css/angular-topnav.css', type: 'text/css'});
-      addTag('link', {rel: 'stylesheet', href: 'css/docs.css', type: 'text/css'});
-      addTag('link', {rel: 'stylesheet', href: 'css/animations.css', type: 'text/css'});
-      
-
-      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.7.0/angular.min.js' }, sync);
-      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.7.0/angular-resource.min.js' }, sync);
-      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.7.0/angular-route.min.js' }, sync);
-      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.7.0/angular-cookies.min.js' }, sync);
-      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.7.0/angular-sanitize.min.js' }, sync);
-      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.7.0/angular-touch.min.js' }, sync);
-      addTag('script', {src: '//ajax.googleapis.com/ajax/libs/angularjs/1.7.0/angular-animate.min.js' }, sync);
-      addTag('script', {src: 'components/marked-0.3.6/marked.min.js' }, sync);
-      addTag('script', {src: 'js/angular-bootstrap/dropdown-toggle.min.js' }, sync);
-      addTag('script', {src: 'components/lunr-0.7.2/lunr.min.js' }, sync);
-      addTag('script', {src: 'components/google-code-prettify-1.0.1/src/prettify.js' }, sync);
-      addTag('script', {src: 'components/google-code-prettify-1.0.1/src/lang-css.js' }, sync);
-      addTag('script', {src: 'js/current-version-data.js' }, sync);
-      addTag('script', {src: 'https://code.angularjs.org/snapshot/docs/js/all-versions-data.js' }, sync);
-      addTag('script', {src: 'js/pages-data.js' }, sync);
-      addTag('script', {src: 'js/nav-data.js' }, sync);
-      addTag('script', {src: 'js/docs.min.js' }, sync);
-      
-
-      function addTag(name, attributes, sync) {
-        var el = document.createElement(name),
-            attrName;
-
-        for (attrName in attributes) {
-          el.setAttribute(attrName, attributes[attrName]);
-        }
-
-        sync ? document.write(outerHTML(el)) : headEl.appendChild(el);
-      }
-
-      function outerHTML(node){
-        // if IE, Chrome take the internal method otherwise build one
-        return node.outerHTML || (
-            function(n){
-                var div = document.createElement('div'), h;
-                div.appendChild(n);
-                h = div.innerHTML;
-                div = null;
-                return h;
-            })(node);
-      }
+      baseEl.setAttribute('href', baseUrl);
+      headEl.appendChild(baseEl);
     })();
+  </script>
 
+  
+  <link rel="stylesheet" href="components/bootstrap-3.1.1/css/bootstrap.min.css" type="text/css"></link>
+  <link rel="stylesheet" href="css/prettify-theme.css" type="text/css"></link>
+  <link rel="stylesheet" href="css/angular-topnav.css" type="text/css"></link>
+  <link rel="stylesheet" href="css/docs.css" type="text/css"></link>
+  <link rel="stylesheet" href="css/animations.css" type="text/css"></link>
+  
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular-resource.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular-route.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular-cookies.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular-sanitize.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular-touch.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular-animate.min.js"></script>
+  <script src="components/marked-0.3.6/marked.min.js"></script>
+  <script src="js/angular-bootstrap/dropdown-toggle.min.js"></script>
+  <script src="components/lunr-0.7.2/lunr.min.js"></script>
+  <script src="components/google-code-prettify-1.0.1/src/prettify.js"></script>
+  <script src="components/google-code-prettify-1.0.1/src/lang-css.js"></script>
+  <script src="js/current-version-data.js"></script>
+  <script src="https://code.angularjs.org/snapshot/docs/js/all-versions-data.js"></script>
+  <script src="js/pages-data.js"></script>
+  <script src="js/nav-data.js"></script>
+  <script src="js/docs.min.js"></script>
+
+  <script type="text/javascript">
     // GA asynchronous tracker
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-8594346-3']);
@@ -176,21 +151,18 @@
           </div>
         </div>
       </nav>
-      <nav id="navbar-notice" class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-          <div class="container">
-            <p class="site-notice visible-phone">
-              This site refers to AngularJS (v1.x). <a href="https://angular.io/">Go to the latest Angular</a>.
-            </p>
-            <p class="site-notice visible-desktop">
-              This site and all of its contents are referring to AngularJS (version 1.x),
-              if you are looking for the latest Angular, please visit <a href="https://angular.io/">angular.io</a>.
-            </p>
-          </div>
-        </div>
-      </nav>
       <nav id="navbar-sub" class="sup-header navbar navbar-fixed-top" scroll-y-offset-element ng-cloak>
         <div class="container main-grid main-header-grid">
+        <p class="site-notice">
+              AngularJS support has officially ended as of January 2022.
+              <a href="https://docs.angularjs.org/misc/version-support-status">
+                See what ending support means
+              </a> and
+              <a href="https://goo.gle/angularjs-end-of-life">
+                read the end of life announcement</a>.<br>
+              Visit <a href="https://angular.io">angular.io</a> for the actively supported
+              Angular.
+            </p>
           <div class="grid-left">
             <version-picker></version-picker>
           </div>
@@ -242,7 +214,7 @@
         <p class="pull-right"><a back-to-top>Back to top</a></p>
 
         <p>
-          Super-powered by Google ©2010-2018
+          Super-powered by Google ©2010-2020
           (<a id="version"
                ng-href="https://github.com/angular/angular.js/blob/master/CHANGELOG.md#{{versionNumber}}"
                ng-bind-template="v{{version}}" title="Changelog of this version of AngularJS">

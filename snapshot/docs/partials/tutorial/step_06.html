@@ -198,7 +198,9 @@ list and the ordering will default to unordered/natural order.</p>
 current value as text.</p>
 </li>
 <li><p>Reverse the sort order by adding a <code>-</code> symbol before the sorting value:
-<code>&lt;option value=&quot;-age&quot;&gt;Oldest&lt;/option&gt;</code></p>
+<code>&lt;option value=&quot;-age&quot;&gt;Oldest&lt;/option&gt;</code>
+After making this change, you&#39;ll notice that the drop-down list has a blank option selected and does not default to age anymore.
+Fix this by updating the <code>orderProp</code> value in <code>phone-list.component.js</code> to match the new value on the <code>&lt;option&gt;</code> element.</p>
 </li>
 </ul>
 <h2 id="summary">Summary</h2>

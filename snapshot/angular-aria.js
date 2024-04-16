@@ -1,6 +1,6 @@
 /**
- * @license AngularJS v1.7.2-build.5558+sha.c9a92fc
- * (c) 2010-2018 Google, Inc. http://angularjs.org
+ * @license AngularJS v1.8.4-local+sha.d8f77817e
+ * (c) 2010-2020 Google LLC. http://angularjs.org
  * License: MIT
  */
 (function(window, angular) {'use strict';
@@ -63,13 +63,13 @@
 var ARIA_DISABLE_ATTR = 'ngAriaDisable';
 
 var ngAriaModule = angular.module('ngAria', ['ng']).
-                        info({ angularVersion: '1.7.2-build.5558+sha.c9a92fc' }).
+                        info({ angularVersion: '1.8.4-local+sha.d8f77817e' }).
                         provider('$aria', $AriaProvider);
 
 /**
 * Internal Utilities
 */
-var nodeBlackList = ['BUTTON', 'A', 'INPUT', 'TEXTAREA', 'SELECT', 'DETAILS', 'SUMMARY'];
+var nativeAriaNodeNames = ['BUTTON', 'A', 'INPUT', 'TEXTAREA', 'SELECT', 'DETAILS', 'SUMMARY'];
 
 var isNodeOneOf = function(elem, nodeTypeArray) {
   if (nodeTypeArray.indexOf(elem[0].nodeName) !== -1) {
@@ -141,12 +141,12 @@ function $AriaProvider() {
     config = angular.extend(config, newConfig);
   };
 
-  function watchExpr(attrName, ariaAttr, nodeBlackList, negate) {
+  function watchExpr(attrName, ariaAttr, nativeAriaNodeNames, negate) {
     return function(scope, elem, attr) {
       if (attr.hasOwnProperty(ARIA_DISABLE_ATTR)) return;
 
       var ariaCamelName = attr.$normalize(ariaAttr);
-      if (config[ariaCamelName] && !isNodeOneOf(elem, nodeBlackList) && !attr[ariaCamelName]) {
+      if (config[ariaCamelName] && !isNodeOneOf(elem, nativeAriaNodeNames) && !attr[ariaCamelName]) {
         scope.$watch(attr[attrName], function(boolVal) {
           // ensure boolean value
           boolVal = negate ? !boolVal : !!boolVal;
@@ -160,7 +160,6 @@ function $AriaProvider() {
    * @name $aria
    *
    * @description
-   * @priority 200
    *
    * The $aria service contains helper methods for applying common
    * [ARIA](http://www.w3.org/TR/wai-aria/) attributes to HTML directives.
@@ -171,7 +170,7 @@ function $AriaProvider() {
    *
    *```js
    * ngAriaModule.directive('ngDisabled', ['$aria', function($aria) {
-   *   return $aria.$$watchExpr('ngDisabled', 'aria-disabled', nodeBlackList, false);
+   *   return $aria.$$watchExpr('ngDisabled', 'aria-disabled', nativeAriaNodeNames, false);
    * }])
    *```
    * Shown above, the ngAria module creates a directive with the same signature as the
@@ -223,31 +222,31 @@ ngAriaModule.directive('ngShow', ['$aria', function($aria) {
   return $aria.$$watchExpr('ngHide', 'aria-hidden', [], false);
 }])
 .directive('ngValue', ['$aria', function($aria) {
-  return $aria.$$watchExpr('ngValue', 'aria-checked', nodeBlackList, false);
+  return $aria.$$watchExpr('ngValue', 'aria-checked', nativeAriaNodeNames, false);
 }])
 .directive('ngChecked', ['$aria', function($aria) {
-  return $aria.$$watchExpr('ngChecked', 'aria-checked', nodeBlackList, false);
+  return $aria.$$watchExpr('ngChecked', 'aria-checked', nativeAriaNodeNames, false);
 }])
 .directive('ngReadonly', ['$aria', function($aria) {
-  return $aria.$$watchExpr('ngReadonly', 'aria-readonly', nodeBlackList, false);
+  return $aria.$$watchExpr('ngReadonly', 'aria-readonly', nativeAriaNodeNames, false);
 }])
 .directive('ngRequired', ['$aria', function($aria) {
-  return $aria.$$watchExpr('ngRequired', 'aria-required', nodeBlackList, false);
+  return $aria.$$watchExpr('ngRequired', 'aria-required', nativeAriaNodeNames, false);
 }])
 .directive('ngModel', ['$aria', function($aria) {
 
-  function shouldAttachAttr(attr, normalizedAttr, elem, allowBlacklistEls) {
+  function shouldAttachAttr(attr, normalizedAttr, elem, allowNonAriaNodes) {
     return $aria.config(normalizedAttr) &&
       !elem.attr(attr) &&
-      (allowBlacklistEls || !isNodeOneOf(elem, nodeBlackList)) &&
+      (allowNonAriaNodes || !isNodeOneOf(elem, nativeAriaNodeNames)) &&
       (elem.attr('type') !== 'hidden' || elem[0].nodeName !== 'INPUT');
   }
 
   function shouldAttachRole(role, elem) {
     // if element does not have role attribute
     // AND element type is equal to role (if custom element has a type equaling shape) <-- remove?
-    // AND element is not in nodeBlackList
-    return !elem.attr('role') && (elem.attr('type') === role) && !isNodeOneOf(elem, nodeBlackList);
+    // AND element is not in nativeAriaNodeNames
+    return !elem.attr('role') && (elem.attr('type') === role) && !isNodeOneOf(elem, nativeAriaNodeNames);
   }
 
   function getShape(attr, elem) {
@@ -355,7 +354,7 @@ ngAriaModule.directive('ngShow', ['$aria', function($aria) {
   };
 }])
 .directive('ngDisabled', ['$aria', function($aria) {
-  return $aria.$$watchExpr('ngDisabled', 'aria-disabled', nodeBlackList, false);
+  return $aria.$$watchExpr('ngDisabled', 'aria-disabled', nativeAriaNodeNames, false);
 }])
 .directive('ngMessages', function() {
   return {
@@ -379,7 +378,7 @@ ngAriaModule.directive('ngShow', ['$aria', function($aria) {
       var fn = $parse(attr.ngClick);
       return function(scope, elem, attr) {
 
-        if (!isNodeOneOf(elem, nodeBlackList)) {
+        if (!isNodeOneOf(elem, nativeAriaNodeNames)) {
 
           if ($aria.config('bindRoleForClick') && !elem.attr('role')) {
             elem.attr('role', 'button');
@@ -392,7 +391,14 @@ ngAriaModule.directive('ngShow', ['$aria', function($aria) {
           if ($aria.config('bindKeydown') && !attr.ngKeydown && !attr.ngKeypress && !attr.ngKeyup) {
             elem.on('keydown', function(event) {
               var keyCode = event.which || event.keyCode;
-              if (keyCode === 32 || keyCode === 13) {
+
+              if (keyCode === 13 || keyCode === 32) {
+                // If the event is triggered on a non-interactive element ...
+                if (nativeAriaNodeNames.indexOf(event.target.nodeName) === -1 && !event.target.isContentEditable) {
+                  // ... prevent the default browser behavior (e.g. scrolling when pressing spacebar)
+                  // See https://github.com/angular/angular.js/issues/16664
+                  event.preventDefault();
+                }
                 scope.$apply(callback);
               }
 
@@ -410,7 +416,7 @@ ngAriaModule.directive('ngShow', ['$aria', function($aria) {
   return function(scope, elem, attr) {
     if (attr.hasOwnProperty(ARIA_DISABLE_ATTR)) return;
 
-    if ($aria.config('tabindex') && !elem.attr('tabindex') && !isNodeOneOf(elem, nodeBlackList)) {
+    if ($aria.config('tabindex') && !elem.attr('tabindex') && !isNodeOneOf(elem, nativeAriaNodeNames)) {
       elem.attr('tabindex', 0);
     }
   };

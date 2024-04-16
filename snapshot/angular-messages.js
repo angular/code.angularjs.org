@@ -1,6 +1,6 @@
 /**
- * @license AngularJS v1.7.2-build.5558+sha.c9a92fc
- * (c) 2010-2018 Google, Inc. http://angularjs.org
+ * @license AngularJS v1.8.4-local+sha.d8f77817e
+ * (c) 2010-2020 Google LLC. http://angularjs.org
  * License: MIT
  */
 (function(window, angular) {'use strict';
@@ -291,7 +291,7 @@ angular.module('ngMessages', [], function initAngularHelpers() {
   isString = angular.isString;
   jqLite = angular.element;
 })
-  .info({ angularVersion: '1.7.2-build.5558+sha.c9a92fc' })
+  .info({ angularVersion: '1.8.4-local+sha.d8f77817e' })
 
   /**
    * @ngdoc directive

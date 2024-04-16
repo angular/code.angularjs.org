@@ -206,12 +206,16 @@ code that constructs <code>SomeClass</code>.</p>
 <a href="http://en.wikipedia.org/wiki/Service_locator_pattern">service locator</a> that is responsible for
 construction and lookup of dependencies.</p>
 <p>Here is an example of using the injector service:</p>
-<pre><code class="lang-js">// Provide the wiring information in a module
+<p>First create an AngularJS module that will hold the service definition. (The empty array passed as
+the second parameter means that this module does not depend on any other modules.)</p>
+<pre><code class="lang-js">// Create a module to hold the service definition
 var myModule = angular.module(&#39;myModule&#39;, []);
 </code></pre>
-<p>Teach the injector how to build a <code>greeter</code> service. Notice that <code>greeter</code> is dependent on the
-<code>$window</code> service. The <code>greeter</code> service is an object that contains a <code>greet</code> method.</p>
-<pre><code class="lang-js">myModule.factory(&#39;greeter&#39;, function($window) {
+<p>Teach the injector how to build a <code>greeter</code> service, which is just an object that contains a <code>greet</code>
+method. Notice that <code>greeter</code> is dependent on the <code>$window</code> service, which will be provided
+(injected into <code>greeter</code>) by the injector.</p>
+<pre><code class="lang-js">// Define the `greeter` service
+myModule.factory(&#39;greeter&#39;, function($window) {
   return {
     greet: function(text) {
       $window.alert(text);

@@ -35,10 +35,10 @@ URLs point to the <code>app/img/phones/</code> directory.</p>
 <pre><code class="lang-html">...
 &lt;ul class=&quot;phones&quot;&gt;
   &lt;li ng-repeat=&quot;phone in $ctrl.phones | filter:$ctrl.query | orderBy:$ctrl.orderProp&quot; class=&quot;thumbnail&quot;&gt;
-    &lt;a href=&quot;#/phones/{{phone.id}}&quot; class=&quot;thumb&quot;&gt;
+    &lt;a href=&quot;#!/phones/{{phone.id}}&quot; class=&quot;thumb&quot;&gt;
       &lt;img ng-src=&quot;{{phone.imageUrl}}&quot; alt=&quot;{{phone.name}}&quot; /&gt;
     &lt;/a&gt;
-    &lt;a href=&quot;#/phones/{{phone.id}}&quot;&gt;{{phone.name}}&lt;/a&gt;
+    &lt;a href=&quot;#!/phones/{{phone.id}}&quot;&gt;{{phone.name}}&lt;/a&gt;
     &lt;p&gt;{{phone.snippet}}&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
@@ -64,7 +64,7 @@ it(&#39;should render phone specific links&#39;, function() {
   query.sendKeys(&#39;nexus&#39;);
 
   element.all(by.css(&#39;.phones li a&#39;)).first().click();
-  expect(browser.getLocationAbsUrl()).toBe(&#39;/phones/nexus-s&#39;);
+  expect(browser.getCurrentUrl()).toContain(&#39;index.html#!/phones/nexus-s&#39;);
 });
 
 ...
@@ -85,8 +85,9 @@ inject the valid address.</p>
 </li>
 </ul>
 <h2 id="summary">Summary</h2>
-<p>Now that you have added phone images and links, go to <a href="tutorial/step_09">step 9</a> to learn about AngularJS
-layout templates and how AngularJS makes it easy to create applications that have multiple views.</p>
+<p>Now that you have added phone images and links, go to <a href="tutorial/step_09">step 9</a> to learn about
+AngularJS layout templates and how AngularJS makes it easy to create applications that have
+multiple views.</p>
 <ul doc-tutorial-nav="8"></ul>
 
 

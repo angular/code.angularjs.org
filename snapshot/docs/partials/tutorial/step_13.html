@@ -16,44 +16,27 @@ make requests for data to the server in an easier way, without having to deal wi
 <h2 id="dependencies">Dependencies</h2>
 <p>The RESTful functionality is provided by AngularJS in the <a href="api/ngResource">ngResource</a> module, which
 is distributed separately from the core AngularJS framework.</p>
-<p>Since we are using <a href="http://bower.io/">Bower</a> to install client-side dependencies, this step updates the
-<code>bower.json</code> configuration file to include the new dependency:</p>
+<p>Since we are using <a href="https://www.npmjs.com/">npm</a> to install client-side dependencies, this step updates the
+<code>package.json</code> configuration file to include the new dependency:</p>
 <p><br />
-<strong><code>bower.json</code>:</strong></p>
-<pre><code>{
+<strong><code>package.json</code>:</strong></p>
+<pre><code class="lang-json">{
   &quot;name&quot;: &quot;angular-phonecat&quot;,
-  &quot;description&quot;: &quot;A starter project for AngularJS&quot;,
-  &quot;version&quot;: &quot;0.0.0&quot;,
-  &quot;homepage&quot;: &quot;https://github.com/angular/angular-phonecat&quot;,
-  &quot;license&quot;: &quot;MIT&quot;,
-  &quot;private&quot;: true,
+  ...
   &quot;dependencies&quot;: {
-    &quot;angular&quot;: &quot;1.5.x&quot;,
-    &quot;angular-mocks&quot;: &quot;1.5.x&quot;,
-    &quot;angular-resource&quot;: &quot;1.5.x&quot;,
-    &quot;angular-route&quot;: &quot;1.5.x&quot;,
+    &quot;angular&quot;: &quot;1.8.x&quot;,
+    &quot;angular-resource&quot;: &quot;1.8.x&quot;,
+    &quot;angular-route&quot;: &quot;1.8.x&quot;,
     &quot;bootstrap&quot;: &quot;3.3.x&quot;
-  }
+  },
+  ...
 }
 </code></pre>
-<p>The new dependency <code>&quot;angular-resource&quot;: &quot;1.5.x&quot;</code> tells bower to install a version of the
-angular-resource module that is compatible with version 1.5.x of AngularJS. We must tell bower to
+<p>The new dependency <code>&quot;angular-resource&quot;: &quot;1.8.x&quot;</code> tells npm to install a version of the
+angular-resource module that is compatible with version 1.8.x of AngularJS. We must tell npm to
 download and install this dependency.</p>
 <pre><code>npm install
 </code></pre>
-<div class="alert alert-info">
-  <strong>Note:</strong> If you have bower installed globally, you can run <code>bower install</code>, but for this project
-  we have preconfigured <code>npm install</code> to run bower for us.
-</div>
-
-<div class="alert alert-warning">
-  <strong>Warning:</strong> If a new version of AngularJS has been released since you last ran <code>npm install</code>, then
-  you may have a problem with the <code>bower install</code> due to a conflict between the versions of
-  angular.js that need to be installed. If you run into this issue, simply delete your
-  <code>app/bower_components</code> directory and then run <code>npm install</code>.
-</div>
-
-
 <h2 id="service">Service</h2>
 <p>We create our own service to provide access to the phone data on the server. We will put the service
 in its own module, under <code>core</code>, so we can explicitly declare its dependency on <code>ngResource</code>:</p>
@@ -98,7 +81,7 @@ need to load the <code>angular-resource.js</code> file, which contains the <code
 <strong><code>app/index.html</code>:</strong></p>
 <pre><code class="lang-html">&lt;head&gt;
   ...
-  &lt;script src=&quot;bower_components/angular-resource/angular-resource.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;lib/angular-resource/angular-resource.js&quot;&gt;&lt;/script&gt;
   ...
   &lt;script src=&quot;core/phone/phone.module.js&quot;&gt;&lt;/script&gt;
   &lt;script src=&quot;core/phone/phone.service.js&quot;&gt;&lt;/script&gt;
@@ -107,9 +90,10 @@ need to load the <code>angular-resource.js</code> file, which contains the <code
 </code></pre>
 <h2 id="component-controllers">Component Controllers</h2>
 <p>We can now simplify our component controllers (<code>PhoneListController</code> and <code>PhoneDetailController</code>) by
-factoring out the lower-level <code>$http</code> service, replacing it with the new <code>Phone</code> service. AngularJS&#39;s
-<code>$resource</code> service is easier to use than <code>$http</code> for interacting with data sources exposed as
-RESTful resources. It is also easier now to understand what the code in our controllers is doing.</p>
+factoring out the lower-level <code>$http</code> service, replacing it with the new <code>Phone</code> service.
+AngularJS&#39;s <code>$resource</code> service is easier to use than <code>$http</code> for interacting with data sources
+exposed as RESTful resources. It is also easier now to understand what the code in our controllers
+is doing.</p>
 <p><br />
 <strong><code>app/phone-list/phone-list.module.js</code>:</strong></p>
 <pre><code class="lang-js">angular.module(&#39;phoneList&#39;, [&#39;core.phone&#39;]);
@@ -179,8 +163,8 @@ Karma configuration file with angular-resource.</p>
 <p><br />
 <strong><code>karma.conf.js</code>:</strong></p>
 <pre><code class="lang-js">files: [
-  &#39;bower_components/angular/angular.js&#39;,
-  &#39;bower_components/angular-resource/angular-resource.js&#39;,
+  &#39;lib/angular/angular.js&#39;,
+  &#39;lib/angular-resource/angular-resource.js&#39;,
   ...
 ],
 </code></pre>

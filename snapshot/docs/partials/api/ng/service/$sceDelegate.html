@@ -47,8 +47,8 @@ work because <code>$sce</code> delegates to <code>$sceDelegate</code> for these 
 <p>The default instance of <code>$sceDelegate</code> should work out of the box with little pain.  While you
 can override it completely to change the behavior of <code>$sce</code>, the common case would
 involve configuring the <a href="api/ng/provider/$sceDelegateProvider">$sceDelegateProvider</a> instead by setting
-your own whitelists and blacklists for trusting URLs used for loading AngularJS resources such as
-templates.  Refer <a href="api/ng/provider/$sceDelegateProvider#resourceUrlWhitelist">$sceDelegateProvider.resourceUrlWhitelist</a> and <a href="api/ng/provider/$sceDelegateProvider#resourceUrlBlacklist">$sceDelegateProvider.resourceUrlBlacklist</a></p>
+your own trusted and banned resource lists for trusting URLs used for loading AngularJS resources
+such as templates.  Refer <a href="api/ng/provider/$sceDelegateProvider#trustedResourceUrlList">$sceDelegateProvider.trustedResourceUrlList</a> and <a href="api/ng/provider/$sceDelegateProvider#bannedResourceUrlList">$sceDelegateProvider.bannedResourceUrlList</a></p>
 
 </div>
 
@@ -69,6 +69,7 @@ templates.  Refer <a href="api/ng/provider/$sceDelegateProvider#resourceUrlWhite
 
     
     
+
     
 
   
@@ -227,7 +228,7 @@ the context and sanitizer availablility.</p>
 <p>The contexts that can be sanitized are $sce.MEDIA_URL, $sce.URL and $sce.HTML. The first two are available
 by default, and the third one relies on the <code>$sanitize</code> service (which may be loaded through
 the <code>ngSanitize</code> module). Furthermore, for $sce.RESOURCE_URL context, a plain string may be
-accepted if the resource url policy defined by <a href="api/ng/provider/$sceDelegateProvider#resourceUrlWhitelist"><code>$sceDelegateProvider.resourceUrlWhitelist</code></a> and <a href="api/ng/provider/$sceDelegateProvider#resourceUrlBlacklist"><code>$sceDelegateProvider.resourceUrlBlacklist</code></a> accepts that resource.</p>
+accepted if the resource url policy defined by <a href="api/ng/provider/$sceDelegateProvider#trustedResourceUrlList"><code>$sceDelegateProvider.trustedResourceUrlList</code></a> and <a href="api/ng/provider/$sceDelegateProvider#bannedResourceUrlList"><code>$sceDelegateProvider.bannedResourceUrlList</code></a> accepts that resource.</p>
 <p>This function will throw if the safe type isn&#39;t appropriate for this context, or if the
 value given cannot be accepted in the context (which might be caused by sanitization not
 being available, or the value not being recognized as safe).</p>

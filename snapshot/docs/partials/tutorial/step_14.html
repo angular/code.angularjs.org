@@ -18,53 +18,36 @@ adding/removing classes on <a href="api/ng/directive/ngClass">ngClass</a>).</li>
 
 <h2 id="dependencies">Dependencies</h2>
 <p>The animation functionality is provided by AngularJS in the <code>ngAnimate</code> module, which is distributed
-separately from the core AngularJS framework. In addition we will use <a href="https://jquery.com/">jQuery</a> in this project
-to do extra JavaScript animations.</p>
-<p>Since we are using <a href="http://bower.io/">Bower</a> to install client-side dependencies, this step updates the
-<code>bower.json</code> configuration file to include the new dependencies:</p>
+separately from the core AngularJS framework. In addition we will use <a href="https://jquery.com/">jQuery</a> in this
+project to do extra JavaScript animations.</p>
+<p>Since we are using <a href="https://www.npmjs.com/">npm</a> to install client-side dependencies, this step updates the
+<code>package.json</code> configuration file to include the new dependencies:</p>
 <p><br />
-<strong><code>bower.json</code>:</strong></p>
-<pre><code>{
+<strong><code>package.json</code>:</strong></p>
+<pre><code class="lang-json">{
   &quot;name&quot;: &quot;angular-phonecat&quot;,
-  &quot;description&quot;: &quot;A starter project for AngularJS&quot;,
-  &quot;version&quot;: &quot;0.0.0&quot;,
-  &quot;homepage&quot;: &quot;https://github.com/angular/angular-phonecat&quot;,
-  &quot;license&quot;: &quot;MIT&quot;,
-  &quot;private&quot;: true,
+  ...
   &quot;dependencies&quot;: {
-    &quot;angular&quot;: &quot;1.5.x&quot;,
-    &quot;angular-animate&quot;: &quot;1.5.x&quot;,
-    &quot;angular-mocks&quot;: &quot;1.5.x&quot;,
-    &quot;angular-resource&quot;: &quot;1.5.x&quot;,
-    &quot;angular-route&quot;: &quot;1.5.x&quot;,
+    &quot;angular&quot;: &quot;1.8.x&quot;,
+    &quot;angular-animate&quot;: &quot;1.8.x&quot;,
+    &quot;angular-resource&quot;: &quot;1.8.x&quot;,
+    &quot;angular-route&quot;: &quot;1.8.x&quot;,
     &quot;bootstrap&quot;: &quot;3.3.x&quot;,
-    &quot;jquery&quot;: &quot;3.2.x&quot;
-  }
+    &quot;jquery&quot;: &quot;^3.5.1&quot;
+  },
+  ...
 }
 </code></pre>
 <ul>
-<li><code>&quot;angular-animate&quot;: &quot;1.5.x&quot;</code> tells bower to install a version of the angular-animate module that
-is compatible with version 1.5.x of AngularJS.</li>
-<li><code>&quot;jquery&quot;: &quot;3.2.x&quot;</code> tells bower to install the latest patch release of the 3.2 version of jQuery.
-Note that this is not an AngularJS library; it is the standard jQuery library. We can use bower to
+<li><code>&quot;angular-animate&quot;: &quot;1.8.x&quot;</code> tells npm to install a version of the angular-animate module that
+is compatible with version 1.8.x of AngularJS.</li>
+<li><code>&quot;jquery&quot;: &quot;^3.5.1&quot;</code> tells npm to install a version of jQuery that is compatible with 3.5.x and at least 3.5.1.
+Note that this is not an AngularJS library; it is the standard jQuery library. We can use npm to
 install a wide range of 3rd party libraries.</li>
 </ul>
-<p>Now, we must tell bower to download and install these dependencies.</p>
+<p>Now, we must tell npm to download and install these dependencies.</p>
 <pre><code>npm install
 </code></pre>
-<div class="alert alert-info">
-  <strong>Note:</strong> If you have bower installed globally, you can run <code>bower install</code>, but for this project
-  we have preconfigured <code>npm install</code> to run bower for us.
-</div>
-
-<div class="alert alert-warning">
-  <strong>Warning:</strong> If a new version of AngularJS has been released since you last ran <code>npm install</code>, then
-  you may have a problem with the <code>bower install</code> due to a conflict between the versions of
-  angular.js that need to be installed. If you run into this issue, simply delete your
-  <code>app/bower_components</code> directory and then run <code>npm install</code>.
-</div>
-
-
 <h2 id="how-animations-work-with-nganimate-">How Animations work with <code>ngAnimate</code></h2>
 <p>To get an idea of how animations work with AngularJS, you might want to read the
 <a href="guide/animations">Animations</a> section of the Developer Guide first.</p>
@@ -83,12 +66,12 @@ code necessary to make your application &quot;animation aware&quot;.</p>
 ...
 
 &lt;!-- Used for JavaScript animations (include this before angular.js) --&gt;
-&lt;script src=&quot;bower_components/jquery/dist/jquery.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;lib/jquery/dist/jquery.js&quot;&gt;&lt;/script&gt;
 
 ...
 
 &lt;!-- Adds animation support in AngularJS --&gt;
-&lt;script src=&quot;bower_components/angular-animate/angular-animate.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;lib/angular-animate/angular-animate.js&quot;&gt;&lt;/script&gt;
 
 &lt;!-- Defines JavaScript animations --&gt;
 &lt;script src=&quot;app.animations.js&quot;&gt;&lt;/script&gt;
@@ -96,8 +79,8 @@ code necessary to make your application &quot;animation aware&quot;.</p>
 ...
 </code></pre>
 <div class="alert alert-error">
-  <strong>Important:</strong> Be sure to use jQuery version 2.1 or newer, when using AngularJS 1.5 or newer; jQuery 1.x is
-  not officially supported.
+  <strong>Important:</strong> Be sure to use jQuery version 2.1 or newer, when using AngularJS 1.5 or newer;
+  jQuery 1.x is not officially supported.
   In order for AngularJS to detect jQuery and take advantage of it, make sure to include <code>jquery.js</code>
   before <code>angular.js</code>.
 </div>
@@ -196,8 +179,8 @@ are added to the list and are collapsed back down to <strong>0px</strong> before
 There is also a catchy fade-in/fade-out effect that occurs at the same time. All this is handled by
 the CSS transition declaration at the top of the CSS file.</p>
 <div class="alert alert-warning">
-  Although all modern browsers have good support for <a href="http://caniuse.com/#feat=css-transitions">CSS transitions</a> and
-  <a href="http://caniuse.com/#feat=css-animation">CSS animations</a>, IE9 and earlier IE versions do not.
+  Although all modern browsers have good support for <a href="https://caniuse.com/#feat=css-transitions">CSS transitions</a> and
+  <a href="https://caniuse.com/#feat=css-animation">CSS animations</a>, IE9 and earlier IE versions do not.
   If you want animations that are backwards-compatible with older browsers, consider using
   JavaScript-based animations, which are demonstrated below.
 </div>
@@ -408,7 +391,7 @@ callback works the same way, but instead gets executed when a class is removed.<
 <p>Note that we are using <a href="https://jquery.com/">jQuery</a>&#39;s <code>animate()</code> helper to implement the animation. jQuery
 isn&#39;t required to do JavaScript animations with AngularJS, but we use it here anyway in order to
 keep the example simple. More info on <code>jQuery.animate()</code> can be found in the
-<a href="https://api.jquery.com/animate/">jQuery documentation</a>.</p>
+<a href="https://api.jquery.com/animate">jQuery documentation</a>.</p>
 <p>Within the event callbacks, we create the animation by manipulating the DOM. In the code above,
 this is achieved using <code>element.css()</code> and <code>element.animate()</code>. As a result the new element is
 positioned with an offset of <strong>500px</strong> and then both elements &mdash; the previous and the new

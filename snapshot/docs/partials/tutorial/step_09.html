@@ -18,43 +18,26 @@ detail page is displayed.</li>
 <h2 id="dependencies">Dependencies</h2>
 <p>The routing functionality added in this step is provided by AngularJS in the <code>ngRoute</code> module, which
 is distributed separately from the core AngularJS framework.</p>
-<p>Since we are using <a href="http://bower.io">Bower</a> to install client-side dependencies, this step updates the
-<code>bower.json</code> configuration file to include the new dependency:</p>
+<p>Since we are using <a href="https://www.npmjs.com/">npm</a> to install client-side dependencies, this step updates the
+<code>package.json</code> configuration file to include the new dependency:</p>
 <p><br />
-<strong><code>bower.json</code>:</strong></p>
+<strong><code>package.json</code>:</strong></p>
 <pre><code class="lang-json">{
   &quot;name&quot;: &quot;angular-phonecat&quot;,
-  &quot;description&quot;: &quot;A starter project for AngularJS&quot;,
-  &quot;version&quot;: &quot;0.0.0&quot;,
-  &quot;homepage&quot;: &quot;https://github.com/angular/angular-phonecat&quot;,
-  &quot;license&quot;: &quot;MIT&quot;,
-  &quot;private&quot;: true,
+  ...
   &quot;dependencies&quot;: {
-    &quot;angular&quot;: &quot;1.5.x&quot;,
-    &quot;angular-mocks&quot;: &quot;1.5.x&quot;,
-    &quot;angular-route&quot;: &quot;1.5.x&quot;,
+    &quot;angular&quot;: &quot;1.8.x&quot;,
+    &quot;angular-route&quot;: &quot;1.8.x&quot;,
     &quot;bootstrap&quot;: &quot;3.3.x&quot;
-  }
+  },
+  ...
 }
 </code></pre>
-<p>The new dependency <code>&quot;angular-route&quot;: &quot;1.5.x&quot;</code> tells bower to install a version of the angular-route
-module that is compatible with version 1.5.x of AngularJS. We must tell bower to download and install
+<p>The new dependency <code>&quot;angular-route&quot;: &quot;1.8.x&quot;</code> tells npm to install a version of the angular-route
+module that is compatible with version 1.8.x of AngularJS. We must tell npm to download and install
 this dependency.</p>
 <pre><code>npm install
 </code></pre>
-<div class="alert alert-info">
-  <strong>Note:</strong> If you have bower installed globally, you can run <code>bower install</code>, but for this project
-  we have preconfigured <code>npm install</code> to run bower for us.
-</div>
-
-<div class="alert alert-warning">
-  <strong>Warning:</strong> If a new version of AngularJS has been released since you last ran <code>npm install</code>, then
-  you may have a problem with the <code>bower install</code> due to a conflict between the versions of
-  angular.js that need to be installed. If you run into this issue, simply delete your
-  <code>app/bower_components</code> directory and then run <code>npm install</code>.
-</div>
-
-
 <h2 id="multiple-views-routing-and-layout-templates">Multiple Views, Routing and Layout Templates</h2>
 <p>Our app is slowly growing and becoming more complex. Prior to this step, the app provided our users
 with a single view (including the list of all phones), and all of the template code was located in
@@ -107,8 +90,8 @@ service, the <code>$routeProvider</code> exposes APIs that allow you to define r
 </div>
 
 <p>AngularJS modules solve the problem of removing global variables from the application and provide a
-way of configuring the injector. As opposed to AMD or require.js modules, AngularJS modules don&#39;t try
-to solve the problem of script load ordering or lazy script fetching. These goals are totally
+way of configuring the injector. As opposed to AMD or require.js modules, AngularJS modules don&#39;t
+try to solve the problem of script load ordering or lazy script fetching. These goals are totally
 independent and both module systems can live side-by-side and fulfill their goals.</p>
 <p>To deepen your understanding on AngularJS&#39;s DI, see <a href="https://github.com/angular/angular.js/wiki/Understanding-Dependency-Injection">Understanding Dependency Injection</a>.</p>
 <h2 id="template">Template</h2>
@@ -119,8 +102,8 @@ into the layout template. This makes it a perfect fit for our <code>index.html</
 <strong><code>app/index.html</code>:</strong></p>
 <pre><code class="lang-html">&lt;head&gt;
   ...
-  &lt;script src=&quot;bower_components/angular/angular.js&quot;&gt;&lt;/script&gt;
-  &lt;script src=&quot;bower_components/angular-route/angular-route.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;lib/angular/angular.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;lib/angular-route/angular-route.js&quot;&gt;&lt;/script&gt;
   &lt;script src=&quot;app.module.js&quot;&gt;&lt;/script&gt;
   &lt;script src=&quot;app.config.js&quot;&gt;&lt;/script&gt;
   ...
@@ -164,10 +147,8 @@ code, we put it into a separate file and used the <code>.config</code> suffix.</
 <strong><code>app/app.config.js</code>:</strong></p>
 <pre><code class="lang-js">angular.
   module(&#39;phonecatApp&#39;).
-  config([&#39;$locationProvider&#39;, &#39;$routeProvider&#39;,
-    function config($locationProvider, $routeProvider) {
-      $locationProvider.hashPrefix(&#39;!&#39;);
-
+  config([&#39;$routeProvider&#39;,
+    function config($routeProvider) {
       $routeProvider.
         when(&#39;/phones&#39;, {
           template: &#39;&lt;phone-list&gt;&lt;/phone-list&gt;&#39;
@@ -185,18 +166,6 @@ the corresponding services. Here, we use the
 <a href="api/ngRoute/provider/$routeProvider#when">$routeProvider.when()</a> and
 <a href="api/ngRoute/provider/$routeProvider#otherwise">$routeProvider.otherwise()</a> methods to define our
 application routes.</p>
-<div class="alert alert-success">
-  <p>
-    We also used <a href="api/ng/provider/$locationProvider#hashPrefix">$locationProvider.hashPrefix()</a> to set the
-    hash-prefix to <code>!</code>. This prefix will appear in the links to our client-side routes, right after
-    the hash (<code>#</code>) symbol and before the actual path (e.g. <code>index.html#!/some/path</code>).
-  </p>
-  <p>
-    Setting a prefix is not necessary, but it is considered a good practice (for reasons that are
-    outside the scope of this tutorial). <code>!</code> is the most commonly used prefix.
-  </p>
-</div>
-
 <p>Our routes are defined as follows:</p>
 <ul>
 <li><p><code>when(&#39;/phones&#39;)</code>: Determines the view that will be shown, when the URL hash fragment is
@@ -219,6 +188,26 @@ component. For now, the <code>phoneDetail</code> component will just display the
 the route declaration — <code>&#39;/phones/:phoneId&#39;</code> — as a template that is matched against the current
 URL. All variables defined with the <code>:</code> prefix are extracted into the (injectable)
 <a href="api/ngRoute/service/$routeParams">$routeParams</a> object.</p>
+<div class="alert alert-info">
+  <p>
+    You may have noticed, that &mdash; while the configured route paths start with <code>/</code> (e.g.
+    <code>/phones</code>) &mdash; the URLs used in templates start with <code>#!/</code> (e.g. <code>#!/phones</code>).
+  </p>
+  <p>
+    Without getting into much detail, AngularJS (by default) uses the hash part of the URL (i.e.
+    what comes after the hash (<code>#</code>) symbol) to determine the current route. In addition to that, you
+    can also specify a <a href="api/ng/provider/$locationProvider#hashPrefix">hash-prefix</a> (<code>!</code> by default) that needs
+    to appear after the hash symbol in order for AngularJS to consider the value an &quot;AngularJS path&quot;
+    and process it (for example, try to match it to a route).
+  </p>
+  <p>
+    You can find out more about how all this works in the <a href="guide/$location">Using $location</a> section
+    of the Developer Guide. But all you need to know for now, is that the URLs to our various routes
+    should be prefixed with <code>#!</code>.
+  </p>
+</div>
+
+
 <h2 id="the-phonedetail-component">The <code>phoneDetail</code> Component</h2>
 <p>We created a <code>phoneDetail</code> component to handle the phone details view. We followed the same
 conventions as with <code>phoneList</code>, using a separate directory and creating a <code>phoneDetail</code> module,
@@ -284,8 +273,8 @@ any modification.</p>
 <p><br />
 <strong><code>karma.conf.js</code>:</strong></p>
 <pre><code class="lang-js">files: [
-  &#39;bower_components/angular/angular.js&#39;,
-  &#39;bower_components/angular-route/angular-route.js&#39;,
+  &#39;lib/angular/angular.js&#39;,
+  &#39;lib/angular-route/angular-route.js&#39;,
   ...
 ],
 </code></pre>
@@ -298,7 +287,7 @@ various URLs and verifying that the correct view was rendered.</p>
 
 it(&#39;should redirect `index.html` to `index.html#!/phones&#39;, function() {
   browser.get(&#39;index.html&#39;);
-  expect(browser.getLocationAbsUrl()).toBe(&#39;/phones&#39;);
+  expect(browser.getCurrentUrl()).toContain(&#39;index.html#!/phones&#39;);
 });
 
 ...
